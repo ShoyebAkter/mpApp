@@ -1,46 +1,23 @@
-import ReactApexChart from "react-apexcharts";
+import CustomerBehaviour from "./CustomerBehaviour"
+import OverviewChart from "./OverviewChart"
+import SocialMediaChart from "./SocialMediaChart"
+
 function BusinessChart() {
-   
-    const options= {
-          
-        series: [{
-            name: "Desktops",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }],
-        options: {
-          chart: {
-            height: 350,
-            type: 'line',
-            zoom: {
-              enabled: false
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          stroke: {
-            curve: 'straight'
-          },
-          title: {
-            text: 'Product Trends by Month',
-            align: 'left'
-          },
-          grid: {
-            row: {
-              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-              opacity: 0.5
-            },
-          },
-          xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-          }
-        },
-      
-      
-      };
+
+
     return (
-        <div id="chart">
-            <ReactApexChart options={options} series={options.series} type="line" height={350} width={500} />
+        <div className="mt-10">
+            <div className="flex text-black justify-around ">
+                <div className="text-xl font-bold">Company Name</div>
+                <div className=" border-solid border-2 border-lime-500 rounded-xl px-2 text-lime-600">General Report</div>
+            </div>
+            <div className="flex justify-around my-5">
+                <OverviewChart />
+                <CustomerBehaviour />
+            </div>
+            <div className="flex justify-around">
+            <SocialMediaChart />
+            </div>
         </div>
     )
 }

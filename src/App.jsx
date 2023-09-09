@@ -1,6 +1,4 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+
 import Login from './Pages/Authentication/Login'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
@@ -15,7 +13,8 @@ function App() {
     <>
       <Header/>
       <Routes>
-        <Route path="/businessoverview" element={<BusinessChart />}/>
+        <Route path="/home" element={<BusinessChart />}/>
+        {/* <Route path="/businessoverview" element={<BusinessChart />}/> */}
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<Signup />}/>
       </Routes>

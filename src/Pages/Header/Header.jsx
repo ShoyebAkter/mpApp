@@ -18,7 +18,7 @@ function Header() {
 
 			<nav>
 				<a href="#">Logo</a>
-				<a className='name' href="#">EulerMail</a>
+				<Link to="/home">EulerMail</Link>
 				<Link to="/businessoverview">Business Overview</Link>
 				<a href="#">Customer Behaviour</a>
 				<a href="#">Campaign Result</a>

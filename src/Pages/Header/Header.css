@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+nav a{
+    text-decoration: none;
+    color: rgb(155, 146, 146);
+    
+    text-align: center;
+}
+.name{
+    color: rgb(130, 124, 124);
+    font-size:25px;
+    font-weight: 500;
+    text-align: center;
+}
+.header-fixed{
+    padding: 35px;
+    box-shadow:0 5px 5px #ccc;
+}

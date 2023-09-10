@@ -20,7 +20,7 @@ function Header() {
 				<a href="#">Logo</a>
 				<Link to="/home">EulerMail</Link>
 				<Link to="/businessoverview">Business Overview</Link>
-				<a href="#">Customer Behaviour</a>
+				<Link to="/customerBehaviour">Customer Behaviour</Link>
 				<a href="#">Campaign Result</a>
 				<a href="#">Social Media</a>
 				<button className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded-full shadow-lg">

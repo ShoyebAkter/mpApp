@@ -7,6 +7,9 @@ import Signup from './Pages/Authentication/Signup'
 import BusinessChart from './Pages/EulerMail/BusinessChart'
 import { Main } from './Pages/BusinessOverview/Main'
 import { CustomerBehaviour } from './Pages/CustomerBehaviour/CustomerBehaviour'
+import { CampaignResult } from './Pages/CampaignResult/CampaignResult'
+import { SocialMedia } from './Pages/SocialMedia/SocialMedia'
+import { CampaignDesign } from './Pages/Campaign/CampaignDesign'
 
 function App() {
 
@@ -17,6 +20,9 @@ function App() {
         <Route path="/home" element={<BusinessChart />}/>
         <Route path="/businessoverview" element={<Main />}/>
         <Route path="/customerBehaviour" element={<CustomerBehaviour />}/>
+        <Route path="/campaignresult" element={<CampaignResult />}/>
+        <Route path="/socialmedia" element={<SocialMedia />}/>
+        <Route path="/campaignerdesign" element={<CampaignDesign />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<Signup />}/>
       </Routes>

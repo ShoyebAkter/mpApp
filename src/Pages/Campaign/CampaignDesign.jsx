@@ -1,6 +1,6 @@
 
 export const CampaignDesign = () => {
   return (
-    <div className="text-black">CampaignDesign</div>
+    <div className="text-black">CampaignDesigner</div>
   )
 }

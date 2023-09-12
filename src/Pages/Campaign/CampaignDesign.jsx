@@ -1,6 +1,9 @@
+import CanvaClone from "./CanvaClone"
 
 export const CampaignDesign = () => {
   return (
-    <div className="text-black">CampaignDesigner</div>
+    <div className="text-black">
+      <CanvaClone/>
+    </div>
   )
 }

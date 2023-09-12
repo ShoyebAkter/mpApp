@@ -2,7 +2,7 @@ import { useState } from "react";
 import CanvaClone from "./CanvaClone"
 import { SendButton } from "./SendButton"
 import TextEditor from "./TextEditor"
-// import { EmailModals } from "./Modals/EmailModals";
+import { EmailModals } from "./Modals/EmailModals";
 
 export const CampaignDesign = () => {
   const [showEmailModal, setShowEmailModal] = useState(false);
@@ -11,7 +11,7 @@ export const CampaignDesign = () => {
       <CanvaClone/>
       <TextEditor/>
       <SendButton showEmailModal={showEmailModal} setShowEmailModal={setShowEmailModal}/>
-      {/* <EmailModals setShowEmailModal={setShowEmailModal} showEmailModal={showEmailModal} /> */}
+      <EmailModals setShowEmailModal={setShowEmailModal} showEmailModal={showEmailModal} />
     </div>
   )
 }

@@ -3,7 +3,7 @@
 export const EmailModals = (props) => {
     console.log(props);
     const showEmailModal=props;
-    // const setShowEmailModal=props;
+    const setShowEmailModal=props;
     return (
         <div>
             {showEmailModal ? (
@@ -15,7 +15,7 @@ export const EmailModals = (props) => {
                                     <h3 className="text-3xl font=semibold">General Info</h3>
                                     <button
                                         className="bg-transparent border-0 text-black float-right"
-                                        // onClick={() => setShowEmailModal(false)}
+                                        onClick={() => setShowEmailModal(false)}
                                     >
                                         <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
                                             x
@@ -46,14 +46,14 @@ export const EmailModals = (props) => {
                                     <button
                                         className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
                                         type="button"
-                                        // onClick={() => setShowEmailModal(false)}
+                                        onClick={() => setShowEmailModal(false)}
                                     >
                                         Close
                                     </button>
                                     <button
                                         className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                                         type="button"
-                                        // onClick={() => setShowEmailModal(false)}
+                                        onClick={() => setShowEmailModal(false)}
                                     >
                                         Submit
                                     </button>

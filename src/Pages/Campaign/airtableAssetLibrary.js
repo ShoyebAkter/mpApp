@@ -1,13 +1,5 @@
 import Airtable from 'airtable';
 
-// This custom asset library demonstrates how to use an arbitrary API as asset source.
-// Airtable is a SaaS product that provides extensible spreadsheets.
-// We use their javascript library https://github.com/Airtable/airtable.js
-// to query a sample spreadsheet and display the images in the spreadsheet
-// in our asset library.
-
-// Insert a readonly api key:
-// See: https://support.airtable.com/hc/en-us/articles/360056249614-Creating-a-read-only-API-key
 let AIRTABLE_API_KEY = 'patPC7878Cv5dIPvv.4c8ecd0242b00c085d008857de80e341716de446b42ead4bc8102f001993b771';
 
 
@@ -25,7 +17,6 @@ export const queryAirtable = ({ query, perPage }) => {
       .select({
         maxRecords: perPage || 100,
         view: 'Grid view',
-        // Poor mans search via airtable formula
         filterByFormula: query
           ? "AND({Name} != '', SEARCH(LOWER('" + query + "'), LOWER({Name})))"
           : "{Name} != ''"

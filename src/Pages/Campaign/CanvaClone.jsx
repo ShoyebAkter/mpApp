@@ -147,7 +147,7 @@ function CanvaClone() {
   }, [cesdkContainer, assetLibrary]);
   
   return (
-      <div className="caseContainer">
+      <div className="caseContainer m-5">
         <div className="wrapper">
           <div ref={cesdkContainer} className="cesdk"></div>
         </div>

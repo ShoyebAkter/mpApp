@@ -1,7 +1,14 @@
 import 'quill/dist/quill.snow.css'
+import { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill'
 const TextEditor = () => {
-   
+    const [value, setValue] = useState('');
+    useEffect(() => {
+        const regex = /(<([^>]+)>)/gi;
+        const newString = value.replace(regex, "");
+        setValue(newString);
+      }, [value]);
+    console.log(value);
     var modules = {
         toolbar: [
             [{ size: ["small", false, "large", "huge"] }],
@@ -26,19 +33,17 @@ const TextEditor = () => {
         "link", "image", "align", "size",
     ];
 
-    const handleProcedureContentChange = (content) => {
-        console.log("content---->", content);
-    };
 
     return (
-        <div >
+        <div  className='my-5 rounded-xl flex items-center bg-slate-100'>
             <div style={{ display: "grid", justifyContent: "center" }}>
                 <ReactQuill
                     theme="snow"
                     modules={modules}
+                    value={value}
+                    onChange={setValue} 
                     formats={formats}
                     placeholder="write your content ...."
-                    onChange={handleProcedureContentChange}
                     style={{ height: "220px" }}
                 >
                 </ReactQuill>

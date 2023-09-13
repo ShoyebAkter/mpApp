@@ -4,9 +4,33 @@ import { useEffect, useRef } from 'react';
 import { findAirtableAssets } from './airtableAssetLibrary';
 import { findUnsplashAssets } from './unsplashAssetLibrary';
 
+
+import CreativeEngine from 'https://cdn.img.ly/packages/imgly/cesdk-engine/1.16.0/index.js';
+
+const config = {
+  baseURL: 'https://cdn.img.ly/packages/imgly/cesdk-engine/1.16.0/assets'
+};
+
 function CanvaClone() {
   const cesdkContainer = useRef(null);
   const assetLibrary = 'airtable';
+
+  CreativeEngine.init(config).then(async (engine) => {
+    // highlight-save
+    engine.scene.saveToArchive().then((blob) => {
+      // highlight-create-form-data
+      const formData = new FormData();
+      formData.append("file", blob);
+      fetch("/upload", {
+        method: "POST",
+        body: formData
+      });
+      // highlight-create-form-data
+    }).catch((error) => {
+      console.error('Save failed', error)
+    });
+    // highlight-save
+  });
   useEffect(() => {
     const externalAssetSources = {
       ...(assetLibrary === 'airtable' && {
@@ -32,12 +56,12 @@ function CanvaClone() {
         }
       })
     };
-    
+
     // path to the local image to load into CE.SDK
     // const customImagePath = `${window.location.protocol + "//" + window.location.host}/resources/programming.png`;
-    
+
     let cesdk;
-    
+
     let config = {
       // loading the business card template as default template
       initialSceneURL: `https://cdn.img.ly/packages/imgly/cesdk-js/latest/assets/templates/cesdk_business_card_1.scene`,
@@ -133,25 +157,25 @@ function CanvaClone() {
     };
     if (cesdkContainer.current) {
       CreativeEditorSDK.init(cesdkContainer.current, config).then(
-          (instance) => {
-            cesdk = instance;
-          }
+        (instance) => {
+          cesdk = instance;
+        }
       );
     }
-    
+
     return () => {
       if (cesdk) {
         cesdk.dispose();
       }
     };
   }, [cesdkContainer, assetLibrary]);
-  
+
   return (
-      <div className="caseContainer m-5">
-        <div className="wrapper">
-          <div ref={cesdkContainer} className="cesdk"></div>
-        </div>
+    <div className="caseContainer m-5">
+      <div className="wrapper">
+        <div ref={cesdkContainer} className="cesdk"></div>
       </div>
+    </div>
   );
 }
 

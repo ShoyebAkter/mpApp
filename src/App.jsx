@@ -12,7 +12,6 @@ import { SocialMedia } from './Pages/SocialMedia/SocialMedia'
 import { CampaignDesign } from './Pages/Campaign/CampaignDesign'
 
 function App() {
-
   return (
     <>
       <Header/>

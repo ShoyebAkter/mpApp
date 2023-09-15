@@ -31,7 +31,7 @@ const Login = () => {
 
             <main className='loginsection ' >
                 <section>
-                    <img className='mx-auto h-72' src='../../../public/EM_LogoWhiteTransparency-13.png' />
+                    <img className='mx-auto h-72' src='logo.png' />
                     <div className="flex h-screen justify-center">
                         <form>
                             <div className='bg-slate-50 shadow-xl px-12 py-5 rounded-3xl'>

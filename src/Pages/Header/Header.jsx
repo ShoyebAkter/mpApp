@@ -17,7 +17,7 @@ function Header() {
 		<header className="header-fixed">
 
 			<nav>
-				<a href="#">Logo</a>
+				<div style={{"width":"50px"}} className='bg-green-500'><img  src='../../../public/EM_LogoWhiteTransparency-13.png'/></div>
 				<Link to="/home">EulerMail</Link>
 				<Link to="/businessoverview">Business Overview</Link>
 				<Link to="/customerBehaviour">Customer Behaviour</Link>

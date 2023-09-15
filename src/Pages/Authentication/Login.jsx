@@ -28,10 +28,11 @@ const Login = () => {
 
     return (
         <>
+
             <main className='loginsection ' >
                 <section>
-                    <div className="grid h-screen place-items-center ">
-
+                    <img className='mx-auto h-72' src='../../../public/EM_LogoWhiteTransparency-13.png' />
+                    <div className="flex h-screen justify-center">
                         <form>
                             <div className='bg-slate-50 shadow-xl px-12 py-5 rounded-3xl'>
                                 <div className='flex justify-between'>
@@ -72,16 +73,16 @@ const Login = () => {
 
                             </div>
                             <p className="text-sm text-white text-center">
-                            No account yet? {' '}
-                            <NavLink to="/signup" className="text-blue-700">
-                                Sign up
-                            </NavLink>
-                        </p>
+                                No account yet? {' '}
+                                <NavLink to="/signup" className="text-blue-700">
+                                    Sign up
+                                </NavLink>
+                            </p>
 
                         </form>
 
                     </div>
-                    
+
                 </section>
             </main>
         </>

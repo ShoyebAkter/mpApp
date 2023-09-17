@@ -31,7 +31,8 @@ function Signup() {
     <>
       <main className='loginsection ' >
         <section>
-          <div className="grid h-screen place-items-center ">
+        <img className='mx-auto h-72' src='logo.png' />
+          <div className="flex h-screen justify-center ">
 
             <form>
               <div className='bg-slate-50 shadow-xl px-12 py-5 rounded-3xl'>
@@ -72,9 +73,9 @@ function Signup() {
 
 
               </div>
-              <p>
+              <p className="text-sm text-white text-center">
                 Already have an account?{' '}
-                <NavLink to="/login" >
+                <NavLink to="/login" className="text-blue-700">
                   Sign in
                 </NavLink>
               </p>

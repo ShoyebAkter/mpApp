@@ -16,8 +16,8 @@ function Header() {
 	return (
 		<header className="header-fixed">
 
-			<nav>
-				<div style={{"width":"50px"}} className='bg-green-500'><img  src='logo.png'/></div>
+			<nav className='items-center'>
+				<div style={{"width":"50px"}} ><img  src='logo2.png'/></div>
 				<Link to="/home">EulerMail</Link>
 				<Link to="/businessoverview">Business Overview</Link>
 				<Link to="/customerBehaviour">Customer Behaviour</Link>

@@ -1,0 +1,633 @@
+{
+    "sales": [
+        {
+            "_id": {
+                "$oid": "5ca4bbc1a2dd94ee58161cb9"
+            },
+            "account_id": {
+                "$numberInt": "316726"
+            },
+            "transaction_count": {
+                "$numberInt": "25"
+            },
+            "bucket_start_date": {
+                "$date": {
+                    "$numberLong": "4726080000"
+                }
+            },
+            "bucket_end_date": {
+                "$date": {
+                    "$numberLong": "1482364800"
+                }
+            },
+            "transactions": [
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1395100800"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "9094"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "znga",
+                    "price": "5.33597417328414902470967717817984521389007568359375",
+                    "total": "48525.34913184605123070980426"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1519072000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "4875"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "ibm",
+                    "price": "43.89913348329533704372806823812425136566162109375",
+                    "total": "214008.2757310647680881743327"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1554112000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "3211"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "intc",
+                    "price": "53.34781889413046229719839175231754779815673828125",
+                    "total": "171299.8464690529144363040359"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1027296000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "8234"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "bb",
+                    "price": "2.246871395433323481682919009472243487834930419921875",
+                    "total": "18500.73906999798554817715512"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1457913600"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "6261"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "znga",
+                    "price": "2.25530379572921191311252187006175518035888671875",
+                    "total": "14120.45706506059578799749943"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1456876800"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "7206"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "amd",
+                    "price": "2.213149022706194291032488763448782265186309814453125",
+                    "total": "15947.95185762083606118011403"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1219968000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "2939"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "ibm",
+                    "price": "15.000588181064284043486622977070510387420654296875",
+                    "total": "44086.72866414793080380718493"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1363564800"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "9793"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "fb",
+                    "price": "26.6404294537731090031229541637003421783447265625",
+                    "total": "260889.7256408000564675830901"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1020124800"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "8598"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "amzn",
+                    "price": "16.217858223112546767197272856719791889190673828125",
+                    "total": "139441.1450023216771043621520"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1256774400"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "798"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "amd",
+                    "price": "5.02416258500481038851148696267046034336090087890625",
+                    "total": "4009.281742833838690032166596"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1384732800"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "3933"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "znga",
+                    "price": "4.04194420248110031224086924339644610881805419921875",
+                    "total": "15896.96654835816752804333873"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1372291200"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "5282"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "fb",
+                    "price": "24.592004139220950520439146202988922595977783203125",
+                    "total": "129894.9658633650606489595702"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1400544000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "1353"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "znga",
+                    "price": "3.359701771308610585009546412038616836071014404296875",
+                    "total": "4545.676496580550121517916295"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1294704000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "9894"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "amzn",
+                    "price": "185.773911930364221234412980265915393829345703125",
+                    "total": "1838047.084639023604893282027"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1475020800"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "5031"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "amd",
+                    "price": "6.53365406028716311226389734656549990177154541015625",
+                    "total": "32870.81357730471761779966755"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1043971200"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "3882"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "bb",
+                    "price": "2.076436256237992328266273034387268126010894775390625",
+                    "total": "8060.725546715886218329671919"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1415059200"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "5356"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "ibm",
+                    "price": "145.60429440209105678150081075727939605712890625",
+                    "total": "779856.6008175997001217183424"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1357084800"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "2397"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "znga",
+                    "price": "2.40891088027007338467910813051275908946990966796875",
+                    "total": "5774.159380007365903075822189"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1359072000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "1208"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "intc",
+                    "price": "17.9167526129687502134402166120707988739013671875",
+                    "total": "21643.43715646625025783578167"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1114560000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "8301"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "ibm",
+                    "price": "63.58792268513946766006483812816441059112548828125",
+                    "total": "527843.3462093427210461982213"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1597856000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "7441"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "ibm",
+                    "price": "32.646744766757393563239020295441150665283203125",
+                    "total": "242924.4278094417655040615500"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1255564800"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "3095"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "crm",
+                    "price": "15.6159997509059866871439226088114082813262939453125",
+                    "total": "48331.51922905402879671044047"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1478649600"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "3160"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "fb",
+                    "price": "122.7190583106294496928967419080436229705810546875",
+                    "total": "387792.2242615890610295537044"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1298592000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "5610"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "amzn",
+                    "price": "180.31423138660829863511025905609130859375",
+                    "total": "1011562.838078872555342968553"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1471305600"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "724"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "fb",
+                    "price": "123.3469734770595920281266444362699985504150390625",
+                    "total": "89303.20879739114462836369057"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "5ca4bbc1a2dd94ee58161cc4"
+            },
+            "account_id": {
+                "$numberInt": "852986"
+            },
+            "transaction_count": {
+                "$numberInt": "3"
+            },
+            "bucket_start_date": {
+                "$date": {
+                    "$numberLong": "1184000000"
+                }
+            },
+            "bucket_end_date": {
+                "$date": {
+                    "$numberLong": "1299801600"
+                }
+            },
+            "transactions": [
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1266969600"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "866"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "nvda",
+                    "price": "15.41568788589975014247102080844342708587646484375",
+                    "total": "13349.98570918918362337990402"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1456672000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "2918"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "adbe",
+                    "price": "2.20295603461750477691794003476388752460479736328125",
+                    "total": "6428.225709013878939046549021"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1139270400"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "6009"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "msft",
+                    "price": "22.619233581429273982621452887542545795440673828125",
+                    "total": "135918.9745908085073615723104"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "5ca4bbc1a2dd94ee58161cc2"
+            },
+            "account_id": {
+                "$numberInt": "377292"
+            },
+            "transaction_count": {
+                "$numberInt": "12"
+            },
+            "bucket_start_date": {
+                "$date": {
+                    "$numberLong": "1171584000"
+                }
+            },
+            "bucket_end_date": {
+                "$date": {
+                    "$numberLong": "1478476800"
+                }
+            },
+            "transactions": [
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1463702400"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "701"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "fb",
+                    "price": "117.2012209639271560490669799037277698516845703125",
+                    "total": "82158.05589571293639039595291"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1446595200"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "1307"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "goog",
+                    "price": "729.6131220315625114380964078009128570556640625",
+                    "total": "953604.3504952522024495920050"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1464652800"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "4252"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "nvda",
+                    "price": "46.4463829000894889986739144660532474517822265625",
+                    "total": "197490.0200911805072223614843"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1453766400"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "4888"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "znga",
+                    "price": "2.44965858064549735217951820231974124908447265625",
+                    "total": "11973.93114219519105745348497"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1635936000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "148"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "intc",
+                    "price": "22.423421516822752863618006813339889049530029296875",
+                    "total": "3318.666384489767423815465008"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1147219200"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "8403"
+                    },
+                    "transaction_code": "sell",
+                    "symbol": "nflx",
+                    "price": "4.350085116201217516618271474726498126983642578125",
+                    "total": "36553.76523143883079214333520"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1402963200"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "2779"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "bb",
+                    "price": "7.9346445004538654899306493462063372135162353515625",
+                    "total": "22050.37706676129219651727453"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1372377600"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "1157"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "znga",
+                    "price": "2.763536798794473892115775015554390847682952880859375",
+                    "total": "3197.412076205206293177951693"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1439337600"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "2396"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "nflx",
+                    "price": "119.7950716682704381810253835283219814300537109375",
+                    "total": "287028.9917171759698817368189"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1554112000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "986"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "bb",
+                    "price": "13.3620336493356131057907987269572913646697998046875",
+                    "total": "13174.96517824491452230972754"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1941184000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "1835"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "intc",
+                    "price": "23.940438475863626166528774774633347988128662109375",
+                    "total": "43930.70460320975401558030171"
+                },
+                {
+                    "date": {
+                        "$date": {
+                            "$numberLong": "1474848000"
+                        }
+                    },
+                    "amount": {
+                        "$numberInt": "1568"
+                    },
+                    "transaction_code": "buy",
+                    "symbol": "goog",
+                    "price": "776.165194059447685503982938826084136962890625",
+                    "total": "1217027.024285213970870245248"
+                }
+            ]
+        }
+    ]
+}

@@ -1,40 +1,86 @@
-import ReactApexChart from "react-apexcharts";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+// import { faker } from '@faker-js/faker';
+import { useEffect, useState } from "react";
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ChartDataLabels
+);
 
 
 function CustomerBehaviour() {
+    const roleValue=[];
+    const [user,setUser]=useState([])
+    useEffect(()=>{
+      fetch('../../../User.json').
+      then((res)=>res.json())
+      .then((result)=>setUser(result.User))
+    },[user])
+console.log(user);
+    const getRoleValue=()=>{
+        
+        const user2=user.filter(item=>item.role==="user").length;
+        const admin=user.filter(item=>item.role==="admin").length;
+        const superAdmin=user.User.filter(item=>item.role==="superadmin").length;
+        roleValue.push(user2,admin,superAdmin)
+        console.log(user);
+    }
+    // getRoleValue()
+
+
     const options = {
-
-        series: [{
-            data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
-        }],
-        options: {
-            chart: {
-                type: 'bar',
-                height: 350
+        indexAxis: 'y',
+        elements: {
+            bar: {
+                borderWidth: 2,
             },
-            plotOptions: {
-                bar: {
-                    borderRadius: 4,
-                    horizontal: true
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            xaxis: {
-                categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-                    'United States', 'China', 'Germany'
-                ],
-            }
         },
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: 'Customers',
+            },
+        },
+    };
 
+    const labels = ['Admin', 'SuperAdmin', 'User'];
 
+    const data1 = {
+        labels,
+        datasets: [
+            {
+                label: 'Dataset 1',
+                data: roleValue,
+                borderColor: 'rgb(15, 177, 42)',
+                backgroundColor: 'rgba(60, 236, 16, 0.87)',
+            }
+        ],
     };
     return (
-        <div id="chart" className='shadow-xl rounded-xl'>
+        <div style={{ "width": "500px", "height": "350px" }} className='shadow-xl rounded-xl'>
             <h1 className='text-black text-xl text-center font-medium text-cyan-500'> Customer Behaviour</h1>
-            <ReactApexChart options={options} series={options.series} type="bar" height={350} width={400}/>
+            <Bar options={options} data={data1} />
         </div>
+
     )
 }
 

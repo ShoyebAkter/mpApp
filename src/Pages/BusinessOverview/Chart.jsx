@@ -31,13 +31,8 @@ export const Chart = () => {
               colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
               opacity: 0.5
             },
-          },
-          xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
           }
         },
-      
-      
       };
   return (
     <div id="chart" className='rounded-xl my-5'>

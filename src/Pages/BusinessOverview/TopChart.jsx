@@ -1,5 +1,8 @@
 import ReactApexChart from "react-apexcharts"
 import { Chart } from "./Chart"
+import { CustomerQuantity } from "./Topchart/CustomerQuantity";
+import { TotalSales } from "./Topchart/TotalSales";
+import { Orders } from "./Topchart/Orders";
 
 export const TopChart = () => {
     const options={
@@ -86,9 +89,9 @@ export const TopChart = () => {
     };
     return (
         <div className="flex justify-between shadow-xl ">
-            <Chart />
-            <Chart />
-            <Chart />
+            <TotalSales/>
+            <Orders/>
+            <CustomerQuantity/>
             <Chart />
             <div>
                 <div id="chart" className='rounded-xl my-5'>

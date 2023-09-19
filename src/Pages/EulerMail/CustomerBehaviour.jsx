@@ -24,23 +24,23 @@ ChartJS.register(
 
 
 function CustomerBehaviour() {
-    const roleValue=[];
+    const [roleValue, setRoleValue] = useState([]);
     const [user,setUser]=useState([])
     useEffect(()=>{
       fetch('../../../User.json').
       then((res)=>res.json())
       .then((result)=>setUser(result.User))
-    },[user])
+      .catch((error) => console.error('Error fetching data:', error));
+    },[])
 console.log(user);
-    const getRoleValue=()=>{
-        
-        const user2=user.filter(item=>item.role==="user").length;
-        const admin=user.filter(item=>item.role==="admin").length;
-        const superAdmin=user.User.filter(item=>item.role==="superadmin").length;
-        roleValue.push(user2,admin,superAdmin)
-        console.log(user);
-    }
-    // getRoleValue()
+useEffect(() => {
+    const user2 = user.filter((item) => item.role === 'user').length;
+    const admin = user.filter((item) => item.role === 'admin').length;
+    const superAdmin = user.filter((item) => item.role === 'superadmin').length;
+
+    // Update roleValue state with the calculated values
+    setRoleValue([user2, admin, superAdmin]);
+  }, [user]);
 
 
     const options = {

@@ -1,8 +1,8 @@
 import ReactApexChart from "react-apexcharts"
-import { Chart } from "./Chart"
 import { CustomerQuantity } from "./Topchart/CustomerQuantity";
 import { TotalSales } from "./Topchart/TotalSales";
 import { Orders } from "./Topchart/Orders";
+import { OrderAvg } from "./Topchart/OrderAvg";
 
 export const TopChart = () => {
     const options={
@@ -92,7 +92,7 @@ export const TopChart = () => {
             <TotalSales/>
             <Orders/>
             <CustomerQuantity/>
-            <Chart />
+            <OrderAvg/>
             <div>
                 <div id="chart" className='rounded-xl my-5'>
                 <h1 className='text-black text-xl text-center font-medium text-cyan-500'>Median Order Value</h1>

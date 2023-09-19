@@ -30,7 +30,7 @@ export const TotalSales = () => {
             .then(result => setTotalSales(result.totalsales))
             .catch(error => console.error(error))
     }, [])
-    console.log(totalSales);
+    // console.log(totalSales);
 
     const getSalesData = () => {
         totalSales.map((sale) => {
@@ -103,7 +103,7 @@ export const TotalSales = () => {
     };
     return (
         <div className='rounded-xl my-5'>
-            <Line options={options} data={data} />
+            <Line width={200} options={options} data={data} />
         </div>
     )
 }

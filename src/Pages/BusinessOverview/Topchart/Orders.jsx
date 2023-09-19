@@ -30,7 +30,7 @@ export const Orders = () => {
             .then(result => setOrders(result.orders))
             .catch(error => console.error(error))
     }, [])
-    console.log(orders);
+    // console.log(orders);
     const getOrdersInfo = () => {
         orders.map((order) => {
             const date = new Date(order.order_date);
@@ -43,6 +43,7 @@ export const Orders = () => {
         })
     }
     getOrdersInfo();
+    console.log(orderData);
     const changeArrayValue = () => {
 
         orderData.forEach((obj) => {
@@ -63,7 +64,7 @@ export const Orders = () => {
     }
     
     changeArrayValue()
-    // console.log(resultArray);
+    console.log(resultArray);
     // console.log(orderData);
     const options = {
         responsive: true,
@@ -93,7 +94,7 @@ export const Orders = () => {
     };
     return (
         <div className='rounded-xl my-5'>
-            <Line options={options} data={data} />
+            <Line width={200} options={options} data={data} />
         </div>
     )
 }

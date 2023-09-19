@@ -90,7 +90,7 @@ export const CustomerQuantity = () => {
   };
   return (
     <div className='rounded-xl my-5'>
-      <Line options={options} data={data} />
+      <Line width={200} options={options} data={data} />
     </div>
   )
 }

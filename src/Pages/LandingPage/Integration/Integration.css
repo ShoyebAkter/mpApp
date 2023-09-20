@@ -1,0 +1,148 @@
+.line-with-circle {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .line {
+    width: 100px; /* Adjust the length of the line as needed */
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color: white;
+    transform: translate(80px,0px);
+  }
+  .wooline{
+    width: 100px; /* Adjust the length of the line as needed */
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color: white;
+    transform: translate(-35px, -15px);
+  }
+  .instaline{
+    width: 100px; /* Adjust the length of the line as needed */
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color:white;
+    transform:translate(-35px,0px)
+  }
+  .galine{
+    width: 100px; /* Adjust the length of the line as needed */
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color:white;
+  }
+  .smsline{
+    width: 100px; /* Adjust the length of the line as needed */
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color:white;
+    transform:translate(-36px,1px)
+  }
+  .whatsappline{
+    width: 100px; /* Adjust the length of the line as needed */
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color:white;
+    transform:translate(89px,0px)
+  }
+  .upwardline {
+    width: 100px; /* Adjust the length of the line as needed */
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color: white;
+    transform: translate(100px,-100px);
+  }
+  .instaupwardline{
+    width: 100px; /* Adjust the length of the line as needed */
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color: white;
+    transform: translate(-135px,-100px);
+  }
+  .whatsappupwardline{
+    width: 100px; /* Adjust the length of the line as needed */
+    height: 2px; /* Adjust the thickness of the line as needed */
+    background-color: white;
+    transform: translate(187px,-108px);
+  }
+  .woolinecircle{
+    width: 16px; /* Adjust the size of the circle as needed */
+    height: 16px; /* Adjust the size of the circle as needed */
+    background-color: white; /* Adjust the circle color as needed */
+    border-radius: 50%; /* Makes the circle round */
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-20px, -24px);
+  }
+  .galinecircle{
+    width: 16px; /* Adjust the size of the circle as needed */
+    height: 16px; /* Adjust the size of the circle as needed */
+    background-color: white; /* Adjust the circle color as needed */
+    border-radius: 50%; /* Makes the circle round */
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-90px, -8px);
+  }
+  .whatsapplinecircle{
+    width: 16px; /* Adjust the size of the circle as needed */
+    height: 16px; /* Adjust the size of the circle as needed */
+    background-color: white; /* Adjust the circle color as needed */
+    border-radius: 50%; /* Makes the circle round */
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0px, -8px);
+  }
+  .smslinecircle{
+    width: 16px; /* Adjust the size of the circle as needed */
+    height: 16px; /* Adjust the size of the circle as needed */
+    background-color: white; /* Adjust the circle color as needed */
+    border-radius: 50%; /* Makes the circle round */
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-24px, -8px);
+  }
+  .instalinecircle{
+    width: 16px; /* Adjust the size of the circle as needed */
+    height: 16px; /* Adjust the size of the circle as needed */
+    background-color: white; /* Adjust the circle color as needed */
+    border-radius: 50%; /* Makes the circle round */
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(50px,-10px);
+  }
+  .linecircle {
+    width: 16px; /* Adjust the size of the circle as needed */
+    height: 16px; /* Adjust the size of the circle as needed */
+    background-color: white; /* Adjust the circle color as needed */
+    border-radius: 50%; /* Makes the circle round */
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(70px,-7px);
+  }
+  .upward-line {
+    width: 2px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    background-color: white;/* Center the line horizontally */
+    transform: translate(99px,-100px); /* Move the line upward */
+    display: block;
+    position: absolute;
+}
+.whatsappupward-line{
+    width: 2px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    background-color: white;/* Center the line horizontally */
+    transform: translate(187px,-108px); /* Move the line upward */
+    display: block;
+    position: absolute;
+}
+.instaupward-line{
+    width: 2px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    background-color: white;/* Center the line horizontally */
+    transform: translate(-36px,-100px); /* Move the line upward */
+    display: block;
+    position: absolute;
+}

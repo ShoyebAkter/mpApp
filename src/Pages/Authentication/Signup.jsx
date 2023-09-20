@@ -29,10 +29,10 @@ function Signup() {
   }
   return (
     <>
-      <main className='loginsection ' >
+      <main className='loginsection h-screen ' >
         <section>
         <img className='mx-auto h-72' src='logo.png' />
-          <div className="flex h-screen justify-center ">
+          <div className="flex justify-center ">
 
             <form>
               <div className='bg-slate-50 shadow-xl px-12 py-5 rounded-3xl'>

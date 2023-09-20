@@ -17,7 +17,7 @@ function App() {
     <>
       <LoginHeader/>
       <Routes>
-        <Route path="/home" element={<Landingpage />}/>
+        <Route exact path="/" element={<Landingpage />}/>
         <Route path="/eulermail" element={<BusinessChart />}/>
         <Route path="/businessoverview" element={<Main />}/>
         <Route path="/customerBehaviour" element={<CustomerBehaviour />}/>

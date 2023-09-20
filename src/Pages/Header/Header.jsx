@@ -10,7 +10,7 @@ function Header() {
 
 			<nav className='items-center'>
 				<div style={{"width":"50px"}} ><img  src='logo2.png'/></div>
-				<Link to="/home">Home</Link>
+				<Link to="/">Home</Link>
 				<Link to="/eulermail">EulerMail</Link>
 				<Link to="/howitworks">How it Works</Link>
 				<Link to="/ourallies">Our Allies</Link>

@@ -1,9 +1,9 @@
 
 export const LineSection = () => {
     return (
-        <div className="text-white ">
-            <h1 className="text-5xl "><span className="font-bold">DROP US</span> A LINE</h1>
-            <div className="text-xl">
+        <div className="text-white p-5">
+            <h1 className="text-5xl"><span className="font-bold">DROP US</span> A LINE</h1>
+            <div className="text-xl pt-10 pb-5">
                 Our collaboration begins with the first message. We
                 want to hear from you! What`s your story? We can
                 make it a reality. Communication and transparency

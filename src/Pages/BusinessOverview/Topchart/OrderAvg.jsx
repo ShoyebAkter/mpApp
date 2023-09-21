@@ -5,9 +5,9 @@ export const OrderAvg = () => {
     const [orders, setOrders] = useState([]);
     const orderData = [];
     useEffect(() => {
-        fetch('../../../../orders.json')
+        fetch('http://localhost:5000/api/data')
             .then(res => res.json())
-            .then(result => setOrders(result.orders))
+            .then(result => setOrders(result))
             .catch(error => console.error(error))
     }, [])
     // console.log(orders);
@@ -17,7 +17,7 @@ export const OrderAvg = () => {
             const year = date.getFullYear();
             const obj = {
                 year: year,
-                totalPrice: order.total_price
+                totalPrice: parseFloat(order.total_price)
             }
             orderData.push(obj)
         })

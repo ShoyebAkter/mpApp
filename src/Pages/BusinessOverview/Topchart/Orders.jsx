@@ -25,9 +25,9 @@ export const Orders = () => {
     const orderData = [];
     const resultArray=[];
     useEffect(() => {
-        fetch('../../../../orders.json')
+        fetch('http://localhost:5000/api/data')
             .then(res => res.json())
-            .then(result => setOrders(result.orders))
+            .then(result => setOrders(result))
             .catch(error => console.error(error))
     }, [])
     // console.log(orders);
@@ -37,7 +37,7 @@ export const Orders = () => {
             const year = date.getFullYear();
             const obj = {
                 year: year,
-                totalPrice: order.total_price
+                totalPrice: parseInt(order.total_price)
             }
             orderData.push(obj)
         })
@@ -74,7 +74,7 @@ export const Orders = () => {
             },
             title: {
                 display: true,
-                text: 'Total Sales',
+                text: 'Orders',
             },
         },
     };

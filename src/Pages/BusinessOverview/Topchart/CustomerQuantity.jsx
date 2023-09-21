@@ -24,9 +24,9 @@ export const CustomerQuantity = () => {
   const customerAge = [];
   const [customers, setCustomers] = useState([]);
   useEffect(() => {
-    fetch('../../../../customers.json')
+    fetch('http://localhost:5000/api/customerdata')
       .then((res) => res.json())
-      .then((result) => setCustomers(result.customer))
+      .then((result) => setCustomers(result))
       .catch((error) => console.error(error))
   }, [])
 

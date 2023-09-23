@@ -2,7 +2,7 @@ import { Fade } from 'react-awesome-reveal'
 import './Introduction.css'
 export const Introduction = () => {
     return (
-        <Fade damping={0.3}>
+        <Fade damping={0.4}>
             <div >
                 <div className="flex justify-around  ">
                     <div className='pt-24'>

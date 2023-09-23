@@ -1,10 +1,10 @@
 import './Introduction.css'
 export const Introduction = () => {
     return (
-        <div>
-            <div className="flex justify-around ">
+        <div className='fadeInClass'>
+            <div className="flex justify-around  ">
                 <div className='pt-24'>
-                    <div className="text-lime-600 text-5xl font-medium">Analytics for business</div>
+                    <div className="text-lime-600 text-5xl font-medium ">Analytics for business</div>
                     <div className="text-cyan-500 text-5xl font-medium py-3">Growth by design</div>
                     <div className="text-slate-500 text-xl font-medium">Get more than just numbers.</div>
                     <div className="text-slate-500 text-xl font-medium">Discover insights that</div>

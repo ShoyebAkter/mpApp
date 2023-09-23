@@ -13,7 +13,6 @@ import './styles/util.css';
 import './styles/forms.css';
 import './styles/button.css';
 import './styles/caseHeader.css';
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
     <BrowserRouter>

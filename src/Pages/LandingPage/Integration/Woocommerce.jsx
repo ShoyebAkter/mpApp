@@ -1,7 +1,7 @@
 
 export const Woocommerce = () => {
     return (
-        <div className="flex items-center">
+        <div className="flex items-center ">
             <div className="line-with-circle">
                 <span className="woolinecircle"></span>
                 <div className="wooline"></div>

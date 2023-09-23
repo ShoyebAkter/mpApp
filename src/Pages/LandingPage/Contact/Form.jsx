@@ -1,14 +1,17 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 export const Form = () => {
     const form = useRef();
-
+    const [phone, setPhone] = useState('');
     const sendEmail = (e) => {
         e.preventDefault();
 
         emailjs.sendForm('service_84ju2lu', 'template_czqmg0b', form.current, 'BTrXVDBsup09nfZ9j')
             .then((result) => {
                 console.log(result.text);
+                console.log(form.current);
                 form.current.reset();
             }, (error) => {
                 console.log(error.text);
@@ -24,8 +27,27 @@ export const Form = () => {
                 </div>
                 <div className="flex mb-5">
                     <div className="w-1/2 mr-2">
-                        <label className="block text-sm text-gray-500">Your Name:</label>
+                        <label className="block text-sm text-gray-500">Your First Name:</label>
                         <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
+                    </div>
+                    <div className="w-1/2">
+                        <label className="block text-sm text-gray-500">Last Name</label>
+                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
+                    </div>
+                </div>
+                <div className="flex mb-5">
+                    <div className="w-1/2 mr-2">
+                        <label className="block text-sm text-gray-500">Phone Number</label>
+                        <PhoneInput
+                        style={{
+                            "width":"100%","borderRadius":"15px"
+                        }}
+                        name="phone"
+                        id="phone_field"
+                            defaultCountry="ua"
+                            value={phone}
+                            onChange={(phone) => setPhone(phone)}
+                        />
                     </div>
                     <div className="w-1/2">
                         <label className="block text-sm text-gray-500">Email Address:</label>

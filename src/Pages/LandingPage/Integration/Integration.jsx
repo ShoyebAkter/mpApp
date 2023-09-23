@@ -5,9 +5,12 @@ import { Sms } from './Sms'
 import { Whatsapp } from './Whatsapp'
 import { Woocommerce } from './Woocommerce'
 import { Wordpress } from './Wordpress'
+
+
 export const Integration = () => {
     return (
         <div className="bg-green-400 p-10	h-screen">
+            
             <h1 className="text-4xl font-medium text-white text-center">Integration of <span className="text-sky-300">multiple</span> platform</h1>
             <div className='flex items-center justify-around'>
                 <div>

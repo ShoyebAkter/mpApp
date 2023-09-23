@@ -10,8 +10,8 @@ function Header() {
 
 			<nav className='items-center'>
 				<div style={{"width":"50px"}} ><img  src='logo2.png'/></div>
-				<a to="/">Home</a>
-				<Link href='#businessInsight'>EulerMail</Link>
+				<a href='/'>Home</a>
+				<a href='#businessInsight'>EulerMail</a>
 				<a href='#integration'>How it Works</a>
 				<a href='#allies'>Our Allies</a>
 				<a href='#contactUs'>Contact</a>

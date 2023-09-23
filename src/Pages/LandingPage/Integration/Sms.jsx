@@ -1,3 +1,4 @@
+import { Slide } from 'react-awesome-reveal'
 import { FcSms } from 'react-icons/fc'
 export const Sms = () => {
     return (
@@ -8,8 +9,8 @@ export const Sms = () => {
                 <div className="instaupward-line"></div>
                 <div className="smsupward-line1"></div>
             </div>
-            <FcSms style={{ "width": "80px", "height": '80px' }} /><span  className="text-3xl font-medium text-white px-2">SMS</span>
-
+            <Slide><FcSms style={{ "width": "80px", "height": '80px' }} /><span className="text-3xl font-medium text-white px-2">SMS</span>
+            </Slide>
         </div>
     )
 }

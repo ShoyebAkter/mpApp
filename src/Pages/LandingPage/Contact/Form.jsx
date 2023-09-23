@@ -39,15 +39,12 @@ export const Form = () => {
                     <div className="w-1/2 mr-2">
                         <label className="block text-sm text-gray-500">Phone Number</label>
                         <PhoneInput
-                        style={{
-                            "width":"100%","borderRadius":"15px"
-                        }}
-                        name="phone"
-                        id="phone_field"
-                            defaultCountry="ua"
-                            value={phone}
-                            onChange={(phone) => setPhone(phone)}
-                        />
+                                name="phone"
+                                id="phone_field"
+                                defaultCountry="ua"
+                                value={phone}
+                                onChange={(phone) => setPhone(phone)}
+                            />
                     </div>
                     <div className="w-1/2">
                         <label className="block text-sm text-gray-500">Email Address:</label>

@@ -1,3 +1,4 @@
+import { Slide } from 'react-awesome-reveal'
 import {BsInstagram} from 'react-icons/bs'
 export const Instagram = () => {
   return (
@@ -8,8 +9,8 @@ export const Instagram = () => {
                 <div className="instaupward-line"></div>
                 <div className="instaupwardline" ></div>
             </div>
-            <BsInstagram style={{ "width": "80px", "height": '80px' }} /><span  className="text-3xl font-medium text-white px-2">Instagram</span>
-            
+            <Slide><BsInstagram style={{ "width": "80px", "height": '80px' }} /><span  className="text-3xl font-medium text-white px-2">Instagram</span>
+            </Slide>
         </div>
   )
 }

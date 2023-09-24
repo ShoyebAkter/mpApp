@@ -41,7 +41,7 @@ export const Form = () => {
                         <PhoneInput
                                 name="phone"
                                 id="phone_field"
-                                defaultCountry="ua"
+                                defaultCountry="USA"
                                 value={phone}
                                 onChange={(phone) => setPhone(phone)}
                             />

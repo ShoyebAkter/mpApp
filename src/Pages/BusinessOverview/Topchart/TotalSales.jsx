@@ -25,9 +25,9 @@ export const TotalSales = () => {
     const salesValue = [];
     const resultArray = [];
     useEffect(() => {
-        fetch('../../../../totalsales.json')
+        fetch('http://localhost:5000/sales')
             .then(res => res.json())
-            .then(result => setTotalSales(result.totalsales))
+            .then(result => setTotalSales(result))
             .catch(error => console.error(error))
     }, [])
     // console.log(totalSales);
@@ -35,7 +35,7 @@ export const TotalSales = () => {
     const getSalesData = () => {
         totalSales.map((sale) => {
 
-            const year = new Date(sale.saleDate.$date.$numberLong * 1000).getFullYear();
+            const year = new Date(sale.sale.$date.$numberLong * 1000).getFullYear();
 
             const sales = sale.items.map((item) => {
                 const price = item.price.$numberDecimal;
@@ -57,6 +57,7 @@ export const TotalSales = () => {
 
     }
     getSalesData()
+    console.log(salesValue);
     const changeArrayValue = () => {
         
         salesValue.forEach((obj) => {
@@ -103,7 +104,10 @@ export const TotalSales = () => {
     };
     return (
         <div className='rounded-xl my-5'>
-            <Line width={200} options={options} data={data} />
+            <Line width={200}
+             options={options} 
+            data={data}
+             />
         </div>
     )
 }

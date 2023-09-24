@@ -2,7 +2,7 @@
 export const CampaignLeftSection = () => {
   return (
     <div>
-        <img className="rounded-xl p-10" src="/campaign.PNG" alt=""/>
+        <img className="rounded-xl" src="/campaign2.jpg" alt=""/>
     </div>
   )
 }

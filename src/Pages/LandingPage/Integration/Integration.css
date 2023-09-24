@@ -28,12 +28,13 @@
     width: 100px; /* Adjust the length of the line as needed */
     height: 2px; /* Adjust the thickness of the line as needed */
     background-color:white;
+    transform: translate(13px,1px);
   }
   .smsline{
     width: 100px; /* Adjust the length of the line as needed */
     height: 2px; /* Adjust the thickness of the line as needed */
     background-color:white;
-    transform:translate(-36px,1px)
+    transform:translate(-36px,15px)
   }
   .whatsappline{
     width: 100px; /* Adjust the length of the line as needed */
@@ -79,7 +80,7 @@
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translate(-90px, -8px);
+    transform: translate(-80px, -8px);
   }
   .whatsapplinecircle{
     width: 16px; /* Adjust the size of the circle as needed */
@@ -101,7 +102,7 @@
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translate(-24px, -8px);
+    transform: translate(-24px, 6px);
   }
   .instalinecircle{
     width: 16px; /* Adjust the size of the circle as needed */
@@ -129,7 +130,7 @@
     width: 2px; /* Adjust the width as needed */
     height: 100px; /* Adjust the height as needed */
     background-color: white;/* Center the line horizontally */
-    transform: translate(99px,-100px); /* Move the line upward */
+    transform: translate(112px,-99px); /* Move the line upward */
     display: block;
     position: absolute;
 }
@@ -143,7 +144,7 @@
 }
 .instaupward-line{
     width: 2px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
+    height: 115px; /* Adjust the height as needed */
     background-color: white;/* Center the line horizontally */
     transform: translate(-36px,-100px); /* Move the line upward */
     display: block;

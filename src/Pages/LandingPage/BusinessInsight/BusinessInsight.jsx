@@ -11,7 +11,7 @@ export const BusinessInsight = () => {
                             <i className="fa-solid fa-paintbrush"></i>
                         </div>
                         <div className="card__content">
-                            <h3>Designing</h3>
+                            <h3>Customer Data Analysis</h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                             <a href="#">Read More</a>
                         </div>
@@ -23,7 +23,7 @@ export const BusinessInsight = () => {
                             <i className="fa-solid fa-code"></i>
                         </div>
                         <div className="card__content">
-                            <h3>Develoment</h3>
+                            <h3>Sales Data Analysis</h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                             <a href="#">Read More</a>
                         </div>
@@ -35,7 +35,7 @@ export const BusinessInsight = () => {
                             <i className="fa-brands fa-searchengin"></i>
                         </div>
                         <div className="card__content">
-                            <h3>SEO</h3>
+                            <h3>Business Data Analysis</h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                             <a href="#">Read More</a>
                         </div>

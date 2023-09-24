@@ -5,28 +5,28 @@ export const Allies = () => {
     {
       id: 1,
       name: "John Doe",
-      company: "Holismus",
+      companyLogo: "/holismus.png",
       text:
         "We put our trust in EulerMail and they delivered, making sure our needs were met and deadlines were always hit."
     },
     {
       id: 2,
       name: "Jane Smith",
-      company: "Angularis Creative",
+      companyLogo: "/angularis.png",
       text:
         "EulerMail enthusiasm coupled with their keen interest in our brands success made it a satisfying and enjoyable experience."
     },
     {
       id: 3,
       name: "Alice Johnson",
-      company: "Maximo Jewelery",
+      companyLogo: "/maximo.png",
       text:
         "Incredible end result! Our sales increased over 400% when we worked with EulerMail. Highly recommended!"
     },
     {
       id: 4,
       name: "Sam Johnson",
-      company: "CORREDORES DE REASEGUROS",
+      companyLogo: "corredores.png",
       text:
         "Incredible end result! Our sales increased over 400% when we worked with EulerMail. Highly recommended!"
     }
@@ -45,7 +45,7 @@ export const Allies = () => {
                 <p className="text-gray-600 mb-4 font-medium">{testimonial.text}</p>
                 <div className="text-sm text-gray-500">
                   <p className="font-bold text-black text-xl">{testimonial.name}</p>
-                  <p>{testimonial.company}</p>
+                  <img className="mx-auto" src={testimonial.companyLogo} alt=""/>
                 </div>
               </div>
             ))}

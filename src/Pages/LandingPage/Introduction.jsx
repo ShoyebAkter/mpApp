@@ -17,9 +17,9 @@ export const Introduction = () => {
                         <img src="/logo.png" alt="Image" className="center-image" />
                     </div>
                     <div className="image-container ">
-                        <img src="/capture.png" alt="Image 1" className="bottom-image" />
-                        <img src="/capture2.png" alt="Image 2" className="top-image" />
-                        <img src="/capture3.png" alt="Image 3" className="third-image" />
+                        <img src="capture.png" alt="Image 1" className="bottom-image" />
+                        <img src="capture2.png" alt="Image 2" className="top-image" />
+                        <img src="capture3.png" alt="Image 3" className="third-image" />
                     </div>
                 </div>
 

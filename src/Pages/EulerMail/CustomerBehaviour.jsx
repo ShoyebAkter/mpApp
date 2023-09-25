@@ -24,23 +24,57 @@ ChartJS.register(
 
 
 function CustomerBehaviour() {
-    const [roleValue, setRoleValue] = useState([]);
-    const [user,setUser]=useState([])
-    useEffect(()=>{
-      fetch('../../../User.json').
-      then((res)=>res.json())
-      .then((result)=>setUser(result.User))
-      .catch((error) => console.error('Error fetching data:', error));
-    },[])
-console.log(user);
-useEffect(() => {
-    const user2 = user.filter((item) => item.role === 'user').length;
-    const admin = user.filter((item) => item.role === 'admin').length;
-    const superAdmin = user.filter((item) => item.role === 'superadmin').length;
+    const [customers, setCustomers] = useState([]);
+    const tierArray = [];
+    useEffect(() => {
+        fetch('http://localhost:5000/api/customerdata')
+            .then((res) => res.json())
+            .then((result) => setCustomers(result))
+            .catch((error) => console.error(error))
+    }, [])
+    console.log(customers);
 
-    // Update roleValue state with the calculated values
-    setRoleValue([user2, admin, superAdmin]);
-  }, [user]);
+    const getTierValue = () => {
+        customers.map((customer) => {
+            Object.keys(customer.tier_and_details).forEach((objKey) => {
+                const innerObject = customer.tier_and_details[objKey];
+                tierArray.push(innerObject.tier);
+                // Object.keys(innerObject).forEach((innerKey) => {
+                //   const innerValue = innerObject[innerKey];
+                // //   console.log(`  Inner Key: ${innerKey}, Inner Value: ${innerValue}`);
+                // });
+            });
+        })
+
+    }
+    getTierValue()
+    console.log(tierArray);
+    function countDuplicateValues(arr) {
+        const countMap = {}; // Object to store counts
+        const resultArray = [];
+
+        // Loop through the original array
+        for (const value of arr) {
+            // Check if the value is already in the countMap
+            if (countMap[value] !== undefined) {
+                countMap[value]++; // Increment the count
+            } else {
+                countMap[value] = 1; // Initialize count to 1 for new values
+            }
+        }
+
+        // Loop through the countMap to create the result array
+        for (const value in countMap) {
+            if (countMap.hasOwnProperty(value)) {
+                resultArray.push({ value: value, count: countMap[value] });
+            }
+        }
+
+        return resultArray;
+    }
+    const countedValues = countDuplicateValues(tierArray);
+
+
 
 
     const options = {
@@ -62,14 +96,14 @@ useEffect(() => {
         },
     };
 
-    const labels = ['Admin', 'SuperAdmin', 'User'];
+    const labels =countedValues.map((value)=>value.value);
 
     const data1 = {
         labels,
         datasets: [
             {
                 label: 'Dataset 1',
-                data: roleValue,
+                data: countedValues.map((value)=>value.count),
                 borderColor: 'rgb(15, 177, 42)',
                 backgroundColor: 'rgba(60, 236, 16, 0.87)',
             }

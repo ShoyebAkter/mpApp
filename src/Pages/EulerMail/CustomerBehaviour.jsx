@@ -74,9 +74,6 @@ function CustomerBehaviour() {
     }
     const countedValues = countDuplicateValues(tierArray);
 
-
-
-
     const options = {
         indexAxis: 'y',
         elements: {

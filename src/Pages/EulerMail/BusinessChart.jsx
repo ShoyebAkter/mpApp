@@ -1,6 +1,6 @@
 import CustomerBehaviour from "./CustomerBehaviour"
 import OverviewChart from "./OverviewChart"
-import SocialMediaChart from "./SocialMediaChart"
+// import SocialMediaChart from "./SocialMediaChart"
 
 function BusinessChart() {
 
@@ -15,9 +15,9 @@ function BusinessChart() {
                 <OverviewChart />
                 <CustomerBehaviour />
             </div>
-            <div className="flex justify-around">
+            {/* <div className="flex justify-around">
             <SocialMediaChart />
-            </div>
+            </div> */}
         </div>
     )
 }

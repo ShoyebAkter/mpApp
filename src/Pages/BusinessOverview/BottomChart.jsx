@@ -1,11 +1,50 @@
 import { ResponsiveChoropleth } from "@nivo/geo";
-import {geoFeatures} from '../../data/mockDataGeo' 
-import {mockGeographyData as data} from '../../data/mockData'
+import { geoFeatures } from '../../data/mockDataGeo'
+// import { mockGeographyData as data } from '../../data/mockData'
+import { useEffect, useState } from "react";
 export const BottomChart = () => {
-  const color="#c9a0dc";
+  const color = "#c9a0dc";
+
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/users')
+      .then(res => res.json())
+      .then(result => setUsers(result))
+      .catch(error => console.error(error))
+  }, [])
+
+  // console.log(users);
+
+  function countDuplicateValues() {
+    const countryCounts = {};
+
+    // Iterate through the users array and count the countries
+    for (const user of users) {
+      const { id } = user;
+      if (countryCounts[id]) {
+        countryCounts[id]++;
+      } else {
+        countryCounts[id] = 1;
+      }
+    }
+    // console.log(countryCounts);
+    // Loop through the countMap to create the result array
+    
+    const countryCountsArray = Object.entries(countryCounts).map(([country, count]) => ({
+      id: country, // Use the country name as the id
+      value: count,
+    }));
+
+    return countryCountsArray;
+  }
+
+  const countedValues = countDuplicateValues();
+
+  console.log(countedValues);
+
   return (
     <ResponsiveChoropleth
-      data={data}
+      data={countedValues}
       theme={{
         axis: {
           domain: {
@@ -20,7 +59,7 @@ export const BottomChart = () => {
           },
           ticks: {
             line: {
-              stroke:color,
+              stroke: color,
               strokeWidth: 1,
             },
             text: {

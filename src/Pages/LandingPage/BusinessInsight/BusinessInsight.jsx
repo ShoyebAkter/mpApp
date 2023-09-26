@@ -1,5 +1,6 @@
 import './Business.css'
 
+
 export const BusinessInsight = () => {
     return (
         <section className="container">
@@ -41,6 +42,31 @@ export const BusinessInsight = () => {
                         </div>
                     </div>
                 </div>
+                <div className="card__bx" style={{"--clr": "#5b98eb"}}>
+                    <div className="card__data">
+                        <div className="card__icon">
+                            <i className="fa-brands fa-searchengin"></i>
+                        </div>
+                        <div className="card__content">
+                            <h3>Business Data Analysis</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div className="card__bx" style={{"--clr": "#5b98eb"}}>
+                    <div className="card__data">
+                        <div className="card__icon">
+                            <i className="fa-brands fa-searchengin"></i>
+                        </div>
+                        <div className="card__content">
+                            <h3>Business Data Analysis</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
 
             </section>
 

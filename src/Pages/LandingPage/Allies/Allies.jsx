@@ -33,20 +33,16 @@ export const Allies = () => {
   ];
   return (
     <section className=" background">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-semibold text-center text-green-700">Our Allies</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="mx-auto px-4">
+        <h2 className="text-3xl font-semibold text-center text-green-700 py-2">Our Allies</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 ">
           <Fade cascade>
             {testimonialsData.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-white text-center rounded-lg shadow-md p-6 hover:shadow-lg transform hover:-translate-y-2 transition duration-300"
+                className=" rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-2 transition duration-300"
               >
-                <p className="text-gray-600 mb-4 font-medium">{testimonial.text}</p>
-                <div className="text-sm text-gray-500">
-                  <p className="font-bold text-black text-xl">{testimonial.name}</p>
-                  <img className="mx-auto" src={testimonial.companyLogo} alt=""/>
-                </div>
+                 <img className="mx-auto" src={testimonial.companyLogo} alt=""/>
               </div>
             ))}
           </Fade>

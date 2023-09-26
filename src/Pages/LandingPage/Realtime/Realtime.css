@@ -63,7 +63,7 @@ strong {
 	margin: auto;
 	overflow: hidden;
 	position: relative;
-	height: 15em;
+	height: 5em;
 	width: 50%;
 	max-width: 3em;
 }
@@ -126,7 +126,7 @@ strong {
 	background-color: var(--secondary);
 	font-size: 0.9em;
 	width: 9rem;
-	height: 9rem;
+	height: 2rem;
 	transform: translate(-50%,-50%) translate(5rem,-1rem);
 }
 .db__bubble:nth-child(3) {
@@ -159,7 +159,6 @@ strong {
 }
 .db__cell {
 	border-radius: 0.5em;
-	padding: 1.5em 1.25em;
 	display: flex;
 	flex-direction: column;
 	transition:

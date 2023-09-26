@@ -3,7 +3,7 @@ import './Introduction.css'
 export const Introduction = () => {
     return (
         <Fade damping={1}>
-            <div className='h-screen'>
+            <div className='h-screen background'>
                 <div className="flex justify-around  items-center">
                     <div className='pt-24'>
                         <div className="text-lime-600 text-5xl font-medium ">Analytics for business</div>

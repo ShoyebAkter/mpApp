@@ -1,4 +1,9 @@
-
+.background{
+  background-image: url('/embg.png');
+  background-size: cover; /* Adjust to your needs */
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 .image-container {
     position: relative;
     width: 400px;

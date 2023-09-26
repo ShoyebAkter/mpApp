@@ -1,4 +1,4 @@
-import { Fade } from 'react-awesome-reveal'
+import { Fade, Slide } from 'react-awesome-reveal'
 import './Introduction.css'
 export const Introduction = () => {
     return (
@@ -16,11 +16,13 @@ export const Introduction = () => {
                     <div className="circle">
                         <img src="/logo.png" alt="Image" className="center-image" />
                     </div>
-                    <div className="image-container ">
-                        <img src="/bottom.png" alt="Image 1" className="bottom-image" />
-                        <img src="/center_img.png " alt="Image 2" className="top-image" />
-                        <img src="/top.png" alt="Image 3" className="third-image" />
-                    </div>
+                    <Slide>
+                        <div className="image-container ">
+                            <img src="/bottom.png" alt="Image 1" className="bottom-image" />
+                            <img src="/center_img.png " alt="Image 2" className="top-image" />
+                            <img src="/top.png" alt="Image 3" className="third-image" />
+                        </div>
+                    </Slide>
                 </div>
 
             </div>

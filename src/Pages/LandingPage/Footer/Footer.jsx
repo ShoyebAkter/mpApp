@@ -5,42 +5,54 @@ export const Footer = () => {
 
             <footer className="bg-white dark:bg-gray-900">
                 <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-                    <div className="md:flex md:justify-between">
+                    <div className="md:flex md:justify-around">
                         <div className="md:mb-0">
-                            <a href="https://flowbite.com/" className="flex items-center">
+                            <a  className="flex items-center">
                                 <img  src="/logo.png" className="h-40 mr-3" alt="EulerMail Logo" />
                                 {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EulerMail</span> */}
                             </a>
                         </div>
-                        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                        <div className="grid grid-cols-2 gap-10 sm:gap-6 sm:grid-cols-3">
                             <div>
-                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Quick Links</h2>
                                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                     <li className="mb-4">
-                                        <a href="" className="hover:underline">EulerMail</a>
+                                        <a href="/" className="hover:underline">Home</a>
+                                    </li>
+                                    <li className="mb-4">
+                                        <a href="#allies" className="hover:underline">Clients</a>
+                                    </li>
+                                    <li className="mb-4">
+                                        <a href="#contactUs" className="hover:underline">Contact Us</a>
                                     </li>
                                     
                                 </ul>
                             </div>
                             <div>
-                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Services</h2>
                                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                                    <li className="mb-4">
-                                        <a href="https://github.com/themesberg/flowbite" className="hover:underline ">Github</a>
+                                    <li className="">
+                                        <a href="#" className="hover:underline ">Customer Data Analysis</a>
                                     </li>
                                     <li>
-                                        <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Discord</a>
+                                        <a href="#" className="hover:underline">Sales Data Analysis</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="hover:underline">Business Data Analysis</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Campaign Creation</a>
                                     </li>
                                 </ul>
                             </div>
                             <div>
-                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Get in Touch</h2>
                                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                     <li className="mb-4">
-                                        <a href="#" className="hover:underline">Privacy Policy</a>
+                                        <a href="#" className="hover:underline">info@gmail.com</a>
                                     </li>
                                     <li>
-                                        <a href="#" className="hover:underline">Terms &amp; Conditions</a>
+                                        <a href="#" className="hover:underline">Phone Number</a>
                                     </li>
                                 </ul>
                             </div>

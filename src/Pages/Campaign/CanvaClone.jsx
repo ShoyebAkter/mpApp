@@ -18,18 +18,38 @@ function CanvaClone() {
 
     CreativeEngine.init(config).then(async (engine) => {
         // highlight-save
-        engine.scene.saveToArchive().then((blob) => {
-            // highlight-create-form-data
+        // engine.scene.saveToArchive().then((blob) => {
+        //     // highlight-create-form-data
+        //     const formData = new FormData();
+        //     formData.append("file", blob);
+        //     fetch("/upload", {
+        //         method: "POST",
+        //         body: formData
+        //     });
+        //     // highlight-create-form-data
+        // }).catch((error) => {
+        //     console.error('Save failed', error)
+        // });
+        try {
+            const blob = await engine.scene.saveToArchive();
             const formData = new FormData();
             formData.append("file", blob);
-            fetch("/upload", {
-                method: "POST",
-                body: formData
+          
+            const response = await fetch("/upload", {
+              method: "POST",
+              body: formData,
             });
-            // highlight-create-form-data
-        }).catch((error) => {
-            console.error('Save failed', error)
-        });
+          
+            if (response.ok) {
+              // Upload successful
+              console.log("Upload successful");
+            } else {
+              console.error("Upload failed");
+            }
+          } catch (error) {
+            console.error("Save failed", error);
+          }
+          
         // highlight-save
     });
     useEffect(() => {

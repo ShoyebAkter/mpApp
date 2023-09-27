@@ -1,5 +1,5 @@
 // import { useState } from "react";
-// import CanvaClone from "./CanvaClone"
+import CanvaClone from "./CanvaClone"
 // import { SendButton } from "./SendButton"
 // import { EmailModals } from "./Modals/EmailModals";
 
@@ -10,9 +10,9 @@ export const CampaignDesign = () => {
   return (
     <div className="text-black flex">
       <div>
-        {/* <CanvaClone
+        <CanvaClone
         //  setEditedImage={setEditedImage}
-        /> */}
+        />
       </div>
       {/* <SendButton showEmailModal={showEmailModal} setShowEmailModal={setShowEmailModal}/> */}
       {/* <EmailModals setShowEmailModal={setShowEmailModal} showEmailModal={showEmailModal} /> */}

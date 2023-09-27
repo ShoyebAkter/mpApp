@@ -12,18 +12,18 @@ export const Footer = () => {
                                 {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EulerMail</span> */}
                             </a>
                         </div>
-                        <div className="grid grid-cols-2 gap-10 sm:gap-6 sm:grid-cols-3">
+                        <div className="grid grid-cols-2 sm:gap-20 sm:grid-cols-3">
                             <div>
                                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Quick Links</h2>
                                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                     <li className="mb-4">
-                                        <a href="/" className="hover:underline">Home</a>
+                                        <a style={{"textDecoration":"none"}} href="/" className="hover:underline">Home</a>
                                     </li>
                                     <li className="mb-4">
-                                        <a href="#allies" className="hover:underline">Clients</a>
+                                        <a style={{"textDecoration":"none"}} href="#allies" className="hover:underline">Clients</a>
                                     </li>
                                     <li className="mb-4">
-                                        <a href="#contactUs" className="hover:underline">Contact Us</a>
+                                        <a style={{"textDecoration":"none"}} href="#contactUs" className="hover:underline">Contact Us</a>
                                     </li>
                                     
                                 </ul>
@@ -32,16 +32,16 @@ export const Footer = () => {
                                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Services</h2>
                                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                     <li className="">
-                                        <a href="#" className="hover:underline ">Customer Data Analysis</a>
+                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline ">Customer Data Analysis</a>
                                     </li>
                                     <li>
-                                        <a href="#" className="hover:underline">Sales Data Analysis</a>
+                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline">Sales Data Analysis</a>
                                     </li>
                                     <li>
-                                        <a href="#" className="hover:underline">Business Data Analysis</a>
+                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline">Business Data Analysis</a>
                                     </li>
                                     <li>
-                                        <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Campaign Creation</a>
+                                        <a style={{"textDecoration":"none"}} href="https://discord.gg/4eeurUVvTy" className="hover:underline">Campaign Creation</a>
                                     </li>
                                 </ul>
                             </div>
@@ -49,10 +49,10 @@ export const Footer = () => {
                                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Get in Touch</h2>
                                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                     <li className="mb-4">
-                                        <a href="#" className="hover:underline">info@gmail.com</a>
+                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline">info@gmail.com</a>
                                     </li>
                                     <li>
-                                        <a href="#" className="hover:underline">Phone Number</a>
+                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline">Phone Number</a>
                                     </li>
                                 </ul>
                             </div>

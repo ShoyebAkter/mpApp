@@ -3,7 +3,7 @@ import './Introduction.css'
 export const Introduction = () => {
     return (
         <Fade damping={1}>
-            <div className='h-screen background'>
+            <div className='background'>
                 <div className="flex justify-around  items-center">
                     <div className='pt-24'>
                         <div className="text-lime-600 text-5xl font-medium ">Analytics for business</div>
@@ -13,14 +13,21 @@ export const Introduction = () => {
                         <div className="text-slate-500 text-xl font-medium">drive real growth.</div>
                         <div className="text-slate-500 text-xl font-medium pt-12">Data-driven growth starts here</div>
                     </div>
-                    <div className="circle">
-                        <img src="/logo.png" alt="Image" className="center-image" />
-                    </div>
+
                     <Slide>
                         <div className="image-container ">
-                            <img src="/bottom.png" alt="Image 1" className="bottom-image" />
-                            <img src="/center_img.png " alt="Image 2" className="top-image" />
-                            <img src="/top.png" alt="Image 3" className="third-image" />
+                            <div>
+                                <img src="/bottom.png" alt="Image 1" className="bottom-image" />
+                            </div>
+                            <div>
+                                <img src="/center_img.png " alt="Image 2" className="top-image" />
+                                <div className="circle">
+                                    <img src="/logo.png" alt="Image" className="center-image" />
+                                </div>
+                            </div>
+                            <div>
+                                <img src="/top.png" alt="Image 3" className="third-image" />
+                            </div>
                         </div>
                     </Slide>
                 </div>

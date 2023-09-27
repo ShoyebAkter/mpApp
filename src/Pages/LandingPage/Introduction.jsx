@@ -6,19 +6,21 @@ export const Introduction = () => {
             <div className='background'>
                 <div className="flex justify-around  items-center">
                     <div className='pt-24'>
-                        <div className="text-lime-600 text-5xl font-medium ">Analytics for business</div>
-                        <div className="text-cyan-500 text-5xl font-medium py-3">Growth by design</div>
-                        <div className="text-slate-500 text-xl font-medium">Get more than just numbers.</div>
-                        <div className="text-slate-500 text-xl font-medium">Discover insights that</div>
-                        <div className="text-slate-500 text-xl font-medium">drive real growth.</div>
-                        <div className="text-slate-500 text-xl font-medium pt-12">Data-driven growth starts here</div>
+                        <div className="text-lime-600 text-6xl font-medium ">Analytics for business</div>
+                        <div className="text-cyan-500 text-6xl font-medium py-3">Growth by design</div>
+                        <div className="text-slate-500 text-3xl font-medium">Get more than just numbers.</div>
+                        <div className="text-slate-500 text-3xl font-medium">Discover insights that</div>
+                        <div className="text-slate-500 text-3xl font-medium">drive real growth.</div>
+                        <div className="text-slate-500 text-3xl font-medium pt-12">Data-driven growth starts here</div>
                     </div>
 
-                    <Slide>
+                    <Slide >
                         <div className="image-container ">
-                            <div>
-                                <img src="/bottom.png" alt="Image 1" className="bottom-image" />
-                            </div>
+                            <Slide direction='right'>
+                                <div>
+                                    <img src="/bottom.png" alt="Image 1" className="bottom-image" />
+                                </div>
+                            </Slide>
                             <div>
                                 <img src="/center_img.png " alt="Image 2" className="top-image" />
                                 <div className="circle">

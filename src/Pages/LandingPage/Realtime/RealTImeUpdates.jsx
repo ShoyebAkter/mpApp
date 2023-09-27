@@ -1,7 +1,7 @@
 import './Realtime.css'
 export const RealTImeUpdates = () => {
     return (
-        <div className=' background h-screen overflow-hidden'>
+        <div className=' background overflow-hidden'>
             <main className="db">
                 <div className="db__toolbar">
                     <h1 className="text-3xl font-bold text-green-600">Real-Time Updates</h1>

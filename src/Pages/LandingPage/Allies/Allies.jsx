@@ -35,14 +35,14 @@ export const Allies = () => {
     <section className=" background">
       <div className="mx-auto px-4">
         <h2 className="text-3xl font-semibold text-center text-green-700 py-2">Our Allies</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 ">
+        <div className="flex justify-around items-center ">
           <Fade cascade>
             {testimonialsData.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className=" rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-2 transition duration-300"
+                // className=" rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-2 transition duration-300"
               >
-                 <img className="mx-auto" src={testimonial.companyLogo} alt=""/>
+                 <img src={testimonial.companyLogo} alt=""/>
               </div>
             ))}
           </Fade>

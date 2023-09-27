@@ -278,34 +278,6 @@ export const RealTImeUpdates = () => {
                     <div className="db__order">
                         <div className="db__order-cat">
                             <svg className="db__order-cat-icon" width="24px" height="24px" aria-hidden="true">
-                                <use href="#pants" />
-                            </svg>
-                        </div>
-                        <div className="db__order-name">
-                            Denim #142 Light Blue
-                            <small>
-                                <time dateTime="2022-05-07 18:49:00">May 7 at 6:49 PM</time>
-                            </small>
-                        </div>
-                        <div><strong>$44.99</strong></div>
-                    </div>
-                    <div className="db__order">
-                        <div className="db__order-cat">
-                            <svg className="db__order-cat-icon" width="24px" height="24px" aria-hidden="true">
-                                <use href="#shirt" />
-                            </svg>
-                        </div>
-                        <div className="db__order-name">
-                            White Blouse
-                            <small>
-                                <time dateTime="2022-05-07 18:49:00">May 7 at 6:49 PM</time>
-                            </small>
-                        </div>
-                        <div><strong>$54.99</strong></div>
-                    </div>
-                    <div className="db__order">
-                        <div className="db__order-cat">
-                            <svg className="db__order-cat-icon" width="24px" height="24px" aria-hidden="true">
                                 <use href="#monitor" />
                             </svg>
                         </div>

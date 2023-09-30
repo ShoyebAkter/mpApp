@@ -11,19 +11,18 @@ export const Emailpreview = () => {
     const [focused, setFocused] = useState(false);
     const sendEmail = async(e) => {
         e.preventDefault();
-        console.log(emails);
-        try {
-            const response = await axios.post('http://localhost:5000/send-email', {
-              emailAddresses: emails.map((email) => email.trim()), // Convert comma-separated string to an array
-              message,
-              subject,
-              senderEmail
-            });
-      
-            console.log(response.data);
-          } catch (error) {
-            console.error('Error sending email:', error);
-          }
+        const emailInfo={
+            senderEmail:senderEmail,
+            emails:emails,
+            message:message,
+            subject:subject
+        }
+        const res=await  fetch("http://localhost:5000/sendemail",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },body:JSON.stringify(emailInfo)
+        })
     };
     return (
         <div className="bg-slate-300 p-10">

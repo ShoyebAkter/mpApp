@@ -4,7 +4,7 @@ import { WhatsappPreview } from './WhatsappPreview'
 
 export const Preview = () => {
   return (
-    <div className='flex justify-around '>
+    <div className='flex justify-center'>
         <Emailpreview/>
         <WhatsappPreview/>
     </div>

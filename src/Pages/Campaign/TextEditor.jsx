@@ -1,8 +1,9 @@
 import { useState } from "react";
 
 const TextEditor = () => {
+  
     const [textareaValue, setTextareaValue] = useState('');
-
+    
   // Function to handle changes in the textarea
   const handleTextareaChange = (e) => {
     setTextareaValue(e.target.value);

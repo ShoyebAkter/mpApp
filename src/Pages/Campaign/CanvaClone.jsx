@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { saveAs } from 'file-saver';
 function CanvaClone() {
     const cesdk_container = useRef(null);
+    const[image,setImage]=useState([])
     const [cesdk, setCesdk] = useState(null);
     const config = {
         // Enable local uploads in Asset Library
@@ -12,10 +13,11 @@ function CanvaClone() {
             window.alert('Save callback!');
             console.info(scene);
           },
-          onExport: (blobs, options) => {
+          onExport: (blobs) => {
             window.alert('Export callback!');
             blobs.forEach((blob, index) => {
                 const filename = `exported_image_${index}.png`;
+                setImage(filename)
                 saveAs(blob, filename); // Assuming you have FileSaver.js included
             });
             return Promise.resolve();
@@ -63,7 +65,7 @@ function CanvaClone() {
         };
         return cleanup;
       }, [cesdk_container]);
-
+      console.log(image);
     return (
         <div
         className="m-5"

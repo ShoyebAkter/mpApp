@@ -11,10 +11,11 @@ import { SocialMedia } from './Pages/SocialMedia/SocialMedia'
 import { CampaignDesign } from './Pages/Campaign/CampaignDesign'
 import { LoginHeader } from './Pages/Header/LoginHeader'
 import { Landingpage } from './Pages/LandingPage/Landingpage'
+import { Preview } from './Pages/Campaign/Preview/Preview'
+import { useState } from 'react'
 
 
 function App() {
-  
   return (
     <>
       <LoginHeader/>
@@ -22,10 +23,11 @@ function App() {
         <Route exact path="/" element={<Landingpage />}/>
         <Route path="/eulermail" element={<BusinessChart />}/>
         <Route path="/businessoverview" element={<Main />}/>
+        <Route path="/preview" element={<Preview />}/>
         <Route path="/customerBehaviour" element={<CustomerBehaviour />}/>
         <Route path="/campaignresult" element={<CampaignResult />}/>
         <Route path="/socialmedia" element={<SocialMedia />}/>
-        <Route path="/campaignerdesign" element={<CampaignDesign />}/>
+        <Route path="/campaignerdesign" element={<CampaignDesign/>}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<Signup />}/>
       </Routes>

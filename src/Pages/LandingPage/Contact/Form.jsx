@@ -44,7 +44,7 @@ export const Form = () => {
                     </div>
                     <div className="w-1/2">
                         <label className="block text-sm text-gray-500">Email Address:</label>
-                        <input className="rounded border-gray-400 w-full bg-white" type="email" name="email" id="email_field" />
+                        <input placeholder="From:" className="rounded border-gray-400 w-full bg-white" type="email" name="email" id="email_field" />
                     </div>
                 </div>
                 <div className="mb-4">

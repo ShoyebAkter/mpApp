@@ -8,6 +8,11 @@ export const Emailpreview = () => {
     const [emails, setEmails] = useState([]);
     const [focused, setFocused] = useState(false);
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
+    // const getData=()=>{
+    //     fetch("http://localhost:5000/tracking-pixel")
+    //     .then(res=>res.json())
+    //     .then(result=>console.log(result))
+    // }
     const sendEmail = (data) => {
         console.log(emails);
         console.log(data);
@@ -47,8 +52,10 @@ export const Emailpreview = () => {
             // Add the image attachment to the URL
       
           }
-        
+          
     };
+    
+    
     return (
         <div className="bg-slate-300 p-10">
             <div  className="mx-auto">

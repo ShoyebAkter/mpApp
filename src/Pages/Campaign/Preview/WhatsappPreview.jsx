@@ -1,8 +1,8 @@
-import {  useState } from "react";
+
 import { useForm } from 'react-hook-form';
 export const WhatsappPreview = () => {
   const {  register,handleSubmit} = useForm();
-  const CHARACTER_LIMIT = 100;
+  
   const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
 
 

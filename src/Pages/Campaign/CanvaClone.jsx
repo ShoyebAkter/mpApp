@@ -6,6 +6,7 @@ function CanvaClone() {
     const cesdk_container = useRef(null);
     const[image,setImage]=useState([])
     const [cesdk, setCesdk] = useState(null);
+    
     const config = {
         // Enable local uploads in Asset Library
         callbacks: { 
@@ -65,7 +66,7 @@ function CanvaClone() {
         };
         return cleanup;
       }, [cesdk_container]);
-      console.log(image);
+      console.log(cesdk,image);
     return (
         <div
         className="m-5"

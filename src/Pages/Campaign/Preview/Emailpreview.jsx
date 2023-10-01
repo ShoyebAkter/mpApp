@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { ReactMultiEmail} from 'react-multi-email';
 import { useForm } from 'react-hook-form';
 import 'react-multi-email/dist/style.css';
-import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+  
 export const Emailpreview = () => {
-    const {  register,handleSubmit} = useForm();
+    const {  register,handleSubmit,reset} = useForm();
     const [emails, setEmails] = useState([]);
     const [focused, setFocused] = useState(false);
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
@@ -44,6 +46,8 @@ export const Emailpreview = () => {
                         },body:JSON.stringify(emailInfo)
                     })
               }
+              toast("Email sent successfully");
+              reset();
             })
             // Assuming you have uploaded the image to a publicly accessible server,
             // provide the URL of the image in the "abid" parameter
@@ -74,7 +78,7 @@ export const Emailpreview = () => {
                     </div>
                     <ReactMultiEmail 
                     
-                    className="mb-6 bg-gray-50"
+                    className="mb-6 bg-gray-50 text-white"
                     
                         placeholder='To: @gmail.com'
                         emails={emails}
@@ -116,6 +120,7 @@ export const Emailpreview = () => {
                         />
                     </div>
                     <button type="submit" value="Add" className="bg-blue-600 py-2 px-4 rounded border-gray-400 shadow-sm text-gray-200 hover:text-white hover:bg-blue-800" >Send</button>
+                    <ToastContainer />
                 </form>
             </div>
         </div>

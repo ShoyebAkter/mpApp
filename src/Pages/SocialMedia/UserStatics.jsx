@@ -9,6 +9,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
+import { FacebookEmbed } from 'react-social-media-embed';
 
 ChartJS.register(
     CategoryScale,
@@ -52,11 +53,14 @@ export const UserStatics = () => {
     return (
         <div className='flex justify-around my-10'>
             <div className='rounded-xl shadow-lg w-1/3'>
-                <Bar options={options}  data={data} />
+                <Bar options={options} data={data} />
             </div>
             <div className='text-black rounded-xl shadow-2xl w-1/3'>
-                <h1>Top Performing Post</h1>
-                <p>Images GOes here</p>
+                <div>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <FacebookEmbed url="https://www.facebook.com/andrewismusic/posts/451971596293956" width={550} />
+                    </div>
+                </div>
             </div>
         </div>
     )

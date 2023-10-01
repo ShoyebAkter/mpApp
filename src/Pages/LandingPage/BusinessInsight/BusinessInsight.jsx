@@ -4,11 +4,11 @@ import './Business.css'
 export const BusinessInsight = () => {
     
     return (
-        <section className="container">
+        <section className="container ">
             <h1 className='text-center text-3xl font-medium text-green-700'>Our Services</h1>
             <section className="card__container">
-                
-                <div className="card__bx" style={{ "--clr": "#89ec5b"}}>
+            <div className="carousel carousel-center  p-4 space-x-4 bg-neutral rounded-box">
+                <div className="card__bx carousel-item" style={{ "--clr": "#89ec5b"}}>
                     <div className="card__data">
                         <div className="card__icon">
                             <i className="fa-solid fa-paintbrush"></i>
@@ -20,7 +20,7 @@ export const BusinessInsight = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card__bx" style={{ "--clr": "#eb5ae5" }}>
+                <div className="card__bx carousel-item" style={{ "--clr": "#eb5ae5" }}>
                     <div className="card__data">
                         <div className="card__icon">
                             <i className="fa-solid fa-code"></i>
@@ -32,7 +32,7 @@ export const BusinessInsight = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card__bx" style={{ "--clr": "#5b98eb" }}>
+                <div className="card__bx carousel-item" style={{ "--clr": "#5b98eb" }}>
                     <div className="card__data">
                         <div className="card__icon">
                             <i className="fa-brands fa-searchengin"></i>
@@ -44,7 +44,7 @@ export const BusinessInsight = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card__bx" style={{ "--clr": "#c4cdda" }}>
+                <div className="card__bx carousel-item" style={{ "--clr": "#c4cdda" }}>
                     <div className="card__data">
                         <div className="card__icon">
                             <i className="fa-brands fa-searchengin"></i>
@@ -56,7 +56,7 @@ export const BusinessInsight = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card__bx" style={{ "--clr": "#aaa7a2" }}>
+                <div className="card__bx carousel-item" style={{ "--clr": "#aaa7a2" }}>
                     <div className="card__data">
                         <div className="card__icon">
                             <i className="fa-brands fa-searchengin"></i>
@@ -67,6 +67,7 @@ export const BusinessInsight = () => {
                             <a href="#">Read More</a>
                         </div>
                     </div>
+                </div>
                 </div>
             </section>
 

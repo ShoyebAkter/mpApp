@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 export const Form = () => {
     const form = useRef();
     const [phone, setPhone] = useState('');
@@ -13,6 +15,7 @@ export const Form = () => {
                 console.log(result.text);
                 console.log(form.current);
                 form.current.reset();
+                toast("Email sent successfully")
             }, (error) => {
                 console.log(error.text);
             });
@@ -53,6 +56,7 @@ export const Form = () => {
                 </div>
                 
                 <button type="submit" className="bg-blue-600 py-2 px-4 rounded border-gray-400 shadow-sm text-gray-200 hover:text-white hover:bg-blue-800" >Send</button>
+                <ToastContainer />
             </form>
         </div>
     )

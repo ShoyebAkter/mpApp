@@ -5,9 +5,9 @@ export const BusinessInsight = () => {
     
     return (
         <section className="container ">
-            <h1 className='text-center text-3xl font-medium text-green-700'>Our Services</h1>
+            <h1 className='text-3xl font-medium text-green-700'>Our Services</h1>
             <section className="card__container">
-            <div className="carousel carousel-center  p-4 space-x-4 bg-neutral rounded-box">
+            <div className="carousel carousel-center  p-4 space-x-4  rounded-box">
                 <div className="card__bx carousel-item" style={{ "--clr": "#89ec5b"}}>
                     <div className="card__data">
                         <div className="card__icon">

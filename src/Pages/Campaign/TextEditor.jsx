@@ -21,6 +21,7 @@ const TextEditor = () => {
             className="bg-white rounded-xl"
             style={{"height":"90%","width":"80%"}}
             />
+            
         </div>
     );
 

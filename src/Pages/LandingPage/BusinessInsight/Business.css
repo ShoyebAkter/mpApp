@@ -37,8 +37,8 @@ body {
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 .container {
-  max-width: 1140px;
-  width: 100%;
+  max-width: 900px;
+  width: 50%;
   margin: 0 auto;
   padding: 3rem 0;
   display: grid;
@@ -51,7 +51,7 @@ body {
   flex-wrap: wrap;
   gap: 60px;
   justify-content: center;
-  width: 100%;
+  width: 60%;
   max-width: 90%;
   margin: auto;
   padding: 60px 0;
@@ -106,7 +106,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
   text-align: center;
   padding: 0 20px;
   height: 100%;
@@ -114,8 +114,8 @@ body {
   overflow: hidden;
 }
 .card__bx .card__data .card__icon {
-  height: 80px;
-  width: 80px;
+  height: 40px;
+  width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,7 @@
 
 import { useForm } from 'react-hook-form';
-export const WhatsappPreview = ({text}) => {
+
+export const WhatsappPreview = ({editedImage,text}) => {
   const {  register,handleSubmit} = useForm();
   
   const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
@@ -75,9 +76,7 @@ export const WhatsappPreview = ({text}) => {
 
 
           <div className="relative mb-6">
-            <input
-            {...register("image")}
-            type="file" id="myFile" name="image" />
+            <img src={editedImage} alt='edited image'/>
           </div>
 
           <div>

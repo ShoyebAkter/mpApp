@@ -4,7 +4,7 @@ import './Business.css'
 export const BusinessInsight = () => {
     
     return (
-        <section className="container ">
+        <section className="container">
             <h1 className='text-3xl font-medium text-green-700'>Our Services</h1>
             <section className="card__container">
             <div className="carousel carousel-center  p-4 space-x-4  rounded-box">

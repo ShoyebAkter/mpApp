@@ -5,7 +5,7 @@ import 'react-multi-email/dist/style.css';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   
-export const Emailpreview = ({editedImage,text}) => {
+export const Emailpreview = ({imageBlob,editedImage,text}) => {
     const {  register,handleSubmit,reset} = useForm();
     const [emails, setEmails] = useState([]);
     const [focused, setFocused] = useState(false);
@@ -19,38 +19,38 @@ export const Emailpreview = ({editedImage,text}) => {
         console.log(editedImage);
         console.log(data);
         
-        // if (editedImage) {
+        if (editedImage) {
             
-        //     const formData = new FormData();
-        //     formData.append('image', editedImage);
-        //     const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+            const formData = new FormData();
+            formData.append('image', imageBlob);
+            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
       
-        //     fetch(imagebburl,{
-        //       method:'POST',
-        //       body:formData
-        //     }).then(res=>res.json())
-        //     .then(result=>{
-        //       if(result.success){
-        //         const img=result.data.url;
-        //         const emailInfo={
-        //             senderEmail:data.email,
-        //             emails:emails,
-        //             message:data.message,
-        //             subject:data.subject,
-        //             imageUrl:img
-        //         }
-        //         fetch("https://emapp-backend.vercel.app/sendemail",{
-        //                 method:"POST",
-        //                 headers:{
-        //                     "Content-Type":"application/json"
-        //                 },body:JSON.stringify(emailInfo)
-        //             })
-        //       }
-        //       toast("Email sent successfully");
-        //       reset();
-        //     })
+            fetch(imagebburl,{
+              method:'POST',
+              body:formData
+            }).then(res=>res.json())
+            .then(result=>{
+              if(result.success){
+                const img=result.data.url;
+                const emailInfo={
+                    senderEmail:data.email,
+                    emails:emails,
+                    message:data.message,
+                    subject:data.subject,
+                    imageUrl:img
+                }
+                fetch("https://emapp-backend.vercel.app/sendemail",{
+                        method:"POST",
+                        headers:{
+                            "Content-Type":"application/json"
+                        },body:JSON.stringify(emailInfo)
+                    })
+              }
+              toast("Email sent successfully");
+              reset();
+            })
             
-        //   }    
+          }    
     };
     
     return (

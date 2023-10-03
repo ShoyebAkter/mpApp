@@ -2,9 +2,8 @@ import "./CanvaClone.css";
 import CreativeEditorSDK from '@cesdk/cesdk-js';
 import { useEffect, useRef, useState } from 'react';
 import { saveAs } from 'file-saver';
-function CanvaClone({setEditedImage}) {
+function CanvaClone({setImageBlob,setEditedImage}) {
   const cesdk_container = useRef(null);
-  const [image, setImage] = useState([])
   const [cesdk, setCesdk] = useState(null);
 
   const config = {
@@ -16,11 +15,12 @@ function CanvaClone({setEditedImage}) {
       },
       onExport: (blobs) => {
         window.alert('Export callback!');
-        blobs.forEach((blob, index) => {
-          const filename = `exported_image_${index}.png`;
+        blobs.forEach((blob) => {
+          // const filename = `exported_image_${index}.png`;
           const imageUrl = URL.createObjectURL(blob); // Create a URL for the blob
           setEditedImage(imageUrl);
-          saveAs(blob, filename);
+          setImageBlob(blob);
+          // saveAs(blob, filename);
         });
         return Promise.resolve();
       },

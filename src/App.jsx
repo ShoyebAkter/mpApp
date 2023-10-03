@@ -11,24 +11,22 @@ import { SocialMedia } from './Pages/SocialMedia/SocialMedia'
 import { CampaignDesign } from './Pages/Campaign/CampaignDesign'
 import { LoginHeader } from './Pages/Header/LoginHeader'
 import { Landingpage } from './Pages/LandingPage/Landingpage'
-import { LoginHome } from './Pages/LogingHomepage/LoginHome'
 
 
 function App() {
   return (
     <>
-      <LoginHeader/>
+      <LoginHeader />
       <Routes>
-        <Route exact path="/" element={<Landingpage />}/>
-        <Route exact path="/loginhome" element={<LoginHome/>}/>
-        <Route path="/eulermail" element={<BusinessChart />}/>
-        <Route path="/businessoverview" element={<Main />}/>
-        <Route path="/customerBehaviour" element={<CustomerBehaviour />}/>
-        <Route path="/campaignresult" element={<CampaignResult />}/>
-        <Route path="/socialmedia" element={<SocialMedia />}/>
-        <Route path="/campaignerdesign" element={<CampaignDesign/>}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/signup" element={<Signup />}/>
+        <Route exact path="/" element={<Landingpage />} />
+        <Route path="/eulermail" element={<BusinessChart />} />
+        <Route path="/businessoverview" element={<Main />} />
+        <Route path="/customerBehaviour" element={<CustomerBehaviour />} />
+        <Route path="/campaignresult" element={<CampaignResult />} />
+        <Route path="/socialmedia" element={<SocialMedia />} />
+        <Route path="/campaignerdesign" element={<CampaignDesign />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   )

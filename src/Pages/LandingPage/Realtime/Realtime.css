@@ -57,7 +57,7 @@ strong {
 }
 .db__bars-cell {
 	text-align: center;
-	width: 100%;
+	width: 50%;
 }
 .db__bars-cell-bar {
 	background-image: linear-gradient(var(--primary),var(--secondary),var(--tertiary));
@@ -230,7 +230,7 @@ strong {
 }
 .db__product-details + .db__product-details {
 	text-align: right;
-	width: 67%;
+	width: 50%;
 }
 .db__product-detail-line {
 	min-width: 0;

@@ -35,7 +35,7 @@ export const Emailpreview = ({imageBlob,editedImage,text}) => {
                 const emailInfo={
                     senderEmail:data.email,
                     emails:emails,
-                    message:data.message,
+                    message:text,
                     subject:data.subject,
                     imageUrl:img
                 }
@@ -106,6 +106,7 @@ export const Emailpreview = ({imageBlob,editedImage,text}) => {
                         {...register("message")}
                             name="message"
                             value={text}
+                            readOnly
                             className=" rounded-xl border-2 "
                             style={{ "height": "150px", "width": "100%" }}
                         />

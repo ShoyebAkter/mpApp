@@ -24,6 +24,7 @@ function CanvaClone({setImageBlob,setEditedImage}) {
         });
         return Promise.resolve();
       },
+      onUpload: 'local' 
     },
     ui: {
       elements: {

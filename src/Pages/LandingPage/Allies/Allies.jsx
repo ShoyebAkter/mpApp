@@ -32,7 +32,7 @@ export const Allies = () => {
     }
   ];
   return (
-    <section className=" background">
+    <section className=" background p-10">
       <div className="mx-auto px-4">
         <h2 className="text-3xl font-semibold text-center text-green-700 py-2">Our Allies</h2>
         <div className="flex justify-around items-center ">

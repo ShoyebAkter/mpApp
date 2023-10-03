@@ -1,6 +1,6 @@
 
 import { useForm } from 'react-hook-form';
-export const WhatsappPreview = () => {
+export const WhatsappPreview = ({text}) => {
   const {  register,handleSubmit} = useForm();
   
   const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
@@ -21,6 +21,7 @@ export const WhatsappPreview = () => {
     // const fileInput = document.getElementById('myFile');
     // console.log(fileInput.files.length);
     if (data.image.length > 0) {
+      console.log(data.image[0]);
       const image = data.image[0];
       const formData = new FormData();
       formData.append('image', image);
@@ -82,7 +83,7 @@ export const WhatsappPreview = () => {
           <div>
             <textarea
               name="message"
-              // value={message}
+              value={text}
               {...register("message")}
               className="rounded-xl"
               style={{ "height": "200px", "width": "100%" }}

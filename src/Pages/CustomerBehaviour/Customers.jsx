@@ -26,7 +26,7 @@ export const Customers = () => {
   const [customers, setCustomers] = useState([]);
   const tierArray = [];
   useEffect(() => {
-    fetch('http://localhost:5000/api/customerdata')
+    fetch('https://emapp-backend.vercel.app/api/customerdata')
       .then((res) => res.json())
       .then((result) => setCustomers(result))
       .catch((error) => console.error(error))

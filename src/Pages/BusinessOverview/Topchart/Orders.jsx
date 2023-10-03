@@ -25,7 +25,7 @@ export const Orders = () => {
     const orderData = [];
     const resultArray=[];
     useEffect(() => {
-        fetch('http://localhost:5000/api/data')
+        fetch('https://emapp-backend.vercel.app/api/data')
             .then(res => res.json())
             .then(result => setOrders(result))
             .catch(error => console.error(error))

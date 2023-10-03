@@ -25,7 +25,7 @@ export const TotalSales = () => {
     const salesValue = [];
     const resultArray = [];
     useEffect(() => {
-        fetch('http://localhost:5000/sales')
+        fetch('https://emapp-backend.vercel.app/sales')
             .then(res => res.json())
             .then(result => setTotalSales(result))
             .catch(error => console.error(error))

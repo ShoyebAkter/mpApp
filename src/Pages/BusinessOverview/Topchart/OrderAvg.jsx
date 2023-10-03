@@ -5,7 +5,7 @@ export const OrderAvg = () => {
     const [orders, setOrders] = useState([]);
     const orderData = [];
     useEffect(() => {
-        fetch('http://localhost:5000/api/data')
+        fetch('https://emapp-backend.vercel.app/api/data')
             .then(res => res.json())
             .then(result => setOrders(result))
             .catch(error => console.error(error))

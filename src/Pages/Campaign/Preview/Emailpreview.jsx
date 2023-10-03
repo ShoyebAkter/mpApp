@@ -5,60 +5,53 @@ import 'react-multi-email/dist/style.css';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   
-export const Emailpreview = () => {
+export const Emailpreview = ({editedImage,text}) => {
     const {  register,handleSubmit,reset} = useForm();
     const [emails, setEmails] = useState([]);
     const [focused, setFocused] = useState(false);
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
     // const getData=()=>{
-    //     fetch("http://localhost:5000/tracking-pixel")
+    //     fetch("https://emapp-backend.vercel.app/tracking-pixel")
     //     .then(res=>res.json())
     //     .then(result=>console.log(result))
     // }
     const sendEmail = (data) => {
-        console.log(emails);
+        console.log(editedImage);
         console.log(data);
         
-        if (data.image.length > 0) {
-            const image = data.image[0];
-            const formData = new FormData();
-            formData.append('image', image);
-            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-      
-            fetch(imagebburl,{
-              method:'POST',
-              body:formData
-            }).then(res=>res.json())
-            .then(result=>{
-              if(result.success){
-                const img=result.data.url;
-                const emailInfo={
-                    senderEmail:data.email,
-                    emails:emails,
-                    message:data.message,
-                    subject:data.subject,
-                    imageUrl:img
-                }
-                fetch("http://localhost:5000/sendemail",{
-                        method:"POST",
-                        headers:{
-                            "Content-Type":"application/json"
-                        },body:JSON.stringify(emailInfo)
-                    })
-              }
-              toast("Email sent successfully");
-              reset();
-            })
-            // Assuming you have uploaded the image to a publicly accessible server,
-            // provide the URL of the image in the "abid" parameter
-            // Replace with your image URL
+        // if (editedImage) {
             
-            // Add the image attachment to the URL
+        //     const formData = new FormData();
+        //     formData.append('image', editedImage);
+        //     const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
       
-          }
-          
+        //     fetch(imagebburl,{
+        //       method:'POST',
+        //       body:formData
+        //     }).then(res=>res.json())
+        //     .then(result=>{
+        //       if(result.success){
+        //         const img=result.data.url;
+        //         const emailInfo={
+        //             senderEmail:data.email,
+        //             emails:emails,
+        //             message:data.message,
+        //             subject:data.subject,
+        //             imageUrl:img
+        //         }
+        //         fetch("https://emapp-backend.vercel.app/sendemail",{
+        //                 method:"POST",
+        //                 headers:{
+        //                     "Content-Type":"application/json"
+        //                 },body:JSON.stringify(emailInfo)
+        //             })
+        //       }
+        //       toast("Email sent successfully");
+        //       reset();
+        //     })
+            
+        //   }    
     };
-    
     
     return (
         <div className="bg-slate-300 p-10">
@@ -78,7 +71,7 @@ export const Emailpreview = () => {
                     </div>
                     <ReactMultiEmail 
                     
-                    className="mb-6 bg-gray-50 text-white"
+                    className="mb-6 "
                     
                         placeholder='To: @gmail.com'
                         emails={emails}
@@ -104,18 +97,16 @@ export const Emailpreview = () => {
                         <input {...register("subject")} type="text" name="subject" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Subject: " />
                     </div>
                     <div className="relative mb-6 text-black">
-                        <input 
-                        {...register("image")}
-                        
-                        type="file" id="myFile" name="image" />
+                        <img
+                        src={editedImage} alt=""/>
                     </div>
 
                     <div>
                         <textarea
                         {...register("message")}
                             name="message"
-                            
-                            className=" rounded-xl"
+                            value={text}
+                            className=" rounded-xl border-2 "
                             style={{ "height": "150px", "width": "100%" }}
                         />
                     </div>

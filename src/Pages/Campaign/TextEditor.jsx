@@ -1,14 +1,13 @@
 import { useState } from "react";
 
-const TextEditor = () => {
+const TextEditor = ({text,setText}) => {
   
-    const [textareaValue, setTextareaValue] = useState('');
     
   // Function to handle changes in the textarea
   const handleTextareaChange = (e) => {
-    setTextareaValue(e.target.value);
+    setText(e.target.value);
   };
-  console.log(textareaValue);
+  
 
     return (
         <div 
@@ -16,7 +15,7 @@ const TextEditor = () => {
         className='my-5 rounded-xl flex justify-center items-center  bg-slate-200'>
             
             <textarea 
-            value={textareaValue} // Bind the value to the state variable
+            value={text} // Bind the value to the state variable
             onChange={handleTextareaChange} 
             className="bg-white rounded-xl"
             style={{"height":"90%","width":"80%"}}

@@ -7,7 +7,7 @@ export const BottomChart = () => {
 
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/users')
+    fetch('https://emapp-backend.vercel.app/users')
       .then(res => res.json())
       .then(result => setUsers(result))
       .catch(error => console.error(error))

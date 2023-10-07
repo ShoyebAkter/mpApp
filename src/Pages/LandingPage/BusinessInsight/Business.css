@@ -52,11 +52,10 @@ body {
 .card__container {
   display: flex;
   flex-wrap: wrap;
-  gap: 60px;
   justify-content: center;
   width: 80%;
   max-width: 90%;
-  padding: 60px 0;
+  padding: 60px 50px;
 }
 .card__bx {
   --dark-color: #2e2e2e;

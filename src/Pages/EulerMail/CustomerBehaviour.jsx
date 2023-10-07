@@ -32,7 +32,7 @@ function CustomerBehaviour() {
             .then((result) => setCustomers(result))
             .catch((error) => console.error(error))
     }, [])
-    console.log(customers);
+    // console.log(customers);
 
     const getTierValue = () => {
         customers.map((customer) => {

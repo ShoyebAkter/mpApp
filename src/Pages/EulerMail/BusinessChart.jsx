@@ -1,10 +1,18 @@
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase.init";
 import CustomerBehaviour from "./CustomerBehaviour"
 import OverviewChart from "./OverviewChart"
+import { useNavigate } from "react-router-dom";
+import Loading from "../Authentication/Loading";
 // import SocialMediaChart from "./SocialMediaChart"
 
 function BusinessChart() {
-
-
+    const [user,loading] = useAuthState(auth);
+    const navigate=useNavigate()
+    if(loading) return <Loading></Loading>
+    if(!user){
+        navigate('/login')
+    }
     return (
         <div className="mt-10">
             <div className="flex text-black justify-around ">

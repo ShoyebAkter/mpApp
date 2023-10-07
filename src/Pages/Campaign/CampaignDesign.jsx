@@ -3,12 +3,22 @@ import { useState } from "react"
 import CanvaClone from "./CanvaClone"
 import { Preview } from "./Preview/Preview"
 import TextEditor from "./TextEditor"
+import { auth } from "../../firebase.init"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { useNavigate } from "react-router-dom"
+import Loading from "../Authentication/Loading"
 
 export const CampaignDesign = () => {
   const [text,setText]=useState("")
   const [editedImage,setEditedImage]=useState('')
   const [imageBlob,setImageBlob]=useState();
-  console.log(text);
+  const [user,loading] = useAuthState(auth);
+    const navigate=useNavigate()
+    if(loading) return <Loading></Loading>
+    if(!user){
+        navigate('/login')
+    }
+  // console.log(text);
   return (
     <div>
       <div className="text-black flex">

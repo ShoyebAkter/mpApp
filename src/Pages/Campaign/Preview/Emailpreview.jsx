@@ -56,9 +56,9 @@ export const Emailpreview = ({imageBlob,editedImage,text}) => {
     };
     
     return (
-        <div className="bg-slate-300 p-10">
+        <div className="bg-slate-200 p-10">
             <div  className="mx-auto">
-                <form className="bg-white p-10 rounded-xl text-white"onSubmit={handleSubmit(sendEmail)}>
+                <form className="bg-white p-10  rounded-xl text-white"onSubmit={handleSubmit(sendEmail)}>
                     
                     <div className="relative mb-6">
                         
@@ -93,7 +93,7 @@ export const Emailpreview = ({imageBlob,editedImage,text}) => {
 
                         <input {...register("subject")} type="text" name="subject" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Subject: " />
                     </div>
-                    <div className="relative mb-6 text-black">
+                    <div className="relative mb-6  text-black">
                         <img
                         src={editedImage} alt=""/>
                     </div>

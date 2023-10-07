@@ -17,7 +17,7 @@ export const CampaignDesign = () => {
       </div>
       <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>Send</button>
       <dialog id="my_modal_4" className="modal">
-        <div className="modal-box w-11/12 max-w-full">
+        <div className="modal-box w-11/12  bg-slate-200 max-w-full">
           <Preview imageBlob={imageBlob} editedImage={editedImage} text={text}/>
           <div className="modal-action">
             <form method="dialog">

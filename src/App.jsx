@@ -11,7 +11,7 @@ import { SocialMedia } from './Pages/SocialMedia/SocialMedia'
 import { CampaignDesign } from './Pages/Campaign/CampaignDesign'
 import { LoginHeader } from './Pages/Header/LoginHeader'
 import { Landingpage } from './Pages/LandingPage/Landingpage'
-
+import {RequireAuth} from './Pages/Authentication/RequireAuth'
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       <LoginHeader />
       <Routes>
         <Route exact path="/" element={<Landingpage />} />
-        <Route path="/eulermail" element={<BusinessChart />} />
+        <Route path="/eulermail" element={<RequireAuth><BusinessChart /></RequireAuth>} />
         <Route path="/businessoverview" element={<Main />} />
         <Route path="/customerBehaviour" element={<CustomerBehaviour />} />
         <Route path="/campaignresult" element={<CampaignResult />} />

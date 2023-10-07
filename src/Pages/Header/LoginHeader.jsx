@@ -3,7 +3,7 @@ import { signOut } from 'firebase/auth';
 import './Header.css'
 // import { signOut } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../../firebase.init';
+import { auth } from '../../firebase.init.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Header from './Header';
 

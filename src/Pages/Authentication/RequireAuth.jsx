@@ -1,9 +1,9 @@
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Navigate, useLocation } from 'react-router';
-import auth from '../../firebase.init';
-import Loading from './Loading';
+import {auth} from '../../firebase.init';
+import Loading from './Loading.jsx';
+import { Navigate, useLocation } from 'react-router-dom';
 
-const RequireAuth = () => {
+export const RequireAuth = () => {
     const [user, loading] = useAuthState(auth);
     const location = useLocation();
 
@@ -16,4 +16,3 @@ const RequireAuth = () => {
     }
 };
 
-export default RequireAuth;

@@ -11,7 +11,7 @@ function Header() {
 			<nav className='flex justify-around'>
 				<div style={{ "width": "80px" }} ><img src='logo2.png' /></div>
 				<div className="flex items-center ">
-					<a href='/'>Home</a>
+					<Link to='/'>Home</Link>
 					<a href='#businessInsight'>EulerMail</a>
 					<a href='#integration'>How it Works</a>
 					<a href='#allies'>Our Allies</a>

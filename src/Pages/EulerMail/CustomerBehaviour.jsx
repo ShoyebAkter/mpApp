@@ -11,6 +11,8 @@ import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 // import { faker } from '@faker-js/faker';
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase.init";
 
 ChartJS.register(
     CategoryScale,
@@ -25,6 +27,8 @@ ChartJS.register(
 
 function CustomerBehaviour() {
     const [customers, setCustomers] = useState([]);
+    const [user]=useAuthState(auth)
+    console.log(user.uid);
     const tierArray = [];
     useEffect(() => {
         fetch('https://emapp-backend.vercel.app/api/customerdata')

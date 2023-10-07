@@ -5,10 +5,11 @@ import { Preview } from "./Preview/Preview"
 import TextEditor from "./TextEditor"
 import { auth } from "../../firebase.init"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Loading from "../Authentication/Loading"
 
 export const CampaignDesign = () => {
+  // const {userId}=useParams()
   const [text,setText]=useState("")
   const [editedImage,setEditedImage]=useState('')
   const [imageBlob,setImageBlob]=useState();
@@ -18,7 +19,7 @@ export const CampaignDesign = () => {
     if(!user){
         navigate('/login')
     }
-  // console.log(text);
+  // console.log(userId);
   return (
     <div>
       <div className="text-black flex">
@@ -28,7 +29,7 @@ export const CampaignDesign = () => {
       <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>Send</button>
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12  bg-slate-200 max-w-full">
-          <Preview imageBlob={imageBlob} editedImage={editedImage} text={text}/>
+          <Preview userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage} text={text}/>
           <div className="modal-action">
             <form method="dialog">
               <button className="btn">Close</button>

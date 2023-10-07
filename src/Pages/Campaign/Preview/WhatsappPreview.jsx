@@ -1,7 +1,7 @@
 
 import { useForm } from 'react-hook-form';
 
-export const WhatsappPreview = ({editedImage,text}) => {
+export const WhatsappPreview = ({userId,editedImage,text}) => {
   const {  register,handleSubmit} = useForm();
   
   const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
@@ -14,10 +14,22 @@ export const WhatsappPreview = ({editedImage,text}) => {
 
     // Replace non-alphanumeric characters and spaces in the mobile number
     let number = data.phone.replace(/[^\w\s]/gi, "").replace(/ /g, "");
+    const whatsAppInfo={
+      uid:userId,
+      campaignType:data.type,
+      message:text,
+      number:data.phone
+    }
     // console.log(number);
     const url= `https://wa.me/${number}?text=${encodeURIComponent(text)}`
     // URL to open WhatsApp with the message and image attachment
     
+    fetch("https://emapp-backend.vercel.app/whatsapp",{
+                        method:"POST",
+                        headers:{
+                            "Content-Type":"application/json"
+                        },body:JSON.stringify(whatsAppInfo)
+                    })
     // Check if a file has been selected
     // const fileInput = document.getElementById('myFile');
     // console.log(fileInput.files.length);
@@ -37,7 +49,7 @@ export const WhatsappPreview = ({editedImage,text}) => {
             {...register("type")}
               name="type"
               // value={mobileNumber}
-              type="text" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Promotion Type" />
+              type="text" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Campaign Type" />
           </div>
           <div className="relative mb-6">
             <input

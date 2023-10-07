@@ -4,11 +4,13 @@ import { useForm } from 'react-hook-form';
 import 'react-multi-email/dist/style.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuthState } from "react-firebase-hooks/auth";
 
 
 
-export const Emailpreview = ({imageBlob,editedImage,text}) => {
+export const Emailpreview = ({userId,imageBlob,editedImage,text}) => {
     const {  register,handleSubmit,reset} = useForm();
+    
     const [emails, setEmails] = useState([]);
     const [focused, setFocused] = useState(false);
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
@@ -35,7 +37,8 @@ export const Emailpreview = ({imageBlob,editedImage,text}) => {
               if(result.success){
                 const img=result.data.url;
                 const emailInfo={
-                    promotionType:data.type,
+                    uid:userId,
+                    campaignType:data.type,
                     emails:emails,
                     message:text,
                     subject:data.subject,
@@ -64,7 +67,7 @@ export const Emailpreview = ({imageBlob,editedImage,text}) => {
                         
                         <input
                         {...register("type")}
-                        type="text" name="type" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Promotion type" />
+                        type="text" name="type" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Campaign type" />
                     </div>
                     <ReactMultiEmail 
                     

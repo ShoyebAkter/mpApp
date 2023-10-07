@@ -4,13 +4,25 @@ import { useEffect, useState } from "react";
 export const OrderApi = () => {
     const [orderApi,setOrderApi]=useState("")
     // useEffect(()=>{
-    //     fetch(orderApi)
-    //     .then(res=>res.json())
-    //     .then(result=>console.log(result))
+    //    
     // },[])
+    const getOrderData=()=>{
+      // fetch(orderApi)
+      //     .then(res=>res.json())
+      //     .then(result=>console.log(result))
+    }
     // const [orderData,setOrderData]=useState([]);
     // const ordertargetProperties = ['order', 'total','date','price','name','product','item'];
     // const newOrderArray=findSimilarProperties((ordertargetProperties,orderData.orders));
+    // const postData=()=>{
+    //   fetch(api,{
+    //     method: "POST",
+    //     headers:{
+    //       "Content-Type":"application/json"
+    //   },
+    //   body:JSON.stringify(newOrderArray)
+    //   })
+    // }
   return (
     <div>
 

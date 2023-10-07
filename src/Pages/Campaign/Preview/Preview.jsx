@@ -2,11 +2,12 @@
 import { Emailpreview } from './Emailpreview'
 import { WhatsappPreview } from './WhatsappPreview'
 
-export const Preview = ({imageBlob,editedImage,text}) => {
+export const Preview = ({userId,imageBlob,editedImage,text}) => {
   return (
     <div className='flex justify-around '>
-        <div><Emailpreview imageBlob={imageBlob} editedImage={editedImage} text={text}/></div>
-        <div><WhatsappPreview editedImage={editedImage} text={text}/></div>
+        <div><Emailpreview userId={userId}
+         imageBlob={imageBlob} editedImage={editedImage} text={text}/></div>
+        <div><WhatsappPreview userId={userId} editedImage={editedImage} text={text}/></div>
     </div>
   )
 }

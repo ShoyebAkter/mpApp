@@ -20,10 +20,10 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Landingpage />} />
         <Route path="/eulermail" element={<RequireAuth><BusinessChart /></RequireAuth>} />
-        <Route path="/businessoverview" element={<Main />} />
-        <Route path="/customerBehaviour" element={<CustomerBehaviour />} />
-        <Route path="/campaignresult" element={<CampaignResult />} />
-        <Route path="/socialmedia" element={<SocialMedia />} />
+        <Route path="/businessoverview" element={<RequireAuth><Main /></RequireAuth>} />
+        <Route path="/customerBehaviour" element={<RequireAuth><CustomerBehaviour /></RequireAuth>} />
+        <Route path="/campaignresult" element={<RequireAuth><CampaignResult /></RequireAuth>} />
+        <Route path="/socialmedia" element={<RequireAuth><SocialMedia /></RequireAuth>} />
         <Route path="/campaignerdesign" element={<CampaignDesign />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

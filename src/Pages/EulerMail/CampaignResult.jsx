@@ -64,7 +64,7 @@ export const CampaignResult = () => {
       };
   return (
     <div style={{ "width": "500px", "height": "350px" }} className='shadow-xl rounded-xl'>
-            <h1 className='text-black text-xl text-center font-medium text-cyan-500'> Customer Behaviour</h1>
+            <h1 className='text-black text-xl text-center font-medium text-cyan-500'> Campaign Result</h1>
             <Bar options={options} data={data} />
         </div>
   )

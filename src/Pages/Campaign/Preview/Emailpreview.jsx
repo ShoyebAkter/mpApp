@@ -40,6 +40,7 @@ export const Emailpreview = ({userId,imageBlob,editedImage,text}) => {
                     campaignType:data.type,
                     emails:emails,
                     message:text,
+                    date:new Date().toLocaleDateString(),
                     subject:data.subject,
                     imageUrl:img
                 }

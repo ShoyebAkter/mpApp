@@ -17,6 +17,7 @@ export const WhatsappPreview = ({userId,editedImage,text}) => {
     const whatsAppInfo={
       uid:userId,
       campaignType:data.type,
+      date:new Date().toLocaleDateString(),
       message:text,
       number:data.phone
     }
@@ -30,12 +31,6 @@ export const WhatsappPreview = ({userId,editedImage,text}) => {
                             "Content-Type":"application/json"
                         },body:JSON.stringify(whatsAppInfo)
                     })
-    // Check if a file has been selected
-    // const fileInput = document.getElementById('myFile');
-    // console.log(fileInput.files.length);
-    
-// console.log(url);
-    // Open WhatsApp in a new tab with the updated URL
     window.open(url);
   };
 

@@ -4,8 +4,8 @@ import CustomerBehaviour from "./CustomerBehaviour"
 import OverviewChart from "./OverviewChart"
 import { useNavigate } from "react-router-dom";
 import Loading from "../Authentication/Loading";
-// import SocialMediaChart from "./SocialMediaChart"
-
+import SocialMediaChart from "./SocialMediaChart"
+import { CampaignResult } from "./CampaignResult";
 function BusinessChart() {
     const [user,loading] = useAuthState(auth);
     const navigate=useNavigate()
@@ -14,7 +14,7 @@ function BusinessChart() {
         navigate('/login')
     }
     return (
-        <div className="mt-10">
+        <div className="my-10">
             <div className="flex text-black justify-around ">
                 <div className="text-xl font-bold">Company Name</div>
                 <div className=" border-solid border-2 border-lime-500 rounded-xl px-2 text-lime-600">General Report</div>
@@ -23,9 +23,10 @@ function BusinessChart() {
                 <OverviewChart />
                 <CustomerBehaviour />
             </div>
-            {/* <div className="flex justify-around">
-            <SocialMediaChart />
-            </div> */}
+            <div className="flex justify-around">
+                <div><CampaignResult/></div>
+            <div><SocialMediaChart /></div>
+            </div>
         </div>
     )
 }

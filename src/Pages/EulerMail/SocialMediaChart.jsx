@@ -8,7 +8,6 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-// import { faker } from '@faker-js/faker';
 import { useEffect, useState } from 'react';
 
 ChartJS.register(
@@ -76,11 +75,7 @@ function SocialMediaChart() {
         plugins: {
             legend: {
                 position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Bar Chart',
-            },
+            }
         },
     };
 

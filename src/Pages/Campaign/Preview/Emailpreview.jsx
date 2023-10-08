@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import 'react-multi-email/dist/style.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAuthState } from "react-firebase-hooks/auth";
 
 
 
@@ -67,7 +66,7 @@ export const Emailpreview = ({userId,imageBlob,editedImage,text}) => {
                         
                         <input
                         {...register("type")}
-                        type="text" name="type" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Campaign type" />
+                        required type="text" name="type" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Campaign type" />
                     </div>
                     <ReactMultiEmail 
                     
@@ -94,7 +93,7 @@ export const Emailpreview = ({userId,imageBlob,editedImage,text}) => {
                     />
                     <div className="relative mb-6">
 
-                        <input {...register("subject")} type="text" name="subject" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Subject: " />
+                        <input {...register("subject")} required type="text" name="subject" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Subject: " />
                     </div>
                     <div className="relative mb-6  text-black">
                         <img

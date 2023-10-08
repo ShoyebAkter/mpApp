@@ -3,12 +3,13 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import './Login.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { auth } from '../../firebase.init';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    
     const onLogin = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
@@ -19,9 +20,8 @@ const Login = () => {
                 console.log(user);
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
+                // console.log(errorCode, errorMessage)
+                toast.error(error.message);
             });
 
     }
@@ -63,7 +63,7 @@ const Login = () => {
                                     />
                                 </div>
                             </div>
-
+                            
                             <div className='flex items-center justify-center py-7'>
                                 <button type="button"
                                     onClick={onLogin}
@@ -78,9 +78,9 @@ const Login = () => {
                                     Sign up
                                 </NavLink>
                             </p>
-
+                            <ToastContainer />
                         </form>
-
+                        
                     </div>
 
                 </section>

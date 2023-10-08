@@ -48,6 +48,7 @@ export const WhatsappPreview = ({userId,editedImage,text}) => {
             <input
             {...register("type")}
               name="type"
+              required
               // value={mobileNumber}
               type="text" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Campaign Type" />
           </div>
@@ -55,6 +56,7 @@ export const WhatsappPreview = ({userId,editedImage,text}) => {
             <input
             {...register("phone")}
               name="phone"
+              required
               // value={mobileNumber}
               type="number" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="To: +8801 with country code" />
           </div>

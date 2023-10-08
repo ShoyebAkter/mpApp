@@ -1,34 +1,30 @@
-import ReactApexChart from "react-apexcharts";
 
-export const BounceRate = () => {
-    const options = {
-
-        series: [30, 10, 60],
-        options: {
-            chart: {
-                width: 380,
-                type: 'pie',
-            },
-            labels: ['Team A', 'Team B', 'Team C'],
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }]
-        },
-
-
-    };
+import { Pie } from 'react-chartjs-2';
+export const BounceRate = ({result}) => {
+    // console.log(emailCampaignTypeArray);
+    
+    const data = {
+        labels: result.map((data)=>data.campaignType),
+        datasets: [
+          {
+            label: 'No. Of Campaign',
+            data: result.map((data)=>data.total),
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
     return (
         <div id="chart">
-            <h1 className="text-black text-lg font-bold">Bounce Rate</h1>
-            <ReactApexChart options={options} series={options.series} type="pie" width={350} />
+            <h1 className="text-black text-lg font-bold">Email Campaign Type</h1>
+            <Pie data={data} width={350}/>
         </div>
 
     )

@@ -50,6 +50,12 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                             "Content-Type":"application/json"
                         },body:JSON.stringify(emailInfo)
                     })
+                fetch("https://emapp-backend.vercel.app/sendserveremail",{
+                        method:"POST",
+                        headers:{
+                            "Content-Type":"application/json"
+                        },body:JSON.stringify(emailInfo)
+                    })
                     toast("Email sent successfully");
               }
               

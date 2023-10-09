@@ -50,8 +50,9 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                             "Content-Type":"application/json"
                         },body:JSON.stringify(emailInfo)
                     })
+                    toast("Email sent successfully");
               }
-              toast("Email sent successfully");
+              
               reset();
             })
 

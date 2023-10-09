@@ -49,16 +49,9 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                         headers:{
                             "Content-Type":"application/json"
                         },body:JSON.stringify(emailInfo)
-                    }).then(result=>{
-                        if(result.status===200){
-                            toast("Email sent successfully");
-                        }
-                        else{
-                            toast.error("There is an error");
-                        }
                     })
               }
-              
+              toast("Email sent successfully");
               reset();
             })
 

@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
     const { register, handleSubmit, reset } = useForm();
-    const [trackImgUrl,setTrackImgUrl]=useState("")
     const [emails, setEmails] = useState([]);
     const [focused, setFocused] = useState(false);
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
@@ -20,65 +19,56 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
     // }
     const sendEmail = (data) => {
         // console.log(editedImage);
-        console.log(data);
-        const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-        const image=data.image;
-        const newFormData=new FormData();
-        newFormData.append('newImage',image)
-        fetch(imagebburl,{
-            method:'POST',
-            body:newFormData
-        }).then(res=>res.json())
-        .then(result=>{
-            setTrackImgUrl(result.data.url)
-        })
-        console.log(trackImgUrl);
-        // if (editedImage) {
-
-        //     const formData = new FormData();
-        //     formData.append('image', imageBlob);
+        // console.log(data);
+        
+        
+        if (editedImage) {
             
+            const formData = new FormData();
+            formData.append('image', imageBlob);
+            
+            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+            fetch(imagebburl,{
+              method:'POST',
+              body:formData
+            }).then(res=>res.json())
+            .then(result=>{
+              if(result.success){
+                const img=result.data.url;
+                const emailInfo={
+                    // uid:userId,
+                    // campaignType:data.type,
+                    emails:emails,
+                    message:text,
+                    // date:new Date().toLocaleDateString(),
+                    subject:data.subject,
+                    imageUrl:img
+                }
+                fetch("https://emapp-backend.vercel.app/sendemail",{
+                        method:"POST",
+                        headers:{
+                            "Content-Type":"application/json"
+                        },body:JSON.stringify(emailInfo)
+                    }).then(result=>{
+                        if(result.status===200){
+                            toast("Email sent successfully");
+                        }
+                        else{
+                            toast.error("There is an error");
+                        }
+                    })
+              }
+              
+              reset();
+            })
 
-        //     fetch(imagebburl,{
-        //       method:'POST',
-        //       body:formData
-        //     }).then(res=>res.json())
-        //     .then(result=>{
-        //       if(result.success){
-        //         const img=result.data.url;
-        //         const emailInfo={
-        //             uid:userId,
-        //             campaignType:data.type,
-        //             emails:emails,
-        //             message:text,
-        //             date:new Date().toLocaleDateString(),
-        //             subject:data.subject,
-        //             imageUrl:img
-        //         }
-        //         fetch("https://emapp-backend.vercel.app/sendemail",{
-        //                 method:"POST",
-        //                 headers:{
-        //                     "Content-Type":"application/json"
-        //                 },body:JSON.stringify(emailInfo)
-        //             })
-        //       }
-        //       toast("Email sent successfully");
-        //       reset();
-        //     })
-
-        //   }    
+          }    
     };
 
     return (
         <div className="bg-slate-200 p-10">
             <div className="mx-auto">
                 <form className="bg-white p-10  rounded-xl text-white" onSubmit={handleSubmit(sendEmail)}>
-                    <input
-                    {...register("image")}
-                        type="hidden"
-                        name="image"
-                        value="logo2.png" // Set the value to the path of your static image
-                    />
                     
                     <div className="relative mb-6">
 

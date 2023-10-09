@@ -1,7 +1,7 @@
 
+import { useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 export const BounceRate = ({result}) => {
-    // console.log(emailCampaignTypeArray);
     
     const data = {
         labels: result.map((data)=>data.campaignType),

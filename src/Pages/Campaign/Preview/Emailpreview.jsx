@@ -40,9 +40,9 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                     message:text,
                     subject:data.subject,
                     imageUrl:img,
-                    uid:userId,
-                    campaignType:data.type,
-                    date:new Date().toLocaleDateString(),
+                    // uid:userId,
+                    // campaignType:data.type,
+                    // date:new Date().toLocaleDateString(),
                 }
                 fetch("https://emapp-backend.vercel.app/sendemail",{
                         method:"POST",

@@ -1,20 +1,23 @@
 import ReactApexChart from "react-apexcharts";
+import { getSimilarData } from "../getSimilarData";
 
-export const CtrIncrease = () => {
+export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
+    const emailResult=getSimilarData(emailCampaign);
+    const whatsAppResult=getSimilarData(whatsAppCampaign)
     const options = {
 
         series: [
             {
                 name: 'Discount',
-                data: [2018,20,30]
+                data: [emailResult[1].total,whatsAppResult[1].total]
             },
             {
                 name: 'Promotion',
-                data: [2020,40,60]
+                data:[emailResult[0].total,whatsAppResult[0].total]
             },
             {
                 name: 'Awareness',
-                data: [2022,60,80]
+                data: [emailResult[2].total,whatsAppResult[2].total]
             }
         ],
         options: {

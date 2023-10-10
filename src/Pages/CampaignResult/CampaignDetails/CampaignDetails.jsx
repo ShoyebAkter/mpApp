@@ -5,6 +5,7 @@ import { Unsubscription } from "./Unsubscription"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../../../firebase.init";
 import { WhatsAppType } from "./WhatsAppType"
+import { getSimilarData } from "../getSimilarData"
 
 export const CampaignDetails = () => {
   const [user]=useAuthState(auth)
@@ -27,34 +28,14 @@ export const CampaignDetails = () => {
 
     getEmailCampaignData();
   }
-  const result = emailCampaign.reduce((acc, campaign) => {
-    const existingCampaign = acc.find((item) => item.campaignType === campaign.campaignType);
+  const emailResult=getSimilarData(emailCampaign);
   
-    if (existingCampaign) {
-      existingCampaign.total++;
-    } else {
-      acc.push({ campaignType: campaign.campaignType, total: 1 });
-    }
+  const whatsAppResult = getSimilarData(whatsAppCampaign);
   
-    return acc;
-  }, []);
-  const whatsAppResult = whatsAppCampaign.reduce((acc, campaign) => {
-    const existingCampaign = acc.find((item) => item.campaignType === campaign.campaignType);
-  
-    if (existingCampaign) {
-      existingCampaign.total++;
-    } else {
-      acc.push({ campaignType: campaign.campaignType, total: 1 });
-    }
-  
-    return acc;
-  }, []);
-  // console.log(result);
-  // const emailCampaignTypeArray=emailCampaign.map((campaign)=>campaign.campaignType)
   return (
     <div className="flex justify-around shadow-2xl rounded-lg m-5">
         <CampaignTypes emailCampaign={emailCampaign.length} whatsAppCampaign={whatsAppCampaign.length} />
-        <BounceRate result={result}/>
+        <BounceRate result={emailResult}/>
         <WhatsAppType whatsAppResult={whatsAppResult}/>
     </div>
   )

@@ -36,7 +36,7 @@ export const CampaignResult = () => {
   return (
     <div className="text-black mt-10">
         <ButtonGroup emailCampaign={emailCampaign.length} whatsAppCampaign={whatsAppCampaign.length}/>
-        <ClickRatio/>
+        <ClickRatio emailCampaign={emailCampaign} whatsAppCampaign={whatsAppCampaign}/>
         <CampaignDetails/>
     </div>
   )

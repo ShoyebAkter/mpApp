@@ -1,19 +1,23 @@
 import ReactApexChart from "react-apexcharts";
+import { getSimilarData } from "../getSimilarData";
 
-export const ClickRate = () => {
+export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
+    const emailResult=getSimilarData(emailCampaign);
+    const whatsAppResult=getSimilarData(whatsAppCampaign)
+    console.log(emailResult,whatsAppResult);
     const options = {
 
         series: [{
             name: 'Discount',
-            data: [23,13,5]
+            data: [emailResult[1].total,whatsAppResult[1].total]
         },
         {
             name: 'Promotion',
-            data: [24,16,7]
+            data: [emailResult[0].total,whatsAppResult[0].total]
         },
         {
             name: 'Awareness',
-            data: [33,32,14]
+            data: [emailResult[2].total,whatsAppResult[2].total]
         }
         ],
         options: {

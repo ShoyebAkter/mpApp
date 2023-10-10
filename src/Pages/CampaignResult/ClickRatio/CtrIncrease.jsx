@@ -9,15 +9,15 @@ export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
         series: [
             {
                 name: 'Discount',
-                data: [emailResult[1].total,whatsAppResult[1].total]
+                data: [2018,20,30]
             },
             {
                 name: 'Promotion',
-                data:[emailResult[0].total,whatsAppResult[0].total]
+                data: [2020,40,60]
             },
             {
                 name: 'Awareness',
-                data: [emailResult[2].total,whatsAppResult[2].total]
+                data: [2022,60,80]
             }
         ],
         options: {

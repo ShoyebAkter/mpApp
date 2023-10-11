@@ -1,11 +1,23 @@
 import ReactApexChart from "react-apexcharts";
 import { getSimilarData } from "../getSimilarData";
-
+import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebase.init";
+import Loading from "../../Authentication/Loading";
 export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
+    const [loading] = useAuthState(auth);
+    const [emailResult,setEmailResult]=useState([]);
+    const [whatsAppResult,setWhatsAppResult]=useState([]);
+
+    useEffect(()=>{
+        getData()
+    },[])
+    const getData=()=>{
+        setEmailResult(getSimilarData(emailCampaign))
+        setWhatsAppResult(getSimilarData(whatsAppCampaign))
+    }
     
-    const emailResult=getSimilarData(emailCampaign);
-    const whatsAppResult=getSimilarData(whatsAppCampaign)
-    // console.log(emailResult,whatsAppResult);
+    console.log(emailCampaign,whatsAppCampaign);
     const options = {
 
         series: [{
@@ -15,7 +27,7 @@ export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
         },
         {
             name: 'Promotion',
-            // data: [emailResult[0].total,wha  tsAppResult[0].total]
+            // data: [emailResult[0].total,whatsAppResult[0].total]
             data: [30,40,45]
         },
         {

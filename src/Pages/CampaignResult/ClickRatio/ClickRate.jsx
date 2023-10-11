@@ -5,36 +5,27 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase.init";
 import Loading from "../../Authentication/Loading";
 export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
-    const [loading] = useAuthState(auth);
-    const [emailResult,setEmailResult]=useState([]);
-    const [whatsAppResult,setWhatsAppResult]=useState([]);
-
-    useEffect(()=>{
-        getData()
-    },[])
-    const getData=()=>{
-        setEmailResult(getSimilarData(emailCampaign))
-        setWhatsAppResult(getSimilarData(whatsAppCampaign))
+    if (!emailCampaign || !whatsAppCampaign) {
+        return <p>Loading...</p>;
     }
-    
-    console.log(emailCampaign,whatsAppCampaign);
+    const emailResult=getSimilarData(emailCampaign)
+    const whatsAppResult=getSimilarData(whatsAppCampaign)
+    // console.log(emailResult);
     const options = {
 
-        series: [{
-            name: 'Discount',
-            // data: [emailResult[1].total,whatsAppResult[1].total]
-            data: [10,20,30]
-        },
-        {
-            name: 'Promotion',
-            // data: [emailResult[0].total,whatsAppResult[0].total]
-            data: [30,40,45]
-        },
-        {
-            name: 'Awareness',
-            // data: [emailResult[2].total,whatsAppResult[2].total]
-            data: [50,60,70]
-        }
+        series: [
+            {
+                name: 'Discount',
+                data: [emailResult[1]?.total || 0, whatsAppResult[1]?.total || 0],
+            },
+            {
+                name: 'Promotion',
+                data: [emailResult[0]?.total || 0, whatsAppResult[0]?.total || 0],
+            },
+            {
+                name: 'Awareness',
+                data: [emailResult[2]?.total || 0, whatsAppResult[2]?.total || 0],
+            },
         ],
         options: {
             chart: {

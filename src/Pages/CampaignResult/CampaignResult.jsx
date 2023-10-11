@@ -13,26 +13,25 @@ export const CampaignResult = () => {
   const [whatsAppCampaign,setWhatsAppCampaign]=useState([]);
   useEffect(()=>{
     if(user){
-      getWhatsAppCampaignData()
+      getEmailCampaignData()
     }
   },[user])
 
-  const getEmailCampaignData=()=>{
+  const getWhatsAppCampaignData=async()=>{
     if(user){
-      fetch(`https://emapp-backend.vercel.app/emailcampaign/${user.uid}`)
-    .then(res=>res.json())
-    .then(result=>setEmailCampaign(result))
-    }
-  }
-  
-  const getWhatsAppCampaignData=()=>{
-    if(user){
-      fetch(`https://emapp-backend.vercel.app/whatsappcampaign/${user.uid}`)
+     await fetch(`https://emapp-backend.vercel.app/whatsappcampaign/${user.uid}`)
     .then(res=>res.json())
     .then(result=>setWhatsAppCampaign(result))
 
-    getEmailCampaignData();
     }
+  }
+  const getEmailCampaignData=async()=>{
+    if(user){
+    await  fetch(`https://emapp-backend.vercel.app/emailcampaign/${user.uid}`)
+    .then(res=>res.json())
+    .then(result=>setEmailCampaign(result))
+    }
+    getWhatsAppCampaignData()
   }
     const navigate=useNavigate()
     if(loading) return <Loading></Loading>

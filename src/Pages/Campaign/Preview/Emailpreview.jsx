@@ -12,15 +12,7 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
     const [emails, setEmails] = useState([]);
     const [focused, setFocused] = useState(false);
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
-    // const getData=()=>{
-    //     fetch("https://emapp-backend.vercel.app/tracking-pixel")
-    //     .then(res=>res.json())
-    //     .then(result=>console.log(result))
-    // }
     const sendEmail = (data) => {
-        // console.log(editedImage);
-        // console.log(data);
-        
         
         if (editedImage) {
             
@@ -49,6 +41,15 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                         headers:{
                             "Content-Type":"application/json"
                         },body:JSON.stringify(emailInfo)
+                    }).then(res=>{
+                        if(res.status===200){
+                            fetch("https://emapp-backend.vercel.app/sendserveremail",{
+                                method:"POST",
+                                headers:{
+                                    "Content-Type":"application/json"
+                                },body:JSON.stringify(emailInfo)
+                            })
+                        }
                     })
                 
                     toast("Email sent successfully");

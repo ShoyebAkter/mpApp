@@ -8,36 +8,41 @@ import Loading from "../Authentication/Loading";
 import { useEffect, useState } from "react";
 
 export const CampaignResult = () => {
-  const [user,loading] = useAuthState(auth);
-  const [emailCampaign,setEmailCampaign]=useState([]);
-  const [whatsAppCampaign,setWhatsAppCampaign]=useState([]);
-  useEffect(()=>{
-    getWhatsAppCampaignData()
-  },[])
+  const [user, loading] = useAuthState(auth);
+  const [emailCampaign, setEmailCampaign] = useState([]);
+  const [whatsAppCampaign, setWhatsAppCampaign] = useState([]);
+  useEffect(() => {
+    getWhatsAppCampaignData(user.uid)
+  }, [user])
 
-  const getEmailCampaignData=()=>{
-    fetch(`https://emapp-backend.vercel.app/emailcampaign/${user.uid}`)
-    .then(res=>res.json())
-    .then(result=>setEmailCampaign(result))
+  const getEmailCampaignData = (uid) => {
+    fetch(`https://emapp-backend.vercel.app/emailcampaign/${uid}`)
+      .then(res => res.json())
+      .then(result => setEmailCampaign(result))
   }
-  
-  const getWhatsAppCampaignData=()=>{
-    fetch(`https://emapp-backend.vercel.app/whatsappcampaign/${user.uid}`)
-    .then(res=>res.json())
-    .then(result=>setWhatsAppCampaign(result))
 
-    getEmailCampaignData();
+  const getWhatsAppCampaignData = (uid) => {
+    fetch(`https://emapp-backend.vercel.app/whatsappcampaign/${uid}`)
+      .then(res => res.json())
+      .then(result => setWhatsAppCampaign(result))
+
+    getEmailCampaignData(uid);
   }
-    const navigate=useNavigate()
-    if(loading) return <Loading></Loading>
-    if(!user){
-        navigate('/login')
-    }
+  const navigate = useNavigate()
+  if (!user) {
+    navigate('/login')
+  }
   return (
     <div className="text-black mt-10">
-        <ButtonGroup emailCampaign={emailCampaign.length} whatsAppCampaign={whatsAppCampaign.length}/>
-        <ClickRatio emailCampaign={emailCampaign} whatsAppCampaign={whatsAppCampaign}/>
-        <CampaignDetails/>
+      {
+        loading ? <Loading></Loading>
+          :
+          <div>
+            <ButtonGroup emailCampaign={emailCampaign.length} whatsAppCampaign={whatsAppCampaign.length} />
+            <ClickRatio emailCampaign={emailCampaign} whatsAppCampaign={whatsAppCampaign} />
+            <CampaignDetails />
+          </div>
+      }
     </div>
   )
 }

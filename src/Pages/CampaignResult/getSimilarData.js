@@ -7,7 +7,7 @@ export const getSimilarData=(array)=>{
         } else {
           acc.push({ campaignType: campaign.campaignType, total: 1 });
         }
-      
+        
         return acc;
       }, []);
       return result;

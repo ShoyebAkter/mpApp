@@ -15,7 +15,7 @@ export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
         },
         {
             name: 'Promotion',
-            // data: [emailResult[0].total,whatsAppResult[0].total]
+            // data: [emailResult[0].total,wha  tsAppResult[0].total]
             data: [30,40,45]
         },
         {

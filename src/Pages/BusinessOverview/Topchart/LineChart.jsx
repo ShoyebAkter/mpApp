@@ -21,7 +21,7 @@ ChartJS.register(
 );
 export const LineChart = ({averageOrder}) => {
 
-    console.log(averageOrder);
+    // console.log(averageOrder);
     const options = {
         responsive: true,
         plugins: {

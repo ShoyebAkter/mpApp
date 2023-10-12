@@ -40,7 +40,7 @@ export const BottomChart = () => {
 
   const countedValues = countDuplicateValues();
 
-  console.log(countedValues);
+  // console.log(countedValues);
 
   return (
     <ResponsiveChoropleth

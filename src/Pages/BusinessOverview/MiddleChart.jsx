@@ -38,7 +38,7 @@ export const MiddleChart = () => {
 
   }
   getSalesData()
-  console.log(salesValue);
+  // console.log(salesValue);
   const changeArrayValue = () => {
     const monthNames = [
       'January',

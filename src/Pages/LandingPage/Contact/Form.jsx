@@ -13,7 +13,7 @@ export const Form = () => {
         emailjs.sendForm('service_84ju2lu', 'template_czqmg0b', form.current, 'BTrXVDBsup09nfZ9j')
             .then((result) => {
                 console.log(result.text);
-                console.log(form.current);
+                // console.log(form.current);
                 form.current.reset();
                 toast("Email sent successfully")
             }, (error) => {

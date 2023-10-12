@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { NavLink, useNavigate } from "react-router-dom"
 import { auth } from "../../firebase.init";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 function Signup() {
   const navigate = useNavigate();
@@ -21,9 +22,8 @@ function Signup() {
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        toast(errorMessage)
         // ..
       });
   }
@@ -81,7 +81,7 @@ function Signup() {
               </p>
 
             </form>
-
+<ToastContainer/>
           </div>
 
         </section>

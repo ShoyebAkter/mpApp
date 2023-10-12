@@ -43,7 +43,7 @@ export const Orders = () => {
         })
     }
     getOrdersInfo();
-    console.log(orderData);
+    // console.log(orderData);
     const changeArrayValue = () => {
 
         orderData.forEach((obj) => {
@@ -64,7 +64,7 @@ export const Orders = () => {
     }
     
     changeArrayValue()
-    console.log(resultArray);
+    // console.log(resultArray);
     // console.log(orderData);
     const options = {
         responsive: true,

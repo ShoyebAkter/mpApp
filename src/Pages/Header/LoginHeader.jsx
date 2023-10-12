@@ -10,7 +10,7 @@ import Header from './Header';
 export const LoginHeader = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    console.log(user);
+    // console.log(user);
     const logout = () => {
         signOut(auth);
        navigate("/")

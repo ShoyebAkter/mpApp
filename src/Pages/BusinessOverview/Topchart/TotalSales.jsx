@@ -57,7 +57,7 @@ export const TotalSales = () => {
 
     }
     getSalesData()
-    console.log(salesValue);
+    // console.log(salesValue);
     const changeArrayValue = () => {
         
         salesValue.forEach((obj) => {

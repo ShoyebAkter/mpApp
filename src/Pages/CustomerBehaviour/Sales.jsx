@@ -67,7 +67,7 @@ export const Sales = () => {
   }
   getSalesData()
   const totalCount = salesValue.reduce((total, item) => total + item.total, 0);
-  console.log(totalCount);
+  // console.log(totalCount);
  
     const options = {
         indexAxis: 'y',

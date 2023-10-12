@@ -31,7 +31,7 @@ export const Customers = () => {
       .then((result) => setCustomers(result))
       .catch((error) => console.error(error))
   }, [])
-  console.log(customers);
+  // console.log(customers);
 
   const getTierValue = () => {
     customers.map((customer) => {
@@ -47,7 +47,7 @@ export const Customers = () => {
 
   }
   getTierValue()
-  console.log(tierArray);
+  // console.log(tierArray);
   function countDuplicateValues(arr) {
     const countMap = {}; // Object to store counts
     const resultArray = [];

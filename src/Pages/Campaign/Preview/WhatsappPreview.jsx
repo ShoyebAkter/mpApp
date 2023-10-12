@@ -6,7 +6,7 @@ export const WhatsappPreview = ({userId,editedImage,text}) => {
   
   const onSubmitForm = (data) => {
     // e.preventDefault();
-    console.log(data);
+    // console.log(data);
     // 
 
     // Replace non-alphanumeric characters and spaces in the mobile number

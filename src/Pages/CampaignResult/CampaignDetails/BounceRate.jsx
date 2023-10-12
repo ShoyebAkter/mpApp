@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import PropTypes from "prop-types"
 import { Pie } from 'react-chartjs-2';
 export const BounceRate = ({result}) => {
     
@@ -31,4 +31,6 @@ export const BounceRate = ({result}) => {
 
     )
 }
-
+BounceRate.propTypes = {
+  result:PropTypes.array.isRequired
+  }

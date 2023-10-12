@@ -1,9 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 import { getSimilarData } from "../getSimilarData";
-import { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../../firebase.init";
-import Loading from "../../Authentication/Loading";
+import PropTypes from "prop-types"
 export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
     if (!emailCampaign || !whatsAppCampaign) {
         return <p>Loading...</p>;
@@ -49,3 +46,7 @@ export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
             </div>
     )
 }
+ClickRate.propTypes = {
+    emailCampaign:PropTypes.array.isRequired,
+    whatsAppCampaign:PropTypes.array.isRequired,
+    }

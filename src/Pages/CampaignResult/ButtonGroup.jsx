@@ -1,4 +1,4 @@
-
+import PropTypes from "prop-types"
 export const ButtonGroup = ({emailCampaign,whatsAppCampaign}) => {
     // console.log(emailCampaign,whatsAppCampaign);
     const total=emailCampaign+whatsAppCampaign;
@@ -16,3 +16,7 @@ export const ButtonGroup = ({emailCampaign,whatsAppCampaign}) => {
         </div>
     )
 }
+ButtonGroup.propTypes = {
+    emailCampaign:PropTypes.number.isRequired,
+      whatsAppCampaign:PropTypes.number.isRequired
+    }

@@ -1,5 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 import { getSimilarData } from "../getSimilarData";
+import PropTypes from "prop-types"
 
 export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
     const emailResult=getSimilarData(emailCampaign);
@@ -53,8 +54,6 @@ export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
                 type: 'datetime'
             },
         },
-
-
     };
     return (
         <div id="chart" className="w-1/2">
@@ -62,3 +61,7 @@ export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
         </div>
     )
 }
+CtrIncrease.propTypes = {
+    emailCampaign:PropTypes.array.isRequired,
+    whatsAppCampaign:PropTypes.array.isRequired,
+    }

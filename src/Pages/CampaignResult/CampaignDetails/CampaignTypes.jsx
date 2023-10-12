@@ -1,6 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-
+import PropTypes from "prop-types"
 ChartJS.register(ArcElement, Tooltip, Legend);
 export const CampaignTypes = ({emailCampaign,whatsAppCampaign}) => {
     
@@ -32,3 +32,7 @@ export const CampaignTypes = ({emailCampaign,whatsAppCampaign}) => {
 
     )
 }
+CampaignTypes.propTypes = {
+  emailCampaign:PropTypes.number.isRequired,
+    whatsAppCampaign:PropTypes.number.isRequired
+  }

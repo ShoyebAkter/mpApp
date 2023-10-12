@@ -1,5 +1,5 @@
 import { Pie } from 'react-chartjs-2';
-
+import PropTypes from "prop-types"
 export const WhatsAppType = ({whatsAppResult}) => {
     const data = {
         labels: whatsAppResult.map((data)=>data.campaignType),
@@ -28,3 +28,6 @@ export const WhatsAppType = ({whatsAppResult}) => {
         </div>
   )
 }
+WhatsAppType.propTypes = {
+  whatsAppResult:PropTypes.array.isRequired,
+  }

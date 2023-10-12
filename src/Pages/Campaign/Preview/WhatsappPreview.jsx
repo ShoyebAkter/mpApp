@@ -1,12 +1,9 @@
 
 import { useForm } from 'react-hook-form';
-
+import PropTypes from 'prop-types';
 export const WhatsappPreview = ({userId,editedImage,text}) => {
   const {  register,handleSubmit} = useForm();
   
-  const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
-
-
   const onSubmitForm = (data) => {
     // e.preventDefault();
     console.log(data);
@@ -74,3 +71,8 @@ export const WhatsappPreview = ({userId,editedImage,text}) => {
     </div>
   )
 }
+WhatsappPreview.propTypes = {
+  userId: PropTypes.string.isRequired,
+  editedImage: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};

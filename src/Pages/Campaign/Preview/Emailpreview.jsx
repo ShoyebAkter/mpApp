@@ -4,13 +4,12 @@ import { useForm } from 'react-hook-form';
 import 'react-multi-email/dist/style.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import PropTypes from 'prop-types';
 
 
 export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
     const { register, handleSubmit, reset } = useForm();
     const [emails, setEmails] = useState([]);
-    const [focused, setFocused] = useState(false);
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
     const sendEmail = (data) => {
         
@@ -82,8 +81,6 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                             setEmails(_emails);
                         }}
                         autoFocus={true}
-                        onFocus={() => setFocused(true)}
-                        onBlur={() => setFocused(false)}
                         getLabel={(email, index, removeEmail) => {
                             return (
                                 <div data-tag key={index}>
@@ -121,3 +118,9 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
         </div>
     )
 }
+Emailpreview.propTypes = {
+    userId: PropTypes.string.isRequired,
+    imageBlob: PropTypes.object.isRequired,
+    editedImage: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+};

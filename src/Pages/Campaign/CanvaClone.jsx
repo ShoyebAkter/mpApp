@@ -1,7 +1,8 @@
 import "./CanvaClone.css";
 import CreativeEditorSDK from '@cesdk/cesdk-js';
 import { useEffect, useRef, useState } from 'react';
-import { saveAs } from 'file-saver';
+import PropTypes from 'prop-types';
+
 function CanvaClone({setImageBlob,setEditedImage}) {
   const cesdk_container = useRef(null);
   const [cesdk, setCesdk] = useState(null);
@@ -68,7 +69,7 @@ function CanvaClone({setImageBlob,setEditedImage}) {
     };
     return cleanup;
   }, [cesdk_container]);
-  // console.log(cesdk, image);
+  console.log(cesdk);
   return (
     <div>
       <div
@@ -82,3 +83,6 @@ function CanvaClone({setImageBlob,setEditedImage}) {
 }
 
 export default CanvaClone;
+CanvaClone.propTypes = 
+  {setImageBlob:PropTypes.func.isRequired,
+    setEditedImage:PropTypes.func.isRequired}

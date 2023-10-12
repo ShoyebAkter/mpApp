@@ -1,8 +1,6 @@
-import { useState } from "react";
-
+import PropTypes from 'prop-types';
 const TextEditor = ({text,setText}) => {
   
-    
   // Function to handle changes in the textarea
   const handleTextareaChange = (e) => {
     setText(e.target.value);
@@ -26,6 +24,10 @@ const TextEditor = ({text,setText}) => {
 
 }
 
+TextEditor.propTypes = {
+  text:PropTypes.string.isRequired,
+    setText:PropTypes.func.isRequired
+  }
 
 
 export default TextEditor;

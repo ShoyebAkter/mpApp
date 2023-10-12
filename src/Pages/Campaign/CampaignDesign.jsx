@@ -5,7 +5,7 @@ import { Preview } from "./Preview/Preview"
 import TextEditor from "./TextEditor"
 import { auth } from "../../firebase.init"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import Loading from "../Authentication/Loading"
 
 export const CampaignDesign = () => {

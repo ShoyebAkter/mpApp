@@ -9,7 +9,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-
+import PropTypes from "prop-types"
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -54,6 +54,7 @@ export const LineChart = ({averageOrder}) => {
         </div>
     )
 }
-LineChart.propTypes = [
-    {year:"Int",averageTotalPrice:"Int"}
-]
+LineChart.propTypes = 
+    {
+        averageOrder:PropTypes.array.isRequired
+    }

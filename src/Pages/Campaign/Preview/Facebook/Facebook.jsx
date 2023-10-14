@@ -6,8 +6,7 @@ export const Facebook = ({ imageBlob,text }) => {
         // const filename = condition ? 'image.jpg' : 'image.png';
         const shareData={
             text: text,
-            file:"file" 
-            // files: [new File([imageBlob], 'image.png', { type: imageBlob.type })],
+            files: [new File([imageBlob], 'image.png', { type: imageBlob.type })],
             
           }
         if (navigator.share) {

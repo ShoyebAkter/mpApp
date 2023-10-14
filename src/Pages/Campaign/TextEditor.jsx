@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
-const TextEditor = ({text,setText}) => {
+import { Modal } from './Modal';
+import { WhatsappModal } from './WhatsappModal';
+const TextEditor = ({text,setText,userId,editedImage,imageBlob}) => {
   
   // Function to handle changes in the textarea
   const handleTextareaChange = (e) => {
@@ -9,15 +11,18 @@ const TextEditor = ({text,setText}) => {
 
     return (
         <div 
-        style={{"width":"400px"}}
-        className='my-5 rounded-xl flex justify-center items-center  bg-slate-200'>
+        className='my-5 pt-10 rounded-xl mx-auto px-6 h-screen bg-slate-200'>
             
-            <textarea 
+              <textarea 
             value={text} // Bind the value to the state variable
             onChange={handleTextareaChange} 
-            className="bg-white rounded-xl"
-            style={{"height":"90%","width":"80%"}}
+            className="bg-white rounded-xl "
+            style={{"height":"50%","width":"250px"}}
             />
+            <div className='flex justify-around mt-5 '>
+            <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
+            <WhatsappModal userId={userId} text={text} editedImage={editedImage}/>
+            </div>
             
         </div>
     );
@@ -25,8 +30,11 @@ const TextEditor = ({text,setText}) => {
 }
 
 TextEditor.propTypes = {
-  text:PropTypes.string.isRequired,
-    setText:PropTypes.func.isRequired
+    text:PropTypes.string.isRequired,
+    setText:PropTypes.func.isRequired,
+    userId: PropTypes.string.isRequired,
+    imageBlob: PropTypes.object.isRequired,
+    editedImage: PropTypes.string.isRequired,
   }
 
 

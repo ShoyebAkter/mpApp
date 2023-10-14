@@ -1,8 +1,5 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { NavLink, useNavigate } from "react-router-dom"
-import { auth } from "../../firebase.init";
+import {  useNavigate } from "react-router-dom"
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 
 function Subscription() {
   const navigate = useNavigate();
@@ -15,7 +12,32 @@ function Subscription() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    console.log(firstName,lastName,email,gender,title,address);
+    // console.log(firstName,lastName,email,gender,title,address);
+    const subscriptionInfo={
+      firstName:firstName,
+      lastName:lastName,
+      email:email,
+      gender:gender,
+      title:title,
+      address:address,
+      date:new Date().toLocaleDateString(),
+  }
+  fetch("https://emapp-backend.vercel.app/subscriptionemail",{
+          method:"POST",
+          headers:{
+              "Content-Type":"application/json"
+          },body:JSON.stringify(subscriptionInfo)
+      }).then(res=>{
+          if(res.status===200){
+              fetch("https://emapp-backend.vercel.app/subscription",{
+                  method:"POST",
+                  headers:{
+                      "Content-Type":"application/json"
+                  },body:JSON.stringify(subscriptionInfo)
+              })
+          }
+      })
+      navigate('/')
   }
   return (
     <>
@@ -97,7 +119,6 @@ function Subscription() {
               </div>
 
             </form>
-            <ToastContainer />
           </div>
 
         </section>

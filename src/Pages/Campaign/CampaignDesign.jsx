@@ -1,7 +1,6 @@
 
 import { useState } from "react"
 import CanvaClone from "./CanvaClone"
-import { Preview } from "./Preview/Preview"
 import TextEditor from "./TextEditor"
 import { auth } from "../../firebase.init"
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -22,11 +21,11 @@ export const CampaignDesign = () => {
   // console.log(userId);
   return (
     <div>
-      <div className="text-black flex">
-        <CanvaClone setImageBlob={setImageBlob} setEditedImage={setEditedImage}/>
-        <TextEditor text={text} setText={setText}/>
+      <div className="text-black flex justify-between mx-5">
+        <div><CanvaClone setImageBlob={setImageBlob} setEditedImage={setEditedImage}/></div>
+        <div><TextEditor text={text} setText={setText} userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage}/></div>
       </div>
-      <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>Send</button>
+      {/* <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>Send</button>
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12  bg-slate-200 max-w-full">
           <Preview userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage} text={text}/>
@@ -36,7 +35,7 @@ export const CampaignDesign = () => {
             </form>
           </div>
         </div>
-      </dialog>
+      </dialog> */}
     </div>
   )
 }

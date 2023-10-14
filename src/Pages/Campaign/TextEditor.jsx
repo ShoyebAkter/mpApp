@@ -25,7 +25,7 @@ const TextEditor = ({text,setText,userId,editedImage,imageBlob}) => {
             <WhatsappModal userId={userId} text={text} editedImage={editedImage}/>
             </div>
             <div className='flex justify-around mt-5 '>
-            <Facebook imageBlob={imageBlob}/>
+            <Facebook imageBlob={imageBlob} text={text}/>
             <WhatsappModal userId={userId} text={text} editedImage={editedImage}/>
             </div>
             

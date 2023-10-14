@@ -6,26 +6,16 @@ import { ToastContainer, toast } from "react-toastify";
 
 function Subscription() {
   const navigate = useNavigate();
-
+  const [firstName,setFirstName]=useState("")
+  const [lastName,setLastName]=useState("")
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('');
+  const [gender, setGender] = useState('')
+  const [title, setTitle] = useState('')
+  const [address, setAddress] = useState('')
 
   const onSubmit = async (e) => {
     e.preventDefault()
-
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        navigate("/login")
-        // ...
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        toast(errorMessage)
-        // ..
-      });
+    console.log(firstName,lastName,email,gender,title,address);
   }
   return (
     <>
@@ -40,16 +30,22 @@ function Subscription() {
 
                   <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="first_name" className="block tracking-wide leading-6 font-semibold text-gray-400">First Name <span className="text-red-400">*</span></label>
-                    <input type="text" id="first_name" name="first_name" placeholder="Enter First Name" required className="appearance-none bg-white w-full rounded-md border-gray-300" />
+                    <input
+                    onChange={(e) => setFirstName(e.target.value)}
+                    type="text" id="first_name" name="first_name" placeholder="Enter First Name" required className="appearance-none bg-white w-full rounded-md border-gray-300" />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="last_name" className="block tracking-wide leading-6 font-semibold text-gray-400">Last Name <span className="text-red-400">*</span></label>
-                    <input type="text" id="last_name" name="last_name" placeholder="Enter Last Name" required className="appearance-none w-full bg-white rounded-md border-gray-300" />
+                    <input
+                    onChange={(e) => setLastName(e.target.value)}
+                    type="text" id="last_name" name="last_name" placeholder="Enter Last Name" required className="appearance-none w-full bg-white rounded-md border-gray-300" />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="email" className="block tracking-wide leading-6 font-semibold text-gray-400">Email <span className="text-red-400">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="Enter Email Address" className="appearance-none w-full bg-white rounded-md border-gray-300" required />
+                    <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email" id="email" name="email" placeholder="Enter Email Address" className="appearance-none w-full bg-white rounded-md border-gray-300" required />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
@@ -59,7 +55,9 @@ function Subscription() {
 
                   <div className="col-span-3 sm:col-span-2">
                     <label htmlFor="gender" className="block tracking-wide leading-6 font-semibold text-gray-400">Gender <span className="text-red-400">*</span></label>
-                    <select name="gender" id="gender" className="appearance-none w-full rounded-md border-gray-300" required>
+                    <select 
+                    onChange={(e) => setGender(e.target.value)}
+                    name="gender" id="gender" className="appearance-none w-full rounded-md border-gray-300" required>
                       <option value="0">--please select--</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
@@ -68,7 +66,9 @@ function Subscription() {
 
                   <div className="col-span-3 sm:col-span-4">
                     <label htmlFor="title" className="block tracking-wide leading-6 font-semibold text-gray-400">Title <span className="text-red-400">*</span></label>
-                    <input type="text" id="title" name="title" placeholder="Enter Title or Position" required className="appearance-none w-full bg-white rounded-md border-gray-300" />
+                    <input
+                    onChange={(e) => setTitle(e.target.value)}
+                    type="text" id="title" name="title" placeholder="Enter Title or Position" required className="appearance-none w-full bg-white rounded-md border-gray-300" />
                   </div>
 
                   <div className="col-span-6">
@@ -78,7 +78,9 @@ function Subscription() {
 
                   <div className="col-span-6">
                     <label htmlFor="address_line_1" className="block tracking-wide leading-6 font-semibold text-gray-400">Address <span className="text-red-400">*</span></label>
-                    <input type="text" id="address_line_1" name="address_line_1" required className="appearance-none bg-white w-full mb-1 rounded-md border-gray-300" placeholder="Line 1" />
+                    <input
+                    onChange={(e) => setAddress(e.target.value)}
+                    type="text" id="address_line_1" name="address_line_1" required className="appearance-none bg-white w-full mb-1 rounded-md border-gray-300" placeholder="Line 1" />
                     {/* <input type="text" id="address_line_2" name="address_line_2" className="appearance-none w-full mb-1 rounded-md border-gray-300" placeholder="Line 2" /> */}
                     {/* <input type="text" id="address_line_3" name="address_line_3" className="appearance-none w-full rounded-md border-gray-300" placeholder="Line 3" /> */}
                   </div>
@@ -86,6 +88,7 @@ function Subscription() {
                 </div>
                 <div className='flex items-center justify-center py-7'>
                   <button type="button"
+                  onClick={onSubmit}
                     className="shadow-xl text-white bg-sky-600 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 dark:focus:ring-yellow-900">
                     Submit</button>
 

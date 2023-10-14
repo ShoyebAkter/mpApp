@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Modal } from './Modal';
 import { WhatsappModal } from './WhatsappModal';
+import { Facebook } from './Preview/Facebook/Facebook';
 const TextEditor = ({text,setText,userId,editedImage,imageBlob}) => {
   
   // Function to handle changes in the textarea
@@ -21,6 +22,10 @@ const TextEditor = ({text,setText,userId,editedImage,imageBlob}) => {
             />
             <div className='flex justify-around mt-5 '>
             <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
+            <WhatsappModal userId={userId} text={text} editedImage={editedImage}/>
+            </div>
+            <div className='flex justify-around mt-5 '>
+            <Facebook imageBlob={imageBlob}/>
             <WhatsappModal userId={userId} text={text} editedImage={editedImage}/>
             </div>
             

@@ -10,6 +10,8 @@ import {
 import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useEffect, useState } from "react";
+import { getDuplicate } from "../EulerMail/getDuplicate";
+import { getTierValue } from "./getTierValue";
 
 ChartJS.register(
   CategoryScale,
@@ -33,45 +35,11 @@ export const Customers = () => {
   }, [])
   // console.log(customers);
 
-  const getTierValue = () => {
-    customers.map((customer) => {
-      Object.keys(customer.tier_and_details).forEach((objKey) => {
-        const innerObject = customer.tier_and_details[objKey];
-        tierArray.push(innerObject.tier);
-        // Object.keys(innerObject).forEach((innerKey) => {
-        //   const innerValue = innerObject[innerKey];
-        // //   console.log(`  Inner Key: ${innerKey}, Inner Value: ${innerValue}`);
-        // });
-      });
-    })
-
-  }
-  getTierValue()
+  
+  getTierValue(customers,tierArray)
   // console.log(tierArray);
-  function countDuplicateValues(arr) {
-    const countMap = {}; // Object to store counts
-    const resultArray = [];
-
-    // Loop through the original array
-    for (const value of arr) {
-      // Check if the value is already in the countMap
-      if (countMap[value] !== undefined) {
-        countMap[value]++; // Increment the count
-      } else {
-        countMap[value] = 1; // Initialize count to 1 for new values
-      }
-    }
-
-    // Loop through the countMap to create the result array
-    for (const value in countMap) {
-      if (countMap.hasOwnProperty(value)) {
-        resultArray.push({ value: value, count: countMap[value] });
-      }
-    }
-
-    return resultArray;
-  }
-  const countedValues = countDuplicateValues(tierArray);
+  
+  const countedValues = getDuplicate(tierArray);
 
   const options = {
     indexAxis: 'y',

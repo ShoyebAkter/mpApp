@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
+
     const onLogin = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
@@ -48,6 +48,7 @@ const Login = () => {
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </div>
+                                
 
                                 <div>
                                     <label htmlFor="password" className='box-decoration-clone text-gray-600 pe-2'>
@@ -63,7 +64,7 @@ const Login = () => {
                                     />
                                 </div>
                             </div>
-                            
+
                             <div className='flex items-center justify-center py-7'>
                                 <button type="button"
                                     onClick={onLogin}
@@ -74,13 +75,13 @@ const Login = () => {
                             </div>
                             <p className="text-sm text-white text-center">
                                 No account yet? {' '}
-                                <NavLink to="/signup" className="text-blue-700">
-                                    Sign up
+                                <NavLink to="/Subscription" className="text-blue-700">
+                                    Subscription
                                 </NavLink>
                             </p>
                             <ToastContainer />
                         </form>
-                        
+
                     </div>
 
                 </section>

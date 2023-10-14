@@ -2,7 +2,7 @@
 import Login from './Pages/Authentication/Login'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import Signup from './Pages/Authentication/Signup'
+import Subscription from './Pages/Authentication/Subscription'
 import BusinessChart from './Pages/EulerMail/BusinessChart'
 import { Main } from './Pages/BusinessOverview/Main'
 import { CustomerBehaviour } from './Pages/CustomerBehaviour/CustomerBehaviour'
@@ -25,7 +25,7 @@ function App() {
         <Route path="/socialmedia" element={<SocialMedia />} />
         <Route path="/campaignerdesign" element={<CampaignDesign />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/subscription" element={<Subscription />} />
       </Routes>
     </>
   )

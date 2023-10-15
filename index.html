@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>Vite + React</title>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: '195578516826746',
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: 'v13.0', // Use the latest version of the API
+        });
+      };
+    </script>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+    
   </head>
   <body>
     <div id="root"></div>

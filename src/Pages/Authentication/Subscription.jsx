@@ -35,9 +35,10 @@ function Subscription() {
                       "Content-Type":"application/json"
                   },body:JSON.stringify(subscriptionInfo)
               })
+              navigate('/')
           }
       })
-      navigate('/')
+      
   }
   return (
     <>
@@ -102,7 +103,7 @@ function Subscription() {
                     <label htmlFor="address_line_1" className="block tracking-wide leading-6 font-semibold text-gray-400">Address <span className="text-red-400">*</span></label>
                     <input
                     onChange={(e) => setAddress(e.target.value)}
-                    type="text" id="address_line_1" name="address_line_1" required className="appearance-none bg-white w-full mb-1 rounded-md border-gray-300" placeholder="Line 1" />
+                    type="text" id="address_line_1" name="address_line_1" required className="appearance-none bg-white w-full mb-1 rounded-md border-gray-300" placeholder="Address" />
                     {/* <input type="text" id="address_line_2" name="address_line_2" className="appearance-none w-full mb-1 rounded-md border-gray-300" placeholder="Line 2" /> */}
                     {/* <input type="text" id="address_line_3" name="address_line_3" className="appearance-none w-full rounded-md border-gray-300" placeholder="Line 3" /> */}
                   </div>
@@ -113,7 +114,6 @@ function Subscription() {
                   onClick={onSubmit}
                     className="shadow-xl text-white bg-sky-600 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 dark:focus:ring-yellow-900">
                     Submit</button>
-
 
                 </div>
               </div>

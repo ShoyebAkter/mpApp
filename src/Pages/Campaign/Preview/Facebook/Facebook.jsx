@@ -3,6 +3,7 @@
 export const Facebook = () => {
   const handleFacebookLogin = () => {
     // Add your Facebook login logic here
+    
     window.FB.login(function (response) {
       if (response.authResponse) {
         window.FB.api('/me/accounts', 'GET', { access_token: response.authResponse.accessToken }, function (pagesResponse) {

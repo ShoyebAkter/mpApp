@@ -7,6 +7,7 @@ function Instagram() {
     const [data, setData] = useState({});
     const [pageId,setPageId]=useState("")
     const [isSharingPost, setIsSharingPost] = useState(false);
+    const [fbPageAccessToken, setFbPageAccessToken] = useState();
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
       useEffect(() => {
         window.FB.getLoginStatus((response) => {
@@ -23,7 +24,8 @@ function Instagram() {
             },
             {
                 // Scopes that allow us to publish content to Instagram
-                scope: "pages_show_list",
+                scope: "pages_show_list,pages_read_engagement,pages_manage_posts,pages_read_user_content,pages_manage_metadata,pages_manage_engagement",
+                // scope:[ "","","pages_read_user_content","pages_manage_metadata","pages_manage_engagement"]
             }
         );
     };
@@ -46,15 +48,33 @@ function Instagram() {
         });
     };
 
-
+    const getFbPageToken=()=>{
+        return new Promise((resolve) => {
+            window.FB.api(
+                "me/accounts?fields=access_token",
+                {accessToken:facebookUserAccessToken},
+                (response)=>{
+                    resolve(response.data)
+                }
+            )
+        });
+        
+    }
     const shareOnFb = (id) => {
         window.FB.api(
             `/${id}/feed`,
             "POST",
             {
               message: "postText",
-              access_token: facebookUserAccessToken,
+              access_token:fbPageAccessToken
             },
+            (response) => {
+                if (response && !response.error) {
+                    console.log("Post was successful.");
+                } else {
+                    console.error("Error occurred while posting:", response.error);
+                }
+            }
           )
         }
         
@@ -112,9 +132,11 @@ function Instagram() {
     const shareInstagramPost = async () => {
         setIsSharingPost(true);
         const facebookPages = await getFacebookPages();
-        console.log(facebookPages);
+        const fbPageToken=await getFbPageToken();
+        setFbPageAccessToken(fbPageToken[0].access_token)
+        console.log(fbPageToken);
         setPageId(facebookPages[0].id);
-        const sharePost = await shareOnFb(facebookPages[0].id);
+        shareOnFb(facebookPages[0].id);
         // const sharePost=await shareOnPage(facebookPages[0].id);
         //     const instagramAccountId = await getInstagramAccountId(facebookPages[0].id);
         //     console.log(instagramAccountId);

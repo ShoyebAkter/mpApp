@@ -5,20 +5,14 @@ function Instagram() {
     const [imageUrl, setImageUrl] = useState("");
     const [postCaption, setPostCaption] = useState("");
     const [data, setData] = useState({});
+    const [pageId,setPageId]=useState("")
     const [isSharingPost, setIsSharingPost] = useState(false);
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
-
-    /* --------------------------------------------------------
-     *                      FACEBOOK LOGIN
-     * --------------------------------------------------------
-     */
-
-    // Check if the user is authenticated with Facebook
-    //   useEffect(() => {
-    //     window.FB.getLoginStatus((response) => {
-    //       setFacebookUserAccessToken(response.authResponse?.accessToken);
-    //     });
-    //   }, []);
+      useEffect(() => {
+        window.FB.getLoginStatus((response) => {
+          setFacebookUserAccessToken(response.authResponse?.accessToken);
+        });
+      }, []);
 
     const logInToFB = () => {
         window.FB.login(
@@ -40,14 +34,7 @@ function Instagram() {
         });
     };
 
-    /* --------------------------------------------------------
-     *             INSTAGRAM AND FACEBOOK GRAPH APIs
-     * --------------------------------------------------------
-     */
-
     const getFacebookPages = () => {
-        // fetch(`https://graph.facebook.com/${data.authResponse.userId}/accounts`)
-        // .then(res=>console.log(res))
         return new Promise((resolve) => {
             window.FB.api(
                 "me/accounts",
@@ -58,32 +45,19 @@ function Instagram() {
             );
         });
     };
+
+
     const shareOnFb = (id) => {
-        fetch(`https://graph.facebook.com/v18.0/${id}/feed`,{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },body:JSON.stringify({message:"My First Post"})
-        }).then(res=>console.log(res))
-        // return new Promise((resolve) => {
-        //     window.FB.api(
-        //         `${id}/feed`,
-        //         "POST",
-        //         {
-        //             access_token: facebookUserAccessToken,
-        //             //   image_url: imageUrl,
-        //             message: "postCaption",
-        //         },
-        //         (response) => {
-        //             console.log(response)
-        //         },
-        //         {
-        //             // Scopes that allow us to publish content to Instagram
-        //             scope: "pages_read_engagement, pages_manage_posts",
-        //         }
-        //     )
-        // })
-    }
+        window.FB.api(
+            `/${id}/feed`,
+            "POST",
+            {
+              message: "postText",
+              access_token: facebookUserAccessToken,
+            },
+          )
+        }
+        
     //   const getInstagramAccountId = (facebookPageId) => {
     //     return new Promise((resolve) => {
     //       window.FB.api(
@@ -99,46 +73,47 @@ function Instagram() {
     //     });
     //   };
 
-    const createMediaObjectContainer = (pageId) => {
-        return new Promise((resolve) => {
-            window.FB.api(
-                `${pageId}/media`,
-                "POST",
-                {
-                    access_token: facebookUserAccessToken,
-                    //   image_url: imageUrl,
-                    caption: "postCaption",
-                },
-                (response) => {
-                    resolve(response.id);
-                }
-            );
-        });
-    };
+    // const createMediaObjectContainer = (pageId) => {
+    //     return new Promise((resolve) => {
+    //         window.FB.api(
+    //             `${pageId}/media`,
+    //             "POST",
+    //             {
+    //                 access_token: facebookUserAccessToken,
+    //                 //   image_url: imageUrl,
+    //                 caption: "postCaption",
+    //             },
+    //             (response) => {
+    //                 resolve(response.id);
+    //             }
+    //         );
+    //     });
+    // };
 
-    const publishMediaObjectContainer = (
-        pageId,
-        mediaObjectContainerId
-    ) => {
-        return new Promise((resolve) => {
-            window.FB.api(
-                `${pageId}/media_publish`,
-                "POST",
-                {
-                    access_token: facebookUserAccessToken,
-                    creation_id: mediaObjectContainerId,
-                },
-                (response) => {
-                    resolve(response.id);
-                }
-            );
-        });
-    };
+    // const publishMediaObjectContainer = (
+    //     pageId,
+    //     mediaObjectContainerId
+    // ) => {
+    //     return new Promise((resolve) => {
+    //         window.FB.api(
+    //             `${pageId}/media_publish`,
+    //             "POST",
+    //             {
+    //                 access_token: facebookUserAccessToken,
+    //                 creation_id: mediaObjectContainerId,
+    //             },
+    //             (response) => {
+    //                 resolve(response.id);
+    //             }
+    //         );
+    //     });
+    // };
 
     const shareInstagramPost = async () => {
         setIsSharingPost(true);
         const facebookPages = await getFacebookPages();
         console.log(facebookPages);
+        setPageId(facebookPages[0].id);
         const sharePost = await shareOnFb(facebookPages[0].id);
         // const sharePost=await shareOnPage(facebookPages[0].id);
         //     const instagramAccountId = await getInstagramAccountId(facebookPages[0].id);

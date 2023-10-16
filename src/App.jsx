@@ -11,6 +11,7 @@ import { SocialMedia } from './Pages/SocialMedia/SocialMedia'
 import { CampaignDesign } from './Pages/Campaign/CampaignDesign'
 import { LoginHeader } from './Pages/Header/LoginHeader'
 import { Landingpage } from './Pages/LandingPage/Landingpage'
+import Instagram from './Pages/Campaign/Preview/Instagram/Instagram'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/campaignresult" element={<CampaignResult />} />
         <Route path="/socialmedia" element={<SocialMedia />} />
         <Route path="/campaignerdesign" element={<CampaignDesign />} />
+        <Route path="/instagram" element={<Instagram />} />
         <Route path="/login" element={<Login />} />
         <Route path="/subscription" element={<Subscription />} />
       </Routes>

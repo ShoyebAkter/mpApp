@@ -25,7 +25,6 @@ function App() {
         <Route path="/campaignresult" element={<CampaignResult />} />
         <Route path="/socialmedia" element={<SocialMedia />} />
         <Route path="/campaignerdesign" element={<CampaignDesign />} />
-        <Route path="/instagram" element={<Instagram />} />
         <Route path="/login" element={<Login />} />
         <Route path="/subscription" element={<Subscription />} />
       </Routes>

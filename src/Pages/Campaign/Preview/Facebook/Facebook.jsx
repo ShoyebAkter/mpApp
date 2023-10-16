@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-export const Facebook = ({imageBlob,text}) => {
+export const Facebook = ({imageBlob}) => {
   // const handleFacebookLogin = () => {
     
 

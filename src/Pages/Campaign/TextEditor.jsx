@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Modal } from './Modal';
 import { WhatsappModal } from './WhatsappModal';
 import { Facebook } from './Preview/Facebook/Facebook';
+import Instagram from './Preview/Instagram/Instagram';
 const TextEditor = ({text,setText,userId,editedImage,imageBlob}) => {
   
   // Function to handle changes in the textarea
@@ -25,7 +26,8 @@ const TextEditor = ({text,setText,userId,editedImage,imageBlob}) => {
             <WhatsappModal userId={userId} text={text} editedImage={editedImage}/>
             </div>
             <div className='flex justify-around mt-5 '>
-            <Facebook imageBlob={imageBlob} text={text}/>
+            {/* <Facebook imageBlob={imageBlob} text={text}/> */}
+            <Instagram/>
             {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
             </div>
             

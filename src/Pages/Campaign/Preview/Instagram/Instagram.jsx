@@ -18,7 +18,7 @@ function Instagram() {
     const logInToFB = () => {
         window.FB.login(
             (response) => {
-                // console.log(response);
+                console.log(response);
                 setData(response)
                 setFacebookUserAccessToken(response.authResponse?.accessToken);
             },
@@ -60,22 +60,38 @@ function Instagram() {
         });
         
     }
-    const shareOnFb = (id) => {
-        window.FB.api(
-            `/${id}/feed`,
-            "POST",
-            {
-              message: "postText",
-              access_token:fbPageAccessToken
-            },
-            (response) => {
-                if (response && !response.error) {
-                    console.log("Post was successful.");
-                } else {
-                    console.error("Error occurred while posting:", response.error);
+    const getPermission=()=>{
+        return new Promise((resolve) => {
+            window.FB.api(
+                "me/permissions",
+                {accessToken:facebookUserAccessToken},
+                (response)=>{
+                    resolve(response.data)
                 }
-            }
-          )
+            )
+        });
+    }
+    const shareOnFb = (id,token) => {
+        console.log(token);
+        return new Promise((resolve) => {
+            window.FB.api(
+                `/${id}/feed`,
+                "POST",
+                {
+                  message: "postText",
+                  access_token:token
+                },
+                (response) => {
+                    resolve(response)
+                    if (response && !response.error) {
+                        console.log("Post was successful.");
+                    } else {
+                        console.error("Error occurred while posting:", response.error);
+                    }
+                }
+              )
+        });
+        
         }
         
     //   const getInstagramAccountId = (facebookPageId) => {
@@ -134,9 +150,9 @@ function Instagram() {
         const facebookPages = await getFacebookPages();
         const fbPageToken=await getFbPageToken();
         setFbPageAccessToken(fbPageToken[0].access_token)
-        console.log(fbPageToken);
+        console.log(getPermission());
         setPageId(facebookPages[0].id);
-        shareOnFb(facebookPages[0].id);
+        shareOnFb(facebookPages[0].id,fbPageToken[0].access_token);
         // const sharePost=await shareOnPage(facebookPages[0].id);
         //     const instagramAccountId = await getInstagramAccountId(facebookPages[0].id);
         //     console.log(instagramAccountId);

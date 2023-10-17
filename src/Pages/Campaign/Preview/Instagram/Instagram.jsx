@@ -9,7 +9,6 @@ function Instagram({imageBlob,text}) {
     const [isSharingPost, setIsSharingPost] = useState(false);
     const [fbPageAccessToken, setFbPageAccessToken] = useState();
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
-    const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
       useEffect(() => {
         window.FB.getLoginStatus((response) => {
           setFacebookUserAccessToken(response.authResponse?.accessToken);
@@ -76,11 +75,10 @@ function Instagram({imageBlob,text}) {
         
         return new Promise((resolve) => {
             window.FB.api(
-                `/${id}/photos`,
+                `/${id}/feed`,
                 "POST",
                 {
-                  url: [new File([imageBlob], 'image.png', { type: imageBlob.type })],
-                  caption: text,
+                  message:"postany",
                   access_token:token
                 },
                 (response) => {

@@ -18,7 +18,7 @@ export const CampaignDesign = () => {
     if(!user){
         navigate('/login')
     }
-  // console.log(userId);
+  console.log(imageBlob,editedImage);
   return (
     <div>
       <div className="text-black flex justify-between mx-5">

@@ -26,6 +26,7 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
             .then(result=>{
               if(result.success){
                 const img=result.data.url;
+                console.log(img);
                 const emailInfo={
                     emails:emails,
                     message:text,

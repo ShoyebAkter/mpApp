@@ -72,15 +72,14 @@ function Instagram({imageBlob,text}) {
             )
         });
     }
-    const shareOnFb = (id,token,imageUrl) => {
-        // console.log(token);
+    const shareOnFb = (id,token) => {
         
         return new Promise((resolve) => {
             window.FB.api(
                 `/${id}/photos`,
                 "POST",
                 {
-                    url:imageUrl,
+                  url: [new File([imageBlob], 'image.png', { type: imageBlob.type })],
                   caption: text,
                   access_token:token
                 },
@@ -150,21 +149,12 @@ function Instagram({imageBlob,text}) {
 
     const shareInstagramPost = async () => {
         setIsSharingPost(true);
-        let imageUrl;
-        const formData = new FormData();
-            formData.append('image', imageBlob);
-            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-            fetch(imagebburl,{
-              method:'POST',
-              body:formData
-            }).then(res=>res.json())
-            .then((result)=>{imageUrl=result.data.url})
         const facebookPages = await getFacebookPages();
         const fbPageToken=await getFbPageToken();
         setFbPageAccessToken(fbPageToken[0].access_token)
         console.log(getPermission());
         setPageId(facebookPages[0].id);
-        shareOnFb(facebookPages[0].id,fbPageToken[0].access_token,imageUrl);
+        shareOnFb(facebookPages[0].id,fbPageToken[0].access_token);
         // const sharePost=await shareOnPage(facebookPages[0].id);
         //     const instagramAccountId = await getInstagramAccountId(facebookPages[0].id);
         //     console.log(instagramAccountId);

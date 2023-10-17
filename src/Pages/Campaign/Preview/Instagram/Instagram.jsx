@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import PropTypes from 'prop-types'
 
-
-function Instagram() {
+function Instagram({imageBlob,text}) {
     const [imageUrl, setImageUrl] = useState("");
     const [postCaption, setPostCaption] = useState("");
     const [data, setData] = useState({});
@@ -9,6 +9,7 @@ function Instagram() {
     const [isSharingPost, setIsSharingPost] = useState(false);
     const [fbPageAccessToken, setFbPageAccessToken] = useState();
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
+    const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
       useEffect(() => {
         window.FB.getLoginStatus((response) => {
           setFacebookUserAccessToken(response.authResponse?.accessToken);
@@ -71,14 +72,16 @@ function Instagram() {
             )
         });
     }
-    const shareOnFb = (id,token) => {
-        console.log(token);
+    const shareOnFb = (id,token,imageUrl) => {
+        // console.log(token);
+        
         return new Promise((resolve) => {
             window.FB.api(
-                `/${id}/feed`,
+                `/${id}/photos`,
                 "POST",
                 {
-                  message: "postText",
+                    url:imageUrl,
+                  caption: text,
                   access_token:token
                 },
                 (response) => {
@@ -147,12 +150,21 @@ function Instagram() {
 
     const shareInstagramPost = async () => {
         setIsSharingPost(true);
+        let imageUrl;
+        const formData = new FormData();
+            formData.append('image', imageBlob);
+            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+            fetch(imagebburl,{
+              method:'POST',
+              body:formData
+            }).then(res=>res.json())
+            .then((result)=>{imageUrl=result.data.url})
         const facebookPages = await getFacebookPages();
         const fbPageToken=await getFbPageToken();
         setFbPageAccessToken(fbPageToken[0].access_token)
         console.log(getPermission());
         setPageId(facebookPages[0].id);
-        shareOnFb(facebookPages[0].id,fbPageToken[0].access_token);
+        shareOnFb(facebookPages[0].id,fbPageToken[0].access_token,imageUrl);
         // const sharePost=await shareOnPage(facebookPages[0].id);
         //     const instagramAccountId = await getInstagramAccountId(facebookPages[0].id);
         //     console.log(instagramAccountId);
@@ -212,5 +224,8 @@ function Instagram() {
         </main>
     );
 }
-
+Instagram.propTypes = {
+    text:PropTypes.string.isRequired,
+    imageBlob: PropTypes.object.isRequired,
+  }
 export default Instagram;

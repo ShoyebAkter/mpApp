@@ -3,8 +3,8 @@ import { Modal } from './Modal';
 import { WhatsappModal } from './WhatsappModal';
 import { Facebook } from './Preview/Facebook/Facebook';
 import Instagram from './Preview/Instagram/Instagram';
+import { useState } from 'react';
 const TextEditor = ({text,setText,userId,editedImage,imageBlob}) => {
-  
   // Function to handle changes in the textarea
   const handleTextareaChange = (e) => {
     setText(e.target.value);
@@ -22,13 +22,13 @@ const TextEditor = ({text,setText,userId,editedImage,imageBlob}) => {
             style={{"height":"50%","width":"250px"}}
             />
             <div className='flex justify-around mt-5 '>
-            <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
+            <Modal  text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
             <WhatsappModal userId={userId} text={text} editedImage={editedImage}/>
             </div>
             <div className='flex justify-around mt-5 '>
-            {/* <Facebook imageBlob={imageBlob} text={text}/> */}
-            {/* <Instagram/> */}
-            <WhatsappModal userId={userId} text={text} editedImage={editedImage}/>
+            <Facebook imageBlob={imageBlob} text={text}/>
+            <Instagram imageBlob={imageBlob} text={text}/>
+            {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
             </div>
             
         </div>

@@ -2,12 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 
 function Instagram({imageBlob,text}) {
-    const [imageUrl, setImageUrl] = useState("");
-    const [postCaption, setPostCaption] = useState("");
-    const [data, setData] = useState({});
-    const [pageId,setPageId]=useState("")
     const [isSharingPost, setIsSharingPost] = useState(false);
-    const [fbPageAccessToken, setFbPageAccessToken] = useState();
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
       useEffect(() => {
@@ -19,8 +14,6 @@ function Instagram({imageBlob,text}) {
     const logInToFB = () => {
         window.FB.login(
             (response) => {
-                console.log(response);
-                setData(response)
                 setFacebookUserAccessToken(response.authResponse?.accessToken);
             },
             {
@@ -50,6 +43,7 @@ function Instagram({imageBlob,text}) {
     };
 
     const getFbPageToken=()=>{
+        // const id="6960802797316889";
         return new Promise((resolve) => {
             window.FB.api(
                 "me/accounts?fields=access_token",
@@ -161,16 +155,11 @@ function Instagram({imageBlob,text}) {
             // console.log(imageUrl);
         const facebookPages = await getFacebookPages();
         const fbPageToken=await getFbPageToken();
-        setFbPageAccessToken(fbPageToken[0].access_token)
         console.log(getPermission());
-        setPageId(facebookPages[0].id);
         shareOnFb(facebookPages[0].id,fbPageToken[0].access_token,imageUrl);
         
         setIsSharingPost(false);
 
-        // Reset the form state
-        setImageUrl("");
-        setPostCaption("");
     };
 
     return (

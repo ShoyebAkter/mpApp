@@ -5,7 +5,7 @@ export const Modal = ({userId,imageBlob,editedImage,text}) => {
     <div>
         <button className="btn mb-2" onClick={() => document.getElementById('my_modal_4').showModal()}>Email</button>
       <dialog id="my_modal_4" className="modal">
-        <div className="modal-box w-11/12  bg-slate-200 max-w-full">
+        <div className="modal-box w-1/2  bg-slate-200 max-w-full">
             <Emailpreview userId={userId}
          imageBlob={imageBlob} editedImage={editedImage} text={text}/>
           {/* <Preview userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage} text={text}/> */}

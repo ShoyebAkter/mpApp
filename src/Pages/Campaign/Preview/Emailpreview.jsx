@@ -10,67 +10,123 @@ import PropTypes from 'prop-types';
 export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
     const { register, handleSubmit, reset } = useForm();
     const [emails, setEmails] = useState([]);
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const options = [
+        'Promotion',
+        'Discount',
+        'Awareness',
+    ];
+
+    const handleOptionSelect = (option) => {
+        setSelectedOption(option);
+        setIsDropdownOpen(false);
+    };
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen); // Toggle the dropdown visibility
+      };
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
     const sendEmail = (data) => {
-        
+
         if (editedImage) {
-            
+
             const formData = new FormData();
             formData.append('image', imageBlob);
-            
-            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-            fetch(imagebburl,{
-              method:'POST',
-              body:formData
-            }).then(res=>res.json())
-            .then(result=>{
-              if(result.success){
-                const img=result.data.url;
-                console.log(img);
-                const emailInfo={
-                    emails:emails,
-                    message:text,
-                    subject:data.subject,
-                    imageUrl:img,
-                    uid:userId,
-                    campaignType:data.type,
-                    date:new Date().toLocaleDateString(),
-                }
-                fetch("https://emapp-backend.vercel.app/sendemail",{
-                        method:"POST",
-                        headers:{
-                            "Content-Type":"application/json"
-                        },body:JSON.stringify(emailInfo)
-                    }).then(res=>{
-                        if(res.status===200){
-                            fetch("https://emapp-backend.vercel.app/sendserveremail",{
-                                method:"POST",
-                                headers:{
-                                    "Content-Type":"application/json"
-                                },body:JSON.stringify(emailInfo)
-                            })
-                        }
-                    })
-                
-                    toast("Email sent successfully");
-              }
-              
-              reset();
-            })
 
-          }    
+            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+            fetch(imagebburl, {
+                method: 'POST',
+                body: formData
+            }).then(res => res.json())
+                .then(result => {
+                    if (result.success) {
+                        const img = result.data.url;
+                        console.log(img);
+                        const emailInfo = {
+                            emails: emails,
+                            message: text,
+                            subject: data.subject,
+                            imageUrl: img,
+                            uid: userId,
+                            campaignType: selectedOption,
+                            date: new Date().toLocaleDateString(),
+                        }
+                        fetch("https://emapp-backend.vercel.app/sendemail", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            }, body: JSON.stringify(emailInfo)
+                        }).then(res => {
+                            if (res.status === 200) {
+                                fetch("https://emapp-backend.vercel.app/sendserveremail", {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    }, body: JSON.stringify(emailInfo)
+                                })
+                            }
+                        })
+
+                        toast("Email sent successfully");
+                    }
+
+                    reset();
+                })
+
+        }
     };
 
     return (
         <div className="bg-slate-200 p-10">
             <div className="mx-auto">
                 <form className="bg-white p-10  rounded-xl text-white" onSubmit={handleSubmit(sendEmail)}>
-                    
+
                     <div className="relative mb-6">
 
-                        <input
-                            {...register("type")}
-                            required type="text" name="type" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Campaign type" />
+                        <div className="text-black">
+                            <button
+                                id="dropdownDefaultButton"
+                                data-dropdown-toggle="dropdown"
+                                className="text-black  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center border-black"
+                                type="button"
+                                onClick={toggleDropdown}
+                            >
+                                {selectedOption ? selectedOption : 'Select Campaign Type'}
+                                <svg
+                                    className="w-2.5 h-2.5 ml-2.5"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 10 6"
+                                >
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+
+                            {/* Dropdown menu */}
+                            <div
+                                id="dropdown"
+                                className={`z-10 ${isDropdownOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+                            >
+                                <ul
+                                    className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                    aria-labelledby="dropdownDefaultButton"
+                                >
+                                    {options.map((option, index) => (
+                                        <li key={index}>
+                                            <a
+                                                href="#"
+                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                onClick={() => handleOptionSelect(option)}
+                                            >
+                                                {option}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
                     <ReactMultiEmail
 

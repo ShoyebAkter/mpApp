@@ -56,10 +56,10 @@ export const UserStatics = () => {
     console.log(permaLink);
     return (
         <div className='flex justify-around my-10'>
-            <div className='rounded-xl shadow-lg w-1/3'>
+            <div className='rounded-xl shadow-lg '>
                 <Bar options={options} data={data} />
             </div>
-            <div className='text-black rounded-xl shadow-2xl w-1/3'>
+            <div className='text-black rounded-xl shadow-2xl '>
                 <div>
                     {
                         permaLink ?

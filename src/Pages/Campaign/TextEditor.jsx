@@ -3,7 +3,6 @@ import { Modal } from './Modal';
 import { WhatsappModal } from './WhatsappModal';
 import { Facebook } from './Preview/Facebook/Facebook';
 import Instagram from './Preview/Instagram/Instagram';
-import { useState } from 'react';
 const TextEditor = ({text,setText,userId,editedImage,imageBlob}) => {
   // Function to handle changes in the textarea
   const handleTextareaChange = (e) => {

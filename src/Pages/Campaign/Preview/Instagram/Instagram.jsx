@@ -9,6 +9,7 @@ function Instagram({imageBlob,text}) {
     const [isSharingPost, setIsSharingPost] = useState(false);
     const [fbPageAccessToken, setFbPageAccessToken] = useState();
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
+    const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
       useEffect(() => {
         window.FB.getLoginStatus((response) => {
           setFacebookUserAccessToken(response.authResponse?.accessToken);
@@ -71,14 +72,15 @@ function Instagram({imageBlob,text}) {
             )
         });
     }
-    const shareOnFb = (id,token) => {
+    const shareOnFb = (id,token,url) => {
         
         return new Promise((resolve) => {
             window.FB.api(
-                `/${id}/feed`,
+                `/${id}/photos`,
                 "POST",
                 {
-                  message:"postany",
+                  url:url,
+                  caption:text,
                   access_token:token
                 },
                 (response) => {
@@ -147,24 +149,23 @@ function Instagram({imageBlob,text}) {
 
     const shareInstagramPost = async () => {
         setIsSharingPost(true);
+        const formData = new FormData();
+            formData.append('image', imageBlob);
+            
+            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+            const imageUrl=await fetch(imagebburl,{
+              method:'POST',
+              body:formData
+            }).then(res=>res.json())
+            .then(res=> res.data.url)
+            // console.log(imageUrl);
         const facebookPages = await getFacebookPages();
         const fbPageToken=await getFbPageToken();
         setFbPageAccessToken(fbPageToken[0].access_token)
         console.log(getPermission());
         setPageId(facebookPages[0].id);
-        shareOnFb(facebookPages[0].id,fbPageToken[0].access_token);
-        // const sharePost=await shareOnPage(facebookPages[0].id);
-        //     const instagramAccountId = await getInstagramAccountId(facebookPages[0].id);
-        //     console.log(instagramAccountId);
-        //     const mediaObjectContainerId = await createMediaObjectContainer(
-        //       facebookPages[0].id
-        //     );
-        // // console.log(mediaObjectContainerId);
-        //     await publishMediaObjectContainer(
-        //         facebookPages[0].id,
-        //       mediaObjectContainerId
-        //     );
-
+        shareOnFb(facebookPages[0].id,fbPageToken[0].access_token,imageUrl);
+        
         setIsSharingPost(false);
 
         // Reset the form state

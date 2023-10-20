@@ -94,7 +94,7 @@ function Subscription() {
                   </div>
 
                   <div className="col-span-3 sm:col-span-4">
-                    <label htmlFor="title" className="block tracking-wide leading-6 font-semibold text-gray-400">Title <span className="text-red-400">*</span></label>
+                    <label htmlFor="title" className="block tracking-wide leading-6 font-semibold text-gray-400">Company Name <span className="text-red-400">*</span></label>
                     <input
                     onChange={(e) => setName(e.target.value)}
                     type="text" id="name" name="name" placeholder="Enter Company Name" required className="appearance-none w-full bg-white rounded-md border-gray-300" />

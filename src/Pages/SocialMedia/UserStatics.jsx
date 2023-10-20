@@ -55,28 +55,31 @@ export const UserStatics = () => {
     };
     console.log(permaLink);
     return (
-        <div className='flex justify-around my-10'>
-            <div className='rounded-xl shadow-lg '>
+        <div className='flex justify-around my-10 '>
+            <div className='rounded-xl p-5 shadow-lg w-1//3'>
                 <Bar options={options} data={data} />
             </div>
-            <div className='text-black rounded-xl shadow-2xl '>
+            <div className='text-black rounded-xl p-5 shadow-2xl w-1//2'>
                 <div>
+
                     {
                         permaLink ?
-                            <FacebookProvider appId="231991286544485">
-                                <EmbeddedPost href={permaLink.permalink_url} width="500" />
-                            </FacebookProvider>
-                            // <div>
-                            //     <iframe
-                            //         title="Facebook Post"
-                            //         src={permaLink.permalink_url}
-                            //         width="500"
-                            //         height="500"
-                            //         style={{ border: 'none', overflow: 'hidden' }}
-                            //         allowFullScreen
-                            //         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                            //     ></iframe>
-                            // </div>
+                            // <div
+                            //     className="fb-post"
+                            //     data-width="500"
+                            //     data-href={`${permaLink.permalink_url}`}
+                            // ></div>
+                            <div>
+                                <iframe
+                                    title="Facebook Post"
+                                    src='https://www.facebook.com/122096237306087447/posts/122096157158087447'
+                                    width="500"
+                                    height="500"
+                                    style={{ border: 'none', overflow: 'hidden' }}
+                                    allowFullScreen
+                                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                ></iframe>
+                            </div>
                             :
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
                                 <FacebookPost setPermaLink={setPermaLink} />

@@ -178,22 +178,9 @@ function Instagram({imageBlob,text}) {
             </section>
             {facebookUserAccessToken ? (
                 <section >
-                    <h3>2. Send a post to Instagram</h3>
-                    {/* <input
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="Enter a JPEG image url..."
-            />
-            <textarea
-              value={postCaption}
-              onChange={(e) => setPostCaption(e.target.value)}
-              placeholder="Write a caption..."
-              rows="10"
-            /> */}
+                    <h3>2. Send a post to Facebook</h3>
                     <button
                         onClick={shareInstagramPost}
-
-                    //   disabled={isSharingPost || !imageUrl}
                     >
                         {isSharingPost ? "Sharing..." : "Share"}
                     </button>

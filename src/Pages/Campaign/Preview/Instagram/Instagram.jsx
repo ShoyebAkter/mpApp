@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 
-function Instagram({imageBlob,text}) {
+function Instagram({ imageBlob, text }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
-      useEffect(() => {
+    useEffect(() => {
         window.FB.getLoginStatus((response) => {
-          setFacebookUserAccessToken(response.authResponse?.accessToken);
+            setFacebookUserAccessToken(response.authResponse?.accessToken);
         });
-      }, []);
+    }, []);
 
     const logInToFB = () => {
         window.FB.login(
@@ -42,40 +42,51 @@ function Instagram({imageBlob,text}) {
         });
     };
 
-    const getFbPageToken=()=>{
+    const getFbPageToken = () => {
         // const id="6960802797316889";
         return new Promise((resolve) => {
             window.FB.api(
                 "me/accounts?fields=access_token",
-                {accessToken:facebookUserAccessToken},
-                (response)=>{
+                { accessToken: facebookUserAccessToken },
+                (response) => {
                     resolve(response.data)
                 }
             )
         });
-        
+
     }
-    const getPermission=()=>{
+    const getPermission = () => {
         return new Promise((resolve) => {
             window.FB.api(
                 "me/permissions",
-                {accessToken:facebookUserAccessToken},
-                (response)=>{
+                { accessToken: facebookUserAccessToken },
+                (response) => {
                     resolve(response.data)
                 }
             )
         });
     }
-    const shareOnFb = (id,token,url) => {
-        
+    const shareOnFb = (id, token, url) => {
+        const fbInfo = {
+            message: text,
+            imageUrl: url,
+            id: id,
+            date: new Date().toLocaleDateString(),
+        }
+        fetch("https://emapp-backend.vercel.app/fbpost", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }, body: JSON.stringify(fbInfo)
+        })
         return new Promise((resolve) => {
             window.FB.api(
                 `/${id}/photos`,
                 "POST",
                 {
-                  url:url,
-                  caption:text,
-                  access_token:token
+                    url: url,
+                    caption: text,
+                    access_token: token
                 },
                 (response) => {
                     resolve(response)
@@ -85,11 +96,11 @@ function Instagram({imageBlob,text}) {
                         console.error("Error occurred while posting:", response.error);
                     }
                 }
-              )
+            )
         });
-        
-        }
-        
+
+    }
+
     //   const getInstagramAccountId = (facebookPageId) => {
     //     return new Promise((resolve) => {
     //       window.FB.api(
@@ -144,20 +155,20 @@ function Instagram({imageBlob,text}) {
     const shareInstagramPost = async () => {
         setIsSharingPost(true);
         const formData = new FormData();
-            formData.append('image', imageBlob);
-            
-            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-            const imageUrl=await fetch(imagebburl,{
-              method:'POST',
-              body:formData
-            }).then(res=>res.json())
-            .then(res=> res.data.url)
-            // console.log(imageUrl);
+        formData.append('image', imageBlob);
+
+        const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+        const imageUrl = await fetch(imagebburl, {
+            method: 'POST',
+            body: formData
+        }).then(res => res.json())
+            .then(res => res.data.url)
+        // console.log(imageUrl);
         const facebookPages = await getFacebookPages();
-        const fbPageToken=await getFbPageToken();
+        const fbPageToken = await getFbPageToken();
         console.log(getPermission());
-        shareOnFb(facebookPages[0].id,fbPageToken[0].access_token,imageUrl);
-        
+        shareOnFb(facebookPages[0].id, fbPageToken[0].access_token, imageUrl);
+
         setIsSharingPost(false);
 
     };
@@ -190,7 +201,7 @@ function Instagram({imageBlob,text}) {
     );
 }
 Instagram.propTypes = {
-    text:PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
     imageBlob: PropTypes.object.isRequired,
-  }
+}
 export default Instagram;

@@ -8,10 +8,8 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 import { FacebookPost } from './FacebookPost';
-import { FacebookProvider, EmbeddedPost } from 'react-facebook';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 ChartJS.register(
     CategoryScale,
@@ -23,6 +21,29 @@ ChartJS.register(
 );
 export const UserStatics = () => {
     const [permaLink, setPermaLink] = useState("")
+    const [fbData,setFbData]=useState([])
+    useEffect(()=>{
+        getFbData();
+    },[])
+    const getFbData=()=>{
+        fetch(`https://emapp-backend.vercel.app/fbpost`)
+        .then(res=>res.json())
+        .then(result=>setFbData(result))
+        console.log(fbData);
+      }
+      
+      const result = fbData.reduce((acc, campaign) => {
+        const existingCampaign = acc.find((item) => item.date === campaign.date);
+      
+        if (existingCampaign) {
+          existingCampaign.total++;
+        } else {
+          acc.push({ date: campaign.date, total: 1 });
+        }
+      
+        return acc;
+      },[]);
+    //   console.log(result);
     const options = {
         responsive: true,
         plugins: {
@@ -36,24 +57,19 @@ export const UserStatics = () => {
         },
     };
 
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    const labels = result.map((campaign)=>campaign.date)
 
     const data = {
         labels,
         datasets: [
             {
                 label: 'Dataset 1',
-                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+                data:  result.map((campaign)=>campaign.total),
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            },
-            {
-                label: 'Dataset 2',
-                data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
-            },
+            }
         ],
     };
-    console.log(permaLink);
+    // console.log(permaLink);
     return (
         <div className='flex justify-around my-10 '>
             <div className='rounded-xl p-5 shadow-lg w-1//3'>

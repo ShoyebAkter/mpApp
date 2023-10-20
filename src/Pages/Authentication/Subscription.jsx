@@ -1,5 +1,6 @@
 import {  useNavigate } from "react-router-dom"
 import { useState } from "react";
+import { PhoneInput } from "react-international-phone";
 
 function Subscription() {
   const navigate = useNavigate();
@@ -7,8 +8,9 @@ function Subscription() {
   const [lastName,setLastName]=useState("")
   const [email, setEmail] = useState('')
   const [gender, setGender] = useState('')
-  const [title, setTitle] = useState('')
+  const [name, setName] = useState('')
   const [address, setAddress] = useState('')
+  const [phone, setPhone] = useState('')
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -18,7 +20,7 @@ function Subscription() {
       lastName:lastName,
       email:email,
       gender:gender,
-      title:title,
+      title:name,
       address:address,
       date:new Date().toLocaleDateString(),
   }
@@ -29,12 +31,6 @@ function Subscription() {
           },body:JSON.stringify(subscriptionInfo)
       }).then(res=>{
           if(res.status===200){
-              fetch("https://emapp-backend.vercel.app/subscription",{
-                  method:"POST",
-                  headers:{
-                      "Content-Type":"application/json"
-                  },body:JSON.stringify(subscriptionInfo)
-              })
               navigate('/')
           }
       })
@@ -70,6 +66,16 @@ function Subscription() {
                     onChange={(e) => setEmail(e.target.value)}
                     type="email" id="email" name="email" placeholder="Enter Email Address" className="appearance-none w-full bg-white rounded-md border-gray-300" required />
                   </div>
+                  <div className="col-span-6 sm:col-span-3">
+                  <label className="block text-sm text-gray-500">Phone Number</label>
+                        <PhoneInput
+                                name="phone"
+                                id="phone_field"
+                                defaultCountry="BAN"
+                                value={phone}
+                                onChange={(phone) => setPhone(phone)}
+                            />
+                  </div>
 
                   <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="work_email" className="block tracking-wide leading-6 font-semibold text-gray-400">Work Email</label>
@@ -90,8 +96,8 @@ function Subscription() {
                   <div className="col-span-3 sm:col-span-4">
                     <label htmlFor="title" className="block tracking-wide leading-6 font-semibold text-gray-400">Title <span className="text-red-400">*</span></label>
                     <input
-                    onChange={(e) => setTitle(e.target.value)}
-                    type="text" id="title" name="title" placeholder="Enter Title or Position" required className="appearance-none w-full bg-white rounded-md border-gray-300" />
+                    onChange={(e) => setName(e.target.value)}
+                    type="text" id="name" name="name" placeholder="Enter Company Name" required className="appearance-none w-full bg-white rounded-md border-gray-300" />
                   </div>
 
                   <div className="col-span-6">
@@ -112,7 +118,9 @@ function Subscription() {
                 <div className='flex items-center justify-center py-7'>
                   <button type="button"
                   onClick={onSubmit}
-                    className="shadow-xl text-white bg-sky-600 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 dark:focus:ring-yellow-900">
+                  disabled={!name || !email || !firstName || !lastName || !address || !gender}
+                    className={`shadow-xl text-white bg-sky-600 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 ${
+                      (!name || !email || !firstName || !lastName || !address || !gender) ? 'bg-gray-300 cursor-not-allowed' : 'hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900'}`}>
                     Submit</button>
 
                 </div>

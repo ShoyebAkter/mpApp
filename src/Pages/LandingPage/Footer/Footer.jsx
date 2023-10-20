@@ -3,7 +3,7 @@ export const Footer = () => {
     return (
         <div>
 
-            <footer className="bg-white dark:bg-gray-900">
+            <footer className="dark:bg-gray-900">
                 <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                     <div className="md:flex md:justify-around">
                         <div className="md:mb-0">

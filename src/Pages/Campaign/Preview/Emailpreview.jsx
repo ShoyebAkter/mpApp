@@ -109,7 +109,7 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                                 className={`z-10 ${isDropdownOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
                             >
                                 <ul
-                                    className="py-2 text-sm text-gray-700 "
+                                    className="py-2 text-sm text-white-700 "
                                     aria-labelledby="dropdownDefaultButton"
                                 >
                                     {options.map((option, index) => (

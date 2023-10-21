@@ -83,7 +83,7 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
 
                     <div className="relative mb-6">
 
-                        <div className="text-black">
+                        <div >
                             <button
                                 id="dropdownDefaultButton"
                                 data-dropdown-toggle="dropdown"
@@ -109,14 +109,14 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                                 className={`z-10 ${isDropdownOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
                             >
                                 <ul
-                                    className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                    className="py-2 text-sm text-gray-700 "
                                     aria-labelledby="dropdownDefaultButton"
                                 >
                                     {options.map((option, index) => (
                                         <li key={index}>
                                             <a
                                                 href="#"
-                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                className="block px-4 py-2 hover:bg-gray-100 "
                                                 onClick={() => handleOptionSelect(option)}
                                             >
                                                 {option}
@@ -151,7 +151,7 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                     />
                     <div className="relative mb-6">
 
-                        <input {...register("subject")} required type="text" name="subject" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Subject: " />
+                        <input {...register("subject")} required type="text" name="subject" id="input-group-1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 " placeholder="Subject: " />
                     </div>
                     <div className="relative mb-6  text-black">
                         <img
@@ -164,7 +164,7 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                             name="message"
                             value={text}
                             readOnly
-                            className=" rounded-xl border-2 "
+                            className=" rounded-xl border-2 bg-black"
                             style={{ "height": "150px", "width": "100%" }}
                         />
                     </div>

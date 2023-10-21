@@ -58,7 +58,7 @@ export const FacebookPost = ({setPermaLink}) => {
                 `${pageId}/feed`,
                 { access_token: fbPageToken },
                 (response) => {
-                    resolve(response.data[0].id);
+                    resolve(response.data[2].id);
                 }
             );
         })

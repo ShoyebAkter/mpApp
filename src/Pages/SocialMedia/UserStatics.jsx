@@ -8,9 +8,9 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { FacebookPost } from './FacebookPost';
+import { FacebookEmbed } from 'react-social-media-embed';
 import { useEffect, useState } from 'react';
-
+import { FacebookPost } from './FacebookPost';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -21,28 +21,29 @@ ChartJS.register(
 );
 export const UserStatics = () => {
     const [permaLink, setPermaLink] = useState("")
-    const [fbData,setFbData]=useState([])
-    useEffect(()=>{
+    const [fbData, setFbData] = useState([])
+    useEffect(() => {
         getFbData();
-    },[])
-    const getFbData=()=>{
+    }, [])
+
+    const getFbData = () => {
         fetch(`https://emapp-backend.vercel.app/fbpost`)
-        .then(res=>res.json())
-        .then(result=>setFbData(result))
+            .then(res => res.json())
+            .then(result => setFbData(result))
         console.log(fbData);
-      }
-      
-      const result = fbData.reduce((acc, campaign) => {
+    }
+
+    const result = fbData.reduce((acc, campaign) => {
         const existingCampaign = acc.find((item) => item.date === campaign.date);
-      
+
         if (existingCampaign) {
-          existingCampaign.total++;
+            existingCampaign.total++;
         } else {
-          acc.push({ date: campaign.date, total: 1 });
+            acc.push({ date: campaign.date, total: 1 });
         }
-      
+
         return acc;
-      },[]);
+    }, []);
     //   console.log(result);
     const options = {
         responsive: true,
@@ -57,51 +58,42 @@ export const UserStatics = () => {
         },
     };
 
-    const labels = result.map((campaign)=>campaign.date)
+    const labels = result.map((campaign) => campaign.date)
 
     const data = {
         labels,
         datasets: [
             {
                 label: 'Dataset 1',
-                data:  result.map((campaign)=>campaign.total),
+                data: result.map((campaign) => campaign.total),
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
             }
         ],
     };
-    // console.log(permaLink);
+    console.log(permaLink);
     return (
         <div className='flex justify-around my-10 '>
             <div className='rounded-xl p-5 shadow-lg w-1//3'>
                 <Bar options={options} data={data} />
             </div>
-            <div className='text-black rounded-xl p-5 shadow-2xl w-1//2'>
+            <div className='text-black rounded-xl p-5 shadow-2xl ' >
                 <div>
-
                     {
                         permaLink ?
-                            // <div
-                            //     className="fb-post"
-                            //     data-width="500"
-                            //     data-href={`${permaLink.permalink_url}`}
-                            // ></div>
-                            <div>
-                                <iframe
-                                    title="Facebook Post"
-                                    src='https://www.facebook.com/122096237306087447/posts/122096157158087447'
-                                    width="500"
-                                    height="500"
-                                    style={{ border: 'none', overflow: 'hidden' }}
-                                    allowFullScreen
-                                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                                ></iframe>
+                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                <FacebookEmbed  url={permaLink.permalink_url} width={550} />
                             </div>
                             :
-                            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                <FacebookPost setPermaLink={setPermaLink} />
-
-                            </div>
+                            <FacebookPost setPermaLink={setPermaLink} />
                     }
+                    {/* <div className="fb-page"
+                        data-href="https://www.facebook.com/facebook"
+                        data-width="380"
+                        data-tabs="timeline"
+                        data-hide-cover="false"
+                        data-adapt-container-width="true"
+                        data-show-facepile="false"></div> */}
+                    {/* <div className="fb-post" data-href="https://www.facebook.com/20531316728/posts/10154009990506729/" data-width="500" data-show-text="false"><blockquote cite="https://www.facebook.com/20531316728/posts/10154009990506729/" className="fb-xfbml-parse-ignore">Posted by <a href="https://facebook.com/facebook">Facebook</a> on&nbsp;<a href="https://www.facebook.com/20531316728/posts/10154009990506729/">Thursday, August 27, 2015</a></blockquote></div> */}
                 </div>
             </div>
         </div>

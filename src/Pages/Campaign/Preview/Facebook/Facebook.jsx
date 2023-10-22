@@ -3,7 +3,6 @@ export const Facebook = ({ imageBlob }) => {
 
   // console.log(imageBlob);
   const shareImageWithText = async () => {
-    // const filename = condition ? 'image.jpg' : 'image.png';
     // console.log(imageBlob);
     if (navigator.share) {
       try {

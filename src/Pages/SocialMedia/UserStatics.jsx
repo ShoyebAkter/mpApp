@@ -8,7 +8,6 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { FacebookEmbed } from 'react-social-media-embed';
 import { useEffect, useState } from 'react';
 import { FacebookPost } from './FacebookPost';
 ChartJS.register(
@@ -20,7 +19,7 @@ ChartJS.register(
     Legend
 );
 export const UserStatics = () => {
-    const [permaLink, setPermaLink] = useState("")
+    const [permalink,setPermalink]=useState("")
     const [fbData, setFbData] = useState([])
     useEffect(() => {
         getFbData();
@@ -35,7 +34,7 @@ export const UserStatics = () => {
         if (targetNode) {
           const config = { childList: true, subtree: true };
       
-          const callback = (mutationsList, observer) => {
+          const callback = (mutationsList) => {
             mutationsList.forEach((mutation) => {
               if (mutation.type === 'childList') {
                 const listValues = Array.from(targetNode.children)
@@ -97,20 +96,20 @@ export const UserStatics = () => {
             }
         ],
     };
-    console.log(permaLink);
+    console.log(permalink);
     return (
         <div className='flex justify-around my-10 '>
             <div className='rounded-xl p-5 shadow-lg w-1//3'>
                 <Bar options={options} data={data} />
             </div>
-            <div className='text-black rounded-xl p-5 shadow-2xl ' >
+            <div className='text-black rounded-xl p-5 shadow-2xl '  >
                 <div>
                     {
-                        permaLink.permalink_url 
+                        permalink
                         ?
-                        <div className="fb-page" data-href="https://www.facebook.com/104214722785328" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/104214722785328" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/104214722785328">My Page</a></blockquote></div>
+                        <div className="fb-page" data-href="https://www.facebook.com/104214722785328" data-tabs="timeline" data-width="500" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/104214722785328" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/104214722785328">My Page</a></blockquote></div>
                             :
-                            <FacebookPost setPermaLink={setPermaLink} />
+                            <FacebookPost  setPermalink={setPermalink}/>
                     }
                     </div>
             </div>

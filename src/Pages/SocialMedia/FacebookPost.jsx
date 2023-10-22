@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
-export const FacebookPost = ({setPermaLink}) => {
+import { getFacebookPages, getFbPageToken, getPermaLink, getPostId } from "./facebook";
+export const FacebookPost = ({setPermalink}) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
       useEffect(() => {
         window.FB.getLoginStatus((response) => {
@@ -27,66 +28,15 @@ export const FacebookPost = ({setPermaLink}) => {
         });
     };
 
-    const getFacebookPages = () => {
-        return new Promise((resolve) => {
-            window.FB.api(
-                "me/accounts",
-                { access_token: facebookUserAccessToken },
-                (response) => {
-                    resolve(response.data[0].id);
-                }
-            );
-        });
-    };
-
-    const getFbPageToken=()=>{
-        // const id="6960802797316889";
-        return new Promise((resolve) => {
-            window.FB.api(
-                "me/accounts?fields=access_token",
-                {accessToken:facebookUserAccessToken},
-                (response)=>{
-                    resolve(response.data[0].access_token)
-                }
-            )
-        });
-        
-    }
-    const getPostId=(pageId,fbPageToken)=>{
-        return new Promise((resolve) => {
-            window.FB.api(
-                `${pageId}/feed`,
-                { access_token: fbPageToken },
-                (response) => {
-                    resolve(response.data[2].id);
-                }
-            );
-        })
-         
-    }
-    const getPermaLink=(postId,fbPageToken)=>{
-        // console.log(postId,fbPageToken);
-        return new Promise((resolve) => {
-            window.FB.api(
-                `${postId}`,
-                { fields: "permalink_url", access_token: fbPageToken },
-                (response) => {
-                    resolve(response);
-                }
-            );
-        })
-        
-    }
     const getLink = async () => {
             // console.log(imageUrl);
-        const facebookPageId = await getFacebookPages();
-        console.log(facebookPageId);
-        const fbPageToken=await getFbPageToken();
+        const facebookPageId = await getFacebookPages(facebookUserAccessToken);
+        const fbPageToken=await getFbPageToken(facebookUserAccessToken);
         console.log(fbPageToken);
         const postId=await getPostId(facebookPageId,fbPageToken);
         console.log(postId);
         const permanentLink=await getPermaLink(postId,fbPageToken)
-        setPermaLink(permanentLink);
+        setPermalink(permanentLink);
     };
         
   return (
@@ -116,5 +66,5 @@ export const FacebookPost = ({setPermaLink}) => {
   )
 }
 FacebookPost.propTypes = {
-    setPermaLink:PropTypes.func.isRequired,
+    setPermalink:PropTypes.func.isRequired,
   }

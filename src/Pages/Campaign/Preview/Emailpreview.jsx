@@ -106,7 +106,7 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                             {/* Dropdown menu */}
                             <div
                                 id="dropdown"
-                                className={`z-10 ${isDropdownOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+                                className={`z-10 ${isDropdownOpen ? '' : 'hidden'}  divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700`}
                             >
                                 <ul
                                     className="py-2 text-sm text-white-700 "
@@ -164,7 +164,7 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                             name="message"
                             value={text}
                             readOnly
-                            className=" rounded-xl border-2 bg-black"
+                            className=" rounded-xl border-2 bg-gray-200 text-black"
                             style={{ "height": "150px", "width": "100%" }}
                         />
                     </div>

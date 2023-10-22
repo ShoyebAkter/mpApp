@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
+import { ToastContainer, toast } from "react-toastify";
 
 function Instagram({ imageBlob, text }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
@@ -91,6 +92,7 @@ function Instagram({ imageBlob, text }) {
                 (response) => {
                     resolve(response)
                     if (response && !response.error) {
+                        toast("Post is successful");
                         console.log("Post was successful.");
                     } else {
                         console.error("Error occurred while posting:", response.error);
@@ -174,29 +176,29 @@ function Instagram({ imageBlob, text }) {
     };
 
     return (
-        <main id="app-main">
+        <main id="app-main" className="flex justify-between items-center">
             <section >
-                <h3>1. Log in with Facebook</h3>
                 {facebookUserAccessToken ? (
-                    <button onClick={logOutOfFB} >
+                    <button className="bg-black px-4 py-2 text-white" onClick={logOutOfFB} >
                         Log out of Facebook
                     </button>
                 ) : (
-                    <button onClick={logInToFB} >
+                    <button className="bg-black px-4 py-2 text-white" onClick={logInToFB} >
                         Login with Facebook
                     </button>
                 )}
             </section>
             {facebookUserAccessToken ? (
                 <section >
-                    <h3>2. Send a post to Facebook</h3>
                     <button
+                    className="bg-black  p-2 text-white"
                         onClick={shareInstagramPost}
                     >
                         {isSharingPost ? "Sharing..." : "Share"}
                     </button>
                 </section>
             ) : null}
+            <ToastContainer />
         </main>
     );
 }

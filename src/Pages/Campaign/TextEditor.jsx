@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Modal } from './Modal';
-import { WhatsappModal } from './WhatsappModal';
+// import { WhatsappModal } from './WhatsappModal';
 import { Facebook } from './Preview/Facebook/Facebook';
 import Instagram from './Preview/Instagram/Instagram';
 const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
@@ -20,13 +20,12 @@ const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
         className="bg-white rounded-xl "
         style={{ "height": "50%", "width": "250px" }}
       />
-      <div className='flex justify-around mt-5 '>
+      <div className='flex justify-between mt-5 '>
         <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
-        {/* <Facebook imageBlob={imageBlob} text={text} /> */}
-        <WhatsappModal userId={userId} text={text} editedImage={editedImage}/>
+        <Facebook imageBlob={imageBlob} text={text} />
+        {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
       </div>
-      <div className='flex justify-around mt-5 '>
-        <div></div>
+      <div className=' mt-5 '>
         <div><Instagram imageBlob={imageBlob} text={text} /></div>
         {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
       </div>

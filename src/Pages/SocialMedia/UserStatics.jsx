@@ -25,7 +25,34 @@ export const UserStatics = () => {
     useEffect(() => {
         getFbData();
     }, [])
-
+    useEffect(() => {
+        window.FB.XFBML.parse();
+        checkSubtree();
+    }, []);
+    const checkSubtree = () => {
+        const targetNode = document.querySelector('.fb-page');
+      
+        if (targetNode) {
+          const config = { childList: true, subtree: true };
+      
+          const callback = (mutationsList, observer) => {
+            mutationsList.forEach((mutation) => {
+              if (mutation.type === 'childList') {
+                const listValues = Array.from(targetNode.children)
+                  .map((node) => node.innerHTML)
+                  .filter((html) => html !== '<br>');
+                console.log(listValues);
+              }
+            });
+          };
+      
+          const observer = new MutationObserver(callback);
+          observer.observe(targetNode, config);
+        } else {
+          console.error("Target node not found. Make sure the element with class 'fb-page' exists.");
+        }
+      };
+      
     const getFbData = () => {
         fetch(`https://emapp-backend.vercel.app/fbpost`)
             .then(res => res.json())
@@ -79,22 +106,13 @@ export const UserStatics = () => {
             <div className='text-black rounded-xl p-5 shadow-2xl ' >
                 <div>
                     {
-                        permaLink ?
-                            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                <FacebookEmbed  url={permaLink.permalink_url} width={550} />
-                            </div>
+                        permaLink.permalink_url 
+                        ?
+                        <div className="fb-page" data-href="https://www.facebook.com/104214722785328" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/104214722785328" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/104214722785328">My Page</a></blockquote></div>
                             :
                             <FacebookPost setPermaLink={setPermaLink} />
                     }
-                    {/* <div className="fb-page"
-                        data-href="https://www.facebook.com/facebook"
-                        data-width="380"
-                        data-tabs="timeline"
-                        data-hide-cover="false"
-                        data-adapt-container-width="true"
-                        data-show-facepile="false"></div> */}
-                    {/* <div className="fb-post" data-href="https://www.facebook.com/20531316728/posts/10154009990506729/" data-width="500" data-show-text="false"><blockquote cite="https://www.facebook.com/20531316728/posts/10154009990506729/" className="fb-xfbml-parse-ignore">Posted by <a href="https://facebook.com/facebook">Facebook</a> on&nbsp;<a href="https://www.facebook.com/20531316728/posts/10154009990506729/">Thursday, August 27, 2015</a></blockquote></div> */}
-                </div>
+                    </div>
             </div>
         </div>
     )

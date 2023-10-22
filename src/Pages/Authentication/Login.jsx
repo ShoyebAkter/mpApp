@@ -68,7 +68,7 @@ const Login = () => {
                             <div className='flex items-center justify-center py-7'>
                                 <button type="button"
                                     onClick={onLogin}
-                                    className="shadow-xl text-white bg-sky-600 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 dark:focus:ring-yellow-900">
+                                    className="shadow-xl text-white bg-sky-600 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 ">
                                     Sign In</button>
 
 

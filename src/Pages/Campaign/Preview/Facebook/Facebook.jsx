@@ -9,7 +9,6 @@ export const Facebook = ({ imageBlob }) => {
       try {
         await navigator.share(
           {
-            text:"hello",
             files: [new File([imageBlob], 'image.png', { type: imageBlob.type })],
             title: "Image Send"
           }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
+import { getFacebookPages, getFbPageToken } from "../../../SocialMedia/facebook";
 
 function Instagram({ imageBlob, text }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
@@ -31,42 +32,6 @@ function Instagram({ imageBlob, text }) {
         });
     };
 
-    const getFacebookPages = () => {
-        return new Promise((resolve) => {
-            window.FB.api(
-                "me/accounts",
-                { access_token: facebookUserAccessToken },
-                (response) => {
-                    resolve(response.data);
-                }
-            );
-        });
-    };
-
-    const getFbPageToken = () => {
-        // const id="6960802797316889";
-        return new Promise((resolve) => {
-            window.FB.api(
-                "me/accounts?fields=access_token",
-                { accessToken: facebookUserAccessToken },
-                (response) => {
-                    resolve(response.data)
-                }
-            )
-        });
-
-    }
-    const getPermission = () => {
-        return new Promise((resolve) => {
-            window.FB.api(
-                "me/permissions",
-                { accessToken: facebookUserAccessToken },
-                (response) => {
-                    resolve(response.data)
-                }
-            )
-        });
-    }
     const shareOnFb = (id, token, url) => {
         const fbInfo = {
             message: text,
@@ -103,57 +68,6 @@ function Instagram({ imageBlob, text }) {
 
     }
 
-    //   const getInstagramAccountId = (facebookPageId) => {
-    //     return new Promise((resolve) => {
-    //       window.FB.api(
-    //         facebookPageId,
-    //         {
-    //           access_token: facebookUserAccessToken,
-    //           fields: "instagram_business_account",
-    //         },
-    //         (response) => {
-    //           resolve(response.instagram_business_account.id);
-    //         }
-    //       );
-    //     });
-    //   };
-
-    // const createMediaObjectContainer = (pageId) => {
-    //     return new Promise((resolve) => {
-    //         window.FB.api(
-    //             `${pageId}/media`,
-    //             "POST",
-    //             {
-    //                 access_token: facebookUserAccessToken,
-    //                 //   image_url: imageUrl,
-    //                 caption: "postCaption",
-    //             },
-    //             (response) => {
-    //                 resolve(response.id);
-    //             }
-    //         );
-    //     });
-    // };
-
-    // const publishMediaObjectContainer = (
-    //     pageId,
-    //     mediaObjectContainerId
-    // ) => {
-    //     return new Promise((resolve) => {
-    //         window.FB.api(
-    //             `${pageId}/media_publish`,
-    //             "POST",
-    //             {
-    //                 access_token: facebookUserAccessToken,
-    //                 creation_id: mediaObjectContainerId,
-    //             },
-    //             (response) => {
-    //                 resolve(response.id);
-    //             }
-    //         );
-    //     });
-    // };
-
     const shareInstagramPost = async () => {
         setIsSharingPost(true);
         const formData = new FormData();
@@ -166,10 +80,9 @@ function Instagram({ imageBlob, text }) {
         }).then(res => res.json())
             .then(res => res.data.url)
         // console.log(imageUrl);
-        const facebookPages = await getFacebookPages();
-        const fbPageToken = await getFbPageToken();
-        console.log(getPermission());
-        shareOnFb(facebookPages[0].id, fbPageToken[0].access_token, imageUrl);
+        const facebookPages = await getFacebookPages(facebookUserAccessToken);
+        const fbPageToken = await getFbPageToken(facebookUserAccessToken);
+        shareOnFb(facebookPages, fbPageToken, imageUrl);
 
         setIsSharingPost(false);
 

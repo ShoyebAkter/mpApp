@@ -5,6 +5,7 @@ export const getFacebookPages = (facebookUserAccessToken) => {
             "me/accounts",
             { access_token: facebookUserAccessToken },
             (response) => {
+                console.log(response);
                 resolve(response.data[0].id);
             }
         );
@@ -12,7 +13,6 @@ export const getFacebookPages = (facebookUserAccessToken) => {
 };
 
 export  const getFbPageToken=(facebookUserAccessToken)=>{
-    // const id="6960802797316889";
     return new Promise((resolve) => {
         window.FB.api(
             "me/accounts?fields=access_token",

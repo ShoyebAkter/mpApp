@@ -3,18 +3,17 @@ import CreativeEditorSDK from '@cesdk/cesdk-js';
 import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
-function CanvaClone({setImageBlob,setEditedImage}) {
+function CanvaClone({ setImageBlob, setEditedImage }) {
   const cesdk_container = useRef(null);
   const [cesdk, setCesdk] = useState(null);
 
   const config = {
+
     // Enable local uploads in Asset Library
     callbacks: {
-      onSave: (scene) => {
-        window.alert('Save callback!');
-        console.info(scene);
-      },
+
       onExport: (blobs) => {
+        console.log(blobs);
         window.alert('Export callback!');
         blobs.forEach((blob) => {
           // const filename = `exported_image_${index}.png`;
@@ -25,13 +24,12 @@ function CanvaClone({setImageBlob,setEditedImage}) {
         });
         return Promise.resolve();
       },
-      onUpload: 'local' 
+      onUpload: 'local'
     },
     ui: {
       elements: {
         navigation: {
           action: {
-            save: true,
             export: true
           }
         }
@@ -57,7 +55,8 @@ function CanvaClone({setImageBlob,setEditedImage}) {
           instance.addDefaultAssetSources(),
           instance.addDemoAssetSources({ sceneMode: 'Design' })
         ]);
-        await instance.createDesignScene();
+        const sceneURL = `https://cdn.img.ly/packages/imgly/cesdk-js/latest/assets/templates/cesdk_business_card_1.scene`; // Replace with your scene URL.
+        await instance.engine.scene.loadFromURL(sceneURL);
 
         setCesdk(instance);
       }
@@ -77,12 +76,14 @@ function CanvaClone({setImageBlob,setEditedImage}) {
         ref={cesdk_container}
         style={{ width: '70vw', height: '100vh' }}
       ></div>
-     
+
     </div>
   );
 }
 
 export default CanvaClone;
-CanvaClone.propTypes = 
-  {setImageBlob:PropTypes.func.isRequired,
-    setEditedImage:PropTypes.func.isRequired}
+CanvaClone.propTypes =
+{
+  setImageBlob: PropTypes.func.isRequired,
+  setEditedImage: PropTypes.func.isRequired
+}

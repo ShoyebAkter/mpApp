@@ -6,7 +6,7 @@ export const getFacebookPages = (facebookUserAccessToken) => {
             { access_token: facebookUserAccessToken },
             (response) => {
                 console.log(response);
-                resolve(response.data[0].id);
+                resolve(response.data[2].id);
             }
         );
     });
@@ -18,7 +18,8 @@ export  const getFbPageToken=(facebookUserAccessToken)=>{
             "me/accounts?fields=access_token",
             {accessToken:facebookUserAccessToken},
             (response)=>{
-                resolve(response.data[0].access_token)
+                console.log(response);
+                resolve(response.data[2].access_token)
             }
         )
     });

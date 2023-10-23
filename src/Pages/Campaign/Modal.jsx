@@ -1,9 +1,19 @@
+import { toast } from "react-toastify"
 import { Emailpreview } from "./Preview/Emailpreview"
 import PropTypes from 'prop-types'
 export const Modal = ({userId,imageBlob,editedImage,text}) => {
+  
   return (
     <div>
-        <button className="bg-black px-5 py-2 text-white mb-2" onClick={() => document.getElementById('my_modal_4').showModal()}>Email</button>
+        <button className="bg-black px-5 py-2 text-white mb-2" onClick={() =>
+        {
+          if(!editedImage)
+          {toast.error("export images")}
+          else{
+            document.getElementById('my_modal_4').showModal()
+          }
+        }
+           }>Email</button>
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-1/2  bg-slate-200 max-w-full">
             <Emailpreview userId={userId}

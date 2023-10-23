@@ -10,6 +10,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { useEffect, useState } from 'react';
 import { FacebookPost } from './FacebookPost';
+import { useRef } from 'react';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -19,40 +20,29 @@ ChartJS.register(
     Legend
 );
 export const UserStatics = () => {
-    const [permalink,setPermalink]=useState("")
+    const [permalink, setPermalink] = useState("")
     const [fbData, setFbData] = useState([])
-    
+    const fbPostContainer = useRef();
+
+    useEffect(() => {
+        if (permalink) {
+            // Set the data-href attribute of the container
+            fbPostContainer.current.setAttribute('data-href', permalink.permalink_url);
+
+            // Trigger the Facebook SDK to re-scan and render the post
+            if (typeof FB !== 'undefined') {
+                window.FB.XFBML.parse();
+            }
+        }
+    }, [permalink]);
     useEffect(() => {
         getFbData();
     }, [])
     useEffect(() => {
         window.FB.XFBML.parse();
-        checkSubtree();
     }, []);
-    const checkSubtree = () => {
-        const targetNode = document.querySelector('.fb-page');
-      
-        if (targetNode) {
-          const config = { childList: true, subtree: true };
-      
-          const callback = (mutationsList) => {
-            mutationsList.forEach((mutation) => {
-              if (mutation.type === 'childList') {
-                const listValues = Array.from(targetNode.children)
-                  .map((node) => node.innerHTML)
-                  .filter((html) => html !== '<br>');
-                console.log(listValues);
-              }
-            });
-          };
-      
-          const observer = new MutationObserver(callback);
-          observer.observe(targetNode, config);
-        } else {
-          console.error("Target node not found. Make sure the element with class 'fb-page' exists.");
-        }
-      };
-      
+
+
     const getFbData = () => {
         fetch(`https://emapp-backend.vercel.app/fbpost`)
             .then(res => res.json())
@@ -106,13 +96,17 @@ export const UserStatics = () => {
             <div className='text-black rounded-xl p-5 shadow-2xl '  >
                 <div>
                     {
-                        fbData
-                        ?
-                        <div className="fb-page" data-href="https://www.facebook.com/104214722785328" data-tabs="timeline" data-width="500" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/104214722785328" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/104214722785328">My Page</a></blockquote></div>
+                        permalink
+                            ?
+                            <div
+                                className="fb-post"
+                                ref={fbPostContainer}
+                                data-width="500"
+                            ></div>
                             :
-                            <FacebookPost  setPermalink={setPermalink}/>
+                            <FacebookPost setPermalink={setPermalink} />
                     }
-                    </div>
+                </div>
             </div>
         </div>
     )

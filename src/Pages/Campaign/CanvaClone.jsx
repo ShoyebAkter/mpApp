@@ -24,7 +24,11 @@ function CanvaClone({ setImageBlob, setEditedImage }) {
         });
         return Promise.resolve();
       },
-      onUpload: 'local'
+      onUpload: (file)=>{
+        console.log(file);
+      }
+      
+      
     },
     ui: {
       elements: {
@@ -48,6 +52,8 @@ function CanvaClone({ setImageBlob, setEditedImage }) {
           instance.dispose();
           return;
         }
+
+        
 
         // Do something with the instance of CreativeEditor SDK, for example:
         // Populate the asset library with default / demo asset sources.

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
-import { getFacebookPages, getFbPageToken } from "../../../SocialMedia/facebook";
+import { getFacebookPageId,  getFbPageToken } from "../../../SocialMedia/facebook";
 
 function Instagram({ imageBlob, text }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
@@ -80,9 +80,9 @@ function Instagram({ imageBlob, text }) {
         }).then(res => res.json())
             .then(res => res.data.url)
         // console.log(imageUrl);
-        const facebookPages = await getFacebookPages(facebookUserAccessToken);
-        const fbPageToken = await getFbPageToken(facebookUserAccessToken);
-        shareOnFb(facebookPages, fbPageToken, imageUrl);
+        const facebookPageId = await getFacebookPageId(facebookUserAccessToken,0);
+        const fbPageToken = await getFbPageToken(facebookUserAccessToken,0);
+        shareOnFb(facebookPageId, fbPageToken, imageUrl);
 
         setIsSharingPost(false);
 

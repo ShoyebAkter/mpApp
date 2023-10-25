@@ -4,7 +4,7 @@ import { getFacebookPageId, getFacebookPages, getFbPageToken, getPageEngamenet, 
 export const FacebookPost = ({ setPermalink, setLikes, setImpression,setEngagement }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
-    const [index, setIndex] = useState(null)
+    const [selectedIndex, setIndex] = useState(null)
     useEffect(() => {
         window.FB.getLoginStatus((response) => {
             setFacebookUserAccessToken(response.authResponse?.accessToken);
@@ -34,9 +34,9 @@ export const FacebookPost = ({ setPermalink, setLikes, setImpression,setEngageme
     }
     const getLink = async () => {
 
-        const facebookPageId = await getFacebookPageId(facebookUserAccessToken,index);
+        const facebookPageId = await getFacebookPageId(facebookUserAccessToken,selectedIndex);
         // console.log(facebookPageId);
-        const fbPageToken=await getFbPageToken(facebookUserAccessToken,index);
+        const fbPageToken=await getFbPageToken(facebookUserAccessToken,selectedIndex);
         // console.log(fbPageToken);
         const pageEngagement=await getPageEngamenet(facebookPageId,fbPageToken);
         setEngagement(pageEngagement.values[0].value);
@@ -51,7 +51,7 @@ export const FacebookPost = ({ setPermalink, setLikes, setImpression,setEngageme
         const totalLikes= await getPageTotalLikes(facebookPageId,fbPageToken)
         setLikes(totalLikes);
     };
-    console.log(index);
+    console.log(selectedIndex);
     return (
         <div>
             <section >
@@ -77,7 +77,9 @@ export const FacebookPost = ({ setPermalink, setLikes, setImpression,setEngageme
                             <h1>Select your Page</h1>
                             {pages.map((page, index) => (
                                 <div
-                                    className="bg-black p-2 mb-1 text-white cursor-pointer"
+                                    className={`${
+                                        index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black' 
+                                      } p-2 mb-1 cursor-pointer`}
                                     onClick={() => setIndex(index)}
                                     key={index}
                                 >

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { getFacebookPageId, getFacebookPages, getFbPageToken, getPageEngamenet, getPageImpression, getPageTotalLikes, getPermaLink, getPostId, getPostReaction } from "./facebook";
-export const FacebookPost = ({ setPermalink, setLikes, setImpression,setEngagement }) => {
+export const FacebookPost = ({ setPermalink, setLikes, setImpression, setEngagement }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
@@ -17,7 +17,7 @@ export const FacebookPost = ({ setPermalink, setLikes, setImpression,setEngageme
                 setFacebookUserAccessToken(response.authResponse?.accessToken);
             },
             {
-                
+
                 scope: "pages_show_list,pages_read_engagement,pages_manage_posts,pages_read_user_content,pages_manage_metadata,pages_manage_engagement",
             }
         );
@@ -34,21 +34,21 @@ export const FacebookPost = ({ setPermalink, setLikes, setImpression,setEngageme
     }
     const getLink = async () => {
 
-        const facebookPageId = await getFacebookPageId(facebookUserAccessToken,selectedIndex);
+        const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
         // console.log(facebookPageId);
-        const fbPageToken=await getFbPageToken(facebookUserAccessToken,selectedIndex);
+        const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
         // console.log(fbPageToken);
-        const pageEngagement=await getPageEngamenet(facebookPageId,fbPageToken);
+        const pageEngagement = await getPageEngamenet(facebookPageId, fbPageToken);
         setEngagement(pageEngagement.values[0].value);
-        const postId=await getPostId(facebookPageId,fbPageToken);
+        const postId = await getPostId(facebookPageId, fbPageToken);
         // console.log(postId);
-        const mainPost=await getPostReaction(postId.data,fbPageToken);
+        const mainPost = await getPostReaction(postId.data, fbPageToken);
         // console.log(mainPost);
-        const pageImpression=await getPageImpression(facebookPageId,fbPageToken)
+        const pageImpression = await getPageImpression(facebookPageId, fbPageToken)
         setImpression(pageImpression);
-        const permanentLink=await getPermaLink(mainPost.id,fbPageToken)
+        const permanentLink = await getPermaLink(mainPost.id, fbPageToken)
         setPermalink(permanentLink);
-        const totalLikes= await getPageTotalLikes(facebookPageId,fbPageToken)
+        const totalLikes = await getPageTotalLikes(facebookPageId, fbPageToken)
         setLikes(totalLikes);
     };
     console.log(selectedIndex);
@@ -69,34 +69,50 @@ export const FacebookPost = ({ setPermalink, setLikes, setImpression,setEngageme
             {
                 (pages.length === 0) ? (
                     <section>
-                        <button onClick={getPages}>Get Pages</button>
+                        {
+                            facebookUserAccessToken ?
+                            <button onClick={getPages}>Get Pages</button>
+                            :
+                            null
+                        }
                     </section>
                 ) :
                     (
                         <section>
                             <h1>Select your Page</h1>
-                            {pages.map((page, index) => (
-                                <div
-                                    className={`${
-                                        index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black' 
-                                      } p-2 mb-1 cursor-pointer`}
-                                    onClick={() => setIndex(index)}
-                                    key={index}
-                                >
-                                    {page.name}
-                                </div>
-                            ))}
+                            {
+                                pages ?
+                                    <div>
+                                        {pages.map((page, index) => (
+                                            <div
+                                                className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
+                                                    } p-2 mb-1 cursor-pointer`}
+                                                onClick={() => setIndex(index)}
+                                                key={index}
+                                            >
+                                                {page.name}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    :
+                                    <div>You have no pages</div>
+                            }
                         </section>
                     )
             }
             {facebookUserAccessToken ? (
                 <section >
-                    <button
+                    {
+                        pages.length===0 ?
+                        null
+                        :
+                        <button
                         className="bg-black  p-2 text-white"
                         onClick={getLink}
                     >
                         get post
                     </button>
+                    }
                 </section>
             ) : null}
         </div>

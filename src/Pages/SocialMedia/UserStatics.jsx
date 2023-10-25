@@ -11,6 +11,7 @@ import { Bar } from 'react-chartjs-2';
 import { useEffect, useState } from 'react';
 import { FacebookPost } from './FacebookPost';
 import { useRef } from 'react';
+import PropTypes from 'prop-types';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -19,7 +20,7 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-export const UserStatics = () => {
+export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
     const [permalink, setPermalink] = useState("")
     const [fbData, setFbData] = useState([])
     const fbPostContainer = useRef();
@@ -96,7 +97,7 @@ export const UserStatics = () => {
             <div className='text-black rounded-xl p-5 shadow-2xl '  >
                 <div>
                     {
-                        permalink
+                        permalink 
                             ?
                             <div
                                 className="fb-post"
@@ -104,10 +105,15 @@ export const UserStatics = () => {
                                 data-width="500"
                             ></div>
                             :
-                            <FacebookPost setPermalink={setPermalink} />
+                            <FacebookPost setEngagement={setEngagement} setImpression={setImpression} setLikes={setLikes} setPermalink={setPermalink} />
                     }
                 </div>
             </div>
         </div>
     )
 }
+UserStatics.propTypes = {
+    setLikes:PropTypes.func.isRequired,
+    setImpression:PropTypes.func.isRequired,
+    setEngagement:PropTypes.func.isRequired,
+  }

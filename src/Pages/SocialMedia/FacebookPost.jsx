@@ -46,12 +46,13 @@ export const FacebookPost = ({ setPermalink, setLikes,setUserDetails, setImpress
         // console.log(mainPost);
         const pageImpression = await getPageImpression(facebookPageId, fbPageToken)
         setImpression(pageImpression);
-        const getPageGenderAge=await getGenderAge(facebookPageId,fbPageToken)
-        setUserDetails(getPageGenderAge.values[0].value);
+        
         const permanentLink = await getPermaLink(mainPost.id, fbPageToken)
         setPermalink(permanentLink);
         const totalLikes = await getPageTotalLikes(facebookPageId, fbPageToken)
         setLikes(totalLikes);
+        const getPageGenderAge=await getGenderAge(facebookPageId,fbPageToken)
+        setUserDetails(getPageGenderAge.values[0].value);
     };
     console.log(selectedIndex);
     return (

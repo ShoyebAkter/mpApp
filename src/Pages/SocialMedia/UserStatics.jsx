@@ -21,11 +21,10 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
+export const UserStatics = ({ setLikes, setImpression, setEngagement }) => {
     const [permalink, setPermalink] = useState("")
-    const [fbData, setFbData] = useState([])
     const fbPostContainer = useRef();
-  const [userDetails,setUserDetails]=useState({})
+    const [userDetails, setUserDetails] = useState({})
 
     useEffect(() => {
         if (permalink) {
@@ -39,33 +38,10 @@ export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
         }
     }, [permalink]);
     useEffect(() => {
-        getFbData();
-    }, [])
-    useEffect(() => {
         window.FB.XFBML.parse();
     }, []);
-
-
-    const getFbData = () => {
-        fetch(`https://emapp-backend.vercel.app/fbpost`)
-            .then(res => res.json())
-            .then(result => setFbData(result))
-        console.log(fbData);
-    }
-    const pageGenderData= separateObj(userDetails)
+    const pageGenderData = separateObj(userDetails)
     console.log(pageGenderData);
-    const result = fbData.reduce((acc, campaign) => {
-        const existingCampaign = acc.find((item) => item.date === campaign.date);
-
-        if (existingCampaign) {
-            existingCampaign.total++;
-        } else {
-            acc.push({ date: campaign.date, total: 1 });
-        }
-
-        return acc;
-    }, []);
-    //   console.log(result);
     const options = {
         responsive: true,
         plugins: {
@@ -79,38 +55,41 @@ export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
         },
     };
 
-    const labels = pageGenderData.maleArray.length !==0 ? pageGenderData.maleArray.map(obj => Object.keys(obj)[0]) : ["a","b","c"]
+    const labels = pageGenderData.maleArray.length !== 0 ? pageGenderData.maleArray.map(obj => Object.keys(obj)[0]) : ["a", "b", "c"]
 
     const data = {
         labels,
         datasets: [
             {
-                label: 'Dataset 1',
-                data: pageGenderData.maleArray.length !==0 ? pageGenderData.maleArray.map(obj => Object.values(obj)[0]) : [1,2,3],
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                label: pageGenderData.maleArray.length !== 0 ? ' MaleDataset ' : 'Dataset 1',
+                data: pageGenderData.maleArray.length !== 0 ? pageGenderData.maleArray.map(obj => Object.values(obj)[0]) : [0, 0, 0],
+                backgroundColor: 'rgba(27, 24, 24, 0.5)',
             },
             {
-                label: 'Dataset 2',
-                data: pageGenderData.femaleArray.length !==0 ? pageGenderData.femaleArray.map(obj => Object.values(obj)[0]) : [1,2,3],
-                backgroundColor: 'rgba(27, 24, 24, 0.5)',
+                label: pageGenderData.femaleArray.length !== 0 ? 'FemaleDataset' : ' Dataset 1',
+                data: pageGenderData.femaleArray.length !== 0 ? pageGenderData.femaleArray.map(obj => Object.values(obj)[0]) : [0, 0, 0],
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
             }
         ],
     };
     return (
         <div className='flex justify-around my-10 '>
-            <div className='rounded-xl p-5 shadow-lg w-1//3'>
-                <Bar options={options} data={data} />
+            <div className='rounded-xl p-5 shadow-lg'>
+                <Bar options={options} data={data} width={500} height={300} />
             </div>
             <div className='text-black rounded-xl p-5 shadow-2xl '  >
                 <div>
                     {
-                        permalink 
+                        permalink
                             ?
-                            <div
-                                className="fb-post"
-                                ref={fbPostContainer}
-                                data-width="500"
-                            ></div>
+                            <div>
+                                <h1 className='text-3xl font-bold text-lime-600 mb-2'>Top Performing Post(FB)</h1>
+                                <div
+                                    className="fb-post"
+                                    ref={fbPostContainer}
+                                    data-width="500"
+                                ></div>
+                            </div>
                             :
                             <FacebookPost setUserDetails={setUserDetails} setEngagement={setEngagement} setImpression={setImpression} setLikes={setLikes} setPermalink={setPermalink} />
                     }
@@ -120,7 +99,7 @@ export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
     )
 }
 UserStatics.propTypes = {
-    setLikes:PropTypes.func.isRequired,
-    setImpression:PropTypes.func.isRequired,
-    setEngagement:PropTypes.func.isRequired,
-  }
+    setLikes: PropTypes.func.isRequired,
+    setImpression: PropTypes.func.isRequired,
+    setEngagement: PropTypes.func.isRequired,
+}

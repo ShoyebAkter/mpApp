@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { FacebookPost } from './FacebookPost';
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
+import { separateObj } from './facebook';
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -51,7 +52,8 @@ export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
             .then(result => setFbData(result))
         console.log(fbData);
     }
-
+    const pageGenderData= separateObj(userDetails)
+    console.log(pageGenderData);
     const result = fbData.reduce((acc, campaign) => {
         const existingCampaign = acc.find((item) => item.date === campaign.date);
 
@@ -77,19 +79,23 @@ export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
         },
     };
 
-    const labels = result.map((campaign) => campaign.date)
+    const labels = pageGenderData.maleArray.length !==0 ? pageGenderData.maleArray.map(obj => Object.keys(obj)[0]) : ["a","b","c"]
 
     const data = {
         labels,
         datasets: [
             {
                 label: 'Dataset 1',
-                data: result.map((campaign) => campaign.total),
+                data: pageGenderData.maleArray.length !==0 ? pageGenderData.maleArray.map(obj => Object.values(obj)[0]) : [1,2,3],
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            },
+            {
+                label: 'Dataset 2',
+                data: pageGenderData.femaleArray.length !==0 ? pageGenderData.femaleArray.map(obj => Object.values(obj)[0]) : [1,2,3],
+                backgroundColor: 'rgba(27, 24, 24, 0.5)',
             }
         ],
     };
-    console.log(userDetails);
     return (
         <div className='flex justify-around my-10 '>
             <div className='rounded-xl p-5 shadow-lg w-1//3'>

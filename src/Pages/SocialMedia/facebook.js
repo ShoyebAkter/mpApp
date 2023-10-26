@@ -11,7 +11,7 @@ export const getFacebookPages = (facebookUserAccessToken) => {
         );
     });
 };
-export const getFacebookPageId = (facebookUserAccessToken,index) => {
+export const getFacebookPageId = (facebookUserAccessToken, index) => {
     return new Promise((resolve) => {
         window.FB.api(
             "me/accounts",
@@ -24,20 +24,20 @@ export const getFacebookPageId = (facebookUserAccessToken,index) => {
     });
 };
 
-export  const getFbPageToken=(facebookUserAccessToken,index)=>{
+export const getFbPageToken = (facebookUserAccessToken, index) => {
     return new Promise((resolve) => {
         window.FB.api(
             "me/accounts?fields=access_token",
-            {accessToken:facebookUserAccessToken},
-            (response)=>{
+            { accessToken: facebookUserAccessToken },
+            (response) => {
                 console.log(response);
                 resolve(response.data[index].access_token)
             }
         )
     });
-    
+
 }
-export  const getPostId=(pageId,fbPageToken)=>{
+export const getPostId = (pageId, fbPageToken) => {
     return new Promise((resolve) => {
         window.FB.api(
             `${pageId}/feed`,
@@ -48,23 +48,23 @@ export  const getPostId=(pageId,fbPageToken)=>{
             }
         );
     })
-     
+
 }
-export  const getGenderAge=(pageId,fbPageToken)=>{
+export const getGenderAge = (pageId, fbPageToken) => {
     return new Promise((resolve) => {
         window.FB.api(
             `/${pageId}/insights`,
             'GET',
-            {metric:"page_fans_gender_age",access_token: fbPageToken},
-            function(response) {
+            { metric: "page_fans_gender_age", access_token: fbPageToken },
+            function (response) {
                 resolve(response.data[0])
             }
-          );
-     
-})
+        );
+
+    })
 }
 
-export const getPermaLink=(postId,fbPageToken)=>{
+export const getPermaLink = (postId, fbPageToken) => {
     // console.log(postId,fbPageToken);
     return new Promise((resolve) => {
         window.FB.api(
@@ -75,82 +75,105 @@ export const getPermaLink=(postId,fbPageToken)=>{
             }
         );
     })
-    
+
 }
-export const getPageTotalLikes=(pageId,fbPageToken)=>{
+export const getPageTotalLikes = (pageId, fbPageToken) => {
     // console.log(postId,fbPageToken);
     return new Promise((resolve) => {
         window.FB.api(
             `/${pageId}/insights`,
             'GET',
-            {metric:"page_fans",period:"day", access_token: fbPageToken},
-            function(response) {
+            { metric: "page_fans", period: "day", access_token: fbPageToken },
+            function (response) {
                 resolve(response)
             }
-          );
+        );
     })
-    
+
 }
-export const getPageImpression=(pageId,fbPageToken)=>{
+export const getPageImpression = (pageId, fbPageToken) => {
     // console.log(postId,fbPageToken);
     return new Promise((resolve) => {
         window.FB.api(
             `/${pageId}/insights`,
             'GET',
-            {metric:"page_impressions",period:"days_28",access_token: fbPageToken},
-            function(response) {
+            { metric: "page_impressions", period: "days_28", access_token: fbPageToken },
+            function (response) {
                 resolve(response.data[0].values[0].value)
             }
-          );
+        );
     })
-    
+
 }
-export const getPageEngamenet=(pageId,fbPageToken)=>{
-    
+export const getPageEngamenet = (pageId, fbPageToken) => {
+
 
     return new Promise((resolve) => {
         window.FB.api(
             `/${pageId}/insights`,
             'GET',
-            {metric:"page_engaged_users",period:"days_28",access_token: fbPageToken},
-            function(response) {
+            { metric: "page_engaged_users", period: "days_28", access_token: fbPageToken },
+            function (response) {
                 resolve(response.data[0])
             }
-          );
+        );
     })
-    
+
 }
-const fetchReaction=(postId,fbPageToken)=>{
+const fetchReaction = (postId, fbPageToken) => {
     // console.log(postId,fbPageToken);
     return new Promise((resolve) => {
         window.FB.api(
             `/${postId}`,
             'GET',
-            {fields:"reactions.summary(total_count)",access_token: fbPageToken},
-            function(response) {
+            { fields: "reactions.summary(total_count)", access_token: fbPageToken },
+            function (response) {
                 resolve(response)
             }
-          );
+        );
     })
-    
+
 }
 export const getPostReaction = async (postIdArray, fbPageToken) => {
     let maxReactions = 0;
     let postWithMaxReactions = null;
     // console.log(postIdArray,fbPageToken);
     for (const post of postIdArray) {
-      const postId = post.id;
-      const reactionData = await fetchReaction(postId, fbPageToken);
-      
-      if (reactionData && reactionData.reactions) {
-        const totalReactions = reactionData.reactions.summary.total_count;
-        
-        if (totalReactions > maxReactions) {
-          maxReactions = totalReactions;
-          postWithMaxReactions = post;
+        const postId = post.id;
+        const reactionData = await fetchReaction(postId, fbPageToken);
+
+        if (reactionData && reactionData.reactions) {
+            const totalReactions = reactionData.reactions.summary.total_count;
+
+            if (totalReactions > maxReactions) {
+                maxReactions = totalReactions;
+                postWithMaxReactions = post;
+            }
+        }
+    }
+
+    return postWithMaxReactions;
+};
+
+export const separateObj = (data) => {
+    const maleArray = [];
+    const femaleArray = [];
+    for (const key in data) {
+        if (key.startsWith('M.')) {
+          maleArray.push({ [key]: data[key] });
+        } else if (key.startsWith('F.')) {
+          femaleArray.push({ [key]: data[key] });
         }
       }
-    }
-    
-    return postWithMaxReactions;
-  };
+      maleArray.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        return keyA.localeCompare(keyB);
+      });
+      femaleArray.sort((a, b) => {
+        const keyA = Object.keys(a)[0];
+        const keyB = Object.keys(b)[0];
+        return keyA.localeCompare(keyB);
+      });
+    return {maleArray, femaleArray};
+}

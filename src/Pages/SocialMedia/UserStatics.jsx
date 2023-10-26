@@ -24,6 +24,7 @@ export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
     const [permalink, setPermalink] = useState("")
     const [fbData, setFbData] = useState([])
     const fbPostContainer = useRef();
+  const [userDetails,setUserDetails]=useState({})
 
     useEffect(() => {
         if (permalink) {
@@ -88,7 +89,7 @@ export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
             }
         ],
     };
-    console.log(permalink);
+    console.log(userDetails);
     return (
         <div className='flex justify-around my-10 '>
             <div className='rounded-xl p-5 shadow-lg w-1//3'>
@@ -105,7 +106,7 @@ export const UserStatics = ({setLikes,setImpression,setEngagement}) => {
                                 data-width="500"
                             ></div>
                             :
-                            <FacebookPost setEngagement={setEngagement} setImpression={setImpression} setLikes={setLikes} setPermalink={setPermalink} />
+                            <FacebookPost setUserDetails={setUserDetails} setEngagement={setEngagement} setImpression={setImpression} setLikes={setLikes} setPermalink={setPermalink} />
                     }
                 </div>
             </div>

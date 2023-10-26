@@ -50,6 +50,20 @@ export  const getPostId=(pageId,fbPageToken)=>{
     })
      
 }
+export  const getGenderAge=(pageId,fbPageToken)=>{
+    return new Promise((resolve) => {
+        window.FB.api(
+            `/${pageId}/insights`,
+            'GET',
+            {metric:"page_fans_gender_age",access_token: fbPageToken},
+            function(response) {
+                resolve(response.data[0])
+            }
+          );
+     
+})
+}
+
 export const getPermaLink=(postId,fbPageToken)=>{
     // console.log(postId,fbPageToken);
     return new Promise((resolve) => {

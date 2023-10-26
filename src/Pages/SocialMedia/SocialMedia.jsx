@@ -10,7 +10,7 @@ export const SocialMedia = () => {
   return (
     <div>
         <Buttons engagement={engagement} likes={likes} impression={impression}/>
-        <UserStatics setEngagement={setEngagement} setLikes={setLikes} setImpression={setImpression}/>
+        <UserStatics  setEngagement={setEngagement} setLikes={setLikes} setImpression={setImpression}/>
     </div>
   )
 }

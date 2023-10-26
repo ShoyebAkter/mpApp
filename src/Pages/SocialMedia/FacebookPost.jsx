@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getPageEngamenet, getPageImpression, getPageTotalLikes, getPermaLink, getPostId, getPostReaction } from "./facebook";
-export const FacebookPost = ({ setPermalink, setLikes, setImpression, setEngagement }) => {
+import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getPageEngamenet, getPageImpression, getPageTotalLikes, getPermaLink, getPostId, getPostReaction } from "./facebook";
+export const FacebookPost = ({ setPermalink, setLikes,setUserDetails, setImpression, setEngagement }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
@@ -46,6 +46,8 @@ export const FacebookPost = ({ setPermalink, setLikes, setImpression, setEngagem
         // console.log(mainPost);
         const pageImpression = await getPageImpression(facebookPageId, fbPageToken)
         setImpression(pageImpression);
+        const getPageGenderAge=await getGenderAge(facebookPageId,fbPageToken)
+        setUserDetails(getPageGenderAge.values[0].value);
         const permanentLink = await getPermaLink(mainPost.id, fbPageToken)
         setPermalink(permanentLink);
         const totalLikes = await getPageTotalLikes(facebookPageId, fbPageToken)
@@ -123,4 +125,5 @@ FacebookPost.propTypes = {
     setLikes: PropTypes.func.isRequired,
     setImpression: PropTypes.func.isRequired,
     setEngagement: PropTypes.func.isRequired,
+    setUserDetails: PropTypes.func.isRequired,
 }

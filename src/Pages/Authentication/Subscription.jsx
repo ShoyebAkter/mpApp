@@ -1,4 +1,4 @@
-import {  useNavigate } from "react-router-dom"
+import {  NavLink, useNavigate } from "react-router-dom"
 import { useState } from "react";
 import { PhoneInput } from "react-international-phone";
 
@@ -124,8 +124,14 @@ function Subscription() {
                     Submit</button>
 
                 </div>
+                <p className="text-sm text-black text-center">
+                              Go back to {' '}
+                                <NavLink to="/login" className="text-blue-700">
+                                    Login
+                                </NavLink>
+                            </p>
               </div>
-
+              
             </form>
           </div>
 

@@ -11,7 +11,6 @@ import { SocialMedia } from './Pages/SocialMedia/SocialMedia'
 import { CampaignDesign } from './Pages/Campaign/CampaignDesign'
 import { LoginHeader } from './Pages/Header/LoginHeader'
 import { Landingpage } from './Pages/LandingPage/Landingpage'
-import Instagram from './Pages/Campaign/Preview/Instagram/Instagram'
 
 function App() {
   return (

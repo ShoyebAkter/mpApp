@@ -7,10 +7,10 @@ import Loading from "../Authentication/Loading";
 import SocialMediaChart from "./SocialMediaChart"
 import { CampaignResult } from "./CampaignResult";
 function BusinessChart() {
-    const [user,loading] = useAuthState(auth);
-    const navigate=useNavigate()
-    if(loading) return <Loading></Loading>
-    if(!user){
+    const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate()
+    if (loading) return <Loading></Loading>
+    if (!user) {
         navigate('/login')
     }
     return (
@@ -24,8 +24,8 @@ function BusinessChart() {
                 <CustomerBehaviour />
             </div>
             <div className="flex justify-around">
-                <div><CampaignResult/></div>
-            <div><SocialMediaChart /></div>
+                <div><CampaignResult /></div>
+                <div><SocialMediaChart /></div>
             </div>
         </div>
     )

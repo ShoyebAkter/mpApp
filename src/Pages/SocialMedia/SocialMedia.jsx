@@ -1,11 +1,12 @@
 import { Link, Outlet } from "react-router-dom"
 
 export const SocialMedia = () => {
+  
   return (
-    <div>
+    <div className="">
       
       <div
-        className="sidebar fixed h-full w-[200px] text-center bg-gray-900"
+        className="fixed h-full w-[200px] text-center bg-gray-900"
       >
         <div className="text-gray-100 text-xl">
           <div className="p-2.5 mt-1 flex items-center">

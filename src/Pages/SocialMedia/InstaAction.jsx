@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import PropTypes from 'prop-types'
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getPageEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
-export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImpression, setEngagement }) => {
+import { getFacebookPageId, getFacebookPages, getFbPageToken } from "./facebook";
+import { getInstaId, getInstaUserName, getTopInstaPost } from "./instagram";
+
+export const InstaAction = () => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
@@ -32,29 +33,18 @@ export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImp
         const facebookPage = await getFacebookPages(facebookUserAccessToken);
         setPages(facebookPage)
     }
-    const getLink = async () => {
+    const getInstagramData = async () => {
 
         const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
         // console.log(facebookPageId);
         const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
-        // console.log(fbPageToken);
-        const pageEngagement = await getPageEngamenet(facebookPageId, fbPageToken);
-        setEngagement(pageEngagement.values[0].value);
-        const postId = await getPostId(facebookPageId, fbPageToken);
-        // console.log(postId);
-        const mainPost = await getPostReaction(postId.data, fbPageToken);
-        // console.log(mainPost);
-        const pageImpression = await getPageImpression(facebookPageId, fbPageToken)
-        setImpression(pageImpression);
-        
-        const permanentLink = await getPermaLink(mainPost.id, fbPageToken)
-        setPermalink(permanentLink);
-        const totalFollowers = await getPageTotalFollowers(facebookPageId, fbPageToken)
-        setFollowers(totalFollowers);
-        const getPageGenderAge=await getGenderAge(facebookPageId,fbPageToken)
-        setUserDetails(getPageGenderAge.values[0].value);
+        const instaId=await getInstaId(facebookPageId,fbPageToken)
+        console.log(instaId);
+        const instaUsername=await getInstaUserName(instaId,fbPageToken)
+        console.log(instaUsername);
+        const topInstaPost=await getTopInstaPost(instaId,instaUsername,fbPageToken)
+        console.log(topInstaPost);
     };
-    console.log(selectedIndex);
     return (
         <div>
             <section >
@@ -74,9 +64,9 @@ export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImp
                     <section>
                         {
                             facebookUserAccessToken ?
-                            <button onClick={getPages}>Get Pages</button>
-                            :
-                            null
+                                <button onClick={getPages}>Get Pages</button>
+                                :
+                                null
                         }
                     </section>
                 ) :
@@ -106,25 +96,18 @@ export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImp
             {facebookUserAccessToken ? (
                 <section >
                     {
-                        pages.length===0 ?
-                        null
-                        :
-                        <button
-                        className="bg-black  p-2 text-white"
-                        onClick={getLink}
-                    >
-                        get post
-                    </button>
+                        pages.length === 0 ?
+                            null
+                            :
+                            <button
+                                className="bg-black  p-2 text-white"
+                                onClick={getInstagramData}
+                            >
+                                get post
+                            </button>
                     }
                 </section>
             ) : null}
         </div>
     )
-}
-FacebookPost.propTypes = {
-    setPermalink: PropTypes.func.isRequired,
-    setFollowers: PropTypes.func.isRequired,
-    setImpression: PropTypes.func.isRequired,
-    setEngagement: PropTypes.func.isRequired,
-    setUserDetails: PropTypes.func.isRequired,
 }

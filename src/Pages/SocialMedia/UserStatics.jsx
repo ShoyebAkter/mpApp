@@ -21,7 +21,7 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-export const UserStatics = ({ setLikes, setImpression, setEngagement }) => {
+export const UserStatics = ({ setFollowers, setImpression, setEngagement }) => {
     const [permalink, setPermalink] = useState("")
     const fbPostContainer = useRef();
     const [userDetails, setUserDetails] = useState({})
@@ -91,7 +91,7 @@ export const UserStatics = ({ setLikes, setImpression, setEngagement }) => {
                                 ></div>
                             </div>
                             :
-                            <FacebookPost setUserDetails={setUserDetails} setEngagement={setEngagement} setImpression={setImpression} setLikes={setLikes} setPermalink={setPermalink} />
+                            <FacebookPost setUserDetails={setUserDetails} setEngagement={setEngagement} setImpression={setImpression} setFollowers={setFollowers} setPermalink={setPermalink} />
                     }
                 </div>
             </div>
@@ -99,7 +99,7 @@ export const UserStatics = ({ setLikes, setImpression, setEngagement }) => {
     )
 }
 UserStatics.propTypes = {
-    setLikes: PropTypes.func.isRequired,
+    setFollowers: PropTypes.func.isRequired,
     setImpression: PropTypes.func.isRequired,
     setEngagement: PropTypes.func.isRequired,
 }

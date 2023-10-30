@@ -77,15 +77,16 @@ export const getPermaLink = (postId, fbPageToken) => {
     })
 
 }
-export const getPageTotalLikes = (pageId, fbPageToken) => {
+export const getPageTotalFollowers = (pageId, fbPageToken) => {
     // console.log(postId,fbPageToken);
     return new Promise((resolve) => {
         window.FB.api(
-            `/${pageId}/insights`,
+            `/${pageId}`,
             'GET',
-            { metric: "page_fans", period: "day", access_token: fbPageToken },
+            { fields: "followers_count",access_token: fbPageToken },
             function (response) {
-                resolve(response)
+                // console.log(response);
+                resolve(response.followers_count)
             }
         );
     })

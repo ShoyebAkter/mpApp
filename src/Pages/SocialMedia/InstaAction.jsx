@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { getFacebookPageId, getFacebookPages, getFbPageToken } from "./facebook";
-import { getInstaId, getInstaUserName, getTopInstaPost } from "./instagram";
+import { findObjectWithHighestLikes, getInstaId, getInstaPostUrl, getInstaUserName, getTopInstaPost } from "./instagram";
+import { InstagramEmbed } from 'react-social-media-embed';
 
 export const InstaAction = () => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
+    const [topPostUrl, setTopPostUrl] = useState("")
     useEffect(() => {
         window.FB.getLoginStatus((response) => {
             setFacebookUserAccessToken(response.authResponse?.accessToken);
@@ -38,76 +40,89 @@ export const InstaAction = () => {
         const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
         // console.log(facebookPageId);
         const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
-        const instaId=await getInstaId(facebookPageId,fbPageToken)
-        console.log(instaId);
-        const instaUsername=await getInstaUserName(instaId,fbPageToken)
-        console.log(instaUsername);
-        const topInstaPost=await getTopInstaPost(instaId,instaUsername,fbPageToken)
-        console.log(topInstaPost);
+        const instaId = await getInstaId(facebookPageId, fbPageToken)
+        // console.log(instaId);
+        const instaUsername = await getInstaUserName(instaId, fbPageToken)
+        // console.log(instaUsername);
+        const InstaPosts = await getTopInstaPost(instaId, instaUsername, fbPageToken)
+        // console.log(InstaPosts.business_discovery.media.data);
+        const topLikesObj = await findObjectWithHighestLikes(InstaPosts.business_discovery.media.data)
+        const postUrl = await getInstaPostUrl(topLikesObj.id, fbPageToken)
+        setTopPostUrl(postUrl.media_url);
+        console.log(postUrl.media_url);
     };
     return (
         <div>
-            <section >
-                <h3>1. Log in with Facebook</h3>
-                {facebookUserAccessToken ? (
-                    <button onClick={logOutOfFB} >
-                        Log out of Facebook
-                    </button>
-                ) : (
-                    <button onClick={logInToFB} >
-                        Login with Facebook
-                    </button>
-                )}
-            </section>
             {
-                (pages.length === 0) ? (
-                    <section>
-                        {
-                            facebookUserAccessToken ?
-                                <button onClick={getPages}>Get Pages</button>
-                                :
-                                null
-                        }
-                    </section>
-                ) :
-                    (
+                !topPostUrl ?
+                <div style={{ "width": "500px" }} className="mx-auto">
+                <section >
+                    <h3>1. Log in with Facebook</h3>
+                    {facebookUserAccessToken ? (
+                        <button onClick={logOutOfFB} >
+                            Log out of Facebook
+                        </button>
+                    ) : (
+                        <button onClick={logInToFB} >
+                            Login with Facebook
+                        </button>
+                    )}
+                </section>
+                {
+                    (pages.length === 0) ? (
                         <section>
-                            <h1>Select your Page</h1>
                             {
-                                pages ?
-                                    <div>
-                                        {pages.map((page, index) => (
-                                            <div
-                                                className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
-                                                    } p-2 mb-1 cursor-pointer`}
-                                                onClick={() => setIndex(index)}
-                                                key={index}
-                                            >
-                                                {page.name}
-                                            </div>
-                                        ))}
-                                    </div>
+                                facebookUserAccessToken ?
+                                    <button onClick={getPages}>Get Pages</button>
                                     :
-                                    <div>You have no pages</div>
+                                    null
                             }
                         </section>
-                    )
+                    ) :
+                        (
+                            <section>
+                                <h1>Select your Page</h1>
+                                {
+                                    pages ?
+                                        <div>
+                                            {pages.map((page, index) => (
+                                                <div
+                                                    className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
+                                                        } p-2 mb-1 cursor-pointer`}
+                                                    onClick={() => setIndex(index)}
+                                                    key={index}
+                                                >
+                                                    {page.name}
+                                                </div>
+                                            ))}
+                                        </div>
+                                        :
+                                        <div>You have no pages</div>
+                                }
+                            </section>
+                        )
+                }
+                {facebookUserAccessToken ? (
+                    <section >
+                        {
+                            pages.length === 0 ?
+                                null
+                                :
+                                <button
+                                    className="bg-black  p-2 text-white"
+                                    onClick={getInstagramData}
+                                >
+                                    get post
+                                </button>
+                        }
+                    </section>
+                ) : null}
+            </div>
+            :
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <InstagramEmbed url="https://www.instagram.com/reel/CjHDbz6Aw9w/" width={328} />
+            </div>
             }
-            {facebookUserAccessToken ? (
-                <section >
-                    {
-                        pages.length === 0 ?
-                            null
-                            :
-                            <button
-                                className="bg-black  p-2 text-white"
-                                onClick={getInstagramData}
-                            >
-                                get post
-                            </button>
-                    }
-                </section>
-            ) : null}
         </div>
     )
 }

@@ -3,7 +3,7 @@ import { InstaAction } from "./InstaAction"
 
 export const InstaData = () => {
   return (
-    <div className="flex justify-between" >
+    <div  >
       <Buttons/>
         <InstaAction/>
     </div>

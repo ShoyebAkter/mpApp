@@ -24,8 +24,8 @@ function App() {
         <Route path="/businessoverview" element={<Main />} />
         <Route path="/customerBehaviour" element={<CustomerBehaviour />} />
         <Route path="/campaignresult" element={<CampaignResult />} />
-        <Route path="/socialmedia" element={<FacebookData  />} >
-          <Route path="facebook" element={< SocialMedia />} />
+        <Route path="/socialmedia" element={< SocialMedia />} >
+          <Route path="facebook" element={<  FacebookData />} />
           <Route path="instagram" element={<InstaData />} />
         </Route>
         <Route path="/campaignerdesign" element={<CampaignDesign />} />

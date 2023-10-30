@@ -2,11 +2,11 @@
 export const getInstaId=(pageId,pageToken)=>{
     return new Promise((resolve) => {
         window.FB.api(
-            `/${pageId}/instagram_accounts`,
+            `/${pageId}`,
             'GET',
-            {access_token: pageToken},
+            {fields:"instagram_business_account",access_token: pageToken},
             function(response) {
-                resolve(response.data[0].id)
+                resolve(response.instagram_business_account.id)
             }
           );
     });
@@ -35,6 +35,18 @@ export const getTopInstaPost=(instaId,userName,pageToken)=>{
           );
     });
 }
+export const getInstaPostUrl=(mediaId,pageToken)=>{
+    return new Promise((resolve) => {
+        window.FB.api(
+            `/${mediaId}`,
+            'GET',
+            {fields:"media_url",access_token: pageToken},
+            function(response) {
+                resolve(response)
+            }
+          );
+    });
+}
 export const getAgeArray=(instaId,pageToken)=>{
     return new Promise((resolve) => {
         window.FB.api(
@@ -46,4 +58,18 @@ export const getAgeArray=(instaId,pageToken)=>{
             }
           );
     });
+}
+
+export const findObjectWithHighestLikes=(objects)=> {
+    let maxLikes = -1; // Initialize with a lower value
+    let objectWithMaxLikes = null;
+    console.log(objects);
+    objects.forEach(obj => {
+        if (obj.like_count > maxLikes) {
+            maxLikes = obj.like_count;
+            objectWithMaxLikes = obj;
+        }
+    });
+
+    return objectWithMaxLikes;
 }

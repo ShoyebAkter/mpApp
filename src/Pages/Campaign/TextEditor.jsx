@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import { Modal } from './Modal';
-// import { WhatsappModal } from './WhatsappModal';
-import { Facebook } from './Preview/Facebook/Facebook';
-import Instagram from './Preview/Instagram/Instagram';
+import { WebShare } from './Preview/Facebook/WebShare';
+import Facebook from './Preview/Instagram/Facebook';
 const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
   // Function to handle changes in the textarea
   const handleTextareaChange = (e) => {
@@ -22,11 +21,11 @@ const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
       />
       <div className='flex justify-between mt-5 '>
         <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
-        <Facebook imageBlob={imageBlob} text={text} />
+        <WebShare imageBlob={imageBlob} text={text} />
         {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
       </div>
       <div className=' mt-5 '>
-        <div><Instagram imageBlob={imageBlob} text={text} /></div>
+        <div><Facebook imageBlob={imageBlob} text={text} /></div>
         {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
       </div>
 

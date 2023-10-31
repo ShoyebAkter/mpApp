@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
 import { getFacebookPageId,  getFbPageToken } from "../../../SocialMedia/facebook";
 
-function Instagram({ imageBlob, text }) {
+function Facebook({ imageBlob, text }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
@@ -68,7 +68,7 @@ function Instagram({ imageBlob, text }) {
 
     }
 
-    const shareInstagramPost = async () => {
+    const shareFacebookPost = async () => {
         setIsSharingPost(true);
         const formData = new FormData();
         formData.append('image', imageBlob);
@@ -105,7 +105,7 @@ function Instagram({ imageBlob, text }) {
                 <section >
                     <button
                     className="bg-black  p-2 text-white"
-                        onClick={shareInstagramPost}
+                        onClick={shareFacebookPost}
                     >
                         {isSharingPost ? "Sharing..." : "Share"}
                     </button>
@@ -115,8 +115,8 @@ function Instagram({ imageBlob, text }) {
         </main>
     );
 }
-Instagram.propTypes = {
+Facebook.propTypes = {
     text: PropTypes.string.isRequired,
     imageBlob: PropTypes.object.isRequired,
 }
-export default Instagram;
+export default Facebook;

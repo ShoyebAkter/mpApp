@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getPageEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
+import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getMonthlyEngagement, getPageDayEngamenet, getPageEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
 export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImpression, setEngagement }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
@@ -46,7 +46,9 @@ export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImp
         // console.log(mainPost);
         const pageImpression = await getPageImpression(facebookPageId, fbPageToken)
         setImpression(pageImpression);
-        
+        const dayEngagement=await getPageDayEngamenet(facebookPageId,fbPageToken)
+        const monthlyEngagement=await getMonthlyEngagement(dayEngagement.data[0].values)
+        console.log(monthlyEngagement);
         const permanentLink = await getPermaLink(mainPost.id, fbPageToken)
         setPermalink(permanentLink);
         const totalFollowers = await getPageTotalFollowers(facebookPageId, fbPageToken)

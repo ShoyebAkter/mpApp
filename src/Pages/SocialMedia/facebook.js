@@ -121,6 +121,19 @@ export const getPageEngamenet = (pageId, fbPageToken) => {
     })
 
 }
+export const getPageDayEngamenet = (pageId, fbPageToken) => {
+
+    return new Promise((resolve) => {
+        window.FB.api(
+            `/${pageId}/insights`,
+            'GET',
+            {metric:"page_engaged_users",period:"days_28",since:"2022-10-01", access_token: fbPageToken},
+            function(response) {
+                resolve(response)
+            }
+          );
+    })
+}
 const fetchReaction = (postId, fbPageToken) => {
     // console.log(postId,fbPageToken);
     return new Promise((resolve) => {
@@ -177,4 +190,29 @@ export const separateObj = (data) => {
         return keyA.localeCompare(keyB);
       });
     return {maleArray, femaleArray};
+}
+    // Function to convert end_time to year and month
+    function getYearMonthFromDate(dateString) {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1; // Months are zero-based (0-11)
+        return `${year}-${month < 10 ? '0' + month : month}`;
+    }
+export const getMonthlyEngagement=(data)=>{
+    
+    
+    // Create an object to store the sum of values for each year-month combination
+    const sumByYearMonth = {};
+    
+    data.forEach(item => {
+        const yearMonth = getYearMonthFromDate(item.end_time);
+        if (sumByYearMonth[yearMonth]) {
+            sumByYearMonth[yearMonth] += item.value;
+        } else {
+            sumByYearMonth[yearMonth] = item.value;
+        }
+    });
+    
+    return sumByYearMonth;
+    
 }

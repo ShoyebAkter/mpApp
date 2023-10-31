@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getFacebookPageId, getFacebookPages, getFbPageToken } from "./facebook";
 import { findObjectWithHighestLikes, getInstaId, getInstaPostUrl, getInstaUserName, getTopInstaPost } from "./instagram";
-import { InstagramEmbed } from 'react-social-media-embed';
 
 export const InstaAction = () => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
@@ -48,8 +47,8 @@ export const InstaAction = () => {
         // console.log(InstaPosts.business_discovery.media.data);
         const topLikesObj = await findObjectWithHighestLikes(InstaPosts.business_discovery.media.data)
         const postUrl = await getInstaPostUrl(topLikesObj.id, fbPageToken)
-        setTopPostUrl(postUrl.media_url);
-        console.log(postUrl.media_url);
+        setTopPostUrl(postUrl.permalink);
+        console.log(postUrl);
     };
     return (
         <div>
@@ -120,7 +119,7 @@ export const InstaAction = () => {
             </div>
             :
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <InstagramEmbed url="https://www.instagram.com/reel/CjHDbz6Aw9w/" width={328} />
+                
             </div>
             }
         </div>

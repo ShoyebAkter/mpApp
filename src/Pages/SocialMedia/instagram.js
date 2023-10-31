@@ -40,7 +40,7 @@ export const getInstaPostUrl=(mediaId,pageToken)=>{
         window.FB.api(
             `/${mediaId}`,
             'GET',
-            {fields:"media_url",access_token: pageToken},
+            {fields:"media_url,permalink",access_token: pageToken},
             function(response) {
                 resolve(response)
             }

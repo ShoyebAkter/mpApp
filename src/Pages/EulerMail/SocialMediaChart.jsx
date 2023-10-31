@@ -7,6 +7,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 ChartJS.register(
     CategoryScale,
@@ -18,7 +19,25 @@ ChartJS.register(
 );
 
 function SocialMediaChart() {
-    
+    const [fbData,setFbData]=useState([])
+
+    useEffect(()=>{
+        fetch(`https://emapp-backend.vercel.app/fbpost`)
+        .then(res=>res.json())
+        .then(result=>setFbData(result))
+    },[])
+    const result = fbData.reduce((acc, campaign) => {
+        const existingCampaign = acc.find((item) => item.date === campaign.date);
+      
+        if (existingCampaign) {
+          existingCampaign.total++;
+        } else {
+          acc.push({ date: campaign.date, total: 1 });
+        }
+      
+        return acc;
+      }, []);
+      console.log(result);
     const options = {
         responsive: true,
         plugins: {
@@ -28,14 +47,14 @@ function SocialMediaChart() {
         },
     };
 
-    const labels = ["facebook", "Google", "Amazon"];
+    const labels =result.map(res=>res.date);
 
     const data = {
         labels,
         datasets: [
             {
-                label: 'Dataset 1',
-                data: [1, 2, 3],
+                label: 'Facebook Post Dataset',
+                data:result.map(res=>res.total),
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
             }
         ],

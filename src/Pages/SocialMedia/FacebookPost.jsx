@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getMonthlyEngagement, getPageDayEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
-import { getfourWeeksData, objtoArray } from "../CustomerBehaviour/getTierValue";
+import { objtoArray } from "../CustomerBehaviour/getTierValue";
 export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setImpression, setEngagement }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])

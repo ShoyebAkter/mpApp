@@ -92,12 +92,12 @@ export const Engagement = () => {
     ],
   };
   return (
-    <div>
+    <div className="bg-slate-100 rounded-lg mr-5">
       {
         !engagement ?
-          <div style={{ "width": "500px" }} className="mx-auto">
-            <section >
-              <h3>1. Log in with Facebook</h3>
+          <div style={{ "width": "500px" }} >
+            <section className="flex justify-center items-center">
+              
               {facebookUserAccessToken ? (
                 <button onClick={logOutOfFB} >
                   Log out of Facebook
@@ -110,10 +110,10 @@ export const Engagement = () => {
             </section>
             {
               (pages.length === 0) ? (
-                <section>
+                <section className="flex justify-center items-center">
                   {
                     facebookUserAccessToken ?
-                      <button onClick={getPages}>Get Pages</button>
+                      <button onClick={getPages}>Get Page Engagement</button>
                       :
                       null
                   }

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getMonthlyEngagement, getPageDayEngamenet, getPageEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
-export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImpression, setEngagement }) => {
+import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getMonthlyEngagement, getPageDayEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
+import { getfourWeeksData, objtoArray } from "../CustomerBehaviour/getTierValue";
+export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setImpression, setEngagement }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
@@ -38,25 +39,26 @@ export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImp
         // console.log(facebookPageId);
         const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
         // console.log(fbPageToken);
-        const pageEngagement = await getPageEngamenet(facebookPageId, fbPageToken);
-        setEngagement(pageEngagement.values[0].value);
+        const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
+        // const fourweeksData= await getfourWeeksData(dayEngagement.data[0].values)
+        // console.log(fourweeksData);
+        const monthlyEngagement = await getMonthlyEngagement(dayEngagement.data[0].values)
+        const engagementArray = await objtoArray(monthlyEngagement)
+        const sum = engagementArray.reduce((accumulator, currentValue) => accumulator + currentValue.value, 0);
+        setEngagement(sum);
         const postId = await getPostId(facebookPageId, fbPageToken);
         // console.log(postId);
         const mainPost = await getPostReaction(postId.data, fbPageToken);
         // console.log(mainPost);
         const pageImpression = await getPageImpression(facebookPageId, fbPageToken)
         setImpression(pageImpression);
-        const dayEngagement=await getPageDayEngamenet(facebookPageId,fbPageToken)
-        const monthlyEngagement=await getMonthlyEngagement(dayEngagement.data[0].values)
-        console.log(monthlyEngagement);
         const permanentLink = await getPermaLink(mainPost.id, fbPageToken)
         setPermalink(permanentLink);
         const totalFollowers = await getPageTotalFollowers(facebookPageId, fbPageToken)
         setFollowers(totalFollowers);
-        const getPageGenderAge=await getGenderAge(facebookPageId,fbPageToken)
+        const getPageGenderAge = await getGenderAge(facebookPageId, fbPageToken)
         setUserDetails(getPageGenderAge.values[0].value);
     };
-    console.log(selectedIndex);
     return (
         <div>
             <section >
@@ -76,9 +78,9 @@ export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImp
                     <section>
                         {
                             facebookUserAccessToken ?
-                            <button onClick={getPages}>Get Pages</button>
-                            :
-                            null
+                                <button onClick={getPages}>Get Pages</button>
+                                :
+                                null
                         }
                     </section>
                 ) :
@@ -108,15 +110,15 @@ export const FacebookPost = ({ setPermalink, setFollowers,setUserDetails, setImp
             {facebookUserAccessToken ? (
                 <section >
                     {
-                        pages.length===0 ?
-                        null
-                        :
-                        <button
-                        className="bg-black  p-2 text-white"
-                        onClick={getLink}
-                    >
-                        get post
-                    </button>
+                        pages.length === 0 ?
+                            null
+                            :
+                            <button
+                                className="bg-black  p-2 text-white"
+                                onClick={getLink}
+                            >
+                                get post
+                            </button>
                     }
                 </section>
             ) : null}

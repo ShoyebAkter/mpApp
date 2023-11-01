@@ -39,4 +39,17 @@ export const objtoArray = (yearMonthObject) => {
   }
   return resultArray;
 }
+export const getfourWeeksData=(arrayOfObjects)=>{
+  const currentDate = new Date();
 
+// Calculate the date 5 weeks ago
+const fourWeeksAgo = new Date();
+fourWeeksAgo.setDate(fourWeeksAgo.getDate() - 7 * 4);
+
+// Filter objects within the last 5 weeks
+const filteredObjects = arrayOfObjects.filter(obj => {
+  const endTime = new Date(obj.end_time);
+  return endTime >= fourWeeksAgo && endTime <= currentDate;
+});
+return filteredObjects;
+}

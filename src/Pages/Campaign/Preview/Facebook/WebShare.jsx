@@ -3,11 +3,11 @@ import { RWebShare } from "react-web-share";
 export const WebShare = ({ imageBlob }) => {
   
 // // console.log(imageBlob);
-  const shareImageWithText = async () => {
+  const shareImageWithText =  () => {
     // console.log(imageBlob);
     if (navigator.share) {
       try {
-        await navigator.share(
+         navigator.share(
           {
             text:"text",
             files: [new File([imageBlob], 'image.png', { type: "image/png" })],

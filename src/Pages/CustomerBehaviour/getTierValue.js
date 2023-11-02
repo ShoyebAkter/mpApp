@@ -39,17 +39,41 @@ export const objtoArray = (yearMonthObject) => {
   }
   return resultArray;
 }
-export const getfourWeeksData=(arrayOfObjects)=>{
-  const currentDate = new Date();
+// export const getfourWeeksData=(arrayOfObjects)=>{
+//   const currentDate = new Date();
 
-// Calculate the date 5 weeks ago
-const fourWeeksAgo = new Date();
-fourWeeksAgo.setDate(fourWeeksAgo.getDate() - 7 * 4);
+// // Calculate the date 5 weeks ago
+// const fourWeeksAgo = new Date();
+// fourWeeksAgo.setDate(fourWeeksAgo.getDate() - 7 * 4);
 
-// Filter objects within the last 5 weeks
-const filteredObjects = arrayOfObjects.filter(obj => {
-  const endTime = new Date(obj.end_time);
-  return endTime >= fourWeeksAgo && endTime <= currentDate;
-});
-return filteredObjects;
+// // Filter objects within the last 5 weeks
+// const filteredObjects = arrayOfObjects.filter(obj => {
+//   const endTime = new Date(obj.end_time);
+//   return endTime >= fourWeeksAgo && endTime <= currentDate;
+// });
+// return filteredObjects;
+// }
+export const getFourWeeksData = (arrayOfObjects) => {
+  
+  const fourWeeksAgo = new Date();
+  fourWeeksAgo.setDate(fourWeeksAgo.getDate() - 7 * 4);
+
+  const weeksData = [];
+
+  for (let i = 0; i < 4; i++) {
+    const weekStartDate = new Date(fourWeeksAgo);
+    const weekEndDate = new Date(fourWeeksAgo);
+    weekEndDate.setDate(weekEndDate.getDate() + 7);
+
+    const filteredObjects = arrayOfObjects.filter(obj => {
+      const endTime = new Date(obj.end_time);
+      return endTime >= weekStartDate && endTime <= weekEndDate;
+    }).map(obj => obj.value);
+
+    weeksData.push(filteredObjects);
+
+    fourWeeksAgo.setDate(fourWeeksAgo.getDate() + 7);
+  }
+
+  return weeksData;
 }

@@ -40,8 +40,7 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
         // console.log(fbPageToken);
         const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
-        // const fourweeksData= await getfourWeeksData(dayEngagement.data[0].values)
-        // console.log(fourweeksData);
+        
         const monthlyEngagement = await getMonthlyEngagement(dayEngagement.data[0].values)
         const engagementArray = await objtoArray(monthlyEngagement)
         const sum = engagementArray.reduce((accumulator, currentValue) => accumulator + currentValue.value, 0);

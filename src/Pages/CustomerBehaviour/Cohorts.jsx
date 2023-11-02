@@ -1,12 +1,17 @@
 import CohortGraph from "react-cohort-graph";
-
-export const Cohorts = () => {
+import PropTypes from 'prop-types';
+export const Cohorts = ({weeksData}) => {
+    console.log(weeksData);
     return (
         <div style={{"width":"500px"}} className="text-black">
+            <h1>Last Four Weeks Engagement Data</h1>
             <CohortGraph 
                 data={{
                     weeks: {
-                        "Week 5": [11567, 331, 135, 116, 90, 48, 22],
+                        "Week 4":weeksData[0],
+                        "Week 3":weeksData[1],
+                        "Week 2":weeksData[2],
+                        "Week 1":weeksData[3],
                     }
                 }}
                 defaultValueType={["value"]}
@@ -14,3 +19,6 @@ export const Cohorts = () => {
         </div>
     )
 }
+Cohorts.propTypes = {
+    weeksData: PropTypes.array.isRequired,
+  }

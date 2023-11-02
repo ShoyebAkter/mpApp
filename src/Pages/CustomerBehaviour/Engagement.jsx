@@ -11,8 +11,8 @@ import {
 import { Line } from 'react-chartjs-2';
 import { useEffect, useState } from 'react';
 import { getFacebookPageId, getFacebookPages, getFbPageToken, getMonthlyEngagement, getPageDayEngamenet } from '../SocialMedia/facebook';
-import { objtoArray } from './getTierValue';
-
+import { getFourWeeksData, objtoArray } from './getTierValue';
+import PropTypes from 'prop-types';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -22,7 +22,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export const Engagement = () => {
+export const Engagement = ({setWeeksData}) => {
   const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
   const [pages, setPages] = useState([])
   const [selectedIndex, setIndex] = useState(null)
@@ -63,6 +63,8 @@ export const Engagement = () => {
     const monthlyEngagement = await getMonthlyEngagement(dayEngagement.data[0].values)
     const engagementArray=await objtoArray(monthlyEngagement)
     setEngagement(engagementArray);
+    const fourweeksData= await getFourWeeksData(dayEngagement.data[0].values)
+    setWeeksData(fourweeksData)
     // console.log(engagementArray);
   }
   const options = {
@@ -166,4 +168,7 @@ export const Engagement = () => {
     </div>
 
   )
+}
+Engagement.propTypes = {
+  setWeeksData: PropTypes.func.isRequired,
 }

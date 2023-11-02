@@ -41,7 +41,7 @@ export const UserStatics = ({ setFollowers, setImpression, setEngagement }) => {
         window.FB.XFBML.parse();
     }, []);
     const pageGenderData = separateObj(userDetails)
-    console.log(pageGenderData);
+    // console.log(pageGenderData);
     const options = {
         responsive: true,
         plugins: {

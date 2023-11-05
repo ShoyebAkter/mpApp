@@ -1,17 +1,22 @@
 import PropTypes from 'prop-types'
-import { RWebShare } from "react-web-share";
+import { useRef } from 'react';
 export const WebShare = ({ imageBlob }) => {
-  
-// // console.log(imageBlob);
-  const shareImageWithText =  () => {
+
+  const imageInputRef = useRef(null);
+// console.log(imageBlob);
+  const shareImageWithText = async () => {
     // console.log(imageBlob);
-    if (navigator.share) {
+    const imageInput = imageInputRef.current;
+    const blob = imageInput.files[0];
+    console.log(blob,imageBlob);
+    const file=new File([blob], 'image.png', { type: "image/png" });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
       try {
-         navigator.share(
+        await navigator.share(
           {
-            text:"text",
-            files: [new File([imageBlob], 'image.png', { type: "image/png" })],
-            title: "Image Send"
+            title: 'My Image Share',
+            text: "text",
+            files: [file],
           }
         );
 
@@ -27,15 +32,17 @@ export const WebShare = ({ imageBlob }) => {
     <div>
       {/* <RWebShare
         data={{
-           files: [new File([imageBlob], 'share.jpg', { type: "image/png" })],
-          title: "image",
+          title: 'Image title',
+          text: 'Image description',
+          url:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/220px-Image_created_with_a_mobile_phone.png',
           //
           // title: "ImageSend"
         }}
-        onClick={() => console.log("shared successfully!")}
+        onClick={() => shareCanvas()}
       >
         <button className='bg-black text-white p-2'>WhatsApp</button>
       </RWebShare> */}
+      <input type="file" accept="image/*" ref={imageInputRef} />
       <button className='bg-black text-white p-2' onClick={() => shareImageWithText()}>WhatsApp</button>
     </div>
   )

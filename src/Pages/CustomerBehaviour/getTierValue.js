@@ -29,14 +29,16 @@ const convertYearMonthToFullDate = (yearMonth) => {
 export const objtoArray = (yearMonthObject) => {
   const resultArray = [];
 
-  for (const key in yearMonthObject) {
-    if (yearMonthObject.hasOwnProperty(key)) {
-      const date = key;
-      const newDate=convertYearMonthToFullDate(date)
-      const value = yearMonthObject[key];
-      resultArray.push({ newDate, value });
+  yearMonthObject.map(data=>{
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        const date = key;
+        const newDate=convertYearMonthToFullDate(date)
+        const value = data[key];
+        resultArray.push({ newDate, value });
+      }
     }
-  }
+  })
   return resultArray;
 }
 // export const getfourWeeksData=(arrayOfObjects)=>{
@@ -68,7 +70,7 @@ export const getFourWeeksData = (arrayOfObjects) => {
     const filteredObjects = arrayOfObjects.filter(obj => {
       const endTime = new Date(obj.end_time);
       return endTime >= weekStartDate && endTime <= weekEndDate;
-    }).map(obj => obj.value);
+    })
 
     weeksData.push(filteredObjects);
 

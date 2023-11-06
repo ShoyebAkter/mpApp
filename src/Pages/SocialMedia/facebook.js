@@ -127,7 +127,7 @@ export const getPageDayEngamenet = (pageId, fbPageToken) => {
         window.FB.api(
             `/${pageId}/insights`,
             'GET',
-            {metric:"page_engaged_users",period:"days_28",since:"2022-10-01", access_token: fbPageToken},
+            {metric:"page_engaged_users",period:"days_28",since:"2022-01-01", access_token: fbPageToken},
             function(response) {
                 resolve(response)
             }
@@ -212,7 +212,21 @@ export const getMonthlyEngagement=(data)=>{
             sumByYearMonth[yearMonth] = item.value;
         }
     });
+    const newData=splitMonthlyEngagement(sumByYearMonth);
+    return newData;
     
-    return sumByYearMonth;
-    
+}
+const splitMonthlyEngagement=(data)=>{
+    const data2022 = {};
+const data2023 = {};
+console.log(data);
+for (const key in data) {
+  const year = key.split('-')[0];
+  if (year === '2022') {
+    data2022[key] = data[key];
+  } else if (year === '2023') {
+    data2023[key] = data[key];
+  }
+}
+return [data2022,data2023];
 }

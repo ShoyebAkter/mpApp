@@ -1,22 +1,16 @@
 import PropTypes from 'prop-types'
-import { useRef } from 'react';
+import { RWebShare } from "react-web-share";
 export const WebShare = ({ imageBlob }) => {
 
-  const imageInputRef = useRef(null);
 // console.log(imageBlob);
   const shareImageWithText = async () => {
     // console.log(imageBlob);
-    const imageInput = imageInputRef.current;
-    const blob = imageInput.files[0];
-    console.log(blob,imageBlob);
-    const file=new File([blob], 'image.png', { type: "image/png" });
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    if (navigator.share) {
       try {
         await navigator.share(
           {
-            title: 'My Image Share',
-            text: "text",
-            files: [file],
+            files: [new File([imageBlob], 'image.png', { type: "image/png" })],
+            title: "Image Send"
           }
         );
 
@@ -42,7 +36,6 @@ export const WebShare = ({ imageBlob }) => {
       >
         <button className='bg-black text-white p-2'>WhatsApp</button>
       </RWebShare> */}
-      <input type="file" accept="image/*" ref={imageInputRef} />
       <button className='bg-black text-white p-2' onClick={() => shareImageWithText()}>WhatsApp</button>
     </div>
   )

@@ -22,11 +22,12 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export const Engagement = ({setWeeksData}) => {
+export const Engagement = ({ setWeeksData }) => {
   const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
   const [pages, setPages] = useState([])
   const [selectedIndex, setIndex] = useState(null)
-  const [engagement,setEngagement]=useState("")
+  const [engagement2022, setEngagement2022] = useState("")
+  const [engagement2023, setEngagement2023] = useState("")
   useEffect(() => {
     window.FB.getLoginStatus((response) => {
       setFacebookUserAccessToken(response.authResponse?.accessToken);
@@ -61,11 +62,12 @@ export const Engagement = ({setWeeksData}) => {
     const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
     const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
     const monthlyEngagement = await getMonthlyEngagement(dayEngagement.data[0].values)
-    const engagementArray=await objtoArray(monthlyEngagement)
-    setEngagement(engagementArray);
-    const fourweeksData= await getFourWeeksData(dayEngagement.data[0].values)
+    const engagementArray = await objtoArray(monthlyEngagement)
+    setEngagement2022(engagementArray.filter(item => item.newDate.includes('2022')));
+    setEngagement2023(engagementArray.filter(item => item.newDate.includes('2023')));
+    const fourweeksData = await getFourWeeksData(dayEngagement.data[0].values)
     setWeeksData(fourweeksData)
-    // console.log(engagementArray);
+
   }
   const options = {
     responsive: true,
@@ -80,15 +82,21 @@ export const Engagement = ({setWeeksData}) => {
     },
   };
 
-  const labels =engagement ? engagement.map(data=>data.newDate) :  ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July','Aug','Sep','Oct','Nov','Dec'];
 
   const data = {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
-        data: engagement ? engagement.map(data=>data.value) : [1,2,3,4,5,6,7],
+        label: '2022 Engagement',
+        data: engagement2022 ? engagement2022.map(data => data.value) : [1, 2, 3, 4, 5, 6, 7],
         borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+      {
+        label: '2023 Engagement',
+        data: engagement2023 ? engagement2023.map(data => data.value) : [1, 2, 3, 4, 5, 6, 7],
+        borderColor: 'rgb(134, 25, 134)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       }
     ],
@@ -96,10 +104,10 @@ export const Engagement = ({setWeeksData}) => {
   return (
     <div className="bg-slate-100 rounded-lg mr-5">
       {
-        !engagement ?
+        !engagement2022  ?
           <div style={{ "width": "500px" }} >
             <section className="flex justify-center items-center">
-              
+
               {facebookUserAccessToken ? (
                 <button onClick={logOutOfFB} >
                   Log out of Facebook

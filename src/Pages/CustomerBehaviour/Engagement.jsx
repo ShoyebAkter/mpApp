@@ -123,7 +123,7 @@ export const Engagement = ({ setWeeksData }) => {
                 <section className="flex justify-center items-center">
                   {
                     facebookUserAccessToken ?
-                      <button onClick={getPages}>Get Page Engagement</button>
+                      <button onClick={getPages}>Get Page Customer Engagement</button>
                       :
                       null
                   }

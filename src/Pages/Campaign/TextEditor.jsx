@@ -10,25 +10,24 @@ const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
 
 
   return (
-    <div
-      className='my-5 pt-10 rounded-xl mx-auto px-6 h-screen bg-slate-200'>
-
-      <textarea
-        value={text} // Bind the value to the state variable
-        onChange={handleTextareaChange}
-        className="bg-white rounded-xl "
-        style={{ "height": "50%", "width": "250px" }}
-      />
-      <div className='flex justify-between mt-5 '>
+    <div >
+      <div className='flex justify-between mt-5 bg-slate-100 py-2'>
         <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
         <WebShare imageBlob={imageBlob} text={text} />
+        <Facebook imageBlob={imageBlob} text={text} />
         {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
       </div>
-      <div className=' mt-5 '>
-        <div><Facebook imageBlob={imageBlob} text={text} /></div>
-        {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
-      </div>
+      <div
+        className=' pt-10 mx-auto px-6 bg-slate-200'>
 
+        <textarea
+          value={text} // Bind the value to the state variable
+          onChange={handleTextareaChange}
+          className="bg-white rounded-xl "
+          style={{ "height": "90vh", "width": "250px" }}
+        />
+      </div>
+      
     </div>
   );
 

@@ -76,7 +76,7 @@ function CanvaClone({ setImageBlob, setEditedImage }) {
   return (
     <div>
       <div
-        className="m-5"
+        className="mt-5"
         ref={cesdk_container}
         style={{ width: '70vw', height: '100vh' }}
       ></div>

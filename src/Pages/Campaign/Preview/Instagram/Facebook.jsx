@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
 import { getFacebookPageId,  getFbPageToken } from "../../../SocialMedia/facebook";
+import { AiFillFacebook } from "react-icons/ai";
 
 function Facebook({ imageBlob, text }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
@@ -96,8 +97,8 @@ function Facebook({ imageBlob, text }) {
                         Log out of Facebook
                     </button>
                 ) : (
-                    <button className="bg-black px-4 py-2 text-white" onClick={logInToFB} >
-                        Login with Facebook
+                    <button className="px-5 py-2 text-black bg-green-200" onClick={logInToFB} >
+                        <AiFillFacebook style={{ "width": "20px", "height": '20px' }} />
                     </button>
                 )}
             </section>

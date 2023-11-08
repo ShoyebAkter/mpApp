@@ -1,11 +1,14 @@
 import { toast } from "react-toastify"
 import { Emailpreview } from "./Preview/Emailpreview"
 import PropTypes from 'prop-types'
+
+import { AiOutlineMail } from "react-icons/ai"
+
 export const Modal = ({userId,imageBlob,editedImage,text}) => {
   
   return (
     <div>
-        <button className="bg-black px-5 py-2 text-white mb-2" onClick={() =>
+        <button className="px-5 py-2 text-black bg-green-200" onClick={() =>
         {
           if(!editedImage)
           {toast.error("export images")}
@@ -13,7 +16,9 @@ export const Modal = ({userId,imageBlob,editedImage,text}) => {
             document.getElementById('my_modal_4').showModal()
           }
         }
-           }>Email</button>
+           }>
+            <AiOutlineMail style={{ "width": "20px", "height": '20px' }} />
+           </button>
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-1/2  bg-slate-200 max-w-full">
             <Emailpreview userId={userId}

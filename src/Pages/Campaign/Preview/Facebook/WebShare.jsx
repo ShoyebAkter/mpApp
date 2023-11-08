@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
-import { RWebShare } from "react-web-share";
+import { AiOutlineWhatsApp } from 'react-icons/ai';
+// import { RWebShare } from "react-web-share";
 export const WebShare = ({ imageBlob }) => {
 
 // console.log(imageBlob);
@@ -36,7 +37,9 @@ export const WebShare = ({ imageBlob }) => {
       >
         <button className='bg-black text-white p-2'>WhatsApp</button>
       </RWebShare> */}
-      <button className='bg-black text-white p-2' onClick={() => shareImageWithText()}>WhatsApp</button>
+      <button className='px-5 py-2 text-black bg-green-200' onClick={() => shareImageWithText()}>
+      <AiOutlineWhatsApp style={{ "width": "20px", "height": '20px' }} />
+      </button>
     </div>
   )
 }

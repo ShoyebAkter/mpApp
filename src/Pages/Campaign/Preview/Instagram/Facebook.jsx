@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
 import { getFacebookPageId,  getFbPageToken } from "../../../SocialMedia/facebook";
-import { AiFillFacebook } from "react-icons/ai";
+import { AiFillFacebook, AiOutlineLogout, AiOutlineShareAlt } from "react-icons/ai";
 
 function Facebook({ imageBlob, text }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
@@ -93,8 +93,8 @@ function Facebook({ imageBlob, text }) {
         <main id="app-main" className="flex justify-between items-center">
             <section >
                 {facebookUserAccessToken ? (
-                    <button className="bg-black px-4 py-2 text-white" onClick={logOutOfFB} >
-                        Log out of Facebook
+                    <button className="px-5 py-2 text-black bg-green-200" onClick={logOutOfFB} >
+                        <AiOutlineLogout style={{ "width": "20px", "height": '20px' }} />
                     </button>
                 ) : (
                     <button className="px-5 py-2 text-black bg-green-200" onClick={logInToFB} >
@@ -105,10 +105,10 @@ function Facebook({ imageBlob, text }) {
             {facebookUserAccessToken ? (
                 <section >
                     <button
-                    className="bg-black  p-2 text-white"
+                    className="px-5 py-2 text-black bg-green-200"
                         onClick={shareFacebookPost}
                     >
-                        {isSharingPost ? "Sharing..." : "Share"}
+                        {isSharingPost ? "Sharing..." : <AiOutlineShareAlt style={{ "width": "20px", "height": '20px' }} />}
                     </button>
                 </section>
             ) : null}

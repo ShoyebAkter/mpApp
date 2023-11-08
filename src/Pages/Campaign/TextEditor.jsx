@@ -24,7 +24,7 @@ const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
           value={text} // Bind the value to the state variable
           onChange={handleTextareaChange}
           className="bg-white rounded-xl "
-          style={{ "height": "90vh", "width": "250px" }}
+          style={{ "height": "85vh", "width": "250px" }}
         />
       </div>
       

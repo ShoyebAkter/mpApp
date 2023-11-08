@@ -63,7 +63,7 @@ export const CampaignResult = () => {
         ],
       };
   return (
-    <div style={{ "width": "500px", "height": "350px" }} className='shadow-xl rounded-xl'>
+    <div style={{ "width": "500px", "height": "350px","boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='p-5 rounded-xl'>
             <h1 className='text-black text-xl text-center font-medium text-cyan-500'> Campaign Result</h1>
             <Bar options={options} data={data} />
         </div>

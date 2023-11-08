@@ -112,7 +112,7 @@ export const MiddleChart = () => {
     ],
   };
   return (
-    <div id="chart" style={{"height":"300px"}} className='flex justify-center shadow-xl rounded-xl my-5'>
+    <div id="chart" style={{"height":"300px","boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)'}} className='flex justify-center rounded-2xl my-5'>
       <Line height={300}
       width={1100}
         options={options}

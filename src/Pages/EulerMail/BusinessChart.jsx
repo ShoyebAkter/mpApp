@@ -14,16 +14,16 @@ function BusinessChart() {
         navigate('/login')
     }
     return (
-        <div className="my-10">
+        <div className="py-8">
             <div className="flex text-black justify-around ">
                 <div className="text-xl font-bold">Company Name</div>
                 <div className=" border-solid border-2 border-lime-500 rounded-xl px-2 text-lime-600">General Report</div>
             </div>
-            <div className="flex justify-around my-5">
+            <div className="flex justify-around py-5 ">
                 <OverviewChart />
                 <CustomerBehaviour />
             </div>
-            <div className="flex justify-around">
+            <div className="flex justify-around py-5">
                 <div><CampaignResult /></div>
                 <div><SocialMediaChart /></div>
             </div>

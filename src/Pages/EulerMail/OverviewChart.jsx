@@ -64,53 +64,6 @@ function OverviewChart() {
 
   }
   getSalesData()
-  // console.log(salesValue);
-  // const changeArrayValue = () => {
-  //   const monthNames = [
-  //     'January',
-  //     'February',
-  //     'March',
-  //     'April',
-  //     'May',
-  //     'June',
-  //     'July',
-  //     'August',
-  //     'September',
-  //     'October',
-  //     'November',
-  //     'December',
-  //   ];
-  //   salesValue.forEach((obj) => {
-  //     // Check if an object with the same 'month' property exists in the result array
-  //     const existingObject = resultArray.find((item) => item.month === obj.month);
-
-  //     if (existingObject) {
-  //       // If it exists, add the 'value' property
-  //       existingObject.total += obj.total;
-  //     } else {
-
-  //       // If it doesn't exist, create a new entry in the result array
-  //       resultArray.push({ month: obj.month, total: obj.total });
-  //     }
-  //   });
-  //   resultArray.sort((a, b) => a.month - b.month);
-  //   // if (monthNumber >= 1 && monthNumber <= 12) {
-  //   //   return monthNames[monthNumber - 1];
-  //   // } else {
-  //   //   return 'Invalid Month';
-  //   // }
-  //   const updatedArray = resultArray.map((result) => {
-  //     if (result.month >= 1 && result.month <= 12) {
-  //       return { ...result, month: monthNames[result.month - 1] }
-  //     } else {
-  //       return result
-  //     }
-  //   })
-  //   // console.log(resultArray);
-  //   return updatedArray;
-  // }
-  // const revenue = changeArrayValue()
-  // console.log(revenue);
   const options = {
     responsive: true,
     plugins: {
@@ -138,7 +91,7 @@ function OverviewChart() {
     ],
   };
   return (
-    <div style={{ "width": "500px", "height": "350px" }} id="chart" className='shadow-xl rounded-xl'>
+    <div style={{ "width": "500px", "height": "350px","boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} id="chart" className='p-2 bg-white-500 rounded-xl'>
       <h1 className='text-black text-xl text-center font-medium text-cyan-500'> Business Overview</h1>
       <Line options={options} data={data} />
     </div>

@@ -21,7 +21,7 @@ export const CampaignDesign = () => {
   console.log(imageBlob,editedImage);
   return (
     <div>
-      <div className="text-black flex justify-center mx-5">
+      <div className="text-black flex justify-center mx-5 py-5">
         <div><CanvaClone setImageBlob={setImageBlob} setEditedImage={setEditedImage}/></div>
         <div><TextEditor text={text} setText={setText} userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage}/></div>
       </div>

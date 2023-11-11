@@ -17,12 +17,12 @@ export const CustomerBehaviour = () => {
         navigate('/login')
     }
   return (
-    <div className="m-5 p-5">
-        <div className="flex justify-center shadow-xl rounded-lg mb-5">
+    <div className="m-2 py-2">
+        <div style={{"boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)'}} className="flex justify-around rounded-2xl mb-5 p-5">
             <Customers/>
             <Sales/>
         </div>
-        <div className="flex justify-center shadow-xl rounded-lg">
+        <div style={{"boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)'}} className="flex justify-around rounded-2xl mb-5 p-5">
             <Engagement setWeeksData={setWeeksData}/>
             <Cohorts weeksData={weeksData}/>
         </div>

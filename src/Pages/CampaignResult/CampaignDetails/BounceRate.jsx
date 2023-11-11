@@ -26,7 +26,7 @@ export const BounceRate = ({result}) => {
     return (
         <div id="chart">
             <h1 className="text-black text-lg font-bold">Email Campaign Type</h1>
-            <Pie data={data} width={350}/>
+            <Pie data={data} width={300}/>
         </div>
 
     )

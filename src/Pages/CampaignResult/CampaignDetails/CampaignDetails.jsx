@@ -32,7 +32,7 @@ export const CampaignDetails = () => {
   const whatsAppResult = getSimilarData(whatsAppCampaign);
   
   return (
-    <div className="flex justify-around shadow-2xl rounded-lg m-5">
+    <div style={{"boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className="flex justify-around rounded-2xl p-5">
         <CampaignTypes emailCampaign={emailCampaign.length} whatsAppCampaign={whatsAppCampaign.length} />
         <BounceRate result={emailResult}/>
         <WhatsAppType whatsAppResult={whatsAppResult}/>

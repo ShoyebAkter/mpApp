@@ -4,18 +4,18 @@ export const Buttons = ({followers,impression,engagement}) => {
     // console.log(followers);
   return (
     <div className="flex justify-around mt-10">
-            <button className="bg-green-600 text-white font-bold py-7 px-10 rounded">
+            <div className="bg-green-600 text-white font-bold py-7 px-10 rounded">
                 Last 28 Days Impression 
                 <div className='text-2xl'>{impression? impression : 0}</div>
-            </button>
-            <button className="bg-green-600 text-white font-bold py-7 px-10 rounded">
+            </div>
+            <div className="bg-green-600 text-white font-bold py-7 px-10 rounded">
                 Account Engaged 
                 <div className='text-2xl'>{engagement ? engagement :0}</div>
-            </button>
-            <button className="bg-green-600 text-white font-bold py-7 px-10 rounded">
+            </div>
+            <div className="bg-green-600 text-white font-bold py-7 px-10 rounded">
                 Total Followers 
                 <div className='text-2xl'>{followers ? followers : 0}</div>
-            </button>
+            </div>
         </div>
   )
 }

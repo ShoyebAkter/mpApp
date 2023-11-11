@@ -74,7 +74,7 @@ export const Customers = () => {
     ],
   };
   return (
-    <div style={{ "width": "500px" }} className="bg-slate-100 rounded-lg mr-5">
+    <div style={{ "width": "500px"}} className="bg-slate-100 rounded-2xl p-5">
       <Bar options={options} data={data} />
     </div>
 

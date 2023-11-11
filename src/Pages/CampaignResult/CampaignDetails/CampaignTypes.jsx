@@ -27,7 +27,7 @@ export const CampaignTypes = ({emailCampaign,whatsAppCampaign}) => {
     return (
         <div id="chart">
             <h1 className="text-black text-lg font-bold">Campaign Types</h1>
-            <Pie data={data} width={350}/>
+            <Pie data={data} width={300}/>
         </div>
 
     )

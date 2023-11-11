@@ -102,7 +102,7 @@ export const Sales = () => {
         ],
       };
     return (
-       <div style={{"width":"500px"}} className="bg-slate-100 rounded-lg">
+       <div style={{"width":"500px"}} className="bg-slate-100 rounded-2xl p-5">
         <Bar  options={options} data={data} />
        </div>
         

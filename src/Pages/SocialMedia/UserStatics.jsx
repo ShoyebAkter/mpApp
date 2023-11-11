@@ -74,10 +74,10 @@ export const UserStatics = ({ setFollowers, setImpression, setEngagement }) => {
     };
     return (
         <div className='flex justify-around my-10 '>
-            <div className='rounded-xl p-5 shadow-lg'>
+            <div style={{"boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='rounded-xl p-5    '>
                 <Bar options={options} data={data} width={500} height={300} />
             </div>
-            <div className='text-black rounded-xl p-5 shadow-2xl '  >
+            <div style={{"boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='text-black rounded-xl p-5'  >
                 <div>
                     {
                         permalink

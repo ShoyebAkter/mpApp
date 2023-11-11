@@ -12,6 +12,7 @@ import { CampaignDesign } from './Pages/Campaign/CampaignDesign'
 import { LoginHeader } from './Pages/Header/LoginHeader'
 import { Landingpage } from './Pages/LandingPage/Landingpage'
 import { FacebookData } from './Pages/SocialMedia/FacebookData'
+import { Policy } from './Pages/Policy/Policy'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         </Route>
         <Route path="/campaignerdesign" element={<CampaignDesign />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/policy" element={<Policy />} />
         <Route path="/subscription" element={<Subscription />} />
       </Routes>
     </>

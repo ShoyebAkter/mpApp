@@ -86,8 +86,8 @@ function Facebook({ imageBlob, text }) {
         }).then(res => res.json())
             .then(res => res.data.url)
         // console.log(imageUrl);
-        const facebookPageId = await getFacebookPageId(facebookUserAccessToken,0);
-        const fbPageToken = await getFbPageToken(facebookUserAccessToken,0);
+        const facebookPageId = await getFacebookPageId(facebookUserAccessToken,selectedIndex);
+        const fbPageToken = await getFbPageToken(facebookUserAccessToken,selectedIndex);
         shareOnFb(facebookPageId, fbPageToken, imageUrl);
 
         setIsSharingPost(false);
@@ -95,7 +95,7 @@ function Facebook({ imageBlob, text }) {
     };
 
     return (
-        <main id="app-main" className="flex justify-between items-center">
+        <main id="app-main" >
             <section >
                 {facebookUserAccessToken ? (
                     <button className="px-5 py-2 text-black bg-green-200" onClick={logOutOfFB} >
@@ -120,10 +120,11 @@ function Facebook({ imageBlob, text }) {
               ) :
                 (
                   <section>
-                    <h1>Select your Page</h1>
+                    
                     {
-                      pages ?
+                      facebookUserAccessToken?
                         <div>
+                            <h1>Select your Page</h1>
                           {pages.map((page, index) => (
                             <div
                               className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
@@ -136,7 +137,7 @@ function Facebook({ imageBlob, text }) {
                           ))}
                         </div>
                         :
-                        <div>You have no pages</div>
+                        null
                     }
                   </section>
                 )

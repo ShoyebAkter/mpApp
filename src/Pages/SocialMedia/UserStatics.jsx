@@ -74,10 +74,16 @@ export const UserStatics = ({ setFollowers, setImpression, setEngagement }) => {
     };
     return (
         <div className='flex justify-around my-10 '>
-            <div style={{"boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='rounded-xl p-5    '>
-                <Bar options={options} data={data} width={500} height={300} />
+            <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='rounded-xl p-5    '>
+                {
+                    pageGenderData.maleArray.length !== 0
+                        ?
+                        <Bar options={options} data={data} width={500} height={300} />
+                        :
+                        <div>You must have 100+ followers to see this graph</div>
+                }
             </div>
-            <div style={{"boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='text-black rounded-xl p-5'  >
+            <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='text-black rounded-xl p-5'  >
                 <div>
                     {
                         permalink

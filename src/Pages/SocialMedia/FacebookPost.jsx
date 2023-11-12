@@ -61,13 +61,12 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
     return (
         <div>
             <section >
-                <h3>1. Log in with Facebook</h3>
                 {facebookUserAccessToken ? (
-                    <button onClick={logOutOfFB} >
+                    <button className='p-2 bg-green-200 mb-1' onClick={logOutOfFB} >
                         Log out of Facebook
                     </button>
                 ) : (
-                    <button onClick={logInToFB} >
+                    <button className='p-2 bg-green-200' onClick={logInToFB} >
                         Login with Facebook
                     </button>
                 )}
@@ -77,7 +76,7 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
                     <section>
                         {
                             facebookUserAccessToken ?
-                                <button onClick={getPages}>Get Pages</button>
+                                <button className='p-2 bg-green-200' onClick={getPages}>Get Pages</button>
                                 :
                                 null
                         }
@@ -116,7 +115,7 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
                                 className="bg-black  p-2 text-white"
                                 onClick={getLink}
                             >
-                                get post
+                                Get Top Post
                             </button>
                     }
                 </section>

@@ -109,11 +109,11 @@ export const Engagement = ({ setWeeksData }) => {
             <section className="flex justify-center items-center">
 
               {facebookUserAccessToken ? (
-                <button onClick={logOutOfFB} >
-                  Log out of Facebook
+                <button className='p-2 bg-green-200' onClick={logOutOfFB} >
+                  Log out
                 </button>
               ) : (
-                <button onClick={logInToFB} >
+                <button className='p-2 bg-green-200' onClick={logInToFB} >
                   Login with Facebook
                 </button>
               )}
@@ -123,7 +123,7 @@ export const Engagement = ({ setWeeksData }) => {
                 <section className="flex justify-center items-center">
                   {
                     facebookUserAccessToken ?
-                      <button onClick={getPages}>Get Page Customer Engagement</button>
+                      <button className='p-2 bg-green-200'  onClick={getPages}>Get Page Customer Engagement</button>
                       :
                       null
                   }

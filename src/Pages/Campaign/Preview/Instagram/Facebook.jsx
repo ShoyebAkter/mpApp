@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
-import { getFacebookPageId,  getFbPageToken } from "../../../SocialMedia/facebook";
+import { getFacebookPageId,  getFacebookPages,  getFbPageToken } from "../../../SocialMedia/facebook";
 import { AiFillFacebook, AiOutlineLogout, AiOutlineShareAlt } from "react-icons/ai";
 
 function Facebook({ imageBlob, text }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
+    const [pages, setPages] = useState([])
+    const [selectedIndex, setIndex] = useState(null)
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
     useEffect(() => {
@@ -32,7 +34,10 @@ function Facebook({ imageBlob, text }) {
             setFacebookUserAccessToken(undefined);
         });
     };
-
+    const getPages = async () => {
+        const facebookPage = await getFacebookPages(facebookUserAccessToken);
+        setPages(facebookPage)
+      }
     const shareOnFb = (id, token, url) => {
         const fbInfo = {
             message: text,
@@ -102,6 +107,40 @@ function Facebook({ imageBlob, text }) {
                     </button>
                 )}
             </section>
+            {
+              (pages.length === 0) ? (
+                <section className="flex justify-center items-center">
+                  {
+                    facebookUserAccessToken ?
+                      <button className='p-2 bg-green-200'  onClick={getPages}>Get Your Page</button>
+                      :
+                      null
+                  }
+                </section>
+              ) :
+                (
+                  <section>
+                    <h1>Select your Page</h1>
+                    {
+                      pages ?
+                        <div>
+                          {pages.map((page, index) => (
+                            <div
+                              className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
+                                } p-2 mb-1 cursor-pointer`}
+                              onClick={() => setIndex(index)}
+                              key={index}
+                            >
+                              {page.name}
+                            </div>
+                          ))}
+                        </div>
+                        :
+                        <div>You have no pages</div>
+                    }
+                  </section>
+                )
+            }
             {facebookUserAccessToken ? (
                 <section >
                     <button

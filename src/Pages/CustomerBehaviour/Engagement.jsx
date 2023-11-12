@@ -109,7 +109,7 @@ export const Engagement = ({ setWeeksData }) => {
             <section className="flex justify-center items-center">
 
               {facebookUserAccessToken ? (
-                <button className='p-2 bg-green-200' onClick={logOutOfFB} >
+                <button className='p-2 bg-green-200 mb-1' onClick={logOutOfFB} >
                   Log out
                 </button>
               ) : (

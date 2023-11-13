@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
-import { getFacebookPageId,  getFacebookPages,  getFbPageToken } from "../../../SocialMedia/facebook";
+import { getFacebookPageId, getFacebookPages, getFbPageToken } from "../../../SocialMedia/facebook";
 import { AiFillFacebook, AiOutlineLogout, AiOutlineShareAlt } from "react-icons/ai";
 
 function Facebook({ imageBlob, text }) {
@@ -37,7 +37,7 @@ function Facebook({ imageBlob, text }) {
     const getPages = async () => {
         const facebookPage = await getFacebookPages(facebookUserAccessToken);
         setPages(facebookPage)
-      }
+    }
     const shareOnFb = (id, token, url) => {
         const fbInfo = {
             message: text,
@@ -76,20 +76,24 @@ function Facebook({ imageBlob, text }) {
 
     const shareFacebookPost = async () => {
         setIsSharingPost(true);
-        const formData = new FormData();
-        formData.append('image', imageBlob);
+        if (selectedIndex) {
+            const formData = new FormData();
+            formData.append('image', imageBlob);
 
-        const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-        const imageUrl = await fetch(imagebburl, {
-            method: 'POST',
-            body: formData
-        }).then(res => res.json())
-            .then(res => res.data.url)
-        // console.log(imageUrl);
-        const facebookPageId = await getFacebookPageId(facebookUserAccessToken,selectedIndex);
-        const fbPageToken = await getFbPageToken(facebookUserAccessToken,selectedIndex);
-        shareOnFb(facebookPageId, fbPageToken, imageUrl);
+            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+            const imageUrl = await fetch(imagebburl, {
+                method: 'POST',
+                body: formData
+            }).then(res => res.json())
+                .then(res => res.data.url)
+            // console.log(imageUrl);
+            const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
+            const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
+            shareOnFb(facebookPageId, fbPageToken, imageUrl);
 
+        }else{
+            toast("Select a page")
+        }
         setIsSharingPost(false);
 
     };
@@ -108,44 +112,44 @@ function Facebook({ imageBlob, text }) {
                 )}
             </section>
             {
-              (pages.length === 0) ? (
-                <section className="flex justify-center items-center">
-                  {
-                    facebookUserAccessToken ?
-                      <button className='p-2 bg-green-200'  onClick={getPages}>Get Your Page</button>
-                      :
-                      null
-                  }
-                </section>
-              ) :
-                (
-                  <section>
-                    
-                    {
-                      facebookUserAccessToken?
-                        <div>
-                            <h1>Select your Page</h1>
-                          {pages.map((page, index) => (
-                            <div
-                              className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
-                                } p-2 mb-1 cursor-pointer`}
-                              onClick={() => setIndex(index)}
-                              key={index}
-                            >
-                              {page.name}
-                            </div>
-                          ))}
-                        </div>
-                        :
-                        null
-                    }
-                  </section>
-                )
+                (pages.length === 0) ? (
+                    <section className="flex justify-center items-center">
+                        {
+                            facebookUserAccessToken ?
+                                <button className='p-2 bg-green-200' onClick={getPages}>Get Your Page</button>
+                                :
+                                null
+                        }
+                    </section>
+                ) :
+                    (
+                        <section>
+
+                            {
+                                facebookUserAccessToken ?
+                                    <div>
+                                        <h1>Select your Page</h1>
+                                        {pages.map((page, index) => (
+                                            <div
+                                                className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
+                                                    } p-2 mb-1 cursor-pointer`}
+                                                onClick={() => setIndex(index)}
+                                                key={index}
+                                            >
+                                                {page.name}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    :
+                                    null
+                            }
+                        </section>
+                    )
             }
             {facebookUserAccessToken ? (
                 <section >
                     <button
-                    className="px-5 py-2 text-black bg-green-200"
+                        className="px-5 py-2 text-black bg-green-200"
                         onClick={shareFacebookPost}
                     >
                         {isSharingPost ? "Sharing..." : <AiOutlineShareAlt style={{ "width": "20px", "height": '20px' }} />}

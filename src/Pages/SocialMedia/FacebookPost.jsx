@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getMonthlyEngagement, getPageDayEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
 import { objtoArray } from "../CustomerBehaviour/getTierValue";
+import Loading from "../Authentication/Loading";
 export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setImpression, setEngagement }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
         window.FB.getLoginStatus((response) => {
             setFacebookUserAccessToken(response.authResponse?.accessToken);
@@ -34,13 +36,13 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         setPages(facebookPage)
     }
     const getLink = async () => {
-
+        setLoading(true)
         const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
         // console.log(facebookPageId);
         const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
         // console.log(fbPageToken);
         const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
-        
+
         const monthlyEngagement = await getMonthlyEngagement(dayEngagement.data[0].values)
         const engagementArray = await objtoArray(monthlyEngagement)
         const sum = engagementArray.reduce((accumulator, currentValue) => accumulator + currentValue.value, 0);
@@ -57,6 +59,8 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         setFollowers(totalFollowers);
         const getPageGenderAge = await getGenderAge(facebookPageId, fbPageToken)
         setUserDetails(getPageGenderAge.values[0].value);
+
+        setLoading(false)
     };
     return (
         <div>
@@ -72,54 +76,61 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
                 )}
             </section>
             {
-                (pages.length === 0) ? (
-                    <section>
+                loading ?
+                    <Loading />
+                    :
+                    <div>
                         {
-                            facebookUserAccessToken ?
-                                <button className='p-2 bg-green-200' onClick={getPages}>Get Pages</button>
-                                :
-                                null
+                            (pages.length === 0) ? (
+                                <section>
+                                    {
+                                        facebookUserAccessToken ?
+                                            <button className='p-2 bg-green-200' onClick={getPages}>Get Pages</button>
+                                            :
+                                            null
+                                    }
+                                </section>
+                            ) :
+                                (
+                                    <section>
+                                        <h1>Select your Page</h1>
+                                        {
+                                            pages ?
+                                                <div>
+                                                    {pages.map((page, index) => (
+                                                        <div
+                                                            className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
+                                                                } p-2 mb-1 cursor-pointer`}
+                                                            onClick={() => setIndex(index)}
+                                                            key={index}
+                                                        >
+                                                            {page.name}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                                :
+                                                <div>You have no pages</div>
+                                        }
+                                    </section>
+                                )
                         }
-                    </section>
-                ) :
-                    (
-                        <section>
-                            <h1>Select your Page</h1>
-                            {
-                                pages ?
-                                    <div>
-                                        {pages.map((page, index) => (
-                                            <div
-                                                className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
-                                                    } p-2 mb-1 cursor-pointer`}
-                                                onClick={() => setIndex(index)}
-                                                key={index}
-                                            >
-                                                {page.name}
-                                            </div>
-                                        ))}
-                                    </div>
-                                    :
-                                    <div>You have no pages</div>
-                            }
-                        </section>
-                    )
+                        {facebookUserAccessToken ? (
+                            <section >
+                                {
+                                    pages.length === 0 ?
+                                        null
+                                        :
+                                        <button
+                                            className="bg-black  p-2 text-white"
+                                            onClick={getLink}
+                                        >
+                                            Get Top Post
+                                        </button>
+                                }
+                            </section>
+                        ) : null}
+                    </div>
             }
-            {facebookUserAccessToken ? (
-                <section >
-                    {
-                        pages.length === 0 ?
-                            null
-                            :
-                            <button
-                                className="bg-black  p-2 text-white"
-                                onClick={getLink}
-                            >
-                                Get Top Post
-                            </button>
-                    }
-                </section>
-            ) : null}
         </div>
     )
 }

@@ -13,8 +13,6 @@ function CanvaClone({ setImageBlob, setEditedImage }) {
     callbacks: {
 
       onExport: (blobs) => {
-        console.log(blobs);
-        window.alert('Export callback!');
         blobs.forEach((blob) => {
           // const filename = `exported_image_${index}.png`;
           const imageUrl = URL.createObjectURL(blob); // Create a URL for the blob

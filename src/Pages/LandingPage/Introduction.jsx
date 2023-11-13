@@ -6,8 +6,8 @@ export const Introduction = () => {
             <div className='background'>
                 <div className="flex justify-around  items-center">
                     <div className='pt-24'>
-                        <div className="text-lime-600 text-6xl font-medium ">Analytics for business</div>
-                        <div className="text-cyan-500 text-6xl font-medium py-3">Growth by design</div>
+                        <div className="text-lime-600 text-5xl font-medium ">Analytics for business</div>
+                        <div className="text-cyan-500 text-5xl font-medium py-3">Growth by design</div>
                         <div className="text-slate-500 text-3xl font-medium">Get more than just numbers.</div>
                         <div className="text-slate-500 text-3xl font-medium">Discover insights that</div>
                         <div className="text-slate-500 text-3xl font-medium">drive real growth.</div>
@@ -17,14 +17,14 @@ export const Introduction = () => {
                     <Slide >
                         <div className="image-container ">
                             <Slide direction='right'>
-                                <div>
+                                <div >
                                     <img src="/bottom.png" alt="Image 1" className="bottom-image" />
                                 </div>
                             </Slide>
                             <div>
                                 <img src="/center_img.png " alt="Image 2" className="top-image" />
                                 <div className="circle">
-                                    <img src="/logo.png" alt="Image" className="center-image" />
+                                    <img  src="/logo.png" alt="Image" className="center-image" />
                                 </div>
                             </div>
                             <div>

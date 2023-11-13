@@ -13,7 +13,7 @@ export const Landingpage = () => {
   
   return (
     <div >
-      <div className="bg-slate-200 h-screen" >
+      <div >
         <section><Introduction/></section>
         <section id="businessInsight"><BusinessInsight/></section>
        <section id="integration"> <Integration/></section>

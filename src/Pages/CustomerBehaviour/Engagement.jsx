@@ -42,6 +42,9 @@ export const Engagement = ({ setWeeksData }) => {
       {
 
         scope: "read_insights,business_management,instagram_basic,pages_show_list,pages_read_engagement,pages_manage_posts,pages_read_user_content,pages_manage_metadata,pages_manage_engagement",
+      },
+      {
+        config_id: '<CONFIG_ID>'
       }
     );
   };

@@ -75,6 +75,18 @@ export const BusinessInsight = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="card__bx" style={{ "--clr": "#89ec5b" }}>
+                        <div className="card__data">
+                            <div className="card__icon">
+                                <i className="fa-solid fa-paintbrush"></i>
+                            </div>
+                            <div className="card__content">
+                                <h3>Customer Data Analysis</h3>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <a href="#">Read More</a>
+                            </div>
+                        </div>
+                    </div>
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide1" className="btn btn-circle">❮</a>
                         <a href="#slide1" className="btn btn-circle">❯</a>

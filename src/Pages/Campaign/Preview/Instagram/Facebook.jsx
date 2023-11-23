@@ -13,13 +13,20 @@ function Facebook({ imageBlob, text }) {
     useEffect(() => {
         window.FB.getLoginStatus((response) => {
             setFacebookUserAccessToken(response.authResponse?.accessToken);
+
         });
     }, []);
+
+    const getEmailCampaignData=async(token)=>{
+        await fetch(`https://emapp-backend.vercel.app/exchangeToken/${token}`)
+        .then(res=>console.log(res))
+      }
 
     const logInToFB = () => {
         window.FB.login(
             (response) => {
                 setFacebookUserAccessToken(response.authResponse?.accessToken);
+                getEmailCampaignData(response.authResponse?.accessToken)
             },
             {
                 // Scopes that allow us to publish content to Instagram
@@ -91,7 +98,7 @@ function Facebook({ imageBlob, text }) {
             const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
             shareOnFb(facebookPageId, fbPageToken, imageUrl);
 
-        }else{
+        } else {
             toast("Select a page")
         }
         setIsSharingPost(false);

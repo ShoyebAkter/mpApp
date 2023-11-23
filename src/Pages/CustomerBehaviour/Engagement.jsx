@@ -10,7 +10,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useEffect, useState } from 'react';
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getMonthlyEngagement, getPageDayEngamenet } from '../SocialMedia/facebook';
+import { getFacebookPageId, getFacebookPages, getFbPageToken, getLongLivedAccessToken, getMonthlyEngagement, getPageDayEngamenet } from '../SocialMedia/facebook';
 import { getFourWeeksData, objtoArray } from './getTierValue';
 import PropTypes from 'prop-types';
 ChartJS.register(
@@ -37,7 +37,8 @@ export const Engagement = ({ setWeeksData }) => {
   const logInToFB = () => {
     window.FB.login(
       (response) => {
-        setFacebookUserAccessToken(response.authResponse?.accessToken);
+        const token=getLongLivedAccessToken(response.authResponse?.accessToken)
+        setFacebookUserAccessToken(token);
       },
       {
 

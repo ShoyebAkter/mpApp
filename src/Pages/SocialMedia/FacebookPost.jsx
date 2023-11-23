@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PropTypes from 'prop-types'
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getMonthlyEngagement, getPageDayEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
+import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getLongLivedAccessToken, getMonthlyEngagement, getPageDayEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
 import { objtoArray } from "../CustomerBehaviour/getTierValue";
 import Loading from "../Authentication/Loading";
 export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setImpression, setEngagement }) => {
@@ -8,16 +8,13 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
     const [loading, setLoading] = useState(false)
-    useEffect(() => {
-        window.FB.getLoginStatus((response) => {
-            setFacebookUserAccessToken(response.authResponse?.accessToken);
-        });
-    }, []);
+
 
     const logInToFB = () => {
         window.FB.login(
             (response) => {
-                setFacebookUserAccessToken(response.authResponse?.accessToken);
+                const token = getLongLivedAccessToken(response.authResponse?.accessToken)
+                setFacebookUserAccessToken(token);
             },
             {
 

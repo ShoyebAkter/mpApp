@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
-import { getFacebookPageId, getFacebookPages, getFbPageToken } from "../../../SocialMedia/facebook";
+import { getFacebookPageId, getFacebookPages, getFbPageToken, getLongLivedAccessToken } from "../../../SocialMedia/facebook";
 import { AiFillFacebook, AiOutlineLogout, AiOutlineShareAlt } from "react-icons/ai";
 
 function Facebook({ imageBlob, text }) {
@@ -9,24 +9,13 @@ function Facebook({ imageBlob, text }) {
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
-    const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
-    useEffect(() => {
-        window.FB.getLoginStatus((response) => {
-            setFacebookUserAccessToken(response.authResponse?.accessToken);
-
-        });
-    }, []);
-
-    const getEmailCampaignData=async(token)=>{
-        await fetch(`https://emapp-backend.vercel.app/exchangeToken/${token}`)
-        .then(res=>console.log(res))
-      }
+    const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';    
 
     const logInToFB = () => {
         window.FB.login(
             (response) => {
-                setFacebookUserAccessToken(response.authResponse?.accessToken);
-                getEmailCampaignData(response.authResponse?.accessToken)
+                const token=getLongLivedAccessToken(response.authResponse?.accessToken)
+                setFacebookUserAccessToken(token)
             },
             {
                 // Scopes that allow us to publish content to Instagram

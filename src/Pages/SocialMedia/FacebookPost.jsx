@@ -1,20 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getLongLivedAccessToken, getMonthlyEngagement, getPageDayEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
+import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getMonthlyEngagement, getPageDayEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
 import { objtoArray } from "../CustomerBehaviour/getTierValue";
 import Loading from "../Authentication/Loading";
+import { getLongLivedAccessToken } from "./longlivetoken";
 export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setImpression, setEngagement }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
     const [loading, setLoading] = useState(false)
-
+    useEffect(() => {
+        const token=localStorage.getItem("access_token");
+    // console.log(token);
+    if(token){
+      setFacebookUserAccessToken(token)
+    }
+    }, []);
 
     const logInToFB = () => {
         window.FB.login(
             (response) => {
-                const token = getLongLivedAccessToken(response.authResponse?.accessToken)
-                setFacebookUserAccessToken(token);
+                getLongLivedAccessToken(response.authResponse?.accessToken)
+                .then(longLivedToken => {
+                    console.log(longLivedToken);
+                    setFacebookUserAccessToken(longLivedToken);
+                    localStorage.setItem("access_token",longLivedToken)
+                  })
+                  .catch(error => {
+                    console.error('Error:', error);
+                  });
             },
             {
 
@@ -24,10 +38,10 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
     };
 
     const logOutOfFB = () => {
-        window.FB.logout(() => {
-            setFacebookUserAccessToken(undefined);
-        });
-    };
+        localStorage.removeItem("access_token");
+        setFacebookUserAccessToken(null)
+    
+      };
     const getPages = async () => {
         const facebookPage = await getFacebookPages(facebookUserAccessToken);
         setPages(facebookPage)

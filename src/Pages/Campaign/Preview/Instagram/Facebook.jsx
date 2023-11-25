@@ -1,21 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getLongLivedAccessToken } from "../../../SocialMedia/facebook";
+import { getFacebookPageId, getFacebookPages, getFbPageToken } from "../../../SocialMedia/facebook";
 import { AiFillFacebook, AiOutlineLogout, AiOutlineShareAlt } from "react-icons/ai";
+import { getLongLivedAccessToken } from "../../../SocialMedia/longlivetoken";
 
 function Facebook({ imageBlob, text }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
-    const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';    
-
+    const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
+    useEffect(() => {
+        const token = localStorage.getItem("access_token");
+        if (token) {
+            setFacebookUserAccessToken(token)
+        }
+    }, [])
     const logInToFB = () => {
         window.FB.login(
             (response) => {
-                const token=getLongLivedAccessToken(response.authResponse?.accessToken)
-                setFacebookUserAccessToken(token)
+                getLongLivedAccessToken(response.authResponse?.accessToken)
+                    .then(longLivedToken => {
+                        setFacebookUserAccessToken(longLivedToken);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                // setFacebookUserAccessToken(token)
+                // getLongAccessToken(response.authResponse?.accessToken);
             },
             {
                 // Scopes that allow us to publish content to Instagram
@@ -24,13 +37,17 @@ function Facebook({ imageBlob, text }) {
             }
         );
     };
-
+    // const getLongAccessToken=async(token)=>{
+    //     await fetch(`https://emapp-backend.vercel.app/exchangeToken/${token}`)
+    //     .then(res=>console.log(res))
+    //   }
     const logOutOfFB = () => {
-        window.FB.logout(() => {
-            setFacebookUserAccessToken(undefined);
-        });
+        localStorage.removeItem("access_token");
+        setFacebookUserAccessToken(null)
     };
+
     const getPages = async () => {
+        // console.log(facebookUserAccessToken);
         const facebookPage = await getFacebookPages(facebookUserAccessToken);
         setPages(facebookPage)
     }

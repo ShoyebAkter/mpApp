@@ -10,9 +10,10 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useEffect, useState } from 'react';
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getLongLivedAccessToken, getMonthlyEngagement, getPageDayEngamenet } from '../SocialMedia/facebook';
+import { getFacebookPageId, getFacebookPages, getFbPageToken, getMonthlyEngagement, getPageDayEngamenet } from '../SocialMedia/facebook';
 import { getFourWeeksData, objtoArray } from './getTierValue';
 import PropTypes from 'prop-types';
+import { getLongLivedAccessToken } from '../SocialMedia/longlivetoken';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,17 +29,26 @@ export const Engagement = ({ setWeeksData }) => {
   const [selectedIndex, setIndex] = useState(null)
   const [engagement2022, setEngagement2022] = useState("")
   const [engagement2023, setEngagement2023] = useState("")
-  useEffect(() => {
-    window.FB.getLoginStatus((response) => {
-      setFacebookUserAccessToken(response.authResponse?.accessToken);
-    });
-  }, []);
+
+  useEffect(()=>{
+    const token=localStorage.getItem("access_token");
+    console.log(token);
+    if(token){
+      setFacebookUserAccessToken(token)
+    }
+  },[])
 
   const logInToFB = () => {
     window.FB.login(
       (response) => {
-        const token=getLongLivedAccessToken(response.authResponse?.accessToken)
-        setFacebookUserAccessToken(token);
+        getLongLivedAccessToken(response.authResponse?.accessToken)
+                .then(longLivedToken => {
+                    setFacebookUserAccessToken(longLivedToken);
+                    localStorage.setItem("access_token",longLivedToken)
+                  })
+                  .catch(error => {
+                    console.error('Error:', error);
+                  });
       },
       {
 
@@ -51,9 +61,9 @@ export const Engagement = ({ setWeeksData }) => {
   };
 
   const logOutOfFB = () => {
-    window.FB.logout(() => {
-      setFacebookUserAccessToken(undefined);
-    });
+    localStorage.removeItem("access_token");
+    setFacebookUserAccessToken(null)
+
   };
   const getPages = async () => {
     const facebookPage = await getFacebookPages(facebookUserAccessToken);
@@ -62,8 +72,9 @@ export const Engagement = ({ setWeeksData }) => {
 
   const getEngagementData = async () => {
     const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
-    // console.log(facebookPageId);
+    console.log(localStorage.getItem("access_token"));
     const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
+    // console.log(fbPageToken);
     const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
     const monthlyEngagement = await getMonthlyEngagement(dayEngagement.data[0].values)
     const engagementArray = await objtoArray(monthlyEngagement)
@@ -123,6 +134,7 @@ export const Engagement = ({ setWeeksData }) => {
               )}
             </section>
             {
+              facebookUserAccessToken &&
               (pages.length === 0) ? (
                 <section className="flex justify-center items-center">
                   {
@@ -133,7 +145,7 @@ export const Engagement = ({ setWeeksData }) => {
                   }
                 </section>
               ) :
-                (
+                facebookUserAccessToken && (
                   <section>
                     <h1>Select your Page</h1>
                     {

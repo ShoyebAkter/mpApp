@@ -1,16 +1,4 @@
-import axios from "axios";
 
-export const getLongLivedAccessToken=async(token)=>{
-    const response = await axios.get('https://graph.facebook.com/v18.0/oauth/access_token', {
-  params: {
-    grant_type: 'fb_exchange_token',
-    client_id: 231991286544485,
-    client_secret: "12e2ba24cd779e8e1ed537556f4433cf",
-    fb_exchange_token: token,
-  },
-});
-  return response.data.access_token;
-  }
 export const getFacebookPages = (facebookUserAccessToken) => {
     return new Promise((resolve) => {
         window.FB.api(
@@ -29,7 +17,7 @@ export const getFacebookPageId = (facebookUserAccessToken, index) => {
             "me/accounts",
             { access_token: facebookUserAccessToken },
             (response) => {
-                // console.log(response);
+                console.log(response);
                 resolve(response.data[index].id);
             }
         );

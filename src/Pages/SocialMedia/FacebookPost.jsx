@@ -16,7 +16,7 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         if (token && index) {
             setFacebookUserAccessToken(token);
             setIndex(index);
-            getPageInformation();
+            getPageInformation(index);
         }
     }, [facebookUserAccessToken, selectedIndex])
 

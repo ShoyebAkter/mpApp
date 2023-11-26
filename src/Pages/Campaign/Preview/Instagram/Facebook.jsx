@@ -43,8 +43,10 @@ function Facebook({ imageBlob, text }) {
     //   }
     const logOutOfFB = () => {
         localStorage.removeItem("access_token");
+        localStorage.removeItem("index");
         setFacebookUserAccessToken(null)
-    };
+    
+      };
 
     const getPages = async () => {
         // console.log(facebookUserAccessToken);

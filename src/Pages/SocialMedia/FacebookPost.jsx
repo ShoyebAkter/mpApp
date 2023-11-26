@@ -75,7 +75,6 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         setFollowers(totalFollowers);
         const getPageGenderAge = await getGenderAge(facebookPageId, fbPageToken)
         setUserDetails(getPageGenderAge.values[0].value);
-        localStorage.setItem("index",selectedIndex)
         setLoading(false)
     };
     return (
@@ -117,7 +116,8 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
                                                         <div
                                                             className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
                                                                 } p-2 mb-1 cursor-pointer`}
-                                                            onClick={() => setIndex(index)}
+                                                            onClick={() =>  {setIndex(index);
+                                                                localStorage.setItem("index", selectedIndex)}}
                                                             key={index}
                                                         >
                                                             {page.name}

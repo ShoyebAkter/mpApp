@@ -30,21 +30,21 @@ export const Engagement = ({ setWeeksData }) => {
   const [engagement2022, setEngagement2022] = useState("")
   const [engagement2023, setEngagement2023] = useState("")
 
-  useEffect(()=>{
-    const token=localStorage.getItem("access_token");
-    const index=localStorage.getItem("index");
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    const index = localStorage.getItem("index");
     console.log(token);
-    if(token){
+    if (token) {
       setFacebookUserAccessToken(token)
       setIndex(index)
       getEngagementData();
     }
-  },[facebookUserAccessToken, selectedIndex])
+  }, [facebookUserAccessToken, selectedIndex])
 
   const logInToFB = () => {
     window.FB.login(
       (response) => {
-        localStorage.setItem("access_token",response.authResponse?.accessToken)
+        localStorage.setItem("access_token", response.authResponse?.accessToken)
         setFacebookUserAccessToken(response.authResponse?.accessToken);
         // getLongLivedAccessToken(response.authResponse?.accessToken)
         //         .then(longLivedToken => {
@@ -88,7 +88,7 @@ export const Engagement = ({ setWeeksData }) => {
     setEngagement2023(engagementArray.filter(item => item.newDate.includes('2023')));
     const fourweeksData = await getFourWeeksData(dayEngagement.data[0].values)
     setWeeksData(fourweeksData)
-localStorage.setItem("index",selectedIndex)
+    
   }
   const options = {
     responsive: true,
@@ -103,7 +103,7 @@ localStorage.setItem("index",selectedIndex)
     },
   };
 
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July','Aug','Sep','Oct','Nov','Dec'];
+  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   const data = {
     labels,
@@ -125,7 +125,7 @@ localStorage.setItem("index",selectedIndex)
   return (
     <div className="bg-slate-100 rounded-lg mr-5">
       {
-        !selectedIndex  ?
+        !selectedIndex ?
           <div style={{ "width": "500px" }} >
             <section className="flex justify-center items-center">
 
@@ -141,11 +141,11 @@ localStorage.setItem("index",selectedIndex)
             </section>
             {
               facebookUserAccessToken &&
-              (pages.length === 0) ? (
+                (pages.length === 0) ? (
                 <section className="flex justify-center items-center">
                   {
                     facebookUserAccessToken ?
-                      <button className='p-2 bg-green-200'  onClick={getPages}>Get Page Customer Engagement</button>
+                      <button className='p-2 bg-green-200' onClick={getPages}>Get Page Customer Engagement</button>
                       :
                       null
                   }
@@ -161,7 +161,8 @@ localStorage.setItem("index",selectedIndex)
                             <div
                               className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
                                 } p-2 mb-1 cursor-pointer`}
-                              onClick={() => setIndex(index)}
+                              onClick={() => {setIndex(index);
+                                 localStorage.setItem("index", selectedIndex)}}
                               key={index}
                             >
                               {page.name}
@@ -174,7 +175,7 @@ localStorage.setItem("index",selectedIndex)
                   </section>
                 )
             }
-            
+
           </div>
           :
           <div style={{ "width": "500px" }} className="bg-slate-100 rounded-lg mr-5">

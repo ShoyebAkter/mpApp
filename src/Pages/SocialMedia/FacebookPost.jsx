@@ -39,6 +39,7 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
 
     const logOutOfFB = () => {
         localStorage.removeItem("access_token");
+        localStorage.removeItem("index");
         setFacebookUserAccessToken(null)
     
       };

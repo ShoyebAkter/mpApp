@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 import { getFacebookPageId, getFacebookPages, getFbPageToken, getMonthlyEngagement, getPageDayEngamenet } from '../SocialMedia/facebook';
 import { getFourWeeksData, objtoArray } from './getTierValue';
 import PropTypes from 'prop-types';
-import { getLongLivedAccessToken } from '../SocialMedia/longlivetoken';
+// import { getLongLivedAccessToken } from '../SocialMedia/longlivetoken';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -32,23 +32,28 @@ export const Engagement = ({ setWeeksData }) => {
 
   useEffect(()=>{
     const token=localStorage.getItem("access_token");
+    const index=localStorage.getItem("index");
     console.log(token);
     if(token){
       setFacebookUserAccessToken(token)
+      setIndex(index)
+      getEngagementData();
     }
-  },[])
+  },[facebookUserAccessToken, selectedIndex])
 
   const logInToFB = () => {
     window.FB.login(
       (response) => {
-        getLongLivedAccessToken(response.authResponse?.accessToken)
-                .then(longLivedToken => {
-                    setFacebookUserAccessToken(longLivedToken);
-                    localStorage.setItem("access_token",longLivedToken)
-                  })
-                  .catch(error => {
-                    console.error('Error:', error);
-                  });
+        localStorage.setItem("access_token",response.authResponse?.accessToken)
+        setFacebookUserAccessToken(response.authResponse?.accessToken);
+        // getLongLivedAccessToken(response.authResponse?.accessToken)
+        //         .then(longLivedToken => {
+        //             setFacebookUserAccessToken(longLivedToken);
+        //             localStorage.setItem("access_token",longLivedToken)
+        //           })
+        //           .catch(error => {
+        //             console.error('Error:', error);
+        //           });
       },
       {
 
@@ -62,6 +67,7 @@ export const Engagement = ({ setWeeksData }) => {
 
   const logOutOfFB = () => {
     localStorage.removeItem("access_token");
+    localStorage.removeItem("index");
     setFacebookUserAccessToken(null)
 
   };
@@ -72,7 +78,7 @@ export const Engagement = ({ setWeeksData }) => {
 
   const getEngagementData = async () => {
     const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
-    console.log(localStorage.getItem("access_token"));
+    // console.log(localStorage.getItem("access_token"));
     const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
     // console.log(fbPageToken);
     const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
@@ -82,7 +88,7 @@ export const Engagement = ({ setWeeksData }) => {
     setEngagement2023(engagementArray.filter(item => item.newDate.includes('2023')));
     const fourweeksData = await getFourWeeksData(dayEngagement.data[0].values)
     setWeeksData(fourweeksData)
-
+localStorage.setItem("index",selectedIndex)
   }
   const options = {
     responsive: true,
@@ -119,7 +125,7 @@ export const Engagement = ({ setWeeksData }) => {
   return (
     <div className="bg-slate-100 rounded-lg mr-5">
       {
-        !engagement2022  ?
+        !selectedIndex  ?
           <div style={{ "width": "500px" }} >
             <section className="flex justify-center items-center">
 
@@ -168,21 +174,7 @@ export const Engagement = ({ setWeeksData }) => {
                   </section>
                 )
             }
-            {facebookUserAccessToken ? (
-              <section >
-                {
-                  pages.length === 0 ?
-                    null
-                    :
-                    <button
-                      className="bg-black  p-2 text-white"
-                      onClick={getEngagementData}
-                    >
-                      Engagement Result
-                    </button>
-                }
-              </section>
-            ) : null}
+            
           </div>
           :
           <div style={{ "width": "500px" }} className="bg-slate-100 rounded-lg mr-5">

@@ -3,32 +3,36 @@ import PropTypes from 'prop-types'
 import { getFacebookPageId, getFacebookPages, getFbPageToken, getGenderAge, getMonthlyEngagement, getPageDayEngamenet, getPageImpression, getPageTotalFollowers, getPermaLink, getPostId, getPostReaction } from "./facebook";
 import { objtoArray } from "../CustomerBehaviour/getTierValue";
 import Loading from "../Authentication/Loading";
-import { getLongLivedAccessToken } from "./longlivetoken";
+// import { getLongLivedAccessToken } from "./longlivetoken";
 export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setImpression, setEngagement }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
     const [loading, setLoading] = useState(false)
-    useEffect(() => {
+    useEffect(()=>{
         const token=localStorage.getItem("access_token");
-    // console.log(token);
-    if(token){
-      setFacebookUserAccessToken(token)
-    }
-    }, []);
+        const index=localStorage.getItem("index");
+        console.log(token);
+        if(token){
+          setFacebookUserAccessToken(token)
+          setIndex(index)
+          getPageInformation();
+        }
+      },[facebookUserAccessToken, selectedIndex])
 
     const logInToFB = () => {
         window.FB.login(
             (response) => {
-                getLongLivedAccessToken(response.authResponse?.accessToken)
-                .then(longLivedToken => {
-                    console.log(longLivedToken);
-                    setFacebookUserAccessToken(longLivedToken);
-                    localStorage.setItem("access_token",longLivedToken)
-                  })
-                  .catch(error => {
-                    console.error('Error:', error);
-                  });
+                setFacebookUserAccessToken(response.authResponse?.accessToken);
+                // getLongLivedAccessToken(response.authResponse?.accessToken)
+                // .then(longLivedToken => {
+                //     console.log(longLivedToken);
+                //     setFacebookUserAccessToken(longLivedToken);
+                //     localStorage.setItem("access_token",longLivedToken)
+                //   })
+                //   .catch(error => {
+                //     console.error('Error:', error);
+                //   });
             },
             {
 
@@ -47,7 +51,7 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         const facebookPage = await getFacebookPages(facebookUserAccessToken);
         setPages(facebookPage)
     }
-    const getLink = async () => {
+    const getPageInformation = async () => {
         setLoading(true)
         const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
         // console.log(facebookPageId);
@@ -71,7 +75,7 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         setFollowers(totalFollowers);
         const getPageGenderAge = await getGenderAge(facebookPageId, fbPageToken)
         setUserDetails(getPageGenderAge.values[0].value);
-
+        localStorage.setItem("index",selectedIndex)
         setLoading(false)
     };
     return (
@@ -126,21 +130,7 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
                                     </section>
                                 )
                         }
-                        {facebookUserAccessToken ? (
-                            <section >
-                                {
-                                    pages.length === 0 ?
-                                        null
-                                        :
-                                        <button
-                                            className="bg-black  p-2 text-white"
-                                            onClick={getLink}
-                                        >
-                                            Get Top Post
-                                        </button>
-                                }
-                            </section>
-                        ) : null}
+                        
                     </div>
             }
         </div>

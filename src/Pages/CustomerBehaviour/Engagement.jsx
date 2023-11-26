@@ -162,7 +162,7 @@ export const Engagement = ({ setWeeksData }) => {
                               className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
                                 } p-2 mb-1 cursor-pointer`}
                               onClick={() => {setIndex(index);
-                                 localStorage.setItem("index", selectedIndex)}}
+                                 localStorage.setItem("index", index)}}
                               key={index}
                             >
                               {page.name}

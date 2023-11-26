@@ -9,20 +9,21 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
     const [loading, setLoading] = useState(false)
-    useEffect(()=>{
-        const token=localStorage.getItem("access_token");
-        const index=localStorage.getItem("index");
+    useEffect(() => {
+        const token = localStorage.getItem("access_token");
+        const index = localStorage.getItem("index");
         console.log(token);
-        if(token){
-          setFacebookUserAccessToken(token)
-          setIndex(index)
-          getPageInformation();
+        if (token && index) {
+            setFacebookUserAccessToken(token);
+            setIndex(index);
+            getPageInformation();
         }
-      },[facebookUserAccessToken, selectedIndex])
+    }, [facebookUserAccessToken, selectedIndex])
 
     const logInToFB = () => {
         window.FB.login(
             (response) => {
+                localStorage.setItem("access_token", response.authResponse?.accessToken)
                 setFacebookUserAccessToken(response.authResponse?.accessToken);
                 // getLongLivedAccessToken(response.authResponse?.accessToken)
                 // .then(longLivedToken => {
@@ -45,17 +46,18 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         localStorage.removeItem("access_token");
         localStorage.removeItem("index");
         setFacebookUserAccessToken(null)
-    
-      };
+
+    };
     const getPages = async () => {
         const facebookPage = await getFacebookPages(facebookUserAccessToken);
         setPages(facebookPage)
     }
-    const getPageInformation = async () => {
+    const getPageInformation = async (index) => {
+
         setLoading(true)
-        const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
+        const facebookPageId = await getFacebookPageId(facebookUserAccessToken, index);
         // console.log(facebookPageId);
-        const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
+        const fbPageToken = await getFbPageToken(facebookUserAccessToken, index);
         // console.log(fbPageToken);
         const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
 
@@ -77,6 +79,9 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         setUserDetails(getPageGenderAge.values[0].value);
         setLoading(false)
     };
+    if(loading){
+        return <Loading/>
+    }
     return (
         <div>
             <section >
@@ -91,8 +96,8 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
                 )}
             </section>
             {
-                loading ?
-                    <Loading />
+                !facebookUserAccessToken ?
+                    null
                     :
                     <div>
                         {
@@ -116,8 +121,11 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
                                                         <div
                                                             className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
                                                                 } p-2 mb-1 cursor-pointer`}
-                                                            onClick={() =>  {setIndex(index);
-                                                                localStorage.setItem("index", selectedIndex)}}
+                                                            onClick={() => {
+                                                                setIndex(index);
+                                                                localStorage.setItem("index", index)
+                                                                getPageInformation(index)
+                                                            }}
                                                             key={index}
                                                         >
                                                             {page.name}
@@ -130,10 +138,10 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
                                     </section>
                                 )
                         }
-                        
+
                     </div>
             }
-        </div>
+        </div >
     )
 }
 FacebookPost.propTypes = {

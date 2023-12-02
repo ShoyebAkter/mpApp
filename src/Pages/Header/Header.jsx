@@ -4,10 +4,9 @@ import './Header.css'
 import { Link } from 'react-router-dom';
 
 function Header() {
-
+	
 	return (
-		<header className="header-fixed">
-
+		<header  className="header-fixed">
 			<nav className='flex justify-around'>
 				<div style={{ "width": "80px" }} ><img src='logo2.png' /></div>
 				<div className="flex items-center ">

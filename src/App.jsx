@@ -16,9 +16,10 @@ import { Policy } from './Pages/Policy/Policy'
 
 
 function App() {
+  
   return (
     <>
-      <LoginHeader />
+      <LoginHeader/>
       <Routes>
         <Route exact path="/" element={<Landingpage />} />
         <Route path="/eulermail" element={<BusinessChart />} />

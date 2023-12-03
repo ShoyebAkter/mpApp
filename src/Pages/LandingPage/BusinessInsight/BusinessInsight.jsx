@@ -5,6 +5,7 @@ import { FcSalesPerformance } from "react-icons/fc";
 import { FaBusinessTime } from "react-icons/fa6";
 import './Business.css'
 import { IoMdAnalytics } from "react-icons/io";
+import { Fade } from "react-awesome-reveal";
 export const BusinessInsight = () => {
 
     return (
@@ -12,8 +13,11 @@ export const BusinessInsight = () => {
             <div><IoMdAnalytics  style={{ "width": "50px", "height": '50px' }}/></div>
             <h1 className='text-4xl font-medium '>The types of services we provide <span className='text-green-700'>For You</span></h1>
             
+            
             <section className="card__container">
+            
                 <div className="flex flex-col  gap-10  p-6 space-x-4  rounded-box">
+                <Fade cascade damping = {1}>
                     <div className="flex justify-around gap-20 relative w-full">
                         <div className="card__bx" style={{ "--clr": "#89ec5b" }}>
                             <div className="card__data">
@@ -78,8 +82,11 @@ export const BusinessInsight = () => {
                             </div>
                         </div>
                     </div>
+                    </Fade>
                 </div>
+                
             </section>
+            
 
         </section>
     )

@@ -1,4 +1,8 @@
-
+import { MdEmail } from "react-icons/md";
+import { MdCampaign } from "react-icons/md";
+import { FaDatabase } from "react-icons/fa";
+import { FcSalesPerformance } from "react-icons/fc";
+import { FaBusinessTime } from "react-icons/fa6";
 import './Business.css'
 import { IoMdAnalytics } from "react-icons/io";
 export const BusinessInsight = () => {
@@ -14,7 +18,7 @@ export const BusinessInsight = () => {
                         <div className="card__bx" style={{ "--clr": "#89ec5b" }}>
                             <div className="card__data">
                                 <div className="card__icon">
-                                    <i className="fa-solid fa-paintbrush"></i>
+                                <FaDatabase />
                                 </div>
                                 <div className="card__content">
                                     <h3>Customer Data Analysis</h3>
@@ -26,7 +30,7 @@ export const BusinessInsight = () => {
                         <div className="card__bx carousel-item" style={{ "--clr": "#eb5ae5" }}>
                             <div className="card__data">
                                 <div className="card__icon">
-                                    <i className="fa-solid fa-code"></i>
+                                <FcSalesPerformance />
                                 </div>
                                 <div className="card__content">
                                     <h3>Sales Data Analysis</h3>
@@ -38,7 +42,7 @@ export const BusinessInsight = () => {
                         <div className="card__bx carousel-item" style={{ "--clr": "#5b98eb" }}>
                             <div className="card__data">
                                 <div className="card__icon">
-                                    <i className="fa-brands fa-searchengin"></i>
+                                <FaBusinessTime />
                                 </div>
                                 <div className="card__content">
                                     <h3>Business Data Analysis</h3>
@@ -52,7 +56,7 @@ export const BusinessInsight = () => {
                         <div className="card__bx carousel-item" style={{ "--clr": "#c4cdda" }}>
                             <div className="card__data">
                                 <div className="card__icon">
-                                    <i className="fa-brands fa-searchengin"></i>
+                                <MdCampaign />
                                 </div>
                                 <div className="card__content">
                                     <h3>Campaign Creation</h3>
@@ -64,7 +68,7 @@ export const BusinessInsight = () => {
                         <div className="card__bx carousel-item" style={{ "--clr": "#aaa7a2" }}>
                             <div className="card__data">
                                 <div className="card__icon">
-                                    <i className="fa-brands fa-searchengin"></i>
+                                <MdEmail />
                                 </div>
                                 <div className="card__content">
                                     <h3>Email Marketing</h3>

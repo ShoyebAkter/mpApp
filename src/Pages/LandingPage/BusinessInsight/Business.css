@@ -37,8 +37,7 @@ body {
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 .container {
-  max-width: 900px;
-  width: 50%;
+  background-color:#ffffff;
   margin: 0 auto;
   padding: 3rem 0;
   display: grid;
@@ -71,8 +70,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--dark-color);
+  background: var(--white-color);
   transition: var(--transition);
+  border: 1px solid #b4afaf;
+  color: #000000;
 }
 .card__bx::before,
 .card__bx::after {
@@ -140,11 +141,12 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 10px;
+  
 }
 .card__bx .card__data h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--white-color);
+  color: var(--dark-color);
   transition: var(--transition);
 }
 .card__bx:hover .card__data h3 {

@@ -1,12 +1,11 @@
 import { Fade, Slide } from 'react-awesome-reveal'
 import './Introduction.css'
-import Header from '../Header/Header'
 export const Introduction = () => {
     return (
         <Fade damping={1}>
-            <div className='background'>
-                <Header/>
-                <div className="flex justify-around  items-center">
+            <div>
+                
+                <div className="flex justify-between mx-10  items-center">
                     <div className='pt-24'>
                         <div className="text-lime-600 text-5xl font-medium ">Analytics for business</div>
                         <div className="text-cyan-500 text-5xl font-medium py-3">Growth by design</div>

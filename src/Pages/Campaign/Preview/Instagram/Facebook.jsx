@@ -10,7 +10,6 @@ function Facebook({ imageBlob, text }) {
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
-    const imageStorageKey = '0be1a7996af760f4a03a7add137ca496';
     useEffect(() => {
         const token = localStorage.getItem("access_token");
         if (token) {
@@ -95,7 +94,7 @@ function Facebook({ imageBlob, text }) {
             const formData = new FormData();
             formData.append('image', imageBlob);
 
-            const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+            const imagebburl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_REACT_APP_IMAGE_KEY}`;
             const imageUrl = await fetch(imagebburl, {
                 method: 'POST',
                 body: formData

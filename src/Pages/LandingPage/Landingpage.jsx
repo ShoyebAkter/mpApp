@@ -8,13 +8,16 @@ import { Footer } from "./Footer/Footer"
 import { Integration } from "./Integration/Integration"
 import { Introduction } from "./Introduction"
 import { RealTImeUpdates } from "./Realtime/RealTImeUpdates"
+import Header from "../Header/Header"
+import './Introduction.css'
 export const Landingpage = () => {
   
   
   return (
     <div >
       <div >
-        <section><Introduction/></section>
+      <Header />
+        <section id="introduction"  className='background'><Introduction/></section>
         <section id="businessInsight"><BusinessInsight/></section>
        <section id="integration"> <Integration/></section>
        <section id="realtime"> <Fade damping={0.6}><RealTImeUpdates/></Fade></section>

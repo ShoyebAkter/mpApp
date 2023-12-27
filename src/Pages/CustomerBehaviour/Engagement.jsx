@@ -111,14 +111,14 @@ export const Engagement = ({ setWeeksData }) => {
       {
         label: '2022 Engagement',
         data: engagement2022 ? engagement2022.map(data => data.value) : [1, 2, 3, 4, 5, 6, 7],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: '#649445',
+        backgroundColor: '#649445',
       },
       {
         label: '2023 Engagement',
         data: engagement2023 ? engagement2023.map(data => data.value) : [1, 2, 3, 4, 5, 6, 7],
-        borderColor: 'rgb(134, 25, 134)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: '#2a4e40',
+        backgroundColor: '#2a4e40',
       }
     ],
   };

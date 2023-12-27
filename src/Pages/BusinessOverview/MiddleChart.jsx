@@ -106,8 +106,8 @@ export const MiddleChart = () => {
       {
         label: `Sales $`,
         data: revenue.map((array) => array.total),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: '#649445',
+        backgroundColor: '#649445',
       }
     ],
   };

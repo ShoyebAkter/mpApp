@@ -96,8 +96,9 @@ export const Sales = () => {
           {
             label: 'Dataset 1',
             data: salesValue.map((sale)=>sale.total) ,
-            borderColor: 'rgb(15, 177, 42)',
-            backgroundColor: 'rgba(60, 236, 16, 0.87)',
+            borderColor: '#649445',
+            backgroundColor: '#649445',
+            
           }
         ],
       };

@@ -11,23 +11,42 @@ export const CampaignTypes = ({emailCampaign,whatsAppCampaign}) => {
             label: 'No. Of Campaign',
             data: [emailCampaign,whatsAppCampaign],
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
+              '#649445',
+              '#48705c',
             ],
             borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(75, 192, 192, 1)',
+              '#649445',
+              '#48705c',
             ],
             borderWidth: 1,
           },
         ],
+        
       };
+      // const options= {
+      //   scales: {
+      //     y: {
+      //       ticks: {
+      //         color: 'red',
+      //         font: {
+      //           size: 14,
+      //         }
+      //       }
+      //     },
+      //     x: {
+      //       ticks: {
+      //         color: 'red',
+      //         font: {
+      //           size: 14
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
     return (
         <div id="chart">
             <h1 className="text-black text-lg font-bold">Campaign Types</h1>
-            <Pie data={data} width={300}/>
+            <Pie  data={data} width={300}/>
         </div>
 
     )

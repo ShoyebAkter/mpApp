@@ -1,6 +1,7 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
 import CustomerBehaviour from "./CustomerBehaviour"
+import './BusinessChart.css'
 import OverviewChart from "./OverviewChart"
 import { useNavigate } from "react-router-dom";
 import Loading from "../Authentication/Loading";
@@ -22,6 +23,9 @@ function BusinessChart() {
             <div className="flex justify-around py-5 ">
                 <OverviewChart />
                 <CustomerBehaviour />
+            </div>
+            <div className="centerImage">
+                <img src="/logo.png" alt="logo"/>
             </div>
             <div className="flex justify-around py-5">
                 <div><CampaignResult /></div>

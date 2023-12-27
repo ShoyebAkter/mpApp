@@ -58,7 +58,7 @@ export const CampaignResult = () => {
           {
             label: 'Total email sent',
             data: result.map((campaign)=>campaign.total),
-            backgroundColor: 'rgba(17, 16, 17, 0.5)',
+            backgroundColor: '#649445',
           }
         ],
       };

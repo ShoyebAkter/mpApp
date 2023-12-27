@@ -55,7 +55,7 @@ function SocialMediaChart() {
             {
                 label: 'Facebook Post Dataset',
                 data:result.map(res=>res.total),
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                backgroundColor: '#649445',
             }
         ],
     };

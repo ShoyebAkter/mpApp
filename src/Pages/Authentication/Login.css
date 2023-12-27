@@ -1,4 +1,5 @@
 .loginsection{
-    background-color: rgb(12, 199, 90);
-    
+    background: #649445 url('/embg.png') no-repeat;
+    background-size: cover;
+    padding-block: 30px;
 }

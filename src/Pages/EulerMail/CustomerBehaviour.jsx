@@ -69,8 +69,8 @@ function CustomerBehaviour() {
             {
                 label: 'Dataset 1',
                 data: countedValues.map((value)=>value.count),
-                borderColor: 'rgb(15, 177, 42)',
-                backgroundColor: 'rgba(60, 236, 16, 0.87)',
+                borderColor: '#649445',
+                backgroundColor: '#649445',
             }
         ],
     };

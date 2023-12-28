@@ -1,9 +1,10 @@
 import { LineChart } from "./LineChart"
 import { RevenueChart } from "./RevenueChart"
-
+import './Realtime.css'
 export const RealTImeUpdates = () => {
     return (
         <div className="m-10">
+            <h1 className="header1 font-bold">Real Time Updates</h1>
             <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className="flex justify-between rounded-2xl p-10 mt-5">
                 <div className='rounded-xl my-5' ><h1 className="text-center">Total Sales</h1> <LineChart /></div>
                 <div className='rounded-xl my-5' ><h1 className="text-center">Orders</h1> <LineChart /></div>

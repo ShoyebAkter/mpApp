@@ -1,6 +1,8 @@
 /* CSS Animation */
 
-
+.integrationDiv{
+  background-image: url('BG_4.png');
+}
 .line-with-circle {
     position: relative;
     display: inline-block;

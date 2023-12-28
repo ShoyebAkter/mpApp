@@ -3,7 +3,7 @@ import './Business.css'
 export const BusinessInsight = () => {
 
     return (
-        <div>
+        <div className='businessInsightDiv'>
             <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)','width':"400px",'background':"#2a4e40","color":"#f8f8f8" }} className="px-2 py-1 flex justify-center mx-auto rounded-2xl mt-16 mb-5">
                 The types of services we provide for you
             </div>

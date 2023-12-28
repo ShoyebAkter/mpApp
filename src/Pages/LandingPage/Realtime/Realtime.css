@@ -3,3 +3,9 @@
     font-size: 40px;
     color: #649445;
 }
+.realTimeDiv{
+    background-image: url('embg.png');
+}
+.realTimeDiv div{
+    background-color: #f8f8f8;
+}

@@ -74,7 +74,7 @@ const Login = () => {
 
                             </div>
                             <p className="text-sm text-white text-center">
-                                No account yet? {' '}
+                                Want Subscription? {' '}
                                 <NavLink to="/Subscription" className="text-blue-700">
                                     Subscription
                                 </NavLink>

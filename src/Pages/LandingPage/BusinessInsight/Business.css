@@ -1,3 +1,7 @@
 .serviceImage{
   width: 30%;
+  transition: width 1s;
+}
+.serviceImage:hover{
+  width: 33%;
 }

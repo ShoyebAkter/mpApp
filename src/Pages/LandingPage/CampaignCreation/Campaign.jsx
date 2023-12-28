@@ -4,7 +4,7 @@ import './Campaign.css'
 export const Campaign = () => {
     return (
        <div  className="campaigndiv p-10">
-        <h1 className="text-center text-5xl text-green-700 font-medium py-5">Campaign Creation and Deployment</h1>
+        <h1 style={{'color':"#649445"}} className="text-center font-bold text-5xl py-5">Campaign Creation and Deployment</h1>
          <div className=" flex items-center justify-between">
             <div><CampaignLeftSection /></div>
             <div> <Explanation /></div>

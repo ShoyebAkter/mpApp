@@ -5,14 +5,14 @@ export const Introduction = () => {
         <Fade damping={1}>
             <div>
                 
-                <div className="flex justify-between mx-10  items-center">
+                <div className="flex justify-around items-center">
                     <div className='pt-24'>
-                        <div className="text-lime-600 text-5xl font-medium ">Analytics for business</div>
-                        <div className="text-cyan-500 text-5xl font-medium py-3">Growth by design</div>
-                        <div className="text-slate-500 text-3xl font-medium">Get more than just numbers.</div>
-                        <div className="text-slate-500 text-3xl font-medium">Discover insights that</div>
-                        <div className="text-slate-500 text-3xl font-medium">drive real growth.</div>
-                        <div className="text-slate-500 text-3xl font-medium pt-12">Data-driven growth starts here</div>
+                        <div style={{"color":"#649445"}} className="text-5xl font-medium ">Analytics for business</div>
+                        <div style={{"color":"#62cbc6"}}  className=" text-5xl font-medium py-3">Growth by design</div>
+                        <div style={{"color":"#6b6b6b"}}  className="text-2xl font-medium">Get more than just numbers.</div>
+                        <div style={{"color":"#6b6b6b"}}  className="text-2xl font-medium">Discover insights that</div>
+                        <div style={{"color":"#6b6b6b"}}  className="text-2xl font-medium">drive real growth.</div>
+                        <div style={{"color":"#6b6b6b"}}  className="text-2xl font-medium pt-12">Data-driven growth starts here</div>
                     </div>
 
                     <Slide >
@@ -35,6 +35,9 @@ export const Introduction = () => {
                     </Slide>
                 </div>
 
+            </div>
+            <div className='flex justify-center my-5'>
+                <img src='develop.png' alt=''/>
             </div>
         </Fade>
     )

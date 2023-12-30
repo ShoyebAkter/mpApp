@@ -5,7 +5,7 @@
     font-weight: bold;
 }
 .realTimeDiv{
-    background-image: url('embg.png');
+    background-image: url('/embg.png');
 }
 .realTimeDiv div{
     background-color: #f8f8f8;

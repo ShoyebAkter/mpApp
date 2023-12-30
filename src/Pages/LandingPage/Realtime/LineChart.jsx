@@ -30,11 +30,10 @@ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 
 
-export function LineChart({firstxLinedata,firstyLinedata,
-  secondxLinedata,secondyLinedata,
-  thirdxLinedata,thirdyLinedata,
-  fourthxLinedata,fourthyLinedata
-}) {
+export function LineChart({firstxLinedata,
+  secondxLinedata,
+  thirdxLinedata,
+  fourthxLinedata}) {
   // console.log(firstxLinedata,firstyLinedata);
    const data = {
     labels,
@@ -45,15 +44,9 @@ export function LineChart({firstxLinedata,firstyLinedata,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
-      {
-        label: 'Dataset 2',
-        data: firstyLinedata || secondyLinedata || thirdyLinedata || fourthyLinedata,
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
     ],
   };
-  return <Line options={options} data={data} />;
+  return <Line width={200} options={options} data={data} />;
 }
 LineChart.propTypes = {
   firstxLinedata:PropTypes.array.isRequired,

@@ -20,8 +20,5 @@ nav a{
 .header-fixed{
     padding: 15px;
     box-shadow:0 5px 5px #ccc;
-    position: sticky;
-    top: 0;
-    z-index: 50;
     background-color: #fff;
 }

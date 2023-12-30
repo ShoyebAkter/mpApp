@@ -1,10 +1,10 @@
 .serviceImage{
-  width: 30%;
-  transition: width 1s;
+  width: 25%;
+  transition: transform 0.3s ease-in-out;
 }
 .serviceImage:hover{
-  width: 33%;
+  transform: scale(1.2);
 }
 .businessInsightDiv{
-  background-image: url('BG_2.png');
+  background-image: url('/BG_2.png');
 }

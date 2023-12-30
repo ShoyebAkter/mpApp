@@ -3,10 +3,25 @@
     font-size: 40px;
     color: #649445;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 .realTimeDiv{
     background-image: url('/embg.png');
 }
 .realTimeDiv div{
     background-color: #f8f8f8;
+}
+.custom-hr{
+    width: 200px;
+    height: 1px; /* Adjust the thickness of the line as needed */
+    background-color: #000;
+    margin-block: auto;
+}
+.writingSection{
+    width: 350px;
+    height: 170px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5)
+}
+.mapSection{
+    height: 100px;
 }

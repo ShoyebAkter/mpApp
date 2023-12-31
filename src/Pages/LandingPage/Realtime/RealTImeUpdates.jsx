@@ -31,7 +31,7 @@ export const RealTImeUpdates = () => {
 
             <section className="flex justify-center">
                 <div className="writingSection my-auto rounded-xl p-2">
-                    Customizable Metrics: Tailor your
+                   <span className="font-bold"> Customizable Metrics:</span> Tailor your
                     dashboard to focus on the KPIs that
                     matter most to your business. From
                     click-through rates to customer
@@ -48,11 +48,11 @@ export const RealTImeUpdates = () => {
                     </div>
                 </div>
             </section>
-            <section className=" flex justify-center mt-5">
+            <section className="flex justify-center mt-5">
                 <section><img src="/map.png" alt="" /></section>
                 <section className="custom-hr"></section>
                 <div className="writingSection my-auto rounded-xl p-2">
-                    User-Friendly Design: Navigate your
+                   <span className="font-bold" >User-Friendly Design:</span>  Navigate your
                     KPIs effortlessly with our intuitive
                     dashboard layout. Easily toggle
                     between different metrics to get a

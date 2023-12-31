@@ -1,62 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap');
 
-.firstLine{
+.firstLine {
   font-weight: 800;
   font-size: 50px;
 }
 
-.background{
+.background {
   background-image: url('/embg.png');
-  background-size: cover; /* Adjust to your needs */
+  background-size: cover;
+  /* Adjust to your needs */
   background-repeat: no-repeat;
   background-position: center center;
   padding-bottom: 20px;
 }
+
 .image-container {
-    position: relative;
-    width: 400px;
-    z-index: 1; /* Adjust the width as needed */
-    
-  }
+  position: relative;
+  width: 400px;
+  z-index: 1;
+  /* Adjust the width as needed */
 
-  .top-image {
-    position: absolute;
-    top: 75px;
-    left: -235px;
-    width: 100%; /* To cover the entire container width */
-    z-index: 1; /* Places it on top of the bottom image */
-  }
-  .third-image{
-    position: absolute;
-    top: 210px;
-    left: -50px;
-    width: 100%; /* To cover the entire container width */
-    z-index: 1;
-  }
+}
 
-  .bottom-image {
-    width: 100%;
-    z-index: 0; /* Places it below the top image */
-  }
+.top-image {
+  position: absolute;
+  top: 75px;
+  left: -235px;
+  width: 100%;
+  /* To cover the entire container width */
+  z-index: 1;
+  /* Places it on top of the bottom image */
+}
 
-  .circle {
-    padding: 15px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: #439541;
-    position: relative;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    z-index: 2;
-    left: 2%;
-    transform: translate(-145%, -30%);
-    
+.third-image {
+  position: absolute;
+  top: 210px;
+  left: -50px;
+  width: 100%;
+  /* To cover the entire container width */
+  z-index: 1;
+}
+
+.bottom-image {
+  width: 100%;
+  z-index: 0;
+  /* Places it below the top image */
+}
+
+.circle {
+  padding: 15px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #439541;
+  position: relative;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  left: 2%;
+  transform: translate(-145%, -30%);
+
+}
+
+.arrow {
+  width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #6b6b6b;
+      transform: translate(0%, 0%) rotate(90deg);
 }
 
 
 .center-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

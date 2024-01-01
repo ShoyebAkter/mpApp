@@ -11,7 +11,7 @@ export const RealTImeUpdates = () => {
             <h1 className="header1">Real Time Updates</h1>
             <section className="flex justify-center rounded-2xl">
                 <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className="flex rounded-2xl">
-                    <div style={{ "width": "30px", "background": "#649445" }} className="rounded-s-2xl"></div>
+                    <div style={{ "width": "30px", "background": "#439541" }} className="rounded-s-2xl"></div>
                     <div className='rounded-xl my-5' ><h1 className="text-center">Total Sales</h1> <LineChart firstxLinedata={firstxLinedata} /></div>
                     <div className='rounded-xl my-5' ><h1 className="text-center">Orders</h1> <LineChart secondxLinedata={secondxLinedata} /></div>
                     <div className='rounded-xl my-5' ><h1 className="text-center">Customer Quantty</h1> <LineChart thirdxLinedata={thirdxLinedata} /></div>
@@ -40,7 +40,7 @@ export const RealTImeUpdates = () => {
                 </div>
                 <section className="custom-hr"></section>
                 <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)', "height": "200px", "width": "700px" }} className=" flex  rounded-2xl mt-5">
-                    <div style={{ "width": "30px", "background": "#649445" }} className="rounded-s-2xl"></div>
+                    <div style={{ "width": "30px", "background": "#439541" }} className="rounded-s-2xl"></div>
 
                     <div className="mx-auto">
                         <h1 className="text-center my-3">Monthly Revenue</h1>

@@ -22,13 +22,13 @@ export const LoginHeader = () => {
                     <header className="header-fixed">
 
                         <nav className='items-center'>
-                            <div style={{ "width": "50px" }} ><img src='logo2.png' /></div>
+                            <div style={{ "width": "50px" }} ><img src='Logo_Iso_Green.png' /></div>
                             <Link to="/eulermail">EulerMail</Link>
                             <Link to="/businessoverview">Business Overview</Link>
                             <Link to="/customerBehaviour">Customer Behaviour</Link>
                             <Link to="/campaignresult">Campaign Result</Link>
                             <Link to="/socialmedia">Social Media</Link>
-                            <Link to="/campaignerdesign" className="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded-full shadow-lg">
+                            <Link to="/campaignerdesign" style={{"background":"#439541","boxShadow": '2px 2px 5px rgba(0, 0, 0, 0.5)'}} className=" text-white hover:text-white  py-1 px-4 rounded-full shadow-lg">
                                 Campaign Designer
                             </Link>
     

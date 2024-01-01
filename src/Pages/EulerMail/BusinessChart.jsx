@@ -15,7 +15,7 @@ function BusinessChart() {
         navigate('/login')
     }
     return (
-        <div className="py-8">
+        <div className=" py-8">
             <div className="flex text-black justify-around ">
                 <div className="text-xl font-bold">Company Name</div>
                 <div className=" border-solid border-2 border-lime-500 rounded-xl px-2 text-lime-600">General Report</div>
@@ -24,12 +24,13 @@ function BusinessChart() {
                 <OverviewChart />
                 <CustomerBehaviour />
             </div>
-            <div className="centerImage">
-                <img src="/logo.png" alt="logo"/>
-            </div>
+            
             <div className="flex justify-around py-5">
                 <div><CampaignResult /></div>
                 <div><SocialMediaChart /></div>
+            </div>
+            <div className="centerImage">
+                <img src="/logo.png" alt="logo"/>
             </div>
         </div>
     )

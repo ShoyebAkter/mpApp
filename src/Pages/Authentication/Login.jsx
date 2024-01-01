@@ -27,9 +27,9 @@ const Login = () => {
     }
 
     return (
-        <div className="bodySection">
+        <div className="bodySection ">
 
-            <main className='loginsection  ' >
+            <main className='loginsection  h-screen' >
                 <section>
                     <img className='mx-auto h-72' src='logo.png' />
                     <div className="flex justify-center">

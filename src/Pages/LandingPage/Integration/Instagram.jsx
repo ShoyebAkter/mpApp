@@ -9,7 +9,7 @@ export const Instagram = () => {
                 <div className="instaupward-line"></div>
                 <div className="instaupwardline" ></div>
             </div>
-            <Slide><BsInstagram style={{ "width": "80px", "height": '80px' }} /><span  className="text-3xl font-medium text-white px-2">Instagram</span>
+            <Slide><BsInstagram style={{ "width": "80px", "height": '80px',"color":"#f8f8f8" }} /><span  className="text-3xl font-medium text-white px-2">Instagram</span>
             </Slide>
         </div>
   )

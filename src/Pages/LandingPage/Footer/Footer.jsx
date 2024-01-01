@@ -17,13 +17,13 @@ export const Footer = () => {
                                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">Quick Links</h2>
                                 <ul className="text-gray-500  font-medium">
                                     <li className="mb-4">
-                                        <a style={{"textDecoration":"none"}} href="/" className="hover:underline">Home</a>
+                                        <div style={{"cursor":"pointer"}} >Home</div>
                                     </li>
                                     <li className="mb-4">
-                                        <a style={{"textDecoration":"none"}} href="#allies" className="hover:underline">Clients</a>
+                                        <div style={{"cursor":"pointer"}}>Clients</div>
                                     </li>
                                     <li className="mb-4">
-                                        <a style={{"textDecoration":"none"}} href="#contactUs" className="hover:underline">Contact Us</a>
+                                        <div style={{"cursor":"pointer"}}>Contact Us</div>
                                     </li>
                                     
                                 </ul>
@@ -32,16 +32,16 @@ export const Footer = () => {
                                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">Services</h2>
                                 <ul className="text-gray-500  font-medium">
                                     <li className="">
-                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline ">Customer Data Analysis</a>
+                                        <div style={{"cursor":"pointer"}}>Customer Data Analysis</div>
                                     </li>
                                     <li>
-                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline">Sales Data Analysis</a>
+                                        <div style={{"cursor":"pointer"}}>Sales Data Analysis</div>
                                     </li>
                                     <li>
-                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline">Business Data Analysis</a>
+                                        <div style={{"cursor":"pointer"}}>Business Data Analysis</div>
                                     </li>
                                     <li>
-                                        <a style={{"textDecoration":"none"}} href="https://discord.gg/4eeurUVvTy" className="hover:underline">Campaign Creation</a>
+                                        <div style={{"cursor":"pointer"}}>Campaign Creation</div>
                                     </li>
                                 </ul>
                             </div>
@@ -49,10 +49,10 @@ export const Footer = () => {
                                 <h2 className="mb-6 text-sm font-semibold uppercase text-white">Get in Touch</h2>
                                 <ul className="text-gray-500 font-medium">
                                     <li className="mb-4">
-                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline">info@gmail.com</a>
+                                        <div style={{"cursor":"pointer"}}>info@gmail.com</div>
                                     </li>
                                     <li>
-                                        <a style={{"textDecoration":"none"}} href="#" className="hover:underline">Phone Number</a>
+                                        <div style={{"cursor":"pointer"}}>Phone Number</div>
                                     </li>
                                 </ul>
                             </div>

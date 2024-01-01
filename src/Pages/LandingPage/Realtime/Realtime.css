@@ -12,14 +12,14 @@
     background-color: #f8f8f8;
 }
 .custom-hr{
-    width: 200px;
+    width: 300px;
     height: 1px; /* Adjust the thickness of the line as needed */
     background-color: #000;
     margin-block: auto;
 }
 .writingSection{
     width: 350px;
-    height: 170px;
+    height: 180px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5)
 }
 .mapSection{

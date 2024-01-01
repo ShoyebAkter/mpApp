@@ -2,7 +2,7 @@ import { Slide } from "react-awesome-reveal"
 
 export const Analysis = () => {
   return (
-    <div className="flex flex-col justify-center g-5 items-center my-5">
+    <div className="flex flex-col justify-center g-5 items-center my-5 h-screen">
         <div style={{'color':"#649445"}} className="text-5xl font-bold">Get your smart business insights</div>
         <div className="flex justify-between items-center">
             <Slide><div><img src="pc.png" alt=""/></div></Slide>

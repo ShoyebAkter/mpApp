@@ -10,6 +10,7 @@ export const Wordpress = () => {
             <div className="line-with-circle">
                 <span className="linecircle"></span>
                 <div className="line"></div>
+                {/* <div className="secondline"></div> */}
 
             </div>
     </div>

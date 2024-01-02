@@ -11,16 +11,16 @@ export const Integration = () => {
         <div className="integrationDiv p-10">
 
             <h1 className="text-5xl font-bold text-white text-center">Integration of <span style={{ "color": "#62cbc6" }}>multiple</span> platform</h1>
-            <div className='flex items-center justify-around'>
-                <div>
+            <div className='flex items-center justify-between'>
+                <div className='flex flex-col justify-center '>
                     <Wordpress />
                     <Whatsapp />
                     <GoogleAnalytics />
                 </div>
-                <div style={{ "paddingBottom": "100px" }}>
-                    <img className='h-72' src='/logo.png' />
+                <div style={{ "paddingBottom": "200px" }}>
+                    <img style={{"height":"250px"}} src='/logo.png' />
                 </div>
-                <div>
+                <div className='flex flex-col justify-center '>
                     <Woocommerce />
                     <Instagram />
                     <Sms />

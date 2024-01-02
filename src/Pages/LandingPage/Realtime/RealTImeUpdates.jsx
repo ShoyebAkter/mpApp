@@ -10,7 +10,7 @@ export const RealTImeUpdates = () => {
         <div className="realTimeDiv p-10">
             <h1 className="header1">Real Time Updates</h1>
             <section className="flex justify-center rounded-2xl">
-                <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className="flex rounded-2xl">
+                <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)',"width":"733px" }} className="flex justify-between rounded-2xl">
                     <div style={{ "width": "30px", "background": "#439541" }} className="rounded-s-2xl"></div>
                     <div className='rounded-xl my-5' ><h1 className="text-center">Total Sales</h1> <LineChart firstxLinedata={firstxLinedata} /></div>
                     <div className='rounded-xl my-5' ><h1 className="text-center">Orders</h1> <LineChart secondxLinedata={secondxLinedata} /></div>
@@ -31,7 +31,7 @@ export const RealTImeUpdates = () => {
 
             <section className="flex justify-center">
                 <div className="writingSection my-auto rounded-xl p-2">
-                   <span className="font-bold"> Customizable Metrics:</span> Tailor your
+                    <span className="font-bold"> Customizable Metrics:</span> Tailor your
                     dashboard to focus on the KPIs that
                     matter most to your business. From
                     click-through rates to customer
@@ -39,7 +39,7 @@ export const RealTImeUpdates = () => {
                     growth.
                 </div>
                 <section className="custom-hr"></section>
-                <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)', "height": "200px", "width": "700px" }} className=" flex  rounded-2xl mt-5">
+                <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)', "height": "200px", "width": "733px" }} className=" flex  rounded-2xl mt-5">
                     <div style={{ "width": "30px", "background": "#439541" }} className="rounded-s-2xl"></div>
 
                     <div className="mx-auto">
@@ -52,7 +52,7 @@ export const RealTImeUpdates = () => {
                 <section><img src="/map.png" alt="" /></section>
                 <section className="custom-hr"></section>
                 <div className="writingSection my-auto rounded-xl p-2">
-                   <span className="font-bold" >User-Friendly Design:</span>  Navigate your
+                    <span className="font-bold" >User-Friendly Design:</span>  Navigate your
                     KPIs effortlessly with our intuitive
                     dashboard layout. Easily toggle
                     between different metrics to get a

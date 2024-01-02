@@ -32,21 +32,21 @@ import {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: '',
         data: [100,30,250,600,30,350,90],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: '#439541',
+        backgroundColor: '#439541',
       },
       {
-        label: 'Dataset 2',
+        label: '',
         data: [10,50,10,59,230,15,400],
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        borderColor: '#649445',
+        backgroundColor: '#649445',
       },
     ],
   };
   
   export function RevenueChart() {
-    return <Line height={150} width={500} options={options} data={data} />;
+    return <Line height={150}  width={500} options={options} data={data} />;
   }
   

@@ -39,10 +39,10 @@ export function LineChart({firstxLinedata,
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: '',
         data: firstxLinedata || secondxLinedata|| thirdxLinedata || fourthxLinedata,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: '#439541',
+        backgroundColor: '#439541',
       },
     ],
   };

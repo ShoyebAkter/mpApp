@@ -4,7 +4,7 @@ export const BusinessInsight = () => {
 
     return (
         <div className='businessInsightDiv py-10 px-5'>
-            <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)','width':"550px",'background':"#2a4e40","color":"#f8f8f8" }} className="py-2 font-semibold text-2xl flex justify-center mx-auto rounded-2xl mb-5">
+            <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)','width':"550px",'background':"#2a4e40","color":"#f8f8f8" }} className="py-2 font-semibold text-2xl flex justify-center mx-auto rounded-2xl mb-8">
                 The types of services we provide for you
             </div>
             <div className='flex justify-center g-5'>

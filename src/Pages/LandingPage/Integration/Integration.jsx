@@ -11,7 +11,7 @@ export const Integration = () => {
         <div className="integrationDiv p-10">
 
             <h1 className="text-5xl font-bold text-white text-center">Integration of <span style={{ "color": "#62cbc6" }}>multiple</span> platform</h1>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-center'>
                 <div className='flex flex-col justify-center '>
                     <Wordpress />
                     <Whatsapp />

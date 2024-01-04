@@ -15,23 +15,25 @@ function BusinessChart() {
         navigate('/login')
     }
     return (
-        <div className=" py-8">
+        <div className=" p-8">
             <div className="flex text-black justify-around ">
                 <div className="text-xl font-bold">Company Name</div>
                 <div className=" border-solid border-2 border-lime-500 rounded-xl px-2 text-lime-600">General Report</div>
             </div>
-            <div className="flex justify-around py-5 ">
-                <OverviewChart />
-                <CustomerBehaviour />
+            <div style={{"gap":"150px"}} className="flex justify-center">
+                <div style={{"gap":"30px"}} className="flex flex-col py-5 ">
+                    <OverviewChart />
+                    <CustomerBehaviour />
+                </div>
+                <div onClick={()=>navigate('/campaignerdesign')} className="centerImage">
+                    <img src="/logo.png" alt="logo" />
+                </div>
+                <div style={{"gap":"30px"}} className="flex flex-col py-5">
+                    <div><CampaignResult /></div>
+                    <div><SocialMediaChart /></div>
+                </div>
             </div>
-            
-            <div className="flex justify-around py-5">
-                <div><CampaignResult /></div>
-                <div><SocialMediaChart /></div>
-            </div>
-            <div className="centerImage">
-                <img src="/logo.png" alt="logo"/>
-            </div>
+
         </div>
     )
 }

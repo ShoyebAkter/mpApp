@@ -1,16 +1,14 @@
 .centerImage{
+  
     position: absolute;
     padding: 15px;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     overflow: hidden;
     background-color: #439541;
-    position: relative;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    margin-inline: auto;
-    top: 50%;
-    left: 50%;
-  transform: translate(-270%, -200%);
-    /* transform: translate(0px,-100px); */
+    margin-block: auto;
+    transform: translate(0px,280px);
+    cursor: pointer;
 }

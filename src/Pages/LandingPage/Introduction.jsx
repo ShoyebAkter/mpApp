@@ -5,7 +5,7 @@ export const Introduction = () => {
         <Fade damping={1}>
             <div>
                 
-                <div className="flex justify-around items-center h-screen">
+                <div style={{"height":"80vh"}} className="flex justify-around items-center">
                     <div className='pt-24'>
                         <div style={{"color":"#649445",}} className="firstLine">Analytics for business</div>
                         <div style={{"color":"#62cbc6"}}  className="flex g-2 items-center text-5xl font-semibold py-8">

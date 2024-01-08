@@ -32,7 +32,6 @@ export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
                     }
                 },
             },
-            colors: ['#008FFB', '#00E396', '#CED4DC'],
             dataLabels: {
                 enabled: false
             },
@@ -41,10 +40,7 @@ export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
             },
             fill: {
                 type: 'gradient',
-                gradient: {
-                    opacityFrom: 0.6,
-                    opacityTo: 0.8,
-                }
+                
             },
             legend: {
                 position: 'top',
@@ -54,6 +50,7 @@ export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
                 type: 'datetime'
             },
         },
+        colors: ['#649445','#48705c','#2a4e40',]
     };
     return (
         <div id="chart" className="w-1/2">

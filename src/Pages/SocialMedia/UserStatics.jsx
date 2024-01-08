@@ -89,7 +89,7 @@ export const UserStatics = ({ setFollowers, setImpression, setEngagement }) => {
                         permalink
                             ?
                             <div>
-                                <h1 className='text-3xl font-bold text-lime-600 mb-2'>Top Performing Post(FB)</h1>
+                                <h1 style={{"color":"#439541"}} className='text-3xl font-bold mb-2'>Top Performing Post(FB)</h1>
                                 <div
                                     className="fb-post"
                                     ref={fbPostContainer}

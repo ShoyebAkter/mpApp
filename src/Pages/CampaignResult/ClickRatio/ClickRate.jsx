@@ -32,12 +32,11 @@ export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
             dataLabels: {
                 enabled: false
             },
-            colors: ["#284734"],
             title: {
                 text: 'HeatMap Chart (Single color)'
             },
         },
-
+        colors: ['#649445','#48705c','#2a4e40',]
 
     };
     return (

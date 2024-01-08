@@ -10,21 +10,23 @@ const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
 
 
   return (
-    <div >
-      <div className='flex justify-between bg-slate-100 py-2'>
+    <div style={{"height":"100vh"}} className='flex flex-col'>
+      <div  className='flex justify-between bg-slate-100 py-2'>
         <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
         <WebShare imageBlob={imageBlob} text={text} />
         <Facebook imageBlob={imageBlob} text={text} />
         {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
       </div>
       <div
-        className=' pt-10 mx-auto px-6 bg-slate-200'>
+      style={{"height":"90vh"}}
+        className='py-10 px-3 bg-slate-200'>
 
         <textarea
+        placeholder='Write your text here'
           value={text} // Bind the value to the state variable
           onChange={handleTextareaChange}
-          className="bg-white rounded-xl "
-          style={{ "height": "50vh", "width": "250px" }}
+          className="bg-white rounded-xl"
+          style={{  "height":"100%","width": "300px" }}
         />
       </div>
       

@@ -11,7 +11,7 @@ const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
 
   return (
     <div style={{"height":"100vh"}} className='flex flex-col'>
-      <div  className='flex justify-between bg-slate-100 py-2'>
+      <div  className='flex justify-between bg-slate-100 pt-2 pb-3'>
         <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
         <WebShare imageBlob={imageBlob} text={text} />
         <Facebook imageBlob={imageBlob} text={text} />

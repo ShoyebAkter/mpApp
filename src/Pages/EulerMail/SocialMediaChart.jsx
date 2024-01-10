@@ -60,12 +60,16 @@ function SocialMediaChart() {
         ],
     };
     return (
-        <div style={{ "width": "500px", "height": "350px","boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} id="chart" className='p-2 rounded-xl'>
-            
-                        <h1 className='text-black text-xl text-center font-medium text-cyan-500'>Social Media</h1>
-                        <Bar options={options} data={data} />
-                   
-        </div>
+        <div
+      id="chart"
+      className="boxcontainer p-2 "
+    >
+    <div className="topLeftscoopCorner"></div>
+      <div className="content">
+        <h1 className="heading">SocialMedia</h1>
+        <Bar options={options} data={data} />
+      </div>
+    </div>
     )
 }
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Modal } from './Modal';
 import { WebShare } from './Preview/Facebook/WebShare';
-import Facebook from './Preview/Instagram/Facebook';
+import { FacebookModal } from './FacebookModal';
 const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
   // Function to handle changes in the textarea
   const handleTextareaChange = (e) => {
@@ -11,14 +11,14 @@ const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
 
   return (
     <div style={{"height":"100vh"}} className='flex flex-col'>
-      <div  className='flex justify-between bg-slate-100 pt-2 pb-3'>
+      <div   className='flex justify-between bg-slate-100 pt-2'>
         <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
         <WebShare imageBlob={imageBlob} text={text} />
-        <Facebook imageBlob={imageBlob} text={text} />
+        <FacebookModal imageBlob={imageBlob} text={text} />
         {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
       </div>
       <div
-      style={{"height":"90vh"}}
+      style={{"height":"100vh"}}
         className='py-10 px-3 bg-slate-200'>
 
         <textarea

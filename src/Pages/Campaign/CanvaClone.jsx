@@ -57,7 +57,7 @@ function CanvaClone({ setImageBlob, setEditedImage }) {
           instance.addDefaultAssetSources(),
           instance.addDemoAssetSources({ sceneMode: 'Design' })
         ]);
-        const sceneURL = `https://cdn.img.ly/packages/imgly/cesdk-js/latest/assets/templates/cesdk_business_card_1.scene`; // Replace with your scene URL.
+        const sceneURL = `https://cdn.img.ly/assets/demo/v1/ly.img.template/templates/cesdk_postcard_1.scene`; // Replace with your scene URL.
         await instance.engine.scene.loadFromURL(sceneURL);
 
         setCesdk(instance);

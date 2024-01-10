@@ -1,51 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
 import { getFacebookPageId, getFacebookPages, getFbPageToken } from "../../../SocialMedia/facebook";
-import { AiFillFacebook, AiOutlineLogout, AiOutlineShareAlt } from "react-icons/ai";
-import { getLongLivedAccessToken } from "../../../SocialMedia/longlivetoken";
+import { AiOutlineShareAlt } from "react-icons/ai";
 
-function Facebook({ imageBlob, text }) {
+function Facebook({ imageBlob, text,facebookUserAccessToken }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
-    const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
-    useEffect(() => {
-        const token = localStorage.getItem("access_token");
-        if (token) {
-            setFacebookUserAccessToken(token)
-        }
-    }, [])
-    const logInToFB = () => {
-        window.FB.login(
-            (response) => {
-                getLongLivedAccessToken(response.authResponse?.accessToken)
-                    .then(longLivedToken => {
-                        setFacebookUserAccessToken(longLivedToken);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-                // setFacebookUserAccessToken(token)
-                // getLongAccessToken(response.authResponse?.accessToken);
-            },
-            {
-                // Scopes that allow us to publish content to Instagram
-                scope: "pages_show_list,pages_read_engagement,pages_manage_posts,pages_read_user_content,pages_manage_metadata,pages_manage_engagement",
-                // scope:[ "","","pages_read_user_content","pages_manage_metadata","pages_manage_engagement"]
-            }
-        );
-    };
+    
+    
     // const getLongAccessToken=async(token)=>{
     //     await fetch(`https://emapp-backend.vercel.app/exchangeToken/${token}`)
     //     .then(res=>console.log(res))
     //   }
-    const logOutOfFB = () => {
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("index");
-        setFacebookUserAccessToken(null)
-
-    };
+    
 
     const getPages = async () => {
         // console.log(facebookUserAccessToken);
@@ -114,17 +83,7 @@ function Facebook({ imageBlob, text }) {
 
     return (
         <main id="app-main" >
-            <section >
-                {facebookUserAccessToken ? (
-                    <button className="px-5 py-2 text-black bg-green-200" onClick={logOutOfFB} >
-                        <AiOutlineLogout style={{ "width": "20px", "height": '20px' }} />
-                    </button>
-                ) : (
-                    <button className="px-5 py-2 text-black bg-green-200" onClick={logInToFB} >
-                        <AiFillFacebook style={{ "width": "20px", "height": '20px' }} />
-                    </button>
-                )}
-            </section>
+            
             <section >
                 {
                     (pages.length === 0) ? (
@@ -143,11 +102,11 @@ function Facebook({ imageBlob, text }) {
                                 {
                                     facebookUserAccessToken ?
                                         <div>
-                                            <h1>Select your Page</h1>
+                                            <h1 className="text-xl font-semibold ">Select your Page</h1>
                                             {pages.map((page, index) => (
                                                 <div
                                                     className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
-                                                        } p-2 mb-1 cursor-pointer`}
+                                                        } p-2 mb-1 cursor-pointer border-solid  border-2 border-slate-800`}
                                                     onClick={() => setIndex(index)}
                                                     key={index}
                                                 >
@@ -179,5 +138,7 @@ function Facebook({ imageBlob, text }) {
 Facebook.propTypes = {
     text: PropTypes.string.isRequired,
     imageBlob: PropTypes.object.isRequired,
+    facebookUserAccessToken: PropTypes.string.isRequired,
+    
 }
 export default Facebook;

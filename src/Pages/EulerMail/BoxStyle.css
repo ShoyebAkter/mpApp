@@ -1,33 +1,10 @@
 .boxcontainer{
-    position: relative;
     width: 500px;
     height: 350px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-    background-color: #f8f8f8;
-    border-radius: 20px;
     overflow: hidden;
-    border-left: 15px solid transparent;
+    border-radius: 30px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 }
-.bottomLeftscoopCorner {
-    content: '""';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px; 
-    height: 60px; 
-    background-color: rgb(233, 228, 228);
-    border-radius: 0px 60px 0 0px; 
-    
-  }
-.topLeftscoopCorner{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 20px; 
-    height:20px;
-    background: white;
-    border-radius: 0 0 0 20px; 
-  }
   .content {
     padding: 20px;
   }
@@ -37,3 +14,4 @@
     font-weight: medium;
     color: cyan;
   }
+

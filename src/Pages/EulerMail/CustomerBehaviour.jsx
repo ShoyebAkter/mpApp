@@ -75,8 +75,8 @@ function CustomerBehaviour() {
         ],
     };
     return (
-        <div style={{ "width": "500px", "height": "350px" , "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className=' p-2  rounded-xl'>
-            <h1 className='text-black text-xl text-center font-medium text-cyan-500'> Customer Behaviour</h1>
+        <div style={{ "width": "500px", "height": "350px" ,"borderRadius":"30px", "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className=' p-2  '>
+            <h1 className=' text-xl text-center font-medium text-cyan-500'> Customer Behaviour</h1>
             <Bar options={options} data={data1} />
         </div>
 

@@ -65,11 +65,10 @@ export const CampaignResult = () => {
   return (
     <div
       id="chart"
-      className="boxcontainer p-2 "
+      className="boxcontainer p-2 bg-white"
     >
-    <div className="bottomLeftscoopCorner"></div>
       <div className="content">
-        <h1 className="heading"> Business Overview</h1>
+        <h1 className="heading"> CampaignResult</h1>
         <Bar options={options} data={data} />
       </div>
     </div>

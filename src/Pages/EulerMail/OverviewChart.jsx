@@ -11,7 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 // import { faker } from '@faker-js/faker';
 import { useEffect, useState } from "react";
-import './BoxStyle.css';
+import "./BoxStyle.css";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -88,14 +88,13 @@ function OverviewChart() {
     ],
   };
   return (
-    <div
-      id="chart"
-      className="boxcontainer p-2 "
-    >
-    <div className="scoopCorner"></div>
-      <div className="content">
-        <h1 className="heading"> Business Overview</h1>
-        <Line options={options} data={data} />
+    <div id="chart" className="boxcontainer p-2 bg-white">
+      <div className="inner">
+        <i className="top left"></i>
+        <div className="content">
+          <h1 className="heading"> Business Overview</h1>
+          <Line options={options} data={data} />
+        </div>
       </div>
     </div>
   );

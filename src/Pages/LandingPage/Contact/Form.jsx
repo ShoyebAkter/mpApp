@@ -21,22 +21,23 @@ export const Form = () => {
             });
     };
     return (
-        <div className="p-4">
-            <h2 className="text-2xl text-gray-500 font-semibold mb-2">Contact Us</h2>
+        <div style={{"background":"url('/BG_5.png')"}} className="flex justify-center items-center h-screen">
+            <div className="p-4 ">
+            <h2 className="text-2xl text-white font-semibold mb-2">Contact Us</h2>
             <form ref={form} onSubmit={sendEmail} id="contact_form">
             <div className="flex mb-5">
                     <div className="w-1/2 mr-2">
-                        <label className="block text-sm text-gray-500">Your First Name:</label>
+                        <label className="block text-sm text-white">Your First Name:</label>
                         <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
                     </div>
                     <div className="w-1/2">
-                        <label className="block text-sm text-gray-500">Last Name</label>
+                        <label className="block text-sm text-white">Last Name</label>
                         <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
                     </div>
                 </div>
                 <div className="flex mb-5">
                     <div className="w-1/2 mr-2">
-                        <label className="block text-sm text-gray-500">Phone Number</label>
+                        <label className="block text-sm text-white">Phone Number</label>
                         <PhoneInput
                                 name="phone"
                                 id="phone_field"
@@ -46,18 +47,19 @@ export const Form = () => {
                             />
                     </div>
                     <div className="w-1/2">
-                        <label className="block text-sm text-gray-500">Email Address:</label>
+                        <label className="block text-sm text-white">Email Address:</label>
                         <input placeholder="From:" className="rounded border-gray-400 w-full bg-white" type="email" name="email" id="email_field" />
                     </div>
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm text-gray-500">Message:</label>
+                    <label className="block text-sm text-white">Message:</label>
                     <textarea className="w-full rounded border-gray-400 bg-white" name="message" id="message_field" rows="6"></textarea>
                 </div>
                 
                 <button type="submit" className="bg-blue-600 py-2 px-4 rounded border-gray-400 shadow-sm text-gray-200 hover:text-white hover:bg-blue-800" >Send</button>
                 <ToastContainer />
             </form>
+        </div>
         </div>
     )
 }

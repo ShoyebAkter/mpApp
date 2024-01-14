@@ -1,3 +1,18 @@
+
+.firstSec{
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem
+}
+.secondSec{
+    display: flex;
+    justify-content: center;
+}
+.thirdSec{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem
+}
 .header1{
 
     font-size: 40px;
@@ -5,11 +20,40 @@
     font-weight: bold;
     margin-bottom: 10px;
 }
+.lineChart{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    width:733px;
+}
+.greenSec{
+    width: 30px;
+     background: #439541;
+     border-start-start-radius: 1rem/* 16px */;
+    border-end-start-radius: 1rem
+}
 .realTimeDiv{
     background-image: url('/embg.png');
+    padding: 2.5rem
 }
 .realTimeDiv div{
     background-color: #f8f8f8;
+}
+.orderChart{
+    margin-top: 1.25rem;/* 20px */;
+    margin-bottom: 1.25rem;
+    border-radius: 0.75rem;
+}
+.customerChart{
+    margin-top: 1.25rem;/* 20px */;
+    margin-bottom: 1.25rem;
+    border-radius: 0.75rem;
+}
+.revenueChart{
+    margin-top: 1.25rem;
+    border-radius: 1rem;
+    display: flex;
+    width: 733px;
+    height: 200px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 }
 .custom-hr{
     width: 300px;
@@ -18,10 +62,65 @@
     margin-block: auto;
 }
 .writingSection{
+    padding: 0.5rem;
     width: 350px;
     height: 180px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5)
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 0.75rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0.5rem
 }
 .mapSection{
     height: 100px;
 }
+@media only screen and (max-width: 768px) {
+    .realTimeDiv{
+        padding: 10px
+    }
+    .lineChart{
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+        width:233px;
+    }
+    .greenSec{
+        width: 10px;
+        background: #439541;
+    }
+    .orderChart{
+        display: none;
+    }
+    .customerChart{
+        display: none;
+    }
+    .writingSection{
+        width: 350px;
+        height: 210px;
+        padding: 0;
+        font-size: smaller;
+    }
+    .custom-hr{
+        width: 20px;
+        height: 1px; /* Adjust the thickness of the line as needed */
+        background-color: #000;
+        margin-block: auto;
+    }
+    .firstSec{
+        justify-content: space-between;
+    }
+    .secondSec{
+        margin-block: 10px;
+    }
+    .revenueChart{
+        border-radius: 1rem;
+        display: flex;
+        width: 250px;
+        height: 200px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+        font-size: 8px;
+    }
+    .mapImgSec{
+        display: flex;
+        align-items: center;
+        width: 280px;
+    }
+  }

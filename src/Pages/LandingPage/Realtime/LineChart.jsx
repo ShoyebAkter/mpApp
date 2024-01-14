@@ -35,6 +35,7 @@ export function LineChart({firstxLinedata,
   thirdxLinedata,
   fourthxLinedata}) {
   // console.log(firstxLinedata,firstyLinedata);
+
    const data = {
     labels,
     datasets: [
@@ -46,7 +47,7 @@ export function LineChart({firstxLinedata,
       },
     ],
   };
-  return <Line width={200} options={options} data={data} />;
+  return <Line width={200} height={150} options={options} data={data} />;
 }
 LineChart.propTypes = {
   firstxLinedata:PropTypes.array.isRequired,

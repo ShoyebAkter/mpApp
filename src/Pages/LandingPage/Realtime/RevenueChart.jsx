@@ -47,6 +47,6 @@ import {
   };
   
   export function RevenueChart() {
-    return <Line height={150}  width={500} options={options} data={data} />;
+    return <Line height={150}  width={200} options={options} data={data} />;
   }
   

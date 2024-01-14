@@ -18,3 +18,17 @@
 .campaigndiv{
     background-image: url('/BG_2.png');
 }
+.campSec{
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .campSec{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+    }
+}

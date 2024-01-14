@@ -5,19 +5,19 @@ export const Introduction = () => {
         <Fade damping={1}>
             <div>
                 
-                <div style={{"height":"80vh"}} className="flex justify-around items-center">
+                <div className="IntroSec">
                     <div className='pt-24'>
                         <div style={{"color":"#649445",}} className="firstLine">Analytics for business</div>
-                        <div style={{"color":"#62cbc6"}}  className="flex g-2 items-center text-5xl font-semibold py-8">
+                        <div  className="secondLine ">
                             Growth by design
                              <div className="arrow ms-2"></div>
                              <div className="arrow ms-2"></div>
                              <div className="arrow ms-2"></div>
                              </div>
-                        <div style={{"color":"#6b6b6b"}}  className="text-2xl font-medium">Get more than just numbers.</div>
-                        <div style={{"color":"#6b6b6b"}}  className="text-2xl font-medium">Discover insights that</div>
-                        <div style={{"color":"#6b6b6b"}}  className="text-2xl font-medium">drive real growth.</div>
-                        <div style={{"color":"#6b6b6b"}}  className="flex items-center text-2xl font-medium pt-12">Data-driven growth starts here <div className="arrow ms-5"></div></div>
+                        <div  className="thirdLine">Get more than just numbers.</div>
+                        <div className="thirdLine">Discover insights that</div>
+                        <div className="thirdLine">drive real growth.</div>
+                        <div  className="sixthLine">Data-driven growth starts here <div className="arrow ms-5"></div></div>
                         
                     </div>
 

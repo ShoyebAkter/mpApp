@@ -64,15 +64,19 @@ nav a:hover{
         display: none; /* Hide navigation items by default on mobile */
       }
       .header-fixed nav.open{
-        background-color: black;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
       .header-fixed nav.open a {
         display: block; /* Show navigation items when the menu is open */
       }
     .links{
         display: flex;
-
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
     }
     .header-fixed{
         padding-block: 10px;

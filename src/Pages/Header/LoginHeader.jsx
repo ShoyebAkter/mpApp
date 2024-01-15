@@ -28,8 +28,8 @@ export const LoginHeader = () => {
   return (
     <div>
       {user ? (
-        <header className={`header-fixed ${menuOpen ? "open" : ""}`}>
-          <nav className='items-center'>
+        <header className={`header-fixed`}>
+          <nav className={`items-center ${menuOpen ? "open" : ""}`}>
             <div style={{ width: "50px" }}>
               <img src="Logo_Iso_Green.png" />
             </div>

@@ -1,0 +1,32 @@
+.area{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.textEditor{
+    padding-top: 2.5rem/* 40px */;
+    padding-bottom: 2.5rem/* 40px */;
+    padding-left: 0.75rem/* 12px */;
+    padding-right: 0.75rem/* 12px */;
+    --tw-bg-opacity: 1;
+    background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+    height: 100vh;
+}
+
+@media only screen and (max-width: 768px) {
+    .area{
+        display: flex;
+        flex-direction: column;
+        height: 50vh;
+    }
+    .textEditor{
+        padding-top: 2.5rem/* 40px */;
+        padding-bottom: 2.5rem/* 40px */;
+        padding-left: 0.75rem/* 12px */;
+        padding-right: 0.75rem/* 12px */;
+        --tw-bg-opacity: 1;
+        background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+        height: 40vh;
+    }
+    
+}

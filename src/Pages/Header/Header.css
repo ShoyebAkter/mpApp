@@ -31,16 +31,45 @@ nav a:hover{
 .headerlogo{
     width: 80px;
 }
+.header-fixed .hamburger-menu {
+    display: none;
+    cursor: pointer;
+  }
+  
+  /* Style the navigation items when the menu is open */
+  .header-fixed nav.open {
+    display: flex;
+  }
+  
 .links{
     display: flex;
     align-items: center;
 }
 /* Media query for mobile devices */
 @media (max-width: 768px) {
-    nav {
-        justify-content: space-evenly;
-        align-items: center;
-    }
+    .header-fixed nav {
+        display: flex;
+        justify-content: space-around;
+      }
+    
+      .header-fixed nav a {
+        margin: 10px 0;
+      }
+    
+      .header-fixed .hamburger-menu {
+        display: block; /* Show the hamburger menu button */
+      }
+    
+      .header-fixed nav a {
+        display: none; /* Hide navigation items by default on mobile */
+      }
+      .header-fixed nav.open{
+        background-color: black;
+        display: block;
+      }
+      .header-fixed nav.open a {
+        display: block; /* Show navigation items when the menu is open */
+      }
     .links{
         display: flex;
 

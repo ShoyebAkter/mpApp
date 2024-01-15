@@ -6,7 +6,10 @@
     flex-direction: column;
     min-width: 0
 }
-
+.canva{
+    width: 70vw;
+    height: 100vh
+}
 .cesdk {
     width: 100%;
     height: 100%;
@@ -31,4 +34,11 @@
     border: 1px solid #ccc;;
     border-radius: 12px;
     flex-grow: 1
+}
+
+@media only screen and (max-width: 768px) {
+    .canva{
+        width: 100%;
+        height: 100vh
+    }
 }

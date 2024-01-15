@@ -4,7 +4,7 @@ import { InstaAction } from "./InstaAction"
 export const InstaData = () => {
   
   return (
-    <div  >
+    <div >
       <Buttons/>
         <InstaAction/>
     </div>

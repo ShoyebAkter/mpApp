@@ -6,7 +6,7 @@ import { auth } from "../../firebase.init"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useNavigate} from "react-router-dom"
 import Loading from "../Authentication/Loading"
-
+import './CampaignDesign.css'
 export const CampaignDesign = () => {
   // const {userId}=useParams()
   const [text,setText]=useState("")
@@ -18,10 +18,10 @@ export const CampaignDesign = () => {
     if(!user){
         navigate('/login')
     }
-  console.log(imageBlob,editedImage);
+  // console.log(imageBlob,editedImage);
   return (
     <div>
-      <div className="text-black flex justify-center mx-5 py-5">
+      <div className="campaignDesign ">
         <div ><CanvaClone setImageBlob={setImageBlob} setEditedImage={setEditedImage}/></div>
         <div><TextEditor text={text} setText={setText} userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage}/></div>
       </div>

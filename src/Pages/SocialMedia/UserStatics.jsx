@@ -13,6 +13,7 @@ import { FacebookPost } from './FacebookPost';
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { separateObj } from './facebook';
+import './UserStatics.css'
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -73,7 +74,7 @@ export const UserStatics = ({ setFollowers, setImpression, setEngagement }) => {
         ],
     };
     return (
-        <div className='flex justify-around my-10 '>
+        <div className='userStatics'>
             <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='rounded-xl p-5    '>
                 {
                     pageGenderData.maleArray.length !== 0

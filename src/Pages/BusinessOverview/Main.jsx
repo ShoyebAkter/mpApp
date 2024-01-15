@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../Authentication/Loading";
 import { SiSimpleanalytics } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa6";
-
+import './TopChart.css'
 export const Main = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate()
@@ -17,7 +17,7 @@ export const Main = () => {
   }
   return (
     <div className="flex justify-between">
-      <div style={{"background":"#439541"}} className="px-3 pt-10">
+      <div style={{"background":"#439541"}} className="leftGreenSec px-3 pt-10">
         <div style={{"color":"#f8f8f8","cursor":"pointer"}} className="flex flex-col justify-center items-center mb-5"> <SiSimpleanalytics /> Sales</div>
         <div style={{"color":"#f8f8f8","cursor":"pointer"}} className="flex flex-col justify-center items-center"><FaDatabase/>Site data</div>
       </div>

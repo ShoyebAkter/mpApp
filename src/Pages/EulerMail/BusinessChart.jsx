@@ -20,7 +20,7 @@ function BusinessChart() {
                 <div className="text-xl font-bold">Company Name</div>
                 <div className=" border-solid border-2 border-lime-500 rounded-xl px-2 text-lime-600">General Report</div>
             </div>
-            <div  style={{"gap":"150px"}} className="flex justify-center">
+            <div   className=" firstChartSec">
                 <div style={{"gap":"30px"}} className="flex flex-col py-5 ">
                     <OverviewChart />
                     <CustomerBehaviour />

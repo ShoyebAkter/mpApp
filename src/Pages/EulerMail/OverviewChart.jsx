@@ -88,7 +88,7 @@ function OverviewChart() {
     ],
   };
   return (
-    <div id="chart" className="boxcontainer p-2 bg-white">
+    <div id="chart" className="boxcontainer">
       <div className="inner">
         <i className="top left"></i>
         <div className="content">

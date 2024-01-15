@@ -2,16 +2,45 @@
     width: 500px;
     height: 350px;
     overflow: hidden;
+    padding: 0.5rem/* 8px */;
     border-radius: 30px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
   .content {
     padding: 20px;
+  }
+  .customerCHart{
+    padding: 0.5rem/* 8px */;
+    width: 500px;
+     height: 350px ;
+     border-radius: 30px;
+      box-shadow:  4px 4px 10px rgba(0, 0, 0, 0.5)
   }
   .heading{
     font-size: 1.5rem;
     text-align: center;
     font-weight: medium;
     color: cyan;
+  }
+  @media only screen and (max-width: 768px) {
+    .boxcontainer{
+      width: 400px;
+      height: 250px;
+      overflow: hidden;
+    padding: 0.5rem/* 8px */;
+    border-radius: 30px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    }
+    .customerCHart{
+      padding: 0.5rem/* 8px */;
+      width: 400px;
+      height: 250px;
+       border-radius: 30px;
+        box-shadow:  4px 4px 10px rgba(0, 0, 0, 0.5)
+    }
   }
 

@@ -1,7 +1,7 @@
 import ReactApexChart from "react-apexcharts";
 import { getSimilarData } from "../getSimilarData";
 import PropTypes from "prop-types"
-
+import './ClickRatio.css'
 export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
     const emailResult=getSimilarData(emailCampaign);
     const whatsAppResult=getSimilarData(whatsAppCampaign)
@@ -53,7 +53,7 @@ export const CtrIncrease = ({emailCampaign,whatsAppCampaign}) => {
         colors: ['#649445','#48705c','#2a4e40',]
     };
     return (
-        <div id="chart" className="w-1/2">
+        <div id="chart" className="ctrIncrease">
             <ReactApexChart options={options} series={options.series} type="area" height={250} />
         </div>
     )

@@ -25,7 +25,7 @@ export const Cohorts = ({ weeksData }) => {
     },[])
     console.log(weeksData);
     return (
-        <div style={{ "width": "500px" }} className="text-black">
+        <div  className="cohortChart ">
             <h1>Last Four Weeks Engagement Data</h1>
             <CohortGraph
                 data={cohortData}

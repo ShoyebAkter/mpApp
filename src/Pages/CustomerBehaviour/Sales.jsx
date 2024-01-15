@@ -10,7 +10,7 @@ import {
   import { Bar } from "react-chartjs-2";
   import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useEffect, useState } from "react";
-
+import './CustomerBehaviour.css'
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -103,7 +103,7 @@ export const Sales = () => {
         ],
       };
     return (
-       <div style={{"width":"500px"}} className="bg-slate-100 rounded-2xl p-5">
+       <div className="salesChart">
         <Bar  options={options} data={data} />
        </div>
         

@@ -12,7 +12,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useEffect, useState } from "react";
 import { getDuplicate } from "../EulerMail/getDuplicate";
 import { getTierValue } from "./getTierValue";
-
+import './CustomerBehaviour.css'
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -74,7 +74,7 @@ export const Customers = () => {
     ],
   };
   return (
-    <div style={{ "width": "500px"}} className="bg-slate-100 rounded-2xl p-5">
+    <div className="customerChartdiv">
       <Bar options={options} data={data} />
     </div>
 

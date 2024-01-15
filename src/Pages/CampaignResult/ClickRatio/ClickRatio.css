@@ -1,0 +1,31 @@
+.clickRatio{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 1rem/* 16px */;
+    padding: 1.25rem/* 20px */;
+    margin: 1.25rem/* 20px */;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+.clickRate{
+    width: 33.33%;
+}
+.ctrIncrease{
+    width: 50%;
+}
+@media only screen and (max-width: 768px) {
+    .clickRatio{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        border-radius: 1rem/* 16px */;
+        padding: 1.25rem/* 20px */;
+        margin: 1.25rem/* 20px */;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    .clickRate{
+        width: 300px;
+    }
+    .ctrIncrease{
+        width: 300px;
+    }
+}

@@ -178,7 +178,7 @@ export const Engagement = ({ setWeeksData }) => {
 
           </div>
           :
-          <div style={{ "width": "500px" }} className="bg-slate-100 rounded-lg mr-5">
+          <div className="engagementChart">
             <Line options={options} data={data} />
           </div>
       }

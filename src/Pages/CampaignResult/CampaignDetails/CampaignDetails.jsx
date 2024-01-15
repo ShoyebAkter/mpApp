@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../../../firebase.init";
 import { WhatsAppType } from "./WhatsAppType"
 import { getSimilarData } from "../getSimilarData"
-
+import './CampaignDetails.css'
 export const CampaignDetails = () => {
   const [user]=useAuthState(auth)
   const [emailCampaign,setEmailCampaign]=useState([]);
@@ -32,7 +32,7 @@ export const CampaignDetails = () => {
   const whatsAppResult = getSimilarData(whatsAppCampaign);
   
   return (
-    <div style={{"boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className="flex justify-around rounded-2xl p-5">
+    <div className="details">
         <CampaignTypes emailCampaign={emailCampaign.length} whatsAppCampaign={whatsAppCampaign.length} />
         <BounceRate result={emailResult}/>
         <WhatsAppType whatsAppResult={whatsAppResult}/>

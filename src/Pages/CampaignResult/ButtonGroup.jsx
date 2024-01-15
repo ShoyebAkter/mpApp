@@ -1,16 +1,17 @@
 import PropTypes from "prop-types"
+import './Button.css'
 export const ButtonGroup = ({emailCampaign,whatsAppCampaign}) => {
     // console.log(emailCampaign,whatsAppCampaign);
     const total=emailCampaign+whatsAppCampaign;
     return (
         <div className="flex justify-around">
-            <button style={{"backgroundColor":"#2a4e40"}} className="text-white font-bold py-7 px-10 rounded">
+            <button className="buttons">
                 Total Campaign: {total}
             </button>
-            <button style={{"backgroundColor":"#2a4e40"}} className="text-white font-bold py-7 px-10 rounded">
+            <button  className="buttons">
                 Total Email Sent: {emailCampaign}
             </button>
-            <button style={{"backgroundColor":"#2a4e40"}} className=" text-white font-bold py-7 px-10 rounded">
+            <button  className=" buttons">
                 Total message Sent: {whatsAppCampaign}
             </button>
         </div>

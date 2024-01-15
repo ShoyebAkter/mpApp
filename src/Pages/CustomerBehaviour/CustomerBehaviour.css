@@ -1,0 +1,87 @@
+.customerBehaviourMain{
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+.leftSection{
+    padding-left: 0.75rem/* 12px */;
+    padding-right: 0.75rem/* 12px */;
+    padding-top: 2.5rem/* 40px */;
+    background: #439541;
+}
+.firstChartSection{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 1rem/* 16px */;
+    margin-bottom: 1.25rem/* 20px */;
+    padding: 1.25rem/* 20px */;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5)
+}
+.customerChartdiv{
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+    border-radius: 1rem/* 16px */;
+    padding: 1.25rem/* 20px */;
+    width: 500px;
+}
+.salesChart{
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+    border-radius: 1rem/* 16px */;
+    padding: 1.25rem/* 20px */;
+    width: 500px;
+}
+.engagementChart{
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+    border-radius: 1rem/* 16px */;
+    padding: 1.25rem/* 20px */;
+    margin-right: 1.25rem/* 20px */;
+    width: 500px;
+}
+.cohortChart{
+    width: 500px;
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+@media only screen and (max-width: 768px) {
+    .firstChartSection{
+        width: 400px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .customerChartdiv{
+        --tw-bg-opacity: 1;
+        background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+        border-radius: 1rem/* 16px */;
+        padding: 1.25rem/* 20px */;
+        width: 370px;
+    }
+    .salesChart{
+        --tw-bg-opacity: 1;
+        background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+        border-radius: 1rem/* 16px */;
+        padding: 1.25rem/* 20px */;
+        width: 370px;
+    }
+    .engagementChart{
+        --tw-bg-opacity: 1;
+        background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+        border-radius: 1rem/* 16px */;
+        padding: 1.25rem/* 20px */;
+        margin-right: 1.25rem/* 20px */;
+        width: 370px;
+        margin-bottom: 10px;
+    }
+    .cohortChart{
+        width: 370px;
+        --tw-text-opacity: 1;
+        color: rgb(0 0 0 / var(--tw-text-opacity));
+        overflow: hidden;
+    }
+    .leftSection{
+        display: none;
+    }
+}

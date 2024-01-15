@@ -1,6 +1,7 @@
 import ReactApexChart from "react-apexcharts";
 import { getSimilarData } from "../getSimilarData";
 import PropTypes from "prop-types"
+import './ClickRatio.css'
 export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
     if (!emailCampaign || !whatsAppCampaign) {
         return <p>Loading...</p>;
@@ -40,7 +41,7 @@ export const ClickRate = ({emailCampaign,whatsAppCampaign}) => {
 
     };
     return (
-            <div id="chart" className="w-1/3">
+            <div id="chart" className="clickRate ">
                 <ReactApexChart options={options} series={options.series} type="heatmap" height={250} />
             </div>
     )

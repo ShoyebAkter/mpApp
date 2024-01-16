@@ -1,8 +1,8 @@
 import { Slide } from 'react-awesome-reveal'
 export const Sms = () => {
     return (
-        <div className="flex items-center mt-5">
-            <div className="line-with-circle mr-2 mt-2">
+        <div className=" smsDiv">
+            <div className="line-with-circle">
                 <span className="smslinecircle"></span>
                 <div className="smsline"></div>
                 {/* <div className="secondsmsline"></div> */}

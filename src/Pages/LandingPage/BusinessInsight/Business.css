@@ -7,4 +7,14 @@
 }
 .businessInsightDiv{
   background-image: url('/BG_2.png');
+  padding-bottom: 5rem/* 80px */;
+  padding-top: 1.25rem/* 20px */;
+  padding-left: 1.25rem/* 20px */;
+    padding-right: 1.25rem/* 20px */;
+}
+
+@media only screen and (max-width: 768px) {
+  .businessInsightDiv{
+    margin-inline: 10px;
+  }
 }

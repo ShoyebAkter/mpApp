@@ -112,24 +112,31 @@
   height: 100%;
   object-fit: cover;
 }
+.developImg{
+  display: flex;
+  justify-content: center;
+  margin-top: 4.50rem/* 20px */;
+    margin-bottom: 1.25rem/* 20px */;
 
+}
 @media only screen and (max-width: 768px) {
   .IntroSec{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
   }
   .bottom-image {
     height: 150px;
-    width: 250px;
+    width: 150px;
     width: 100%;
     z-index: 0;
     /* Places it below the top image */
   }
   .third-image {
     height: 150px;
-    width: 250px;
+    width: 150px;
     position: absolute;
     top: 175px;
   left: 0px;
@@ -139,7 +146,7 @@
   }
   .top-image {
     height: 150px;
-    width: 250px;
+    width: 150px;
     top: 100px;
   left: -50px;
   width: 100%;
@@ -169,6 +176,10 @@
   .image-container {
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     /* Adjust the width as needed */
   
   }

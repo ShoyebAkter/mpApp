@@ -1,0 +1,39 @@
+.analysisSec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.25rem/* 20px */;
+    margin-bottom: 1.25rem/* 20px */;
+    height: 100vh;
+}
+.heading1{
+    font-size: 3rem/* 48px */;
+    line-height: 1;
+    font-weight: 700;
+    color:#649445
+}
+.secondPart{
+    padding-top: 1.25rem/* 20px */;
+    font-size: 1.25rem/* 20px */;
+    line-height: 1.75rem/* 28px */;
+    color: #6b6b6b;
+}
+@media only screen and (max-width: 768px) {
+    .analysisSec{
+        margin-inline: 10px;
+
+    }
+    .heading1{
+        font-size: 36px;
+        line-height: 1;
+        font-weight: 700;
+        color:#649445
+    }
+    .secondPart{
+        padding-top: 1.25rem/* 20px */;
+        font-size: 20px;
+        line-height: 1.75rem/* 28px */;
+        color: #6b6b6b;
+    }
+}

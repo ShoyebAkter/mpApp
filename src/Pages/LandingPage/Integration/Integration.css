@@ -12,8 +12,8 @@
 }
 .gA{
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin-top:  32px;
 }
 .line-with-circle {
     position: relative;
@@ -47,6 +47,17 @@
     background-color: white;
     transform: translate(0px,0px);
   }
+  .instaDiv{
+    display: flex;
+    align-items: center;
+    margin-top: 1.25rem/* 20px */;
+    margin-bottom: 1.25rem/* 20px */;
+  }
+  .smsDiv{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem/* 20px */;
+  }
   .galine{
     width: 100px; /* Adjust the length of the line as needed */
     height: 2px; /* Adjust the thickness of the line as needed */
@@ -72,6 +83,12 @@
     height: 2px; /* Adjust the thickness of the line as needed */
     background-color:white;
     transform:translate(0px,0px)
+  }
+  .leftIntegration{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .upwardline {
     width: 100px; /* Adjust the length of the line as needed */
@@ -388,14 +405,14 @@
     transform: translate(0px,0px); /* Move the line upward */
     display: block;
     bottom: 2px;
-    right: -50px;
+    right: -30px;
     position: absolute;
 }
   .second-line {
-    width: 50px; /* Adjust the length of the line as needed */
+    width: 30px; /* Adjust the length of the line as needed */
     height: 2px; /* Adjust the thickness of the line as needed */
     background-color: white;
-    transform: translate(-50px,8px);
+    transform: translate(-30px,8px);
 }
   .smsupward-line {
     width: 2px; /* Adjust the width as needed */
@@ -404,7 +421,7 @@
     transform: translate(0px,10px); /* Move the line upward */
     display: block;
     bottom: 3px;
-    left: -50px;
+    left: -30px;
     position: absolute;
 }
 
@@ -415,7 +432,7 @@
     transform:translate(0px,0px)
 }
   .secondupward-line {
-    width: 50px; /* Adjust the length of the line as needed */
+    width: 30px; /* Adjust the length of the line as needed */
     height: 2px; /* Adjust the thickness of the line as needed */
     background-color:white;
     transform:translate(50px,-2px)
@@ -453,21 +470,19 @@
 }
 
 .integratiobImage{
-  padding-bottom: 50px;
+  padding-bottom: 75px;
 }
 .integratiobImage img{
-  width: 150px;
-  height: 150px;
-}
-.rightSection{
-  margin-bottom: 10px;
+  width: 95px;
+  height: 100px;
 }
 .whatsAPp{
-  margin-top: 10px;
-  padding-top: 20px;
-  margin-bottom: 0;
+  margin: 0;
 }
-.gA{
-  padding-top:  10px;
+.instaDiv{
+  margin: 0;
+}
+.smsDiv{
+  margin: 0;
 }
 }

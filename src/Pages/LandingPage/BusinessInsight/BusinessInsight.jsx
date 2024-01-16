@@ -1,7 +1,7 @@
 import "./Business.css";
 export const BusinessInsight = () => {
   return (
-    <div className="businessInsightDiv pb-20 pt-5 px-5 ">
+    <div className="businessInsightDiv ">
       <div className="flex justify-center">
         <div
           style={{

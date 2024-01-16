@@ -42,7 +42,7 @@ export const Introduction = () => {
                 </div>
 
             </div>
-            <div className='flex justify-center my-5'>
+            <div className='developImg'>
                 <img src='develop.png' alt=''/>
             </div>
         </Fade>

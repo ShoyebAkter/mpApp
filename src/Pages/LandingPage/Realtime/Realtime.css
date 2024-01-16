@@ -47,6 +47,8 @@
     margin-bottom: 1.25rem;
     border-radius: 0.75rem;
 }
+
+
 .revenueChart{
     margin-top: 1.25rem;
     border-radius: 1rem;
@@ -74,7 +76,16 @@
 .mapSection{
     height: 100px;
 }
+.mobileViewChart{
+    display: none;
+}
 @media only screen and (max-width: 768px) {
+    .chart-container{
+        display: none;
+    }
+    .mobileViewChart{
+        display: block;
+    }
     .realTimeDiv{
         padding: 10px
     }
@@ -94,11 +105,13 @@
     }
     .writingSection{
         width: 350px;
-        height: 300px;
+        height: 200px;
         padding: 0;
         font-size: smaller;
         overflow: hidden;
+        padding: 5px;
     }
+
     .custom-hr{
         width: 20px;
         height: 1px; /* Adjust the thickness of the line as needed */
@@ -118,6 +131,7 @@
         height: 200px;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
         font-size: 8px;
+        margin-top: 0;
     }
     .mapImgSec{
         display: flex;

@@ -7,7 +7,7 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    console.log(menuOpen);
+    
     setMenuOpen(!menuOpen);
   };
   return (
@@ -16,7 +16,7 @@ function Header() {
         <div className="headerlogo">
           <img src="Logo_Iso_Green.png" />
         </div>
-        <div  className="links">
+        <div className="links">
           <a href="#introduction">HOME</a>
           <a href="#businessInsight">EULERMAIL</a>
           <a href="#integration">HOW IT WORKS</a>
@@ -34,6 +34,7 @@ function Header() {
           {/* You can use an icon or any other content for the hamburger menu */}
         </div>
       </nav>
+      
     </header>
   );
 }

@@ -42,7 +42,7 @@ export const RealTImeUpdates = () => {
                 <div className="revenueChart">
                     <p className="greenSec"></p>
 
-                    <div className="mx-auto">
+                    <div className="mx-auto rounded-xl">
                         <h1 className="text-center my-3">Monthly Revenue</h1>
                         <RevenueChart />
                     </div>

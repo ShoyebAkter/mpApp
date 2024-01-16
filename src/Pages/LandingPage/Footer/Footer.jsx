@@ -1,18 +1,18 @@
-
+import './Footer.css'
 export const Footer = () => {
     return (
         <div>
 
-            <footer className="bg-gray-900">
-                <div className="pt-5">
-                    <div className="md:flex md:justify-around">
-                        <div className="md:mb-0 flex items-center">
+            <footer className=" Footermain">
+                <div className="pt-5 ">
+                    <div className="md:flex md:justify-around ">
+                        <div className="footerLogo">
                             <a  className="">
-                                <img  src="/logo2.png" className="h-30  mr-3" alt="EulerMail Logo" />
+                                <img  src="/logo2.png" className="h-30  mr-3 md:mx-auto" alt="EulerMail Logo" />
                                 {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EulerMail</span> */}
                             </a>
                         </div>
-                        <div className="grid grid-cols-3 gap-16 sm:gap-20 sm:grid-cols-3">
+                        <div className="linkSec grid grid-cols-3 gap-16 sm:gap-20 sm:grid-cols-3">
                             <div>
                                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">Quick Links</h2>
                                 <ul className="text-gray-500  font-medium">
@@ -58,7 +58,7 @@ export const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div style={{"backgroundColor":"#439541","color":"#f8f8f8"}} className="py-2 flex justify-around items-center">
+                    <div className="rightsSec">
                         <span className="text-sm sm:text-center">Holismus Group | All rights reserved © 2023
                         </span>
                         <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">

@@ -56,7 +56,6 @@
   .smsDiv{
     display: flex;
     align-items: center;
-    margin-bottom: 1.25rem/* 20px */;
   }
   .galine{
     width: 100px; /* Adjust the length of the line as needed */

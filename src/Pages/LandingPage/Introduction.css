@@ -116,6 +116,7 @@
 @media only screen and (max-width: 768px) {
   .IntroSec{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }

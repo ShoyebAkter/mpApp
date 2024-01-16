@@ -3,3 +3,14 @@
     background-size: cover;
     padding-block: 30px;
 }
+.emailSec{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 768px) {
+    .emailSec{
+        display: flex;
+        flex-direction: column;
+    }
+}

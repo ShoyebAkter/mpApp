@@ -35,7 +35,7 @@ const Login = () => {
                     <div className="flex justify-center">
                         <form>
                             <div className='bg-slate-50 shadow-xl px-12 py-5 rounded-3xl'>
-                                <div className='flex justify-between'>
+                                <div className='emailSec'>
                                     <label htmlFor="email-address" className='box-decoration-slice text-gray-600 ' >
                                         Email:
                                     </label>
@@ -50,7 +50,7 @@ const Login = () => {
                                 </div>
                                 
 
-                                <div>
+                                <div className='emailSec'>
                                     <label htmlFor="password" className='box-decoration-clone text-gray-600 pe-2'>
                                         Password:
                                     </label>

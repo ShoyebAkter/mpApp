@@ -1,0 +1,25 @@
+.contactUsSec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem/* 40px */;
+    background:url('/BG_5.png')
+}
+
+
+@media only screen and (max-width: 768px) {
+    .contactUsSec{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .phoneemailInput{
+        display:flex ;
+        flex-direction: column;
+        
+    }
+    .phoneemailInput div{
+        width: 100%;
+    }
+}

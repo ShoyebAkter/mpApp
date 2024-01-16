@@ -9,7 +9,7 @@ export const Sms = () => {
                 <div className="smsupward-line"></div>
                 <div className="second-line"></div>
             </div>
-            <Slide><img style={{ "width": "80px", "height": '80px' }} src='/sms.PNG' alt='' /><span className="text-3xl font-medium text-white px-2">SMS</span>
+            <Slide><img className="gaImage" src='/sms.PNG' alt='' /><span className="appName">SMS</span>
             </Slide>
         </div>
     )

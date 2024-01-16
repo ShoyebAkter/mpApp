@@ -1,7 +1,5 @@
-import { useNavigate } from "react-router-dom";
 
 export const LineSection = () => {
-    const navigate = useNavigate()
   return (
     <div className="text-white p-5 flex flex-col justify-between">
       <h1 className="text-5xl">
@@ -22,7 +20,7 @@ export const LineSection = () => {
         imagined. EulerMail - Where Your Business’s Potential Becomes Its
         Reality!
       </div>
-      <div onClick={()=>navigate('/contactUs')}>
+      <div >
         <button  className="bg-blue-600 py-2 px-4 rounded border-gray-400 shadow-sm text-gray-200">Contact Us</button>
       </div>
     </div>

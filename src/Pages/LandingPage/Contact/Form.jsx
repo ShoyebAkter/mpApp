@@ -4,6 +4,7 @@ import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+  import './ContactUs.css'
 export const Form = () => {
     const form = useRef();
     const [phone, setPhone] = useState('');
@@ -35,7 +36,7 @@ export const Form = () => {
                         <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
                     </div>
                 </div>
-                <div className="flex mb-5">
+                <div className="flex mb-5 phoneemailInput">
                     <div className="w-1/2 mr-2">
                         <label className="block text-sm text-white">Phone Number</label>
                         <PhoneInput

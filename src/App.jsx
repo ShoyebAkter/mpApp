@@ -7,7 +7,6 @@ import BusinessChart from './Pages/EulerMail/BusinessChart'
 import { Main } from './Pages/BusinessOverview/Main'
 import { CustomerBehaviour } from './Pages/CustomerBehaviour/CustomerBehaviour'
 import { CampaignResult } from './Pages/CampaignResult/CampaignResult'
-import { Form } from './Pages/LandingPage/Contact/Form'
 
 import { CampaignDesign } from './Pages/Campaign/CampaignDesign'
 import { LoginHeader } from './Pages/Header/LoginHeader'
@@ -27,7 +26,6 @@ function App() {
         <Route path="/businessoverview" element={<Main />} />
         <Route path="/customerBehaviour" element={<CustomerBehaviour />} />
         <Route path="/campaignresult" element={<CampaignResult />} />
-        <Route path="/contactUs" element={<Form />} />
         <Route path="/socialmedia" element={<FacebookData  />} >
         </Route>
         <Route path="/campaignerdesign" element={<CampaignDesign />} />

@@ -7,7 +7,7 @@ export const Instagram = () => {
         <span className="instalinecircle"></span>
         <div className="instaline"></div>
       </div>
-      <Slide><BsInstagram style={{ "width": "80px", "height": '80px', "color": "#f8f8f8" }} /><span className="text-3xl font-medium text-white px-2">Instagram</span>
+      <Slide><BsInstagram className="gaImage" /><span className="appName">Instagram</span>
       </Slide>
     </div>
   )

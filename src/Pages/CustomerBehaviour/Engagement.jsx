@@ -126,7 +126,7 @@ export const Engagement = ({ setWeeksData }) => {
     <div className="bg-slate-100 rounded-lg mr-5">
       {
         !selectedIndex ?
-          <div style={{ "width": "500px" }} >
+          <div >
             <section className="flex justify-center items-center">
 
               {facebookUserAccessToken ? (

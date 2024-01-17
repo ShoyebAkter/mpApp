@@ -5,6 +5,8 @@
     padding: 1.25rem/* 20px */;
     margin: 1.25rem/* 20px */;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 .clickRate{
     width: 33.33%;

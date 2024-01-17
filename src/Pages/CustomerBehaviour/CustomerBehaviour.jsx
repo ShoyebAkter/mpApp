@@ -24,7 +24,7 @@ export const CustomerBehaviour = () => {
         <div style={{ "color": "#f8f8f8", "cursor": "pointer" }} className="flex flex-col justify-center items-center mb-5"> <CiUser /> Sales</div>
         <div style={{ "color": "#f8f8f8", "cursor": "pointer" }} className="flex flex-col justify-center items-center"><LuUsers/> Site data</div>
       </div>
-      <div  className="mx-auto mt-3 ">
+      <div  className="mx-auto mt-3 flex flex-col justify-around">
         <div className="firstChartSection ">
           <Customers />
           <Sales />

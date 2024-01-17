@@ -1,10 +1,16 @@
+.overviewMain{
+    background-image: url('/embg.png');
+    height: 100vh;
+}
 .topChart{
     display: flex;
     border-radius: 1rem/* 16px */;
     margin-top: 1.25rem/* 20px */;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     gap:70px;
-    width:1200px
+    width:1200px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 .greenDiv{
     border-start-start-radius: 1rem/* 16px */;
@@ -20,7 +26,9 @@
     height:300px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     gap:100px;
-    width:1200px
+    width:1200px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 @media only screen and (max-width: 768px) {
     .topChart{

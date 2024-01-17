@@ -9,7 +9,7 @@ export const FacebookModal = ({ imageBlob, text }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
     useEffect(() => {
       const token = localStorage.getItem("access_token");
-      console.log(token);
+      
       if (token) {
         setFacebookUserAccessToken(token)
        

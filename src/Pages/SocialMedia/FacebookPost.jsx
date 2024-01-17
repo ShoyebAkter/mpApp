@@ -83,7 +83,7 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         return <Loading/>
     }
     return (
-        <div>
+        <div >
             <section >
                 {facebookUserAccessToken ? (
                     <button className='p-2 bg-green-200 mb-1' onClick={logOutOfFB} >

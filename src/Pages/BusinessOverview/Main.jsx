@@ -16,7 +16,7 @@ export const Main = () => {
     navigate('/login')
   }
   return (
-    <div className="flex justify-between">
+    <div className="overviewMain flex justify-between">
       <div style={{"background":"#439541"}} className="leftGreenSec px-3 pt-10">
         <div style={{"color":"#f8f8f8","cursor":"pointer"}} className="flex flex-col justify-center items-center mb-5"> <SiSimpleanalytics /> Sales</div>
         <div style={{"color":"#f8f8f8","cursor":"pointer"}} className="flex flex-col justify-center items-center"><FaDatabase/>Site data</div>

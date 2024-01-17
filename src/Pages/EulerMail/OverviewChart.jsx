@@ -90,7 +90,7 @@ function OverviewChart() {
   return (
     <div id="chart" className="boxcontainer">
       <div className="inner">
-        <i className="top left"></i>
+        
         <div className="content">
           <h1 className="heading"> Business Overview</h1>
           <Line options={options} data={data} />

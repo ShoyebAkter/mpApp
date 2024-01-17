@@ -6,7 +6,7 @@ import { ClickRatio } from "./ClickRatio/ClickRatio"
 import { useNavigate } from "react-router-dom";
 import Loading from "../Authentication/Loading";
 import { useEffect, useState } from "react";
-
+import './Button.css'
 export const CampaignResult = () => {
   const [user,loading] = useAuthState(auth);
   const [emailCampaign,setEmailCampaign]=useState([]);
@@ -39,7 +39,7 @@ export const CampaignResult = () => {
         navigate('/login')
     }
   return (
-    <div className="text-black m-5 pb-5">
+    <div className="text-black p-5 resultMain">
         <ButtonGroup emailCampaign={emailCampaign.length} whatsAppCampaign={whatsAppCampaign.length}/>
         <ClickRatio emailCampaign={emailCampaign} whatsAppCampaign={whatsAppCampaign}/>
         <CampaignDetails/>

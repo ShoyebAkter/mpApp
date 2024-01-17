@@ -75,7 +75,7 @@ export const UserStatics = ({ setFollowers, setImpression, setEngagement }) => {
     };
     return (
         <div className='userStatics'>
-            <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='rounded-xl p-5    '>
+            <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='rounded-xl p-5 bg-white   '>
                 {
                     pageGenderData.maleArray.length !== 0
                         ?
@@ -84,7 +84,7 @@ export const UserStatics = ({ setFollowers, setImpression, setEngagement }) => {
                         <div>You must have 100+ followers to see this graph</div>
                 }
             </div>
-            <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='text-black rounded-xl p-5'  >
+            <div style={{ "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)' }} className='text-black rounded-xl p-5 bg-white'  >
                 <div>
                     {
                         permalink

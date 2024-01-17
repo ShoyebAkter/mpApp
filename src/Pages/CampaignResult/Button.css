@@ -1,3 +1,10 @@
+.resultMain{
+    background-image: url('/embg.png');
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 .buttons{
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));

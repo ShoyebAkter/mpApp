@@ -13,6 +13,7 @@
     height: 100vh;
 }
 .appArea{
+    padding-inline: 20px;
     display: flex; 
     justify-content: space-between;
     align-items: center;
@@ -23,6 +24,7 @@
     .area{
         display: flex;
         flex-direction: column;
+        width: 100%;
         height: 50vh;
     }
     .textEditor{

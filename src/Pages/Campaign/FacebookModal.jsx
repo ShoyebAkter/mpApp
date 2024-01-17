@@ -1,12 +1,20 @@
 import PropTypes from "prop-types";
 
 import { AiFillFacebook, AiOutlineLogout} from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getLongLivedAccessToken } from "../SocialMedia/longlivetoken";
 import Facebook from "./Preview/Instagram/Facebook";
 
 export const FacebookModal = ({ imageBlob, text }) => {
     const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
+    useEffect(() => {
+      const token = localStorage.getItem("access_token");
+      console.log(token);
+      if (token) {
+        setFacebookUserAccessToken(token)
+       
+      }
+    }, [facebookUserAccessToken])
     const logInToFB = () => {
         window.FB.login(
             (response) => {

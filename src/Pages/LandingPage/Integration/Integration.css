@@ -10,6 +10,21 @@
   background-image: url('/BG_4.png');
   padding: 2.5rem/* 40px */;
 }
+.integrationHeading{
+  font-size: 3rem/* 48px */;
+    line-height: 1;
+     font-weight: 700;
+     --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    text-align: center;
+}
+.integrationPara{
+  font-size: 1.5rem/* 24px */;
+  line-height: 2rem/* 32px */;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  text-align: center;
+}
 .gA{
   display: flex;
   justify-content: center;
@@ -256,6 +271,15 @@
 
 .integrationDiv{
   padding: 0px;
+}
+.integrationHeading{
+  padding-top: 10px;
+  font-size: 24px;
+}
+.integrationPara{
+  font-size: 12px;
+  line-height: 16px;
+  padding-bottom: 20px;
 }
 .line-with-circle {
     position: relative;

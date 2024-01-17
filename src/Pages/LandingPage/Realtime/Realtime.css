@@ -83,6 +83,9 @@
     .chart-container{
         display: none;
     }
+    .header1{
+        font-size: 20px;
+    }
     .mobileViewChart{
         display: block;
     }
@@ -104,8 +107,8 @@
         display: none;
     }
     .writingSection{
-        width: 350px;
-        height: 200px;
+        width: 250px;
+        height: 150px;
         padding: 0;
         font-size: smaller;
         overflow: hidden;
@@ -113,7 +116,7 @@
     }
 
     .custom-hr{
-        width: 20px;
+        width: 30px;
         height: 1px; /* Adjust the thickness of the line as needed */
         background-color: #000;
         margin-block: auto;

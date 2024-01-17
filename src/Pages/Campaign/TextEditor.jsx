@@ -12,7 +12,7 @@ const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
 
   return (
     <div  className='area'>
-      <div   className='flex justify-between bg-slate-100 pt-2'>
+      <div   className='appArea'>
         <Modal text={text} userId={userId} editedImage={editedImage} imageBlob={imageBlob} />
         <WebShare imageBlob={imageBlob} text={text} />
         <FacebookModal imageBlob={imageBlob} text={text} />

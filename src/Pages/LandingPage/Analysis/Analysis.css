@@ -22,7 +22,7 @@
 @media only screen and (max-width: 768px) {
     .analysisSec{
         margin-inline: 10px;
-
+        
     }
     .heading1{
         font-size: 36px;
@@ -32,7 +32,7 @@
     }
     .secondPart{
         padding-top: 1.25rem/* 20px */;
-        font-size: 20px;
+        font-size: 14px;
         line-height: 1.75rem/* 28px */;
         color: #6b6b6b;
     }

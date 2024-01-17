@@ -15,6 +15,15 @@
     height: 90%;
     width: 100%;
 }
+.campaignHeader{
+    text-align: center;
+    font-weight: 700;
+    font-size: 3rem/* 48px */;
+    line-height: 1;
+    padding-top: 1.25rem/* 20px */;
+    padding-bottom: 1.25rem/* 20px */;
+    color:#649445
+}
 .campaigndiv{
     background-image: url('/BG_2.png');
 }
@@ -23,6 +32,15 @@
         justify-content: space-between;
         align-items: center;
 }
+.explationDiv{
+    padding-left: 1.25rem/* 20px */;
+    padding-right: 1.25rem/* 20px */;
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity));
+    font-size: 1.5rem/* 24px */;
+    line-height: 2rem/* 32px */;
+
+}
 
 @media only screen and (max-width: 768px) {
     .campSec{
@@ -30,5 +48,11 @@
         flex-direction: column;
         justify-content: space-around;
         gap: 20px;
+    }
+    .campaignHeader{
+        font-size: 24px;
+    }
+    .explationDiv{
+        font-size: 18px;
     }
 }

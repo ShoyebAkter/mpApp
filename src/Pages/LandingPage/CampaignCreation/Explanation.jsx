@@ -1,7 +1,7 @@
-
+import './Campaign.css'
 export const Explanation = () => {
     return (
-        <div className="px-5  text-gray-500 text-2xl">
+        <div className="explationDiv">
             <div className="mb-5">
                 Create and deploy effective campaigns<span>  </span>
                 <span className="font-bold">in no time.</span>

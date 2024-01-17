@@ -4,12 +4,7 @@ export const BusinessInsight = () => {
     <div className="businessInsightDiv ">
       <div className="flex justify-center">
         <div
-          style={{
-            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.5)",
-            background: "#2a4e40",
-            color: "#f8f8f8",
-          }}
-          className="py-2 px-8 font-semibold text-2xl flex justify-center mx-auto rounded-2xl "
+          className="serviceHeading  "
         >
           The types of services we provide for you
         </div>

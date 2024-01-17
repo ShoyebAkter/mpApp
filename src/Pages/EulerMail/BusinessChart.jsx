@@ -15,7 +15,7 @@ function BusinessChart() {
         navigate('/login')
     }
     return (
-        <div  className=" p-8 mt-2 bg-white">
+        <div  className="eulermailMain">
             <div className="flex text-black justify-around ">
                 <div className="text-xl font-bold">Company Name</div>
                 <div className=" border-solid border-2 border-lime-500 rounded-xl px-2 text-lime-600">General Report</div>

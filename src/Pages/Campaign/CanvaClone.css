@@ -8,7 +8,7 @@
 }
 .canva{
     width: 70vw;
-    height: 100vh
+    height: 100vh;
 }
 .cesdk {
     width: 100%;
@@ -34,6 +34,9 @@
     border: 1px solid #ccc;;
     border-radius: 12px;
     flex-grow: 1
+}
+.canva .UBQ_Editor-module__navigation--K9b95{
+    background-color: green;
 }
 
 @media only screen and (max-width: 768px) {

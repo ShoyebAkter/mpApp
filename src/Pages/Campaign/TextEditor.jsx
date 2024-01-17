@@ -26,7 +26,7 @@ const TextEditor = ({ text, setText, userId, editedImage, imageBlob }) => {
         placeholder='Write your text here'
           value={text} // Bind the value to the state variable
           onChange={handleTextareaChange}
-          className="bg-white rounded-xl"
+          className="bg-white"
           style={{  "height":"100%","width": "100%" }}
         />
       </div>

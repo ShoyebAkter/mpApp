@@ -45,6 +45,46 @@ nav a:hover{
     display: flex;
     align-items: center;
 }
+
+ 
+.sidebar {
+  height: 400px;
+  width: 0px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: width 0.3s;
+  padding-top: 60px;
+  color: #000000;
+  
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  transition: 0.3s;
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 5px;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .close-btn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 36px;
+  margin-right: 20px;
+  border-bottom: none;
+}
+
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   
@@ -58,7 +98,8 @@ nav a:hover{
       }
     
       .header-fixed .hamburger-menu {
-        display: block; /* Show the hamburger menu button */
+        position: relative;
+        display: inline-block; /* Show the hamburger menu button */
       }
     
       .header-fixed nav a {
@@ -76,8 +117,7 @@ nav a:hover{
     .links{
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
+        align-items: normal;
     }
     .header-fixed{
         padding-block: 10px;
@@ -99,4 +139,7 @@ nav a:hover{
     .name {
         font-size: 20px; /* Adjust font size for better mobile readability */
     }
+
+   
+
 }

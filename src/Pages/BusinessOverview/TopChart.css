@@ -60,4 +60,7 @@
     .leftGreenSec{
         display: none;
     }
+    .overviewMain{
+        height: 100%;
+    }
 }

@@ -39,5 +39,6 @@
     }
     .eulermailMain{
         margin-top: 0.5rem/* 8px */;
+        height: 100%;
     }
 }

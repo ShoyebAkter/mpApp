@@ -22,7 +22,7 @@ export const Form = () => {
             });
     };
     return (
-        <div style={{"background":"url('/BG_5.png')"}} className="flex justify-center items-center h-screen">
+        <div style={{"background":"url('/BG_5.png')"}} className="flex justify-center items-center">
             <div className="p-4 ">
             <h2 className="text-2xl text-white font-semibold mb-2">Contact Us</h2>
             <form ref={form} onSubmit={sendEmail} id="contact_form">

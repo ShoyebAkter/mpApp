@@ -14,7 +14,7 @@ export const Footer = () => {
                         </div>
                         <div className="linkSec grid grid-cols-3 gap-16 sm:gap-20 sm:grid-cols-3">
                             <div>
-                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">Quick Links</h2>
+                                <h2 className="mb-6 text-sm font-semibold  uppercase text-white">Quick Links</h2>
                                 <ul className="text-gray-500  font-medium">
                                     <li className="mb-4">
                                         <div style={{"cursor":"pointer"}} >Home</div>
@@ -29,7 +29,7 @@ export const Footer = () => {
                                 </ul>
                             </div>
                             <div>
-                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">Services</h2>
+                                <h2 className="mb-6 text-sm  font-semibold uppercase text-white">Services</h2>
                                 <ul className="text-gray-500  font-medium">
                                     <li className="">
                                         <div style={{"cursor":"pointer"}}>Customer Data Analysis</div>

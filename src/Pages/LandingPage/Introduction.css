@@ -125,12 +125,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 70vh;
   }
   .bottom-image {
     height: 150px;
     width: 150px;
-    width: 100%;
     z-index: 0;
     /* Places it below the top image */
   }
@@ -140,7 +139,6 @@
     position: absolute;
     top: 175px;
   left: 0px;
-    width: 100%;
     /* To cover the entire container width */
     z-index: 1;
   }
@@ -149,7 +147,6 @@
     width: 150px;
     top: 100px;
   left: -50px;
-  width: 100%;
   /* To cover the entire container width */
   z-index: 1;
     /* Places it on top of the bottom image */

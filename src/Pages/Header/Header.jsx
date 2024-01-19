@@ -40,7 +40,7 @@ function Header() {
           href="javascript:void(0)"
           onClick={toggleMenu}
         >
-          ☰{" "}
+          <img src="/hamburger.png" alt=""/>
         </a>
 
         {/* You can use an icon or any other content for the hamburger menu */}

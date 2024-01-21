@@ -22,22 +22,22 @@ export const Form = () => {
             });
     };
     return (
-        <div style={{"background":"url('/BG_5.png')"}} className="flex justify-center items-center">
+        <div style={{"background":"url('/BG_5.png')"}} className="px-28">
             <div className="p-4 ">
             <h2 className="text-2xl text-white font-semibold mb-2">Contact Us</h2>
             <form ref={form} onSubmit={sendEmail} id="contact_form">
             <div className="flex mb-5">
-                    <div className="w-1/2 mr-2">
+                    <div className="w-2/3 mr-2">
                         <label className="block text-sm text-white">Your First Name:</label>
                         <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
                     </div>
-                    <div className="w-1/2">
+                    <div className="w-2/3">
                         <label className="block text-sm text-white">Last Name</label>
                         <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
                     </div>
                 </div>
                 <div className="flex mb-5 phoneemailInput">
-                    <div className="w-1/2 mr-2">
+                    <div className="w-2/3 mr-2">
                         <label className="block text-sm text-white">Phone Number</label>
                         <PhoneInput
                                 name="phone"
@@ -47,7 +47,7 @@ export const Form = () => {
                                 onChange={(phone) => setPhone(phone)}
                             />
                     </div>
-                    <div className="w-1/2">
+                    <div className="w-2/3">
                         <label className="block text-sm text-white">Email Address:</label>
                         <input placeholder="From:" className="rounded border-gray-400 w-full bg-white" type="email" name="email" id="email_field" />
                     </div>

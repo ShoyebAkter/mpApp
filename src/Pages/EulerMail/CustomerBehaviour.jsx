@@ -75,7 +75,7 @@ function CustomerBehaviour() {
         ],
     };
     return (
-        <div  className='customerCHart'>
+        <div  className='customerCHart CBborder-scoop'>
             <h1 className=' text-xl text-center font-medium text-cyan-500'> Customer Behaviour</h1>
             <Bar options={options} data={data1} />
         </div>

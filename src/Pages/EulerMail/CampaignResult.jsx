@@ -8,6 +8,7 @@ import {
     Legend,
   } from 'chart.js';
 import { useEffect, useState } from 'react';
+import './BoxStyle.css'
   import { Bar } from 'react-chartjs-2';
 import { useAuthState } from 'react-firebase-hooks/auth';
   import {auth} from '../../firebase.init'
@@ -65,7 +66,7 @@ export const CampaignResult = () => {
   return (
     <div
       id="chart"
-      className="boxcontainer p-2 bg-white"
+      className="boxcontainer CRborder-scoop p-2 "
     >
       <div className="content">
         <h1 className="heading"> CampaignResult</h1>

@@ -60,7 +60,7 @@ function SocialMediaChart() {
     ],
   };
   return (
-    <div id="chart" className="boxcontainer p-2 bg-white">
+    <div id="chart" className="boxcontainer SMborder-scoop p-2 ">
       <div className="inner">
         <i className="top left"></i>
         <div className="content">

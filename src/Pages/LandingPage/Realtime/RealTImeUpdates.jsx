@@ -10,7 +10,7 @@ export const RealTImeUpdates = () => {
         <div className="realTimeDiv">
             <h1 className="header1">Real Time Updates</h1>
             <section className="firstSec ">
-                <div  className="lineChart flex justify-between rounded-2xl">
+                <div  className="lineChart ">
                     <p className="greenSec"></p>
                     <div className='rounded-xl my-5' ><h1 className="text-center">Total Sales</h1> <LineChart firstxLinedata={firstxLinedata} /></div>
                     <div className='orderChart' ><h1 className=" text-center">Orders</h1> <LineChart secondxLinedata={secondxLinedata} /></div>

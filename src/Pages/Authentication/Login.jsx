@@ -79,6 +79,12 @@ const Login = () => {
                                     Subscription
                                 </NavLink>
                             </p>
+                            <p className="text-sm text-white text-center pt-5">
+                                Go back to  {' '}
+                                <NavLink to="/" className="text-blue-700">
+                                    Home
+                                </NavLink>
+                            </p>
                             <ToastContainer />
                         </form>
 

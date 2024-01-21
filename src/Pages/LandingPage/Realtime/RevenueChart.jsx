@@ -51,7 +51,7 @@ export function RevenueChart() {
       <Line height={150} width={700} options={options} data={data} />
       </div>
       <div className="mobileViewChart">
-      <Line height={150} width={200} options={options} data={data} />
+      <Line height={150} width={250} options={options} data={data} />
       </div>
     </div>
   );

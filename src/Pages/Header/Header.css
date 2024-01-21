@@ -53,8 +53,12 @@ nav a:hover{
   width: 0;
   display: none;
 }
+
 /* Media query for mobile devices */
 @media (max-width: 768px) {
+  .logoutBtn{
+    display: none;
+  }
   .mobileHeader{
     display: flex;
     justify-content: space-around;
@@ -64,7 +68,7 @@ nav a:hover{
  
 .sidebar {
   display: block;
-  height: 400px;
+  height: 450px;
   width: 0px;
   position: fixed;
   z-index: 1;

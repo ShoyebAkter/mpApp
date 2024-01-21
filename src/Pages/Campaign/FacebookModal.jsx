@@ -21,6 +21,7 @@ export const FacebookModal = ({ imageBlob, text }) => {
                 getLongLivedAccessToken(response.authResponse?.accessToken)
                     .then(longLivedToken => {
                         setFacebookUserAccessToken(longLivedToken);
+                        localStorage.setItem("access_token",longLivedToken)
                         document.getElementById("my_modal_5").showModal();
                     })
                     .catch(error => {

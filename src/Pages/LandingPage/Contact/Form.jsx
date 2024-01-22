@@ -22,11 +22,11 @@ export const Form = () => {
             });
     };
     return (
-        <div style={{"background":"url('/BG_5.png')"}} className="px-28">
+        <div style={{"background":"url('/BG_5.png')"}} className="px-12">
             <div className="p-4 ">
             <h2 className="text-2xl text-white font-semibold mb-2">Contact Us</h2>
             <form ref={form} onSubmit={sendEmail} id="contact_form">
-            <div className="flex mb-5">
+            <div className="flex mb-5 nameInput">
                     <div className="w-2/3 mr-2">
                         <label className="block text-sm text-white">Your First Name:</label>
                         <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />

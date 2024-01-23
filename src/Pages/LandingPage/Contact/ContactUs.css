@@ -5,7 +5,10 @@
     padding: 2.5rem/* 40px */;
     background:url('/BG_5.png')
 }
-
+.contactUsMain{
+    padding-left: 3rem/* 48px */;
+    padding-right: 3rem/* 48px */;
+}
 
 @media only screen and (max-width: 768px) {
     .contactUsSec{
@@ -14,16 +17,22 @@
         justify-content: center;
         align-items: center;
     }
+    .contactUsMain{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .contactUsMain div{
+        padding-inline: 0;
+    }
     .phoneemailInput{
         display:flex ;
         flex-direction: column;
         
     }
     .formSection{
-        width: 400px;
+        width: 450px;
         display: flex;
         justify-content: center;
-        padding-inline: 10px;
     }
     .nameInput{
         display:flex ;

@@ -45,8 +45,7 @@ function Header() {
 
           {/* You can use an icon or any other content for the hamburger menu */}
         </div>
-      </div>
-      <div className="sidebar" id="menusidebar">
+        <div className="sidebar" id="menusidebar">
         <a
           href="javascript:void(0)"
           className="close-btn"
@@ -68,6 +67,8 @@ function Header() {
           </Link>
         </div>
       </div>
+      </div>
+      
     </div>
   );
 }

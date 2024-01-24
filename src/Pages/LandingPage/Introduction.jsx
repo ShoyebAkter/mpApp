@@ -42,7 +42,7 @@ export const Introduction = () => {
                 </div>
 
             </div>
-            <div className='developImg'>
+            <div onClick={()=>window.location.href="http://www.holismusgroup.com"} className='developImg'>
                 <img src='develop.png' alt=''/>
             </div>
         </Fade>

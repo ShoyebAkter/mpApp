@@ -74,7 +74,8 @@
     border-radius: 0.75rem;
     margin-top: auto;
     margin-bottom: auto;
-    padding: 0.5rem
+    padding: 0.5rem;
+    overflow: hidden;
 }
 .mapSection{
     height: 100px;

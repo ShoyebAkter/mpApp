@@ -5,7 +5,7 @@
   font-size: 50px;
 }
 .secondLine{
-  color:#62cbc6;
+  color:#a3Cde0;
   display: flex;
   align-items: center;
   font-size: 3rem/* 48px */;
@@ -108,9 +108,10 @@
 
 
 .center-image {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
+  margin-inline: auto;
 }
 .developImg{
   display: flex;
@@ -196,6 +197,187 @@
   }
   .thirdLine{
     font-size: 16px/* 24px */;
+      line-height: 2rem;
+      font-weight: 500;
+      color:#6b6b6b;
+  }
+  .sixthLine{
+    display: flex;
+    align-items: center;
+    font-size: 16px/* 24px */;
+      line-height: 2rem;
+      font-weight: 500;
+      padding-top: 3rem;
+      color:#6b6b6b;
+  }
+}
+@media only screen and (min-width: 1000px) and (max-width: 1450px){
+  .IntroSec{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 90vh;
+  }
+  .bottom-image {
+    height: 300px;
+    width: 300px;
+    z-index: 0;
+    /* Places it below the top image */
+  }
+  .third-image {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 250px;
+  left: -30px;
+    /* To cover the entire container width */
+    z-index: 1;
+  }
+  .top-image {
+    height: 300px;
+    width: 300px;
+    top: 100px;
+  left: -150px;
+  /* To cover the entire container width */
+  z-index: 1;
+    /* Places it on top of the bottom image */
+  }
+  .center-image {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+  }
+  .circle {
+    padding: 5px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #439541;
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    top: 60px;
+    left: -100px;
+  
+  }
+  .image-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Adjust the width as needed */
+  
+  }
+  .firstLine {
+    font-weight: 700;
+    font-size: 40px;
+  }
+  .secondLine{
+    color:#62cbc6;
+    display: flex;
+    align-items: center;
+    font-size: 30px/* 48px */;
+      line-height: 1;
+      font-weight: 600;
+      padding-top: 2rem/* 32px */;
+      padding-bottom: 2rem
+  }
+  .thirdLine{
+    font-size: 20px/* 24px */;
+      line-height: 2rem;
+      font-weight: 500;
+      color:#6b6b6b;
+  }
+  .sixthLine{
+    display: flex;
+    align-items: center;
+    font-size: 16px/* 24px */;
+      line-height: 2rem;
+      font-weight: 500;
+      padding-top: 3rem;
+      color:#6b6b6b;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 999px){
+  .IntroSec{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 90vh;
+  }
+  .bottom-image {
+    height: 300px;
+    width: 300px;
+    z-index: 0;
+    /* Places it below the top image */
+  }
+  .third-image {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 250px;
+  left: -30px;
+    /* To cover the entire container width */
+    z-index: 1;
+  }
+  .top-image {
+    height: 300px;
+    width: 300px;
+    top: 100px;
+  left: -150px;
+  /* To cover the entire container width */
+  z-index: 1;
+    /* Places it on top of the bottom image */
+  }
+  .center-image {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+  }
+  .circle {
+    padding: 5px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #439541;
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    top: 60px;
+    left: -100px;
+  
+  }
+  .image-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Adjust the width as needed */
+  
+  }
+  .firstLine {
+    font-weight: 700;
+    font-size: 40px;
+  }
+  .secondLine{
+    color:#62cbc6;
+    display: flex;
+    align-items: center;
+    font-size: 30px/* 48px */;
+      line-height: 1;
+      font-weight: 600;
+      padding-top: 2rem/* 32px */;
+      padding-bottom: 2rem
+  }
+  .thirdLine{
+    font-size: 20px/* 24px */;
       line-height: 2rem;
       font-weight: 500;
       color:#6b6b6b;

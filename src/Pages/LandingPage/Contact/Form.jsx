@@ -52,12 +52,12 @@ export const Form = () => {
                         <input placeholder="From:" className="rounded border-gray-400 w-full bg-white" type="email" name="email" id="email_field" />
                     </div>
                 </div>
-                <div className="mb-4">
+                <div className="formTextArea mb-4">
                     <label className="block text-sm text-white">Message:</label>
                     <textarea className="w-full rounded border-gray-400 bg-white" name="message" id="message_field" rows="6"></textarea>
                 </div>
                 
-                <button type="submit" className="bg-blue-600 py-2 px-4 rounded border-gray-400 shadow-sm text-gray-200 hover:text-white hover:bg-blue-800" >Send</button>
+                <button type="submit"  style={{"backgroundColor":"#a3Cde0"}} className=" py-2 px-4 rounded  shadow-sm text-black hover:text-white hover:bg-blue-800" >Send</button>
                 <ToastContainer />
             </form>
         </div>

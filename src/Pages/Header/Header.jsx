@@ -1,10 +1,10 @@
 import "./Header.css";
 // import { signOut } from 'firebase/auth';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
   // const [menuOpen, setMenuOpen] = useState(false);
-
+  const navigate=useNavigate();
   const toggleMenu = () => {
     document.getElementById("menusidebar").style.width = "200px";
   };
@@ -14,37 +14,37 @@ function Header() {
   return (
     <div>
       <div className="mobileHeader">
-      <header className="header-fixed">
-        <nav className={`navbarSec `}>
-          <div className="headerlogo">
-            <img src="Logo_Iso_Green.png" />
-          </div>
-          <div className="links">
-            <a href="#introduction">HOME</a>
-            <a href="#businessInsight">EULERMAIL</a>
-            <a href="#integration">HOW IT WORKS</a>
-            <a href="#allies">OUR ALLIES</a>
-            <a href="#contactUs">CONTACT</a>
-            <Link
-              className="bg-emerald-800 text-white py-2 px-5 rounded-xl"
-              to="/login"
-            >
-              LOGIN
-            </Link>
-          </div>
-        </nav>
-      </header>
-      <div>
-        <a
-          className="hamburger-menu"
-          href="javascript:void(0)"
-          onClick={toggleMenu}
-        >
-          <img src="/hamburger.png" alt=""/>
-        </a>
+        <header className="header-fixed">
+          <nav className={`navbarSec `}>
+            <div onClick={()=>navigate('/')} className="headerlogo">
+              <img src="Logo_Iso_Green.jpg" />
+            </div>
+            <div className="links">
+              <a href="#introduction">HOME</a>
+              <a href="#businessInsight">EULERMAIL</a>
+              <a href="#integration">HOW IT WORKS</a>
+              <a href="#allies">OUR ALLIES</a>
+              <a href="#contactUs">CONTACT</a>
+              <Link
+                className="bg-emerald-800 mx-7 text-white py-2 px-5 rounded-xl"
+                to="/login"
+              >
+                LOGIN
+              </Link>
+            </div>
+          </nav>
+        </header>
+        <div>
+          <a
+            className="hamburger-menu"
+            href="javascript:void(0)"
+            onClick={toggleMenu}
+          >
+            <img src="/hamburger.png" alt="" />
+          </a>
 
-        {/* You can use an icon or any other content for the hamburger menu */}
-      </div>
+          {/* You can use an icon or any other content for the hamburger menu */}
+        </div>
       </div>
       <div className="sidebar" id="menusidebar">
         <a

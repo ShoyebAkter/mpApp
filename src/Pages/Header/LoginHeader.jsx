@@ -32,9 +32,11 @@ export const LoginHeader = () => {
         <div className="mobileHeader">
           <header className={`header-fixed`}>
             <nav className={`navbarSec`}>
+              <Link to="/">
               <div style={{ width: "50px" }}>
-                <img src="Logo_Iso_Green.png" />
+                <img src="Logo_Iso_Green.jpg" />
               </div>
+              </Link>
               <Link
                 to="/eulermail"
                 onClick={() => handleLinkClick("/eulermail")}

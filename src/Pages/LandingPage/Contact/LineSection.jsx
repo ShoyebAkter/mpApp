@@ -21,7 +21,7 @@ export const LineSection = () => {
         Reality!
       </div>
       <div >
-        <button onClick={()=>document.getElementById("my_modal_5").showModal()}  className="bg-blue-600 py-2 px-4 rounded border-gray-400 shadow-sm text-gray-200">Contact Us</button>
+        <button onClick={()=>document.getElementById("my_modal_5").showModal()} style={{"backgroundColor":"#a3Cde0"}}  className=" py-2 px-4 rounded border-gray-400 shadow-sm text-black">Contact Us</button>
       </div>
 
       <dialog id="my_modal_5" className="modal">

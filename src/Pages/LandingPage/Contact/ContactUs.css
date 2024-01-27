@@ -49,3 +49,41 @@
         width: 100%;
     }
 }
+@media only screen and (min-width: 769px) and (max-width: 999px) {
+    .contactUsSec{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .contactUsMain{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .contactUsMain div{
+        padding-inline: 0;
+    }
+    .phoneemailInput{
+        display:flex ;
+        flex-direction: column;
+        
+    }
+    .formTextArea textarea{
+        height: 120px;
+    }
+    .formSection{
+        
+        display: flex;
+        justify-content: center;
+    }
+    .nameInput{
+        display:flex ;
+        flex-direction: column;
+        
+    }
+    .nameInput div{
+        width: 100%;
+    }
+    .phoneemailInput div{
+        width: 100%;
+    }
+}

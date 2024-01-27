@@ -152,3 +152,72 @@
         width: 95vw;
     }
   }
+@media only screen and (min-width: 769px) and (max-width: 999px) {
+    .chart-container{
+        display: none;
+    }
+    .header1{
+        font-size: 20px;
+    }
+    .mobileViewChart{
+        display: block;
+    }
+    .realTimeDiv{
+        padding: 10px
+    }
+    .lineChart{
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+        width:95vw;
+
+    }
+    .greenSec{
+        width: 30px;
+        background: #439541;
+    }
+    .orderChart{
+        display: none;
+    }
+    .customerChart{
+        display: none;
+    }
+    .writingSection{
+        width: 95vw;
+        height: 155px;
+        padding: 0;
+        font-size: smaller;
+        overflow: hidden;
+        padding: 5px;
+        margin-inline-start: auto;
+    }
+
+    .custom-hr{
+        width: 30px;
+        height: 1px; /* Adjust the thickness of the line as needed */
+        background-color: #000;
+        margin-inline: auto;
+    }
+    .firstSec{
+        
+    }
+    .secondSec{
+        
+        margin-block: 10px;
+    }
+    .thirdSec{
+        
+    }
+    .revenueChart{
+        border-radius: 1rem;
+        display: flex;
+        width: 95vw;
+        height: 200px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+        font-size: 8px;
+        margin-top: 0;
+    }
+    .mapImgSec{
+        display: flex;
+        align-items: center;
+        width: 95vw;
+    }
+  }

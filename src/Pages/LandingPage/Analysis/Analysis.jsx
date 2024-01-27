@@ -10,8 +10,8 @@ export const Analysis = () => {
         </div>
         <div className="secondPart">
            <div>Harness the power of data with our <span className="font-bold">Key Indicators. EulerMail</span> provides you with </div>
-            <div> <span className="font-bold">a range of crucial indicators</span> to help you understand your campaign`s </div>
-            <div>performance. From open rates to click-through rates, <span className="font-bold"> we`ve got you covered.</span> </div>
+            <div> <span className="font-bold">a range of crucial indicators</span> to help you understand your campaign's </div>
+            <div>performance. From open rates to click-through rates, <span className="font-bold"> we've got you covered.</span> </div>
         </div>
     </div>
   )

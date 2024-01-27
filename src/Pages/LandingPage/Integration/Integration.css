@@ -7,7 +7,7 @@
   margin-bottom: 1.25rem/* 20px */;
 }
 .integrationDiv{
-  background-image: url('/BG_4.png');
+  background-image: url('/BG_4.jpg');
   padding: 2.5rem/* 40px */;
 }
 .integrationHeading{
@@ -508,4 +508,251 @@
 .smsDiv{
   margin: 0;
 }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 999px){
+  
+
+    /* CSS Animation */
+  
+  .integrationDiv{
+    padding: 0px;
+  }
+  .integrationHeading{
+    padding-top: 10px;
+    font-size: 24px;
+  }
+  .integrationPara{
+    font-size: 12px;
+    line-height: 16px;
+    padding-bottom: 20px;
+  }
+  .line-with-circle {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .line {
+      width: 50px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color: white;
+      transform: translate(0px,0px);
+    }
+    .secondline {
+      width: 50px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color: white;
+      transform: translate(186px,-2px);
+    }
+    
+    .wooline{
+      width: 50px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color: white;
+      transform: translate(0px,0px);
+    }
+    .instaline{
+      width: 50px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color: white;
+      transform: translate(0px,0px);
+    }
+    .galine{
+      width: 100px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color:white;
+      transform: translate(13px,1px);
+    }
+    .smsline{
+      width: 50px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color: white;
+      transform: translate(0px,10px);
+    }
+    .secondsmsline{
+      width: 2px; /* Adjust the width as needed */
+      height: 90px; /* Adjust the height as needed */
+      background-color: white;/* Center the line horizontally */
+      transform: translate(-190px,-35px)rotate(90deg); /* Move the line upward */
+      display: block;
+      position: absolute;
+    }
+    .whatsappline{
+      width: 50px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color:white;
+      transform:translate(0px,0px)
+    }
+    .upwardline {
+      width: 90px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color: white;
+      transform: translate(100px,-100px);
+    }
+    .instaupwardline{
+      width: 90px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color: white;
+      transform: translate(-135px,-100px);
+    }
+    .whatsappupwardline{
+      width: 90px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color: white;
+      transform: translate(187px,-108px);
+    }
+    .woolinecircle{
+      width: 16px; /* Adjust the size of the circle as needed */
+      height: 16px; /* Adjust the size of the circle as needed */
+      background-color: white; /* Adjust the circle color as needed */
+      border-radius: 50%; /* Makes the circle round */
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0px,-7px);
+    }
+    .galinecircle{
+      width: 16px; /* Adjust the size of the circle as needed */
+      height: 16px; /* Adjust the size of the circle as needed */
+      background-color: white; /* Adjust the circle color as needed */
+      border-radius: 50%; /* Makes the circle round */
+      display: block;
+      position: absolute;
+      
+      top: 50%;
+      transform: translate(0px, -8px);
+    }
+    .whatsapplinecircle{
+      width: 16px; /* Adjust the size of the circle as needed */
+      height: 16px; /* Adjust the size of the circle as needed */
+      background-color: white; /* Adjust the circle color as needed */
+      border-radius: 50%; /* Makes the circle round */
+      display: block;
+      position: absolute;
+      
+      top: 50%;
+      transform: translate(0px, -8px);
+    }
+    .smslinecircle{
+      width: 16px; /* Adjust the size of the circle as needed */
+      height: 16px; /* Adjust the size of the circle as needed */
+      background-color: white; /* Adjust the circle color as needed */
+      border-radius: 50%; /* Makes the circle round */
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0px,0px);
+    }
+    .instalinecircle{
+      width: 16px; /* Adjust the size of the circle as needed */
+      height: 16px; /* Adjust the size of the circle as needed */
+      background-color: white; /* Adjust the circle color as needed */
+      border-radius: 50%; /* Makes the circle round */
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0px,-7px);
+    }
+    .linecircle {
+      width: 16px; /* Adjust the size of the circle as needed */
+      height: 16px; /* Adjust the size of the circle as needed */
+      background-color: white; /* Adjust the circle color as needed */
+      border-radius: 50%; /* Makes the circle round */
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0px,-7px);
+    }
+    .firstupward-line {
+      width: 2px; /* Adjust the width as needed */
+      height: 25px; /* Adjust the height as needed */
+      background-color: white;/* Center the line horizontally */
+      transform: translate(0px,0px); /* Move the line upward */
+      display: block;
+      bottom: 2px;
+      right: -30px;
+      position: absolute;
+  }
+    .second-line {
+      width: 30px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color: white;
+      transform: translate(-30px,8px);
+  }
+    .smsupward-line {
+      width: 2px; /* Adjust the width as needed */
+      height: 25px; /* Adjust the height as needed */
+      background-color: white;/* Center the line horizontally */
+      transform: translate(0px,10px); /* Move the line upward */
+      display: block;
+      bottom: 3px;
+      left: -30px;
+      position: absolute;
+  }
+  
+    .upward-line {
+      width: 50px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color:white;
+      transform:translate(0px,0px)
+  }
+    .secondupward-line {
+      width: 30px; /* Adjust the length of the line as needed */
+      height: 2px; /* Adjust the thickness of the line as needed */
+      background-color:white;
+      transform:translate(50px,-2px)
+  }
+  .whatsappupward-line{
+      width: 2px; /* Adjust the width as needed */
+      height: 50px; /* Adjust the height as needed */
+      background-color: white;/* Center the line horizontally */
+      transform: translate(238px,-51px)rotate(90deg); /* Move the line upward */
+      display: block;
+      position: absolute;
+  }
+  .instaupward-line{
+      width: 2px; /* Adjust the width as needed */
+      height: 50px; /* Adjust the height as needed */
+      background-color: white;/* Center the line horizontally */
+      transform: translate(-240px,-84px); /* Move the line upward */
+      display: block;
+      position: absolute;
+  }
+  
+  .appName{
+    font-size: 6px;
+    line-height: 8px;
+    font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    
+  }
+  
+  .gaImage{
+    width: 20px;
+    height: 20px;
+    color: #f8f8f8;
+  }
+  
+  .integratiobImage{
+    padding-bottom: 75px;
+  }
+  .integratiobImage img{
+    width: 95px;
+    height: 100px;
+  }
+  .whatsAPp{
+    margin: 0;
+  }
+  .instaDiv{
+    margin: 0;
+  }
+  .smsDiv{
+    margin: 0;
+  }
+  
 }

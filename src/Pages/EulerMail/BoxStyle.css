@@ -14,15 +14,15 @@
     background: -webkit-radial-gradient(0% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(0% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat;
     background: radial-gradient(circle at 0% 100%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 0% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 100%, transparent 15%, #FFFFFF 15%) no-repeat;
     background-position: 0% 0%, 0% 0%, 0% 0%, 0% 100%;
-    background-size: 107% 75%;
+    background-size: 106% 50%;
   }
   .CRborder-scoop {
     width: 500px;
     height: 350px;
     background: -webkit-radial-gradient(0% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(0% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat;
     background: radial-gradient(circle at 0% 100%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 0% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 100%, transparent 15%, #FFFFFF 15%) no-repeat;
-    background-position: 50% 100%, 0% 0%, 0% 0%, 0% 0%;
-    background-size: 115% 75%;
+    background-position: 50% 107%, 0% 0%, 0% 0%, 0% 0%;
+    background-size: 117% 75%;
   }
   .CBborder-scoop {
     width: 500px;
@@ -38,7 +38,7 @@
     background: -webkit-radial-gradient(0% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(0% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat;
     background: radial-gradient(circle at 0% 100%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 0% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 100%, transparent 15%, #FFFFFF 15%) no-repeat;
     background-position: 100% 100%,100% 100%,100% 0%,100% 100%;
-    background-size: 108% 78%;
+    background-size: 107% 75%;
   }
   .customerCHart{
     padding: 0.5rem/* 8px */;

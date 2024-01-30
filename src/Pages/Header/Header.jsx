@@ -49,9 +49,9 @@ function Header() {
       <div className="mobileHeader">
         <header className="header-fixed">
           <nav className={`navbarSec `}>
-            <div onClick={()=>navigate('/')} className="headerlogo">
-              <img src="Logo_Iso_Green.jpg" />
-            </div>
+            
+              <img  onClick={()=>navigate('/')} className="headerlogo" src="Logo_Iso_Green.jpg" />
+            
             <div className="links">
               <a href="#introduction">HOME</a>
               <a href="#businessInsight">EULERMAIL</a>

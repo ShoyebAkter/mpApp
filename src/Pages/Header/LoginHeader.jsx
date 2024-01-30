@@ -33,11 +33,9 @@ export const LoginHeader = () => {
         <div className="mobileHeader">
           <header className={`header-fixed`}>
             <nav className={`navbarSec`}>
-              <Link to="/">
-                <div style={{ width: "50px" }}>
-                  <img src="Logo_Iso_Green.jpg" />
-                </div>
-              </Link>
+            
+              <img onClick={()=>navigate('/')} className="headerlogo" src="Logo_Iso_Green.jpg" />
+            
               <Link
                 to="/eulermail"
                 onClick={() => handleLinkClick("/eulermail")}
@@ -99,7 +97,7 @@ export const LoginHeader = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                  className="dropdown-content z-[1] menu p-2  shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
                   <Link
@@ -111,7 +109,7 @@ export const LoginHeader = () => {
                   <li>
                     <button
                       onClick={logout}
-                      className="logoutBtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      className="mt-3 logoutBtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     >
                       Log Out
                     </button>
@@ -193,6 +191,11 @@ export const LoginHeader = () => {
                 }}
               >
                 Campaign Designer
+              </Link>
+              <Link
+                to="/settings"
+              >
+                Settings
               </Link>
               <button
                 onClick={logout}

@@ -14,6 +14,7 @@ import { Landingpage } from './Pages/LandingPage/Landingpage'
 import { FacebookData } from './Pages/SocialMedia/FacebookData'
 import { Policy } from './Pages/Policy/Policy'
 import AdminDashboard from './Pages/AdminPanel/AdminDashboard'
+import SettingPage from './Pages/Settings/SettingPage'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/eulermail" element={<BusinessChart />} />
         <Route path="/businessoverview" element={<Main />} />
         <Route path='/dashboard' element={<AdminDashboard/>}/>
+        <Route path='/settings' element={<SettingPage/>}/>
         <Route path="/customerBehaviour" element={<CustomerBehaviour />} />
         <Route path="/campaignresult" element={<CampaignResult />} />
         <Route path="/socialmedia" element={<FacebookData  />} >

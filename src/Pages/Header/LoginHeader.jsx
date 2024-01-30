@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useState } from "react";
+import { CiUser } from "react-icons/ci";
 
 export const LoginHeader = () => {
   const [user] = useAuthState(auth);
@@ -33,9 +34,9 @@ export const LoginHeader = () => {
           <header className={`header-fixed`}>
             <nav className={`navbarSec`}>
               <Link to="/">
-              <div style={{ width: "50px" }}>
-                <img src="Logo_Iso_Green.jpg" />
-              </div>
+                <div style={{ width: "50px" }}>
+                  <img src="Logo_Iso_Green.jpg" />
+                </div>
               </Link>
               <Link
                 to="/eulermail"
@@ -92,12 +93,31 @@ export const LoginHeader = () => {
                 Campaign Designer
               </Link>
 
-              <button
-                onClick={logout}
-                className="logoutBtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+              <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button" className="btn m-1">
+                  <CiUser />
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                  <Link
+                to="/settings"
               >
-                Log Out
-              </button>
+                Settings
+              </Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={logout}
+                      className="logoutBtn bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    >
+                      Log Out
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </nav>
           </header>
           <div>

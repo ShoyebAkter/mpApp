@@ -32,11 +32,6 @@ function OverviewChart() {
       .catch((error) => console.error(error));
   }, []);
   // console.log(totalSales);
-  fetch("https://emapp-backend.vercel.app/salesAnalysis")
-      .then((res) => res.json())
-      .then((result) => console.log(result))
-      .catch((error) => console.error(error));
-
   const getSalesData = () => {
     totalSales.map((sale) => {
       const day = new Date(sale.sale.$date.$numberLong * 1000).getDate();

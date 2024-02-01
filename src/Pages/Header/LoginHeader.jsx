@@ -21,11 +21,11 @@ export const LoginHeader = () => {
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
-  // console.log(user);
+  console.log(user);
   const logout = () => {
     signOut(auth);
     navigate("/");
-    // localStorage.removeItem('accessToken');
+    localStorage.removeItem('companyName');
   };
   return (
     <div>

@@ -24,13 +24,14 @@ export const CampaignResult = () => {
     const [emailCampaign,setEmailCampaign]=useState([])
     const [user]=useAuthState(auth);
     useEffect(()=>{
-        getEmailCampaignData()
-    },[])
-    const getEmailCampaignData=()=>{
+      const getEmailCampaignData=()=>{
         fetch(`https://emapp-backend.vercel.app/emailcampaign/${user.uid}`)
         .then(res=>res.json())
         .then(result=>setEmailCampaign(result))
       }
+        getEmailCampaignData()
+    },[])
+    console.log(emailCampaign)
       const result = emailCampaign.reduce((acc, campaign) => {
         const existingCampaign = acc.find((item) => item.date === campaign.date);
       

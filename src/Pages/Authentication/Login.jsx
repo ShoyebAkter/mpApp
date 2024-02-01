@@ -27,7 +27,11 @@ const Login = () => {
 
       const emailExists = users.some(obj => obj.email === user.email);
       const isadmin=users.find(obj => obj.role === 'admin');
-      console.log(isadmin,users)
+      const customerObj=users.find(obj => obj.email === user.email);
+        if(customerObj.role==="customer"){
+          localStorage.setItem("companyName",customerObj.name)
+        }
+      console.log(emailExists)
       if(!emailExists){
         const userInfo={
             uid:user.uid,

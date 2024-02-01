@@ -36,7 +36,7 @@ export const Chart = () => {
       };
   return (
     <div id="chart" className='rounded-xl my-5'>
-        <h1 className='text-black text-xl text-center font-medium text-cyan-500'> Business Overview</h1>
+        <h1 className='text-black text-xl text-center font-medium '> Business Overview</h1>
             <ReactApexChart className="flex justify-center" options={options} series={options.series} type="line" height={150} width={200} />
         </div>
   )

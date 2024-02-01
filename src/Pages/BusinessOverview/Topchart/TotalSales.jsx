@@ -10,7 +10,6 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useEffect, useState } from 'react';
-
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -31,12 +30,11 @@ export const TotalSales = () => {
             .catch(error => console.error(error))
     }, [])
     // console.log(totalSales);
-
     const getSalesData = () => {
         totalSales.map((sale) => {
-
+    
             const year = new Date(sale.sale.$date.$numberLong * 1000).getFullYear();
-
+    
             const sales = sale.items.map((item) => {
                 const price = item.price.$numberDecimal;
                 const quantity = item.quantity.$numberInt;
@@ -47,14 +45,14 @@ export const TotalSales = () => {
             for (let i = 0; i < sales.length; i++) {
                 sum = sum + sales[i];
             }
-
+    
             const obj = {
                 year: year,
                 total: sum
             }
             salesValue.push(obj)
         })
-
+        return salesValue;
     }
     getSalesData()
     // console.log(salesValue);
@@ -63,7 +61,7 @@ export const TotalSales = () => {
         salesValue.forEach((obj) => {
             // Check if an object with the same 'id' property exists in the result array
             const existingObject = resultArray.find((item) => item.year === obj.year);
-
+    
             if (existingObject) {
                 // If it exists, add the 'value' property
                 existingObject.total += obj.total;
@@ -73,6 +71,7 @@ export const TotalSales = () => {
             }
         });
         resultArray.sort((a, b) => a.year - b.year);
+        return resultArray;
         // console.log(resultArray);
     }
     changeArrayValue()
@@ -88,7 +87,7 @@ export const TotalSales = () => {
             },
         },
     };
-
+    
     const labels = resultArray.map((array)=>array.year);
 
     const data = {

@@ -12,6 +12,9 @@ import { Line } from "react-chartjs-2";
 // import { faker } from '@faker-js/faker';
 import { useEffect, useState } from "react";
 import "./BoxStyle.css";
+import { auth } from "../../firebase.init";
+import { callApi, getSalesData } from "./getSalesData";
+import { useAuthState } from "react-firebase-hooks/auth";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -25,41 +28,53 @@ ChartJS.register(
 function OverviewChart() {
   const [totalSales, setTotalSales] = useState([]);
   const salesValue = [];
+  const [user] = useAuthState(auth);
+  let labels;
+  let data;
   useEffect(() => {
-    fetch("https://emapp-backend.vercel.app/sales")
-      .then((res) => res.json())
-      .then((result) => setTotalSales(result))
-      .catch((error) => console.error(error));
+    
   }, []);
-  // console.log(totalSales);
-  const getSalesData = () => {
-    totalSales.map((sale) => {
-      const day = new Date(sale.sale.$date.$numberLong * 1000).getDate();
-      const month = new Date(sale.sale.$date.$numberLong * 1000).getMonth();
-      const year = new Date(sale.sale.$date.$numberLong * 1000).getFullYear();
-
-      const formattedDay = day < 10 ? `0${day}` : day;
-      const formattedMonth = month < 10 ? `0${month}` : month;
-      const date = `${formattedMonth}/${formattedDay}/${year}`;
-      const sales = sale.items.map((item) => {
-        const price = item.price.$numberDecimal;
-        const quantity = item.quantity.$numberInt;
-        const totalPrice = parseInt(price) * parseInt(quantity);
-        return totalPrice;
-      });
-      let sum = 0;
-      for (let i = 0; i < sales.length; i++) {
-        sum = sum + sales[i];
-      }
-
-      const obj = {
-        date: date,
-        total: sum,
-      };
-      salesValue.push(obj);
-    });
-  };
-  getSalesData();
+  const switchFunction=()=>{
+    switch (user.email) {
+      case 'fuad@gmail.com':
+        callApi("https://emapp-backend.vercel.app/sales",setTotalSales);
+        getSalesData(totalSales,salesValue);
+        labels = salesValue.map((sale) => sale.date);
+        data = {
+          labels,
+          datasets: [
+            {
+              label: `Sales $`,
+              data: salesValue.map((sale) => sale.total),
+              borderColor: "#649445",
+              backgroundColor: "#649445",
+            },
+          ],
+        };
+        break;
+      case 'warehousepro@gmail.com':
+        callApi("https://emapp-backend.vercel.app/warehousepro/sales",setTotalSales);
+        labels=totalSales.map((sale)=>sale.year);
+        data = {
+          labels,
+          datasets: [
+            {
+              label: `Sales $`,
+              data: totalSales.map((sale) => sale.total),
+              borderColor: "#649445",
+              backgroundColor: "#649445",
+            },
+          ],
+        };
+        break;
+      default:
+        // Handle other cases if needed
+        break;
+    }
+  }
+  switchFunction();
+  // console.log(totalSales)
+  
   const options = {
     responsive: true,
     plugins: {
@@ -73,19 +88,8 @@ function OverviewChart() {
     },
   };
 
-  const labels = salesValue.map((sale) => sale.date);
+  
 
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: `Sales $`,
-        data: salesValue.map((sale) => sale.total),
-        borderColor: "#649445",
-        backgroundColor: "#649445",
-      },
-    ],
-  };
   return (
     <div id="chart" className="boxcontainer border-scoop">
       <div >

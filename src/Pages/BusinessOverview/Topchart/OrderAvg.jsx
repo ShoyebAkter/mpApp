@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LineChart } from "./LineChart"
+import { useAuthState } from "react-firebase-hooks/auth";
 
+import { auth } from "../../../firebase.init";
+import { callApi } from "../../EulerMail/getSalesData";
+import { getAvg } from "./topchart";
 export const OrderAvg = () => {
     const [orders, setOrders] = useState([]);
     const orderData = [];
-    useEffect(() => {
-        fetch('https://emapp-backend.vercel.app/api/data')
-            .then(res => res.json())
-            .then(result => setOrders(result))
-            .catch(error => console.error(error))
-    }, [])
+    const [user] = useAuthState(auth);
     // console.log(orders);
     const getOrdersInfo = () => {
         orders.map((order) => {
@@ -22,7 +21,7 @@ export const OrderAvg = () => {
             orderData.push(obj)
         })
     }
-    getOrdersInfo();
+    
 
 
     const getAvgOrder = () => {
@@ -45,9 +44,30 @@ export const OrderAvg = () => {
         return averagePrices;
     }
     
-    const averageOrder=getAvgOrder();
+    let averageOrder;
 
-
+    const switchFunction = () => {
+        switch (user.email) {
+          case "fuad@gmail.com":
+            callApi("https://emapp-backend.vercel.app/api/data", setOrders);
+            getOrdersInfo();
+            // console.log(orderData);
+            averageOrder=getAvgOrder();
+            
+            break;
+          case "warehousepro@gmail.com":
+            callApi(
+              "https://emapp-backend.vercel.app/warehousepro/orders",
+              setOrders
+            );
+            averageOrder=getAvg(orders)
+            break;
+          default:
+            // Handle other cases if needed
+            break;
+        }
+      };
+      switchFunction();
     return (
         <div>
             <LineChart averageOrder={averageOrder}/>

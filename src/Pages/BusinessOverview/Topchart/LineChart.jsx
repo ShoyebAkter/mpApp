@@ -42,7 +42,7 @@ export const LineChart = ({averageOrder}) => {
         datasets: [
             {
                 label: `Avg Order $`,
-                data: averageOrder.map((item)=>item.averageTotalPrice),
+                data: averageOrder.map((item)=> item.averageTotalPrice.toFixed(2) ),
                 borderColor: '#649445',
                 backgroundColor:'#649445',
             }

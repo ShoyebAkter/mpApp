@@ -54,6 +54,7 @@ function OverviewChart() {
         break;
       case 'warehousepro@gmail.com':
         callApi("https://emapp-backend.vercel.app/warehousepro/sales",setTotalSales);
+        // console.log(linearRegression(totalSales));
         labels=totalSales.map((sale)=>sale.year);
         data = {
           labels,

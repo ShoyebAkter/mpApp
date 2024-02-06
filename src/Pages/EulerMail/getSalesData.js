@@ -52,3 +52,21 @@ export const changeArrayValue = (salesValue,resultArray) => {
     return resultArray;
     
 }
+
+export const linearRegression=(data)=>{
+  // console.log(data)
+  const clean_data = data
+    .filter(({ x, y }) => {
+      return (
+        typeof x === typeof y &&  // filter out one string & one number
+        !isNaN(x) &&              // filter out `NaN`
+        !isNaN(y) &&
+        Math.abs(x) !== Infinity && 
+        Math.abs(y) !== Infinity
+      );
+    })
+    .map(({ x, y }) => {
+      return [x, y];             // we need a list of [[x1, y1], [x2, y2], ...]
+    });
+    return clean_data;
+}

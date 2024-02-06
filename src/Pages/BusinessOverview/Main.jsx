@@ -8,6 +8,7 @@ import Loading from "../Authentication/Loading";
 import { SiSimpleanalytics } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa6";
 import './TopChart.css'
+import LinearRegChart from "../EulerMail/LinearRegChart";
 export const Main = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate()
@@ -24,7 +25,7 @@ export const Main = () => {
       <div className="mx-auto">
 
         <TopChart />
-        <MiddleChart />
+        <LinearRegChart/>
         <div style={{ "height": "300px", "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)', "overflow": "hidden" }} className=" rounded-2xl py-1">
           <h1 className="text-center text-3xl text-green-600 ">Users in Each Country</h1>
           <BottomChart />

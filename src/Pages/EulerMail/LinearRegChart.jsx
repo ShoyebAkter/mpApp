@@ -113,11 +113,8 @@ const LinearRegChart = () => {
   return (
     <div className="middleChart">
     <div className="greenDiv"></div>
-      <div className="mx-auto">
-      {chartOptions && <HighchartsReact  highcharts={Highcharts} options={chartOptions} />}
-      </div>
-
-
+    {chartOptions && <HighchartsReact  highcharts={Highcharts} options={chartOptions} />}
+    
     </div>
   )
 }

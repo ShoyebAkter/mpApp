@@ -10,6 +10,7 @@ import { useState } from "react"
 import { CiUser } from "react-icons/ci";
 import { LuUsers } from "react-icons/lu";
 import './CustomerBehaviour.css'
+import ScatterChart from "./ScatterChart"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [user, loading] = useAuthState(auth);
@@ -27,7 +28,14 @@ export const CustomerBehaviour = () => {
       <div  className="mx-auto mt-3 ">
         <div className="firstChartSection ">
           <Customers />
-          <Sales />
+          {
+            user.email ==="fuad@gmail.com" ?
+            <Sales />
+            :
+            <ScatterChart/>
+          }
+          
+          
         </div>
         <div className="firstChartSection">
           <Engagement setWeeksData={setWeeksData} />

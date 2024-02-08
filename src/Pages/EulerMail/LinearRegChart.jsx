@@ -3,108 +3,66 @@ import indicators from "highcharts/indicators/indicators";
 import trendline from "highcharts/indicators/trendline";
 import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
-import jStat from 'jstat';
 indicators(Highcharts);
 trendline(Highcharts);
 const LinearRegChart = () => {
-  const [chartOptions, setChartOptions] = useState(null);
+  const [options,setOption] = useState(  );
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("https://emapp-backend.vercel.app/warehousepro/sales");
       const data = await response.json();
 
-      const regression = (arrX, arrY) => {
-        let r, sy, sx, b, a, meanX, meanY;
-        r = jStat.corrcoeff(arrX, arrY);
-        sy = jStat.stdev(arrY);
-        sx = jStat.stdev(arrX);
-        meanY = jStat(arrY).mean();
-        meanX = jStat(arrX).mean();
-        b = r * (sy / sx);
-        a = meanY - meanX * b;
-        let x1 = 0; // Start from year 1
-        let x2 = 10; // End at year 10
-        let y1 = a + b * x1;
-        let y2 = a + b * x2;
-        return {
-          line: [
-            [x1, y1],
-            [x2, y2]
-          ],
-          r
-        };
-      };
-      
-
       let years = [];
       let totals = [];
-      data.forEach((item) => {
+      data.map((item) => {
         years.push(item.year);
         totals.push(item.total);
       });
-
-      const { line, r } = regression(years, totals);
-      
-
-      const options = {
+      setOption({
         chart: {
           type: "line",
-          zoomType: "x"
+          renderTo: "container"
         },
         title: {
-          text: "Linear Regression of Year and Total Sales"
+          text: ""
+        },
+        subtitle: {
+          text: ""
         },
         xAxis: {
-          title: {
-            text: "Year"
-          },
-          labels: {
-            format: "{value}"
-          }
+          categories:years
         },
+    
+        colors: ["#00FF00"],
+    
         yAxis: {
           title: {
-            text: "Total Sales"
-          },
-          labels: {
-            format: "{value}"
+            text: "Total sales each year"
           }
-        },
-        legend: {
-          enabled: true
         },
         plotOptions: {
           line: {
-            lineWidth: 2.5
-          }
-        },
-        tooltip: {
-          formatter: function () {
-            return (
-              "Year: " +
-              this.x +
-              "<br/>Total Sales: " +
-              this.y
-            );
+            dataLabels: {
+              enabled: true
+            },
+            enableMouseTracking: false
           }
         },
         series: [
           {
-            type: "scatter",
-            name: "Sales",
-            data: data.map(item => [item.year, item.total])
+            id: "mainSeries",
+            name: "Year",
+            data: totals
           },
           {
-            type: "line",
-            name: "Linear Regression",
-            data: line,
-            color: "#ec7c7d"
+            type: "trendline",
+            linkedTo: "mainSeries"
           }
         ]
-      };
+      })
+      
 
-      setChartOptions(options);
     };
 
     fetchData();
@@ -113,7 +71,7 @@ const LinearRegChart = () => {
   return (
     <div className="middleChart">
     <div className="greenDiv"></div>
-    {chartOptions && <HighchartsReact  highcharts={Highcharts} options={chartOptions} />}
+    { <HighchartsReact  highcharts={Highcharts} options={options} />}
     
     </div>
   )

@@ -17,7 +17,7 @@ function BusinessChart() {
     return (
         <div  className="eulermailMain">
             <div className="flex text-black justify-around ">
-                <div className="text-xl font-bold">Company Name</div>
+                <div className="text-xl font-bold">WarehousePro</div>
                 <div className=" border-solid border-2 border-lime-500 rounded-xl px-2 text-lime-600">General Report</div>
             </div>
             <div   className=" firstChartSec">

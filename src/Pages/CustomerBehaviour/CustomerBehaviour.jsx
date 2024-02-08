@@ -11,6 +11,7 @@ import { CiUser } from "react-icons/ci";
 import { LuUsers } from "react-icons/lu";
 import './CustomerBehaviour.css'
 import ScatterChart from "./ScatterChart"
+import EngageLineChart from "./EngageLineChart"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [user, loading] = useAuthState(auth);
@@ -27,12 +28,19 @@ export const CustomerBehaviour = () => {
       </div>
       <div  className="mx-auto mt-3 ">
         <div className="firstChartSection ">
-          <Customers />
+          
           {
             user.email ==="fuad@gmail.com" ?
+            <div>
+            <Customers />
             <Sales />
+            </div>
+            
             :
+            <>
+            <EngageLineChart/>
             <ScatterChart/>
+            </>
           }
           
           

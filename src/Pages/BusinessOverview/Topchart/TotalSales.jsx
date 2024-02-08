@@ -88,7 +88,8 @@ export const TotalSales = () => {
 
     return (
         <div className='rounded-xl my-5'>
-            <Line width={200}
+            <Line width={300}
+            height={200}
              options={options} 
             data={data}
              />

@@ -13,7 +13,9 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useEffect, useState } from "react";
 import { getDuplicate } from "./getDuplicate";
 import { getTierValue } from "../CustomerBehaviour/getTierValue";
-
+import EngageLineChart from "../CustomerBehaviour/EngageLineChart";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {auth} from '../../firebase.init'
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -27,6 +29,7 @@ ChartJS.register(
 
 function CustomerBehaviour() {
     const [customers, setCustomers] = useState([]);
+    const [user]=useAuthState(auth)
     // console.log(user.uid);
     const tierArray = [];
     useEffect(() => {
@@ -76,8 +79,15 @@ function CustomerBehaviour() {
     };
     return (
         <div  className='customerCHart CBborder-scoop'>
+            {
+                user.email==="fuad@gmail.com"?
+                <div>
             <h1 className=' text-xl text-center font-medium text-cyan-500'> Customer Behaviour</h1>
             <Bar options={options} data={data1} />
+            </div>
+            :
+            <EngageLineChart/>
+            }
         </div>
 
     )

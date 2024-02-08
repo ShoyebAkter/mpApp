@@ -9,6 +9,8 @@ import {
 } from "chart.js";
 import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {auth} from '../../firebase.init';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -20,9 +22,9 @@ ChartJS.register(
 
 function SocialMediaChart() {
   const [fbData, setFbData] = useState([]);
-
+  const [user]=useAuthState(auth)
   useEffect(() => {
-    fetch(`https://emapp-backend.vercel.app/fbpost`)
+    fetch(`https://emapp-backend.vercel.app/fbpost/${user.uid}`)
       .then((res) => res.json())
       .then((result) => setFbData(result));
   }, []);

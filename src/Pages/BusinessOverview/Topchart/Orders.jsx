@@ -63,7 +63,7 @@ export const Orders = () => {
           labels,
           datasets: [
             {
-              label: `Sales $`,
+              label: `Orders $`,
               data: orders.map((order) => order.order),
               borderColor: "#649445",
               backgroundColor: "#649445",
@@ -95,7 +95,7 @@ export const Orders = () => {
   
   return (
     <div className="rounded-xl my-5">
-      <Line width={200} options={options} data={data} />
+      <Line width={300} height={200} options={options} data={data} />
     </div>
   );
 };

@@ -50,7 +50,7 @@ export const LineChart = ({averageOrder}) => {
     };
     return (
         <div className='rounded-xl my-5'>
-            <Line width={200} options={options} data={data} />
+            <Line width={300} height={200} options={options} data={data} />
         </div>
     )
 }

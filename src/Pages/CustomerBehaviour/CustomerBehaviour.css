@@ -12,6 +12,7 @@
     background: #439541;
 }
 .firstChartSection{
+    height: 500px;
     display: flex;
     justify-content: space-around;
     gap: 10px;

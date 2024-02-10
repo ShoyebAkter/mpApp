@@ -13,9 +13,9 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useEffect, useState } from "react";
 import { getDuplicate } from "./getDuplicate";
 import { getTierValue } from "../CustomerBehaviour/getTierValue";
-import EngageLineChart from "../CustomerBehaviour/EngageLineChart";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth} from '../../firebase.init'
+import ProductBar from "./ProductBar";
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -86,7 +86,7 @@ function CustomerBehaviour() {
             <Bar options={options} data={data1} />
             </div>
             :
-            <EngageLineChart/>
+            <ProductBar/>
             }
         </div>
 

@@ -12,6 +12,7 @@ import { LuUsers } from "react-icons/lu";
 import './CustomerBehaviour.css'
 import ScatterChart from "./ScatterChart"
 import EngageLineChart from "./EngageLineChart"
+import CustomerTable from "./CustomerTable"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [user, loading] = useAuthState(auth);
@@ -45,10 +46,18 @@ export const CustomerBehaviour = () => {
           
           
         </div>
-        <div className="firstChartSection">
+        {
+          user.email==="fuad@gmail.com" ?
+          <div className="firstChartSection">
           <Engagement setWeeksData={setWeeksData} />
           <Cohorts weeksData={weeksData} />
         </div>
+        :
+        <div className="firstChartSection">
+          <Engagement setWeeksData={setWeeksData} />
+          <CustomerTable/>
+        </div>
+        }
       </div>
     </div>
   )

@@ -34,6 +34,7 @@ const EngageLineChart = () => {
                 rangeDescription: 'Range: 0 to 200'
             }
         },
+        colors: ["#649445"],
         legend: {
             layout: 'vertical',
             align: 'right',

@@ -48,6 +48,7 @@ const ScatterChart = () => {
           endOnTick: true,
           showLastLabel: true,
         },
+        colors: ["#649445"],
         yAxis: {
           title: { text: "Total" },
           labels: { format: "{value} " },

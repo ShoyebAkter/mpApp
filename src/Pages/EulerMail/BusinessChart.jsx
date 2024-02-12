@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../Authentication/Loading";
 import SocialMediaChart from "./SocialMediaChart"
 import { CampaignResult } from "./CampaignResult";
+import SmallCLient from "./SmallCLient";
+import WarehouseproCustomer from "../BusinessOverview/WarehouseproCustomer";
 function BusinessChart() {
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate()
@@ -29,8 +31,11 @@ function BusinessChart() {
                     <img src="/logo.png" alt="logo" />
                 </div>
                 <div style={{"gap":"30px"}} className="flex flex-col py-5">
-                    <div><CampaignResult /></div>
-                    <div><SocialMediaChart /></div>
+                    {
+                        user.email ==="fuad@gmail.com"?
+                        <div><CampaignResult /><SocialMediaChart /></div>:
+                        <div className="flex flex-col  gap-8"><SmallCLient/><WarehouseproCustomer/></div>
+                    }
                 </div>
             </div>
 

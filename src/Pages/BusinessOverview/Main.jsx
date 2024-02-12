@@ -9,6 +9,7 @@ import { SiSimpleanalytics } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa6";
 import './TopChart.css'
 import LinearRegChart from "../EulerMail/LinearRegChart";
+import WarehouseproCustomer from "./WarehouseproCustomer";
 export const Main = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate()
@@ -36,7 +37,11 @@ export const Main = () => {
           <h1 className="text-center text-3xl text-green-600 ">Users in Each Country</h1>
           <BottomChart />
         </div>
+        <div>
+        <WarehouseproCustomer/>
       </div>
+      </div>
+      
     </div>
   )
 }

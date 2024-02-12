@@ -31,6 +31,7 @@ const ProductBar = () => {
             gridLineWidth: 1,
             lineWidth: 0
         },
+        colors: ["#649445"],
         yAxis: {
             min: 0,
             title: {

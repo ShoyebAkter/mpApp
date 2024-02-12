@@ -34,7 +34,7 @@ const LinearRegChart = () => {
           categories:years
         },
     
-        colors: ["#00FF00"],
+        colors: ["#649445"],
     
         yAxis: {
           title: {

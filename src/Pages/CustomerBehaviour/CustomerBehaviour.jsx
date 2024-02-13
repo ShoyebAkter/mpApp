@@ -13,6 +13,7 @@ import './CustomerBehaviour.css'
 import ScatterChart from "./ScatterChart"
 import EngageLineChart from "./EngageLineChart"
 import CustomerTable from "./CustomerTable"
+import WarehouseproCategory from "./WarehouseproCategory"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [user, loading] = useAuthState(auth);
@@ -54,7 +55,7 @@ export const CustomerBehaviour = () => {
         </div>
         :
         <div className="firstChartSection">
-          <Engagement setWeeksData={setWeeksData} />
+          <WarehouseproCategory/>
           <CustomerTable/>
         </div>
         }

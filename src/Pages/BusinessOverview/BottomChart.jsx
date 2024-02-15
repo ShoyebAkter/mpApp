@@ -1,20 +1,25 @@
 import { ResponsiveChoropleth } from "@nivo/geo";
-import { geoFeatures } from '../../data/mockDataGeo'
-// import { mockGeographyData as data } from '../../data/mockData'
+import { geoFeatures } from '../../data/mockDataGeo';
 import { useEffect, useState } from "react";
+import { callApi } from "../EulerMail/getSalesData";
+import { auth } from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 export const BottomChart = () => {
   const color = "#c9a0dc";
-
+  const [user] = useAuthState(auth);
   const [users, setUsers] = useState([]);
-  useEffect(() => {
-    fetch('https://emapp-backend.vercel.app/users')
-      .then(res => res.json())
-      .then(result => setUsers(result))
-      .catch(error => console.error(error))
-  }, [])
+ 
+
+ 
+  useEffect(()=>{
+    user.email==="fuad@gmail.com" ?
+    callApi('https://emapp-backend.vercel.app/users',setUsers)
+    :
+    callApi('https://emapp-backend.vercel.app/warehousepro/clientCountry',setUsers)
+  },[])
 
   // console.log(users);
-
+ 
   function countDuplicateValues() {
     const countryCounts = {};
 
@@ -27,7 +32,7 @@ export const BottomChart = () => {
         countryCounts[id] = 1;
       }
     }
-    // console.log(countryCounts);
+    console.log(countryCounts);
     // Loop through the countMap to create the result array
     
     const countryCountsArray = Object.entries(countryCounts).map(([country, count]) => ({
@@ -40,7 +45,7 @@ export const BottomChart = () => {
 
   const countedValues = countDuplicateValues();
 
-  // console.log(countedValues);
+  console.log(countedValues);
 
   return (
     <ResponsiveChoropleth
@@ -75,7 +80,7 @@ export const BottomChart = () => {
       }}
       features={geoFeatures.features}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      domain={[0, 10]}
+      domain={[0, 1000]}
       unknownColor="#666666"
       label="properties.name"
       valueFormat=".2s"

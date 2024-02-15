@@ -77,7 +77,7 @@ const WarehouseproCustomer = () => {
     <div className="boxcontainer SMborder-scoop p-2">
       
       <div>
-        <h1 className="heading"> Customer Behaviour</h1>
+        <h1 className="heading"> High-Value Clients</h1>
         <Bar width={450} height={250} options={options} data={data1} />
       </div>
       <div className="join">

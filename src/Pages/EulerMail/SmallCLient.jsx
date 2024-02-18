@@ -24,12 +24,12 @@ const SmallCLient = () => {
   const [customers, setCustomers] = useState([]);
   const [activeButton, setActiveButton] = useState(0); // Default active button is 2
   const [firstNumber,setFirstNumber]=useState(0);
-  const [lastNum,setLastNum]=useState(14)  
+  const [lastNum,setLastNum]=useState(10)  
   
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
-    setFirstNumber((14*buttonNumber))
-    setLastNum(14*(buttonNumber+1))
+    setFirstNumber((10*buttonNumber))
+    setLastNum(10*(buttonNumber+1))
     console.log(firstNumber,lastNum)
   };
   useEffect(() => {

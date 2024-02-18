@@ -36,16 +36,6 @@ const CustomerTable = ({customerTable}) => {
                         </tr>
                     ))}
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th></th>
-                        <td>Name</td>
-                        <td>Line Item Amount</td>
-                        <td>Client Create Date</td>
-                        <td>Client Longevity Months</td>
-                        <th></th>
-                    </tr>
-                </tfoot>
             </table>
         </div>
   )

@@ -22,14 +22,14 @@ ChartJS.register(
 );
 const WarehouseproCustomer = () => {
   const [customers, setCustomers] = useState([]);
-  const [activeButton, setActiveButton] = useState(2); // Default active button is 2
+  const [activeButton, setActiveButton] = useState(0); // Default active button is 2
   const [firstNumber, setFirstNumber] = useState(0);
-  const [lastNum, setLastNum] = useState(14);
+  const [lastNum, setLastNum] = useState(10);
 
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
-    setFirstNumber(14 * buttonNumber);
-    setLastNum(14 * (buttonNumber + 1));
+    setFirstNumber(10 * buttonNumber);
+    setLastNum(10 * (buttonNumber + 1));
     console.log(firstNumber, lastNum);
   };
   useEffect(() => {
@@ -81,7 +81,7 @@ const WarehouseproCustomer = () => {
         <Bar width={450} height={250} options={options} data={data1} />
       </div>
       <div className="join">
-        {[0, 1, 2, 3, 4, 5, 6, 7].map((number) => (
+        {[0, 1, 2, 3, 4, 5, 6, 7,8,9,10].map((number) => (
           <button
             key={number}
             className={`join-item btn btn-xs ${

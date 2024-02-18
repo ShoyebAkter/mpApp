@@ -30,8 +30,19 @@ const WarehouseproCategory = () => {
             .then((result) => setClients(result))
             .catch((error) => console.error(error))
     }, [])
-    console.log(clients);
-
+    // console.log(clients);
+    const categoryCounts = clients.reduce((acc, obj) => {
+        const { category } = obj;
+        acc[category] = (acc[category] || 0) + 1;
+        return acc;
+      }, {});
+      
+      // Convert the counts object into an array of objects with 'category' and 'count' properties
+      const categoryCountsArray = Object.entries(categoryCounts).map(([category, count]) => ({
+        category,
+        count,
+      }));
+      console.log(categoryCountsArray)
     const options = {
         indexAxis: 'y',
         elements: {
@@ -51,14 +62,14 @@ const WarehouseproCategory = () => {
         },
     };
 
-    const labels =clients.map(client=>client.Category);
+    const labels =categoryCountsArray.map(client=>client.category);
 
     const data1 = {
         labels,
         datasets: [
             {
                 label: 'Dataset 1',
-                data:clients.map(client=>client.count),
+                data:categoryCountsArray.map(client=>client.count),
                 borderColor: '#649445',
                 backgroundColor: '#649445',
             }

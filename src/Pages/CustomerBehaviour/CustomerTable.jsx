@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 import { callApi } from "../EulerMail/getSalesData";
-
-const CustomerTable = () => {
+import PropTypes from 'prop-types';
+const CustomerTable = ({customerTable}) => {
     const [data,setData]=useState([]);
 
     useEffect(()=>{
+        customerTable ==="longevityTable"?
         callApi('https://emapp-backend.vercel.app/warehousepro/longevity',setData)
+        :
+        callApi('https://emapp-backend.vercel.app/warehousepro/clientCategory',setData)
     },[])
     // console.log(data)
   return (
@@ -17,7 +20,7 @@ const CustomerTable = () => {
                         <td>Name</td>
                         <td>Line Item Amount</td>
                         <td>Client Create Date</td>
-                        <td>Client Longevity Months</td>
+                        <td>{customerTable ==="longevityTable" ?'Client Longevity Months ': "Category"}</td>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,7 +31,7 @@ const CustomerTable = () => {
                             <td>{item.name}</td>
                             <td>{item.Line_Item_Amount}</td>
                             <td>{item.Client_Create_Date}</td>
-                            <td>{item.Client_Longevity_Months}</td>
+                            <td>{customerTable ==="longevityTable" ?item.Client_Longevity_Months: item.category}</td>
                             <th>{index + 1}</th>
                         </tr>
                     ))}
@@ -49,3 +52,7 @@ const CustomerTable = () => {
 }
 
 export default CustomerTable
+CustomerTable.propTypes =
+{
+    customerTable: PropTypes.string.isRequired
+}

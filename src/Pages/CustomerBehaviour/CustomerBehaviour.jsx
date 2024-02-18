@@ -56,9 +56,12 @@ export const CustomerBehaviour = () => {
         :
         <div className="firstChartSection">
           <WarehouseproCategory/>
-          <CustomerTable/>
+          <CustomerTable customerTable={"categoryTable"}/>
         </div>
         }
+        <div className="firstChartSection">
+        <CustomerTable customerTable={"longevityTable"}/>
+        </div>
       </div>
     </div>
   )

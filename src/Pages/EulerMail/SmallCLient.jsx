@@ -22,7 +22,7 @@ ChartJS.register(
 );
 const SmallCLient = () => {
   const [customers, setCustomers] = useState([]);
-  const [activeButton, setActiveButton] = useState(2); // Default active button is 2
+  const [activeButton, setActiveButton] = useState(0); // Default active button is 2
   const [firstNumber,setFirstNumber]=useState(0);
   const [lastNum,setLastNum]=useState(14)  
   

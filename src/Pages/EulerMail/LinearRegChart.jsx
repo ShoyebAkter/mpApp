@@ -22,7 +22,8 @@ const LinearRegChart = () => {
       setOption({
         chart: {
           type: "line",
-          renderTo: "container"
+          renderTo: "container",
+          width: 1000,
         },
         title: {
           text: ""
@@ -35,7 +36,7 @@ const LinearRegChart = () => {
         },
     
         colors: ["#649445"],
-    
+        
         yAxis: {
           title: {
             text: "Total sales each year"

@@ -31,11 +31,12 @@ function BusinessChart() {
                     <img src="/logo.png" alt="logo" />
                 </div>
                 <div style={{"gap":"30px"}} className="flex flex-col py-5">
-                    {
+                <CampaignResult /><SocialMediaChart />
+                    {/* {
                         user.email ==="fuad@gmail.com"?
-                        <div><CampaignResult /><SocialMediaChart /></div>:
+                        :
                         <div className="flex flex-col  gap-8"><SmallCLient/><WarehouseproCustomer/></div>
-                    }
+                    } */}
                 </div>
             </div>
 

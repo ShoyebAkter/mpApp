@@ -7,8 +7,6 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../Authentication/Loading";
 import SocialMediaChart from "./SocialMediaChart"
 import { CampaignResult } from "./CampaignResult";
-import SmallCLient from "./SmallCLient";
-import WarehouseproCustomer from "../BusinessOverview/WarehouseproCustomer";
 function BusinessChart() {
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate()

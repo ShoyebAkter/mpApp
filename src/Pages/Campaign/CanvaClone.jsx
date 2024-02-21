@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 function CanvaClone({ setImageBlob, setEditedImage }) {
   const cesdk_container = useRef(null);
   const [cesdk, setCesdk] = useState(null);
-
+  // let apiKey="wY2SIQ-e0hvc06E-OG33rWBZwuVqm9d0P_J-2HJMWu7lk1kxaTyjly7pfMonSK79"
   const config = {
-
+    license: 'wY2SIQ-e0hvc06E-OG33rWBZwuVqm9d0P_J-2HJMWu7lk1kxaTyjly7pfMonSK79',
     // Enable local uploads in Asset Library
     callbacks: {
 

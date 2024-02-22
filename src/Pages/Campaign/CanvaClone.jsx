@@ -97,6 +97,7 @@ function CanvaClone({ setImageBlob, setEditedImage }) {
   return (
     <div>
       <div
+       id="cesdk_container"
       className="canva"
         ref={cesdk_container}
         

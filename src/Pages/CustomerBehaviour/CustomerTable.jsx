@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react"
 import { callApi } from "../EulerMail/getSalesData";
 import PropTypes from 'prop-types';
-const CustomerTable = ({customerTable}) => {
+const CustomerTable = ({selectedCategory,customerTable}) => {
     const [data,setData]=useState([]);
-
+    const [newData,setNewData]=useState([])
     useEffect(()=>{
         customerTable ==="longevityTable"?
-        callApi('https://emapp-backend.vercel.app/warehousepro/longevity',setData)
+        callApi('https://emapp-backend.vercel.app/warehousepro/longevity',setNewData)
         :
-        callApi('https://emapp-backend.vercel.app/warehousepro/clientCategory',setData)
-    },[])
-    // console.log(data)
+        callApi('https://emapp-backend.vercel.app/warehousepro/clientCategory',setData);
+        const filteredArray = data.filter(obj => obj.category === selectedCategory);
+        setNewData(filteredArray)
+    },[selectedCategory])
+
+    
+    
+        // console.log(newData)
+    
   return (
     <div className="overflow-x-auto">
             <table className="table table-sm table-pin-rows table-pin-cols">
@@ -25,7 +31,7 @@ const CustomerTable = ({customerTable}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((item, index) => (
+                    {newData?.map((item, index) => (
                         <tr key={index}>
                             <th>{index + 1}</th>
                             <td>{item.name}</td>
@@ -44,5 +50,6 @@ const CustomerTable = ({customerTable}) => {
 export default CustomerTable
 CustomerTable.propTypes =
 {
-    customerTable: PropTypes.string.isRequired
+    customerTable: PropTypes.string.isRequired,
+    selectedCategory:PropTypes.string.isRequired,
 }

@@ -16,12 +16,14 @@ import CustomerTable from "./CustomerTable"
 import WarehouseproCategory from "./WarehouseproCategory"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate()
   if (loading) return <Loading></Loading>
   if (!user) {
     navigate('/login')
   }
+  // console.log(selectedCategory)
   return (
     <div className="customerBehaviourMain">
       <div className="leftSection">
@@ -55,8 +57,8 @@ export const CustomerBehaviour = () => {
         </div>
         :
         <div className="firstChartSection">
-          <WarehouseproCategory/>
-          <CustomerTable customerTable={"categoryTable"}/>
+          <WarehouseproCategory setSelectedCategory={setSelectedCategory}/>
+          <CustomerTable selectedCategory={selectedCategory} customerTable={"categoryTable"}/>
         </div>
         }
         <div className="firstChartSection">

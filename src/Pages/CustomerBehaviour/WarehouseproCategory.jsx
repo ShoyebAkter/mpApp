@@ -21,7 +21,7 @@ ChartJS.register(
     ChartDataLabels
 );
 
-const WarehouseproCategory = () => {
+const WarehouseproCategory = ({setSelectedCategory}) => {
     const [clients, setClients] = useState([]);
     // console.log(user.uid)
     useEffect(() => {
@@ -37,12 +37,20 @@ const WarehouseproCategory = () => {
         return acc;
       }, {});
       
+
+      const handleBarClick = (event, elements) => {
+        if (elements.length > 0) {
+            const clickedCategoryIndex = elements[0].index;
+            const clickedCategory = categoryCountsArray[clickedCategoryIndex].category;
+            setSelectedCategory(clickedCategory);
+        }
+    };
+
       // Convert the counts object into an array of objects with 'category' and 'count' properties
       const categoryCountsArray = Object.entries(categoryCounts).map(([category, count]) => ({
         category,
         count,
       }));
-      console.log(categoryCountsArray)
     const options = {
         indexAxis: 'y',
         elements: {
@@ -60,6 +68,7 @@ const WarehouseproCategory = () => {
                 text: 'Customers',
             },
         },
+        onClick: handleBarClick,
     };
 
     const labels =categoryCountsArray.map(client=>client.category);

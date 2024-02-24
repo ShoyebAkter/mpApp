@@ -30,7 +30,8 @@ function OverviewChart() {
   const [totalSales, setTotalSales] = useState([]);
   const salesValue = [];
   const [user] = useAuthState(auth);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  
   let labels;
   let data;
  

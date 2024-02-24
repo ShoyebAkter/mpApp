@@ -77,9 +77,6 @@ const WarehouseproCustomer = () => {
     <div className="boxcontainer SMborder-scoop p-2">
       
       <div>
-        <h1 className="heading mb-5"> High-Value Clients</h1>
-        <Bar width={450} height={250} options={options} data={data1} />
-      </div>
       <div className="join">
         {[0, 1, 2, 3, 4, 5, 6, 7,8,9,10].map((number) => (
           <button
@@ -93,6 +90,10 @@ const WarehouseproCustomer = () => {
           </button>
         ))}
       </div>
+        <h1 className="heading mb-5"> High-Value Clients</h1>
+        <Bar width={450} height={250} options={options} data={data1} />
+      </div>
+      
     </div>
   );
 };

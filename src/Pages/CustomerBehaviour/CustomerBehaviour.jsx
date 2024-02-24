@@ -14,6 +14,8 @@ import ScatterChart from "./ScatterChart"
 import EngageLineChart from "./EngageLineChart"
 import CustomerTable from "./CustomerTable"
 import WarehouseproCategory from "./WarehouseproCategory"
+import WarehouseproCustomer from "../BusinessOverview/WarehouseproCustomer"
+import SmallCLient from "../EulerMail/SmallCLient"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -63,6 +65,10 @@ export const CustomerBehaviour = () => {
         }
         <div className="firstChartSection">
         <CustomerTable customerTable={"longevityTable"}/>
+        </div>
+        <div className="firstChartSection">
+        <SmallCLient/>
+        <WarehouseproCustomer/>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth} from '../../firebase.init';
+import { useNavigate } from "react-router-dom";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -22,7 +23,8 @@ ChartJS.register(
 
 function SocialMediaChart() {
   const [fbData, setFbData] = useState([]);
-  const [user]=useAuthState(auth)
+  const [user]=useAuthState(auth);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`https://emapp-backend.vercel.app/fbpost/${user.uid}`)
       .then((res) => res.json())
@@ -66,7 +68,7 @@ function SocialMediaChart() {
       <div className="inner">
         <i className="top left"></i>
         <div className="content">
-          <h1 className="heading">SocialMedia</h1>
+          <h1 className="heading" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
           <Bar options={options} height={200} data={data} />
         </div>
       </div>

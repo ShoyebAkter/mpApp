@@ -3,9 +3,11 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useEffect, useState } from 'react';
 import { callApi } from './getSalesData';
+import { useNavigate } from 'react-router-dom';
 
 const ProductBar = () => {
     const [salesData,setSalesData]=useState([])
+    const navigate = useNavigate();
     useEffect(()=>{
         callApi('https://emapp-backend.vercel.app/warehousepro/productSales',setSalesData)
     },[])
@@ -77,7 +79,7 @@ const ProductBar = () => {
 
     return (
         <div>
-        <h1 className="heading"> CustomerBehaviour</h1>
+        <h1 className="heading" onClick={()=>navigate('/customerbehaviour')}> CustomerBehaviour</h1>
             <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
     );

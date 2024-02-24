@@ -12,6 +12,7 @@ import './BoxStyle.css'
   import { Bar } from 'react-chartjs-2';
 import { useAuthState } from 'react-firebase-hooks/auth';
   import {auth} from '../../firebase.init'
+import { useNavigate } from 'react-router-dom';
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -23,6 +24,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 export const CampaignResult = () => {
     const [emailCampaign,setEmailCampaign]=useState([])
     const [user]=useAuthState(auth);
+    const navigate = useNavigate();
+ 
     useEffect(()=>{
       const getEmailCampaignData=()=>{
         fetch(`https://emapp-backend.vercel.app/emailcampaign/${user.uid}`)
@@ -70,7 +73,7 @@ export const CampaignResult = () => {
       className="boxcontainer CRborder-scoop p-2 "
     >
       <div className="content">
-        <h1 className="heading"> CampaignResult</h1>
+        <h1 className="heading"  onClick={()=>navigate('/campaignresult')}> CampaignResult</h1>
         <Bar options={options} height={200} data={data} />
       </div>
     </div>

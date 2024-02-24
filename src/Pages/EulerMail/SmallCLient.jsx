@@ -85,7 +85,7 @@ const SmallCLient = () => {
       ))}
     </div>
       <div>
-        <h1 className="heading">Frequent Small-Value Clients</h1>
+        <h1 className="heading mb-5">Frequent Small-Value Clients</h1>
         <Bar width={450} height={250} options={options} data={data1} />
       </div>
     </div>

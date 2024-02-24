@@ -21,6 +21,7 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
     
   return (
     <div className="overflow-x-auto">
+    <h1 className="text-xl font-bold text-center my-2">Customer Table</h1>
             <table className="table table-sm table-pin-rows table-pin-cols">
                 <thead>
                     <tr>

@@ -63,7 +63,7 @@ export const Orders = () => {
           labels,
           datasets: [
             {
-              label: `Orders $`,
+              label: `Orders `,
               data: orders.map((order) => order.order),
               borderColor: "#649445",
               backgroundColor: "#649445",
@@ -82,6 +82,21 @@ export const Orders = () => {
   const options = {
     responsive: true,
     plugins: {
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            let label = context.dataset.label || '';
+            if (label) {
+              label += ': ';
+            }
+            if (context.parsed.y !== null) {
+              label += `$${context.parsed.y.toFixed(2)}`;
+            }
+            label += ` -  in ${labels[context.dataIndex]}`;
+            return label;
+          },
+        },
+      },
       legend: {
         position: "top",
       },

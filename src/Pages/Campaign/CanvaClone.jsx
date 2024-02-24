@@ -8,7 +8,7 @@ function CanvaClone({ setImageBlob, setEditedImage }) {
   const [cesdk, setCesdk] = useState(null);
   // let apiKey="wY2SIQ-e0hvc06E-OG33rWBZwuVqm9d0P_J-2HJMWu7lk1kxaTyjly7pfMonSK79"
   const config = {
-    license: 'wY2SIQ-e0hvc06E-OG33rWBZwuVqm9d0P_J-2HJMWu7lk1kxaTyjly7pfMonSK79',
+    license: 'NzecnYmKybguOYExpjfcW1bAFzXum-GEHqm2eE-T2x7w-lX0eq8OnhznLus3sljI',
     // Enable local uploads in Asset Library
     callbacks: {
 

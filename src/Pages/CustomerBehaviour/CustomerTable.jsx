@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { callApi } from "../EulerMail/getSalesData";
+import './Table.css'
 import PropTypes from 'prop-types';
 const CustomerTable = ({selectedCategory,customerTable}) => {
     const [data,setData]=useState([]);
@@ -9,13 +10,14 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
         callApi('https://emapp-backend.vercel.app/warehousepro/longevity',setNewData)
         :
         callApi('https://emapp-backend.vercel.app/warehousepro/clientCategory',setData);
+        
         const filteredArray = data.filter(obj => obj.category === selectedCategory);
         setNewData(filteredArray)
     },[selectedCategory])
 
     
     
-        // console.log(newData)
+        // console.log(data)
     
   return (
     <div className="overflow-x-auto">
@@ -31,14 +33,14 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {newData?.map((item, index) => (
+                    {(newData && newData.length > 0 ? newData : data).map((item, index) => (
                         <tr key={index}>
                             <th>{index + 1}</th>
                             <td>{item.name}</td>
                             <td>{item.Line_Item_Amount}</td>
                             <td>{item.Client_Create_Date}</td>
                             <td>{customerTable ==="longevityTable" ?item.Client_Longevity_Months: item.category}</td>
-                            <th>{index + 1}</th>
+                            
                         </tr>
                     ))}
                 </tbody>

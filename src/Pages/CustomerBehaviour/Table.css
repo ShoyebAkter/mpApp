@@ -1,0 +1,17 @@
+/* Override daisyui dark mode styles */
+.table-pin-rows {
+    background-color: white; /* Set background color to white */
+}
+
+.table-pin-rows th,
+.table-pin-rows td {
+    color: black; /* Set text color to black */
+}
+
+/* Additional styling to ensure visibility */
+.table-pin-rows thead th,
+.table-pin-rows tbody td {
+    border-bottom: 1px solid #dee2e6; /* Add bottom border */
+}
+
+/* Optional: Adjust other styles as needed */

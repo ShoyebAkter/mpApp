@@ -24,7 +24,23 @@ export const LineChart = ({averageOrder}) => {
     // console.log(averageOrder);
     const options = {
         responsive: true,
+        
         plugins: {
+            tooltip: {
+                callbacks: {
+                  label: (context) => {
+                    let label = context.dataset.label || '';
+                    if (label) {
+                      label += ': ';
+                    }
+                    if (context.parsed.y !== null) {
+                      label += `$${context.parsed.y.toFixed(2)}`;
+                    }
+                    label += ` - Sales in ${labels[context.dataIndex]}`;
+                    return label;
+                  },
+                },
+              },
             legend: {
                 position: 'top',
             },
@@ -41,7 +57,7 @@ export const LineChart = ({averageOrder}) => {
         labels,
         datasets: [
             {
-                label: `Avg Order $`,
+                label: `Avg Order`,
                 data: averageOrder.map((item)=> item.averageTotalPrice.toFixed(2) ),
                 borderColor: '#649445',
                 backgroundColor:'#649445',

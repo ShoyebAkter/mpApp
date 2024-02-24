@@ -41,7 +41,8 @@
     background-size: 107% 75%;
   }
   .customerCHart{
-    padding: 50px;
+    padding-right: 55px;
+    padding-top: 10px;
     width: 515px;
      height: 450px ;
      border-radius: 30px;

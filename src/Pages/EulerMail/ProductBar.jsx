@@ -77,6 +77,7 @@ const ProductBar = () => {
 
     return (
         <div>
+        <h1 className="heading"> CustomerBehaviour</h1>
             <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
     );

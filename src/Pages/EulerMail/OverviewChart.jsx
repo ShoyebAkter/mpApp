@@ -10,11 +10,12 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 // import { faker } from '@faker-js/faker';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./BoxStyle.css";
 import { auth } from "../../firebase.init";
 import { callApi, getSalesData } from "./getSalesData";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -29,11 +30,10 @@ function OverviewChart() {
   const [totalSales, setTotalSales] = useState([]);
   const salesValue = [];
   const [user] = useAuthState(auth);
+  const navigate = useNavigate()
   let labels;
   let data;
-  useEffect(() => {
-    
-  }, []);
+ 
   const switchFunction=()=>{
     switch (user.email) {
       case 'fuad@gmail.com':
@@ -79,6 +79,21 @@ function OverviewChart() {
   const options = {
     responsive: true,
     plugins: {
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            let label = context.dataset.label || '';
+            if (label) {
+              label += ': ';
+            }
+            if (context.parsed.y !== null) {
+              label += `$${context.parsed.y.toFixed(2)}`;
+            }
+            label += ` - Sales in ${labels[context.dataIndex]}`;
+            return label;
+          },
+        },
+      },
       legend: {
         position: "top",
       },
@@ -87,6 +102,7 @@ function OverviewChart() {
         text: "Monthly Revenue",
       },
     },
+    
   };
 
   
@@ -96,8 +112,8 @@ function OverviewChart() {
       <div >
       <div className=""></div>
         <div className="content">
-          <h1 className="heading"> Business Overview</h1>
-          <Line options={options} data={data} />
+          <h1 className="heading" onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
+          <Line options={options} height={200} data={data} />
         </div>
       </div>
     </div>

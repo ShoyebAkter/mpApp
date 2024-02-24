@@ -92,7 +92,7 @@ export const LoginHeader = () => {
               </Link>
 
               <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="btn m-1">
+                <div tabIndex={0} role="button" className="newLink rounded-xl m-1">
                   <CiUser />
                 </div>
                 <ul

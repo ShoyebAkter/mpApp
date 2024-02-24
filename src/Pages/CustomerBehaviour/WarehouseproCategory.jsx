@@ -7,6 +7,7 @@ import {
     Tooltip,
     Legend
 } from "chart.js";
+import PropTypes from 'prop-types';
 import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 // import { faker } from '@faker-js/faker';
@@ -92,4 +93,8 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
   )
 }
 
-export default WarehouseproCategory
+export default WarehouseproCategory;
+WarehouseproCategory.propTypes =
+{
+    selectedCategory:PropTypes.func.isRequired,
+}

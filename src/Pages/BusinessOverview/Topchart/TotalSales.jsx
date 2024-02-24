@@ -54,7 +54,7 @@ export const TotalSales = () => {
               labels,
               datasets: [
                 {
-                  label: `Sales $`,
+                  label: `Sales `,
                   data: totalSales.map((sale) => sale.total),
                   borderColor: "#649445",
                   backgroundColor: "#649445",
@@ -74,6 +74,21 @@ export const TotalSales = () => {
     const options = {
         responsive: true,
         plugins: {
+          tooltip: {
+            callbacks: {
+              label: (context) => {
+                let label = context.dataset.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                if (context.parsed.y !== null) {
+                  label += `$${context.parsed.y.toFixed(2)}`;
+                }
+                label += ` Sales in ${labels[context.dataIndex]}`;
+                return label;
+              },
+            },
+          },
             legend: {
                 position: 'top',
             },

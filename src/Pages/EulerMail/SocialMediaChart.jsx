@@ -39,7 +39,7 @@ function SocialMediaChart() {
 
     return acc;
   }, []);
-  console.log(result);
+  // console.log(result);
   const options = {
     responsive: true,
     plugins: {
@@ -49,14 +49,14 @@ function SocialMediaChart() {
     },
   };
 
-  const labels = result.map((res) => res.date);
+  const labels = user.email ==="fuad@gmail.com"? result.map((res) => res.date): [2014,2015,2016,2017,2018,2019,2020,2021];
 
   const data = {
     labels,
     datasets: [
       {
         label: "Facebook Post Dataset",
-        data: result.map((res) => res.total),
+        data: user.email ==="fuad@gmail.com"? result.map((res) => res.total) :[1,2,3,4,5,6,7,8],
         backgroundColor: "#649445",
       },
     ],
@@ -67,7 +67,7 @@ function SocialMediaChart() {
         <i className="top left"></i>
         <div className="content">
           <h1 className="heading">SocialMedia</h1>
-          <Bar options={options} data={data} />
+          <Bar options={options} height={200} data={data} />
         </div>
       </div>
     </div>

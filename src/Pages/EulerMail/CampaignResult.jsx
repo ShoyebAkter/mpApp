@@ -34,7 +34,7 @@ export const CampaignResult = () => {
       }
         getEmailCampaignData()
     },[])
-    console.log(emailCampaign)
+    // console.log(emailCampaign)
       const result = emailCampaign.reduce((acc, campaign) => {
         const existingCampaign = acc.find((item) => item.date === campaign.date);
       

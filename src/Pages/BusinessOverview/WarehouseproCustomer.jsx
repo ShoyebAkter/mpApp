@@ -77,11 +77,15 @@ const WarehouseproCustomer = () => {
     <div className="boxcontainer SMborder-scoop p-2">
       
       <div>
-      <div className="join">
-        {[0, 1, 2, 3, 4, 5, 6, 7,8,9,10].map((number) => (
+      <div
+        style={{ height: "40px","width":"300px" }}
+        className="bg-transparent border border-gray-500 rounded"
+      >
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => (
           <button
             key={number}
-            className={`join-item btn btn-xs ${
+            style={{ height: "40px" }}
+            className={` text-black font-bold py-1 px-2 rounded ${
               activeButton === number ? "btn-active" : ""
             }`}
             onClick={() => handleButtonClick(number)}

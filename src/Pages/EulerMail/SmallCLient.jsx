@@ -23,14 +23,14 @@ ChartJS.register(
 const SmallCLient = () => {
   const [customers, setCustomers] = useState([]);
   const [activeButton, setActiveButton] = useState(0); // Default active button is 2
-  const [firstNumber,setFirstNumber]=useState(0);
-  const [lastNum,setLastNum]=useState(10)  
-  
+  const [firstNumber, setFirstNumber] = useState(0);
+  const [lastNum, setLastNum] = useState(10);
+
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
-    setFirstNumber((10*buttonNumber))
-    setLastNum(10*(buttonNumber+1))
-    console.log(firstNumber,lastNum)
+    setFirstNumber(10 * buttonNumber);
+    setLastNum(10 * (buttonNumber + 1));
+    console.log(firstNumber, lastNum);
   };
   useEffect(() => {
     fetch("https://emapp-backend.vercel.app/warehousepro/smallClient")
@@ -58,14 +58,18 @@ const SmallCLient = () => {
     },
   };
 
-  const labels = customers.slice(firstNumber, lastNum).map((value) => value.name);
-  console.log(customers.slice(firstNumber, lastNum).map((value) => value.name))
+  const labels = customers
+    .slice(firstNumber, lastNum)
+    .map((value) => value.name);
+  // console.log(customers.slice(firstNumber, lastNum).map((value) => value.name));
   const data1 = {
     labels,
     datasets: [
       {
         label: "Dataset 1",
-        data: customers.slice(firstNumber, lastNum).map((value) => value.avg_value),
+        data: customers
+          .slice(firstNumber, lastNum)
+          .map((value) => value.avg_value),
         borderColor: "#649445",
         backgroundColor: "#649445",
       },
@@ -73,17 +77,23 @@ const SmallCLient = () => {
   };
   return (
     <div className="boxcontainer CRborder-scoop p-2">
-      <div className="join">
-      {[0,1, 2, 3, 4, 5, 6, 7].map((number) => (
-        <button
-          key={number}
-          className={`join-item btn btn-xs ${activeButton === number ? 'btn-active' : ''}`}
-          onClick={() => handleButtonClick(number)}
-        >
-          {number}
-        </button>
-      ))}
-    </div>
+      <div
+        style={{ height: "40px","width":"300px" }}
+        className="bg-transparent border border-gray-500 rounded"
+      >
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => (
+          <button
+            key={number}
+            style={{ height: "40px" }}
+            className={` text-black font-bold py-1 px-2 rounded ${
+              activeButton === number ? "btn-active" : ""
+            }`}
+            onClick={() => handleButtonClick(number)}
+          >
+            {number}
+          </button>
+        ))}
+      </div>
       <div>
         <h1 className="heading mb-5">Frequent Small-Value Clients</h1>
         <Bar width={450} height={250} options={options} data={data1} />

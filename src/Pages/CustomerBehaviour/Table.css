@@ -13,6 +13,10 @@
     background: white !important;
     /* background-color: hsl(var(--b1) / var(--tw-bg-opacity)); */
 }
+.table :where(.table-pin-rows thead tr) {
+    
+    background-color: white !important;
+}
 .table-pin-rows th,
 .table-pin-rows td {
     color: black; /* Set text color to black */

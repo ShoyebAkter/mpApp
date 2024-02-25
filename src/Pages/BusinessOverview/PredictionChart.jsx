@@ -13,7 +13,7 @@ const PredictionChart = () => {
       const response2=await fetch("https://emapp-backend.vercel.app/warehousepro/sales");
       const data2 = await response2.json();
       const newArray=[...data2,...data]
-      console.log(newArray)
+    //   console.log(newArray)
       let years = [];
       let totals = [];
       newArray.map((item) => {
@@ -24,11 +24,11 @@ const PredictionChart = () => {
         chart: {
           type: "line",
           renderTo: "container",
-          width: 600,
+          width: 1000,
           height:320
         },
         title: {
-          text: ""
+          text: "Predicted Sales Value"
         },
         subtitle: {
           text: ""

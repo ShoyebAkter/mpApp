@@ -19,7 +19,7 @@ const LinearRegChart = () => {
         chart: {
           type: "line",
           renderTo: "container",
-          width: 500,
+          width: 1000,
         },
         title: {
           text: ""
@@ -68,8 +68,10 @@ const LinearRegChart = () => {
   return (
     <div className="middleChart">
     <div className="greenDiv"></div>
+    <div className="flex flex-col">
     { <HighchartsReact  highcharts={Highcharts} options={options} />}
     <PredictionChart/>
+    </div>
     </div>
   )
 }

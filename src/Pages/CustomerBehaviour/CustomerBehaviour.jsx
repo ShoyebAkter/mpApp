@@ -69,7 +69,7 @@ export const CustomerBehaviour = () => {
         <CustomerTable customerTable={"longevityTable"}/>
         <CustomerBehaviourMain/>
         </div>
-        <div className="firstChartSection">
+        <div className="clientSection">
         <SmallCLient/>
         <WarehouseproCustomer/>
         </div>

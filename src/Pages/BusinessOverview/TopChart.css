@@ -24,7 +24,7 @@
     margin-bottom: 1.25rem/* 20px */;
     height:320px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-    gap:100px;
+    gap:50px;
     width:1200px;
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));

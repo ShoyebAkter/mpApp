@@ -14,17 +14,12 @@ const LinearRegChart = () => {
       const response = await fetch("https://emapp-backend.vercel.app/warehousepro/sales");
       const data = await response.json();
 
-      let years = [];
-      let totals = [];
-      data.map((item) => {
-        years.push(item.year);
-        totals.push(item.total);
-      });
+      
       setOption({
         chart: {
           type: "line",
           renderTo: "container",
-          width: 600,
+          width: 500,
         },
         title: {
           text: ""
@@ -33,7 +28,7 @@ const LinearRegChart = () => {
           text: ""
         },
         xAxis: {
-          categories:years
+          categories:data.map(item=>item.year)
         },
     
         colors: ["#649445"],
@@ -55,7 +50,7 @@ const LinearRegChart = () => {
           {
             id: "mainSeries",
             name: "Year",
-            data: totals
+            data: data.map(item=>item.total)
           },
           {
             type: "trendline",

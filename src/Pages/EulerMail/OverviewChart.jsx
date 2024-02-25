@@ -64,7 +64,7 @@ function OverviewChart() {
           datasets: [
             {
               label: `Sales $`,
-              data: totalSales.map((sale) => sale.total),
+              data: totalSales.map((sale) => (sale.total/1000).toFixed(2)),
               borderColor: "#649445",
               backgroundColor: "#649445",
             },
@@ -90,7 +90,7 @@ function OverviewChart() {
               label += ': ';
             }
             if (context.parsed.y !== null) {
-              label += `$${context.parsed.y.toFixed(2)}`;
+              label += `$${context.parsed.y.toFixed(2)}k`;
             }
             label += ` - Sales in ${labels[context.dataIndex]}`;
             return label;

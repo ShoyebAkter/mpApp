@@ -90,9 +90,9 @@ export const Orders = () => {
               label += ': ';
             }
             if (context.parsed.y !== null) {
-              label += `$${context.parsed.y.toFixed(2)}`;
+              label += `${context.parsed.y.toFixed(0)} number of`;
             }
-            label += ` -  in ${labels[context.dataIndex]}`;
+            label += ` -order  in ${labels[context.dataIndex]}`;
             return label;
           },
         },

@@ -23,7 +23,18 @@ const HeatMap = () => {
         "https://emapp-backend.vercel.app/warehousepro/heatmap"
       );
       const data = await response.json();
-      const years = ["2014", "2015", "2016", "2017", "2018","2019","2020","2021","2022","2023"]; // Array of years
+      const years = [
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+      ]; // Array of years
       const mapDataArray = [];
       data.slice(firstNumber, lastNum).map((data, index) => {
         // Loop through each year
@@ -32,7 +43,7 @@ const HeatMap = () => {
           mapDataArray.push([index, yearIndex, data[year]]);
         });
       });
-    //   console.log(mapDataArray)
+      //   console.log(mapDataArray)
       const options = {
         chart: {
           type: "heatmap",
@@ -41,7 +52,7 @@ const HeatMap = () => {
           plotBorderWidth: 1,
         },
         title: {
-          text: "Sales per employee per weekday",
+          text: "Sales per client per year",
           style: {
             fontSize: "1em",
           },
@@ -80,7 +91,7 @@ const HeatMap = () => {
             return (
               "<b>" +
               this.series.xAxis.categories[this.point.x] +
-              "</b> sold<br>" +
+              "</b> has billed<br>" +
               "<b>" +
               this.point.value +
               "</b> items on <br>" +
@@ -123,16 +134,19 @@ const HeatMap = () => {
       setChartOptions(options);
     };
     fetchData();
-  }, [firstNumber,lastNum]);
+  }, [firstNumber, lastNum]);
   // console.log(mapData)
 
   return (
     <div className="flex">
-        <div style={{"height":"50px"}} className="bg-transparent border border-gray-500 rounded">
-        {[ 1, 2, 3, 4, 5, 6, 7,8,9,10].map((number) => (
+      <div
+        style={{ height: "50px" }}
+        className="bg-transparent border border-gray-500 rounded"
+      >
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => (
           <button
             key={number}
-            style={{"height":"50px"}}
+            style={{ height: "50px" }}
             className={` text-black font-bold py-1 px-2 rounded ${
               activeButton === number ? "btn-active" : ""
             }`}
@@ -143,10 +157,8 @@ const HeatMap = () => {
         ))}
       </div>
       <div>
-      <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+        <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>
-
-     
     </div>
   );
 };

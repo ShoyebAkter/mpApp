@@ -25,7 +25,6 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
             <table className="table table-sm table-pin-rows table-pin-cols">
                 <thead className="thead">
                     <tr>
-                        <th></th>
                         <td>Name</td>
                         <td>Line Item Amount</td>
                         <td>Client Create Date</td>
@@ -36,7 +35,6 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
                 <tbody>
                     {(newData && newData.length > 0 ? newData : data).map((item, index) => (
                         <tr key={index}>
-                            <th className="th">{index + 1}</th>
                             <td>{item.name}</td>
                             <td>{item.Line_Item_Amount}</td>
                             <td>{item.Client_Create_Date}</td>

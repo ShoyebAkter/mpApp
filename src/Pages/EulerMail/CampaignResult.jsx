@@ -55,14 +55,14 @@ export const CampaignResult = () => {
         },
       };
       
-      const labels = user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.date) : [2014,2015,2016,2017,2018,2019,2020,2021]
+      const labels = user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.date) : ["Jan","Feb","Mar","April","May"]
       
       const data = {
         labels,
         datasets: [
           {
             label: 'Total email sent',
-            data: user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.total) : [1,2,3,4,5,6,7,8],
+            data: user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.total) : [10,30,20,60,70],
             backgroundColor: '#649445',
           }
         ],

@@ -51,24 +51,33 @@ function SocialMediaChart() {
     },
   };
 
-  const labels = user.email ==="fuad@gmail.com"? result.map((res) => res.date): [2014,2015,2016,2017,2018,2019,2020,2021];
+  const labels = user.email ==="fuad@gmail.com"? result.map((res) => res.date): ["Sun","Mon","Tue","Wed"];
 
   const data = {
     labels,
     datasets: [
       {
         label: "Facebook Post Dataset",
-        data: user.email ==="fuad@gmail.com"? result.map((res) => res.total) :[1,2,3,4,5,6,7,8],
+        data: user.email ==="fuad@gmail.com"? result.map((res) => res.total) :[30,10,40,50],
         backgroundColor: "#649445",
       },
     ],
   };
   return (
     <div id="chart" className="boxcontainer SMborder-scoop p-2 ">
-      <div className="inner">
-        <i className="top left"></i>
+      <div >
         <div className="content">
           <h1 className="heading cursor-pointer" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
+          <div className="flex justify-around">
+          <div style={{"backgroundColor":"#2a4e40"}}  className="text-white rounded-xl p-2">
+                Accounts Reached
+                <div className='text-2xl'>2</div>
+            </div>
+          <div style={{"backgroundColor":"#2a4e40"}}   className="p-2 rounded-xl text-white">
+                Accounts Engaged
+                <div className='text-2xl'>2</div>
+            </div>
+          </div>
           <Bar options={options} height={200} data={data} />
         </div>
       </div>

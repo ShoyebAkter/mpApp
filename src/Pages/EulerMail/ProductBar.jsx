@@ -79,7 +79,7 @@ const ProductBar = () => {
 
     return (
         <div>
-        <h1 className="heading" onClick={()=>navigate('/customerbehaviour')}> CustomerBehaviour</h1>
+        <h1 className="heading cursor-pointer" onClick={()=>navigate('/customerbehaviour')}> CustomerBehaviour</h1>
             <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
     );

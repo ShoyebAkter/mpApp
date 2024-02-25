@@ -68,7 +68,7 @@ function SocialMediaChart() {
       <div className="inner">
         <i className="top left"></i>
         <div className="content">
-          <h1 className="heading" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
+          <h1 className="heading cursor-pointer" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
           <Bar options={options} height={200} data={data} />
         </div>
       </div>

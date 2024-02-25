@@ -38,6 +38,9 @@ const LinearRegChart = () => {
             text: "Total sales each year"
           }
         },
+        credits: {
+          enabled: false // Hide credits
+        },
         plotOptions: {
           line: {
             dataLabels: {

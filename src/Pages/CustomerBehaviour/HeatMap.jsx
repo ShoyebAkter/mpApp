@@ -65,6 +65,9 @@ const HeatMap = () => {
           title: null,
           reversed: true,
         },
+        credits: {
+            enabled: false // Hide credits
+          },
         accessibility: {
           point: {
             descriptionFormat:

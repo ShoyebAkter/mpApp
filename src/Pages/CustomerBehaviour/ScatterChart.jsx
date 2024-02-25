@@ -70,6 +70,9 @@ const ScatterChart = () => {
         tooltip: {
           pointFormat: "Longevity: {point.x} month <br/> Total: {point.y} ",
         },
+        credits: {
+          enabled: false // Hide credits
+        },
         series,
       };
 

@@ -82,7 +82,7 @@ function CustomerBehaviourMain() {
             {
                 user.email==="fuad@gmail.com"?
                 <div>
-            <h1 className=' text-xl text-center font-medium text-cyan-500'> Customer Behaviour</h1>
+            <h1 className=' text-xl text-center font-medium text-cyan-500 cursor-pointer'> Customer Behaviour</h1>
             <Bar options={options} data={data1} />
             </div>
             :

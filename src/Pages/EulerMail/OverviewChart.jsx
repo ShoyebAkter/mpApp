@@ -115,7 +115,7 @@ function OverviewChart() {
       <div >
       <div className=""></div>
         <div className="content">
-          <h1 className="heading" onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
+          <h1 className="heading cursor-pointer" onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
           <Line options={options} height={200} data={data} />
         </div>
       </div>

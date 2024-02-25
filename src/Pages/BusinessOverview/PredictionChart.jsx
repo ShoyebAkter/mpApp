@@ -30,6 +30,9 @@ const PredictionChart = () => {
         title: {
           text: "Predicted Sales Value"
         },
+        credits: {
+            enabled: false // Hide credits
+          },
         subtitle: {
           text: ""
         },

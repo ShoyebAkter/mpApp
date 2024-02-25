@@ -48,6 +48,9 @@ const EngageLineChart = () => {
                 pointStart: 0
             }
         },
+        credits: {
+            enabled: false // Hide credits
+          },
         series: [{
             name: 'Warehousepro Client',
             data: invoiceCountsArray

@@ -25,9 +25,9 @@ nav a:hover{
     text-align: center;
 }
 .newLink{
-  background-color: rgb(241, 239, 239);
+  background-color: #439541;
   padding: 15px;
-  
+  color: white;
 }
 .dropdown-content {
     background-color: white; /* Set background color to white */

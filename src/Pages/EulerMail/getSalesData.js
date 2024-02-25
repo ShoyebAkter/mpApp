@@ -70,3 +70,18 @@ export const linearRegression=(data)=>{
     });
     return clean_data;
 }
+
+export const updateValue=(value,setTotalSales)=>{
+  const updatedSalesValue = value.map(sale => {
+    if (sale.total >= 1000) {
+      // console.log(sale.total)
+      return {
+        ...sale,
+        total: (sale.total / 1000).toFixed(1) + 'k'
+      };
+    } else {
+      return sale;
+    }
+  });
+  setTotalSales(updatedSalesValue)
+}

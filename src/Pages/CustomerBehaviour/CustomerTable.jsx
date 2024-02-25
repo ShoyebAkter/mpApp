@@ -21,9 +21,9 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
     
   return (
     <div className="overflow-x-auto">
-    <h1 className="text-xl font-bold text-center my-2">Customer Table</h1>
+    <h1 className="heading">Customer Table</h1>
             <table className="table table-sm table-pin-rows table-pin-cols">
-                <thead>
+                <thead className="thead">
                     <tr>
                         <th></th>
                         <td>Name</td>
@@ -36,7 +36,7 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
                 <tbody>
                     {(newData && newData.length > 0 ? newData : data).map((item, index) => (
                         <tr key={index}>
-                            <th>{index + 1}</th>
+                            <th className="th">{index + 1}</th>
                             <td>{item.name}</td>
                             <td>{item.Line_Item_Amount}</td>
                             <td>{item.Client_Create_Date}</td>

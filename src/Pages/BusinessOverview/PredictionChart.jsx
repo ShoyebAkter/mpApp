@@ -1,17 +1,14 @@
-import Highcharts from "highcharts/highstock";
-import indicators from "highcharts/indicators/indicators";
-import trendline from "highcharts/indicators/trendline";
 import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
-import PredictionChart from "../BusinessOverview/PredictionChart";
-indicators(Highcharts);
-trendline(Highcharts);
-const LinearRegChart = () => {
-  const [options,setOption] = useState(  );
+import Highcharts from "highcharts/highstock";
+const PredictionChart = () => {
+    
+
+    const [options,setOption] = useState(  );
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://emapp-backend.vercel.app/warehousepro/sales");
+      const response = await fetch("https://emapp-backend.vercel.app/warehousepro/prediction");
       const data = await response.json();
 
       let years = [];
@@ -24,7 +21,8 @@ const LinearRegChart = () => {
         chart: {
           type: "line",
           renderTo: "container",
-          width: 600,
+          width: 400,
+          height:320
         },
         title: {
           text: ""
@@ -40,7 +38,7 @@ const LinearRegChart = () => {
         
         yAxis: {
           title: {
-            text: "Total sales each year"
+            text: "Predicted Sales"
           }
         },
         plotOptions: {
@@ -57,10 +55,6 @@ const LinearRegChart = () => {
             name: "Year",
             data: totals
           },
-          {
-            type: "trendline",
-            linkedTo: "mainSeries"
-          }
         ]
       })
       
@@ -69,14 +63,11 @@ const LinearRegChart = () => {
 
     fetchData();
   }, []);
-
   return (
-    <div className="middleChart">
-    <div className="greenDiv"></div>
-    { <HighchartsReact  highcharts={Highcharts} options={options} />}
-    <PredictionChart/>
+    <div>
+      <HighchartsReact  highcharts={Highcharts} options={options} />
     </div>
   )
 }
 
-export default LinearRegChart
+export default PredictionChart

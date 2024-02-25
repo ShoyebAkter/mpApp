@@ -11,10 +11,10 @@
     background: #439541;
 }
 .firstChartSection{
-    height: 450px;
+    height: 475px;
     display: flex;
     justify-content: space-around;
-    gap: 10px;
+    gap: 20px;
     border-radius: 1rem/* 16px */;
     margin-bottom: 1.25rem/* 20px */;
     padding: 1.25rem/* 20px */;

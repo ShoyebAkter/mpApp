@@ -13,7 +13,7 @@ import { Line } from "react-chartjs-2";
 import { useState } from "react";
 import "./BoxStyle.css";
 import { auth } from "../../firebase.init";
-import { callApi, getSalesData } from "./getSalesData";
+import { callApi, getSalesData,  } from "./getSalesData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 ChartJS.register(
@@ -34,7 +34,6 @@ function OverviewChart() {
   
   let labels;
   let data;
- 
   const switchFunction=()=>{
     switch (user.email) {
       case 'fuad@gmail.com':
@@ -55,7 +54,10 @@ function OverviewChart() {
         break;
       case 'warehousepro@gmail.com':
         callApi("https://emapp-backend.vercel.app/warehousepro/sales",setTotalSales);
+        
         // console.log(linearRegression(totalSales));
+        // console.log()
+        // setTotalSales(updateValue(totalSales))
         labels=totalSales.map((sale)=>sale.year);
         data = {
           labels,
@@ -76,7 +78,7 @@ function OverviewChart() {
   }
   switchFunction();
   // console.log(totalSales)
-  
+  // setTotalSales(updateValue(totalSales))
   const options = {
     responsive: true,
     plugins: {

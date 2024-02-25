@@ -2,7 +2,17 @@
 .table-pin-rows {
     background-color: white; /* Set background color to white */
 }
-
+.table{
+    background-color: white;
+}
+.thead{
+    background-color: white;
+}
+.table :where(.table-pin-cols tr th) {
+    
+    background: white !important;
+    /* background-color: hsl(var(--b1) / var(--tw-bg-opacity)); */
+}
 .table-pin-rows th,
 .table-pin-rows td {
     color: black; /* Set text color to black */

@@ -27,7 +27,7 @@ ChartJS.register(
 );
 
 
-function CustomerBehaviour() {
+function CustomerBehaviourMain() {
     const [customers, setCustomers] = useState([]);
     const [user]=useAuthState(auth)
     // console.log(user.uid);
@@ -93,4 +93,4 @@ function CustomerBehaviour() {
     )
 }
 
-export default CustomerBehaviour
+export default CustomerBehaviourMain

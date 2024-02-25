@@ -40,7 +40,7 @@ const PredictionChart = () => {
           categories:years
         },
     
-        colors: ["#649445"],
+        colors: ["Blue","#649445"],
         
         yAxis: {
           title: {
@@ -60,6 +60,11 @@ const PredictionChart = () => {
             id: "mainSeries",
             name: "Year",
             data: totals
+          },
+          {
+            id: "SecondSeries",
+            name: "Year",
+            data: data2.map(item=>item.total)
           },
         ]
       })

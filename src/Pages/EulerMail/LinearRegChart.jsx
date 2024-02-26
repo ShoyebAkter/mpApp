@@ -3,7 +3,6 @@ import indicators from "highcharts/indicators/indicators";
 import trendline from "highcharts/indicators/trendline";
 import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
-import PredictionChart from "../BusinessOverview/PredictionChart";
 indicators(Highcharts);
 trendline(Highcharts);
 const LinearRegChart = () => {
@@ -11,10 +10,11 @@ const LinearRegChart = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://emapp-backend.vercel.app/warehousepro/sales");
+      const response2 = await fetch("https://emapp-backend.vercel.app/warehousepro/sales");
+      const data2 = await response2.json();
+      const response = await fetch("https://emapp-backend.vercel.app/warehousepro/prediction");
       const data = await response.json();
-
-      
+      const newArray=[...data2,...data]
       setOption({
         chart: {
           type: "line",
@@ -28,10 +28,9 @@ const LinearRegChart = () => {
           text: ""
         },
         xAxis: {
-          categories:data.map(item=>item.year)
+          categories:newArray.map(item=>item.year)
         },
     
-        colors: ["#649445"],
         
         yAxis: {
           title: {
@@ -53,7 +52,13 @@ const LinearRegChart = () => {
           {
             id: "mainSeries",
             name: "Year",
-            data: data.map(item=>item.total)
+            data: data2.map(item=>item.total),
+            color: "blue" 
+          },
+          {
+            id: "SecondSeries",
+            data: newArray.map(item=>item.total),
+            color: "#649445"
           },
           {
             type: "trendline",
@@ -73,7 +78,7 @@ const LinearRegChart = () => {
     <div className="greenDiv"></div>
     <div className="flex flex-col">
     { <HighchartsReact  highcharts={Highcharts} options={options} />}
-    <PredictionChart/>
+    
     </div>
     </div>
   )

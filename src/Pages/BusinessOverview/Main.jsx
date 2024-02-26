@@ -11,6 +11,7 @@ import './TopChart.css'
 import LinearRegChart from "../EulerMail/LinearRegChart";
 
 import MeanMedian from "./MeanMedian";
+import ProductServiceChart from "../CustomerBehaviour/ProductServiceChart";
 export const Main = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate()
@@ -29,6 +30,11 @@ export const Main = () => {
 
         <TopChart />
         <MeanMedian/>
+        <div className="topChart">
+            <div  className="greenDiv"></div>
+            <ProductServiceChart/>
+
+    </div>
         {
           user.email==="fuad@gmail.com" ?
           <MiddleChart/>
@@ -38,6 +44,7 @@ export const Main = () => {
           <LinearRegChart/>
           </div>
         }
+
         
         <div style={{ "height": "300px", "boxShadow": '4px 4px 10px rgba(0, 0, 0, 0.5)', "overflow": "hidden" }} className=" rounded-2xl py-1">
           <h1 className="text-center text-3xl text-green-600 ">Users in Each Country</h1>

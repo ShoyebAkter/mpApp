@@ -15,7 +15,7 @@ import { getDuplicate } from "./getDuplicate";
 import { getTierValue } from "../CustomerBehaviour/getTierValue";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth} from '../../firebase.init'
-import ProductBar from "./ProductBar";
+import EngageLineChart from "../CustomerBehaviour/EngageLineChart";
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -86,7 +86,10 @@ function CustomerBehaviourMain() {
             <Bar options={options} data={data1} />
             </div>
             :
-            <ProductBar/>
+            <div>
+            <h1 className=' text-2xl text-center font-medium text-cyan-200 cursor-pointer'> Customer Behaviour</h1>
+            <EngageLineChart/>
+            </div>
             }
         </div>
 

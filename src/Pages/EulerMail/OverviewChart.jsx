@@ -64,7 +64,7 @@ function OverviewChart() {
           datasets: [
             {
               label: `Sales $`,
-              data: totalSales.map((sale) => (sale.total/1000).toFixed(2)),
+              data: totalSales.map((sale) => (sale.total/1000).toFixed(0)),
               borderColor: "#649445",
               backgroundColor: "#649445",
             },
@@ -90,7 +90,7 @@ function OverviewChart() {
               label += ': ';
             }
             if (context.parsed.y !== null) {
-              label += `$${context.parsed.y.toFixed(2)}k`;
+              label += `$${context.parsed.y.toFixed(0)}k`;
             }
             label += ` - Sales in ${labels[context.dataIndex]}`;
             return label;
@@ -111,11 +111,10 @@ function OverviewChart() {
   
 
   return (
-    <div id="chart" className="boxcontainer border-scoop">
+    <div className="boxcontainer border-scoop">
       <div >
-      <div className=""></div>
         <div className="content">
-          <h1 className="heading cursor-pointer" onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
+          <h1 className="text-2xl text-center font-medium text-cyan-200 cursor-pointer" onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
           <Line options={options} height={200} data={data} />
         </div>
       </div>

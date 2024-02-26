@@ -51,15 +51,16 @@ function SocialMediaChart() {
     },
   };
 
-  const labels = user.email ==="fuad@gmail.com"? result.map((res) => res.date): ["Sun","Mon","Tue","Wed"];
+  const labels = user.email ==="fuad@gmail.com"? result.map((res) => res.date): ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
   const data = {
     labels,
     datasets: [
       {
         label: "Facebook Post Dataset",
-        data: user.email ==="fuad@gmail.com"? result.map((res) => res.total) :[30,10,40,50],
+        data: user.email ==="fuad@gmail.com"? result.map((res) => res.total) :[30,10,40,50,80,20,90],
         backgroundColor: "#649445",
+        borderRadius: 20,
       },
     ],
   };
@@ -67,19 +68,21 @@ function SocialMediaChart() {
     <div id="chart" className="boxcontainer SMborder-scoop p-2 ">
       <div >
         <div className="content">
-          <h1 className="heading cursor-pointer" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
+          <div>
+          <h1 className="text-2xl text-center font-medium text-cyan-200 cursor-pointer mb-1" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
           <div className="flex justify-around">
-          <div style={{"backgroundColor":"#2a4e40"}}  className="text-white rounded-xl p-2">
+          <div style={{"backgroundColor":"#2a4e40"}}  className="text-white text-sm p-1 rounded-xl text-center">
                 Accounts Reached
                 <div className='text-2xl'>2</div>
             </div>
-          <div style={{"backgroundColor":"#2a4e40"}}   className="p-2 rounded-xl text-white">
+          <div style={{"backgroundColor":"#2a4e40"}}   className="text-white text-sm p-1 rounded-xl text-center">
                 Accounts Engaged
                 <div className='text-2xl'>2</div>
             </div>
           </div>
           <Bar options={options} height={200} data={data} />
         </div>
+          </div>
       </div>
     </div>
   );

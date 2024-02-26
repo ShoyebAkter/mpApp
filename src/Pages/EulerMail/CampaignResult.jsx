@@ -55,15 +55,16 @@ export const CampaignResult = () => {
         },
       };
       
-      const labels = user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.date) : ["Jan","Feb","Mar","April","May"]
+      const labels = user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.date) : ["Jan","Feb","Mar","April","May","June","July","Aug","Sep"]
       
       const data = {
         labels,
         datasets: [
           {
             label: 'Total email sent',
-            data: user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.total) : [10,30,20,60,70],
+            data: user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.total) : [10,30,20,60,70,80,25,45,50],
             backgroundColor: '#649445',
+            borderRadius: 15,
           }
         ],
       };
@@ -73,7 +74,7 @@ export const CampaignResult = () => {
       className="boxcontainer CRborder-scoop p-2 "
     >
       <div className="content">
-        <h1 className="heading cursor-pointer"  onClick={()=>navigate('/campaignresult')}> CampaignResult</h1>
+        <div className="text-2xl text-center font-medium text-cyan-200  cursor-pointer"  onClick={()=>navigate('/campaignresult')}> Campaign Result</div>
         <Bar options={options} height={200} data={data} />
       </div>
     </div>

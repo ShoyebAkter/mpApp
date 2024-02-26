@@ -16,7 +16,7 @@ const ProductBar = () => {
     });
     const service=newData.map(service=> service.Service)
     const salesArray=newData.map(service=> service.Total_Sales)
-    
+    console.log(salesData)
     const options = {
         chart: {
             type: 'bar'

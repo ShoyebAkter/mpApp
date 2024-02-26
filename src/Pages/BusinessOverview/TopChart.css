@@ -4,6 +4,7 @@
 }
 .topChart{
     display: flex;
+    width:1200px;
     border-radius: 1rem/* 16px */;
     margin-top: 1.25rem/* 20px */;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);

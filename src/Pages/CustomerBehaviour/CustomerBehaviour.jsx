@@ -65,10 +65,10 @@ export const CustomerBehaviour = () => {
         </div>
         }
         <div className="firstChartSection">
-        
+        <SmallCLient/>
         </div>
         <div className="clientSection">
-        <SmallCLient/>
+        
         <WarehouseproCustomer/>
         </div>
         <div className="firstChartSection">

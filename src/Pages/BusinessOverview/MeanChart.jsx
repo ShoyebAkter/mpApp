@@ -51,7 +51,7 @@ const MeanChart = ({chartType}) => {
             },
             title: {
                 display: true,
-                text: chartType ==="mean" ? 'Mean Value Chart' :'Median Value Chart',
+                text: chartType ==="mean" ? 'Sales Mean Value Chart' :'Sales Median Value Chart',
             },
         },
     };

@@ -20,8 +20,9 @@ ChartJS.register(
     Legend
 );
 export const LineChart = ({averageOrder}) => {
+    const totalAvg=averageOrder.reduce((total, obj) => total + obj.averageTotalPrice, 0);
 
-    // console.log(averageOrder);
+    // console.log(totalAvg);
     const options = {
         responsive: true,
         
@@ -36,7 +37,7 @@ export const LineChart = ({averageOrder}) => {
                     if (context.parsed.y !== null) {
                       label += `$${context.parsed.y.toFixed(2)}`;
                     }
-                    label += ` - Sales in ${labels[context.dataIndex]}`;
+                    label += ` - Avg order in ${labels[context.dataIndex]}`;
                     return label;
                   },
                 },
@@ -66,6 +67,7 @@ export const LineChart = ({averageOrder}) => {
     };
     return (
         <div className='rounded-xl my-5'>
+        <h1 className='font-bold'>Total Avg Value: {totalAvg.toFixed(1)}$</h1>
             <Line width={300} height={200} options={options} data={data} />
         </div>
     )

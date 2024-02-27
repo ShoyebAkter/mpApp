@@ -54,7 +54,7 @@ export const CustomerBehaviour = () => {
         </div>
         {
           user.email==="fuad@gmail.com" ?
-          <div className="firstChartSection">
+          <div className="cohortChartSection">
           <Engagement setWeeksData={setWeeksData} />
           <Cohorts weeksData={weeksData} />
         </div>
@@ -71,6 +71,11 @@ export const CustomerBehaviour = () => {
         
         <WarehouseproCustomer/>
         </div>
+        <div className="clientSection">
+        <Cohorts/>
+        
+        </div>
+
         <div className="firstChartSection">
             <Heatmap/>
         </div>

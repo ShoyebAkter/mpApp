@@ -22,6 +22,18 @@
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
+.cohortChartSection{
+    height: 575px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    border-radius: 1rem/* 16px */;
+    margin-bottom: 1.25rem/* 20px */;
+    padding: 1.25rem/* 20px */;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
 .clientSection{
     display: flex;
     justify-content: space-around;
@@ -56,7 +68,7 @@
     width: 500px;
 }
 .cohortChart{
-    width: 500px;
+    width: 1200px;
     --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity));
 }

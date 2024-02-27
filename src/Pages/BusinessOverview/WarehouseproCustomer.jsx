@@ -50,7 +50,7 @@ const WarehouseproCustomer = () => {
           },
           yAxis: {
             min: 0,
-            max: 150,
+            max: 1000,
             title: {
               text: '$ in Value'
             }

@@ -68,6 +68,7 @@ export const OrderAvg = () => {
         }
       };
       switchFunction();
+    //   console.log(averageOrder)
     return (
         <div>
             <LineChart averageOrder={averageOrder}/>

@@ -28,6 +28,7 @@ export const TotalSales = () => {
     const resultArray = [];
     const [user] = useAuthState(auth);
     let data,labels;
+    let Sales;
     const switchFunction=()=>{
         switch (user.email) {
           case 'fuad@gmail.com':
@@ -49,6 +50,8 @@ export const TotalSales = () => {
             break;
           case 'warehousepro@gmail.com':
             callApi("https://emapp-backend.vercel.app/warehousepro/sales",setTotalSales);
+             Sales = totalSales.reduce((total, obj) => total + obj.total, 0);
+            //  console.log(Sales)
             labels=totalSales.map((sale)=>sale.year);
             data = {
               labels,
@@ -100,9 +103,10 @@ export const TotalSales = () => {
     };
     
     
-
+    // console.log(Sales)
     return (
         <div className='rounded-xl my-5'>
+        <h1 className='font-bold '>Total Sales: {Sales}$</h1>
             <Line width={300}
             height={200}
              options={options} 

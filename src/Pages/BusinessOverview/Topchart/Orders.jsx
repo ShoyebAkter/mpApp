@@ -30,7 +30,7 @@ export const Orders = () => {
   const resultArray = [];
   const [user] = useAuthState(auth);
   let labels;
-  let data;
+  let data,totalOrders;
   // console.log(orders);
   const switchFunction = () => {
     switch (user.email) {
@@ -58,6 +58,7 @@ export const Orders = () => {
           "https://emapp-backend.vercel.app/warehousepro/orders",
           setOrders
         );
+        totalOrders=orders.reduce((total, obj) => total + obj.order, 0);
         labels = orders.map((order) => order.year);
         data = {
           labels,
@@ -110,6 +111,7 @@ export const Orders = () => {
   
   return (
     <div className="rounded-xl my-5">
+    <h1 className="font-bold">Total Order: {totalOrders}</h1>
       <Line width={300} height={200} options={options} data={data} />
     </div>
   );

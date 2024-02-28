@@ -67,7 +67,8 @@ export const LineChart = ({averageOrder}) => {
     };
     return (
         <div className='rounded-xl my-5'>
-        <h1 className='font-bold'>Total Avg Value: {totalAvg.toFixed(1)}$</h1>
+        <div className="radial-progress font-bold" style={{"--value":70}} role="progressbar"> {(totalAvg/1000).toFixed(1)}k$</div>
+        
             <Line width={300} height={200} options={options} data={data} />
         </div>
     )

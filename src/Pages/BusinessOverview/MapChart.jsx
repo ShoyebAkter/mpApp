@@ -86,15 +86,22 @@ const MapChart = () => {
             ).then(response => response.json());
 
             const data = Highcharts.geojson(topology);
-                console.log(data)
+                const newData=await fetch(
+                    "https://emapp-backend.vercel.app/warehousepro/stateData"
+                ).then(response => response.json());
+            // console.log(newData)
             const mapView = topology.objects.default['hc-recommended-mapview'];
 
             // Set drilldown pointers
-            data.forEach((d, i) => {
-                d.drilldown = d.properties['hc-key'];
-                d.value = i; // Non-random bogus data
+            data.forEach((d) => {
+                const matchedData = newData.find(item => item.state === d.name);
+                if (matchedData) {
+                    d.drilldown = matchedData.drilldown;
+                    d.value = matchedData.value;
+                }
             });
-
+            // console.log(data)
+            // console.log(newData)
             // Instantiate the map
             Highcharts.mapChart('container', {
                 chart: {
@@ -105,7 +112,7 @@ const MapChart = () => {
                 },
 
                 title: {
-                    text: 'Highcharts Map Drilldown'
+                    text: 'USA Clients Data'
                 },
 
                 colorAxis: {
@@ -144,7 +151,9 @@ const MapChart = () => {
                         mapView
                     }
                 }],
-
+                credits: {
+                    enabled: false // Hide credits
+                  },
                 drilldown: {
                     activeDataLabelStyle: {
                         color: '#FFFFFF',

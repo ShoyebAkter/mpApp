@@ -15,14 +15,16 @@ import ProductServiceChart from "../CustomerBehaviour/ProductServiceChart";
 import BusinessTable from "./BusinessTable";
 import MapChart from "./MapChart";
 import DataTable from "./DataTable";
+import { useState } from "react";
 export const Main = () => {
   const [user, loading] = useAuthState(auth);
+  const [selectedCountry, setSelectedCountry] = useState(null);
   const navigate = useNavigate();
   if (loading) return <Loading></Loading>;
   if (!user) {
     navigate("/login");
   }
-
+  console.log(selectedCountry)
   return (
     <div className="overviewMain flex justify-between">
       <div
@@ -65,17 +67,24 @@ export const Main = () => {
 
         <div
           style={{
-            height: "300px",
+            height: "500px",
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.5)",
             overflow: "hidden",
+            "background":"white"
           }}
           className=" rounded-2xl py-1"
         >
           <h1 className="text-center text-3xl text-green-600 ">
-            Users in Each Country
+            Users in Each Country/State
           </h1>
-          {/* <BottomChart /> */}
-          <MapChart/>
+          {
+            selectedCountry==="USA" ?
+            <MapChart/>
+            :
+            <BottomChart setSelectedCountry={setSelectedCountry}/>
+          }
+          
+          
         </div>
         <div className="tableArea">
           <div className="greenDiv"></div>

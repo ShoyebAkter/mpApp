@@ -111,7 +111,8 @@ export const Orders = () => {
   
   return (
     <div className="rounded-xl my-5">
-    <h1 className="font-bold">Total Order: {totalOrders}</h1>
+    <div className="radial-progress font-bold" style={{"--value":70}} role="progressbar"> {totalOrders}</div>
+        
       <Line width={300} height={200} options={options} data={data} />
     </div>
   );

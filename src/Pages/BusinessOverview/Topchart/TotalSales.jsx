@@ -106,7 +106,8 @@ export const TotalSales = () => {
     // console.log(Sales)
     return (
         <div className='rounded-xl my-5'>
-        <h1 className='font-bold '>Total Sales: {Sales}$</h1>
+        <div className="radial-progress font-bold" style={{"--value":70}} role="progressbar"> {(Sales/1000000).toFixed(2)}m$</div>
+        {/* <h1 className='font-bold '>Total Sales:</h1> */}
             <Line width={300}
             height={200}
              options={options} 

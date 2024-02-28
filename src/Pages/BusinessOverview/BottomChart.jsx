@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { callApi } from "../EulerMail/getSalesData";
 import { auth } from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
-export const BottomChart = () => {
+export const BottomChart = ({setSelectedCountry}) => {
   const color = "#c9a0dc";
   const [user] = useAuthState(auth);
   const [users, setUsers] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  
 
  
   useEffect(()=>{
@@ -51,7 +51,7 @@ export const BottomChart = () => {
 
   const countedValues = countDuplicateValues();
 
-  console.log(selectedCountry);
+  // console.log(selectedCountry);
 
   return (
     <ResponsiveChoropleth

@@ -27,12 +27,12 @@ const DataTable = () => {
     {orderData.map((item, index) => (
       <tr key={index}>
         <td>{item.name}</td>
-        <td>{item.total}</td>
+        <td>{item.total}$</td>
         <td>{item.date}</td>
         <td>{item.country}</td>
         <td>{item.state}</td>
         <td>{item.Product}</td>
-        <td>{item.Line_Item_Amount}</td>
+        <td>{item.Line_Item_Amount}$</td>
       </tr>
     ))}
   </tbody>

@@ -82,6 +82,7 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
                 data:categoryCountsArray.map(client=>client.count),
                 borderColor: '#649445',
                 backgroundColor: '#649445',
+                borderRadius: 15,
             }
         ],
     };

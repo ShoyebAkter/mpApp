@@ -69,7 +69,7 @@ const WarehouseproCustomer = () => {
             color:"#649445",
             groupPadding: 0,
             data: newData,
-            
+            borderRadius: 15 
           }]
         };
         

@@ -8,7 +8,7 @@ export const BottomChart = () => {
   const color = "#c9a0dc";
   const [user] = useAuthState(auth);
   const [users, setUsers] = useState([]);
- 
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
  
   useEffect(()=>{
@@ -19,7 +19,13 @@ export const BottomChart = () => {
   },[])
 
   // console.log(users);
- 
+  
+
+  const handleCountryClick = (feature, event) => {
+      setSelectedCountry(feature.properties.name);
+      // You can perform any other actions here based on the clicked country
+  };
+
   function countDuplicateValues() {
     const countryCounts = {};
 
@@ -32,7 +38,7 @@ export const BottomChart = () => {
         countryCounts[id] = 1;
       }
     }
-    console.log(countryCounts);
+    // console.log(countryCounts);
     // Loop through the countMap to create the result array
     
     const countryCountsArray = Object.entries(countryCounts).map(([country, count]) => ({
@@ -45,7 +51,7 @@ export const BottomChart = () => {
 
   const countedValues = countDuplicateValues();
 
-  console.log(countedValues);
+  console.log(selectedCountry);
 
   return (
     <ResponsiveChoropleth
@@ -115,6 +121,7 @@ export const BottomChart = () => {
           ]
         }
       ]}
+      onClick={handleCountryClick}
     />
   )
 }

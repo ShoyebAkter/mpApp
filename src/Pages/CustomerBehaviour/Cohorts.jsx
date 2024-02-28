@@ -23,14 +23,15 @@ export const Cohorts = ({ weeksData }) => {
       cohortDataByYear[year] = cohortData.map(cohort => cohort[year]);
     });
   
-    console.log(cohortDataByYear);
+    // console.log(cohortDataByYear);
   } else {
     console.log("Cohort data is empty.");
   }
   
-  console.log(cohortData);
+//   console.log(cohortData);
   return (
     <div className="cohortChart ">
+      <h1 className="font-bold text-2xl text-center">Cohort Active Clients Analysis</h1>
       {cohortData.length > 0 && (
         <CohortGraph
           data={{

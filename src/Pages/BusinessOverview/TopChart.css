@@ -12,6 +12,17 @@
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
+.tableArea{
+    display: flex;
+    width:1200px;
+    height: 500px;
+    border-radius: 1rem/* 16px */;
+    margin-top: 1.25rem/* 20px */;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    gap:70px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
 .greenDiv{
     border-start-start-radius: 1rem/* 16px */;
     border-end-start-radius: 1rem/* 16px */;

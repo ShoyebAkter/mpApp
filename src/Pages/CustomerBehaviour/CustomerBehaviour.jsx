@@ -17,6 +17,7 @@ import WarehouseproCategory from "./WarehouseproCategory"
 import WarehouseproCustomer from "../BusinessOverview/WarehouseproCustomer"
 import SmallCLient from "../EulerMail/SmallCLient";
 import Heatmap from "./HeatMap"
+import DataTable from "../BusinessOverview/DataTable"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -78,6 +79,9 @@ export const CustomerBehaviour = () => {
 
         <div className="firstChartSection">
             <Heatmap/>
+        </div>
+        <div className="firstChartSection">
+            <DataTable/>
         </div>
       </div>
     </div>

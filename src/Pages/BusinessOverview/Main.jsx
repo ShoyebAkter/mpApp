@@ -13,6 +13,8 @@ import LinearRegChart from "../EulerMail/LinearRegChart";
 import MeanMedian from "./MeanMedian";
 import ProductServiceChart from "../CustomerBehaviour/ProductServiceChart";
 import BusinessTable from "./BusinessTable";
+import MapChart from "./MapChart";
+import DataTable from "./DataTable";
 export const Main = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
@@ -72,10 +74,15 @@ export const Main = () => {
           <h1 className="text-center text-3xl text-green-600 ">
             Users in Each Country
           </h1>
-          <BottomChart />
+          {/* <BottomChart /> */}
+          <MapChart/>
         </div>
-        <div></div>
+        <div className="tableArea">
+          <div className="greenDiv"></div>
+          <DataTable/>
+        </div>
       </div>
+      
     </div>
   );
 };

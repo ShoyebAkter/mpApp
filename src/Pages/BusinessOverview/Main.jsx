@@ -19,6 +19,8 @@ import { useState } from "react";
 export const Main = () => {
   const [user, loading] = useAuthState(auth);
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedProduct,setSelectedProduct]=useState(null)
+  const [stateName,setStateName]=useState()
   const navigate = useNavigate();
   if (loading) return <Loading></Loading>;
   if (!user) {
@@ -51,7 +53,7 @@ export const Main = () => {
         <MeanMedian />
         <div className="topChart">
           <div className="greenDiv"></div>
-          <ProductServiceChart />
+          <ProductServiceChart setSelectedProduct={setSelectedProduct}/>
         </div>
         <div className="topChart">
           <div className="greenDiv"></div>
@@ -79,7 +81,7 @@ export const Main = () => {
           </h1>
           {
             selectedCountry==="USA" ?
-            <MapChart/>
+            <MapChart setStateName={setStateName}/>
             :
             <BottomChart setSelectedCountry={setSelectedCountry}/>
           }
@@ -88,7 +90,7 @@ export const Main = () => {
         </div>
         <div className="tableArea">
           <div className="greenDiv"></div>
-          <DataTable/>
+          <DataTable selectedProduct={selectedProduct} stateName={stateName}/>
         </div>
       </div>
       

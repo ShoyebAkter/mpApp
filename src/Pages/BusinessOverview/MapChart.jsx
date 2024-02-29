@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HC_map from 'highcharts/modules/map';
 import mapData from 'highcharts/modules/map';
@@ -7,9 +7,11 @@ import mapData from 'highcharts/modules/map';
 HC_map(Highcharts);
 mapData(Highcharts);
 
-const MapChart = () => {
+const MapChart = ({setStateName}) => {
+    
     useEffect(() => {
         const drilldown = async function (e) {
+            
             if (!e.seriesOptions) {
                 const chart = this,
                     mapKey = `countries/us/${e.point.drilldown}-all`;
@@ -184,8 +186,8 @@ const MapChart = () => {
             }
         };
     }, []); // Empty dependency array to run only once on component mount
-
-    return <div id="container" style={{ width: '100%', height: '400px' }} />;
+    
+    return <div id="container" onClick={(e)=>setStateName(e.nativeEvent.point.name)} style={{ width: '100%', height: '400px' }} />;
 };
 
 export default MapChart;

@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-const ProductServiceChart = () => {
+const ProductServiceChart = ({setSelectedProduct}) => {
   const [chartConfig, setChartConfig] = useState(null);
-
+  
   useEffect(() => {
     // Fetch data here, or use any other method to get the data
     const fetchData = async () => {
       try {
         const response = await fetch("https://emapp-backend.vercel.app/warehousepro/productSales");
         const data = await response.json();
-  
+        
         // Example data
         const newData = data.map(item => {
           return [
@@ -19,7 +19,7 @@ const ProductServiceChart = () => {
             item.Total_Sales
           ];
         });
-        console.log(newData)
+        // console.log(newData)
         // Dynamically create the Highcharts configuration
         const config = {
           chart: {
@@ -63,7 +63,15 @@ const ProductServiceChart = () => {
             color:"#649445",
             groupPadding: 0,
             data: newData,
-            borderRadius: 15 
+            borderRadius: 15 ,
+            point: {
+              events: {
+                  click: function () {
+                    setSelectedProduct(newData[this.category][0])
+                       // Log clicked point data
+                  }
+              }
+          }
           }]
         };
   

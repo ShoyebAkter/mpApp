@@ -1,13 +1,27 @@
 import { useEffect, useState } from "react";
 import { callApi } from "../EulerMail/getSalesData";
 
-const DataTable = () => {
+const DataTable = ({stateName,selectedProduct}) => {
     const [orderData,setOrderData]=useState([]);
-
+    const [filteredData, setFilteredData] = useState([]);
+    console.log(selectedProduct)
     useEffect(()=>{
         callApi("https://emapp-backend.vercel.app/warehousepro/mainData",setOrderData)
+        
     },[])
-    // console.log(orderData)
+    useEffect(() => {
+      if (stateName) {
+          const data = orderData.filter(obj => obj.state === stateName);
+          setFilteredData(data);
+      } else if(selectedProduct) {
+        const data = orderData.filter(obj => obj.Product === selectedProduct);
+          setFilteredData(data);
+          // If no stateName is provided, set filteredData to the original orderData
+      }else{
+        setFilteredData(orderData); 
+      }
+  }, [stateName,selectedProduct, orderData]);
+    // console.log(filteredData)
   return (
     <div className="overflow-x-auto">
     <h1 className="heading">Data Table</h1>
@@ -24,7 +38,7 @@ const DataTable = () => {
     </tr>
   </thead>
   <tbody>
-    {orderData.map((item, index) => (
+    {  filteredData.map((item, index) => (
       <tr key={index}>
         <td>{item.name}</td>
         <td>{item.total}$</td>

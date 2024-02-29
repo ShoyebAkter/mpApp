@@ -51,6 +51,7 @@ export const TotalSales = () => {
           case 'warehousepro@gmail.com':
             callApi("https://emapp-backend.vercel.app/warehousepro/sales",setTotalSales);
              Sales = totalSales.reduce((total, obj) => total + obj.total, 0);
+             totalSales.sort((a, b) => a.year - b.year);
             //  console.log(Sales)
             labels=totalSales.map((sale)=>sale.year);
             data = {

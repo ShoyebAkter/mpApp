@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import { ToastContainer, toast } from "react-toastify";
 import { getFacebookPageId, getFacebookPages, getFbPageToken } from "../../../SocialMedia/facebook";
 import { AiOutlineShareAlt } from "react-icons/ai";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import {auth} from '../../../../firebase.init'
 function Facebook({ imageBlob, text,facebookUserAccessToken }) {
     const [isSharingPost, setIsSharingPost] = useState(false);
     const [pages, setPages] = useState([])
     const [selectedIndex, setIndex] = useState(null)
-    
+    const [user]=useAuthState(auth)
     
     // const getLongAccessToken=async(token)=>{
     //     await fetch(`https://emapp-backend.vercel.app/exchangeToken/${token}`)
@@ -26,6 +27,7 @@ function Facebook({ imageBlob, text,facebookUserAccessToken }) {
             message: text,
             imageUrl: url,
             id: id,
+            uid:user.uid,
             date: new Date().toLocaleDateString(),
         }
         fetch("https://emapp-backend.vercel.app/fbpost", {

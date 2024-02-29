@@ -59,6 +59,7 @@ export const Orders = () => {
           setOrders
         );
         totalOrders=orders.reduce((total, obj) => total + obj.order, 0);
+        orders.sort((a, b) => a.year - b.year);
         labels = orders.map((order) => order.year);
         data = {
           labels,

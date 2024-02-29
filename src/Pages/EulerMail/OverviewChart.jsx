@@ -54,7 +54,7 @@ function OverviewChart() {
         break;
       case 'warehousepro@gmail.com':
         callApi("https://emapp-backend.vercel.app/warehousepro/sales",setTotalSales);
-        
+        totalSales.sort((a, b) => a.year - b.year);
         // console.log(linearRegression(totalSales));
         // console.log()
         // setTotalSales(updateValue(totalSales))

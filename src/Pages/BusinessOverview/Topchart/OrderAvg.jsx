@@ -60,6 +60,7 @@ export const OrderAvg = () => {
               "https://emapp-backend.vercel.app/warehousepro/orders",
               setOrders
             );
+            orders.sort((a, b) => a.year - b.year);
             averageOrder=getAvg(orders)
             break;
           default:

@@ -12,8 +12,10 @@ const LinearRegChart = () => {
     const fetchData = async () => {
       const response2 = await fetch("https://emapp-backend.vercel.app/warehousepro/sales");
       const data2 = await response2.json();
+      data2.sort((a, b) => a.year - b.year);
       const response = await fetch("https://emapp-backend.vercel.app/warehousepro/prediction");
       const data = await response.json();
+      data.sort((a, b) => a.year - b.year);
       const newArray=[...data2,...data]
       setOption({
         chart: {

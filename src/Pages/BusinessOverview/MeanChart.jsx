@@ -26,7 +26,9 @@ const MeanChart = ({chartType}) => {
 
     useEffect(()=>{
         callApi("https://emapp-backend.vercel.app/warehousepro/orders",setData)
+        
     },[])
+    orderData.sort((a, b) => a.year - b.year);
     // console.log(data)
     const options = {
         responsive: true,

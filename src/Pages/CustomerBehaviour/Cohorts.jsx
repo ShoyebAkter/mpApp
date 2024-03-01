@@ -13,7 +13,7 @@ export const Cohorts = ({ weeksData }) => {
         "https://emapp-backend.vercel.app/warehousepro/cohort"
       );
       const data = await response.json();
-      console.log(data)
+      // console.log(data)
       const years = [
         "2014",
         "2015",

@@ -23,7 +23,7 @@ const HeatMap = () => {
         "https://emapp-backend.vercel.app/warehousepro/heatmap"
       );
       const data = await response.json();
-      console.log(data)
+      // console.log(data)
       const years = [
         "2014",
         "2015",
@@ -121,7 +121,7 @@ const HeatMap = () => {
           rules: [
             {
               condition: {
-                maxWidth: 500,
+                maxWidth: 1000,
               },
               chartOptions: {
                 yAxis: {
@@ -143,8 +143,8 @@ const HeatMap = () => {
   // console.log(mapData)
 
   return (
-    <div className="flex">
-      <div
+    <div >
+      {/* <div
         style={{ height: "50px" }}
         className="bg-transparent border border-gray-500 rounded"
       >
@@ -160,7 +160,7 @@ const HeatMap = () => {
             {number}
           </button>
         ))}
-      </div>
+      </div> */}
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>

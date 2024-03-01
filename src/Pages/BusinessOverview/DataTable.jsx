@@ -4,7 +4,7 @@ import { callApi } from "../EulerMail/getSalesData";
 const DataTable = ({stateName,selectedProduct}) => {
     const [orderData,setOrderData]=useState([]);
     const [filteredData, setFilteredData] = useState([]);
-    console.log(selectedProduct)
+    // console.log(selectedProduct)
     useEffect(()=>{
         callApi("https://emapp-backend.vercel.app/warehousepro/mainData",setOrderData)
         

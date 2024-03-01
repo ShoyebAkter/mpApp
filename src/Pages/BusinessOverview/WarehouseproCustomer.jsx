@@ -25,7 +25,7 @@ const WarehouseproCustomer = () => {
             parseInt(item.value.toFixed(1))
           ];
         });
-        console.log(newData)
+        // console.log(newData)
         // Dynamically create the Highcharts configuration
         const config = {
           chart: {
@@ -35,7 +35,8 @@ const WarehouseproCustomer = () => {
           title: {
             text: 'High Value Clients',
             style: {
-                color: '#00FFFF' // Set the desired color here
+                color: 'green',
+                fontWeight: '500' // Set the desired color here
               }
           },
           xAxis: {

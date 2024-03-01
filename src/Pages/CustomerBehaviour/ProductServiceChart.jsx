@@ -29,7 +29,9 @@ const ProductServiceChart = ({setSelectedProduct}) => {
           title: {
             text: 'Product & Service Sales',
             style: {
-                color: '#00FFFF' // Set the desired color here
+                color: 'green',
+                fontWeight:"500",
+                fontSize:"24" // Set the desired color here
               }
           },
           xAxis: {

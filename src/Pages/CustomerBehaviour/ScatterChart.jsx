@@ -42,7 +42,8 @@ const ScatterChart = () => {
           align: 'center',
             style: {
                 fontSize: '14px',
-                color:'cyan' // Adjust the font size as needed
+                color:'green',
+                fontWeight: '500',
             }
         },
         xAxis: {
@@ -72,7 +73,7 @@ const ScatterChart = () => {
           },
         },
         tooltip: {
-          pointFormat: "Longevity: {point.x} month <br/> Total: {point.y} ",
+          pointFormat: "Client Longevity: {point.x} month <br/>Client Total: {point.y} ",
         },
         credits: {
           enabled: false // Hide credits

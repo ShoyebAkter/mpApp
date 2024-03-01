@@ -132,7 +132,7 @@ export const Cohorts = ({ weeksData }) => {
   }, []);
   return (
     <div className="cohortChart ">
-      <h1 className="font-bold text-2xl text-center text-cyan-200">Cohort Active Clients Analysis</h1>
+      <h1 className="text-center text-xl text-green-600">Cohort Active Clients Analysis</h1>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>

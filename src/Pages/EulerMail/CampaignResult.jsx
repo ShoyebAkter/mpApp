@@ -65,6 +65,7 @@ export const CampaignResult = () => {
             data: user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.total) : [10,30,20,60,70,80,25,45,50],
             backgroundColor: '#649445',
             borderRadius: 15,
+            
           }
         ],
       };

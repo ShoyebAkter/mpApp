@@ -67,7 +67,7 @@ export const LineChart = ({averageOrder}) => {
     };
     return (
         <div className='rounded-xl my-5'>
-        <h1 className="text-xl text-center font-medium text-cyan-200">
+        <h1 className="text-center text-xl text-green-600">
         Average Order
       </h1>
 

@@ -77,9 +77,9 @@ export const CustomerBehaviour = () => {
         
         </div>
 
-        <div className="firstChartSection">
+        {/* <div className="firstChartSection">
             <Heatmap/>
-        </div>
+        </div> */}
         <div className="firstChartSection">
             <DataTable/>
         </div>

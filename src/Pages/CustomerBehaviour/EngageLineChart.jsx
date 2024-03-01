@@ -22,6 +22,7 @@ const EngageLineChart = () => {
             align: 'center',
             style: {
                 fontSize: '14px',
+                fontWeight:'500'
                  // Adjust the font size as needed
             }
         },

@@ -103,6 +103,10 @@ function OverviewChart() {
       title: {
         display: true,
         text: "Monthly Revenue",
+        font: {
+          size: 14,
+          weight: 500 // specify the font size here
+        },
       },
     },
     

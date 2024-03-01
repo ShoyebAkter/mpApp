@@ -28,7 +28,8 @@ const SmallCLient = () => {
           title: {
             text: 'Frequent Small Value Clients',
             style: {
-                color: '#00FFFF' // Set the desired color here
+                color: 'green',
+                fontWeight:'500' // Set the desired color here
               }
           },
           xAxis: {

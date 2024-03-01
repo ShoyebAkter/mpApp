@@ -7,31 +7,43 @@ const BusinessTable = () => {
     useEffect(()=>{
         callApi("https://emapp-backend.vercel.app/warehousepro/orders",setOrderData)
     },[])
-  return (
-    <div className="overflow-x-auto">
-    <h1 className="heading">Business Table</h1>
-    <table className="table table-sm table-pin-rows table-pin-cols">
-  <thead className="thead">
-    <tr>
-      <th>Year</th>
-      <th>Total Sales</th>
-      <th>Total Order</th>
-      <th>Avg Order</th>
-    </tr>
-  </thead>
-  <tbody>
-    {orderData.map((item, index) => (
-      <tr key={index}>
-        <td>{item.year}</td>
-        <td>{item.total}</td>
-        <td>{item.order}</td>
-        <td>{(item.total / item.order).toFixed(1)}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+    const sortedOrderData = orderData.slice().sort((a, b) => a.year - b.year);
 
-        </div>
+  return (
+    <div className="overflow-x-auto p-5">
+  <h1 className="heading">Business Table</h1>
+  <table className="table table-sm table-pin-rows table-pin-cols">
+    <thead className="thead">
+      <tr>
+        <th>Year</th>
+        {sortedOrderData.map((item, index) => (
+          <th key={index}>{item.year}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Total Sales</td>
+        {sortedOrderData.map((item, index) => (
+          <td key={index}>{item.total}$</td>
+        ))}
+      </tr>
+      <tr>
+        <td>Total Order</td>
+        {orderData.map((item, index) => (
+          <td key={index}>{item.order}</td>
+        ))}
+      </tr>
+      <tr>
+        <td>Avg Order</td>
+        {orderData.map((item, index) => (
+          <td key={index}>{(item.total / item.order).toFixed(1)}$</td>
+        ))}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
   )
 }
 

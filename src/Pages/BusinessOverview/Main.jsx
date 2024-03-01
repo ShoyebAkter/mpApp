@@ -53,12 +53,13 @@ export const Main = () => {
         <MeanMedian />
         <div className="topChart">
           <div className="greenDiv"></div>
-          <ProductServiceChart setSelectedProduct={setSelectedProduct}/>
+          <BusinessTable/>
         </div>
         <div className="topChart">
           <div className="greenDiv"></div>
-          <BusinessTable/>
+          <ProductServiceChart setSelectedProduct={setSelectedProduct}/>
         </div>
+        
         {user.email === "fuad@gmail.com" ? (
           <MiddleChart />
         ) : (
@@ -81,7 +82,7 @@ export const Main = () => {
           </h1>
           {
             selectedCountry==="USA" ?
-            <MapChart setStateName={setStateName}/>
+            <MapChart setSelectedCountry={setSelectedCountry} setStateName={setStateName}/>
             :
             <BottomChart setSelectedCountry={setSelectedCountry}/>
           }

@@ -67,8 +67,38 @@ export const LineChart = ({averageOrder}) => {
     };
     return (
         <div className='rounded-xl my-5'>
-        <div className="radial-progress font-bold" style={{"--value":70}} role="progressbar"> {(totalAvg/1000).toFixed(1)}k$</div>
-        
+        <h1 className="text-xl text-center font-medium text-cyan-200">
+        Average Order
+      </h1>
+
+        <div className="relative w-20 h-20 mx-auto">
+  <svg className="w-full h-full" viewBox="0 0 100 100">
+    
+    <circle
+      className="text-gray-200 stroke-current"
+      strokeWidth="10"
+      
+      cx="50"
+      cy="50"
+      r="40"
+      fill="transparent"
+    ></circle>
+    <circle
+      style={{"color":"#439541"}}
+      className=" progress-ring__circle stroke-current"
+      strokeWidth="10"
+      strokeLinecap="round"
+      cx="50"
+      cy="50"
+      r="40"
+      fill="transparent"
+      strokeDashoffset="calc(400 - (400 * 45) / 100)"
+    ></circle>
+    
+    <text x="50" y="50" fontFamily="Verdana" fontSize="16" textAnchor="middle" alignmentBaseline="middle">{(totalAvg/1000).toFixed(1)}k$</text>
+
+  </svg>
+</div>
             <Line width={300} height={200} options={options} data={data} />
         </div>
     )

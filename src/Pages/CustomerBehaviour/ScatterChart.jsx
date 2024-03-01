@@ -39,7 +39,11 @@ const ScatterChart = () => {
         },
         title: {
           text: "Client Longevity vs total amount",
-          align: "left",
+          align: 'center',
+            style: {
+                fontSize: '14px',
+                color:'cyan' // Adjust the font size as needed
+            }
         },
         xAxis: {
           title: { text: "Longevity" },

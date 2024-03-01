@@ -23,6 +23,7 @@ const HeatMap = () => {
         "https://emapp-backend.vercel.app/warehousepro/heatmap"
       );
       const data = await response.json();
+      console.log(data)
       const years = [
         "2014",
         "2015",
@@ -34,6 +35,7 @@ const HeatMap = () => {
         "2021",
         "2022",
         "2023",
+        "2024"
       ]; // Array of years
       const mapDataArray = [];
       data.slice(firstNumber, lastNum).map((data, index) => {

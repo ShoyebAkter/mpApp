@@ -19,7 +19,11 @@ const EngageLineChart = () => {
       const options = {
         title: {
             text: 'WarehousePro Engagement',
-            align: 'left'
+            align: 'center',
+            style: {
+                fontSize: '14px',
+                color:'cyan' // Adjust the font size as needed
+            }
         },
         yAxis: {
             title: {

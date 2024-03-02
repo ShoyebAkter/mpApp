@@ -65,9 +65,8 @@ function SocialMediaChart() {
     ],
   };
   return (
-    <div id="chart" className="boxcontainer SMborder-scoop p-2 ">
-      <div >
-        <div className="content">
+    <div  className="boxcontainer SMborder-scoop p-2 ">
+      
           <div>
           <h1 style={{"color":"#4ADE80"}} className="text-center text-xl  cursor-pointer mb-1" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
           <div className="flex justify-around">
@@ -82,8 +81,7 @@ function SocialMediaChart() {
           </div>
           <Bar options={options} height={200} data={data} />
         </div>
-          </div>
-      </div>
+          
     </div>
   );
 }

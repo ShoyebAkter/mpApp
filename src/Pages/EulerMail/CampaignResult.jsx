@@ -71,13 +71,11 @@ export const CampaignResult = () => {
       };
   return (
     <div
-      id="chart"
       className="boxcontainer CRborder-scoop p-2 "
     >
-      <div className="content">
-        <div className="text-center text-xl text-green-400  cursor-pointer"  onClick={()=>navigate('/campaignresult')}> Campaign Result</div>
+        <h1 className="text-center text-xl text-green-400  cursor-pointer"  onClick={()=>navigate('/campaignresult')}> Campaign Result</h1>
         <Bar options={options} height={200} data={data} />
-      </div>
+      
     </div>
   )
 }

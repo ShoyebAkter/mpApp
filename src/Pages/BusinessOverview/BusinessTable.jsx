@@ -10,8 +10,8 @@ const BusinessTable = () => {
     const sortedOrderData = orderData.slice().sort((a, b) => a.year - b.year);
 
   return (
-    <div className="overflow-x-auto ">
-  <h1 className="text-center text-3xl text-green-600">Business Table</h1>
+    <div className="">
+  <h1 className="text-center text-2xl text-green-600">Business Table</h1>
   <table className="table table-sm table-pin-rows table-pin-cols">
     <thead className="thead">
       <tr>
@@ -25,7 +25,7 @@ const BusinessTable = () => {
       <tr>
         <td>Total Sales</td>
         {sortedOrderData.map((item, index) => (
-          <td key={index}>{item.total}</td>
+          <td key={index}>{item.total}$</td>
         ))}
       </tr>
       <tr>

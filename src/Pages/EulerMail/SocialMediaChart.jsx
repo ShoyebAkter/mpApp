@@ -79,7 +79,7 @@ function SocialMediaChart() {
         >
           SocialMedia
         </h1>
-        {/* <div className="flex justify-around">
+        <div className="flex justify-around">
           <div
             style={{ backgroundColor: "#2a4e40" }}
             className="text-white text-sm p-1 rounded-xl text-center"
@@ -95,7 +95,7 @@ function SocialMediaChart() {
             <div className="text-2xl">2</div>
           </div>
         </div>
-        <Bar options={options} height={200} data={data} /> */}
+        <Bar options={options} height={200} data={data} />
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
     
   return (
     <div className="overflow-x-auto">
-    <h1 className='text-center text-xl text-green-600'>Customer Table</h1>
+    <h1 style={{"color":"green","background":"#FFFFFF"}} className='text-center text-xl '>Customer Table</h1>
             <table className="table table-sm table-pin-rows table-pin-cols">
                 <thead className="thead">
                     <tr>

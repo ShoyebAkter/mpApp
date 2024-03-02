@@ -10,7 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {auth} from '../../firebase.init';
+import { auth } from "../../firebase.init";
 import { useNavigate } from "react-router-dom";
 ChartJS.register(
   CategoryScale,
@@ -23,7 +23,7 @@ ChartJS.register(
 
 function SocialMediaChart() {
   const [fbData, setFbData] = useState([]);
-  const [user]=useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
     fetch(`https://emapp-backend.vercel.app/fbpost/${user.uid}`)
@@ -51,37 +51,52 @@ function SocialMediaChart() {
     },
   };
 
-  const labels = user.email ==="fuad@gmail.com"? result.map((res) => res.date): ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const labels =
+    user.email === "fuad@gmail.com"
+      ? result.map((res) => res.date)
+      : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   const data = {
     labels,
     datasets: [
       {
         label: "Facebook Post Dataset",
-        data: user.email ==="fuad@gmail.com"? result.map((res) => res.total) :[30,10,40,50,80,20,90],
+        data:
+          user.email === "fuad@gmail.com"
+            ? result.map((res) => res.total)
+            : [30, 10, 40, 50, 80, 20, 90],
         backgroundColor: "#649445",
         borderRadius: 20,
       },
     ],
   };
   return (
-    <div  className="boxcontainer SMborder-scoop p-2 ">
-      
-          <div>
-          <h1 style={{"color":"#4ADE80"}} className="text-center text-xl  cursor-pointer mb-1" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
-          <div className="flex justify-around">
-          <div style={{"backgroundColor":"#2a4e40"}}  className="text-white text-sm p-1 rounded-xl text-center">
-                Accounts Reached
-                <div className='text-2xl'>2</div>
-            </div>
-          <div style={{"backgroundColor":"#2a4e40"}}   className="text-white text-sm p-1 rounded-xl text-center">
-                Accounts Engaged
-                <div className='text-2xl'>2</div>
-            </div>
-          </div>
-          <Bar options={options} height={200} data={data} />
-        </div>
+    <div className="boxcontainer SMborder-scoop p-2 ">
+      <div>
+        <h1 style={{"background":"#FFFFFF","color":"green","width":"300px"}} className="mx-auto text-center text-xl mb-1 cursor-pointer"
           
+          onClick={() => navigate("/socialmedia")}
+        >
+          SocialMedia
+        </h1>
+        {/* <div className="flex justify-around">
+          <div
+            style={{ backgroundColor: "#2a4e40" }}
+            className="text-white text-sm p-1 rounded-xl text-center"
+          >
+            Accounts Reached
+            <div className="text-2xl">2</div>
+          </div>
+          <div
+            style={{ backgroundColor: "#2a4e40" }}
+            className="text-white text-sm p-1 rounded-xl text-center"
+          >
+            Accounts Engaged
+            <div className="text-2xl">2</div>
+          </div>
+        </div>
+        <Bar options={options} height={200} data={data} /> */}
+      </div>
     </div>
   );
 }

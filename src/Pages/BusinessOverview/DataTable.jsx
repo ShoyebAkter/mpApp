@@ -24,7 +24,7 @@ const DataTable = ({stateName,selectedProduct}) => {
     // console.log(filteredData)
   return (
     <div className="overflow-x-auto">
-    <h1 className="text-center text-3xl text-green-600">Business Overview Table</h1>
+    <h1 style={{"background":"#FFFFFF","color":"green"}} className="text-center text-xl">Business Overview Table</h1>
     <table className="table table-sm table-pin-rows table-pin-cols">
   <thead className="thead">
     <tr>

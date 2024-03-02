@@ -23,7 +23,7 @@ const ProductServiceChart = ({setSelectedProduct}) => {
         const config = {
           chart: {
             type: 'column',
-            width: 1000,
+            width: 1200,
             height: 500
           },
           title: {

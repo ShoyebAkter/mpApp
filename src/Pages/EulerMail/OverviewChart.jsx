@@ -117,10 +117,10 @@ function OverviewChart() {
   return (
     <div className="boxcontainer border-scoop">
       <div >
-        <div className="content">
-          <h1 style={{"color":"#4ADE80"}} className="text-center text-xl  cursor-pointer" onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
+        
+          <h1 style={{"background":"#FFFFFF","color":"green"}} className="text-center text-xl  cursor-pointer"  onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
           <Line options={options} height={200} data={data} />
-        </div>
+        
       </div>
     </div>
   );

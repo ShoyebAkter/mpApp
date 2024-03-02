@@ -11,7 +11,7 @@ const BusinessTable = () => {
 
   return (
     <div className="">
-  <h1 className="text-center text-2xl text-green-600">Business Table</h1>
+  <h1 style={{"background":"#FFFFFF","color":"green"}} className="text-center text-2xl">Business Table</h1>
   <table className="table table-sm table-pin-rows table-pin-cols">
     <thead className="thead">
       <tr>

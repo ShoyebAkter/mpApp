@@ -88,7 +88,7 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
     };
   return (
     <div>
-            <h1  className='text-center text-xl text-green-600'> Customer Category</h1>
+            <h1 style={{"color":"green"}}  className='text-center text-xl '> Customer Category</h1>
             <Bar options={options} width={500} height={300} data={data1} />
             </div>
   )

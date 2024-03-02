@@ -11,8 +11,9 @@ const ProductServiceChart = ({setSelectedProduct}) => {
       try {
         const response = await fetch("https://emapp-backend.vercel.app/warehousepro/productSales");
         const data = await response.json();
-        
-        const newData = data.map(item => {
+        const sortedArray=data.sort((a, b) => b.Total_Sales - a.Total_Sales);
+        // console.log(sortedArray)
+        const newData = sortedArray.map(item => {
           return [
             item.Service,
             item.Total_Sales

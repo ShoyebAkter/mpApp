@@ -4,12 +4,6 @@ import HighchartsReact from 'highcharts-react-official';
 
 const WarehouseproCustomer = () => {
   
-  // useEffect(() => {
-  //   fetch("https://emapp-backend.vercel.app/warehousepro/percentSales")
-  //     .then((res) => res.json())
-  //     .then((result) => setCustomers(result))
-  //     .catch((error) => console.error(error));
-  // }, []);
   const [chartConfig, setChartConfig] = useState(null);
   useEffect(() => {
     // Fetch data here, or use any other method to get the data
@@ -17,7 +11,7 @@ const WarehouseproCustomer = () => {
       try {
         const response = await fetch("https://emapp-backend.vercel.app/warehousepro/percentSales");
         const data = await response.json();
-  
+        data.sort((a, b) => b.value - a.value);
         // Example data
         const newData = data.slice(0,50).map(item => {
           return [

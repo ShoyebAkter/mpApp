@@ -36,15 +36,11 @@ const ScatterChart = () => {
         chart: {
           type: "scatter",
           zoomType: "xy",
+          height: 400,
+          width:600
         },
         title: {
-          text: "Client Longevity vs total amount",
-          align: 'center',
-            style: {
-                fontSize: '14px',
-                color:'green',
-                fontWeight: '500',
-            }
+          text:null
         },
         xAxis: {
           title: { text: "Longevity" },
@@ -89,6 +85,7 @@ const ScatterChart = () => {
 
   return (
     <div>
+    <h1 className='text-center text-xl text-green-600'>Client Longevity vs total amount</h1>
       {chartOptions && (
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       )}

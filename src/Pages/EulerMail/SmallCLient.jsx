@@ -10,7 +10,7 @@ const SmallCLient = () => {
       try {
         const response = await fetch("https://emapp-backend.vercel.app/warehousepro/smallClient");
         const data = await response.json();
-  
+        data.sort((a, b) => b.avg_value - a.avg_value);
         // Example data
         const newData = data.slice(0,50).map(item => {
           return [

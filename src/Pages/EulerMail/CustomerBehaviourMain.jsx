@@ -88,7 +88,7 @@ function CustomerBehaviourMain() {
             :
             <div>
             <h1 style={{"background":"#FFFFFF","color":"green","width":"300px"}} className="mx-auto text-center text-xl  cursor-pointer"> Customer Behaviour</h1>
-            <EngageLineChart/>
+            <EngageLineChart eulerMail={"eulerMail"}/>
             </div>
             }
         </div>

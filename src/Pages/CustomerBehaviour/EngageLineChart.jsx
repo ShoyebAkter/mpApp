@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 
 
-const EngageLineChart = () => {
+const EngageLineChart = ({eulerMail}) => {
     const [chartOptions, setChartOptions] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -17,14 +17,11 @@ const EngageLineChart = () => {
       const invoiceCountsArray = data.map(obj => obj.Invoice_Counts);
         // console.log(data)
       const options = {
+        chart:{
+            width:500
+        },
         title: {
-            text: 'WarehousePro Engagement',
-            align: 'center',
-            style: {
-                fontSize: '14px',
-                fontWeight:'500'
-                 // Adjust the font size as needed
-            }
+            text: null // Set title text to null to remove the default title
         },
         yAxis: {
             title: {
@@ -57,7 +54,7 @@ const EngageLineChart = () => {
             enabled: false // Hide credits
           },
         series: [{
-            name: 'Warehousepro Client',
+            name: 'Avg number of invoice per month',
             data: invoiceCountsArray
         }],
         responsive: {
@@ -74,6 +71,7 @@ const EngageLineChart = () => {
                 }
             }]
         }
+        
     };
 
       setChartOptions(options);
@@ -83,6 +81,12 @@ const EngageLineChart = () => {
   }, []);
   return (
     <div>
+    {
+        eulerMail==="eulerMail"?<></>
+        :
+        <h1 className='text-center text-xl text-green-600'>WarehousePro Engagement</h1>
+    }
+    
       <HighchartsReact
             highcharts={Highcharts}
             options={chartOptions}

@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 
 heatmap(Highcharts);
 //
-export const Cohorts = ({ weeksData }) => {
-  const [chartOptions, setChartOptions] = useState(null);
+const ActiveCohort = () => {
+    const [chartOptions, setChartOptions] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        "https://emapp-backend.vercel.app/warehousepro/cohort"
+        "https://emapp-backend.vercel.app/warehousepro/activeCohort"
       );
       const data = await response.json();
       // console.log(data)
@@ -85,13 +85,13 @@ export const Cohorts = ({ weeksData }) => {
           formatter: function () {
             return (
               "<b>" +
-              this.series.xAxis.categories[this.point.x] +
+              this.series.xAxis.categories[this.point.y] +
               "</b> has <br>" +
               "<b>" +
               this.point.value +
-              "</b> active clients whose Date Billed <br>" +
+              "</b> active clients from <br>" +
               "<b>" +
-              this.series.yAxis.categories[this.point.y] +
+              this.series.yAxis.categories[this.point.x] +
               "</b>"
             );
           },
@@ -132,13 +132,12 @@ export const Cohorts = ({ weeksData }) => {
   }, []);
   return (
     <div className="cohortChart ">
-      <h1 className="text-center text-xl text-green-600">Cohort Active Clients Analysis by Date_Billed</h1>
+      <h1 className="text-center text-xl text-green-600">Cohort Active Clients Analysis</h1>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>
     </div>
-  );
-};
-// Cohorts.propTypes = {
-//   weeksData: PropTypes.array.isRequired,
-// };
+  )
+}
+
+export default ActiveCohort

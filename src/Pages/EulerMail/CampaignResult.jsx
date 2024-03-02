@@ -75,7 +75,7 @@ export const CampaignResult = () => {
       className="boxcontainer CRborder-scoop p-2 "
     >
       <div className="content">
-        <div className="text-2xl text-center font-medium text-cyan-200  cursor-pointer"  onClick={()=>navigate('/campaignresult')}> Campaign Result</div>
+        <div className="text-center text-xl text-green-400  cursor-pointer"  onClick={()=>navigate('/campaignresult')}> Campaign Result</div>
         <Bar options={options} height={200} data={data} />
       </div>
     </div>

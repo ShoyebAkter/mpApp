@@ -79,6 +79,9 @@ const LinearRegChart = () => {
     <div className="middleChart">
     <div className="greenDiv"></div>
     <div className="flex flex-col">
+    <h1 className="text-center text-xl text-green-600">
+        Total Sales Prediction Chart
+      </h1>
     { <HighchartsReact  highcharts={Highcharts} options={options} />}
     
     </div>

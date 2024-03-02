@@ -12,7 +12,6 @@ const ProductServiceChart = ({setSelectedProduct}) => {
         const response = await fetch("https://emapp-backend.vercel.app/warehousepro/productSales");
         const data = await response.json();
         
-        // Example data
         const newData = data.map(item => {
           return [
             item.Service,
@@ -24,7 +23,8 @@ const ProductServiceChart = ({setSelectedProduct}) => {
         const config = {
           chart: {
             type: 'column',
-            width: 1000
+            width: 1000,
+            height: 500
           },
           title: {
             text: 'Product & Service Sales',
@@ -46,7 +46,7 @@ const ProductServiceChart = ({setSelectedProduct}) => {
           },
           yAxis: {
             min: 0,
-            max: 400000,
+            max: 1000000,
             title: {
               text: '$ in Sales'
             }

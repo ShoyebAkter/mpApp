@@ -69,7 +69,7 @@ function SocialMediaChart() {
       <div >
         <div className="content">
           <div>
-          <h1 className="text-2xl text-center font-medium text-cyan-200 cursor-pointer mb-1" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
+          <h1 style={{"color":"#4ADE80"}} className="text-center text-xl  cursor-pointer mb-1" onClick={()=>navigate('/socialmedia')}>SocialMedia</h1>
           <div className="flex justify-around">
           <div style={{"backgroundColor":"#2a4e40"}}  className="text-white text-sm p-1 rounded-xl text-center">
                 Accounts Reached

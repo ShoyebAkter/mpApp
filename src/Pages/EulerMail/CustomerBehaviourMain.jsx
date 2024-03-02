@@ -87,7 +87,7 @@ function CustomerBehaviourMain() {
             </div>
             :
             <div>
-            <h1 className=' text-2xl text-center font-medium text-cyan-200 cursor-pointer'> Customer Behaviour</h1>
+            <h1  className=' text-center text-xl text-green-600 cursor-pointer'> Customer Behaviour</h1>
             <EngageLineChart/>
             </div>
             }

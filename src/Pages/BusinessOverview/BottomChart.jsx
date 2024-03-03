@@ -21,8 +21,16 @@ export const BottomChart = ({setSelectedCountry}) => {
   // console.log(users);
   
 
-  const handleCountryClick = (feature, event) => {
-      setSelectedCountry(feature.properties.name);
+  const handleCountryClick = (feature) => {
+      
+      if(feature.properties.name==="UK"){
+        setSelectedCountry("United Kingdom")
+      }else if(feature.properties.name==="Korea"){
+        setSelectedCountry("South Korea")
+      }
+      else{
+        setSelectedCountry(feature.properties.name);
+      }
       // You can perform any other actions here based on the clicked country
   };
 
@@ -43,7 +51,7 @@ export const BottomChart = ({setSelectedCountry}) => {
     
     const countryCountsArray = Object.entries(countryCounts).map(([country, count]) => ({
       id: country, // Use the country name as the id
-      value: count,
+      value: 1,
     }));
 
     return countryCountsArray;

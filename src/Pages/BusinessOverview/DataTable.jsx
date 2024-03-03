@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { callApi } from "../EulerMail/getSalesData";
 
-const DataTable = ({stateName,selectedProduct,cohortYear,activeYear}) => {
+const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeYear}) => {
     const [orderData,setOrderData]=useState([]);
     const [filteredData, setFilteredData] = useState([]);
     // console.log(selectedProduct)
@@ -22,11 +22,14 @@ const DataTable = ({stateName,selectedProduct,cohortYear,activeYear}) => {
         const objectsWithyear= data2.filter(obj => obj.Activity_Year.includes(parseInt(activeYear, 10)));
         
         setFilteredData(objectsWithyear);
+      }else if(selectedCountry){
+        const data = orderData.filter(obj => obj.country === selectedCountry);
+          setFilteredData(data);
       }
       else{
         setFilteredData(orderData); 
       }
-  }, [stateName,selectedProduct, orderData,cohortYear,activeYear]);
+  }, [stateName,selectedProduct, orderData,cohortYear,activeYear,selectedCountry]);
 // console.log(cohortYear)
 
   return (

@@ -24,7 +24,7 @@ const PredictionChart = () => {
         chart: {
           type: "line",
           renderTo: "container",
-          width: 1000,
+          width: 1200,
           height:320
         },
         title: {

@@ -26,7 +26,7 @@ export const Main = () => {
   if (!user) {
     navigate("/login");
   }
-  // console.log(selectedCountry)
+  console.log(selectedCountry)
   return (
     <div className="overviewMain flex justify-between">
       <div
@@ -91,7 +91,7 @@ export const Main = () => {
         </div>
         <div className="tableArea">
           <div className="greenDiv"></div>
-          <DataTable selectedProduct={selectedProduct} stateName={stateName}/>
+          <DataTable selectedCountry={selectedCountry} selectedProduct={selectedProduct} stateName={stateName}/>
         </div>
       </div>
       

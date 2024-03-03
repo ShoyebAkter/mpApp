@@ -191,7 +191,8 @@ const MapChart = ({ setSelectedCountry, setStateName }) => {
     <div>
       <button
         type="button"
-        onClick={()=>setSelectedCountry(null)}
+        onClick={()=>{setStateName(null);
+        setSelectedCountry(null)}}
         className="bg-green-700 text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-red-700 hover:text-white px-3"
       >
         <div className="flex flex-row align-middle">

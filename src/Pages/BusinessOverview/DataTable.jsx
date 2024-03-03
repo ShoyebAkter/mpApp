@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { callApi } from "../EulerMail/getSalesData";
 
-const DataTable = ({stateName,selectedProduct}) => {
+const DataTable = ({stateName,selectedProduct,cohortYear,activeYear}) => {
     const [orderData,setOrderData]=useState([]);
     const [filteredData, setFilteredData] = useState([]);
     // console.log(selectedProduct)
@@ -17,11 +17,18 @@ const DataTable = ({stateName,selectedProduct}) => {
         const data = orderData.filter(obj => obj.Product === selectedProduct);
           setFilteredData(data);
           // If no stateName is provided, set filteredData to the original orderData
-      }else{
+      }else if(activeYear && cohortYear){
+        const data2 = orderData.filter(obj => obj.Cohort_Year===parseInt(cohortYear, 10));
+        const objectsWithyear= data2.filter(obj => obj.Activity_Year.includes(parseInt(activeYear, 10)));
+        
+        setFilteredData(objectsWithyear);
+      }
+      else{
         setFilteredData(orderData); 
       }
-  }, [stateName,selectedProduct, orderData]);
-    // console.log(filteredData)
+  }, [stateName,selectedProduct, orderData,cohortYear,activeYear]);
+// console.log(cohortYear)
+
   return (
     <div className="overflow-x-auto">
     <h1 style={{"background":"#FFFFFF","color":"green"}} className="text-center text-xl">Business Overview Table</h1>

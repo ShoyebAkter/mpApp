@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 heatmap(Highcharts);
 //
-const ActiveCohort = () => {
+const ActiveCohort = ({setCohortYear,setActiveYear}) => {
     const [chartOptions, setChartOptions] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -83,6 +83,8 @@ const ActiveCohort = () => {
         },
         tooltip: {
           formatter: function () {
+            setCohortYear(this.series.xAxis.categories[this.point.y]);
+            setActiveYear(this.series.yAxis.categories[this.point.x])
             return (
               "<b>" +
               this.series.xAxis.categories[this.point.y] +
@@ -130,6 +132,7 @@ const ActiveCohort = () => {
     };
     fetchData();
   }, []);
+  // console.log(cohortYear,activeYear)
   return (
     <div className="cohortChart ">
       <h1 className="text-center text-xl text-green-600">Cohort Active Clients Analysis</h1>

@@ -22,6 +22,8 @@ import ActiveCohort from "./ActiveCohort"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [cohortYear,setCohortYear]=useState(0)
+    const [activeYear,setActiveYear]=useState(0)
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate()
   if (loading) return <Loading></Loading>
@@ -74,7 +76,7 @@ export const CustomerBehaviour = () => {
         <WarehouseproCustomer/>
         </div>
         <div className="clientSection">
-        <ActiveCohort/>
+        <ActiveCohort setCohortYear={setCohortYear} setActiveYear={setActiveYear} />
         
         </div>
         <div className="clientSection">
@@ -86,7 +88,7 @@ export const CustomerBehaviour = () => {
             <Heatmap/>
         </div> */}
         <div className="firstChartSection">
-            <DataTable/>
+            <DataTable cohortYear={cohortYear} activeYear={activeYear} />
         </div>
       </div>
     </div>

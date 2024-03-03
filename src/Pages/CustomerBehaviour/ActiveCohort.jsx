@@ -35,7 +35,7 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
           mapDataArray.push([index, yearIndex, data[year]]);
         });
       });
-      //   console.log(mapDataArray)
+        // console.log(mapDataArray)
       const options = {
         chart: {
           type: "heatmap",
@@ -134,7 +134,7 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
   }, []);
   // console.log(cohortYear,activeYear)
   return (
-    <div className="cohortChart ">
+    <div className="activecohortChart ">
       <h1 className="text-center text-xl text-green-600">Cohort Active Clients Analysis</h1>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />

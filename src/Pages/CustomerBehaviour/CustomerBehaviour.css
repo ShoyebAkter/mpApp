@@ -69,6 +69,12 @@
 }
 .cohortChart{
     width: 1200px;
+    height: 700px;
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+.activecohortChart{
+    width: 1200px;
     --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity));
 }

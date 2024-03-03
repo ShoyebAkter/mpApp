@@ -13,47 +13,52 @@ export const Cohorts = ({ weeksData }) => {
         "https://emapp-backend.vercel.app/warehousepro/cohort"
       );
       const data = await response.json();
-      // console.log(data)
-      const years = [
-        "2014",
-        "2015",
-        "2016",
-        "2017",
-        "2018",
-        "2019",
-        "2020",
-        "2021",
-        "2022",
-        "2023",
-        "2024"
+      
+      const productsArray = data.map(obj => obj.product);
+      // console.log(productsArray)
+      const months = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
       ]; // Array of years
       const mapDataArray = [];
       data.map((data, index) => {
         // Loop through each year
-        years.forEach((year, yearIndex) => {
+        months.forEach((month, monthIndex) => {
           // Push [index, yearIndex, mapData[index][year]] to mapDataArray
-          mapDataArray.push([index, yearIndex, data[year]]);
+          mapDataArray.push([monthIndex,index , data[month]]);
         });
       });
-      //   console.log(mapDataArray)
+      // console.log(mapDataArray)
+      // //   console.log(mapDataArray)
       const options = {
         chart: {
           type: "heatmap",
           marginTop: 40,
           marginBottom: 80,
           plotBorderWidth: 1,
+          height:650
         },
         title: {
-          text: "Active client per year",
+          text: "Heatmap of Service Usage by Month",
           style: {
             fontSize: "1em",
           },
         },
         xAxis: {
-          categories: years,
+          categories: months,
         },
         yAxis: {
-          categories: years,
+          categories: productsArray,
           title: null,
           reversed: true,
         },
@@ -85,13 +90,13 @@ export const Cohorts = ({ weeksData }) => {
           formatter: function () {
             return (
               "<b>" +
-              this.series.xAxis.categories[this.point.x] +
-              "</b> has <br>" +
+              this.series.yAxis.categories[this.point.y] +
+              "</b> sold<br>" +
               "<b>" +
               this.point.value +
-              "</b> active clients whose Date Billed <br>" +
+              "</b> product in month <br>" +
               "<b>" +
-              this.series.yAxis.categories[this.point.y] +
+              this.series.xAxis.categories[this.point.x] +
               "</b>"
             );
           },
@@ -132,7 +137,7 @@ export const Cohorts = ({ weeksData }) => {
   }, []);
   return (
     <div className="cohortChart ">
-      <h1 className="text-center text-xl text-green-600">Cohort Active Clients Analysis by Date_Billed</h1>
+      <h1 className="text-center text-xl text-green-600">Heatmap of Service Usage by Month</h1>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>

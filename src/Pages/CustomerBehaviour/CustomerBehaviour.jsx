@@ -19,6 +19,7 @@ import SmallCLient from "../EulerMail/SmallCLient";
 import Heatmap from "./HeatMap"
 import DataTable from "../BusinessOverview/DataTable"
 import ActiveCohort from "./ActiveCohort"
+import FalseActiveCohort from "./FalseActiveCohort"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -76,7 +77,7 @@ export const CustomerBehaviour = () => {
         <WarehouseproCustomer/>
         </div>
         <div className="clientSection">
-        <ActiveCohort falseData={"falseData"} setCohortYear={setCohortYear} setActiveYear={setActiveYear} />
+        <FalseActiveCohort/>
         
         </div>
         <div className="clientSection">

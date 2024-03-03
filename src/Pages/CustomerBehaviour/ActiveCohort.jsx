@@ -5,13 +5,21 @@ import { useEffect, useState } from "react";
 
 heatmap(Highcharts);
 //
-const ActiveCohort = ({setCohortYear,setActiveYear}) => {
+const ActiveCohort = ({falseData,setCohortYear,setActiveYear}) => {
     const [chartOptions, setChartOptions] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        "https://emapp-backend.vercel.app/warehousepro/activeCohort"
-      );
+      let response;
+      if(falseData==="falseData"){
+         response = await fetch(
+          "https://emapp-backend.vercel.app/warehousepro/cohortwithNegative"
+        );
+      }else{
+         response = await fetch(
+          "https://emapp-backend.vercel.app/warehousepro/activeCohort"
+        );
+      }
+      
       const data = await response.json();
       // console.log(data)
       const years = [

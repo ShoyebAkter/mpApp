@@ -15,7 +15,7 @@ export const BottomChart = ({setSelectedCountry}) => {
     user.email==="fuad@gmail.com" ?
     callApi('https://emapp-backend.vercel.app/users',setUsers)
     :
-    callApi('https://emapp-backend.vercel.app/warehousepro/clientCountry',setUsers)
+    callApi('https://emapp-backend.vercel.app/warehousepro/mainData',setUsers)
   },[])
 
   // console.log(users);
@@ -51,7 +51,7 @@ export const BottomChart = ({setSelectedCountry}) => {
     
     const countryCountsArray = Object.entries(countryCounts).map(([country, count]) => ({
       id: country, // Use the country name as the id
-      value: 1,
+      value: count,
     }));
 
     return countryCountsArray;

@@ -10,7 +10,6 @@ import { FaDatabase } from "react-icons/fa6";
 import "./TopChart.css";
 import LinearRegChart from "../EulerMail/LinearRegChart";
 
-import MeanMedian from "./MeanMedian";
 import ProductServiceChart from "../CustomerBehaviour/ProductServiceChart";
 import BusinessTable from "./BusinessTable";
 import MapChart from "./MapChart";
@@ -50,7 +49,7 @@ export const Main = () => {
       </div>
       <div className="mx-auto">
         <TopChart />
-        <MeanMedian />
+        
         <div className="topChart">
           <div className="greenDiv"></div>
           <BusinessTable/>

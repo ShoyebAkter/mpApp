@@ -29,7 +29,10 @@ const MeanChart = ({chartType}) => {
         
     },[])
     orderData.sort((a, b) => a.year - b.year);
-    // console.log(data)
+    const totalMedian = orderData.map(item => item.median).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+
+    // console.log(totalMedian)
     const options = {
         responsive: true,
         plugins: {
@@ -73,7 +76,44 @@ const MeanChart = ({chartType}) => {
     };
 
       return <div className='rounded-xl my-5'>
-      <Line width={400} height={200} options={options} data={data} />
+      <h1 className="text-center text-xl text-green-600">
+        Sales Median Chart
+      </h1>
+      <div className="relative w-20 h-20 mx-auto">
+        <svg className="w-full h-full" viewBox="0 0 100 100">
+          <circle
+            className="text-gray-200 stroke-current"
+            strokeWidth="10"
+            cx="50"
+            cy="50"
+            r="40"
+            fill="transparent"
+          ></circle>
+          <circle
+            style={{ color: "#439541" }}
+            className=" progress-ring__circle stroke-current"
+            strokeWidth="10"
+            strokeLinecap="round"
+            cx="50"
+            cy="50"
+            r="40"
+            fill="transparent"
+            strokeDashoffset="calc(400 - (400 * 45) / 100)"
+          ></circle>
+
+          <text
+            x="50"
+            y="50"
+            fontFamily="Verdana"
+            fontSize="16"
+            textAnchor="middle"
+            alignmentBaseline="middle"
+          >
+            {totalMedian}$
+          </text>
+        </svg>
+      </div>
+      <Line width={250} height={200} options={options} data={data} />
   </div>;
 }
 

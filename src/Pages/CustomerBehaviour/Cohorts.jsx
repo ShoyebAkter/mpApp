@@ -76,7 +76,7 @@ export const Cohorts = ({ weeksData }) => {
         colorAxis: {
           min: 0,
           minColor: "#FFFFFF",
-          maxColor: Highcharts.getOptions().colors[0],
+          maxColor: "#439541",
         },
         legend: {
           align: "right",

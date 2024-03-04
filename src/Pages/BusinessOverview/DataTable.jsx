@@ -30,7 +30,7 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
         setFilteredData(orderData); 
       }
   }, [stateName,selectedProduct, orderData,cohortYear,activeYear,selectedCountry]);
-// console.log(cohortYear)
+// console.log(cohortYear,activeYear)
 
   return (
     <div className="overflow-x-auto">
@@ -51,7 +51,7 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
     {  filteredData.map((item, index) => (
       <tr key={index}>
         <td>{item.name}</td>
-        <td>{item.total}$</td>
+        <td>{item.total.toLocaleString()}$</td>
         <td>{item.date}</td>
         <td>{item.country}</td>
         <td>{item.state}</td>

@@ -130,6 +130,7 @@ export const BottomChart = ({setSelectedCountry}) => {
         }
       ]}
       onClick={handleCountryClick}
+      
     />
   )
 }

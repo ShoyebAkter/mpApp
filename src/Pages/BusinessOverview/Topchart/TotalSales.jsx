@@ -153,7 +153,7 @@ export const TotalSales = () => {
         </svg>
       </div>
       {/* <h1 className='font-bold '>Total Sales:</h1> */}
-      <Line width={300} height={200} options={options} data={data} />
+      <Line width={250} height={200} options={options} data={data} />
     </div>
   );
 };

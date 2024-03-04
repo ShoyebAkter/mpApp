@@ -69,7 +69,7 @@ const ScatterChart = () => {
           },
         },
         tooltip: {
-          pointFormat: "Client Longevity: {point.x} month <br/>Client Total: {point.y} ",
+          pointFormat: "Client Longevity: {point.x} month <br/>Client Total Amount: {point.y} ",
         },
         credits: {
           enabled: false // Hide credits

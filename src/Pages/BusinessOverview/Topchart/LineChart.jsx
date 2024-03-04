@@ -19,8 +19,8 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-export const LineChart = ({averageOrder}) => {
-    const totalAvg=averageOrder.reduce((total, obj) => total + obj.averageTotalPrice, 0);
+export const LineChart = ({averageOrder,totalSales,totalOrder}) => {
+    const totalAvg=totalSales/totalOrder;
 
     // console.log(totalAvg);
     const options = {
@@ -99,11 +99,14 @@ export const LineChart = ({averageOrder}) => {
 
   </svg>
 </div>
-            <Line width={300} height={200} options={options} data={data} />
+            <Line width={250} height={200} options={options} data={data} />
         </div>
     )
 }
 LineChart.propTypes = 
     {
-        averageOrder:PropTypes.array.isRequired
+        averageOrder:PropTypes.array.isRequired,
+        totalSales:PropTypes.number.isRequired,
+        totalOrder:PropTypes.number.isRequired,
+        
     }

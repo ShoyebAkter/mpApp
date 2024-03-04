@@ -5,6 +5,7 @@ import { TotalSales } from "./Topchart/TotalSales";
 import { Orders } from "./Topchart/Orders";
 import { OrderAvg } from "./Topchart/OrderAvg";
 import './TopChart.css'
+import MeanChart from "./MeanChart";
 export const TopChart = () => {
     const [user] = useAuthState(auth);
     return (
@@ -19,7 +20,7 @@ export const TopChart = () => {
                 null
             }
             <OrderAvg/>
-            
+            <MeanChart chartType={"median"}/>
         </div>
     )
 }

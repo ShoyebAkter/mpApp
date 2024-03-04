@@ -77,10 +77,6 @@ export const CustomerBehaviour = () => {
         <WarehouseproCustomer/>
         </div>
         <div className="clientSection">
-        <FalseActiveCohort/>
-        
-        </div>
-        <div className="clientSection">
         <ActiveCohort setCohortYear={setCohortYear} setActiveYear={setActiveYear} />
         
         </div>

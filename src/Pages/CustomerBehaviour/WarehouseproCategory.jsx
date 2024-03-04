@@ -24,6 +24,7 @@ ChartJS.register(
 
 const WarehouseproCategory = ({setSelectedCategory}) => {
     const [clients, setClients] = useState([]);
+    const [totalSales,setTotalSales]=useState(0)
     // console.log(user.uid)
     useEffect(() => {
         fetch('https://emapp-backend.vercel.app/warehousepro/clientCategory')
@@ -44,6 +45,10 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
             const clickedCategoryIndex = elements[0].index;
             const clickedCategory = categoryCountsArray[clickedCategoryIndex].category;
             setSelectedCategory(clickedCategory);
+            const  clickedData = clients.filter(obj => obj.category === clickedCategory);
+            const totalAmount = clickedData.reduce((sum, obj) => sum + obj.Line_Item_Amount, 0);
+            // console.log(clickedData)
+            setTotalSales(totalAmount)
         }
     };
 
@@ -86,10 +91,47 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
             }
         ],
     };
+    // console.log(totalSales)
   return (
-    <div>
+    <div className="flex">
+            <div>
             <h1 style={{"color":"green"}}  className='text-center text-xl '> Customer Category</h1>
-            <Bar options={options} width={500} height={300} data={data1} />
+            <Bar options={options} width={500} height={400} data={data1} />
+            </div>
+            <div className="relative w-42 h-42 mx-auto">
+        <svg className="w-full h-full" viewBox="0 0 100 100">
+          <circle
+            className="text-gray-200 stroke-current"
+            strokeWidth="10"
+            cx="50"
+            cy="50"
+            r="40"
+            fill="transparent"
+          ></circle>
+          <circle
+            style={{ color: "#439541" }}
+            className=" progress-ring__circle stroke-current"
+            strokeWidth="10"
+            strokeLinecap="round"
+            cx="50"
+            cy="50"
+            r="40"
+            fill="transparent"
+            strokeDashoffset="calc(400 - (400 * 45) / 100)"
+          ></circle>
+
+          <text
+            x="50"
+            y="50"
+            fontFamily="Verdana"
+            fontSize="16"
+            textAnchor="middle"
+            alignmentBaseline="middle"
+          >
+            {totalSales? totalSales.toLocaleString():0}$
+          </text>
+        </svg>
+      </div>
             </div>
   )
 }

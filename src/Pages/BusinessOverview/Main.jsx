@@ -25,7 +25,7 @@ export const Main = () => {
   if (!user) {
     navigate("/login");
   }
-  console.log(selectedCountry)
+  // console.log(selectedCountry)
   return (
     <div className="overviewMain flex justify-between">
       <div

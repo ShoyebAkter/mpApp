@@ -76,7 +76,8 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
         },
         onClick: handleBarClick,
     };
-
+    categoryCountsArray.sort((a, b) => a.count - b.count);
+    // console.log(categoryCountsArray)
     const labels =categoryCountsArray.map(client=>client.category);
 
     const data1 = {

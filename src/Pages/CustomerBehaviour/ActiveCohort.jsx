@@ -81,8 +81,8 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
         },
         tooltip: {
           formatter: function () {
-            setCohortYear(this.series.xAxis.categories[this.point.y]);
-            setActiveYear(this.series.yAxis.categories[this.point.x])
+            // console.log(this)
+            // 
             return (
               "<b>" +
               this.series.xAxis.categories[this.point.y] +
@@ -95,6 +95,18 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
               "</b>"
             );
           },
+        },
+        plotOptions: {
+          series: {
+            point: {
+              events: {
+                click: function () {
+                  setCohortYear(this.series.xAxis.categories[this.y]);
+            setActiveYear(this.series.yAxis.categories[this.x]) // Log the clicked data
+                }
+              }
+            }
+          }
         },
         series: [
           {

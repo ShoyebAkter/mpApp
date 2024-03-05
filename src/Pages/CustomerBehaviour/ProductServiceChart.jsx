@@ -31,7 +31,7 @@ const ProductServiceChart = ({setSelectedProduct}) => {
             text: 'Product & Service Sales',
             style: {
                 color: 'green',
-                fontWeight:"500",
+                fontWeight:"700",
                 fontSize:"24" // Set the desired color here
               }
           },
@@ -90,7 +90,7 @@ const ProductServiceChart = ({setSelectedProduct}) => {
   
 
   return (
-    <div>
+    <div className='mt-3'>
       {chartConfig && <HighchartsReact options={chartConfig} highcharts={Highcharts} />}
     </div>
   );

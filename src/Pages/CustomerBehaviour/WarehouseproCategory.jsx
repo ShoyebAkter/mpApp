@@ -95,7 +95,7 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
   return (
     <div className="flex">
             <div>
-            <h1 style={{"color":"green"}}  className='text-center text-xl '> Customer Category</h1>
+            <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer"> Customer Category</h1>
             <Bar options={options} width={500} height={400} data={data1} />
             </div>
             <div className="relative w-42 h-42 mx-auto">

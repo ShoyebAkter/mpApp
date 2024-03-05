@@ -85,7 +85,7 @@ const ScatterChart = () => {
 
   return (
     <div>
-    <h1 className='text-center text-xl text-green-600'>Client Longevity vs total amount</h1>
+    <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-2xl mb-3 cursor-pointer">Client Longevity vs total amount</h1>
       {chartOptions && (
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       )}

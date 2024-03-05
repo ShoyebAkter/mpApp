@@ -76,7 +76,7 @@ const MeanChart = ({chartType}) => {
     };
 
       return <div className='rounded-xl my-5'>
-      <h1 className="text-center text-xl text-green-600">
+      <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer">
         Sales Median Chart
       </h1>
       <div className="relative w-20 h-20 mx-auto">

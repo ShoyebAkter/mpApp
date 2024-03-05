@@ -1,4 +1,4 @@
-import { ResponsiveChoropleth } from "@nivo/geo";
+import { ResponsiveChoropleth  } from "@nivo/geo";
 import { geoFeatures } from '../../data/mockDataGeo';
 import { useEffect, useState } from "react";
 import { callApi } from "../EulerMail/getSalesData";
@@ -58,7 +58,7 @@ export const BottomChart = ({setSelectedCountry}) => {
   }
 
   const countedValues = countDuplicateValues();
-
+  
   // console.log(selectedCountry);
 
   return (
@@ -120,7 +120,7 @@ export const BottomChart = ({setSelectedCountry}) => {
           symbolSize: 18,
           effects: [
             {
-              on: 'hover',
+              on: 'none',
               style: {
                 itemTextColor: '#000000',
                 itemOpacity: 1

@@ -34,7 +34,7 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
 
   return (
     <div className="overflow-x-auto">
-    <h1 style={{"background":"#FFFFFF","color":"green"}} className="text-center text-xl">Business Overview Table</h1>
+    <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-2xl  cursor-pointer">Business Overview Table</h1>
     <table className="table table-sm table-pin-rows table-pin-cols">
   <thead className="thead">
     <tr>

@@ -73,7 +73,7 @@ function SocialMediaChart() {
   return (
     <div className="boxcontainer SMborder-scoop p-2 ">
       <div>
-        <h1 style={{"background":"#FFFFFF","color":"green","width":"300px"}} className="mx-auto text-center text-xl mb-1 cursor-pointer"
+        <h1 style={{"background":"#FFFFFF","color":"#439541","width":"300px"}} className="mx-auto font-bold text-center text-xl  cursor-pointer"
           
           onClick={() => navigate("/socialmedia")}
         >

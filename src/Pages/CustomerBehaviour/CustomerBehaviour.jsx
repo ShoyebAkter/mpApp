@@ -14,8 +14,6 @@ import ScatterChart from "./ScatterChart"
 import EngageLineChart from "./EngageLineChart"
 import CustomerTable from "./CustomerTable"
 import WarehouseproCategory from "./WarehouseproCategory"
-import WarehouseproCustomer from "../BusinessOverview/WarehouseproCustomer"
-import SmallCLient from "../EulerMail/SmallCLient";
 import DataTable from "../BusinessOverview/DataTable"
 import ActiveCohort from "./ActiveCohort"
 export const CustomerBehaviour = () => {
@@ -70,13 +68,13 @@ export const CustomerBehaviour = () => {
         <div className="firstChartSection">
           <CustomerTable selectedCategory={selectedCategory} customerTable={"categoryTable"}/>
         </div>
-        <div className="firstChartSection">
+        {/* <div className="firstChartSection">
         <SmallCLient/>
         </div>
         <div className="clientSection">
         
         <WarehouseproCustomer/>
-        </div>
+        </div> */}
         <div className="clientSection">
         <ActiveCohort setCohortYear={setCohortYear} setActiveYear={setActiveYear} />
         

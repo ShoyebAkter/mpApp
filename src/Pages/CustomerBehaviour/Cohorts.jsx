@@ -49,10 +49,7 @@ export const Cohorts = ({ weeksData }) => {
           height:650
         },
         title: {
-          text: "Heatmap of Service Usage by Month",
-          style: {
-            fontSize: "1em",
-          },
+          text: null
         },
         xAxis: {
           categories: months,
@@ -137,7 +134,7 @@ export const Cohorts = ({ weeksData }) => {
   }, []);
   return (
     <div className="cohortChart ">
-      <h1 className="text-center text-xl text-green-600">Heatmap of Service Usage by Month</h1>
+      <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer">Heatmap of Service Usage by Month</h1>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>

@@ -84,7 +84,7 @@ const EngageLineChart = ({eulerMail}) => {
     {
         eulerMail==="eulerMail"?<></>
         :
-        <h1 className='text-center text-xl text-green-600'>WarehousePro Engagement</h1>
+        <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-2xl mb-2 cursor-pointer">WarehousePro Engagement</h1>
     }
     
       <HighchartsReact

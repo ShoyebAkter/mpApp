@@ -45,10 +45,7 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
           plotBorderWidth: 1,
         },
         title: {
-          text: "Active client per year",
-          style: {
-            fontSize: "1em",
-          },
+          text: null
         },
         xAxis: {
           categories: years,
@@ -136,7 +133,7 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
   // console.log(cohortYear,activeYear)
   return (
     <div className="activecohortChart ">
-      <h1 className="text-center text-xl text-green-600">Cohort Active Clients Analysis</h1>
+      <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer">Cohort Active Clients Analysis</h1>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>

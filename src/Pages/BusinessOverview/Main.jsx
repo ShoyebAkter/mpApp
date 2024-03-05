@@ -76,7 +76,7 @@ export const Main = () => {
           }}
           className=" rounded-2xl py-1"
         >
-          <h1 className="text-center text-3xl text-green-600 ">
+          <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-2xl mb-3 cursor-pointer">
             Users in Each Country/State
           </h1>
           {

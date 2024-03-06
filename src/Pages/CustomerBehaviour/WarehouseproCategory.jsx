@@ -77,8 +77,10 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
         },
         onClick: handleBarClick,
     };
-    categoryCountsArray.sort((a, b) => a.count - b.count);
-    // console.log(categoryCountsArray)
+    const catArr = ['Champion', 'Loyal Customers', 'Potential Loyalist', 'Recent Customers', 'About to Sleep', 'At Risk', 'Can\'t Lose', 'Lost'];
+    categoryCountsArray.sort((a, b) => {
+      return catArr.indexOf(a.category) - catArr.indexOf(b.category);
+  });
     const labels =categoryCountsArray.map(client=>client.category);
 
     const data1 = {

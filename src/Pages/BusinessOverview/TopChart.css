@@ -4,7 +4,7 @@
 }
 .topChart{
     display: flex;
-    width:1300px;
+    width:1400px;
     border-radius: 1rem/* 16px */;
     margin-top: 1.25rem/* 20px */;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
@@ -14,7 +14,7 @@
 }
 .tableArea{
     display: flex;
-    width:1300px;
+    width:1400px;
     height: 500px;
     border-radius: 1rem/* 16px */;
     margin-top: 1.25rem/* 20px */;
@@ -27,7 +27,7 @@
     border-start-start-radius: 1rem/* 16px */;
     border-end-start-radius: 1rem/* 16px */;
     width: 30px;
-    background: #439541
+    background: #294F41
 }
 .middleChart{
     display: flex;
@@ -36,7 +36,7 @@
     margin-bottom: 1.25rem/* 20px */;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     gap:20px;
-    width:1300px;
+    width:1400px;
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }

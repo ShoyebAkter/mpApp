@@ -76,7 +76,7 @@ const PredictionChart = () => {
   }, []);
   return (
     <div>
-    <h1 className="text-center text-xl text-green-600">
+    <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl mb-2 cursor-pointer">
         Total Sales Prediction Chart
       </h1>
       <HighchartsReact  highcharts={Highcharts} options={options} />

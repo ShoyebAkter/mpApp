@@ -76,7 +76,7 @@ const MeanChart = ({chartType}) => {
     };
 
       return <div className='rounded-xl my-5'>
-      <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer">
+      <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
         Sales Median Chart
       </h1>
       <div className="relative w-20 h-20 mx-auto">
@@ -90,7 +90,7 @@ const MeanChart = ({chartType}) => {
             fill="transparent"
           ></circle>
           <circle
-            style={{ color: "#439541" }}
+            style={{ color: "#294F41" }}
             className=" progress-ring__circle stroke-current"
             strokeWidth="10"
             strokeLinecap="round"

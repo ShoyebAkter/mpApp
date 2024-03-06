@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 heatmap(Highcharts);
 //
-export const Cohorts = ({ weeksData }) => {
+export const Cohorts = () => {
   const [chartOptions, setChartOptions] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -134,7 +134,7 @@ export const Cohorts = ({ weeksData }) => {
   }, []);
   return (
     <div className="cohortChart ">
-      <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer">Heatmap of Service Usage by Month</h1>
+      <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer">Heatmap of Service Usage by Month</h1>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>

@@ -67,7 +67,7 @@ export const LineChart = ({averageOrder,totalSales,totalOrder}) => {
     };
     return (
         <div className='rounded-xl my-5'>
-        <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer">
+        <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
         Average Order
       </h1>
 
@@ -84,7 +84,7 @@ export const LineChart = ({averageOrder,totalSales,totalOrder}) => {
       fill="transparent"
     ></circle>
     <circle
-      style={{"color":"#439541"}}
+      style={{"color":"#294F41"}}
       className=" progress-ring__circle stroke-current"
       strokeWidth="10"
       strokeLinecap="round"
@@ -95,7 +95,7 @@ export const LineChart = ({averageOrder,totalSales,totalOrder}) => {
       strokeDashoffset="calc(400 - (400 * 45) / 100)"
     ></circle>
     
-    <text x="50" y="50" fontFamily="Verdana" fontSize="16" textAnchor="middle" alignmentBaseline="middle">{(totalAvg/1000).toFixed(1)}k$</text>
+    <text x="50" y="50" fontFamily="Verdana" fontSize="16" textAnchor="middle" alignmentBaseline="middle">{(totalAvg).toFixed(1)}$</text>
 
   </svg>
 </div>

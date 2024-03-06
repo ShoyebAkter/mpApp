@@ -4,6 +4,7 @@
 }
 .table{
     background-color: white;
+    width: 1250px !important;
 }
 .thead{
     background-color: white;

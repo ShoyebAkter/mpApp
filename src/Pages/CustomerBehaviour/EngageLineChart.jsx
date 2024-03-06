@@ -3,7 +3,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useEffect, useState } from 'react';
 
-
+import PropTypes from "prop-types"
 
 const EngageLineChart = ({eulerMail}) => {
     const [chartOptions, setChartOptions] = useState(null);
@@ -84,7 +84,7 @@ const EngageLineChart = ({eulerMail}) => {
     {
         eulerMail==="eulerMail"?<></>
         :
-        <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-2xl mb-2 cursor-pointer">WarehousePro Engagement</h1>
+        <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl mb-2 cursor-pointer">WarehousePro Engagement</h1>
     }
     
       <HighchartsReact
@@ -96,3 +96,8 @@ const EngageLineChart = ({eulerMail}) => {
 }
 
 export default EngageLineChart
+EngageLineChart.propTypes = 
+    {
+        eulerMail :PropTypes.string.isRequired,
+
+    }

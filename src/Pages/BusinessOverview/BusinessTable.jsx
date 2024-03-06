@@ -10,8 +10,8 @@ const BusinessTable = () => {
     const sortedOrderData = orderData.slice().sort((a, b) => a.year - b.year);
 
   return (
-    <div className="">
-  <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-2xl  cursor-pointer mb-3">Business Table</h1>
+    <div className="pb-10">
+  <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer mb-3">Business Table</h1>
   <table className="table table-sm table-pin-rows table-pin-cols">
     <thead className="thead">
       <tr>

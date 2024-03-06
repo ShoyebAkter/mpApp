@@ -29,7 +29,7 @@ export const Main = () => {
   return (
     <div className="overviewMain flex justify-between">
       <div
-        style={{ background: "#439541" }}
+        style={{ background: "#294F41" }}
         className="leftGreenSec px-3 pt-10"
       >
         <div
@@ -76,7 +76,7 @@ export const Main = () => {
           }}
           className=" rounded-2xl py-1"
         >
-          <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-2xl mb-3 cursor-pointer">
+          <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
             Users in Each Country/State
           </h1>
           {

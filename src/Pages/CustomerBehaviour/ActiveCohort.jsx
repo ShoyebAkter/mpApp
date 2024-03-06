@@ -2,17 +2,17 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import heatmap from "highcharts/modules/heatmap"; // Import heatmap module
 import { useEffect, useState } from "react";
-
+import PropTypes from "prop-types"
 heatmap(Highcharts);
 //
-const ActiveCohort = ({setCohortYear,setActiveYear}) => {
-    const [chartOptions, setChartOptions] = useState(null);
+const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
+  const [chartOptions, setChartOptions] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
         "https://emapp-backend.vercel.app/warehousepro/activeCohort"
       );
-      
+
       const data = await response.json();
       // console.log(data)
       const years = [
@@ -26,7 +26,7 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
         "2021",
         "2022",
         "2023",
-        "2024"
+        "2024",
       ]; // Array of years
       const mapDataArray = [];
       data.map((data, index) => {
@@ -36,7 +36,7 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
           mapDataArray.push([index, yearIndex, data[year]]);
         });
       });
-        // console.log(mapDataArray)
+      // console.log(mapDataArray)
       const options = {
         chart: {
           type: "heatmap",
@@ -45,7 +45,7 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
           plotBorderWidth: 1,
         },
         title: {
-          text: null
+          text: null,
         },
         xAxis: {
           categories: years,
@@ -56,8 +56,8 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
           reversed: true,
         },
         credits: {
-            enabled: false // Hide credits
-          },
+          enabled: false, // Hide credits
+        },
         accessibility: {
           point: {
             descriptionFormat:
@@ -82,7 +82,7 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
         tooltip: {
           formatter: function () {
             // console.log(this)
-            // 
+            //
             return (
               "<b>" +
               this.series.xAxis.categories[this.point.y] +
@@ -102,11 +102,11 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
               events: {
                 click: function () {
                   setCohortYear(this.series.xAxis.categories[this.y]);
-            setActiveYear(this.series.yAxis.categories[this.x]) // Log the clicked data
-                }
-              }
-            }
-          }
+                  setActiveYear(this.series.yAxis.categories[this.x]); // Log the clicked data
+                },
+              },
+            },
+          },
         },
         series: [
           {
@@ -145,12 +145,23 @@ const ActiveCohort = ({setCohortYear,setActiveYear}) => {
   // console.log(cohortYear,activeYear)
   return (
     <div className="activecohortChart ">
-      <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer">Cohort Active Clients Analysis</h1>
+      <h1
+        style={{ background: "#FFFFFF", color: "#294F41" }}
+        className="font-bold text-center text-xl  cursor-pointer"
+      >
+        Cohort Active Clients Analysis
+      </h1>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ActiveCohort
+export default ActiveCohort;
+ActiveCohort.propTypes = 
+    {
+      setCohortYear :PropTypes.func.isRequired,
+      setActiveYear:PropTypes.func.isRequired,
+
+    }

@@ -17,6 +17,7 @@ const CategoryTable = () => {
                         <td>Name</td>
                         <td>Line Item Amount</td>
                         <td>Client Create Date</td>
+                        <td>Last Order Date</td>
                         <td>Client Longevity Months</td>
                         <th></th>
                     </tr>
@@ -28,6 +29,7 @@ const CategoryTable = () => {
                             <td>{item.name}</td>
                             <td>{item.Line_Item_Amount}</td>
                             <td>{item.Client_Create_Date}</td>
+                            <td>{item.Last_Order_Date}</td>
                             <td>{item.Client_Longevity_Months}</td>
                             <th>{index + 1}</th>
                         </tr>

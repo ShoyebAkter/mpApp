@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { callApi } from "../EulerMail/getSalesData";
-
+import PropTypes from "prop-types"
 const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeYear}) => {
     const [orderData,setOrderData]=useState([]);
     const [filteredData, setFilteredData] = useState([]);
@@ -34,7 +34,7 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
 
   return (
     <div className="overflow-x-auto">
-    <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-2xl  cursor-pointer">Business Overview Table</h1>
+    <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">Business Overview Table</h1>
     <table className="table table-sm table-pin-rows table-pin-cols">
   <thead className="thead">
     <tr>
@@ -67,3 +67,12 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
 }
 
 export default DataTable
+DataTable.propTypes = 
+    {
+      selectedCountry:PropTypes.string.isRequired,
+      stateName:PropTypes.string.isRequired,
+      selectedProduct:PropTypes.string.isRequired,
+      cohortYear:PropTypes.string.isRequired,
+      activeYear:PropTypes.string.isRequired
+
+    }

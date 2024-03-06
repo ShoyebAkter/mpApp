@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-
+import PropTypes from "prop-types"
 const ProductServiceChart = ({setSelectedProduct}) => {
   const [chartConfig, setChartConfig] = useState(null);
   
@@ -28,12 +28,8 @@ const ProductServiceChart = ({setSelectedProduct}) => {
             height: 500
           },
           title: {
-            text: 'Product & Service Sales',
-            style: {
-                color: 'green',
-                fontWeight:"700",
-                fontSize:"24" // Set the desired color here
-              }
+            text: null,
+            
           },
           xAxis: {
             type: 'category',
@@ -91,9 +87,15 @@ const ProductServiceChart = ({setSelectedProduct}) => {
 
   return (
     <div className='mt-3'>
+    <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-4">Product & Service</h1>
       {chartConfig && <HighchartsReact options={chartConfig} highcharts={Highcharts} />}
     </div>
   );
 };
 
 export default ProductServiceChart;
+ProductServiceChart.propTypes = 
+    {
+      setSelectedProduct :PropTypes.func.isRequired,
+
+    }

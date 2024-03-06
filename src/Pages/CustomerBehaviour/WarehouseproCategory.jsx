@@ -24,7 +24,7 @@ ChartJS.register(
 
 const WarehouseproCategory = ({setSelectedCategory}) => {
     const [clients, setClients] = useState([]);
-    const [totalSales,setTotalSales]=useState(0)
+    const [totalSales,setTotalSales]=useState(0);
     // console.log(user.uid)
     useEffect(() => {
         fetch('https://emapp-backend.vercel.app/warehousepro/clientCategory')
@@ -39,7 +39,8 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
         return acc;
       }, {});
       
-
+      const amount=clients.reduce((sum, obj) => sum + obj.Line_Item_Amount, 0);
+      // console.log(amount)
       const handleBarClick = (event, elements) => {
         if (elements.length > 0) {
             const clickedCategoryIndex = elements[0].index;
@@ -96,7 +97,7 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
   return (
     <div className="flex">
             <div>
-            <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer"> Customer Category</h1>
+            <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer"> Customer Category</h1>
             <Bar options={options} width={500} height={400} data={data1} />
             </div>
             <div className="relative w-42 h-42 mx-auto">
@@ -110,7 +111,7 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
             fill="transparent"
           ></circle>
           <circle
-            style={{ color: "#439541" }}
+            style={{ color: "#294F41" }}
             className=" progress-ring__circle stroke-current"
             strokeWidth="10"
             strokeLinecap="round"
@@ -129,7 +130,7 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            {totalSales? totalSales.toLocaleString():0}$
+            {totalSales? `${(totalSales/1000).toFixed(2)}k`:`${(amount/1000000).toFixed(2)}m`}$
           </text>
         </svg>
       </div>
@@ -140,5 +141,5 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
 export default WarehouseproCategory;
 WarehouseproCategory.propTypes =
 {
-    selectedCategory:PropTypes.func.isRequired,
+    setSelectedCategory:PropTypes.func.isRequired,
 }

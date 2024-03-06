@@ -3,6 +3,7 @@ import { geoFeatures } from '../../data/mockDataGeo';
 import { useEffect, useState } from "react";
 import { callApi } from "../EulerMail/getSalesData";
 import { auth } from "../../firebase.init";
+import PropTypes from "prop-types"
 import { useAuthState } from "react-firebase-hooks/auth";
 export const BottomChart = ({setSelectedCountry}) => {
   const color = "#c9a0dc";
@@ -134,3 +135,8 @@ export const BottomChart = ({setSelectedCountry}) => {
     />
   )
 }
+BottomChart.propTypes = 
+    {
+      setSelectedCountry:PropTypes.func.isRequired,
+        
+    }

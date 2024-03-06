@@ -21,13 +21,15 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
     
   return (
     <div className="overflow-x-auto">
-    <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-2xl mb-3 cursor-pointer">Customer Table</h1>
+    <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl mb-3 cursor-pointer">Customer Table</h1>
             <table className="table table-sm table-pin-rows table-pin-cols">
                 <thead className="thead">
                     <tr>
                         <td>Name</td>
                         <td>Line Item Amount</td>
                         <td>Client Create Date</td>
+                        <td>Last Order Date</td>
+                        <td>Total Order</td>
                         <td>{customerTable ==="longevityTable" ?'Client Longevity Months ': "Category"}</td>
                         <th></th>
                     </tr>
@@ -38,6 +40,8 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
                             <td>{item.name}</td>
                             <td>{item.Line_Item_Amount}</td>
                             <td>{item.Client_Create_Date}</td>
+                            <td>{item.Last_Order_Date}</td>
+                            <td>{item.Frequency}</td>
                             <td>{customerTable ==="longevityTable" ?item.Client_Longevity_Months: item.category}</td>
                             
                         </tr>

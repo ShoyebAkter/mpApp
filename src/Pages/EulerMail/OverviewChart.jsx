@@ -65,7 +65,7 @@ function OverviewChart() {
             {
               label: `Sales $`,
               data: totalSales.map((sale) => (sale.total)),
-              borderColor: "#649445",
+              borderColor: "#294F41",
               backgroundColor: "#649445",
             },
           ],
@@ -118,7 +118,7 @@ function OverviewChart() {
     <div className="boxcontainer border-scoop">
       <div >
         
-          <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer"  onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
+          <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer"  onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
           <Line options={options} height={200} data={data} />
         
       </div>

@@ -69,8 +69,8 @@ const MeanChart = ({chartType}) => {
             {
                 label:chartType ==="mean" ? 'Mean Value' :'Median Value',
                 data: chartType ==="mean" ? orderData.map((item)=> item.mean.toFixed(2) ) :orderData.map((item)=> item.median.toFixed(2) ),
-                borderColor: '#649445',
-                backgroundColor:'#649445',
+                borderColor: '#294F41',
+                backgroundColor:'#294F41',
             }
         ],
     };

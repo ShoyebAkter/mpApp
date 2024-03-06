@@ -60,8 +60,8 @@ export const LineChart = ({averageOrder,totalSales,totalOrder}) => {
             {
                 label: `Avg Order`,
                 data: averageOrder.map((item)=> item.averageTotalPrice.toFixed(2) ),
-                borderColor: '#649445',
-                backgroundColor:'#649445',
+                borderColor: '#294F41',
+                backgroundColor:'#294F41',
             }
         ],
     };

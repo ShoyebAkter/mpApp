@@ -89,8 +89,8 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
             {
                 label: 'Dataset 1',
                 data:categoryCountsArray.map(client=>client.count),
-                borderColor: '#649445',
-                backgroundColor: '#649445',
+                borderColor: '#294F41',
+                backgroundColor: '#294F41',
                 borderRadius: 15,
             }
         ],

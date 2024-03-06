@@ -63,7 +63,7 @@ export const CampaignResult = () => {
           {
             label: 'Total email sent',
             data: user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.total) : [10,30,20,60,70,80,25,45,50],
-            backgroundColor: '#649445',
+            backgroundColor: '#294F41',
             borderRadius: 15,
             
           }
@@ -73,7 +73,7 @@ export const CampaignResult = () => {
     <div
       className="boxcontainer CRborder-scoop p-2 "
     >
-        <h1 style={{"background":"#FFFFFF","color":"#439541"}} className="font-bold text-center text-xl  cursor-pointer"  onClick={()=>navigate('/campaignresult')}> Campaign Result</h1>
+        <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer"  onClick={()=>navigate('/campaignresult')}> Campaign Result</h1>
         <Bar options={options} height={200} data={data} />
       
     </div>

@@ -36,7 +36,7 @@ const EngageLineChart = ({eulerMail}) => {
                 rangeDescription: 'Range: 0 to 200'
             }
         },
-        colors: ["#649445"],
+        colors: ["#294F41"],
         legend: {
             layout: 'vertical',
             align: 'right',

@@ -65,7 +65,7 @@ function SocialMediaChart() {
           user.email === "fuad@gmail.com"
             ? result.map((res) => res.total)
             : [30, 10, 40, 50, 80, 20, 90],
-        backgroundColor: "#649445",
+        backgroundColor: "#294F41",
         borderRadius: 20,
       },
     ],
@@ -73,7 +73,7 @@ function SocialMediaChart() {
   return (
     <div className="boxcontainer SMborder-scoop p-2 ">
       <div>
-        <h1 style={{"background":"#FFFFFF","color":"#439541","width":"300px"}} className="mx-auto font-bold text-center text-xl  cursor-pointer"
+        <h1 style={{"background":"#FFFFFF","color":"#294F41","width":"300px"}} className="mx-auto font-bold text-center text-xl  cursor-pointer"
           
           onClick={() => navigate("/socialmedia")}
         >

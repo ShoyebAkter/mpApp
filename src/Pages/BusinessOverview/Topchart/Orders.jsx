@@ -67,8 +67,8 @@ export const Orders = () => {
             {
               label: `Orders `,
               data: orders.map((order) => order.order),
-              borderColor: "#649445",
-              backgroundColor: "#649445",
+              borderColor: "#294F41",
+              backgroundColor: "#294F41",
             },
           ],
         };

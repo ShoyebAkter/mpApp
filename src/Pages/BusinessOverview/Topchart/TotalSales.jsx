@@ -69,8 +69,8 @@ export const TotalSales = () => {
             {
               label: `Sales `,
               data: totalSales.map((sale) => (sale.total / 1000).toFixed(2)),
-              borderColor: "#649445",
-              backgroundColor: "#649445",
+              borderColor: "#294F41",
+              backgroundColor: "#294F41",
             },
           ],
         };

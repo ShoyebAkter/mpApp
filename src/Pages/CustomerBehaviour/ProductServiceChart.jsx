@@ -59,7 +59,7 @@ const ProductServiceChart = ({setSelectedProduct}) => {
           },
           series: [{
             name: 'Sales',
-            color:"#649445",
+            color:"#294F41",
             groupPadding: 0,
             data: newData,
             borderRadius: 15 ,

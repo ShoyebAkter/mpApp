@@ -43,7 +43,7 @@ const CustomerSalesChart = ({product}) => {
       // Format the result into array of objects with year and total amount
       const resultArray = formatResult(sumByYear);
       
-      console.log(resultArray);
+      // console.log(resultArray);
     // console.log(product)
     // console.log(totalAvg);
     const options = {
@@ -60,7 +60,7 @@ const CustomerSalesChart = ({product}) => {
                     if (context.parsed.y !== null) {
                       label += `$${context.parsed.y.toFixed(2)}`;
                     }
-                    label += ` - Avg order in ${labels[context.dataIndex]}`;
+                    label += ` - Sales in ${labels[context.dataIndex]}`;
                     return label;
                   },
                 },
@@ -70,7 +70,7 @@ const CustomerSalesChart = ({product}) => {
             },
             title: {
                 display: true,
-                text: 'Avg Order Value',
+                text: 'Sales Value',
             },
         },
     };
@@ -81,7 +81,7 @@ const CustomerSalesChart = ({product}) => {
         labels,
         datasets: [
             {
-                label: `Avg Order`,
+                label: `Total Sales`,
                 data: resultArray.map(item=>item.amount),
                 borderColor: '#294F41',
                 backgroundColor:'#294F41',

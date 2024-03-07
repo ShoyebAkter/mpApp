@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { callApi } from "../EulerMail/getSalesData";
 import './Table.css'
 import PropTypes from 'prop-types';
-const CustomerTable = ({selectedCategory,customerTable}) => {
+const CustomerTable = ({setSelectedItem,selectedCategory,customerTable}) => {
     const [data,setData]=useState([]);
     const [newData,setNewData]=useState([])
     useEffect(()=>{
@@ -20,7 +20,7 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
         // console.log(data)
     
   return (
-    <div className="overflow-x-auto">
+    <div style={{"maxHeight":"400px"}} className="overflow-x-auto ">
     <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl mb-3 cursor-pointer">Customer Table</h1>
             <table className="table table-sm table-pin-rows table-pin-cols">
                 <thead className="thead">
@@ -36,9 +36,9 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
                 </thead>
                 <tbody>
                     {(newData && newData.length > 0 ? newData : data).map((item, index) => (
-                        <tr key={index}>
+                        <tr key={index} onClick={()=>setSelectedItem(item)}>
                             <td>{item.name}</td>
-                            <td>{item.Line_Item_Amount}</td>
+                            <td>{item.Line_Item_Amount.toLocaleString()}</td>
                             <td>{item.Client_Create_Date}</td>
                             <td>{item.Last_Order_Date}</td>
                             <td>{item.Frequency}</td>
@@ -55,6 +55,8 @@ const CustomerTable = ({selectedCategory,customerTable}) => {
 export default CustomerTable
 CustomerTable.propTypes =
 {
+
+    setSelectedItem: PropTypes.func.isRequired,
     customerTable: PropTypes.string.isRequired,
     selectedCategory:PropTypes.string.isRequired,
 }

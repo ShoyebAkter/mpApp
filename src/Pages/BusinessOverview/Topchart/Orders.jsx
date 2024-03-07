@@ -139,7 +139,7 @@ export const Orders = () => {
       strokeDashoffset="calc(400 - (400 * 45) / 100)"
     ></circle>
     
-    <text x="50" y="50" fontFamily="Verdana" fontSize="16" textAnchor="middle" alignmentBaseline="middle">{(totalOrders/1000).toFixed(0)}k</text>
+    <text x="50" y="50" fontFamily="Verdana" fontSize="16" textAnchor="middle" alignmentBaseline="middle">{(totalOrders/1000)}k</text>
 
   </svg>
 </div>

@@ -16,11 +16,13 @@ import CustomerTable from "./CustomerTable"
 import WarehouseproCategory from "./WarehouseproCategory"
 import DataTable from "../BusinessOverview/DataTable"
 import ActiveCohort from "./ActiveCohort"
+import ClientData from "./ClientData"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [cohortYear,setCohortYear]=useState(0)
     const [activeYear,setActiveYear]=useState(0)
+    const[selectedItem,setSelectedItem]=useState(null)
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate()
   if (loading) return <Loading></Loading>
@@ -65,8 +67,15 @@ export const CustomerBehaviour = () => {
           
         </div>
         }
+        {selectedItem !== null ?
+  <div className="firstChartSection">
+    <ClientData selectedItem={selectedItem} />
+  </div>
+  :
+  null
+}
         <div className="firstChartSection">
-          <CustomerTable selectedCategory={selectedCategory} customerTable={"categoryTable"}/>
+          <CustomerTable setSelectedItem={setSelectedItem} selectedCategory={selectedCategory} customerTable={"categoryTable"}/>
         </div>
         {/* <div className="firstChartSection">
         <SmallCLient/>
@@ -79,6 +88,9 @@ export const CustomerBehaviour = () => {
         <ActiveCohort setCohortYear={setCohortYear} setActiveYear={setActiveYear} />
         
         </div>
+        <div className="firstChartSection">
+            <DataTable cohortYear={cohortYear} activeYear={activeYear} />
+        </div>
         <div className="clientSection">
         <Cohorts/>
         
@@ -87,9 +99,7 @@ export const CustomerBehaviour = () => {
         {/* <div className="firstChartSection">
             <Heatmap/>
         </div> */}
-        <div className="firstChartSection">
-            <DataTable cohortYear={cohortYear} activeYear={activeYear} />
-        </div>
+        
       </div>
     </div>
   )

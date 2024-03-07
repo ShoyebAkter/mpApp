@@ -1,108 +1,131 @@
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
 } from "chart.js";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 // import { faker } from '@faker-js/faker';
 import { useEffect, useState } from "react";
 ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-    ChartDataLabels
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartDataLabels
 );
 
-const WarehouseproCategory = ({setSelectedCategory}) => {
-    const [clients, setClients] = useState([]);
-    const [totalSales,setTotalSales]=useState(0);
-    // console.log(user.uid)
-    useEffect(() => {
-        fetch('https://emapp-backend.vercel.app/warehousepro/clientCategory')
-            .then((res) => res.json())
-            .then((result) => setClients(result))
-            .catch((error) => console.error(error))
-    }, [])
-    // console.log(clients);
-    const categoryCounts = clients.reduce((acc, obj) => {
-        const { category } = obj;
-        acc[category] = (acc[category] || 0) + 1;
-        return acc;
-      }, {});
-      
-      const amount=clients.reduce((sum, obj) => sum + obj.Line_Item_Amount, 0);
-      // console.log(amount)
-      const handleBarClick = (event, elements) => {
-        if (elements.length > 0) {
-            const clickedCategoryIndex = elements[0].index;
-            const clickedCategory = categoryCountsArray[clickedCategoryIndex].category;
-            setSelectedCategory(clickedCategory);
-            const  clickedData = clients.filter(obj => obj.category === clickedCategory);
-            const totalAmount = clickedData.reduce((sum, obj) => sum + obj.Line_Item_Amount, 0);
-            // console.log(clickedData)
-            setTotalSales(totalAmount)
-        }
-    };
+const WarehouseproCategory = ({ setSelectedCategory }) => {
+  const [clients, setClients] = useState([]);
+  const [totalSales, setTotalSales] = useState(0);
+  // console.log(user.uid)
+  useEffect(() => {
+    fetch("https://emapp-backend.vercel.app/warehousepro/clientCategory")
+      .then((res) => res.json())
+      .then((result) => setClients(result))
+      .catch((error) => console.error(error));
+  }, []);
+  // console.log(clients);
+  const categoryCounts = clients.reduce((acc, obj) => {
+    const { category } = obj;
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  }, {});
 
-      // Convert the counts object into an array of objects with 'category' and 'count' properties
-      const categoryCountsArray = Object.entries(categoryCounts).map(([category, count]) => ({
-        category,
-        count,
-      }));
-    const options = {
-        indexAxis: 'y',
-        elements: {
-            bar: {
-                borderWidth: 2,
-            },
-        },
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'right',
-            },
-            title: {
-                display: true,
-                text: 'Customers',
-            },
-        },
-        onClick: handleBarClick,
-    };
-    const catArr = ['Champion', 'Loyal Customers', 'Potential Loyalist', 'Recent Customers', 'About to Sleep', 'At Risk', 'Can\'t Lose', 'Lost'];
-    categoryCountsArray.sort((a, b) => {
-      return catArr.indexOf(a.category) - catArr.indexOf(b.category);
+  const amount = clients.reduce((sum, obj) => sum + obj.Line_Item_Amount, 0);
+  // console.log(amount)
+  const handleBarClick = (event, elements) => {
+    if (elements.length > 0) {
+      const clickedCategoryIndex = elements[0].index;
+      const clickedCategory =
+        categoryCountsArray[clickedCategoryIndex].category;
+      setSelectedCategory(clickedCategory);
+      const clickedData = clients.filter(
+        (obj) => obj.category === clickedCategory
+      );
+      const totalAmount = clickedData.reduce(
+        (sum, obj) => sum + obj.Line_Item_Amount,
+        0
+      );
+      // console.log(clickedData)
+      setTotalSales(totalAmount);
+    }
+  };
+
+  // Convert the counts object into an array of objects with 'category' and 'count' properties
+  const categoryCountsArray = Object.entries(categoryCounts).map(
+    ([category, count]) => ({
+      category,
+      count,
+    })
+  );
+  const options = {
+    indexAxis: "y",
+    elements: {
+      bar: {
+        borderWidth: 2,
+      },
+    },
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "right",
+      },
+      title: {
+        display: true,
+        text: "Customers",
+      },
+    },
+    onClick: handleBarClick,
+  };
+  const catArr = [
+    "Champion",
+    "Loyal Customers",
+    "Potential Loyalist",
+    "Recent Customers",
+    "About to Sleep",
+    "At Risk",
+    "Can't Lose",
+    "Lost",
+  ];
+  categoryCountsArray.sort((a, b) => {
+    return catArr.indexOf(a.category) - catArr.indexOf(b.category);
   });
-    const labels =categoryCountsArray.map(client=>client.category);
+  const labels = categoryCountsArray.map((client) => client.category);
 
-    const data1 = {
-        labels,
-        datasets: [
-            {
-                label: 'Dataset 1',
-                data:categoryCountsArray.map(client=>client.count),
-                borderColor: '#294F41',
-                backgroundColor: '#294F41',
-                borderRadius: 15,
-            }
-        ],
-    };
-    // console.log(totalSales)
+  const data1 = {
+    labels,
+    datasets: [
+      {
+        label: "Dataset 1",
+        data: categoryCountsArray.map((client) => client.count),
+        borderColor: "#294F41",
+        backgroundColor: "#294F41",
+        borderRadius: 15,
+      },
+    ],
+  };
+  // console.log(totalSales)
   return (
     <div className="flex">
-            <div>
-            <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer"> Customer Category</h1>
-            <Bar options={options} width={500} height={400} data={data1} />
-            </div>
-            <div className="relative w-42 h-42 mx-auto">
+      <div>
+        <h1
+          style={{ background: "#FFFFFF", color: "#294F41" }}
+          className="font-bold text-center text-xl  cursor-pointer"
+        >
+          {" "}
+          Customer Category
+        </h1>
+        <Bar options={options} width={500} height={400} data={data1} />
+      </div>
+      <div className="relative w-42 h-42 mx-auto">
         <svg className="w-full h-full" viewBox="0 0 100 100">
           <circle
             className="text-gray-200 stroke-current"
@@ -132,16 +155,19 @@ const WarehouseproCategory = ({setSelectedCategory}) => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            {totalSales? `${(totalSales/1000).toFixed(2)}k`:`${(amount/1000000).toFixed(2)}m`}$
+            {totalSales
+              ? `${(totalSales / 1000).toFixed(2)}k`
+              : `${(amount / 1000000).toFixed(2)}m`}
+            $
           </text>
         </svg>
       </div>
-            </div>
-  )
-}
+      
+    </div>
+  );
+};
 
 export default WarehouseproCategory;
-WarehouseproCategory.propTypes =
-{
-    setSelectedCategory:PropTypes.func.isRequired,
-}
+WarehouseproCategory.propTypes = {
+  setSelectedCategory: PropTypes.func.isRequired,
+};

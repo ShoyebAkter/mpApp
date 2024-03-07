@@ -1,0 +1,101 @@
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import PropTypes from "prop-types"
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+);
+const CustomerSalesChart = ({product}) => {
+
+    function sumAmountByYear() {
+        const result = {};
+        
+        product.forEach(obj => {
+          const year = (new Date(obj.Date_Billed)).getFullYear();
+          result[year] = (result[year] || 0) + obj.Line_Item_Amount;
+        });
+        
+        return result;
+      }
+      
+      // Function to convert the result into array of objects with year and total amount
+      function formatResult(result) {
+        return Object.keys(result).map(year => ({ year: parseInt(year), amount: result[year] }));
+      }
+      
+      // Group objects by year and sum Line_Item_Amount
+      const sumByYear = sumAmountByYear();
+      
+      // Format the result into array of objects with year and total amount
+      const resultArray = formatResult(sumByYear);
+      
+      console.log(resultArray);
+    // console.log(product)
+    // console.log(totalAvg);
+    const options = {
+        responsive: true,
+        
+        plugins: {
+            tooltip: {
+                callbacks: {
+                  label: (context) => {
+                    let label = context.dataset.label || '';
+                    if (label) {
+                      label += ': ';
+                    }
+                    if (context.parsed.y !== null) {
+                      label += `$${context.parsed.y.toFixed(2)}`;
+                    }
+                    label += ` - Avg order in ${labels[context.dataIndex]}`;
+                    return label;
+                  },
+                },
+              },
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Avg Order Value',
+            },
+        },
+    };
+
+    const labels = resultArray.map(item=>item.year);
+
+    const data = {
+        labels,
+        datasets: [
+            {
+                label: `Avg Order`,
+                data: resultArray.map(item=>item.amount),
+                borderColor: '#294F41',
+                backgroundColor:'#294F41',
+            }
+        ],
+    };
+  return (
+    <div className='mx-auto' style={{"width":"1000px","height":"200px"}}>
+            <Line width={700} height={150} options={options} data={data} />
+        </div>
+  )
+}
+
+export default CustomerSalesChart
+CustomerSalesChart.propTypes = {
+    product: PropTypes.array.isRequired,
+  };

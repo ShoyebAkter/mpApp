@@ -33,7 +33,7 @@ const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
         // Loop through each year
         years.forEach((year, yearIndex) => {
           // Push [index, yearIndex, mapData[index][year]] to mapDataArray
-          mapDataArray.push([index, yearIndex, data[year]]);
+          mapDataArray.push([yearIndex, index, data[year]]);
         });
       });
       // console.log(mapDataArray)

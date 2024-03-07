@@ -151,12 +151,12 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
             x="50"
             y="50"
             fontFamily="Verdana"
-            fontSize="16"
+            fontSize="14"
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            {totalSales
-              ? `${(totalSales / 1000).toFixed(2)}k`
+            {totalSales 
+              ? totalSales <900000 ? `${(totalSales / 1000).toFixed(2)}k`:`${(totalSales / 1000000).toFixed(2)}m`
               : `${(amount / 1000000).toFixed(2)}m`}
             $
           </text>

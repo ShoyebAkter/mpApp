@@ -29,7 +29,7 @@ export const CustomerBehaviour = () => {
   if (!user) {
     navigate('/login')
   }
-  // console.log(selectedCategory)
+  // console.log(selectedCategory,selectedItem.category)
   return (
     <div className="customerBehaviourMain">
       <div className="leftSection">
@@ -67,7 +67,7 @@ export const CustomerBehaviour = () => {
           
         </div>
         }
-        {selectedItem !== null ?
+        {selectedItem?.category===selectedCategory ?
   <div className="firstChartSection">
     <ClientData selectedItem={selectedItem} />
   </div>

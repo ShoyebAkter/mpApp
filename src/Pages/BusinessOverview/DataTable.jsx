@@ -56,7 +56,7 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
         <td>{item.country}</td>
         <td>{item.state}</td>
         <td>{item.Product}</td>
-        <td>{item.Line_Item_Amount}$</td>
+        <td>{item.Line_Item_Amount.toLocaleString()}$</td>
       </tr>
     ))}
   </tbody>

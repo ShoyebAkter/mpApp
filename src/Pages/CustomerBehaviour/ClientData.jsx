@@ -27,7 +27,10 @@ const ClientData = ({ selectedItem }) => {
   return (
     <div >
       <div className="flex justify-between">
+      
         <div className="relative w-24 h-24 mx-auto">
+        <h1 style={{ background: "#FFFFFF", color: "#294F41" }}
+        className="font-bold text-center  cursor-pointer">Frequency</h1>
           <svg className="w-full h-full" viewBox="0 0 100 100">
             <circle
               className="text-gray-200 stroke-current"
@@ -62,6 +65,8 @@ const ClientData = ({ selectedItem }) => {
           </svg>
         </div>
         <div className="relative w-24 h-24 mx-auto">
+        <h1 style={{ background: "#FFFFFF", color: "#294F41" }}
+        className="font-bold text-center  cursor-pointer">Monetary</h1>
           <svg className="w-full h-full" viewBox="0 0 100 100">
             <circle
               className="text-gray-200 stroke-current"
@@ -96,6 +101,8 @@ const ClientData = ({ selectedItem }) => {
           </svg>
         </div>
         <div className="relative w-24 h-24 mx-auto">
+        <h1 style={{ background: "#FFFFFF", color: "#294F41" }}
+        className="font-bold text-center  cursor-pointer">Recency</h1>
           <svg className="w-full h-full" viewBox="0 0 100 100">
             <circle
               className="text-gray-200 stroke-current"

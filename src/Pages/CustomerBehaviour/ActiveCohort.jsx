@@ -14,7 +14,13 @@ const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
       );
 
       const data = await response.json();
-      // console.log(data)
+      data.sort((a, b) => {
+        if (a._id < b._id) return -1;
+        if (a._id > b._id) return 1;
+        return 0;
+    });
+    
+    // console.log(data);
       const years = [
         "2014",
         "2015",

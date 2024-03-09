@@ -91,7 +91,8 @@ const EngageLineChart = ({eulerMail}) => {
         <div className="circle-container">
       <div
         className="questionMark"
-        onClick={() => setShowPopup(!showPopup)}
+        onMouseEnter={() => setShowPopup(true)}
+        onMouseLeave={() => setShowPopup(false)}
       >?</div>
       {showPopup && <div className="popup">The WarehousePro Engagement chart is showing Avg number of invoice per month for each client</div>}
     </div>

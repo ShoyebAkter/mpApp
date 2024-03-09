@@ -165,7 +165,8 @@ const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
         <div className="circle-container">
       <div
         className="questionMark"
-        onClick={() => setShowPopup(!showPopup)}
+        onMouseEnter={() => setShowPopup(true)}
+        onMouseLeave={() => setShowPopup(false)}
       >?</div>
       {showPopup && <div className="popup">The Active Cohort chart shows how many clients are active for each and every year</div>}
     </div>

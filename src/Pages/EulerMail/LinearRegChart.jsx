@@ -93,7 +93,8 @@ const LinearRegChart = () => {
           <div className="circle-container">
             <div
               className="questionMark"
-              onClick={() => setShowPopup(!showPopup)}
+              onMouseEnter={() => setShowPopup(true)}
+        onMouseLeave={() => setShowPopup(false)}
             >
               ?
             </div>

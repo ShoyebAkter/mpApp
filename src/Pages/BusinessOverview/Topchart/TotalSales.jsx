@@ -123,7 +123,8 @@ export const TotalSales = () => {
       <div className="circle-container">
       <div
         className="questionMark"
-        onClick={() => setShowPopup(!showPopup)}
+        onMouseEnter={() => setShowPopup(true)}
+        onMouseLeave={() => setShowPopup(false)}
       >?</div>
       {showPopup && <div className="popup">The Total Sales Chart is the sales of each year.</div>}
     </div>

@@ -92,7 +92,8 @@ const ScatterChart = () => {
     <div className="circle-container">
       <div
         className="questionMark"
-        onClick={() => setShowPopup(!showPopup)}
+        onMouseEnter={() => setShowPopup(true)}
+        onMouseLeave={() => setShowPopup(false)}
       >?</div>
       {showPopup && <div className="popup">This is the chart for Client Longevity vs total amount</div>}
     </div>

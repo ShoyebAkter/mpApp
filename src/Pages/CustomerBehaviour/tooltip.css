@@ -1,0 +1,4 @@
+.chartjs-tooltip {
+    height: 100px; /* Set the maximum height for the tooltip */
+    overflow-y: auto; /* Add scroll if the content exceeds the maximum height */
+  }

@@ -93,7 +93,8 @@ const ProductServiceChart = ({setSelectedProduct}) => {
     <div className="circle-container">
       <div
         className="questionMark"
-        onClick={() => setShowPopup(!showPopup)}
+        onMouseEnter={() => setShowPopup(true)}
+        onMouseLeave={() => setShowPopup(false)}
       >?</div>
       {showPopup && <div className="popup">The Product & Service Bar chart is showing the number of sales for each product</div>}
     </div>

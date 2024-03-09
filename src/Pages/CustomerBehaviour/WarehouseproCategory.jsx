@@ -21,6 +21,7 @@ ChartJS.register(
   Legend,
   ChartDataLabels
 );
+import './tooltip.css'
 
 const WarehouseproCategory = ({ setSelectedCategory }) => {
   const [clients, setClients] = useState([]);
@@ -38,7 +39,60 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
     acc[category] = (acc[category] || 0) + 1;
     return acc;
   }, {});
-
+  const customerSegments = [
+    {
+      segment: "Champions",
+      description: "These are your best customers, who buy regularly and are recent shoppers.",
+      strategy: "Reward them and keep them engaged."
+    },
+    {
+      segment: "Loyal Customers",
+      description: "Customers who make purchases consistently over time.",
+      strategy: "Upsell higher value products and engage in loyalty programs."
+    },
+    {
+      segment: "Potential Loyalist",
+      description: "Recent customers with a few orders who show the promise of becoming loyal.",
+      strategy: "Provide great service and offer introductory offers to increase frequency of purchase."
+    },
+    {
+      segment: "Recent Customers",
+      description: "Individuals who have made their first purchase recently.",
+      strategy: "Provide a great first experience, and follow up to encourage a second purchase."
+    },
+    {
+      segment: "Promising",
+      description: "Customers who have made a few orders in a relatively short time but haven’t spent much yet. ",
+      strategy: "Offer products that could increase their spend and improve relationship."
+    },
+    {
+      segment: "Needing Attention",
+      description: "Customers who used to shop more frequently but have lessened their shopping rate.",
+      strategy: "Reactivate them through special offers or feedback surveys to understand their decrease in activity."
+    },
+    {
+      segment: "About to Sleep",
+      description: "Customers with a low engagement rate who are at risk of churning. ",
+      strategy: "Share valuable offers to regain their interest and remind them of your value proposition."
+    },
+    {
+      segment: "At Risk",
+      description: "Customers who were frequent shoppers but haven’t purchased in a long time.",
+      strategy: "Share personalized communications to re-engage them before it’s too late."
+    },
+    {
+      segment: "Can`t Lose",
+      description: "High-value customers who haven’t made a purchase in a long time. ",
+      strategy: "Implement high-impact actions like personal outreach or loyalty offers."
+    },
+    {
+      segment: "Lost",
+      description: "Who haven’t made a purchase in a long time and have a low probability of returning.",
+      strategy: "Analyze their previous behavior for clues on why they left and apply these learnings to other segments to prevent further churn."
+    }
+  ];
+  
+  
   const amount = clients.reduce((sum, obj) => sum + obj.Line_Item_Amount, 0);
   // console.log(amount)
   const handleBarClick = (event, elements) => {
@@ -68,6 +122,9 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
   );
   const options = {
     indexAxis: "y",
+    datalabels: {
+      color: 'white', // Set text color inside bars
+    },
     elements: {
       bar: {
         borderWidth: 2,
@@ -82,6 +139,19 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
         display: true,
         text: "Customers",
       },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const segment = customerSegments.find(item => item.segment === context.label);
+            if (segment) {
+              return  segment.description ;
+            } else {
+              return "Total Client " + context.parsed.x;
+            }
+          },
+        },
+      },
+      
     },
     onClick: handleBarClick,
   };
@@ -111,6 +181,7 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
         borderRadius: 15,
       },
     ],
+    
   };
   // console.log(totalSales)
   return (

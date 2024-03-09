@@ -134,7 +134,14 @@ export const Cohorts = () => {
   }, []);
   return (
     <div className="cohortChart ">
-      <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer">Heatmap of Service Usage by Month</h1>
+    <div
+        style={{ marginLeft: "40%" }}
+        className="flex items-center justify-between mx-10"
+      >
+        <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer">Heatmap of Service Usage by Month</h1>
+      
+        <div className="questionMark">?</div>
+      </div>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>

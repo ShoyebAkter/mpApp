@@ -55,12 +55,12 @@ const LinearRegChart = () => {
             id: "mainSeries",
             name: "Year",
             data: data2.map(item=>item.total),
-            color: "blue" 
+            color: "#6B8E9C" 
           },
           {
             id: "SecondSeries",
             data: newArray.map(item=>item.total),
-            color: "#649445"
+            color: "#659248"
           },
           {
             type: "trendline",
@@ -79,9 +79,13 @@ const LinearRegChart = () => {
     <div className="middleChart">
     <div className="greenDiv"></div>
     <div className="flex flex-col">
+    <div style={{"marginLeft":"40%"}} className="flex items-center justify-between ">
     <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl  py-5 cursor-pointer">
         Total Sales Prediction Chart
       </h1>
+        <div className="questionMark">?</div>
+      </div>
+    
     { <HighchartsReact  highcharts={Highcharts} options={options} />}
     
     </div>

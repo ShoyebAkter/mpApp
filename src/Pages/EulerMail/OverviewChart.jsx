@@ -65,8 +65,8 @@ function OverviewChart() {
             {
               label: `Sales $`,
               data: totalSales.map((sale) => (sale.total)),
-              borderColor: "#294F41",
-              backgroundColor: "#649445",
+              borderColor: "#659248",
+              backgroundColor: "#659248",
             },
           ],
         };

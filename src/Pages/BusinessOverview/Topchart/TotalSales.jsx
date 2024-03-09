@@ -69,8 +69,8 @@ export const TotalSales = () => {
             {
               label: `Sales `,
               data: totalSales.map((sale) => (sale.total / 1000).toFixed(2)),
-              borderColor: "#294F41",
-              backgroundColor: "#294F41",
+              borderColor: "#659248",
+              backgroundColor: "#659248",
             },
           ],
         };
@@ -115,9 +115,12 @@ export const TotalSales = () => {
   // console.log(Sales)
   return (
     <div className="rounded-xl my-5">
+      <div className="flex items-center justify-center gap-10 ">
       <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
         Total Sales
       </h1>
+      <div className="questionMark">?</div>
+      </div>
       <div className="relative w-20 h-20 mx-auto">
         <svg className="w-full h-full" viewBox="0 0 100 100">
           <circle
@@ -129,7 +132,7 @@ export const TotalSales = () => {
             fill="transparent"
           ></circle>
           <circle
-            style={{ color: "#294F41" }}
+            style={{ color: "#457048" }}
             className=" progress-ring__circle stroke-current"
             strokeWidth="10"
             strokeLinecap="round"

@@ -29,7 +29,7 @@ export const Main = () => {
   return (
     <div className="overviewMain flex justify-between">
       <div
-        style={{ background: "#294F41" }}
+        style={{ background: "#457048" }}
         className="leftGreenSec px-3 pt-10"
       >
         <div

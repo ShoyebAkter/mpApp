@@ -59,7 +59,7 @@ const ProductServiceChart = ({setSelectedProduct}) => {
           },
           series: [{
             name: 'Sales',
-            color:"#294F41",
+            color:"#659248",
             groupPadding: 0,
             data: newData,
             borderRadius: 15 ,
@@ -87,7 +87,11 @@ const ProductServiceChart = ({setSelectedProduct}) => {
 
   return (
     <div className='mt-3'>
+    <div style={{"marginLeft":"40%"}} className="flex items-center justify-between ">
     <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-4">Product & Service</h1>
+    
+        <div className="questionMark">?</div>
+      </div>
       {chartConfig && <HighchartsReact options={chartConfig} highcharts={Highcharts} />}
     </div>
   );

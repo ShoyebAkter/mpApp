@@ -2,7 +2,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import heatmap from "highcharts/modules/heatmap"; // Import heatmap module
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 heatmap(Highcharts);
 //
 const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
@@ -18,9 +18,9 @@ const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
         if (a._id < b._id) return -1;
         if (a._id > b._id) return 1;
         return 0;
-    });
-    
-    // console.log(data);
+      });
+
+      // console.log(data);
       const years = [
         "2014",
         "2015",
@@ -91,13 +91,13 @@ const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
             //
             return (
               "<b>" +
-              this.series.xAxis.categories[this.point.y] +
+              this.series.xAxis.categories[this.point.x] +
               "</b> has <br>" +
               "<b>" +
               this.point.value +
               "</b> active clients from <br>" +
               "<b>" +
-              this.series.yAxis.categories[this.point.x] +
+              this.series.yAxis.categories[this.point.y] +
               "</b>"
             );
           },
@@ -151,12 +151,19 @@ const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
   // console.log(cohortYear,activeYear)
   return (
     <div className="activecohortChart ">
-      <h1
-        style={{ background: "#FFFFFF", color: "#294F41" }}
-        className="font-bold text-center text-xl  cursor-pointer"
+      <div
+        style={{ marginLeft: "40%" }}
+        className="flex items-center justify-between mx-10"
       >
-        Cohort Active Clients Analysis
-      </h1>
+        <h1
+          style={{ background: "#FFFFFF", color: "#294F41" }}
+          className="font-bold text-center text-xl  cursor-pointer"
+        >
+          Cohort Active Clients Analysis
+        </h1>
+        <div className="questionMark">?</div>
+      </div>
+
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>
@@ -165,9 +172,7 @@ const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
 };
 
 export default ActiveCohort;
-ActiveCohort.propTypes = 
-    {
-      setCohortYear :PropTypes.func.isRequired,
-      setActiveYear:PropTypes.func.isRequired,
-
-    }
+ActiveCohort.propTypes = {
+  setCohortYear: PropTypes.func.isRequired,
+  setActiveYear: PropTypes.func.isRequired,
+};

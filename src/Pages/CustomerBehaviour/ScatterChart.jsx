@@ -49,7 +49,7 @@ const ScatterChart = () => {
           endOnTick: true,
           showLastLabel: true,
         },
-        colors: ["#294F41"],
+        colors: ["#457048"],
         yAxis: {
           title: { text: "Total" },
           labels: { format: "{value} " },
@@ -85,7 +85,11 @@ const ScatterChart = () => {
 
   return (
     <div>
+    <div  className="flex items-center justify-center gap-20 ">
     <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl mb-3 cursor-pointer">Client Longevity vs total amount</h1>
+    
+        <div className="questionMark">?</div>
+      </div>
       {chartOptions && (
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       )}

@@ -36,7 +36,7 @@ const EngageLineChart = ({eulerMail}) => {
                 rangeDescription: 'Range: 0 to 200'
             }
         },
-        colors: ["#294F41"],
+        colors: ["#659248"],
         legend: {
             layout: 'vertical',
             align: 'right',
@@ -84,8 +84,12 @@ const EngageLineChart = ({eulerMail}) => {
     {
         eulerMail==="eulerMail"?<></>
         :
+        <div  className="flex items-center justify-between ">
         <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl mb-2 cursor-pointer">WarehousePro Engagement</h1>
-    }
+    
+        <div className="questionMark">?</div>
+      </div>
+        }
     
       <HighchartsReact
             highcharts={Highcharts}

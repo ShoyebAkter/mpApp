@@ -65,7 +65,7 @@ function SocialMediaChart() {
           user.email === "fuad@gmail.com"
             ? result.map((res) => res.total)
             : [30, 10, 40, 50, 80, 20, 90],
-        backgroundColor: "#294F41",
+        backgroundColor: "#659248",
         borderRadius: 20,
       },
     ],

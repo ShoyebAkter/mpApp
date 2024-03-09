@@ -7,6 +7,7 @@ heatmap(Highcharts);
 //
 const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
   const [chartOptions, setChartOptions] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -161,7 +162,13 @@ const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
         >
           Cohort Active Clients Analysis
         </h1>
-        <div className="questionMark">?</div>
+        <div className="circle-container">
+      <div
+        className="questionMark"
+        onClick={() => setShowPopup(!showPopup)}
+      >?</div>
+      {showPopup && <div className="popup">The Active Cohort chart shows how many clients are active for each and every year</div>}
+    </div>
       </div>
 
       <div>

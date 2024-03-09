@@ -7,6 +7,7 @@ import PropTypes from "prop-types"
 
 const EngageLineChart = ({eulerMail}) => {
     const [chartOptions, setChartOptions] = useState(null);
+    const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       
@@ -87,7 +88,13 @@ const EngageLineChart = ({eulerMail}) => {
         <div  className="flex items-center justify-between ">
         <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl mb-2 cursor-pointer">WarehousePro Engagement</h1>
     
-        <div className="questionMark">?</div>
+        <div className="circle-container">
+      <div
+        className="questionMark"
+        onClick={() => setShowPopup(!showPopup)}
+      >?</div>
+      {showPopup && <div className="popup">The WarehousePro Engagement chart is showing Avg number of invoice per month for each client</div>}
+    </div>
       </div>
         }
     

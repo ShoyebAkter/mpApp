@@ -38,6 +38,31 @@
     justify-content: center;
     color: #ffff;
 }
+.circle-container {
+    position: relative;
+  }
+  .popup {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 300px;
+    height: 120px;
+    top: -130px; /* Adjust the distance from the top */
+    left: 50%; /* Adjust the horizontal position */
+    transform: translateX(-60%);
+    background-color: #ffff; /* Background color of the popup */
+     /* Text color of the popup */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border-radius: 10px; /* Adjust border radius as needed */
+    opacity: 1;
+    color: #000;
+    pointer-events: auto;
+    transition: opacity 0.3s ease; /* Transition for smooth appearance */
+  }
+  
+  .popup.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 .middleChart{
     display: flex;
     border-radius: 1rem/* 16px */;

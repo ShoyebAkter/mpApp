@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import { callApi } from "../EulerMail/getSalesData";
 const MeanChart = ({ chartType }) => {
   const [orderData, setData] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     callApi("https://emapp-backend.vercel.app/warehousepro/orders", setData);
@@ -90,7 +91,20 @@ const MeanChart = ({ chartType }) => {
         >
           Sales Median Chart
         </h1>
-        <div className="questionMark">?</div>
+        <div className="circle-container">
+          <div
+            className="questionMark"
+            onClick={() => setShowPopup(!showPopup)}
+          >
+            ?
+          </div>
+          {showPopup && (
+            <div className="popup">
+              The Sales median is the number of orders averaged without taking
+              excentric peaks factored into the calculation.
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="relative w-20 h-20 mx-auto">

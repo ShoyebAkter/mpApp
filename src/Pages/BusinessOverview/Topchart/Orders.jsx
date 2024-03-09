@@ -9,7 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import {  useState } from "react";
+import { useState } from "react";
 import { changeArrayValue, getOrdersInfo } from "./topchart";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -26,11 +26,12 @@ ChartJS.register(
 );
 export const Orders = () => {
   const [orders, setOrders] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
   const orderData = [];
   const resultArray = [];
   const [user] = useAuthState(auth);
   let labels;
-  let data,totalOrders;
+  let data, totalOrders;
   // console.log(orders);
   const switchFunction = () => {
     switch (user.email) {
@@ -42,23 +43,23 @@ export const Orders = () => {
         changeArrayValue(orderData, resultArray);
         labels = resultArray.map((array) => array.year);
         data = {
-            labels,
-            datasets: [
-              {
-                label: `Order $`,
-                data: resultArray.map((array) => array.totalPrice),
-                borderColor: "#649445",
-                backgroundColor: "#649445",
-              },
-            ],
-          };
+          labels,
+          datasets: [
+            {
+              label: `Order $`,
+              data: resultArray.map((array) => array.totalPrice),
+              borderColor: "#649445",
+              backgroundColor: "#649445",
+            },
+          ],
+        };
         break;
       case "warehousepro@gmail.com":
         callApi(
           "https://emapp-backend.vercel.app/warehousepro/orders",
           setOrders
         );
-        totalOrders=orders.reduce((total, obj) => total + obj.order, 0);
+        totalOrders = orders.reduce((total, obj) => total + obj.order, 0);
         orders.sort((a, b) => a.year - b.year);
         labels = orders.map((order) => order.year);
         data = {
@@ -87,9 +88,9 @@ export const Orders = () => {
       tooltip: {
         callbacks: {
           label: (context) => {
-            let label = context.dataset.label || '';
+            let label = context.dataset.label || "";
             if (label) {
-              label += ': ';
+              label += ": ";
             }
             if (context.parsed.y !== null) {
               label += `${context.parsed.y.toFixed(0)} number of`;
@@ -109,45 +110,65 @@ export const Orders = () => {
     },
   };
 
-  
   return (
     <div className="rounded-xl my-5">
-    <div className="flex items-center justify-center gap-10 ">
-    <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
-        Total Orders
-      </h1>
-      <div className="questionMark">?</div>
+      <div className="flex items-center justify-center gap-10 ">
+        <h1
+          style={{ background: "#FFFFFF", color: "#294F41" }}
+          className="font-bold text-center text-2xl py-5 cursor-pointer"
+        >
+          Total Orders
+        </h1>
+        <div className="circle-container">
+          <div
+            className="questionMark"
+            onClick={() => setShowPopup(!showPopup)}
+          >
+            ?
+          </div>
+          {showPopup && (
+            <div className="popup">
+              The Total Orders Chart is the total order of each year.
+            </div>
+          )}
+        </div>
       </div>
-    
-      <div className="relative w-20 h-20 mx-auto">
-  <svg className="w-full h-full" viewBox="0 0 100 100">
-    
-    <circle
-      className="text-gray-200 stroke-current"
-      strokeWidth="10"
-      
-      cx="50"
-      cy="50"
-      r="40"
-      fill="transparent"
-    ></circle>
-    <circle
-      style={{"color":"#457048"}}
-      className=" progress-ring__circle stroke-current"
-      strokeWidth="10"
-      strokeLinecap="round"
-      cx="50"
-      cy="50"
-      r="40"
-      fill="transparent"
-      strokeDashoffset="calc(400 - (400 * 45) / 100)"
-    ></circle>
-    
-    <text x="50" y="50" fontFamily="Verdana" fontSize="16" textAnchor="middle" alignmentBaseline="middle">{(totalOrders/1000)}k</text>
 
-  </svg>
-</div>
-        
+      <div className="relative w-20 h-20 mx-auto">
+        <svg className="w-full h-full" viewBox="0 0 100 100">
+          <circle
+            className="text-gray-200 stroke-current"
+            strokeWidth="10"
+            cx="50"
+            cy="50"
+            r="40"
+            fill="transparent"
+          ></circle>
+          <circle
+            style={{ color: "#457048" }}
+            className=" progress-ring__circle stroke-current"
+            strokeWidth="10"
+            strokeLinecap="round"
+            cx="50"
+            cy="50"
+            r="40"
+            fill="transparent"
+            strokeDashoffset="calc(400 - (400 * 45) / 100)"
+          ></circle>
+
+          <text
+            x="50"
+            y="50"
+            fontFamily="Verdana"
+            fontSize="16"
+            textAnchor="middle"
+            alignmentBaseline="middle"
+          >
+            {totalOrders / 1000}k
+          </text>
+        </svg>
+      </div>
+
       <Line width={250} height={200} options={options} data={data} />
     </div>
   );

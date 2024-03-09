@@ -4,7 +4,6 @@ const MeanMedian = () => {
   return (
     <div className="topChart">
             <div  className="greenDiv"></div>
-            <MeanChart chartType={"mean"}/>
             <MeanChart chartType={"median"}/>
 
     </div>

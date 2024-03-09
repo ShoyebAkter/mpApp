@@ -47,7 +47,7 @@ export const Main = () => {
           Site data
         </div>
       </div>
-      <div className="mx-auto">
+      <div className="mx-auto mt-20">
         <TopChart />
         
         <div className="topChart">

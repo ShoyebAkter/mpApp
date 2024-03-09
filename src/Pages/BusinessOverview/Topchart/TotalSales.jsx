@@ -29,10 +29,11 @@ ChartJS.register(
 );
 export const TotalSales = () => {
   const [totalSales, setTotalSales] = useState([]);
-
+  const [showPopup, setShowPopup] = useState(false);
   const salesValue = [];
   const resultArray = [];
   const [user] = useAuthState(auth);
+  
   let data, labels;
   let Sales;
   const switchFunction = () => {
@@ -119,7 +120,13 @@ export const TotalSales = () => {
       <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
         Total Sales
       </h1>
-      <div className="questionMark">?</div>
+      <div className="circle-container">
+      <div
+        className="questionMark"
+        onClick={() => setShowPopup(!showPopup)}
+      >?</div>
+      {showPopup && <div className="popup">The Total Sales Chart is the sales of each year.</div>}
+    </div>
       </div>
       <div className="relative w-20 h-20 mx-auto">
         <svg className="w-full h-full" viewBox="0 0 100 100">

@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import PropTypes from "prop-types"
 const ProductServiceChart = ({setSelectedProduct}) => {
   const [chartConfig, setChartConfig] = useState(null);
-  
+  const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
     // Fetch data here, or use any other method to get the data
     const fetchData = async () => {
@@ -90,7 +90,13 @@ const ProductServiceChart = ({setSelectedProduct}) => {
     <div style={{"marginLeft":"40%"}} className="flex items-center justify-between ">
     <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-4">Product & Service</h1>
     
-        <div className="questionMark">?</div>
+    <div className="circle-container">
+      <div
+        className="questionMark"
+        onClick={() => setShowPopup(!showPopup)}
+      >?</div>
+      {showPopup && <div className="popup">The Product & Service Bar chart is showing the number of sales for each product</div>}
+    </div>
       </div>
       {chartConfig && <HighchartsReact options={chartConfig} highcharts={Highcharts} />}
     </div>

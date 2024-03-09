@@ -4,6 +4,7 @@ import HighchartsReact from "highcharts-react-official";
 
 const ScatterChart = () => {
   const [chartOptions, setChartOptions] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       
@@ -88,7 +89,13 @@ const ScatterChart = () => {
     <div  className="flex items-center justify-center gap-20 ">
     <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl mb-3 cursor-pointer">Client Longevity vs total amount</h1>
     
-        <div className="questionMark">?</div>
+    <div className="circle-container">
+      <div
+        className="questionMark"
+        onClick={() => setShowPopup(!showPopup)}
+      >?</div>
+      {showPopup && <div className="popup">This is the chart for Client Longevity vs total amount</div>}
+    </div>
       </div>
       {chartOptions && (
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />

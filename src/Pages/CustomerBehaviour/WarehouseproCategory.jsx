@@ -81,7 +81,7 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
       strategy: "Share personalized communications to re-engage them before it’s too late."
     },
     {
-      segment: "Can`t Lose",
+      segment: "Can't Lose",
       description: "High-value customers who haven’t made a purchase in a long time. ",
       strategy: "Implement high-impact actions like personal outreach or loyalty offers."
     },
@@ -142,6 +142,7 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
       tooltip: {
         callbacks: {
           label: function (context) {
+            console.log(context.label)
             const segment = customerSegments.find(item => item.segment === context.label);
             if (segment) {
               return  segment.description ;

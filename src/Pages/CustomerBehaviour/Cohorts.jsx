@@ -7,6 +7,7 @@ heatmap(Highcharts);
 //
 export const Cohorts = () => {
   const [chartOptions, setChartOptions] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -140,7 +141,14 @@ export const Cohorts = () => {
       >
         <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer">Heatmap of Service Usage by Month</h1>
       
-        <div className="questionMark">?</div>
+        <div className="circle-container">
+      <div
+        className="questionMark"
+        onMouseEnter={() => setShowPopup(true)}
+        onMouseLeave={() => setShowPopup(false)}
+      >?</div>
+      {showPopup && <div className="popup">This chart shows uses of product in every month of a year</div>}
+    </div>
       </div>
       <div>
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />

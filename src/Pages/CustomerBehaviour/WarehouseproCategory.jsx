@@ -127,16 +127,15 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
     elements: {
       bar: {
         borderWidth: 2,
-        color:'white'
       },
     },
     responsive: true,
     plugins: {
       legend: {
         position: "right",
-        labels:{
-          fontColor:'red'
-        }
+      },
+      colors: {
+        scheme: 'black' // Set the color scheme to black
       },
       title: {
         display: true,
@@ -187,8 +186,9 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
     ],
     
   };
-  // console.log(totalSales)
   ChartJS.defaults.color = '#ffff';
+
+  // console.log(totalSales)
   return (
     <div className="flex">
       <div>

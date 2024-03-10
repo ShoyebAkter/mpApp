@@ -176,10 +176,10 @@ const LinearRegChart = () => {
         </div>
         <div>
         {
-          width <= 760 ? <HighchartsReact highcharts={Highcharts} options={responsiveChar}/> : null
+          width <= 1400 ? <HighchartsReact highcharts={Highcharts} options={responsiveChar}/> : null
         }
         {
-          width >= 761 ? <HighchartsReact highcharts={Highcharts} options={options}/> : null
+          width >= 1401 ? <HighchartsReact highcharts={Highcharts} options={options}/> : null
         }
         {/* <HighchartsReact highcharts={Highcharts} options={options} /> */}
         </div>

@@ -4,8 +4,9 @@ import HighchartsReact from "highcharts-react-official";
 import PropTypes from "prop-types";
 const ProductServiceChart = ({ setSelectedProduct }) => {
   const [chartConfig, setChartConfig] = useState(null);
+  const [reschartConfig, setResChartConfig] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
-  const [chartWidth,setChartWidth]=useState(1200)
+  const [width,setWidth]=useState(window.innerWidth)
   useEffect(() => {
     // Fetch data here, or use any other method to get the data
     const fetchData = async () => {
@@ -19,19 +20,14 @@ const ProductServiceChart = ({ setSelectedProduct }) => {
         const newData = sortedArray.map((item) => {
           return [item.Service, item.Total_Sales];
         });
-        let chartWidth = 1200; // Default chart width
-
-        const screenWidth = window.innerWidth;
-
-        if (screenWidth < 780) {
-          setChartWidth(500) // Update chart width if screenWidth is less than 780
-        }
+        
+        
         // console.log(chartWidth)
         // Dynamically create the Highcharts configuration
         const config = {
           chart: {
             type: "column",
-            width: chartWidth,
+            width: 1200,
             height: 500,
           },
           title: {
@@ -81,7 +77,60 @@ const ProductServiceChart = ({ setSelectedProduct }) => {
             },
           ],
         };
-
+        const responsiveconfig = {
+          chart: {
+            type: "column",
+            width:700 ,
+            height: 500,
+          },
+          title: {
+            text: null,
+          },
+          xAxis: {
+            type: "category",
+            labels: {
+              autoRotation: [-45, -90],
+              style: {
+                fontSize: "13px",
+                fontFamily: "Verdana, sans-serif",
+              },
+            },
+          },
+          yAxis: {
+            min: 0,
+            max: 1000000,
+            title: {
+              text: "$ in Sales",
+            },
+          },
+          legend: {
+            enabled: false,
+          },
+          tooltip: {
+            pointFormat: "Sales in: <b>{point.y:.1f}$</b>",
+          },
+          credits: {
+            enabled: false, // Hide credits
+          },
+          series: [
+            {
+              name: "Sales",
+              color: "#659248",
+              groupPadding: 0,
+              data: newData,
+              borderRadius: 15,
+              point: {
+                events: {
+                  click: function () {
+                    setSelectedProduct(newData[this.category][0]);
+                    // Log clicked point data
+                  },
+                },
+              },
+            },
+          ],
+        };
+        setResChartConfig(responsiveconfig)
         // Set the Highcharts configuration outside of the fetch
         setChartConfig(config);
       } catch (error) {
@@ -90,8 +139,18 @@ const ProductServiceChart = ({ setSelectedProduct }) => {
     };
 
     fetchData();
-  }, [chartWidth]); // Empty dependency array to ensure useEffect runs only once
+  }, []); // Empty dependency array to ensure useEffect runs only once
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
 
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div className="mt-3">
       <div
@@ -121,9 +180,11 @@ const ProductServiceChart = ({ setSelectedProduct }) => {
           )}
         </div>
       </div>
-      {chartConfig && (
-        <HighchartsReact options={chartConfig} highcharts={Highcharts} />
-      )}
+      {width <1400 ? (
+        <HighchartsReact options={reschartConfig} highcharts={Highcharts} />
+      ) :
+      (<HighchartsReact options={chartConfig} highcharts={Highcharts} />)
+      }
     </div>
   );
 };

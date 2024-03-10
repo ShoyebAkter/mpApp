@@ -112,6 +112,8 @@ export const TotalSales = () => {
       },
     },
   };
+  
+  ChartJS.defaults.color = '#555';
   // {(Sales/1000000).toFixed(2)}m$
   // console.log(Sales)
   return (

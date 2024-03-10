@@ -7,7 +7,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Colors } from 'chart.js';
 import PropTypes from "prop-types";
 import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
@@ -21,7 +20,6 @@ ChartJS.register(
   Tooltip,
   Legend,
   ChartDataLabels,
-  Colors
 );
 import './tooltip.css'
 const WarehouseproCategory = ({ setSelectedCategory }) => {
@@ -133,13 +131,14 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
     plugins: {
       legend: {
         position: "right",
-      },
-      colors: {
-        scheme: 'black' // Set the color scheme to black
+        labels:{
+          color:"#555"
+        }
       },
       title: {
         display: true,
         text: "Customers",
+        color:"#555"
       },
       tooltip: {
         callbacks: {
@@ -157,6 +156,13 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
       
     },
     onClick: handleBarClick,
+    scales: {
+      y: {
+        ticks: {
+          color:'#555'
+        },
+      },
+    },
   };
   const catArr = [
     "Champion",
@@ -182,17 +188,18 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
         borderColor: "#294F41",
         backgroundColor: "#294F41",
         borderRadius: 15,
+        
       },
     ],
     
   };
-
+  ChartJS.defaults.color="#ffff"
   // console.log(totalSales)
   return (
     <div className="flex">
       <div>
         <h1
-          style={{ background: "#FFFFFF", color: "#294F41" }}
+          style={{  color: "#294F41" }}
           className="font-bold text-center text-xl  cursor-pointer"
         >
           {" "}

@@ -7,6 +7,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { Colors } from 'chart.js';
 import PropTypes from "prop-types";
 import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
@@ -19,10 +20,10 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ChartDataLabels
+  ChartDataLabels,
+  Colors
 );
 import './tooltip.css'
-
 const WarehouseproCategory = ({ setSelectedCategory }) => {
   const [clients, setClients] = useState([]);
   const [totalSales, setTotalSales] = useState(0);
@@ -122,18 +123,20 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
   );
   const options = {
     indexAxis: "y",
-    datalabels: {
-      color: 'white', // Set text color inside bars
-    },
+    
     elements: {
       bar: {
         borderWidth: 2,
+        color:'white'
       },
     },
     responsive: true,
     plugins: {
       legend: {
         position: "right",
+        labels:{
+          fontColor:'red'
+        }
       },
       title: {
         display: true,
@@ -142,7 +145,6 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
       tooltip: {
         callbacks: {
           label: function (context) {
-            console.log(context.label)
             const segment = customerSegments.find(item => item.segment === context.label);
             if (segment) {
               return  segment.description ;
@@ -151,6 +153,7 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
             }
           },
         },
+        
       },
       
     },
@@ -185,6 +188,7 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
     
   };
   // console.log(totalSales)
+  ChartJS.defaults.color = '#ffff';
   return (
     <div className="flex">
       <div>

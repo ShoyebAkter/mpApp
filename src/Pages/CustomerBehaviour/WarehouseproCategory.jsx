@@ -186,7 +186,6 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
     ],
     
   };
-  ChartJS.defaults.color = '#ffff';
 
   // console.log(totalSales)
   return (

@@ -142,7 +142,7 @@ const MeanChart = ({ chartType }) => {
           </text>
         </svg>
       </div>
-      <Line width={250} height={200} options={options} data={data} />
+      <Line width={250} height={150} options={options} data={data} />
     </div>
   );
 };

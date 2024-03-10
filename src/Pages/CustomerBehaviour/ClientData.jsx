@@ -193,7 +193,7 @@ const ClientData = ({ selectedItem }) => {
           </tbody>
         </table>
       </div>
-      <div>
+      <div className="">
         <h1 style={{ background: "#FFFFFF", color: "#294F41" }}
         className="font-bold text-center text-xl py-5 cursor-pointer">Customer Sales By year</h1>
         <CustomerSalesChart product={product} />

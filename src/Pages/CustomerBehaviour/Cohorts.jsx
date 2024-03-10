@@ -47,7 +47,7 @@ export const Cohorts = () => {
           marginTop: 40,
           marginBottom: 80,
           plotBorderWidth: 1,
-          height:650
+          height:650,
         },
         title: {
           text: null
@@ -114,7 +114,7 @@ export const Cohorts = () => {
           rules: [
             {
               condition: {
-                maxWidth: 500,
+                maxWidth: 700,
               },
               chartOptions: {
                 yAxis: {

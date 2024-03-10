@@ -47,7 +47,7 @@ export const CustomerBehaviour = () => {
             </div>
             
             :
-            <div className="flex">
+            <div className="flex insideFirstSec">
             <EngageLineChart/>
             <ScatterChart/>
             </div>

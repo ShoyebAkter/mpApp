@@ -67,7 +67,7 @@ export const Main = () => {
           </div>
         )}
 
-        <div
+        {/* <div
           style={{
             height: "500px",
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.5)",
@@ -87,7 +87,7 @@ export const Main = () => {
           }
           
           
-        </div>
+        </div> */}
         <div className="tableArea">
           <div className="greenDiv"></div>
           <DataTable selectedCountry={selectedCountry} selectedProduct={selectedProduct} stateName={stateName}/>

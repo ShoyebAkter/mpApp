@@ -139,6 +139,7 @@ const ClientData = ({ selectedItem }) => {
       </div>
       <h1 style={{ background: "#FFFFFF", color: "#294F41" }}
         className="font-bold text-center text-xl py-5 cursor-pointer">Customer Details</h1>
+      <div  className="overflow-x-auto">
       <table className="table table-sm table-pin-rows table-pin-cols">
         <thead className="thead">
           <tr>
@@ -168,6 +169,7 @@ const ClientData = ({ selectedItem }) => {
           </tr>
         </tbody>
       </table>
+      </div>
 
       <div className="overflow-auto max-h-44">
       <h1 style={{ background: "#FFFFFF", color: "#294F41" }}

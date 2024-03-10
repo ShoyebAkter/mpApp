@@ -90,7 +90,7 @@ const CustomerSalesChart = ({product}) => {
     };
   return (
     <div className='mx-auto' style={{"width":"1000px","height":"200px"}}>
-            <Line width={700} height={150} options={options} data={data} />
+            <Line width={500} height={150} options={options} data={data} />
         </div>
   )
 }

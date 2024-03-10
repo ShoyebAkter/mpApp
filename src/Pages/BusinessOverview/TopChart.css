@@ -74,6 +74,17 @@
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 @media only screen and (max-width: 768px) {
+    .tableArea{
+        display: flex;
+        width:550px;
+        height: 500px;
+        border-radius: 1rem/* 16px */;
+        margin-top: 1.25rem/* 20px */;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+        gap:70px;
+        --tw-bg-opacity: 1;
+        background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    }
     .topChart{
         display: flex;
         flex-direction: column;
@@ -82,7 +93,7 @@
         margin-top: 1.25rem/* 20px */;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
         gap:10px;
-        width:350px;
+        width:550px;
     }
     .greenDiv{
         display: none;
@@ -98,7 +109,8 @@
         height:300px;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
         gap:100px;
-        width:350px
+        width:550px;
+        height: 500px;
     }
     .leftGreenSec{
         display: none;

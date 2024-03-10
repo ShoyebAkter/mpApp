@@ -12,6 +12,7 @@ const BusinessTable = () => {
   return (
     <div className="pb-10">
   <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer mb-3">Business Table</h1>
+  <div className="overflow-auto">
   <table className="table table-sm table-pin-rows table-pin-cols">
     <thead className="thead">
       <tr>
@@ -42,6 +43,7 @@ const BusinessTable = () => {
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
 
   )

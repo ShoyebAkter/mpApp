@@ -8,6 +8,8 @@ trendline(Highcharts);
 const LinearRegChart = () => {
   const [options, setOption] = useState();
   const [showPopup, setShowPopup] = useState(false);
+  const [responsiveChar, setResponsiveChart] = useState();
+  const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     const fetchData = async () => {
       const response2 = await fetch(
@@ -21,6 +23,58 @@ const LinearRegChart = () => {
       const data = await response.json();
       data.sort((a, b) => a.year - b.year);
       const newArray = [...data2, ...data];
+
+      setResponsiveChart({
+        chart: {
+          type: "line",
+          renderTo: "container",
+          width: 500,
+        },
+        title: {
+          text: "",
+        },
+        subtitle: {
+          text: "",
+        },
+        xAxis: {
+          categories: newArray.map((item) => item.year),
+        },
+
+        yAxis: {
+          title: {
+            text: "Total sales each year",
+          },
+        },
+        credits: {
+          enabled: false, // Hide credits
+        },
+        plotOptions: {
+          line: {
+            dataLabels: {
+              enabled: true,
+            },
+            enableMouseTracking: false,
+          },
+        },
+        series: [
+          {
+            id: "mainSeries",
+            name: "Year",
+            data: data2.map((item) => item.total),
+            color: "#6B8E9C",
+          },
+          {
+            id: "SecondSeries",
+            data: newArray.map((item) => item.total),
+            color: "#659248",
+          },
+          {
+            type: "trendline",
+            linkedTo: "mainSeries",
+          },
+        ],
+      });
+
       setOption({
         chart: {
           type: "line",
@@ -76,6 +130,20 @@ const LinearRegChart = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  console.log(width);
+
   return (
     <div className="middleChart">
       <div className="greenDiv"></div>
@@ -94,19 +162,27 @@ const LinearRegChart = () => {
             <div
               className="questionMark"
               onMouseEnter={() => setShowPopup(true)}
-        onMouseLeave={() => setShowPopup(false)}
+              onMouseLeave={() => setShowPopup(false)}
             >
               ?
             </div>
             {showPopup && (
               <div className="popup">
-                The Total Sales Prediction Chart is predicting next two years sales based on previous year sales
+                The Total Sales Prediction Chart is predicting next two years
+                sales based on previous year sales
               </div>
             )}
           </div>
         </div>
-
-        {<HighchartsReact highcharts={Highcharts} options={options} />}
+        <div>
+        {
+          width <= 760 ? <HighchartsReact highcharts={Highcharts} options={responsiveChar}/> : null
+        }
+        {
+          width >= 761 ? <HighchartsReact highcharts={Highcharts} options={options}/> : null
+        }
+        {/* <HighchartsReact highcharts={Highcharts} options={options} /> */}
+        </div>
       </div>
     </div>
   );

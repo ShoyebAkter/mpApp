@@ -17,7 +17,6 @@ import WarehouseproCategory from "./WarehouseproCategory"
 import DataTable from "../BusinessOverview/DataTable"
 import ActiveCohort from "./ActiveCohort"
 import ClientData from "./ClientData"
-import WarehouseCategory from "./WarehouseCategory"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -65,7 +64,7 @@ export const CustomerBehaviour = () => {
         :
         <div  className="firstChartSection">
           <WarehouseproCategory setSelectedCategory={setSelectedCategory}/>
-          {/* <WarehouseCategory/> */}
+          
         </div>
         }
         {selectedItem?.category===selectedCategory ?

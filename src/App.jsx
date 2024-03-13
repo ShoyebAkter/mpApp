@@ -15,6 +15,7 @@ import { FacebookData } from './Pages/SocialMedia/FacebookData'
 import { Policy } from './Pages/Policy/Policy'
 import AdminDashboard from './Pages/AdminPanel/AdminDashboard'
 import SettingPage from './Pages/Settings/SettingPage'
+import ForgotPassword from './Pages/Authentication/ForgotPassword'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         </Route>
         <Route path="/campaignerdesign" element={<CampaignDesign />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/resetPassword" element={<ForgotPassword />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/subscription" element={<Subscription />} />
       </Routes>

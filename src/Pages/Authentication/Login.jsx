@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 import "./Login.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase.init";
+import { auth} from "../../firebase.init";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [users,setUsers]=useState([])
-  
+
     useEffect(()=>{
         fetch("https://emapp-backend.vercel.app/eulermailUser")
         .then((res) => res.json())
@@ -63,7 +63,20 @@ const Login = () => {
         toast.error(error.message);
       });
   };
-
+  const  initiatePasswordReset=async()=> {
+    try {
+      localStorage.setItem("email",email)
+      navigate('/resetPassword')
+  } catch (error) {    
+    if (error.code === 'auth/user-not-found') {
+      alert('User not found, try again!')
+      setEmail('')
+    }
+  }
+    
+  }
+  
+  
   return (
     <div className="bodySection ">
       <main className="loginsection  h-screen">
@@ -105,6 +118,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+                <button onClick={initiatePasswordReset}>Reset Password</button>
               </div>
 
               <div className="flex items-center justify-center py-7">

@@ -96,7 +96,7 @@ const ClientData = ({ selectedItem }) => {
               textAnchor="middle"
               alignmentBaseline="middle"
             >
-              {selectedItem.Monetary.toLocaleString()}
+              {selectedItem.Line_Item_Amount.toLocaleString()}
             </text>
           </svg>
         </div>

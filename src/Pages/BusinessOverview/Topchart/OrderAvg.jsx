@@ -76,7 +76,7 @@ let totalSales,totalOrder;
     //   console.log(totalOrder)
     return (
         <div>
-            <LineChart averageOrder={averageOrder} totalSales={totalSales} totalOrder={totalOrder}  />
+            <LineChart orders={orders} totalSales={totalSales} totalOrder={totalOrder} />
         </div>
     )
 }

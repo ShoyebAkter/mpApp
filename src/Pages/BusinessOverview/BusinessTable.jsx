@@ -26,7 +26,7 @@ const BusinessTable = () => {
       <tr>
         <td>Total Sales</td>
         {sortedOrderData.map((item, index) => (
-          <td key={index}>{item.total.toLocaleString()}$</td>
+          <td key={index}>{item.total.toFixed(1)}$</td>
         ))}
       </tr>
       <tr>

@@ -16,7 +16,7 @@ const ForgotPassword = () => {
         const obj={
             email:email
           }
-          fetch('http://localhost:5000/passwordReset', {
+          fetch('https://emapp-backend.vercel.app/passwordReset', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

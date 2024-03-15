@@ -73,9 +73,20 @@ const CustomerSalesChart = ({product}) => {
                 text: 'Sales Value',
             },
         },
+        scales: {
+          x: {
+            ticks: {
+              color:'black'
+            },
+          },
+          y: {
+            ticks: {
+              color:'black'
+            },
+          },
+        },
     };
 
-    ChartJS.defaults.color = '#555';
     const labels = resultArray.map(item=>item.year);
 
     const data = {

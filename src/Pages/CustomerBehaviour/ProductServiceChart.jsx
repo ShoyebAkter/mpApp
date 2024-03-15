@@ -45,7 +45,7 @@ const ProductServiceChart = ({ setSelectedProduct }) => {
           },
           yAxis: {
             min: 0,
-            max: 1000000,
+            max: 4500000,
             title: {
               text: "$ in Sales",
             },

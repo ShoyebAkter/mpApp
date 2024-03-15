@@ -186,7 +186,7 @@ const ClientData = ({ selectedItem }) => {
             {product?.map((item, index) => (
               <tr key={index}>
                 <td>{item.Name}</td>
-                <td>{item.Date_Billed}</td>
+                <td>{item.Date_Invoiced}</td>
                 <td>{item.Line_Item_Amount}</td>
               </tr>
             ))}

@@ -122,7 +122,7 @@ export const LineChart = ({ orders,totalSales, totalOrder}) => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            {totalAvg.toFixed(1)}$
+            ${totalAvg.toFixed(1)}
           </text>
         </svg>
       </div>

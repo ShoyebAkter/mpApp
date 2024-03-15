@@ -237,10 +237,10 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            {totalSales 
+            ${totalSales 
               ? totalSales <900000 ? `${(totalSales / 1000).toFixed(2)}k`:`${(totalSales / 1000000).toFixed(2)}m`
               : `${(amount / 1000000).toFixed(2)}m`}
-            $
+            
           </text>
         </svg>
       </div>

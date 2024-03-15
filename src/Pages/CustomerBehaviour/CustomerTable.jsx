@@ -38,7 +38,7 @@ const CustomerTable = ({setSelectedItem,selectedCategory,customerTable}) => {
                     {(newData && newData.length > 0 ? newData : data).map((item, index) => (
                         <tr className="cursor-pointer" key={index} onClick={()=>setSelectedItem(item)}>
                             <td>{item.name}</td>
-                            <td>{item.Line_Item_Amount.toLocaleString()}</td>
+                            <td>${item.Line_Item_Amount.toLocaleString()}</td>
                             <td>{item.Client_Create_Date}</td>
                             <td>{item.Last_Order_Date}</td>
                             <td>{item.Frequency}</td>

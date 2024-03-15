@@ -96,7 +96,7 @@ const ClientData = ({ selectedItem }) => {
               textAnchor="middle"
               alignmentBaseline="middle"
             >
-              {selectedItem.Line_Item_Amount.toLocaleString()}
+              ${selectedItem.Line_Item_Amount.toFixed(1)}
             </text>
           </svg>
         </div>
@@ -158,12 +158,12 @@ const ClientData = ({ selectedItem }) => {
         <tbody>
           <tr key="1">
             <td>{selectedItem.name}</td>
-            <td>{selectedItem.Highest_Amount}</td>
+            <td>${selectedItem.Highest_Amount}</td>
             <td>{selectedItem.Highest_Product}</td>
             <td>{selectedItem.Client_Create_Date}</td>
             <td>{selectedItem.Last_Order_Date}</td>
             <td>{selectedItem.Last_Product}</td>
-            <td>{selectedItem.Lowest_Amount}</td>
+            <td>${selectedItem.Lowest_Amount}</td>
             <td>{selectedItem.Lowest_Product}</td>
             <td>{selectedItem.category}</td>
           </tr>
@@ -187,7 +187,7 @@ const ClientData = ({ selectedItem }) => {
               <tr key={index}>
                 <td>{item.Name}</td>
                 <td>{item.Date_Invoiced}</td>
-                <td>{item.Line_Item_Amount}</td>
+                <td>${item.Line_Item_Amount}</td>
               </tr>
             ))}
           </tbody>

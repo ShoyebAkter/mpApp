@@ -161,7 +161,7 @@ export const TotalSales = () => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            {(Sales / 1000000).toFixed(2)}m$
+            ${(Sales / 1000000).toFixed(2)}m
           </text>
         </svg>
       </div>

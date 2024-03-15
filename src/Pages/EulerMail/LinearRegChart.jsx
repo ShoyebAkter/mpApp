@@ -142,7 +142,6 @@ const LinearRegChart = () => {
     };
   }, []);
 
-  console.log(width);
 
   return (
     <div className="middleChart">

@@ -138,7 +138,7 @@ const MeanChart = ({ chartType }) => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            ${totalMedian}
+            ${(totalMedian/11).toFixed(1)}
           </text>
         </svg>
       </div>

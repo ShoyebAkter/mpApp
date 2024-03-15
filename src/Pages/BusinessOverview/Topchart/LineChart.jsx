@@ -23,8 +23,10 @@ ChartJS.register(
 export const LineChart = ({ orders,totalSales, totalOrder}) => {
   const [showPopup, setShowPopup] = useState(false);
   const totalAvg = totalSales / totalOrder;
-
-  // console.log(totalAvg);
+  const totalMean = orders
+    .map((item) => item.mean)
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  
   const options = {
     responsive: true,
 
@@ -122,7 +124,7 @@ export const LineChart = ({ orders,totalSales, totalOrder}) => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            ${totalAvg.toFixed(1)}
+            ${(totalMean/11).toFixed(1)}
           </text>
         </svg>
       </div>

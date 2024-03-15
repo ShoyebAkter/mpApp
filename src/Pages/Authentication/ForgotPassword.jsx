@@ -11,12 +11,12 @@ const ForgotPassword = () => {
     const [link,setLink]=useState('')
     const [confirmPassword,setConfirmPassword]=useState('')
     const email=localStorage.getItem("email")
-    const getLink=()=>{
+    const getLink=async ()=>{
         
         const obj={
             email:email
           }
-          fetch('https://emapp-backend.vercel.app/passwordReset', {
+          await fetch('https://emapp-backend.vercel.app/passwordReset', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -34,43 +34,44 @@ const ForgotPassword = () => {
 
 // Now you can use the oobCode as needed
 // console.log(oobCode);
-    const handleSubmit = async (e) => {
-      e.preventDefault()
-      getLink();
-      if (password !== confirmPassword) {
-        alert("Passwords did not match.")
-        return;
-      }
-console.log(link)
-      const queryString = link.split('?')[1];
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-// Parse the query string into an object
-const queryParams = new URLSearchParams(queryString);
-
-// Get the value of the 'oobCode' parameter
-const oobCode = queryParams.get('oobCode');
-console.log(oobCode)
-      console.log(oobCode)
-      try {
-        if (oobCode) {
-          await confirmThePasswordReset(oobCode, confirmPassword)
-          
-          setSuccessMessage(true)
-        } else {
-          alert('Something is wrong; try again later!')
-          console.log('missing oobCode')
-        }
-      } catch (error) {
-        if (error.code === 'auth/invalid-action-code') {
-          alert('Something is wrong; try again later.')
-        }
-        console.log(error.message)        
-      }
+  try {
+    await getLink(); // Wait for getLink to complete and update the link state
+    if (!link) {
+      console.error('No link received from server');
+      return;
     }
 
-    const handleChange = (e) => {
-      const { name, value } = e.target
+    if (password !== confirmPassword) {
+      alert("Passwords did not match.");
+      return;
     }
+
+    const queryString = link.split('?')[1];
+
+    // Parse the query string into an object
+    const queryParams = new URLSearchParams(queryString);
+
+    // Get the value of the 'oobCode' parameter
+    const oobCode = queryParams.get('oobCode');
+
+    if (oobCode) {
+      await confirmThePasswordReset(oobCode, confirmPassword);
+      localStorage.removeItem("email");
+      navigate('/login');
+    } else {
+      alert('Something is wrong; try again later!');
+      console.log('missing oobCode');
+    }
+  } catch (error) {
+    console.error('Error handling password reset:', error);
+    alert('Something went wrong; try again later.');
+  }
+}
+
+
 
   return (
     <div>

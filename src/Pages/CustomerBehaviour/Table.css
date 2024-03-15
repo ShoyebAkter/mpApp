@@ -29,12 +29,12 @@
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #ffff;
+    background: #ffffff;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #bebdbd;
   }
 .table-pin-rows th,
 .table-pin-rows td {

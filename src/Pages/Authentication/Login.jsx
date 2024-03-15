@@ -65,8 +65,13 @@ const Login = () => {
   };
   const  initiatePasswordReset=async()=> {
     try {
-      localStorage.setItem("email",email)
-      navigate('/resetPassword')
+      if(email){
+        localStorage.setItem("email",email)
+        navigate('/resetPassword')
+      }else{
+        toast.error("Please Enter your email");
+      }
+      
   } catch (error) {    
     if (error.code === 'auth/user-not-found') {
       alert('User not found, try again!')
@@ -118,7 +123,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <button onClick={initiatePasswordReset}>Reset Password</button>
+                <button className="mt-2" onClick={initiatePasswordReset}>Reset Password</button>
               </div>
 
               <div className="flex items-center justify-center py-7">

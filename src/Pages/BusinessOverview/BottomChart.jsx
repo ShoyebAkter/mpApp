@@ -16,12 +16,12 @@ export const BottomChart = ({setSelectedCountry}) => {
     user.email==="fuad@gmail.com" ?
     callApi('https://emapp-backend.vercel.app/users',setUsers)
     :
-    callApi('https://emapp-backend.vercel.app/warehousepro/mainData',setUsers)
+    callApi('https://emapp-backend.vercel.app/warehousepro/stateData',setUsers)
   },[])
 
   // console.log(users);
   
-
+const sum=users.reduce((sum, obj) => sum + obj.value, 0);
   const handleCountryClick = (feature) => {
       
       if(feature.properties.name==="UK"){
@@ -35,31 +35,34 @@ export const BottomChart = ({setSelectedCountry}) => {
       // You can perform any other actions here based on the clicked country
   };
 
-  function countDuplicateValues() {
-    const countryCounts = {};
+  // function countDuplicateValues() {
+  //   const countryCounts = {};
 
-    // Iterate through the users array and count the countries
-    for (const user of users) {
-      const { id } = user;
-      if (countryCounts[id]) {
-        countryCounts[id]++;
-      } else {
-        countryCounts[id] = 1;
-      }
-    }
-    // console.log(countryCounts);
-    // Loop through the countMap to create the result array
+  //   // Iterate through the users array and count the countries
+  //   for (const user of users) {
+  //     const { id } = user;
+  //     if (countryCounts[id]) {
+  //       countryCounts[id]++;
+  //     } else {
+  //       countryCounts[id] = 1;
+  //     }
+  //   }
+  //   // console.log(countryCounts);
+  //   // Loop through the countMap to create the result array
     
-    const countryCountsArray = Object.entries(countryCounts).map(([country, count]) => ({
-      id: country, // Use the country name as the id
-      value: count,
-    }));
+  //   const countryCountsArray = Object.entries(countryCounts).map(([country, count]) => ({
+  //     id: country, // Use the country name as the id
+  //     value: count,
+  //   }));
 
-    return countryCountsArray;
-  }
+  //   return countryCountsArray;
+  // }
 
-  const countedValues = countDuplicateValues();
-  
+  // const countedValues = countDuplicateValues();
+  const countedValues=[{
+    id:"USA",
+    value:sum
+  }]
   // console.log(selectedCountry);
 
   return (

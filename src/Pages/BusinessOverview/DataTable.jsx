@@ -11,7 +11,7 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
     },[])
     useEffect(() => {
       if (stateName) {
-          const data = orderData.filter(obj => obj.state === stateName);
+          const data = orderData.filter(obj => obj.State === stateName);
           setFilteredData(data);
       } else if(selectedProduct) {
         const data = orderData.filter(obj => obj.Product === selectedProduct);
@@ -39,9 +39,7 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
   <thead className="thead">
     <tr>
       <th>Name</th>
-      <th>Total Sales</th>
       <th>Client Create Date</th>
-      <th>Country</th>
       <th>State</th>
       <th>Product/Service</th>
       <th>Item Amount</th>
@@ -51,10 +49,8 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
     {  filteredData.map((item, index) => (
       <tr key={index}>
         <td>{item.name}</td>
-        <td>{item.total.toLocaleString()}$</td>
         <td>{item.date}</td>
-        <td>{item.country}</td>
-        <td>{item.state}</td>
+        <td>{item.State}</td>
         <td>{item.Product}</td>
         <td>{item.Line_Item_Amount.toLocaleString()}$</td>
       </tr>

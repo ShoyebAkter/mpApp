@@ -20,12 +20,12 @@ ChartJS.register(
     Legend
 );
 const CustomerSalesChart = ({product}) => {
-
+console.log(product)
     function sumAmountByYear() {
         const result = {};
         
         product.forEach(obj => {
-          const year = (new Date(obj.Date_Billed)).getFullYear();
+          const year = (new Date(obj.Date_Invoiced)).getFullYear();
           result[year] = (result[year] || 0) + obj.Line_Item_Amount;
         });
         

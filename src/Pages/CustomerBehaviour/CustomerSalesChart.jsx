@@ -20,7 +20,7 @@ ChartJS.register(
     Legend
 );
 const CustomerSalesChart = ({product}) => {
-console.log(product)
+// console.log(product)
     function sumAmountByYear() {
         const result = {};
         
@@ -75,6 +75,7 @@ console.log(product)
         },
     };
 
+    ChartJS.defaults.color = '#555';
     const labels = resultArray.map(item=>item.year);
 
     const data = {

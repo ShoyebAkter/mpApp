@@ -205,7 +205,7 @@ const WarehouseproCategory = ({ setSelectedCategory }) => {
           {" "}
           Customer Category
         </h1>
-        <Bar options={options} width={500} height={400} data={data1} />
+        <Bar options={options} width={900} height={400} data={data1} />
       </div>
       <div className="relative w-42 h-42 mx-auto">
         <svg className="w-full h-full" viewBox="0 0 100 100">

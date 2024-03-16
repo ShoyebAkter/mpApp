@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { confirmThePasswordReset } from '../../firebase.init'
 
@@ -11,7 +11,10 @@ const ForgotPassword = () => {
     const [link,setLink]=useState('')
     const [confirmPassword,setConfirmPassword]=useState('')
     const email=localStorage.getItem("email")
-    const getLink=async ()=>{
+    
+    
+    useEffect(()=>{
+      const getLink=async ()=>{
         
         const obj={
             email:email
@@ -29,16 +32,15 @@ const ForgotPassword = () => {
             console.error('Error generating password reset link:', error);
           });
     }
-    
-    
+      getLink()
+    },[link])
 
 // Now you can use the oobCode as needed
 // console.log(oobCode);
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  try {
-    await getLink(); // Wait for getLink to complete and update the link state
+  try { // Wait for getLink to complete and update the link state
     if (!link) {
       console.error('No link received from server');
       return;

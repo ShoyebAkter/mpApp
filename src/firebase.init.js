@@ -13,10 +13,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export default app;
-export const passwordReset = async (email) => {
-  console.log(auth,email)
-  return await sendPasswordResetEmail(auth, email);
-};
 
 export const confirmThePasswordReset = async (oobCode, newPassword) => {
   if (!oobCode && !newPassword) return;

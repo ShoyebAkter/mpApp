@@ -31,7 +31,7 @@ const Login = () => {
         if(customerObj.role==="customer"){
           localStorage.setItem("companyName",customerObj.name)
         }
-      console.log(emailExists)
+      // console.log(emailExists)
       if(!emailExists){
         const userInfo={
             uid:user.uid,

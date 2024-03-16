@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { sendPasswordResetEmail, confirmPasswordReset } from "firebase/auth";
+import {  confirmPasswordReset } from "firebase/auth";
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_REACT_APP_API_KEY,
   authDomain: import.meta.env.VITE_REACT_APP_AUTH_DOMAIN,
@@ -16,6 +16,6 @@ export default app;
 
 export const confirmThePasswordReset = async (oobCode, newPassword) => {
   if (!oobCode && !newPassword) return;
-
+  console.log(oobCode,newPassword)
   return await confirmPasswordReset(auth, oobCode, newPassword);
 };

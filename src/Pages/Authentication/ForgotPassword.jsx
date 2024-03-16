@@ -12,35 +12,42 @@ const ForgotPassword = () => {
     const [confirmPassword,setConfirmPassword]=useState('')
     const email=localStorage.getItem("email")
     
-    
     useEffect(()=>{
-      const getLink=async ()=>{
-        
-        const obj={
-            email:email
-          }
-          await fetch('https://emapp-backend.vercel.app/passwordReset', {
+      const getLink = async () => {
+        const obj = {
+          email: email
+        };
+      
+        try {
+          const response = await fetch('https://emapp-backend.vercel.app/passwordReset', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(obj ),
-          })
-          .then(response => response.json())
-          .then(data=>setLink(data.link))
-          .catch(error => {
-            console.error('Error generating password reset link:', error);
+            body: JSON.stringify(obj),
           });
-    }
-      getLink()
-    },[link])
+      
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+      
+          const data = await response.json();
+          console.log(data)
+          setLink(data.link);
+        } catch (error) {
+          console.error('Error generating password reset link:', error);
+        }
+      };
+       getLink();
+    },[])
 
 // Now you can use the oobCode as needed
 // console.log(oobCode);
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  try { // Wait for getLink to complete and update the link state
+  try {
+     // Wait for getLink to complete and update the link state
     if (!link) {
       console.error('No link received from server');
       return;
@@ -58,7 +65,7 @@ const handleSubmit = async (e) => {
 
     // Get the value of the 'oobCode' parameter
     const oobCode = queryParams.get('oobCode');
-
+    // console.log(oobCode)
     if (oobCode) {
       await confirmThePasswordReset(oobCode, confirmPassword);
       localStorage.removeItem("email");

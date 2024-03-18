@@ -97,6 +97,7 @@ const CustomerSalesChart = ({product}) => {
                 data: resultArray.map(item=>item.amount),
                 borderColor: '#294F41',
                 backgroundColor:'#294F41',
+                
             }
         ],
     };

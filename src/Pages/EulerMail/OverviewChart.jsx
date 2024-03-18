@@ -77,6 +77,7 @@ function OverviewChart() {
     }
   }
   switchFunction();
+  
   // console.log(totalSales)
   // setTotalSales(updateValue(totalSales))
   const options = {

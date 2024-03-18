@@ -11,11 +11,13 @@ const ClientData = ({ selectedItem }) => {
       setProductData
     );
   }, []); // Empty dependency array ensures this effect runs only once
-  
+  // console.log(productData)
   useEffect(() => {
+    // console.log(selectedItem.name)
     if (selectedItem && productData.length > 0) {
       const foundObject = productData.find(obj => obj.Client_Name_Clean === selectedItem.name);
       if (foundObject) {
+        
         setProduct(foundObject.product);
       } else {
         setProduct([]); // Handle case when no matching object is found

@@ -49,8 +49,10 @@ export const Main = () => {
       </div>
       <div className="mx-auto mt-20">
         <TopChart />
-        
-        <div className="topChart">
+        {
+          user.email === "warehousepro@gmail.com" &&
+           <>
+           <div className="topChart">
           <div className="greenDiv"></div>
           <BusinessTable/>
         </div>
@@ -58,6 +60,9 @@ export const Main = () => {
           <div className="greenDiv"></div>
           <ProductServiceChart setSelectedProduct={setSelectedProduct}/>
         </div>
+           </>
+        }
+        
         
         {user.email === "fuad@gmail.com" ? (
           <MiddleChart />
@@ -88,10 +93,14 @@ export const Main = () => {
           
           
         </div>
-        <div className="tableArea">
+        {
+          user.email === "warehousepro@gmail.com" &&
+          <div className="tableArea">
           <div className="greenDiv"></div>
           <DataTable selectedCountry={selectedCountry} selectedProduct={selectedProduct} stateName={stateName}/>
         </div>
+        }
+        
       </div>
       
     </div>

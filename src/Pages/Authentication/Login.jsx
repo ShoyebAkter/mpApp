@@ -20,6 +20,10 @@ const Login = () => {
 
   const onLogin = (e) => {
     e.preventDefault();
+    fetch(`https://emapp-backend.vercel.app/accessToken/${email}`)
+        .then((res) => res.json())
+        .then((result) => localStorage.setItem("accessToken",result.token))
+        .catch((error) => console.error(error));
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -43,7 +47,10 @@ const Login = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(userInfo),
-        });
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data.token))
+        ;
       }
       if(isadmin.email===user.email){
         navigate('/dashboard')

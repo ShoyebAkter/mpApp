@@ -63,8 +63,7 @@ let totalSales,totalOrder;
             orders.sort((a, b) => a.year - b.year);
              totalSales = orders.map(item => item.total).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
              totalOrder = orders.map(item => item.order).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-                // console.log(totalSales)
-            averageOrder=getAvg(orders)
+             
             break;
           default:
             // Handle other cases if needed
@@ -76,7 +75,7 @@ let totalSales,totalOrder;
     //   console.log(totalOrder)
     return (
         <div>
-            <LineChart orders={orders} totalSales={totalSales} totalOrder={totalOrder} />
+            <LineChart averageOrder={averageOrder} orders={orders} totalSales={totalSales} totalOrder={totalOrder} />
         </div>
     )
 }

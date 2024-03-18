@@ -13,12 +13,7 @@ export const TopChart = () => {
             <div  className="greenDiv"></div>
             <TotalSales/>
             <Orders/>
-            {
-                user.email ==="fuad@gmail.com"?
-                <CustomerQuantity/>
-                :
-                null
-            }
+            
             <OrderAvg/>
             <MeanChart chartType={"median"}/>
         </div>

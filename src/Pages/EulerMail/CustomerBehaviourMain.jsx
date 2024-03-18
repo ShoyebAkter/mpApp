@@ -33,7 +33,12 @@ function CustomerBehaviourMain() {
     // console.log(user.uid);
     const tierArray = [];
     useEffect(() => {
-        fetch('https://emapp-backend.vercel.app/api/customerdata')
+        fetch('https://emapp-backend.vercel.app/api/customerdata', {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then((res) => res.json())
             .then((result) => setCustomers(result))
             .catch((error) => console.error(error))

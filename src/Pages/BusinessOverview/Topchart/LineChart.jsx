@@ -20,13 +20,13 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export const LineChart = ({ orders,totalSales, totalOrder}) => {
+export const LineChart = ({averageOrder, orders,totalSales, totalOrder}) => {
   const [showPopup, setShowPopup] = useState(false);
   const totalAvg = totalSales / totalOrder;
   const totalMean = orders
     .map((item) => item.mean)
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-  
+  // console.log(averageOrder)
   const options = {
     responsive: true,
 
@@ -56,14 +56,14 @@ export const LineChart = ({ orders,totalSales, totalOrder}) => {
     },
   };
 
-  const labels = orders.map((item) => item.year);
+  const labels = !averageOrder ? orders.map((item) => item.year): averageOrder.map(item=>item.year);
 
   const data = {
     labels,
     datasets: [
       {
         label: `Avg Order`,
-        data: orders.map((item) => item.mean.toFixed(2)),
+        data: !averageOrder ? orders.map((item) => item.mean.toFixed(2)) : averageOrder.map(item=>item.averageTotalPrice),
         borderColor: "#659248",
         backgroundColor: "#659248",
       },
@@ -133,6 +133,7 @@ export const LineChart = ({ orders,totalSales, totalOrder}) => {
   );
 };
 LineChart.propTypes = {
+  averageOrder: PropTypes.array.isRequired,
   orders: PropTypes.array.isRequired,
   totalSales: PropTypes.number.isRequired,
   totalOrder: PropTypes.number.isRequired,

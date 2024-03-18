@@ -59,31 +59,25 @@ export const CustomerBehaviour = () => {
           user.email==="fuad@gmail.com" ?
           <div className="cohortChartSection">
           <Engagement setWeeksData={setWeeksData} />
-          <Cohorts weeksData={weeksData} />
         </div>
         :
         <div  className="firstChartSection">
           <WarehouseproCategory setSelectedCategory={setSelectedCategory}/>
-          
         </div>
         }
-        {selectedItem?.category===selectedCategory ?
+        {selectedItem?.category===selectedCategory && user.email==="warehousepro@gmail.com" ?
   <div className="firstChartSection">
     <ClientData selectedItem={selectedItem} />
   </div>
   :
   null
 }
+{
+  user.email==="warehousepro@gmail.com" &&
+  <div>
         <div className="firstChartSection">
           <CustomerTable setSelectedItem={setSelectedItem} selectedCategory={selectedCategory} customerTable={"categoryTable"}/>
         </div>
-        {/* <div className="firstChartSection">
-        <SmallCLient/>
-        </div>
-        <div className="clientSection">
-        
-        <WarehouseproCustomer/>
-        </div> */}
         <div className="clientSection">
         <ActiveCohort setCohortYear={setCohortYear} setActiveYear={setActiveYear} />
         
@@ -95,6 +89,9 @@ export const CustomerBehaviour = () => {
         <Cohorts/>
         
         </div>
+        </div>
+}
+        
 
         {/* <div className="firstChartSection">
             <Heatmap/>

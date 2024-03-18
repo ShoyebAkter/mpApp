@@ -20,10 +20,11 @@ const Login = () => {
 
   const onLogin = (e) => {
     e.preventDefault();
-    fetch(`https://emapp-backend.vercel.app/accessToken/${email}`)
-        .then((res) => res.json())
-        .then((result) => localStorage.setItem("accessToken",result.token))
-        .catch((error) => console.error(error));
+    // console.log(users)
+    // fetch(`https://emapp-backend.vercel.app/accessToken/${email}`)
+    //     .then((res) => res.json())
+    //     .then((result) => localStorage.setItem("accessToken",result.token))
+    //     .catch((error) => console.error(error));
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -70,23 +71,23 @@ const Login = () => {
         toast.error(error.message);
       });
   };
-  const  initiatePasswordReset=async()=> {
-    try {
-      if(email){
-        localStorage.setItem("email",email)
-        navigate('/resetPassword')
-      }else{
-        toast.error("Please Enter your email");
-      }
+  // const  initiatePasswordReset=async()=> {
+  //   try {
+  //     if(email){
+  //       localStorage.setItem("email",email)
+  //       navigate('/resetPassword')
+  //     }else{
+  //       toast.error("Please Enter your email");
+  //     }
       
-  } catch (error) {    
-    if (error.code === 'auth/user-not-found') {
-      alert('User not found, try again!')
-      setEmail('')
-    }
-  }
+  // } catch (error) {    
+  //   if (error.code === 'auth/user-not-found') {
+  //     alert('User not found, try again!')
+  //     setEmail('')
+  //   }
+  // }
     
-  }
+  // }
   
   
   return (
@@ -130,7 +131,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <button className="mt-2" onClick={initiatePasswordReset}>Reset Password</button>
+                {/* <button className="mt-2" onClick={initiatePasswordReset}>Reset Password</button> */}
               </div>
 
               <div className="flex items-center justify-center py-7">

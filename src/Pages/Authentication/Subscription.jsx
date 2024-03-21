@@ -11,19 +11,26 @@ function Subscription() {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    console.log("clicked")
     // console.log(firstName,lastName,email,gender,title,address);
     const subscriptionInfo = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       gender: gender,
+      companyName:company,
+      connection:name,
       title: name,
       address: address,
       date: new Date().toLocaleDateString(),
     };
+    localStorage.setItem("company",company)
+    localStorage.setItem("shopifyEmail",email)
+    
     fetch("https://emapp-backend.vercel.app/subscriptionemail", {
       method: "POST",
       headers: {
@@ -32,10 +39,13 @@ function Subscription() {
       body: JSON.stringify(subscriptionInfo),
     }).then((res) => {
       if (res.status === 200) {
-        navigate("/");
+        if(name==="Shopify"){
+          navigate('/connection')
+        }
       }
     });
   };
+  
   return (
     <>
       <main className="loginsection">
@@ -151,17 +161,22 @@ function Subscription() {
                       htmlFor="title"
                       className="block tracking-wide leading-6 font-semibold text-gray-400"
                     >
-                      Company Name <span className="text-red-400">*</span>
+                      What would you like to connect with{" "}
+                      <span className="text-red-400">*</span>
                     </label>
-                    <input
+                    <select
                       onChange={(e) => setName(e.target.value)}
-                      type="text"
                       id="name"
                       name="name"
-                      placeholder="Enter Company Name"
                       required
                       className="appearance-none w-full bg-white rounded-md border-gray-300"
-                    />
+                    >
+                      <option value="">Select your Connection</option>
+                      <option value="Shopify">Shopify</option>
+                      <option value="Company 2">Company 2</option>
+                      <option value="Company 3">Company 3</option>
+                      <option value="Company 4">Company 4</option>
+                    </select>
                   </div>
 
                   <div className="col-span-6">
@@ -169,14 +184,16 @@ function Subscription() {
                       htmlFor="company"
                       className="block tracking-wide leading-6 font-semibold text-gray-400"
                     >
-                      Company Url
+                      Company Name <span className="text-red-400">*</span>
                     </label>
                     <input
+                    onChange={(e) => setCompany(e.target.value)}
                       type="text"
                       id="company"
                       name="company"
+                      required
                       className="appearance-none w-full bg-white rounded-md border-gray-300"
-                      placeholder="Company Website Url"
+                      placeholder="Company Name"
                     />
                   </div>
 
@@ -223,7 +240,7 @@ function Subscription() {
                         : "hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900"
                     }`}
                   >
-                    Submit
+                    Create Your First Connection
                   </button>
                 </div>
                 <p className="text-sm text-black text-center">
@@ -233,7 +250,7 @@ function Subscription() {
                   </NavLink>
                 </p>
                 <p className="text-sm text-black text-center pt-5">
-                  Go back to {" "}
+                  Go back to{" "}
                   <NavLink to="/" className="text-blue-700">
                     Home
                   </NavLink>

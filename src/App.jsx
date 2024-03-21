@@ -16,6 +16,8 @@ import { Policy } from './Pages/Policy/Policy'
 import AdminDashboard from './Pages/AdminPanel/AdminDashboard'
 import SettingPage from './Pages/Settings/SettingPage'
 import ForgotPassword from './Pages/Authentication/ForgotPassword'
+import Connection from './Pages/Authentication/Connection'
+import ShopifyAuth from './Pages/Authentication/ShopifyAuth'
 
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
         <Route path="/resetPassword" element={<ForgotPassword />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/subscription" element={<Subscription />} />
+        <Route path="/connection" element={<Connection />} />
+        <Route path="/shopify/authorization" element={<ShopifyAuth />} />
       </Routes>
     </>
   )

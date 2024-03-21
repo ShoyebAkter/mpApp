@@ -15,11 +15,11 @@ const ActiveCohort = ({ setCohortYear, setActiveYear }) => {
       );
 
       const data = await response.json();
-      data.sort((a, b) => {
-        if (a._id < b._id) return -1;
-        if (a._id > b._id) return 1;
-        return 0;
-      });
+      // data.sort((a, b) => {
+      //   if (a._id < b._id) return -1;
+      //   if (a._id > b._id) return 1;
+      //   return 0;
+      // });
 
       // console.log(data);
       const years = [

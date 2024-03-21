@@ -101,6 +101,7 @@ const CustomerSalesChart = ({product}) => {
             }
         ],
     };
+    ChartJS.defaults.color="black"
   return (
     <div className='flex justify-center'>
             <Line width={400} height={150} options={options} data={data} />

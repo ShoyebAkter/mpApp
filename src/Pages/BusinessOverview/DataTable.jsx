@@ -30,7 +30,7 @@ const DataTable = ({selectedCountry,stateName,selectedProduct,cohortYear,activeY
         setFilteredData(orderData); 
       }
   }, [stateName,selectedProduct, orderData,cohortYear,activeYear,selectedCountry]);
-// console.log(cohortYear,activeYear)
+// console.log(cohortYear,activeYear,filteredData)
 
   return (
     <div style={{"maxHeight":"400px"}} className="overflow-x-auto ">

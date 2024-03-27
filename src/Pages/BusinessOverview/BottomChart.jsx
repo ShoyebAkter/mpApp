@@ -24,13 +24,10 @@ export const BottomChart = ({setSelectedCountry}) => {
 const sum=users.reduce((sum, obj) => sum + obj.value, 0);
   const handleCountryClick = (feature) => {
       
-      if(feature.properties.name==="UK"){
-        setSelectedCountry("United Kingdom")
+      if(feature.properties.name==="USA"){
+        setSelectedCountry("United States")
       }else if(feature.properties.name==="Korea"){
         setSelectedCountry("South Korea")
-      }
-      else{
-        setSelectedCountry(feature.properties.name);
       }
       // You can perform any other actions here based on the clicked country
   };

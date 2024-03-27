@@ -173,9 +173,6 @@ function Subscription() {
                     >
                       <option value="">Select your Connection</option>
                       <option value="Shopify">Shopify</option>
-                      <option value="Company 2">Company 2</option>
-                      <option value="Company 3">Company 3</option>
-                      <option value="Company 4">Company 4</option>
                     </select>
                   </div>
 

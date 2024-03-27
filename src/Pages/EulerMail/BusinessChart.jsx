@@ -14,6 +14,26 @@ function BusinessChart() {
     if (!user) {
         navigate('/login')
     }
+    const shopifyData={
+        adminApi:"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",
+        apikey:"e2a01a802101a799430a62de2e69607a",
+        storeUrl:"b879af-ea.myshopify.com/"
+    }
+    const queryParams = new URLSearchParams(shopifyData).toString();
+    
+    const fetchData=async()=>{
+        await fetch(`https://emapp-backend.vercel.app/shopify/storeData?${queryParams}`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+            .then((res) => res.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.error(error))
+    }
+    fetchData()
+    
     return (
         <div  className="eulermailMain">
             <div className="flex text-black justify-around ">

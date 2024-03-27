@@ -24,7 +24,7 @@ const ScatterChart = () => {
       const getData = () => {
         const temp = [];
         data.forEach((elm) => {
-          temp.push([ elm.Client_Longevity_Months,elm.Line_Item_Amount]);
+          temp.push([ elm.Client_Longevity_Months,elm.Line_Item_Amount,elm.name]);
         });
         return temp;
       };
@@ -67,6 +67,12 @@ const ScatterChart = () => {
             },
             states: { hover: { marker: { enabled: false } } },
             jitter: { x: 0.005 },
+            events: {
+              click: function (event) {
+                  console.log('Clicked point:', event.point);
+                  // Add your custom logic here
+              }
+          }
           },
         },
         tooltip: {

@@ -14,9 +14,22 @@ export const Cohorts = () => {
         "https://emapp-backend.vercel.app/warehousepro/cohort"
       );
       const data = await response.json();
-      
-      const productsArray = data.map(obj => obj.product);
-      // console.log(productsArray)
+      data.sort((a, b) => {
+        // Convert both 'prod' properties to lowercase for case-insensitive sorting
+        let prodA = a.Product.toLowerCase();
+        let prodB = b.Product.toLowerCase();
+    
+        // Compare the two 'prod' properties
+        if (prodA < prodB) {
+            return -1; // If 'prodA' should appear before 'prodB'
+        }
+        if (prodA > prodB) {
+            return 1; // If 'prodA' should appear after 'prodB'
+        }
+        return 0; // If both are equal
+    });
+      const productsArray = data.map(obj => obj.Product);
+      // console.log(data)
       const months = [
         "1",
         "2",

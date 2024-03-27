@@ -85,7 +85,7 @@ export const Main = () => {
             Users in Each Country/State
           </h1>
           {
-            selectedCountry==="USA" ?
+            selectedCountry==="United States" ?
             <MapChart setSelectedCountry={setSelectedCountry} setStateName={setStateName}/>
             :
             <BottomChart setSelectedCountry={setSelectedCountry}/>

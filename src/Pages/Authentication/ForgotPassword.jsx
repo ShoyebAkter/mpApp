@@ -19,7 +19,7 @@ const ForgotPassword = () => {
         };
       
         try {
-          const response = await fetch('https://emapp-backend.vercel.app/passwordReset', {
+          const response = await fetch('http://localhost:5000/passwordReset', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

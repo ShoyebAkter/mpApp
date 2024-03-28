@@ -43,6 +43,7 @@ function BusinessChart() {
     // var newPassword = generatePassword(16);
     // console.log(newPassword);
     // P?3qe+fw)%NGJpns
+    // QdH,o)xoFAxM9*Gs
     return (
         <div  className="eulermailMain">
             <div className="flex text-black justify-around ">

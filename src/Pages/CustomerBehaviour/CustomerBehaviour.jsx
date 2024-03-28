@@ -17,12 +17,14 @@ import WarehouseproCategory from "./WarehouseproCategory"
 import DataTable from "../BusinessOverview/DataTable"
 import ActiveCohort from "./ActiveCohort"
 import ClientData from "./ClientData"
+import WarehouseproCat from "./WarehouseproCat"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [cohortYear,setCohortYear]=useState(0)
     const [activeYear,setActiveYear]=useState(0)
     const[selectedItem,setSelectedItem]=useState(null)
+    const [totalSales, setTotalSales] = useState(0);
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate()
   if (loading) return <Loading></Loading>
@@ -62,7 +64,9 @@ export const CustomerBehaviour = () => {
         </div>
         :
         <div  className="firstChartSection">
-          <WarehouseproCategory setSelectedCategory={setSelectedCategory}/>
+          
+          <WarehouseproCat setSelectedCategory={setSelectedCategory} setTotalSales={setTotalSales}/>
+          <WarehouseproCategory totalSales={totalSales}/>
         </div>
         }
         {selectedItem?.category===selectedCategory && user.email==="warehousepro@gmail.com" ?

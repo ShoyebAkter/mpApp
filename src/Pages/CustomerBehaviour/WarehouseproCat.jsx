@@ -107,9 +107,11 @@ const WarehouseproCat = ({ setSelectedCategory, setTotalSales }) => {
       return catArr.indexOf(a.category) - catArr.indexOf(b.category);
     });
     //   console.log(categoryCountsArray)
-    Highcharts.chart("container", {
+    const chart= Highcharts.chart("container", {
       chart: {
         type: "bar",
+        height: 600,
+        width:700
       },
       title: {
         text: "Customer Category",
@@ -125,6 +127,12 @@ const WarehouseproCat = ({ setSelectedCategory, setTotalSales }) => {
         },
         gridLineWidth: 1,
         lineWidth: 0,
+        events: {
+          click: function (event) {
+              // Handle the click event on the x-axis here
+              console.log('Clicked on x-axis',event);
+          }
+      }
       },
       yAxis: {
         min: 0,
@@ -193,11 +201,26 @@ const WarehouseproCat = ({ setSelectedCategory, setTotalSales }) => {
         },
       ],
     });
+
+    chart.xAxis[0].labelGroup.element.childNodes.forEach((label) => {
+      label.addEventListener('click', (e) => {
+          const category = e.target.textContent;
+          setSelectedCategory(category);
+          // Add your desired action here
+      });
+  });
+
+  return () => {
+      // Clean up event listeners if component unmounts
+      chart.xAxis[0].labelGroup.element.childNodes.forEach((label) => {
+          label.removeEventListener('click', () => {});
+      });
+  };
   }, [clients]);
 
   return (
     <div id="container">
-      <HighchartsReact highcharts={Highcharts} />
+      <HighchartsReact highcharts={Highcharts} options={{ chart: { type: 'bar' }}} containerProps={{ id: 'container' }} />
     </div>
   );
 };

@@ -13,10 +13,10 @@ export const BottomChart = ({setSelectedCountry}) => {
 
  
   useEffect(()=>{
-    user.email==="fuad@gmail.com" ?
-    callApi('https://emapp-backend.vercel.app/users',setUsers)
-    :
+    user.email==="warehousepro@gmail.com" ?
     callApi('https://emapp-backend.vercel.app/warehousepro/stateData',setUsers)
+    :
+    callApi('https://emapp-backend.vercel.app/users',setUsers)
   },[])
 
   // console.log(users);

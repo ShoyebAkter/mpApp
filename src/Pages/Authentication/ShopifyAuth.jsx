@@ -6,9 +6,15 @@ const ShopifyAuth = () => {
     const [adminApi,setAdminApi]=useState("");
     const [api,setApi]=useState("")
   const navigate=useNavigate()
+
+  
+    
+    // Example usage: Generate a password of length 16
+    
     const onSubmit=()=>{
       const companyName=localStorage.getItem("company");
       const email=localStorage.getItem("shopifyEail")
+      
         const shopifyInfo={
             url:storeUrl,
             adminApi:adminApi,

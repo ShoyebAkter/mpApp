@@ -75,7 +75,18 @@ export const Orders = () => {
         };
         break;
       default:
-        // Handle other cases if needed
+        labels = [2014,2015,2016,2017,2018];
+        data = {
+          labels,
+          datasets: [
+            {
+              label: `Orders `,
+              data: [30,50,40,60,90],
+              borderColor: "#659248",
+              backgroundColor: "#659248",
+            },
+          ],
+        };
         break;
     }
   };

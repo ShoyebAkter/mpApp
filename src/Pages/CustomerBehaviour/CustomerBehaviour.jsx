@@ -42,31 +42,31 @@ export const CustomerBehaviour = () => {
         <div className="firstChartSection ">
           
           {
-            user.email ==="fuad@gmail.com" ?
-            <div className="flex">
-            <Customers />
-            <Sales />
-            </div>
-            
-            :
+            user.email ==="warehousepro@gmail.com" ?
             <div className="flex insideFirstSec">
             <EngageLineChart/>
             <ScatterChart/>
+            </div>
+            
+            :
+            <div className="flex">
+            <Customers />
+            <Sales />
             </div>
           }
           
           
         </div>
         {
-          user.email==="fuad@gmail.com" ?
-          <div className="cohortChartSection">
-          <Engagement setWeeksData={setWeeksData} />
-        </div>
-        :
-        <div  className="firstChartSection">
+          user.email==="warehousepro@gmail.com" ?
+          <div  className="firstChartSection">
           
           <WarehouseproCat setSelectedCategory={setSelectedCategory} setTotalSales={setTotalSales}/>
           <WarehouseproCategory totalSales={totalSales}/>
+        </div>
+        :
+        <div className="cohortChartSection">
+          <Engagement setWeeksData={setWeeksData} />
         </div>
         }
         {selectedItem?.category===selectedCategory && user.email==="warehousepro@gmail.com" ?

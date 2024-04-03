@@ -72,7 +72,19 @@ function OverviewChart() {
         };
         break;
       default:
-        // Handle other cases if needed
+        
+        labels = ["Jan","Feb","Mar","April","May"];
+        data = {
+          labels,
+          datasets: [
+            {
+              label: `Sales $`,
+              data:[1,2,3,4,5] ,
+              borderColor: "#649445",
+              backgroundColor: "#649445",
+            },
+          ],
+        };
         break;
     }
   }

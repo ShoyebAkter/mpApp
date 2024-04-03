@@ -64,12 +64,12 @@ export const Main = () => {
         }
         
         
-        {user.email === "fuad@gmail.com" ? (
-          <MiddleChart />
-        ) : (
+        {user.email === "warehousepro@gmail.com" ? (
           <div>
             <LinearRegChart />
           </div>
+        ) : (
+          <MiddleChart />
         )}
 
         <div
@@ -85,7 +85,7 @@ export const Main = () => {
             Users in Each Country/State
           </h1>
           {
-            selectedCountry==="United States" ?
+            selectedCountry==="United States" && user.email==="warehousepro@gmail.com" ?
             <MapChart setSelectedCountry={setSelectedCountry} setStateName={setStateName}/>
             :
             <BottomChart setSelectedCountry={setSelectedCountry}/>

@@ -29,18 +29,7 @@ function BusinessChart() {
     //         .catch((error) => console.error(error))
     // }
     // fetchData()
-    // function generatePassword(length) {
-    //     var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}[]|;:,.<>?";
-    //     var password = "";
-    //     for (var i = 0; i < length; i++) {
-    //         var randomIndex = Math.floor(Math.random() * charset.length);
-    //         password += charset[randomIndex];
-    //     }
-    //     return password;
-    // }
     
-    // // Example usage: Generate a password of length 16
-    // var newPassword = generatePassword(16);
     // console.log(newPassword);
     // P?3qe+fw)%NGJpns
     // QdH,o)xoFAxM9*Gs

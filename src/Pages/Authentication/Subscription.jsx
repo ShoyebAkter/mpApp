@@ -1,6 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PhoneInput } from "react-international-phone";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase.init";
 
 function Subscription() {
   const navigate = useNavigate();
@@ -13,39 +15,73 @@ function Subscription() {
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
 
+  function generatePassword(length) {
+    var charset =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}[]|;:,.<>?";
+    var password = "";
+    for (var i = 0; i < length; i++) {
+      var randomIndex = Math.floor(Math.random() * charset.length);
+      password += charset[randomIndex];
+    }
+    return password;
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("clicked")
+    console.log("clicked");
+    const password = generatePassword(16);
     // console.log(firstName,lastName,email,gender,title,address);
     const subscriptionInfo = {
       firstName: firstName,
       lastName: lastName,
       email: email,
+      password: password,
       gender: gender,
-      companyName:company,
-      connection:name,
+      companyName: company,
+      connection: name,
       title: name,
       address: address,
       date: new Date().toLocaleDateString(),
     };
-    localStorage.setItem("company",company)
-    localStorage.setItem("shopifyEmail",email)
+    localStorage.setItem("company", company);
+    localStorage.setItem("shopifyEmail", email);
     
-    fetch("https://emapp-backend.vercel.app/subscriptionemail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(subscriptionInfo),
-    }).then((res) => {
-      if (res.status === 200) {
-        if(name==="Shopify"){
-          navigate('/connection')
-        }
-      }
-    });
+    
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        return auth.signOut().then(() => {
+          // User signed out successfully
+          console.log(password);
+          // Additional actions after sign out if needed
+        });
+        
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        // ..
+      });
+    
+      fetch("https://emapp-backend.vercel.app/subscriptionemail", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(subscriptionInfo),
+          }).then((res) => {
+            if (res.status === 200) {
+              if(name==="Shopify"){
+                navigate('/connection')
+                // console.log(res)
+              }
+            }
+          });
   };
-  
+
   return (
     <>
       <main className="loginsection">
@@ -184,7 +220,7 @@ function Subscription() {
                       Company Name <span className="text-red-400">*</span>
                     </label>
                     <input
-                    onChange={(e) => setCompany(e.target.value)}
+                      onChange={(e) => setCompany(e.target.value)}
                       type="text"
                       id="company"
                       name="company"

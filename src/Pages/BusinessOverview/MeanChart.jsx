@@ -65,7 +65,7 @@ const MeanChart = ({ chartType }) => {
     },
   };
 
-  const labels = orderData.map((item) => item.year);
+  const labels = orderData.map((item) => item.year) ;
 
   const data = {
     labels,

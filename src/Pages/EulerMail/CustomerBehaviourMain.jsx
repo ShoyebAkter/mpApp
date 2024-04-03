@@ -69,14 +69,14 @@ function CustomerBehaviourMain() {
         },
     };
 
-    const labels =countedValues.map((value)=>value.value);
+    const labels =countedValues ? countedValues.map((value)=>value.value) : ["Gold","Platinum","Silver"];
 
     const data1 = {
         labels,
         datasets: [
             {
                 label: 'Dataset 1',
-                data: countedValues.map((value)=>value.count),
+                data: countedValues ? countedValues.map((value)=>value.count) : [50,30,90],
                 borderColor: '#649445',
                 backgroundColor: '#649445',
             }
@@ -85,15 +85,16 @@ function CustomerBehaviourMain() {
     return (
         <div  className='customerCHart CBborder-scoop'>
             {
-                user.email==="fuad@gmail.com"?
+                user.email==="warehousepro@gmail.com"?
                 <div>
-            <h1 className=' text-xl text-center font-medium text-cyan-500 cursor-pointer'> Customer Behaviour</h1>
-            <Bar options={options} data={data1} />
-            </div>
-            :
-            <div>
             <h1 style={{"background":"#FFFFFF","color":"#294F41","width":"300px"}} className="mx-auto font-bold  text-center text-xl  cursor-pointer"> Customer Behaviour</h1>
             <EngageLineChart eulerMail={"eulerMail"}/>
+            </div>
+                
+            :
+            <div>
+            <h1 className=' text-xl text-center font-medium text-cyan-500 cursor-pointer'> Customer Behaviour</h1>
+            <Bar options={options} data={data1} />
             </div>
             }
         </div>

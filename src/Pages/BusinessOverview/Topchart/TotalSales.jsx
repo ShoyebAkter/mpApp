@@ -77,7 +77,18 @@ export const TotalSales = () => {
         };
         break;
       default:
-        // Handle other cases if needed
+        labels = [2014,2015,2016,2017,2018];
+        data = {
+          labels,
+          datasets: [
+            {
+              label: `Sales `,
+              data: [10829,103984,209384,102934,303928],
+              borderColor: "#659248",
+              backgroundColor: "#659248",
+            },
+          ],
+        };
         break;
     }
   };

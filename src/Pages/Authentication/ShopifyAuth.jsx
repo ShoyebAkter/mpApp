@@ -13,7 +13,7 @@ const ShopifyAuth = () => {
     
     const onSubmit=()=>{
       const companyName=localStorage.getItem("company");
-      const email=localStorage.getItem("shopifyEail")
+      const email=localStorage.getItem("shopifyEmail")
       
         const shopifyInfo={
             url:storeUrl,

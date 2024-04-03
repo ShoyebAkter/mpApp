@@ -14,7 +14,6 @@ function Subscription() {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
-
   function generatePassword(length) {
     var charset =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}[]|;:,.<>?";
@@ -31,18 +30,7 @@ function Subscription() {
     console.log("clicked");
     const password = generatePassword(16);
     // console.log(firstName,lastName,email,gender,title,address);
-    const subscriptionInfo = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-      gender: gender,
-      companyName: company,
-      connection: name,
-      title: name,
-      address: address,
-      date: new Date().toLocaleDateString(),
-    };
+    
     localStorage.setItem("company", company);
     localStorage.setItem("shopifyEmail", email);
     
@@ -51,22 +39,21 @@ function Subscription() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        console.log(password);
         return auth.signOut().then(() => {
-          // User signed out successfully
-          console.log(password);
-          // Additional actions after sign out if needed
-        });
-        
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ..
-      });
-    
-      fetch("https://emapp-backend.vercel.app/subscriptionemail", {
+          const subscriptionInfo = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            gender: gender,
+            companyName: company,
+            connection: name,
+            title: name,
+            address: address,
+            date: new Date().toLocaleDateString(),
+          };
+          fetch("https://emapp-backend.vercel.app/subscriptionemail", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -80,6 +67,20 @@ function Subscription() {
               }
             }
           });
+          // Additional actions after sign out if needed
+        });
+        
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        // ..
+      });
+      
+      
+      
   };
 
   return (

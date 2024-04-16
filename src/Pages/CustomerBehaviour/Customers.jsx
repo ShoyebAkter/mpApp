@@ -13,6 +13,11 @@ import { useEffect, useState } from "react";
 import { getDuplicate } from "../EulerMail/getDuplicate";
 import { getTierValue } from "./getTierValue";
 import './CustomerBehaviour.css'
+import { fetchData, getCustomerSegMentCount, getShopifyData, rfmLogic } from "./shopifyLogic";
+import { auth } from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { callApi } from "../EulerMail/getSalesData";
+import moment from 'moment';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -25,20 +30,49 @@ ChartJS.register(
 
 
 export const Customers = () => {
+  const [user, loading] = useAuthState(auth);
   const [customers, setCustomers] = useState([]);
+  const [customersData, setCustomersData] = useState([]);
+  const [shopifyData,setShopifyData]=useState([])
+  const [segmentCount,setSegmentCount]=useState([])
   const tierArray = [];
   useEffect(() => {
-    fetch('https://emapp-backend.vercel.app/api/customerdata')
-      .then((res) => res.json())
-      .then((result) => setCustomers(result))
-      .catch((error) => console.error(error))
+    fetchData(`https://emapp-backend.vercel.app/api/customerdata`,setCustomers);
+    
   }, [])
-  // console.log(customers);
+  // useEffect(() => {
+  //   fetchData(`https://emapp-backend.vercel.app/shopify/data`,setShopifyData);
+    
+  // }, [])
+  // useEffect(() => {
+  //   fetchData(`https://emapp-backend.vercel.app/customersData`,setCustomersData);
+    
+  // }, [])
+  
+  // console.log(customersData)
+  // const shopifyexists=shopifyData.some(obj=> obj.email===user.email)
+  // if(shopifyexists){
+  //   rfmLogic(moment,customersData[0].customers);
+  //   getCustomerSegMentCount(customersData[0].customers,setSegmentCount)
+  // }
+  // console.log(segmentCount)
+  // useEffect(() => {
+  //   fetch('https://emapp-backend.vercel.app/shopify/data')
+  //     .then((res) => res.json())
+  //     .then((result) => console.log(result))
+  //     .catch((error) => console.error(error))
+  // }, [])
+  
+  // useEffect(()=>{
+  //   fetchData(`https://emapp-backend.vercel.app/shopify/data`,setShopifyData);
+  // },[])
+  
 
+  // getShopifyData(shopifyData,user)
   
   getTierValue(customers,tierArray)
   // console.log(tierArray);
-  
+  // console.log(shopifyData);
   const countedValues = getDuplicate(tierArray);
 
   const options = {
@@ -60,7 +94,7 @@ export const Customers = () => {
     },
   };
 
-  const labels = countedValues.map((value)=>value.value);
+  const labels =  countedValues.map((value)=>value.value);
 
   const data = {
     labels,

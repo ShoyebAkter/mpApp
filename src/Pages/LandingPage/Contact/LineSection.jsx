@@ -1,5 +1,9 @@
+import { useRef, useState } from "react";
+import { PhoneInput } from "react-international-phone";
 
 export const LineSection = () => {
+  const form = useRef();
+  const [phone, setPhone] = useState('');
   return (
     <div className="text-white p-5 flex flex-col justify-between">
       <h1 className="text-5xl">
@@ -25,11 +29,11 @@ export const LineSection = () => {
       </div>
 
       <dialog id="my_modal_5" className="modal">
-        <div className="modal-box w-1/3  bg-black max-w-full">
+        <div className="modal-box w-1/3  bg-gray-500 max-w-full">
         <div className="p-5 space-y-5 shadow-xl">
     <h4 className="text-center text-3xl">Contact Us</h4>
 
-    <form>
+    {/* <form>
       <div className="grid grid-cols-2 gap-5">
         <input
           type="text"
@@ -54,7 +58,44 @@ export const LineSection = () => {
         value="Send Message"
         className="focus:outline-none mt-5 bg-purple-500 px-4 py-2 text-white font-bold w-full"
       />
-    </form>
+    </form> */}
+    <form ref={form}
+    //  onSubmit={sendEmail}
+     id="contact_form">
+            <div className="flex mb-5 nameInput">
+                    <div className="w-2/3 mr-2">
+                        <label className="block text-sm text-white">Your First Name:</label>
+                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
+                    </div>
+                    <div className="w-2/3">
+                        <label className="block text-sm text-white">Last Name</label>
+                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
+                    </div>
+                </div>
+                <div className="flex mb-5 phoneemailInput">
+                    <div className="w-2/3 mr-2">
+                        <label className="block text-sm text-white">Phone Number</label>
+                        <PhoneInput
+                                name="phone"
+                                id="phone_field"
+                                defaultCountry="USA"
+                                value={phone}
+                                onChange={(phone) => setPhone(phone)}
+                            />
+                    </div>
+                    <div className="w-2/3">
+                        <label className="block text-sm text-white">Email Address:</label>
+                        <input placeholder="From:" className="rounded border-gray-400 w-full bg-white" type="email" name="email" id="email_field" />
+                    </div>
+                </div>
+                <div className="formTextArea mb-4">
+                    <label className="block text-sm text-white">Message:</label>
+                    <textarea className="w-full rounded border-gray-400 bg-white" name="message" id="message_field" rows="6"></textarea>
+                </div>
+                
+                <button type="submit"  style={{"backgroundColor":"#a3Cde0"}} className=" py-2 px-4 rounded  shadow-sm text-black hover:text-white hover:bg-blue-800" >Send</button>
+                
+            </form>
   </div>
           {/* <Preview userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage} text={text}/> */}
           <div className="modal-action">

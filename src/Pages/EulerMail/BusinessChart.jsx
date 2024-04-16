@@ -7,28 +7,27 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../Authentication/Loading";
 import SocialMediaChart from "./SocialMediaChart"
 import { CampaignResult } from "./CampaignResult";
+// import { useEffect, useState } from "react";
 function BusinessChart() {
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate()
+    // const [shopifyData,setShopifyData]=useState([])
+    // useEffect(() => {
+    //     fetch("https://emapp-backend.vercel.app/shopify/data")
+    //         .then((res) => res.json())
+    //         .then((result) => {
+    //             setShopifyData(result);
+    //         })
+    //         .catch((error) => {
+    //             console.error(error);
+    //         });
+    // }, [])
     if (loading) return <Loading></Loading>
     if (!user) {
         navigate('/login')
     }
+// console.log(shopifyData)
     
-    // const queryParams = new URLSearchParams(shopifyData).toString();
-    
-    // const fetchData=async()=>{
-    //     await fetch(`https://emapp-backend.vercel.app/shopify/storeData?${queryParams}`, {
-    //         method: 'GET',
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         }
-    //     })
-    //         .then((res) => res.json())
-    //         .then((result) => console.log(result))
-    //         .catch((error) => console.error(error))
-    // }
-    // fetchData()
     
     // console.log(newPassword);
     // P?3qe+fw)%NGJpns

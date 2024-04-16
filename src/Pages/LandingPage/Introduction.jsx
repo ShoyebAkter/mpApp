@@ -3,9 +3,9 @@ import './Introduction.css'
 export const Introduction = () => {
     return (
         <Fade damping={1}>
-            <div>
+            <div className='background'>
                 
-                <div className="IntroSec">
+                <div className="IntroSec" >
                     <div className='pt-24'>
                         <div style={{"color":"#649445",}} className="firstLine">Analytics for business</div>
                         <div  className="secondLine ">

@@ -1,0 +1,28 @@
+.masterDiv{
+    background-image: url('/securitybg.jpg');
+  background-size: cover;
+  /* Adjust to your needs */
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding-inline: 80px;
+  padding-block: 150px;
+}
+.mainHeading{
+    font-size: 44px;
+    font-weight: 700;
+    color: white;
+    padding-block: 30px;
+}
+.spanSec{
+    color: #62cbc6;
+}
+.textSec{
+    color: white;
+    font-size: 34px;
+    padding-block: 20px;
+}
+.clockStyle{
+    border-radius: 50%;
+    background-color: #439541;
+    padding: 20px;
+}

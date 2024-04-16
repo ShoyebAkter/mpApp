@@ -3,24 +3,31 @@ import {  signInWithEmailAndPassword } from "firebase/auth";
 import "./Login.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { auth} from "../../firebase.init";
-import { ToastContainer, toast } from "react-toastify";
+import { fetchData } from "../CustomerBehaviour/shopifyLogic";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [users,setUsers]=useState([])
-
+  const [errors,setErrors]=useState([])
+  const [shopifyData,setShopifyData]=useState([])
+  
     useEffect(()=>{
-        fetch("https://emapp-backend.vercel.app/eulermailUser")
-        .then((res) => res.json())
-        .then((result) => setUsers(result))
-        .catch((error) => console.error(error));
+      fetchData("https://emapp-backend.vercel.app/eulermailUser",setUsers)
+      fetchData("https://emapp-backend.vercel.app/shopify/data",setShopifyData)
     },[])
-
+    
   const onLogin = (e) => {
     e.preventDefault();
-    // console.log(users)
+    const shopifyexists=shopifyData.some(obj=> obj.email===email)
+    const emailExists = users.some(obj => obj.email === email);
+      const isadmin=users.find(obj => obj.role === 'admin');
+      const customerObj=users.find(obj => obj.email ===email);
+      if(shopifyexists){
+        localStorage.setItem("shopify",true)
+      }
+      
     // fetch(`https://emapp-backend.vercel.app/accessToken/${email}`)
     //     .then((res) => res.json())
     //     .then((result) => localStorage.setItem("accessToken",result.token))
@@ -29,14 +36,7 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
        
-
-      const emailExists = users.some(obj => obj.email === user.email);
-      const isadmin=users.find(obj => obj.role === 'admin');
-      const customerObj=users.find(obj => obj.email === user.email);
-        if(customerObj.role==="customer"){
-          localStorage.setItem("companyName",customerObj.name)
-        }
-      // console.log(emailExists)
+      
       if(!emailExists){
         const userInfo={
             uid:user.uid,
@@ -53,6 +53,12 @@ const Login = () => {
         .then(data=>console.log(data.token))
         ;
       }
+      else{
+        
+        if(customerObj?.role==="customer"){
+          localStorage.setItem("companyName",customerObj.name)
+      }
+      }
       if(isadmin.email===user.email){
         navigate('/dashboard')
       }
@@ -67,8 +73,9 @@ const Login = () => {
         
       })
       .catch((error) => {
+        setErrors(error)
         // console.log(errorCode, errorMessage)
-        toast.error(error.message);
+        console.log(error.code)
       });
   };
   // const  initiatePasswordReset=async()=> {
@@ -88,7 +95,7 @@ const Login = () => {
   // }
     
   // }
-  
+  // fuad12345
   
   return (
     <div className="bodySection ">
@@ -131,6 +138,9 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+                {
+                  errors && <div className="text-red-400 flex justify-center mt-2">{errors.code}</div>
+                }
                 {/* <button className="mt-2" onClick={initiatePasswordReset}>Reset Password</button> */}
               </div>
 
@@ -155,7 +165,7 @@ const Login = () => {
                   Home
                 </NavLink>
               </p>
-              <ToastContainer />
+              
             </form>
           </div>
         </section>

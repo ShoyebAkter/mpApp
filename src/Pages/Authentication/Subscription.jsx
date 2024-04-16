@@ -68,6 +68,24 @@ function Subscription() {
             }
           });
           // Additional actions after sign out if needed
+
+          fetch("https://emapp-backend.vercel.app/sendsubscriptionemail", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(subscriptionInfo),
+          })
+
+          fetch("https://emapp-backend.vercel.app/subscription/database", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(subscriptionInfo),
+          })
+
+
         });
         
         // ...

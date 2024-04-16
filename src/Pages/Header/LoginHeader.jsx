@@ -31,7 +31,7 @@ export const LoginHeader = () => {
     <div>
       {user ? (
         <div className="mobileHeader">
-          <header className={`header-fixed`}>
+          <header className={`header-fix`}>
             <nav className={`navbarSec`}>
             
               <img onClick={()=>navigate('/')} className="headerlogo" src="Logo_Iso_Green.jpg" />

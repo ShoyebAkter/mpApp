@@ -1,9 +1,4 @@
 
-.text-accent {
-    color: #00A1AB;
-    font-size: 32px;
-}
-
 .fs-500 {
     font-size: 24px;
     margin: 0;
@@ -33,7 +28,7 @@
 }
 
 .plan--light .plan-price {
-    color: #00A1AB;
+    color: #439541;
 }
 
 .plan--light .btn {
@@ -43,7 +38,7 @@
 
 .plan--accent {
     color: #FFF;
-    background: linear-gradient(-45deg, #00A1AB, #3741A0);
+    background: linear-gradient(-45deg, #90ce8f, #439541);
 }
 
 .plan--accent .btn {

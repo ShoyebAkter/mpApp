@@ -29,9 +29,9 @@ export const LineSection = () => {
       </div>
 
       <dialog id="my_modal_5" className="modal">
-        <div className="modal-box w-1/3  bg-gray-500 max-w-full">
+        <div className="modal-box w-1/3  bg-white max-w-full">
         <div className="p-5 space-y-5 shadow-xl">
-    <h4 className="text-center text-3xl">Contact Us</h4>
+    <h4 className="text-center text-3xl text-black">Contact Us</h4>
 
     {/* <form>
       <div className="grid grid-cols-2 gap-5">
@@ -64,17 +64,17 @@ export const LineSection = () => {
      id="contact_form">
             <div className="flex mb-5 nameInput">
                     <div className="w-2/3 mr-2">
-                        <label className="block text-sm text-white">Your First Name:</label>
-                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
+                        <label className="block text-sm text-black">Your First Name:</label>
+                        <input className="rounded  w-full bg-gray-400" type="text" name="name" id="name_field" />
                     </div>
                     <div className="w-2/3">
-                        <label className="block text-sm text-white">Last Name</label>
-                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
+                        <label className="block text-sm text-black">Last Name</label>
+                        <input className="rounded w-full bg-gray-400" type="text" name="name" id="name_field" />
                     </div>
                 </div>
                 <div className="flex mb-5 phoneemailInput">
                     <div className="w-2/3 mr-2">
-                        <label className="block text-sm text-white">Phone Number</label>
+                        <label className="block text-sm text-black">Phone Number</label>
                         <PhoneInput
                                 name="phone"
                                 id="phone_field"
@@ -84,13 +84,13 @@ export const LineSection = () => {
                             />
                     </div>
                     <div className="w-2/3">
-                        <label className="block text-sm text-white">Email Address:</label>
-                        <input placeholder="From:" className="rounded border-gray-400 w-full bg-white" type="email" name="email" id="email_field" />
+                        <label className="block text-sm text-black">Email Address:</label>
+                        <input placeholder="From:" className="rounded  w-full bg-gray-400" type="email" name="email" id="email_field" />
                     </div>
                 </div>
                 <div className="formTextArea mb-4">
-                    <label className="block text-sm text-white">Message:</label>
-                    <textarea className="w-full rounded border-gray-400 bg-white" name="message" id="message_field" rows="6"></textarea>
+                    <label className="block text-sm text-black">Message:</label>
+                    <textarea className="w-full rounded border-black bg-gray-400" name="message" id="message_field" rows="6"></textarea>
                 </div>
                 
                 <button type="submit"  style={{"backgroundColor":"#a3Cde0"}} className=" py-2 px-4 rounded  shadow-sm text-black hover:text-white hover:bg-blue-800" >Send</button>

@@ -24,7 +24,7 @@ export const Landingpage = () => {
           !user &&
           <Header />
         }</section>
-        <section id="introduction" ><Introduction /></section>
+        <section id="introduction" className="background"><Introduction /></section>
         <section > <Analysis /></section>
         <section id="businessInsight"><BusinessInsight /></section>
         <section id="integration"> <Integration /></section>

@@ -87,7 +87,7 @@ customerData.forEach(function(customer) {
 });
 
 // Now, customerData array contains the RFM segment for each customer object
-console.log(customerData);
+// console.log(customerData);
 
 }
 export const getCustomerSegMentCount=(customerData,setSegmentCount)=>{

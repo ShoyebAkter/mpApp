@@ -1,8 +1,8 @@
-import { Fade, Slide } from 'react-awesome-reveal'
+import {  Slide } from 'react-awesome-reveal'
 import './Introduction.css'
 export const Introduction = () => {
     return (
-        <Fade damping={1}>
+        <div>
             <div className='background'>
                 
                 <div className="IntroSec" >
@@ -45,6 +45,6 @@ export const Introduction = () => {
             <div onClick={()=>window.location.href="http://www.holismusgroup.com"} className='developImg'>
                 <img src='develop.png' alt=''/>
             </div>
-        </Fade>
+        </div>
     )
 }

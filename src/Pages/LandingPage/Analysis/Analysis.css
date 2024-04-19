@@ -11,7 +11,7 @@
     font-size: 3rem/* 48px */;
     line-height: 1;
     font-weight: 700;
-    color:#649445
+    color:#649445;
 }
 .secondPart{
     padding-top: 1.25rem/* 20px */;
@@ -22,13 +22,13 @@
 @media only screen and (max-width: 768px) {
     .analysisSec{
         margin-inline: 10px;
-        height: 60vh;
+        
     }
     .heading1{
         font-size: 36px;
         line-height: 1;
         font-weight: 700;
-        color:#649445
+        color:#649445;
     }
     .secondPart{
         padding-top: 1.25rem/* 20px */;

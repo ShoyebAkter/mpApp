@@ -11,6 +11,7 @@ import {
   import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useEffect, useState } from "react";
 import './CustomerBehaviour.css'
+import { fetchData } from "./shopifyLogic";
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -24,7 +25,7 @@ import './CustomerBehaviour.css'
 
 export const Sales = () => {
   const [totalSales, setTotalSales] = useState([]);
-  
+  const [customerdata,setCustomersData]=useState([])
   const salesValue = [];
   useEffect(() => {
     fetch('https://emapp-backend.vercel.app/sales')
@@ -35,7 +36,13 @@ export const Sales = () => {
     
   }, [])
   // console.log(totalSales);
-
+  const shopify=localStorage.getItem("shopify");
+  useEffect(()=>{
+  if(shopify){
+    fetchData(`https://emapp-backend.vercel.app/customersData`,setCustomersData);
+  }
+},[])
+console.log(customerdata)
   const getSalesData = () => {
     totalSales.map((sale) => {
 
@@ -88,14 +95,14 @@ export const Sales = () => {
         },
       };
       
-      const labels = salesValue.map((sale)=>sale.date);
+      const labels = shopify ? customerdata[0]?.customers.map(data=>data.created_at.split("T")[0] ) : salesValue.map((sale)=>sale.date);
       
       const data = {
         labels,
         datasets: [
           {
             label: 'Dataset 1',
-            data: salesValue.map((sale)=>sale.total) ,
+            data:  shopify ? customerdata[0]?.customers.map(data=>data.total_spent ) : salesValue.map((sale)=>sale.total) ,
             borderColor: '#649445',
             backgroundColor: '#649445',
             
@@ -104,7 +111,7 @@ export const Sales = () => {
       };
     return (
        <div className="salesChart">
-        <Bar  options={options} data={data} />
+        <Bar  options={options} height={200} data={data} />
        </div>
         
     )

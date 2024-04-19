@@ -1,27 +1,65 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactMultiEmail } from 'react-multi-email';
 import { useForm } from 'react-hook-form';
 import 'react-multi-email/dist/style.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
-
+import { fetchData, getCustomerSegMentCount, rfmLogic } from "../../CustomerBehaviour/shopifyLogic";
+import moment from "moment";
 
 export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
     const { register, handleSubmit, reset } = useForm();
     const [emails, setEmails] = useState([]);
+    const [customersData, setCustomersData] = useState([]);
+    const [segmentCount, setSegmentCount] = useState([]);
     const [selectedOption, setSelectedOption] = useState(null);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const options = [
-        'Promotion',
-        'Discount',
-        'Awareness',
-    ];
+    const shopify=localStorage.getItem("shopify");
+  useEffect(()=>{
+  if(shopify){
+    fetchData(`https://emapp-backend.vercel.app/customersData`,setCustomersData);
+  }
+},[])
 
+rfmLogic(moment, customersData[0]?.customers);
+console.log(selectedOption)
+    //  useEffect(()=>{
+    //     if(customersData){
+    //         getCustomerSegMentCount(customersData[0]?.customers, setSegmentCount);
+    //     }
+    //  },[customersData])
+    //   console.log(segmentCount)
+    const options = [
+        'Champions',
+        'Needing Attention',
+        'Recent Customers',
+        'Potential Loyalist',
+        'Loyal Customers',
+        'Lost',
+        'Promising',
+        'About to Sleep',
+        'At Risk',
+        "Can't Lose"
+    ];
+   
     const handleOptionSelect = (option) => {
         setSelectedOption(option);
         setIsDropdownOpen(false);
+        const selectedCat = [];
+        customersData[0]?.customers.forEach(obj => {
+        if (obj.Customer_Segment === option) {
+            selectedCat.push(obj);
+            
+        }
+        const selectedEmails = selectedCat.map(obj => obj.email); // Extract emails from selected categories
+
+    setEmails(selectedEmails);
+    });
     };
+    useEffect(() => {
+        console.log(emails);
+    }, [emails]);
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen); // Toggle the dropdown visibility
       };
@@ -136,6 +174,7 @@ export const Emailpreview = ({ userId, imageBlob, editedImage, text }) => {
                         emails={emails}
                         onChange={(_emails) => {
                             setEmails(_emails);
+                            console.log(emails)
                         }}
                         autoFocus={true}
                         getLabel={(email, index, removeEmail) => {

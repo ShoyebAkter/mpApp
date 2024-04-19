@@ -28,3 +28,11 @@
     background-color: #439541;
     padding: 20px;
 }
+@media only screen and (max-width: 768px) {
+    .mainHeading{
+        font-size: 34px;
+        font-weight: 700;
+        color: white;
+        padding-block: 30px;
+    }
+}

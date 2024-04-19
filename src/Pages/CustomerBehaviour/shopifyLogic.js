@@ -75,7 +75,7 @@ function segmentCustomer(recencyDays, frequency) {
 }
 
 // Apply RFM analysis to each customer
-customerData.forEach(function(customer) {
+customerData?.forEach(function(customer) {
     var recencyDays = calculateRecency(customer.created_at, customer.updated_at);
     var frequency = customer.orders_count;
     var monetaryValue = parseFloat(customer.total_spent);
@@ -90,12 +90,12 @@ customerData.forEach(function(customer) {
 // console.log(customerData);
 
 }
-export const getCustomerSegMentCount=(customerData,setSegmentCount)=>{
+export const getCustomerSegMentCount=async(customerData,setSegmentCount)=>{
     // Assuming customerData is your array of customer objects with 'Customer_Segment' property
-
+// console.log(customerData)
 // Function to count occurrences of each Customer_Segment value
-function countCustomerSegments(customerData) {
-    return customerData.reduce(function(acc, curr) {
+ function countCustomerSegments (customerData) {
+    return customerData?.reduce(function(acc, curr) {
         // Get the Customer_Segment value
         var segment = curr.Customer_Segment;
         
@@ -107,7 +107,7 @@ function countCustomerSegments(customerData) {
 }
 
 // Call the function to get the count of each Customer_Segment
-var segmentCounts = countCustomerSegments(customerData);
+var segmentCounts =await countCustomerSegments(customerData);
 
 // Convert the object to an array of objects for easier manipulation (optional)
 var segmentCountArray = Object.keys(segmentCounts).map(function(segment) {

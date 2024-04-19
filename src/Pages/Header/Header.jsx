@@ -47,6 +47,7 @@ function Header() {
   return (
     <div>
       <div className="mobileHeader">
+        <div className="mobilestyle">
         <header className="header-fixed">
           <nav className={`navbarSec `}>
             
@@ -77,6 +78,7 @@ function Header() {
           </a>
 
           {/* You can use an icon or any other content for the hamburger menu */}
+        </div>
         </div>
         <div className="sidebar" id="menusidebar">
         <a

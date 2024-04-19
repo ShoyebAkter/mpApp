@@ -170,6 +170,8 @@ nav a:hover{
         padding-block: 10px;
         padding-inline: 2px;
     box-shadow:none;
+    position:relative;
+    z-index: 0;
     }
     .navbarSec{
         display: flex;
@@ -181,9 +183,11 @@ nav a:hover{
         font-size: 8px; /* Reduce font size for better mobile readability */
     }
     .headerlogo{
-        width: 40px;
-        height: 40px;
+        /* width: 40px;
+        height: 40px; */
+        display: none;
     }
+    
     .name {
         font-size: 20px; /* Adjust font size for better mobile readability */
     }

@@ -26,6 +26,9 @@ export const LoginHeader = () => {
     signOut(auth);
     navigate("/");
     localStorage.removeItem('companyName');
+    localStorage.removeItem('shopify');
+    localStorage.removeItem('shopifyEmail');
+    localStorage.removeItem('accessToken');
   };
   return (
     <div>

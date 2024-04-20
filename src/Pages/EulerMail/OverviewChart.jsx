@@ -10,12 +10,13 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 // import { faker } from '@faker-js/faker';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./BoxStyle.css";
 import { auth } from "../../firebase.init";
 import { callApi, getSalesData,  } from "./getSalesData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { fetchData, getShopifyYearData } from "../CustomerBehaviour/shopifyLogic";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,10 +29,25 @@ ChartJS.register(
 
 function OverviewChart() {
   const [totalSales, setTotalSales] = useState([]);
+  const [customersData, setCustomersData] = useState([]);
+  const [totalSalesData, settotalSalesData] = useState([]);
   const salesValue = [];
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const shopify=localStorage.getItem("shopify")
+  useEffect(()=>{
+    if(shopify){
+      fetchData(`https://emapp-backend.vercel.app/customersData`,setCustomersData);
+    }
+  },[])
+  console.log(customersData)
+  useEffect(()=>{
+    if(customersData.length!==0){
+      settotalSalesData(getShopifyYearData(customersData[0]?.customers))
+    }
+  },[customersData])
   
+  console.log(totalSalesData)
   let labels;
   let data;
   const switchFunction=()=>{
@@ -73,13 +89,13 @@ function OverviewChart() {
         break;
       default:
         
-        labels = ["Jan","Feb","Mar","April","May"];
+        labels = shopify ? totalSalesData.map(sales=>sales.year) : ["Jan","Feb","Mar","April","May"];
         data = {
           labels,
           datasets: [
             {
               label: `Sales $`,
-              data:[1,2,3,4,5] ,
+              data: shopify ? totalSalesData.map(sales=>sales.total) :[1,2,3,4,5] ,
               borderColor: "#649445",
               backgroundColor: "#649445",
             },

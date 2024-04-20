@@ -117,3 +117,57 @@ setSegmentCount(segmentCountArray)
 // Now, segmentCountArray contains objects with 'segment' and 'count' properties representing the count of each Customer_Segment
 
 }
+
+export const getShopifyYearData=(data)=>{
+    function getYearFromDate(dateString) {
+        return new Date(dateString).getFullYear();
+      }
+      
+      // Initialize an object to store total spent for each year
+      const yearlySpending = [];
+      
+      // Iterate through the data array
+      data.forEach(obj => {
+        // Extract the year from created_at
+        const year = getYearFromDate(obj.created_at);
+      
+        // Check if the year already exists in the array
+        const index = yearlySpending.findIndex(item => item.year === year);
+      
+        // If the year exists, add the total spent to its existing value
+        // If not, push a new object for that year
+        if (index !== -1) {
+          yearlySpending[index].total += parseInt(obj.total_spent);
+        } else {
+          yearlySpending.push({ year: year, total:parseInt( obj.total_spent) });
+        }
+      });
+      return yearlySpending
+      
+}
+export const getShopifyOrders=(data)=>{
+    function getYearFromDate(dateString) {
+        return new Date(dateString).getFullYear();
+      }
+      
+      // Initialize an array to store yearly orders data
+      const yearlyOrders = [];
+      
+      // Iterate through the data array
+      data.forEach(obj => {
+        // Extract the year from created_at
+        const year = getYearFromDate(obj.created_at);
+      
+        // Check if the year already exists in the array
+        const index = yearlyOrders.findIndex(item => item.year === year);
+      
+        // If the year exists, add the orders_count to its existing value
+        // If not, push a new object for that year
+        if (index !== -1) {
+          yearlyOrders[index].orders += parseInt(obj.orders_count);
+        } else {
+          yearlyOrders.push({ year: year, orders:parseInt(obj.orders_count) });
+        }
+      });
+      return yearlyOrders;
+}

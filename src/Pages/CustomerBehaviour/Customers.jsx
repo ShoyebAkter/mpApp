@@ -46,32 +46,23 @@ export const Customers = () => {
 useEffect(()=>{
   fetchData(`https://emapp-backend.vercel.app/shopify/data`,setShopifyData);
 },[])
-// useEffect(()=>{
-//   if(shopifyData){
-//     fetchData(`https://emapp-backend.vercel.app/customersData`,setCustomersData);
-//   }
-// },[shopifyData])
+useEffect(()=>{
+  if(shopifyData.length!==0){
+    fetchData(`https://emapp-backend.vercel.app/customersData`,setCustomersData);
+  }
+},[shopifyData])
 
   // console.log(customersData);
   const shopifyexists = shopifyData?.some((obj) => obj.email === user.email);
-  // useEffect(()=>{
-  //   if (shopifyexists) {
-  //     rfmLogic(moment, customersData[0]?.customers);
-  //     getCustomerSegMentCount(customersData[0]?.customers, setSegmentCount);
-  //   }
-  // },[customersData,shopifyexists])
-  // console.log(segmentCount);
-  // useEffect(() => {
-  //   fetch('https://emapp-backend.vercel.app/shopify/data')
-  //     .then((res) => res.json())
-  //     .then((result) => console.log(result))
-  //     .catch((error) => console.error(error))
-  // }, [])
-
-  // useEffect(()=>{
-  //   fetchData(`https://emapp-backend.vercel.app/shopify/data`,setShopifyData);
-  // },[])
-
+  rfmLogic(moment, customersData[0]?.customers);
+  useEffect(()=>{
+    if (shopifyexists) {
+      
+      getCustomerSegMentCount(customersData[0]?.customers, setSegmentCount);
+    }
+  },[customersData,shopifyexists])
+  console.log(segmentCount);
+  
   // getShopifyData(shopifyData,user)
 
   getTierValue(customers, tierArray);
@@ -93,22 +84,22 @@ useEffect(()=>{
       },
       title: {
         display: true,
-        // text: `Customers: ${shopifyexists? customers.length :  customersData[0]?.customers.length}`,
-        text: `Customers: ${customers.length}`,
+        text: `Customers: ${shopifyexists? customersData[0]?.customers.length :  customers.length }`,
+        // text: `Customers: ${customers.length}`,
       },
     },
   };
 
-  // const labels = shopifyexists ? countedValues.map((value) => value.value) : segmentCount.map(seg=>seg.segment);
-  const labels = countedValues.map((value) => value.value)
+  const labels = !shopifyexists ? countedValues.map((value) => value.value) : segmentCount.map(seg=>seg.segment);
+  // const labels = countedValues.map((value) => value.value)
 
   const data = {
     labels,
     datasets: [
       {
         label: "Dataset 1",
-        // data:shopifyexists ? segmentCount.map(seg=>seg.count) : countedValues.map((value) => value.count),
-        data:countedValues.map((value) => value.count),
+        data:shopifyexists ? segmentCount.map(seg=>seg.count) : countedValues.map((value) => value.count),
+        // data:countedValues.map((value) => value.count),
         borderColor: "#649445",
         backgroundColor: "#649445",
       },

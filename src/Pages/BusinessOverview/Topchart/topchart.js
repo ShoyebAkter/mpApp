@@ -30,10 +30,14 @@ export const changeArrayValue = (orderData,resultArray) => {
 }
 
 
-export const getAvg=(Orders)=>{
+export const getAvg=(totalOrdersData,totalSalesData)=>{
+    const mergedArray = totalOrdersData.map(obj1 => {
+        const obj2 = totalSalesData.find(obj2 => obj2.year === obj1.year);
+        return { ...obj1, ...obj2 };
+      });
     const newArray=[];
-    Orders.map(order=>{
-        const avg=order.total/order.order;
+    mergedArray.map(order=>{
+        const avg=order.total/order.orders;
         const obj={
             year:order.year,
             averageTotalPrice:avg

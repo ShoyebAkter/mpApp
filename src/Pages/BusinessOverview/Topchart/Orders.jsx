@@ -12,7 +12,7 @@ import { Line } from "react-chartjs-2";
 import { useState } from "react";
 import { changeArrayValue, getOrdersInfo } from "./topchart";
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import PropTypes from "prop-types"
 import { auth } from "../../../firebase.init";
 import { callApi } from "../../EulerMail/getSalesData";
 ChartJS.register(
@@ -24,12 +24,13 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export const Orders = () => {
+export const Orders = ({totalOrdersData}) => {
   const [orders, setOrders] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const orderData = [];
   const resultArray = [];
   const [user] = useAuthState(auth);
+  const shopify=localStorage.getItem("shopify")
   let labels;
   let data, totalOrders;
   // console.log(orders);
@@ -75,13 +76,16 @@ export const Orders = () => {
         };
         break;
       default:
-        labels = [2014,2015,2016,2017,2018];
+        if(shopify){
+          totalOrders = totalOrdersData.reduce((total, obj) => total + obj.orders, 0);
+        }
+        labels = shopify ? totalOrdersData.map(order=>order.year) :  [2014,2015,2016,2017,2018];
         data = {
           labels,
           datasets: [
             {
               label: `Orders `,
-              data: [30,50,40,60,90],
+              data: shopify ? totalOrdersData.map(order=>order.orders) :  [30,50,40,60,90],
               borderColor: "#659248",
               backgroundColor: "#659248",
             },
@@ -176,7 +180,7 @@ export const Orders = () => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            {totalOrders / 1000}k
+            {totalOrders > 1000 ?totalOrders / 1000 : totalOrders}k
           </text>
         </svg>
       </div>
@@ -185,3 +189,8 @@ export const Orders = () => {
     </div>
   );
 };
+Orders.propTypes = 
+    {
+      totalOrdersData:PropTypes.array.isRequired,
+        
+    }

@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { auth } from "../../../firebase.init";
+import PropTypes from "prop-types"
 import { Line } from "react-chartjs-2";
 import { useState } from "react";
 import "./topchart.css";
@@ -27,13 +28,13 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export const TotalSales = () => {
+export const TotalSales = ({totalSalesData}) => {
   const [totalSales, setTotalSales] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const salesValue = [];
   const resultArray = [];
   const [user] = useAuthState(auth);
-  
+  const shopify=localStorage.getItem("shopify")
   let data, labels;
   let Sales;
   const switchFunction = () => {
@@ -77,13 +78,17 @@ export const TotalSales = () => {
         };
         break;
       default:
-        labels = [2014,2015,2016,2017,2018];
+        if(shopify){
+          Sales = totalSalesData.reduce((total, obj) => total + obj.total, 0);
+        }
+        // console.log(Sales)
+        labels = shopify ? totalSalesData.map(sale=>sale.year) : [2014,2015,2016,2017,2018];
         data = {
           labels,
           datasets: [
             {
               label: `Sales `,
-              data: [10829,103984,209384,102934,303928],
+              data:shopify ? totalSalesData.map(sale=>sale.total) : [10829,103984,209384,102934,303928],
               borderColor: "#659248",
               backgroundColor: "#659248",
             },
@@ -92,7 +97,7 @@ export const TotalSales = () => {
         break;
     }
   };
-  // console.log(salesValue);
+  // console.log(totalSalesData);
 
   switchFunction();
   // console.log(salesValue)
@@ -172,7 +177,7 @@ export const TotalSales = () => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            ${(Sales / 1000000).toFixed(2)}m
+            ${Sales > 1000000 ?(Sales / 1000000).toFixed(2) : Sales}m
           </text>
         </svg>
       </div>
@@ -181,3 +186,9 @@ export const TotalSales = () => {
     </div>
   );
 };
+
+TotalSales.propTypes = 
+    {
+      totalSalesData:PropTypes.array.isRequired,
+        
+    }

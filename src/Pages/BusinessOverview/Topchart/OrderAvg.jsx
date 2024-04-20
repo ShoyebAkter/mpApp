@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase.init";
 import { callApi } from "../../EulerMail/getSalesData";
 import { getAvg } from "./topchart";
-export const OrderAvg = () => {
+export const OrderAvg = ({totalOrdersData,totalSalesData}) => {
     const [orders, setOrders] = useState([]);
     const orderData = [];
     const [user] = useAuthState(auth);
@@ -66,7 +66,7 @@ let totalSales,totalOrder;
              
             break;
           default:
-            // Handle other cases if needed
+            averageOrder=getAvg(totalOrdersData,totalSalesData)
             break;
         }
       };

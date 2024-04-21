@@ -180,12 +180,12 @@ export const Orders = ({totalOrdersData}) => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            {totalOrders > 1000 ?totalOrders / 1000 : totalOrders}k
+            {totalOrders > 1000 ?totalOrders / 1000 : totalOrders}  {totalOrders > 1000 ?"k" : ""}
           </text>
         </svg>
       </div>
 
-      <Line width={250} height={200} options={options} data={data} />
+      <Line width={shopify ? 350 : 250} height={200} options={options} data={data} />
     </div>
   );
 };

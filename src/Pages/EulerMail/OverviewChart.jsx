@@ -40,14 +40,14 @@ function OverviewChart() {
       fetchData(`https://emapp-backend.vercel.app/customersData`,setCustomersData);
     }
   },[])
-  console.log(customersData)
+  // console.log(customersData)
   useEffect(()=>{
     if(customersData.length!==0){
       settotalSalesData(getShopifyYearData(customersData[0]?.customers))
     }
   },[customersData])
   
-  console.log(totalSalesData)
+  // console.log(totalSalesData)
   let labels;
   let data;
   const switchFunction=()=>{
@@ -147,7 +147,7 @@ function OverviewChart() {
     <div className="boxcontainer border-scoop">
       <div >
         
-          <h1 style={{"background":"#FFFFFF","color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer"  onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
+          <h1 style={{"color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer"  onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
           <Line options={options} height={200} data={data} />
         
       </div>

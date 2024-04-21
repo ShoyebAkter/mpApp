@@ -177,12 +177,14 @@ export const TotalSales = ({totalSalesData}) => {
             textAnchor="middle"
             alignmentBaseline="middle"
           >
-            ${Sales > 1000000 ?(Sales / 1000000).toFixed(2) : Sales}m
+            ${Sales > 1000000 ?(Sales / 1000000).toFixed(2) : Sales}  {Sales > 1000000 ?"m" : ''}
           </text>
         </svg>
       </div>
       {/* <h1 className='font-bold '>Total Sales:</h1> */}
-      <Line width={250} height={200} options={options} data={data} />
+      <Line
+      width={shopify ? 350 : 250}
+        height={200} options={options} data={data} />
     </div>
   );
 };

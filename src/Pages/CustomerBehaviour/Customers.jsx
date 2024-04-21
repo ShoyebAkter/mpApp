@@ -107,7 +107,7 @@ useEffect(()=>{
   };
   return (
     <div className="customerChartdiv">
-      <Bar options={options} data={data} />
+      <Bar options={options} height={200} data={data} />
     </div>
   );
 };

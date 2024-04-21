@@ -23,6 +23,7 @@ ChartJS.register(
 export const LineChart = ({averageOrder, orders,totalSales, totalOrder}) => {
   const [showPopup, setShowPopup] = useState(false);
   const totalAvg = totalSales / totalOrder;
+  const shopify=localStorage.getItem("shopify")
   const totalMean = orders
     .map((item) => item.mean)
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -128,7 +129,7 @@ export const LineChart = ({averageOrder, orders,totalSales, totalOrder}) => {
           </text>
         </svg>
       </div>
-      <Line width={250} height={200} options={options} data={data} />
+      <Line width={shopify ? 350 : 250} height={200} options={options} data={data} />
     </div>
   );
 };

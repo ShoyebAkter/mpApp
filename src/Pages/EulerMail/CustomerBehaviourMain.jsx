@@ -16,6 +16,7 @@ import { getTierValue } from "../CustomerBehaviour/getTierValue";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {auth} from '../../firebase.init'
 import EngageLineChart from "../CustomerBehaviour/EngageLineChart";
+import { Customers } from "../CustomerBehaviour/Customers";
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -30,6 +31,7 @@ ChartJS.register(
 function CustomerBehaviourMain() {
     const [customers, setCustomers] = useState([]);
     const [user]=useAuthState(auth)
+    const shopify=localStorage.getItem("shopify")
     // console.log(user.uid);
     const tierArray = [];
     useEffect(() => {
@@ -94,7 +96,12 @@ function CustomerBehaviourMain() {
             :
             <div>
             <h1 className=' text-xl text-center font-medium text-cyan-500 cursor-pointer'> Customer Behaviour</h1>
-            <Bar options={options} data={data1} />
+            { 
+                shopify ?
+                <Customers/>
+                :
+                <Bar options={options} data={data1} />
+            }
             </div>
             }
         </div>

@@ -46,3 +46,26 @@ export const getAvg=(totalOrdersData,totalSalesData)=>{
     })
     return newArray;
 }
+
+export const countDuplicateValues=(newArray) =>{
+    const countryCounts = {};
+
+    // Iterate through the users array and count the countries
+    for (const user of newArray) {
+      const { id } = user;
+      if (countryCounts[id]) {
+        countryCounts[id]++;
+      } else {
+        countryCounts[id] = 1;
+      }
+    }
+    // console.log(countryCounts);
+    // Loop through the countMap to create the result array
+    
+    const countryCountsArray = Object.entries(countryCounts).map(([country, count]) => ({
+      id: country, // Use the country name as the id
+      value: count,
+    }));
+
+    return countryCountsArray;
+  }

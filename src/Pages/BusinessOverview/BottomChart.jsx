@@ -3,25 +3,39 @@ import { geoFeatures } from '../../data/mockDataGeo';
 import { useEffect, useState } from "react";
 import { callApi } from "../EulerMail/getSalesData";
 import { auth } from "../../firebase.init";
+import iso2ToIso3 from 'country-iso-2-to-3';
 import PropTypes from "prop-types"
 import { useAuthState } from "react-firebase-hooks/auth";
+import { fetchData } from "../CustomerBehaviour/shopifyLogic";
+import { countDuplicateValues } from "./Topchart/topchart";
 export const BottomChart = ({setSelectedCountry}) => {
   const color = "#c9a0dc";
   const [user] = useAuthState(auth);
   const [users, setUsers] = useState([]);
-  
+  const shopify=localStorage.getItem("shopify");
 
  
   useEffect(()=>{
-    user.email==="warehousepro@gmail.com" ?
-    callApi('https://emapp-backend.vercel.app/warehousepro/stateData',setUsers)
-    :
-    callApi('https://emapp-backend.vercel.app/users',setUsers)
+    if(user.email==="warehousepro@gmail.com"){
+      callApi('https://emapp-backend.vercel.app/warehousepro/stateData',setUsers)
+    } 
+    
+    else if(user.email==="fuad@gmail.com"){
+      callApi('https://emapp-backend.vercel.app/users',setUsers)
+    }
   },[])
-
-  // console.log(users);
+  useEffect(()=>{
+    if(shopify){
+      callApi(`https://emapp-backend.vercel.app/customersData`,setUsers);
+    }
+  },[])
   
-const sum=users.reduce((sum, obj) => sum + obj.value, 0);
+  const newArray = users[0]?.customers.map(obj => ({
+    id: iso2ToIso3(obj.addresses[0].country_code),
+    value:  obj.addresses[0].country
+  }));
+  
+
   const handleCountryClick = (feature) => {
       
       if(feature.properties.name==="USA"){
@@ -31,37 +45,18 @@ const sum=users.reduce((sum, obj) => sum + obj.value, 0);
       }
       // You can perform any other actions here based on the clicked country
   };
-
-  // function countDuplicateValues() {
-  //   const countryCounts = {};
-
-  //   // Iterate through the users array and count the countries
-  //   for (const user of users) {
-  //     const { id } = user;
-  //     if (countryCounts[id]) {
-  //       countryCounts[id]++;
-  //     } else {
-  //       countryCounts[id] = 1;
-  //     }
-  //   }
-  //   // console.log(countryCounts);
-  //   // Loop through the countMap to create the result array
-    
-  //   const countryCountsArray = Object.entries(countryCounts).map(([country, count]) => ({
-  //     id: country, // Use the country name as the id
-  //     value: count,
-  //   }));
-
-  //   return countryCountsArray;
-  // }
-
-  // const countedValues = countDuplicateValues();
-  const countedValues=[{
-    id:"USA",
-    value:sum
-  }]
-  // console.log(selectedCountry);
-
+  let countedValues;
+  if(newArray){
+    countedValues = countDuplicateValues(newArray);
+  }
+  else{
+    const sum=users.reduce((sum, obj) => sum + obj.value, 0);
+    countedValues=[{
+      id:"USA",
+      value:sum
+    }]
+  }
+  
   return (
     <ResponsiveChoropleth
       data={countedValues}

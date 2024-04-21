@@ -25,7 +25,7 @@ export const TopChart = () => {
           settotalOrdersData(getShopifyOrders(customersData[0]?.customers))
         }
       },[customersData])
-      console.log(totalOrdersData,totalSalesData)
+      // console.log(totalOrdersData,totalSalesData)
     return (
         <div className="topChart">
             <div  className="greenDiv"></div>
@@ -33,7 +33,7 @@ export const TopChart = () => {
             <Orders  totalOrdersData={totalOrdersData}/>
             
             <OrderAvg totalSalesData={totalSalesData} totalOrdersData={totalOrdersData}/>
-            <MeanChart chartType={"median"}/>
+            {!shopify && <MeanChart chartType={"median"}/>}
         </div>
     )
 }

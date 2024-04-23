@@ -75,7 +75,17 @@ console.log(customerdata)
   getSalesData()
   const totalCount = salesValue.reduce((total, item) => total + item.total, 0);
   // console.log(totalCount);
- 
+  function findTop10Objects(customerData) {
+    // Sort the array of objects based on the total_spent property in descending order
+    customerData[0]?.customers.sort((a, b) => b.total_spent - a.total_spent);
+
+    // Slice the sorted array to get the top 10 objects
+    return customerData[0]?.customers.slice(0, 10);
+}
+
+// Call the function to find the top 10 objects
+const top10Objects = findTop10Objects(customerdata);
+console.log(top10Objects)
     const options = {
         indexAxis: 'y',
         elements: {
@@ -95,14 +105,14 @@ console.log(customerdata)
         },
       };
       
-      const labels = shopify ? customerdata[0]?.customers.map(data=>data.created_at.split("T")[0] ) : salesValue.map((sale)=>sale.date);
+      const labels = shopify ? top10Objects?.map(data=>data.created_at.split("T")[0] ) : salesValue.map((sale)=>sale.date);
       
       const data = {
         labels,
         datasets: [
           {
             label: 'Dataset 1',
-            data:  shopify ? customerdata[0]?.customers.map(data=>data.total_spent ) : salesValue.map((sale)=>sale.total) ,
+            data:  shopify ? top10Objects?.map(data=>data.total_spent ) : salesValue.map((sale)=>sale.total) ,
             borderColor: '#649445',
             backgroundColor: '#649445',
             

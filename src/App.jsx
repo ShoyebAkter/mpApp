@@ -18,6 +18,7 @@ import SettingPage from './Pages/Settings/SettingPage'
 import ForgotPassword from './Pages/Authentication/ForgotPassword'
 import Connection from './Pages/Authentication/Connection'
 import ShopifyAuth from './Pages/Authentication/ShopifyAuth'
+import EmailTemp from './Pages/Authentication/EmailTemp'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <LoginHeader/>
       <Routes>
         <Route exact path="/" element={<Landingpage />} />
+        <Route exact path="/emp" element={<EmailTemp />} />
         <Route path="/eulermail" element={<BusinessChart />} />
         <Route path="/businessoverview" element={<Main />} />
         <Route path='/dashboard' element={<AdminDashboard/>}/>

@@ -17,7 +17,7 @@ const SettingPage = () => {
         <div className="businessInfoDiv">
           <div >
             <div className="pb-5 headerName">Business Info</div>
-            <div className="flex justify-between items-center py-3">Company name, location & industry info <div className="arrow ms-2"></div></div>
+            <div onClick={()=>console.log("clicked")} className="flex justify-between items-center py-3">Company name, location & industry info <div className="arrow ms-2"></div></div>
             <hr className="customHr"></hr>
             <div className="flex justify-between items-center py-3">Address verification <div className="arrow ms-2"></div></div>
           </div>

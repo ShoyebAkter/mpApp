@@ -91,6 +91,11 @@ customerData?.forEach(function(customer) {
 
 }
 export const getCustomerSegMentCount=async(customerData,setSegmentCount)=>{
+
+    const allSegment=[
+        'Champions','Loyal Customers','Potential Loyalist','Recent Customers','Promising',
+        'Needing Attention','About to Sleep','At Risk',"Can't Lose",'Lost'
+    ]
     // Assuming customerData is your array of customer objects with 'Customer_Segment' property
 // console.log(customerData)
 // Function to count occurrences of each Customer_Segment value
@@ -112,6 +117,12 @@ var segmentCounts =await countCustomerSegments(customerData);
 // Convert the object to an array of objects for easier manipulation (optional)
 var segmentCountArray = Object.keys(segmentCounts).map(function(segment) {
     return { segment: segment, count: segmentCounts[segment] };
+});
+
+allSegment.forEach(segment => {
+    if (!segmentCountArray.find(item => item.segment === segment)) {
+        segmentCountArray.push({ segment: segment, count: 0 });
+    }
 });
 setSegmentCount(segmentCountArray)
 // Now, segmentCountArray contains objects with 'segment' and 'count' properties representing the count of each Customer_Segment

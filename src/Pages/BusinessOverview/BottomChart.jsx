@@ -5,6 +5,7 @@ import { callApi } from "../EulerMail/getSalesData";
 import { auth } from "../../firebase.init";
 import iso2ToIso3 from 'country-iso-2-to-3';
 import PropTypes from "prop-types"
+// import { scaleThreshold } from 'd3-scale';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { fetchData } from "../CustomerBehaviour/shopifyLogic";
 import { countDuplicateValues } from "./Topchart/topchart";
@@ -29,11 +30,14 @@ export const BottomChart = ({setSelectedCountry}) => {
       callApi(`https://emapp-backend.vercel.app/customersData`,setUsers);
     }
   },[])
+  let newArray;
+  if(shopify){
+     newArray = users[0]?.customers.map(obj => ({
+      id: iso2ToIso3(obj.addresses[0].country_code),
+      value:  obj.addresses[0].country
+    }));
+  }
   
-  const newArray = users[0]?.customers.map(obj => ({
-    id: iso2ToIso3(obj.addresses[0].country_code),
-    value:  obj.addresses[0].country
-  }));
   
 
   const handleCountryClick = (feature) => {
@@ -56,7 +60,10 @@ export const BottomChart = ({setSelectedCountry}) => {
       value:sum
     }]
   }
-  
+  // const customColors = scaleThreshold()
+  // .domain([0, 100])
+  // .range(['#666666', '#649445']); // Colors for values outside and inside the domain range
+
   return (
     <ResponsiveChoropleth
       data={countedValues}
@@ -100,6 +107,7 @@ export const BottomChart = ({setSelectedCountry}) => {
       graticuleLineColor="#dddddd"
       borderWidth={0.5}
       borderColor="#152538"
+      // colors={customColors} 
       legends={[
         {
           anchor: 'bottom-left',

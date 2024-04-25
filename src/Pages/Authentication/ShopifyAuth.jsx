@@ -1,20 +1,35 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase.init";
 const ShopifyAuth = () => {
     const [storeUrl,setStoreUrl]=useState("");
     const [adminApi,setAdminApi]=useState("");
     const [api,setApi]=useState("")
   const navigate=useNavigate()
 
-  
+  function generatePassword(length) {
+    var charset =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}[]|;:,.<>?";
+    var password = "";
+    for (var i = 0; i < length; i++) {
+      var randomIndex = Math.floor(Math.random() * charset.length);
+      password += charset[randomIndex];
+    }
+    return password;
+  }
     
     // Example usage: Generate a password of length 16
     
-    const onSubmit=()=>{
+    const onSubmit=async()=>{
       const companyName=localStorage.getItem("company");
       const email=localStorage.getItem("shopifyEmail")
-      
+      const subscriptionInfo=localStorage.getItem("subscriptionInfo")
+      const password = generatePassword(16);
+      const subscriptionInfoStr = JSON.parse(subscriptionInfo);
+      // console.log(subscriptionInfoStr)
+// Add the "password" property to the object
+subscriptionInfoStr.password = password; 
         const shopifyInfo={
             url:storeUrl,
             adminApi:adminApi,
@@ -22,7 +37,50 @@ const ShopifyAuth = () => {
             companyName:companyName,
             email:email
         }
+        await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // console.log(password);
+        return auth.signOut().then(() => {
+          
+          fetch("https://emapp-backend.vercel.app/subscriptionemail", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(subscriptionInfoStr),
+          })
+          // Additional actions after sign out if needed
 
+          fetch("https://emapp-backend.vercel.app/sendsubscriptionemail", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(subscriptionInfoStr),
+          })
+
+          fetch("https://emapp-backend.vercel.app/subscription/database", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(subscriptionInfoStr),
+          })
+
+
+        });
+        
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        // ..
+      });
+      
         fetch("https://emapp-backend.vercel.app/shopify/info", {
       method: "POST",
       headers: {

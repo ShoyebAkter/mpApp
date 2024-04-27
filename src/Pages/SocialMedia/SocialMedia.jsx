@@ -6,7 +6,7 @@ export const SocialMedia = () => {
     <div className="">
       
       <div
-        className="fixed h-full w-[200px] text-center bg-gray-900"
+        className="fixed h-full w-[200px] text-center bg-gray-900 pt-32"
       >
         <div className="text-gray-100 text-xl">
           <div className="p-2.5 mt-1 flex items-center">

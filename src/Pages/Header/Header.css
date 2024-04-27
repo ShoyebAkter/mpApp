@@ -47,7 +47,9 @@ nav a:hover{
     padding: 15px;
     box-shadow:0 5px 5px #ccc;
     background-color: #fff;
-    
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
     
 }
 .headerlogo{

@@ -8,7 +8,7 @@ export const FacebookData = () => {
   const [impression,setImpression]=useState(0)
   const [engagement,setEngagement]=useState(0)
   return (
-    <div className="socialmediaMain overflow-x-auto h-screen">
+    <div className="socialmediaMain overflow-x-auto h-screen pt-32">
         <Buttons engagement={engagement} followers={followers} impression={impression}/>
         <UserStatics  setEngagement={setEngagement} setFollowers={setFollowers} setImpression={setImpression}/>
     </div>

@@ -61,7 +61,7 @@ useEffect(()=>{
       getCustomerSegMentCount(customersData[0]?.customers, setSegmentCount);
     }
   },[customersData,shopifyexists])
-  console.log(segmentCount);
+  // console.log(segmentCount);
   
   // getShopifyData(shopifyData,user)
 

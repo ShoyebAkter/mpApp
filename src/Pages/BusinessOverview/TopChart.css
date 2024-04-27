@@ -1,6 +1,6 @@
 .overviewMain{
     background-image: url('/embg.png');
-    
+    padding-top: 110px;
 }
 .topChart{
     display: flex;

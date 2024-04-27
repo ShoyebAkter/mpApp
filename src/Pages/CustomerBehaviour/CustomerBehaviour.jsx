@@ -49,7 +49,7 @@ export const CustomerBehaviour = () => {
             </div>
             
             :
-            <div className="flex">
+            <div className="flex gap-16">
             <Customers />
             <Sales />
             </div>

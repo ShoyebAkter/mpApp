@@ -18,6 +18,7 @@ import DataTable from "../BusinessOverview/DataTable"
 import ActiveCohort from "./ActiveCohort"
 import ClientData from "./ClientData"
 import WarehouseproCat from "./WarehouseproCat"
+import CustomerSegment from "./CustomerSegment"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -66,7 +67,8 @@ export const CustomerBehaviour = () => {
         </div>
         :
         <div className="cohortChartSection">
-          <Engagement setWeeksData={setWeeksData} />
+        <CustomerSegment/>
+          {/* <Engagement setWeeksData={setWeeksData} /> */}
         </div>
         }
         {selectedItem?.category===selectedCategory && user.email==="warehousepro@gmail.com" ?

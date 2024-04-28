@@ -100,12 +100,16 @@ console.log(top10Objects)
           },
           title: {
             display: true,
-            text: `Sales: ${totalCount} $` ,
+            text: ` ${shopify ? "Sales of" : "Sales:"} ${!shopify ? totalCount : "Top 10 Customer"} ${!shopify ? "$":"" } ` ,
+            color: "#2a4e40", // Change the title color
+        font: {
+          size: 24, // Change the title font size
+        },
           },
         },
       };
       
-      const labels = shopify ? top10Objects?.map(data=>data.created_at.split("T")[0] ) : salesValue.map((sale)=>sale.date);
+      const labels = shopify ? top10Objects?.map(data=>data.first_name ) : salesValue.map((sale)=>sale.date);
       
       const data = {
         labels,
@@ -115,7 +119,7 @@ console.log(top10Objects)
             data:  shopify ? top10Objects?.map(data=>data.total_spent ) : salesValue.map((sale)=>sale.total) ,
             borderColor: '#649445',
             backgroundColor: '#649445',
-            
+            borderRadius: 15,
           }
         ],
       };

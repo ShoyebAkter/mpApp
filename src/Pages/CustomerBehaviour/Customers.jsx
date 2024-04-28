@@ -61,7 +61,7 @@ useEffect(()=>{
       getCustomerSegMentCount(customersData[0]?.customers, setSegmentCount);
     }
   },[customersData,shopifyexists])
-  // console.log(segmentCount);
+  console.log(customersData);
   
   // getShopifyData(shopifyData,user)
 
@@ -85,6 +85,10 @@ useEffect(()=>{
       title: {
         display: true,
         text: `Customers: ${shopifyexists? customersData[0]?.customers.length :  customers.length }`,
+        color: "#2a4e40", // Change the title color
+        font: {
+          size: 24, // Change the title font size
+        },
         // text: `Customers: ${customers.length}`,
       },
     },
@@ -102,6 +106,7 @@ useEffect(()=>{
         // data:countedValues.map((value) => value.count),
         borderColor: "#649445",
         backgroundColor: "#649445",
+        borderRadius: 15,
       },
     ],
   };

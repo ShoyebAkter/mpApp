@@ -182,3 +182,24 @@ export const getShopifyOrders=(data)=>{
       });
       return yearlyOrders;
 }
+export const  segmentTotalSpent=(customers)=>{
+    const totalSpentBySegment = [];
+    
+    // Iterate through the array of customers
+    customers?.forEach(customer => {
+      const { Customer_Segment, total_spent } = customer;
+      
+      // Check if the customer segment already exists in the array
+      const segmentIndex = totalSpentBySegment.findIndex(item => item.segment === Customer_Segment);
+      
+      if (segmentIndex !== -1) {
+        // If the segment exists, add the total spent to its existing total
+        totalSpentBySegment[segmentIndex].total += parseInt(total_spent);
+      } else {
+        // If the segment doesn't exist, add a new entry to the array
+        totalSpentBySegment.push({ segment: Customer_Segment, total: parseInt(total_spent) });
+      }
+      
+    });
+    return totalSpentBySegment
+}

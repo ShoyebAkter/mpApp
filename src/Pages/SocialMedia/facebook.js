@@ -127,7 +127,7 @@ export const getPageDayEngamenet = (pageId, fbPageToken) => {
         window.FB.api(
             `/${pageId}/insights`,
             'GET',
-            {metric:"page_engaged_users",period:"days_28",since:"2022-01-01", access_token: fbPageToken},
+            {metric:"page_engaged_users",period:"days_28",since:"2023-01-01", access_token: fbPageToken},
             function(response) {
                 resolve(response)
             }

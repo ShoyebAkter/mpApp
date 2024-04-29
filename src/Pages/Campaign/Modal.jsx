@@ -21,14 +21,15 @@ export const Modal = ({userId,imageBlob,editedImage,text}) => {
            </button>
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-1/2  bg-slate-200 max-w-full">
+        <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">X</button>
+            </form>
+          </div>
             <Emailpreview userId={userId}
          imageBlob={imageBlob} editedImage={editedImage} text={text}/>
           {/* <Preview userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage} text={text}/> */}
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn">Close</button>
-            </form>
-          </div>
+          
         </div>
       </dialog>
     </div>

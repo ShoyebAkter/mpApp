@@ -74,7 +74,7 @@ const CustomerSegment = () => {
   };
   return (
     <div>
-      <Bar options={options} height={500} width={700} data={data} />
+      <Bar options={options} height={400} width={500} data={data} />
     </div>
   );
 };

@@ -1,191 +1,106 @@
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
-import { useEffect, useState } from 'react';
-import { getFacebookPageId, getFacebookPages, getFbPageToken, getMonthlyEngagement, getPageDayEngamenet } from '../SocialMedia/facebook';
-import { getFourWeeksData, objtoArray } from './getTierValue';
-import PropTypes from 'prop-types';
-// import { getLongLivedAccessToken } from '../SocialMedia/longlivetoken';
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-export const Engagement = ({ setWeeksData }) => {
-  const [facebookUserAccessToken, setFacebookUserAccessToken] = useState("");
-  const [pages, setPages] = useState([])
-  const [selectedIndex, setIndex] = useState(null)
-  const [engagement2022, setEngagement2022] = useState("")
-  const [engagement2023, setEngagement2023] = useState("")
+import React, { useEffect } from 'react';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
-  useEffect(() => {
-    const token = localStorage.getItem("access_token");
-    const index = localStorage.getItem("index");
-    console.log(token);
-    if (token) {
-      setFacebookUserAccessToken(token)
-      setIndex(index)
-      getEngagementData();
-    }
-  }, [facebookUserAccessToken, selectedIndex])
+const Engagement = () => {
 
-  const logInToFB = () => {
-    window.FB.login(
-      (response) => {
-        localStorage.setItem("access_token", response.authResponse?.accessToken)
-        setFacebookUserAccessToken(response.authResponse?.accessToken);
-        // getLongLivedAccessToken(response.authResponse?.accessToken)
-        //         .then(longLivedToken => {
-        //             setFacebookUserAccessToken(longLivedToken);
-        //             localStorage.setItem("access_token",longLivedToken)
-        //           })
-        //           .catch(error => {
-        //             console.error('Error:', error);
-        //           });
-      },
-      {
-
-        scope: "read_insights,business_management,instagram_basic,pages_show_list,pages_read_engagement,pages_manage_posts,pages_read_user_content,pages_manage_metadata,pages_manage_engagement",
-      },
-      {
-        config_id: '<CONFIG_ID>'
-      }
-    );
-  };
-
-  const logOutOfFB = () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("index");
-    setFacebookUserAccessToken(null)
-
-  };
-  const getPages = async () => {
-    const facebookPage = await getFacebookPages(facebookUserAccessToken);
-    setPages(facebookPage)
-  }
-
-  const getEngagementData = async () => {
-    const facebookPageId = await getFacebookPageId(facebookUserAccessToken, selectedIndex);
-    // console.log(localStorage.getItem("access_token"));
-    const fbPageToken = await getFbPageToken(facebookUserAccessToken, selectedIndex);
-    // console.log(fbPageToken);
-    const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
-    const monthlyEngagement = await getMonthlyEngagement(dayEngagement.data[0].values)
-    const engagementArray = await objtoArray(monthlyEngagement)
-    setEngagement2022(engagementArray.filter(item => item.newDate.includes('2022')));
-    setEngagement2023(engagementArray.filter(item => item.newDate.includes('2023')));
-    const fourweeksData = await getFourWeeksData(dayEngagement.data[0].values)
-    setWeeksData(fourweeksData)
+    useEffect(() => {
+        // Set Highcharts to use accessibility module
+        Highcharts.setOptions({
+          accessibility: {
+            enabled: true,
+            rangeDescription: 'Customer Engagement '
+          }
+        });
+      }, []);
     
-  }
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: '#Engagement History',
-      },
-    },
-  };
-
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: '2022 Engagement',
-        data: engagement2022 ? engagement2022.map(data => data.value) : [1, 2, 3, 4, 5, 6, 7],
-        borderColor: '#649445',
-        backgroundColor: '#649445',
-      },
-      {
-        label: '2023 Engagement',
-        data: engagement2023 ? engagement2023.map(data => data.value) : [1, 2, 3, 4, 5, 6, 7],
-        borderColor: '#2a4e40',
-        backgroundColor: '#2a4e40',
-      }
-    ],
-  };
-  return (
-    <div className="bg-slate-100 rounded-lg mr-5">
-      {
-        !selectedIndex ?
-          <div >
-            <section className="flex justify-center items-center">
-
-              {facebookUserAccessToken ? (
-                <button className='p-2 bg-green-200 mb-1' onClick={logOutOfFB} >
-                  Log out
-                </button>
-              ) : (
-                <button className='p-2 bg-green-200' onClick={logInToFB} >
-                  Login with Facebook
-                </button>
-              )}
-            </section>
+      const options = {
+        title: {
+          text: 'Customer Engagement Rate',
+          align: 'left',
+          style: {
+            color: '#2a4e40', // Change color as desired
+            fontSize: '24px' // Change font size as desired
+          }
+        },
+        subtitle: {
+          text: null,
+          align: 'left'
+        },
+        yAxis: {
+          title: {
+            text: 'Number of orders'
+          }
+        },
+        xAxis: {
+          accessibility: {
+            rangeDescription: 'Range: Year 2010 to 2020'
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'middle'
+        },
+        plotOptions: {
+          series: {
+            label: {
+              connectorAllowed: false
+            },
+            pointStart: 2010
+          }
+        },
+        series: [
             {
-              facebookUserAccessToken &&
-                (pages.length === 0) ? (
-                <section className="flex justify-center items-center">
-                  {
-                    facebookUserAccessToken ?
-                      <button className='p-2 bg-green-200' onClick={getPages}>Get Page Customer Engagement</button>
-                      :
-                      null
-                  }
-                </section>
-              ) :
-                facebookUserAccessToken && (
-                  <section>
-                    <h1>Select your Page</h1>
-                    {
-                      pages ?
-                        <div>
-                          {pages.map((page, index) => (
-                            <div
-                              className={`${index === selectedIndex ? 'bg-black text-white' : 'bg-slate-200 text-black'
-                                } p-2 mb-1 cursor-pointer`}
-                              onClick={() => {setIndex(index);
-                                 localStorage.setItem("index", index)}}
-                              key={index}
-                            >
-                              {page.name}
-                            </div>
-                          ))}
-                        </div>
-                        :
-                        <div>You have no pages</div>
-                    }
-                  </section>
-                )
+              name: 'Installation & Developers',
+              data: [43934, 48656, 65165, 81827, 112143, 142383, 171533, 165174, 155157, 161454, 154610],
+              color: '#649445' // Custom color for the first series
+            },
+            {
+              name: 'Manufacturing',
+              data: [24916, 37941, 29742, 29851, 32490, 30282, 38121, 36885, 33726, 34243, 31050],
+              color: '#00FF00' // Custom color for the second series
+            },
+            {
+              name: 'Sales & Distribution',
+              data: [11744, 30000, 16005, 19771, 20185, 24377, 32147, 30912, 29243, 29213, 25663],
+              color: '#2a4e40' // Custom color for the third series
+            },
+            {
+              name: 'Operations & Maintenance',
+              data: [null, null, null, null, null, null, null, null, 11164, 11218, 10077],
+              color: '#FF00FF' // Custom color for the fourth series
+            },
+            {
+              name: 'Other',
+              data: [21908, 5548, 8105, 11248, 8989, 11816, 18274, 17300, 13053, 11906, 10073],
+              color: '#FFFF00' // Custom color for the fifth series
             }
-
-          </div>
-          :
-          <div className="engagementChart">
-            <Line options={options} data={data} />
-          </div>
-      }
+          ],
+          
+        responsive: {
+          rules: [
+            {
+              condition: {
+                maxWidth: 500
+              },
+              chartOptions: {
+                legend: {
+                  layout: 'horizontal',
+                  align: 'center',
+                  verticalAlign: 'bottom'
+                }
+              }
+            }
+          ]
+        }
+      };
+    
+  return (
+    <div>
+      <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
-
   )
 }
-Engagement.propTypes = {
-  setWeeksData: PropTypes.func.isRequired,
-}
+
+export default Engagement

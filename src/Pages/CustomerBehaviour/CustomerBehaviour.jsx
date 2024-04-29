@@ -2,7 +2,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../../firebase.init"
 import { Cohorts } from "./Cohorts"
 import { Customers } from "./Customers"
-import { Engagement } from "./Engagement"
+// import { FBEngagement } from "./FBEngagement"
 import { Sales } from "./Sales"
 import { useNavigate } from "react-router-dom"
 import Loading from "../Authentication/Loading"
@@ -19,6 +19,7 @@ import ActiveCohort from "./ActiveCohort"
 import ClientData from "./ClientData"
 import WarehouseproCat from "./WarehouseproCat"
 import CustomerSegment from "./CustomerSegment"
+import Engagement from "./Engagement"
 export const CustomerBehaviour = () => {
   const [weeksData, setWeeksData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -66,9 +67,10 @@ export const CustomerBehaviour = () => {
           <WarehouseproCategory totalSales={totalSales}/>
         </div>
         :
-        <div className="cohortChartSection">
+        <div className="cohortChartSection pt-20">
         <CustomerSegment/>
-          {/* <Engagement setWeeksData={setWeeksData} /> */}
+        <Engagement/>
+          {/* <FBEngagement setWeeksData={setWeeksData} /> */}
         </div>
         }
         {selectedItem?.category===selectedCategory && user.email==="warehousepro@gmail.com" ?

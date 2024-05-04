@@ -10,7 +10,6 @@
 }
 .mainSetting{
     display: flex;
-    margin-top: 10px;
     gap: 50px;
     background-image: url('/embg.png');
 }
@@ -28,6 +27,14 @@
     margin: 10px 0; /* Adjust the margin as needed */
   }
 .businessInfoDiv{
+    width: 100%;
+    padding: 30px;
+    margin-top: 40px;
+    background-color: #fff;
+    border-radius: 30px 30px 30px 30px; /* Adjust the values to control the rounding */
+    box-shadow: 0.5rem 0.5rem 10px black;
+}
+.profileDiv{
     width: 100%;
     padding: 30px;
     margin-top: 40px;

@@ -65,7 +65,8 @@ export const BottomChart = ({setSelectedCountry}) => {
   // .range(['#666666', '#649445']); // Colors for values outside and inside the domain range
 
   return (
-    <ResponsiveChoropleth
+    <div style={{"width":"100%","height":"100%","backgroundColor":"#649445"}}>
+<ResponsiveChoropleth
       data={countedValues}
       theme={{
         axis: {
@@ -136,6 +137,7 @@ export const BottomChart = ({setSelectedCountry}) => {
       onClick={handleCountryClick}
       
     />
+    </div>
   )
 }
 BottomChart.propTypes = 

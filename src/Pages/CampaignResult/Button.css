@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100vh;
+    
 }
 .buttons{
     --tw-text-opacity: 1;

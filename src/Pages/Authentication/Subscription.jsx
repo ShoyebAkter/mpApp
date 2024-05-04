@@ -33,6 +33,7 @@ function Subscription() {
       title: name,
       address: address,
       date: new Date().toLocaleDateString(),
+      photoUrl:""
     };
     localStorage.setItem("subscriptionInfo",JSON.stringify(subscriptionInfo));
     

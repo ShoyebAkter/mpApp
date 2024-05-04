@@ -1,38 +1,45 @@
 import { FaLock, FaUser } from "react-icons/fa6";
 import { IoShareSocial } from "react-icons/io5";
 import { MdDashboard,MdOutlineCampaign  } from "react-icons/md";
+import { TbPassword } from "react-icons/tb";
 import "./SettingPage.css";
+import AccountPreference from "./AccountPreference";
+import { useEffect, useState } from "react";
+import Profile from "./Profile";
+import ForgotPassword from "../Authentication/ForgotPassword";
+import { auth } from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { callApi } from "../EulerMail/getSalesData";
 const SettingPage = () => {
+  const [activeSetting,setActiveSetting]=useState("");
+  const [data,setData]=useState([]);
+  const [user]=useAuthState(auth)
+    useEffect(()=>{
+        callApi("https://emapp-backend.vercel.app/subscription/database",setData)
+    },[])
+    const foundObject = data.find(obj => obj.email === user.email);
+  // console.log(activeSetting)
   return (
-    <div className="mainSetting">
+    <div style={{"paddingTop":"110px"}} className="mainSetting">
       <div className="settingLeftSide">
-        <div className="headerName">Settings</div>
-        <div className="flex items-center gap-4"> <FaUser /> Account Preference</div>
-        <div  className="flex items-center gap-4"><FaLock />Security</div>
-        <div className="flex items-center gap-4"> <IoShareSocial />Data & Connection</div>
-        <div  className="flex items-center gap-4"> <MdDashboard />Dashboard Option</div>
-        <div className="flex items-center gap-4"> <MdOutlineCampaign />Campaign Designer</div>
+        <div className="headerName flex gap-10"> <img style={{"width":"50px","height":"50px"}} src={foundObject?.photoUrl} alt=""/> Settings</div>
+        <div onClick={()=>setActiveSetting("AccountPreference")} className="flex items-center gap-4"> <FaUser /> Account Preference</div>
+        <div onClick={()=>setActiveSetting("password")} className="flex items-center gap-4"> <TbPassword />Change Password</div>
+        <div onClick={()=>setActiveSetting("Security")} className="flex items-center gap-4"><FaLock />Security</div>
+        <div onClick={()=>setActiveSetting("Data")} className="flex items-center gap-4"> <IoShareSocial />Data & Connection</div>
+        <div onClick={()=>setActiveSetting("Dashboard")} className="flex items-center gap-4"> <MdDashboard />Dashboard Option</div>
+        <div onClick={()=>setActiveSetting("Campaign")} className="flex items-center gap-4"> <MdOutlineCampaign />Campaign Designer</div>
       </div>
-      <div className="settingRightSide">
-        <div className="businessInfoDiv">
-          <div >
-            <div className="pb-5 headerName">Business Info</div>
-            <div onClick={()=>console.log("clicked")} className="flex justify-between items-center py-3">Company name, location & industry info <div className="arrow ms-2"></div></div>
-            <hr className="customHr"></hr>
-            <div className="flex justify-between items-center py-3">Address verification <div className="arrow ms-2"></div></div>
-          </div>
-        </div>
-        <div className="generalDiv">
-          <div className="py-5 headerName">General preferences</div>
-          <div className="flex justify-between items-center py-3">Language <div className="arrow ms-2"></div></div>
-          <hr className="customHr"></hr>
-          <div className="flex justify-between items-center py-3">Location information <div className="arrow ms-2"></div></div>
-          <hr className="customHr"></hr>
-          <div className="flex justify-between items-center py-3">Notifications <div className="arrow ms-2"></div></div>
-          <hr className="customHr"></hr>
-          <div className="flex justify-between items-center py-3">Reports <div className="arrow ms-2"></div></div>
-        </div>
-      </div>
+      {
+        activeSetting ==="AccountPreference" && <AccountPreference setActiveSetting={setActiveSetting}  />
+      }
+      {
+        activeSetting ==="Profile" && <Profile/>
+      }
+      {
+        activeSetting ==="password" && <ForgotPassword/>
+      }
+      
     </div>
   );
 };

@@ -4,7 +4,7 @@ export const ButtonGroup = ({emailCampaign,whatsAppCampaign}) => {
     // console.log(emailCampaign,whatsAppCampaign);
     const total=emailCampaign+whatsAppCampaign;
     return (
-        <div className="flex justify-around">
+        <div className="flex justify-around pt-5">
             <button className="buttons">
                 Total Campaign: {total}
             </button>

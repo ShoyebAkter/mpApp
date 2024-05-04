@@ -39,7 +39,7 @@ export const CampaignResult = () => {
         navigate('/login')
     }
   return (
-    <div className="text-black p-5 resultMain pt-28">
+    <div style={{"paddingTop":"140px"}} className="text-black px-5 pb-10 resultMain ">
         <ButtonGroup emailCampaign={emailCampaign.length} whatsAppCampaign={whatsAppCampaign.length}/>
         <ClickRatio emailCampaign={emailCampaign} whatsAppCampaign={whatsAppCampaign}/>
         <CampaignDetails/>

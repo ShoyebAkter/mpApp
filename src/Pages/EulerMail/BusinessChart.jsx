@@ -27,7 +27,7 @@ function BusinessChart() {
         navigate('/login')
     }
 // console.log(shopifyData)
-    const company=localStorage.getItem("company")
+    const company=localStorage.getItem("companyName")
     
     // console.log(newPassword);
     // P?3qe+fw)%NGJpns

@@ -4,14 +4,25 @@ import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiUser } from "react-icons/ci";
+import { callApi } from "../EulerMail/getSalesData";
 
 export const LoginHeader = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [activeLink, setActiveLink] = useState("");
-
+  const [data,setData]=useState([]);
+    const shopify=localStorage.getItem("shopify");
+    useEffect(()=>{
+      if(shopify){
+        callApi("https://emapp-backend.vercel.app/subscription/database",setData)
+      }
+    },[])
+    // console.log(data)
+    const foundObject = user && data.find(obj => obj?.email === user.email);
+    // console.log(foundObject)
+    foundObject && localStorage.setItem("companyName",foundObject.companyName)
   const toggleMenu = () => {
     document.getElementById("menusidebar").style.width = "300px";
   };
@@ -96,7 +107,11 @@ export const LoginHeader = () => {
 
               <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="newLink rounded-3xl m-1">
+                {
+                  foundObject.photoUrl ? <img style={{"width":"30px","height":"30px"}} src={foundObject.photoUrl} alt=""/>
+                  :
                   <CiUser />
+                }
                 </div>
                 <ul
                   tabIndex={0}

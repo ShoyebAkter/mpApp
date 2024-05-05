@@ -53,12 +53,7 @@ const Login = () => {
         .then(data=>console.log(data.token))
         ;
       }
-      else{
-        
-        if(customerObj?.role==="customer"){
-          localStorage.setItem("companyName",customerObj.name)
-      }
-      }
+      
       if(isadmin.email===user.email){
         navigate('/dashboard')
       }

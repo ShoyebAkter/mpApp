@@ -49,7 +49,8 @@ const Profile = () => {
                 date:foundObject.date,
                 photoUrl:imgUrl
             }
-            const response = await fetch(`https://emapp-backend.vercel.app/subscription/database/${foundObject._id}`, {
+            if(firstName && lastName && companyName && address && imgUrl){
+              const response = await fetch(`https://emapp-backend.vercel.app/subscription/database/${foundObject._id}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json'
@@ -63,6 +64,7 @@ const Profile = () => {
             }
         
             const updatedData = await response.json();
+            }
             setActive(false)
             // console.log(updatedData.message); // Success message
           } catch (error) {

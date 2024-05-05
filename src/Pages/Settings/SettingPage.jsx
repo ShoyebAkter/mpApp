@@ -11,7 +11,7 @@ import { auth } from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { callApi } from "../EulerMail/getSalesData";
 const SettingPage = () => {
-  const [activeSetting,setActiveSetting]=useState("");
+  const [activeSetting,setActiveSetting]=useState("AccountPreference");
   const [data,setData]=useState([]);
   const [user]=useAuthState(auth)
     useEffect(()=>{
@@ -24,12 +24,12 @@ const SettingPage = () => {
     <div style={{"paddingTop":"110px"}} className="mainSetting">
       <div className="settingLeftSide">
         <div className="headerName flex gap-10"> <img style={{"width":"50px","height":"50px"}} src={foundObject?.photoUrl} alt=""/> Settings</div>
-        <div onClick={()=>setActiveSetting("AccountPreference")} className="flex items-center gap-4"> <FaUser /> Account Preference</div>
-        <div onClick={()=>setActiveSetting("password")} className="flex items-center gap-4"> <TbPassword />Change Password</div>
-        <div onClick={()=>setActiveSetting("Security")} className="flex items-center gap-4"><FaLock />Security</div>
-        <div onClick={()=>setActiveSetting("Data")} className="flex items-center gap-4"> <IoShareSocial />Data & Connection</div>
-        <div onClick={()=>setActiveSetting("Dashboard")} className="flex items-center gap-4"> <MdDashboard />Dashboard Option</div>
-        <div onClick={()=>setActiveSetting("Campaign")} className="flex items-center gap-4"> <MdOutlineCampaign />Campaign Designer</div>
+        <div onClick={()=>setActiveSetting("AccountPreference")} className="cursor-pointer flex items-center gap-4"> <FaUser /> Account Preference</div>
+        <div onClick={()=>setActiveSetting("password")} className="cursor-pointer flex items-center gap-4"> <TbPassword />Change Password</div>
+        <div onClick={()=>setActiveSetting("Security")} className="cursor-pointer flex items-center gap-4"><FaLock />Security</div>
+        <div onClick={()=>setActiveSetting("Data")} className="cursor-pointer flex items-center gap-4"> <IoShareSocial />Data & Connection</div>
+        <div onClick={()=>setActiveSetting("Dashboard")} className="cursor-pointer flex items-center gap-4"> <MdDashboard />Dashboard Option</div>
+        <div onClick={()=>setActiveSetting("Campaign")} className="cursor-pointer flex items-center gap-4"> <MdOutlineCampaign />Campaign Designer</div>
       </div>
       {
         activeSetting ==="AccountPreference" && <AccountPreference setActiveSetting={setActiveSetting}  />

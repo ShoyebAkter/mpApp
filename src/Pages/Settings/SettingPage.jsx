@@ -17,7 +17,8 @@ const SettingPage = () => {
     useEffect(()=>{
         callApi("https://emapp-backend.vercel.app/subscription/database",setData)
     },[])
-    const foundObject = data.find(obj => obj.email === user.email);
+    // console.log(data)
+    const foundObject = user && data.find(obj => obj?.email === user.email);
   // console.log(activeSetting)
   return (
     <div style={{"paddingTop":"110px"}} className="mainSetting">

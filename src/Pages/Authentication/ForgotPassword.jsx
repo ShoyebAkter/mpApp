@@ -1,15 +1,10 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { auth, confirmThePasswordReset } from "../../firebase.init";
+import {  useState } from "react";
+import { auth } from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import { sendPasswordResetEmail } from "firebase/auth";
 const ForgotPassword = () => {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
   const [successMessage, setSuccessMessage] = useState(false);
-  const [password, setPassword] = useState("");
-  const [link, setLink] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [user]=useAuthState(auth)
 
   // useEffect(()=>{
@@ -45,49 +40,64 @@ const ForgotPassword = () => {
 
   // Now you can use the oobCode as needed
   // console.log(oobCode);
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
-    
-    try {
-      // Wait for getLink to complete and update the link state
-      if (!link) {
-        console.error("No link received from server");
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        alert("Passwords did not match.");
-        return;
-      }
-
-      const queryString = link.split("?")[1];
-
-      // Parse the query string into an object
-      const queryParams = new URLSearchParams(queryString);
-
-      // Get the value of the 'oobCode' parameter
-      const oobCode = queryParams.get("oobCode");
-      // console.log(oobCode)
-      if (oobCode) {
-        await confirmThePasswordReset(oobCode, confirmPassword);
-        localStorage.removeItem("email");
-        navigate("/login");
-      } else {
-        alert("Something is wrong; try again later!");
-        console.log("missing oobCode");
-      }
-    } catch (error) {
-      console.error("Error handling password reset:", error);
-      alert("Something went wrong; try again later.");
+    if (email ) {
+      sendPasswordResetEmail(auth, user.email)
+  .then((res) => {
+    setSuccessMessage(true)
+    console.log(res)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode,errorMessage)
+    // ..
+  });
+    }else{
+      console.log("password didn't match")
     }
+
+    
+    // try {
+    //   // Wait for getLink to complete and update the link state
+    //   if (!link) {
+    //     console.error("No link received from server");
+    //     return;
+    //   }
+
+    //   if (password !== confirmPassword) {
+    //     alert("Passwords did not match.");
+    //     return;
+    //   }
+
+    //   const queryString = link.split("?")[1];
+
+    //   // Parse the query string into an object
+    //   const queryParams = new URLSearchParams(queryString);
+
+    //   // Get the value of the 'oobCode' parameter
+    //   const oobCode = queryParams.get("oobCode");
+    //   // console.log(oobCode)
+    //   if (oobCode) {
+    //     await confirmThePasswordReset(oobCode, confirmPassword);
+    //     localStorage.removeItem("email");
+    //     navigate("/login");
+    //   } else {
+    //     alert("Something is wrong; try again later!");
+    //     console.log("missing oobCode");
+    //   }
+    // } catch (error) {
+    //   console.error("Error handling password reset:", error);
+    //   alert("Something went wrong; try again later.");
+    // }
   };
 
   return (
     <div  className="mx-auto my-auto ">
       {successMessage ? (
         <div className="he">
-          <h3>Success! Your Password change successfully</h3>
-          <button onClick={() => navigate("/")}>Go to the Login page</button>
+          <h3>An password reset email is sent to your gmail account.Check it to change password.</h3>
         </div>
       ) : (
         <div className="bg-slate-50 shadow-xl px-12 py-5 rounded-3xl flex justify-center" >
@@ -98,9 +108,9 @@ const ForgotPassword = () => {
                     <div className="emailSec">
                       <label
                         htmlFor="email-address"
-                        className="box-decoration-slice text-gray-600 "
+                        className="box-decoration-slice text-gray-600 mr-5"
                       >
-                        Password:
+                        Enter Your Email:
                       </label>
                       <input
                         id="email-address"
@@ -108,26 +118,10 @@ const ForgotPassword = () => {
                         type="email"
                         className="bg-slate-200 mb-2"
                         required
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
 
-                    <div className="emailSec">
-                      <label
-                        htmlFor="password"
-                        className="box-decoration-clone text-gray-600 pe-2"
-                      >
-                        Confirm Password:
-                      </label>
-                      <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        className="bg-slate-200"
-                        required
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                      />
-                    </div>
                   </div>
 
                   <div className="flex items-center justify-center py-7">

@@ -1,20 +1,27 @@
 import PropTypes from 'prop-types'
+import { FaInstagram } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { CiLinkedin } from "react-icons/ci";
+import { FaTiktok } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 export const Buttons = ({followers,impression,engagement}) => {
-    // console.log(likes.data[0].values[0].value);
-    // console.log(followers);
+    
   return (
     <div className="flex justify-around mt-10">
-            <div  className="buttons">
-                Last 28 Days Impression 
-                <div className='text-2xl'>{impression? impression : 0}</div>
+            <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
+            <FaInstagram /> Instagram
             </div>
-            <div  className=" buttons">
-                Account Engaged 
-                <div className='text-2xl'>{engagement ? engagement :0}</div>
+            <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
+            <FaFacebookF /> Facebook
             </div>
-            <div  className=" buttons">
-                Total Followers 
-                <div className='text-2xl'>{followers ? followers : 0}</div>
+            <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
+            <CiLinkedin /> Linkedin
+            </div>
+            <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
+            <FaTiktok /> Tiktok
+            </div>
+            <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
+            <FaYoutube /> Youtube
             </div>
         </div>
   )

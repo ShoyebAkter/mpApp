@@ -99,6 +99,7 @@ if(foundObject){
             required
             readOnly={!active}
             onChange={(e) => setFirstName(e.target.value)}
+            className="bg-gray-300"
           />
         </div>
         <div className="flex flex-col gap-3 mb-3">
@@ -106,6 +107,7 @@ if(foundObject){
           <input
             name="lastName"
             type="text"
+            className="bg-gray-300"
             required
             value={active ? lastName :foundObject?.lastName}
             readOnly={!active}
@@ -118,6 +120,7 @@ if(foundObject){
             name="email"
             type="email"
             required
+            className="bg-gray-300"
             value={foundObject?.email}
             readOnly
           />
@@ -128,6 +131,7 @@ if(foundObject){
             name="address"
             type="text"
             required
+            className="bg-gray-300"
             value={active ? address :foundObject?.address}
             readOnly={!active}
             onChange={(e) => setAddress(e.target.value)}
@@ -138,6 +142,7 @@ if(foundObject){
           <input
             name="company"
             type="text"
+            className="bg-gray-300"
             required
             value={active ? companyName :foundObject?.companyName}
             readOnly={!active}
@@ -150,6 +155,7 @@ if(foundObject){
             name="connection"
             type="text"
             required
+            className="bg-gray-300"
             value={foundObject?.connection}
             readOnly
           />

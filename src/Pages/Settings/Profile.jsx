@@ -16,6 +16,16 @@ const Profile = () => {
         callApi("https://emapp-backend.vercel.app/subscription/database",setData)
     },[])
     const foundObject = data.find(obj => obj.email === user.email);
+    const editClicked=()=>{
+      setActive(true)
+if(foundObject){
+      setFirstName(foundObject.firstName)
+      setLastName(foundObject.lastName)
+      setAddress(foundObject.address)
+      setCompanyName(foundObject.companyName)
+    }
+    }
+    
     // console.log(foundObject)
     const onSubmit=async(event)=>{
         const image = event.target.files[0];
@@ -64,8 +74,12 @@ const Profile = () => {
             }
         
             const updatedData = await response.json();
+            if(updatedData){
+              window.location.reload();
             }
             setActive(false)
+            }
+            
             // console.log(updatedData.message); // Success message
           } catch (error) {
             console.error('Error updating data:', error.message);
@@ -147,12 +161,12 @@ const Profile = () => {
         <input onChange={onSubmit} type="file" name="" className="py-3 px-5 bg-gray-200 rounded-full "/>
         </div>
         }
-        {!active && <div className="bg-gray-200 p-2 w-1/6 text-center mx-auto rounded-lg" onClick={()=>setActive(true)}>Edit Information</div>}
+        {!active && <div className="bg-gray-200 p-2 w-1/6 text-center mx-auto rounded-lg cursor-pointer" onClick={editClicked}>Edit Information</div>}
         {
             active &&
             <div className="flex justify-between">
-            <div className="bg-gray-200 p-2" onClick={update}>Save</div>
-            <div className="bg-gray-200 p-2" onClick={()=>setActive(false)}>Cancel</div>
+            <div className="bg-gray-200 p-2 cursor-pointer" onClick={update}>Save</div>
+            <div className="bg-gray-200 p-2 cursor-pointer" onClick={()=>setActive(false)}>Cancel</div>
         </div>
         }
       </div>

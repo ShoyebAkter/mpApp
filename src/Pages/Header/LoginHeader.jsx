@@ -106,7 +106,7 @@ export const LoginHeader = () => {
               </Link>
 
               <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="newLink rounded-3xl m-1">
+                <div tabIndex={0} role="button" className={foundObject.photoUrl ? "" : "newLink rounded-3xl m-1"}>
                 {
                   foundObject.photoUrl ? <img style={{"width":"30px","height":"30px"}} src={foundObject.photoUrl} alt=""/>
                   :

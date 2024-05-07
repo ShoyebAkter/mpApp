@@ -105,6 +105,9 @@ console.log(top10Objects)
         font: {
           size: 24, // Change the title font size
         },
+        padding: {
+          bottom: 30 // Add padding to the bottom
+      }
           },
         },
       };

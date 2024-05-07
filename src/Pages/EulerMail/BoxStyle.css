@@ -13,32 +13,32 @@
     height: 450px;
     background: -webkit-radial-gradient(0% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(0% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat;
     background: radial-gradient(circle at 0% 100%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 0% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 100%, transparent 15%, #FFFFFF 15%) no-repeat;
-    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 100%;
-    background-size: 106% 66%;
+    background-position: 0% 0%, 0% 0%, 0% 0%, 22% 100%;
+    background-size: 114% 80%;
   }
   .CRborder-scoop {
     width: 515px;
     height: 450px;
     background: -webkit-radial-gradient(0% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(0% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat;
     background: radial-gradient(circle at 0% 100%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 0% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 100%, transparent 15%, #FFFFFF 15%) no-repeat;
-    background-position: 50% 107%, 0% 0%, 0% 0%, 0% 0%;
-    background-size: 117% 75%;
+    background-position: 60% 102%, 0% 0%, 0% 0%, 0% 0%;
+    background-size: 120% 79%;
   }
   .CBborder-scoop {
     width: 500px;
     height: 350px;
     background: -webkit-radial-gradient(0% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(0% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat;
     background: radial-gradient(circle at 0% 100%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 0% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 100%, transparent 15%, #FFFFFF 15%) no-repeat;
-    background-position: 0% 0%,109% 0%,0% 0%,0% 0%;
-    background-size: 60% 100%;
+    background-position: 0% 0%,115% 0%,0% 0%,0% 0%;
+    background-size: 58% 98%;
   }
   .SMborder-scoop {
     width: 515px;
     height: 450px;
     background: -webkit-radial-gradient(0% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(0% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat;
     background: radial-gradient(circle at 0% 100%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 0% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 100%, transparent 15%, #FFFFFF 15%) no-repeat;
-    background-position: 100% 100%,100% 100%,100% 0%,100% 100%;
-    background-size: 107% 75%;
+    background-position: 100% 100%,100% 100%,91% 0%,100% 100%;
+    background-size: 110% 54%;
   }
   .customerCHart{
     padding-right: 55px;

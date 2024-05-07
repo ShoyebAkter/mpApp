@@ -51,6 +51,9 @@ const CustomerSegment = () => {
         font: {
           size: 24, // Change the title font size
         },
+        padding: {
+          bottom: 30 // Add padding to the bottom
+      }
         // text: `Customers: ${customers.length}`,
       },
     },
@@ -73,8 +76,8 @@ const CustomerSegment = () => {
     ],
   };
   return (
-    <div>
-      <Bar options={options} height={400} width={500} data={data} />
+    <div >
+      <Bar  options={options} height={320} width={500} data={data} />
     </div>
   );
 };

@@ -59,19 +59,19 @@ export const FacebookPost = ({ setPermalink, setFollowers, setUserDetails, setIm
         console.log(facebookPageId);
         const fbPageToken = await getFbPageToken(facebookUserAccessToken, index);
         console.log(fbPageToken);
-        const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
-        console.log(dayEngagement)
-        const monthlyEngagement = await getMonthlyEngagement(dayEngagement?.data[0]?.values)
-        const engagementArray = await objtoArray(monthlyEngagement)
-        const sum = engagementArray.reduce((accumulator, currentValue) => accumulator + currentValue.value, 0);
-        setEngagement(sum);
+        // const dayEngagement = await getPageDayEngamenet(facebookPageId, fbPageToken)
+        // console.log(dayEngagement)
+        // const monthlyEngagement = await getMonthlyEngagement(dayEngagement?.data[0]?.values)
+        // const engagementArray = await objtoArray(monthlyEngagement)
+        // const sum = engagementArray.reduce((accumulator, currentValue) => accumulator + currentValue.value, 0);
+        // setEngagement(sum);
         const postId = await getPostId(facebookPageId, fbPageToken);
         // console.log(postId);
         const mainPost = await getPostReaction(postId.data, fbPageToken);
         // console.log(mainPost);
-        const pageImpression = await getPageImpression(facebookPageId, fbPageToken)
-        setImpression(pageImpression);
-        const permanentLink = await getPermaLink(mainPost.id, fbPageToken)
+        // const pageImpression = await getPageImpression(facebookPageId, fbPageToken)
+        // setImpression(pageImpression);
+        const permanentLink = await getPermaLink(mainPost?.id, fbPageToken)
         setPermalink(permanentLink);
         const totalFollowers = await getPageTotalFollowers(facebookPageId, fbPageToken)
         setFollowers(totalFollowers);

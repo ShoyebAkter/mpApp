@@ -23,7 +23,7 @@ const Login = () => {
     const shopifyexists=shopifyData.some(obj=> obj.email===email)
     const emailExists = users.some(obj => obj.email === email);
       const isadmin=users.find(obj => obj.role === 'admin');
-      const customerObj=users.find(obj => obj.email ===email);
+      // const customerObj=users.find(obj => obj.email ===email);
       if(shopifyexists){
         localStorage.setItem("shopify",true)
       }
@@ -61,11 +61,6 @@ const Login = () => {
         navigate("/eulermail");
       }
 
-      
-        // Signed in
-        
-        
-        
       })
       .catch((error) => {
         setErrors(error)
@@ -73,24 +68,6 @@ const Login = () => {
         console.log(error.code)
       });
   };
-  // const  initiatePasswordReset=async()=> {
-  //   try {
-  //     if(email){
-  //       localStorage.setItem("email",email)
-  //       navigate('/resetPassword')
-  //     }else{
-  //       toast.error("Please Enter your email");
-  //     }
-      
-  // } catch (error) {    
-  //   if (error.code === 'auth/user-not-found') {
-  //     alert('User not found, try again!')
-  //     setEmail('')
-  //   }
-  // }
-    
-  // }
-  // fuad12345
   
   return (
     <div className="bodySection ">

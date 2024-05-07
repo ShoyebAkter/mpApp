@@ -53,7 +53,7 @@ export const CustomerBehaviour = () => {
             :
             <div className="flex gap-16">
             <Customers />
-            <Sales />
+            <CustomerSegment/>
             </div>
           }
           
@@ -67,8 +67,9 @@ export const CustomerBehaviour = () => {
           <WarehouseproCategory totalSales={totalSales}/>
         </div>
         :
-        <div className="cohortChartSection pt-20">
-        <CustomerSegment/>
+        <div className="cohortChartSection ">
+        
+        <Sales />
         <Engagement/>
           {/* <FBEngagement setWeeksData={setWeeksData} /> */}
         </div>

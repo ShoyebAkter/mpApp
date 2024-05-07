@@ -17,11 +17,13 @@ const Engagement = () => {
       const options = {
         title: {
           text: 'Customer Engagement Rate',
-          align: 'left',
+          align: 'center',
           style: {
             color: '#2a4e40', // Change color as desired
-            fontSize: '24px' // Change font size as desired
-          }
+            fontSize: '24px',
+            // Change font size as desired
+          },
+          paddingBottom: '150px' 
         },
         subtitle: {
           text: null,
@@ -97,8 +99,8 @@ const Engagement = () => {
       };
     
   return (
-    <div>
-      <HighchartsReact highcharts={Highcharts} options={options} />
+    <div >
+      <HighchartsReact  highcharts={Highcharts} options={options} />
     </div>
   )
 }

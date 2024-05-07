@@ -29,8 +29,8 @@
     height: 350px;
     background: -webkit-radial-gradient(0% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(0% 0%, circle, transparent 15%, #FFFFFF 15%) no-repeat, -webkit-radial-gradient(100% 100%, circle, transparent 15%, #FFFFFF 15%) no-repeat;
     background: radial-gradient(circle at 0% 100%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 0% 0%, transparent 15%, #FFFFFF 15%) no-repeat, radial-gradient(circle at 100% 100%, transparent 15%, #FFFFFF 15%) no-repeat;
-    background-position: 0% 0%,115% 0%,0% 0%,0% 0%;
-    background-size: 58% 98%;
+    background-position: 0% 0%,128% 0%,0% 0%,0% 0%;
+    background-size: 74% 100%;
   }
   .SMborder-scoop {
     width: 515px;

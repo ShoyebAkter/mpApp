@@ -106,7 +106,7 @@ console.log(top10Objects)
           size: 24, // Change the title font size
         },
         padding: {
-          bottom: 30 // Add padding to the bottom
+          bottom: 40 // Add padding to the bottom
       }
           },
         },
@@ -127,8 +127,8 @@ console.log(top10Objects)
         ],
       };
     return (
-       <div className="salesChart">
-        <Bar  options={options} height={200} data={data} />
+       <div className="salesChart mt-3">
+        <Bar  options={options} height={250} data={data} />
        </div>
         
     )

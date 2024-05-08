@@ -15,15 +15,20 @@ const Engagement = () => {
       }, []);
     
       const options = {
+        chart: {
+          height: '450px' // Set the height of the chart
+        },
         title: {
           text: 'Customer Engagement Rate',
           align: 'center',
+          margin: 50,
           style: {
             color: '#2a4e40', // Change color as desired
             fontSize: '24px',
+            
             // Change font size as desired
           },
-          paddingBottom: '150px' 
+          
         },
         subtitle: {
           text: null,
@@ -51,6 +56,9 @@ const Engagement = () => {
             },
             pointStart: 2010
           }
+        },
+        credits: {
+          enabled: false // Hide credits
         },
         series: [
             {

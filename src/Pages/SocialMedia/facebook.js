@@ -92,6 +92,20 @@ export const getPageTotalFollowers = (pageId, fbPageToken) => {
     })
 
 }
+
+export const getPageTotalPost=(pageId,fbPageToken)=>{
+    return new Promise((resolve) => {
+        window.FB.api(
+            `/${pageId}/published_posts`,
+            'GET',
+            { access_token: fbPageToken },
+            function (response) {
+                // console.log(response);
+                resolve(response.data)
+            }
+        );
+    })
+}
 export const getPageImpression = (pageId, fbPageToken) => {
     // console.log(postId,fbPageToken);
     return new Promise((resolve) => {

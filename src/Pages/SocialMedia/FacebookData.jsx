@@ -1,18 +1,24 @@
-import { useState } from "react"
-import { UserStatics } from "./UserStatics"
+
 import {Buttons} from './Buttons'
 import './UserStatics.css'
 import KeyPerformance from "./KeyPerformance"
+import FollowersChart from "./FollowersChart"
+import PostChart from './PostChart'
+import ImpressionChart from './ImpressionChart'
 export const FacebookData = () => {
-    
-  const [followers,setFollowers]=useState(0)
-  const [impression,setImpression]=useState(0)
-  const [engagement,setEngagement]=useState(0)
+
+
   return (
     <div className="socialmediaMain overflow-x-auto h-screen pt-32">
-        <div className="bg-white py-10 mx-10 rounded-2xl">
-        <Buttons engagement={engagement} followers={followers} impression={impression}/>
+        <div className="bg-white py-10 mx-1 rounded-2xl">
+        <Buttons />
         <KeyPerformance/>
+        <div className="flex justify-around mt-5">
+          <FollowersChart />
+          <PostChart/>
+          <ImpressionChart/>
+          {/* <FollowersChart/> */}
+        </div>
         </div>
         {/* <UserStatics  setEngagement={setEngagement} setFollowers={setFollowers} setImpression={setImpression}/> */}
     </div>

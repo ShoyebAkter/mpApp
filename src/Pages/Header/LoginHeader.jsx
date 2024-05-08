@@ -108,7 +108,7 @@ export const LoginHeader = () => {
               <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className={foundObject.photoUrl ? "" : "newLink rounded-3xl m-1"}>
                 {
-                  foundObject.photoUrl ? <img style={{"width":"30px","height":"30px"}} src={foundObject.photoUrl} alt=""/>
+                  foundObject.photoUrl ? <img style={{"width":"40px","height":"40px","borderRadius":"50%"}} src={foundObject.photoUrl} alt=""/>
                   :
                   <CiUser />
                 }

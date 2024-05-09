@@ -1,17 +1,16 @@
-import PropTypes from 'prop-types'
+
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { FaTiktok } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
-
+import { useLinkedIn } from 'react-linkedin-login-oauth2';
 import FbPageModal from './FbPageModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { setfbAccessToken } from '../../features/counter/counterSlice';
-
-
 export const Buttons = () => {
   const fbAccessToken=useSelector((state)=>state.counter.fbAccessToken);
+  
 const dispatch=useDispatch()
   const logInToFB = () => {
     window.FB.login(
@@ -36,6 +35,17 @@ const dispatch=useDispatch()
         }
     );
 };
+const { linkedInLogin } = useLinkedIn({
+  clientId: '8638xra5kzcpiy',
+  redirectUri: `https://www.eulermail.app/auth/linkedin/callback`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
+  onSuccess: (code) => {
+    console.log(code);
+  },
+  onError: (error) => {
+    console.log(error);
+  },
+});
+
   return (
     <div className="flex justify-around mt-10">
             <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
@@ -44,8 +54,8 @@ const dispatch=useDispatch()
             <div onClick={logInToFB} style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
             <FaFacebookF /> Facebook
             </div>
-            <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
-            <CiLinkedin /> Linkedin
+            <div onClick={linkedInLogin} style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
+            <CiLinkedin  /> Linkedin
             </div>
             <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
             <FaTiktok /> Tiktok
@@ -66,9 +76,3 @@ const dispatch=useDispatch()
         </div>
   )
 }
-Buttons.propTypes = {
-    impression:PropTypes.number.isRequired,
-    engagement:PropTypes.number.isRequired,
-    setFacebookUserAccessToken:PropTypes.func.isRequired,
-    facebookUserAccessToken:PropTypes.string.isRequired,
-  }

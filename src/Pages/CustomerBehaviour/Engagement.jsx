@@ -24,7 +24,9 @@ const Engagement = () => {
           margin: 50,
           style: {
             color: '#2a4e40', // Change color as desired
-            fontSize: '24px',
+            fontSize: 20,
+          fontWeight:700,
+          fontFamily: 'Montserrat',
             
             // Change font size as desired
           },

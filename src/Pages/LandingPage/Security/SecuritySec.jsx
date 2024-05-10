@@ -9,27 +9,27 @@ const SecuritySec = () => {
       </div>
      <div className='flex items-center gap-10'>
      <div><img style={{"width":"70px","height":"70px"}}  src="./Icon-2.png" alt=''/></div>
-      <div className='textSec'>Lorem ipsum dolor sit amet, consectetur <div className='mt-6'> adipiscing elit.</div></div>
+      <div className='textSec'>At EulerMail, your business`s data is not just another number<div className='mt-6'> We understand its value and go
+the extra mile to keep it secure.</div></div>
      </div>
       <div className='flex items-center gap-10'>
         <div><img style={{"width":"70px","height":"70px"}}  src="./Icon-3.png" alt=''/></div>
         <div className='textSec'>
-        Ut enim ad minim veniam, quis nostrud <div className='mt-4'> exercitation ullamco laboris nisi
-        ut aliquip</div> <div className='mt-4'> ex ea commodo consequat.</div>
+        Using state-of-the-art servers and advanced security tools,<div className='mt-4'> we ensure your information is
+guarded like a treasure</div> 
       </div>
       </div>
       <div  className='flex items-center gap-10'>
         <div><img style={{"width":"70px","height":"70px"}}  src="./Icon-4.png" alt=''/></div>
         <div className='textSec'>
-        Duis aute irure dolor in reprehenderit in <div className='mt-4'> voluptate velit esse cillum
-        dolore eu fugiat</div> <div className='mt-4'>nulla pariatur.</div> 
+        Our commitment to data protection means<div className='mt-4'> you can focus on what you do best, </div> <div className='mt-4'>leaving the
+worry of data safety to us</div> 
       </div>
       </div>
       <div className='flex items-center gap-10'>
       <div ><img style={{"width":"70px","height":"70px"}}  src="./Icon-5.png" alt=''/></div>
       <div className='textSec'>
-        Excepteur sint occaecat cupidatat non <div className='mt-4'>proident, sunt in culpa qui
-        officia deserunt</div>  <div className='mt-4'>mollit anim id est laborum</div> 
+      Your data's security and privacy are our top priorities
       </div>
       </div>
     </div>

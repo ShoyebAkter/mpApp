@@ -49,7 +49,9 @@ const CustomerSegment = () => {
         text: `Total Spent: ${totalSpentOverall}$`,
         color: "#2a4e40", // Change the title color
         font: {
-          size: 24, // Change the title font size
+          size: 20,
+          weight:700,
+          family: 'Montserrat', // Change the title font size
         },
         padding: {
           bottom: 30 // Add padding to the bottom

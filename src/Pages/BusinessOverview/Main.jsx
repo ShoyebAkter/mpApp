@@ -9,7 +9,7 @@ import { SiSimpleanalytics } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa6";
 import "./TopChart.css";
 import LinearRegChart from "../EulerMail/LinearRegChart";
-
+import { BsCartCheck } from "react-icons/bs";
 import ProductServiceChart from "../CustomerBehaviour/ProductServiceChart";
 import BusinessTable from "./BusinessTable";
 import MapChart from "./MapChart";
@@ -29,22 +29,29 @@ export const Main = () => {
   return (
     <div className="overviewMain flex justify-between">
       <div
-        style={{ background: "#457048" }}
+        style={{ backgroundColor: "white",}}
         className="leftGreenSec px-3 pt-10"
       >
         <div
-          style={{ color: "#f8f8f8", cursor: "pointer" }}
-          className="flex flex-col justify-center items-center mb-5"
+          style={{ color: "#649445", cursor: "pointer" }}
+          className="flex gap-3 items-center mb-5 font-bold"
         >
           {" "}
           <SiSimpleanalytics /> Sales
         </div>
         <div
-          style={{ color: "#f8f8f8", cursor: "pointer" }}
-          className="flex flex-col justify-center items-center"
+          style={{ color: "#649445", cursor: "pointer" }}
+          className="flex items-center mb-5 gap-3 font-bold"
         >
           <FaDatabase />
           Site data
+        </div>
+        <div
+          style={{ color: "#649445", cursor: "pointer" }}
+          className="flex items-center mb-5 gap-3 font-bold"
+        >
+          <BsCartCheck />
+          Cart Analysis
         </div>
       </div>
       <div className="mx-auto mt-20">

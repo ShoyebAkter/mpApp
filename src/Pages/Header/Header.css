@@ -15,7 +15,15 @@ nav a:hover{
     color:#439541
 }
 .navbarSec{
-  padding-left: 100px;
+  padding-left: 200px;
+  padding-right: 200px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+.loginnavbarSec{
+  padding-left: 20px;
   padding-right: 50px;
     display: flex;
     justify-content: space-between;
@@ -207,5 +215,20 @@ nav a:hover{
     padding-inline: 15px;
     text-align: center;
     font-size: 8px;
+}
+.navbarSec{
+  padding-inline: 50px;
+}
+}
+@media only screen and (min-width: 1076px) and (max-width: 1412px){
+  nav a{
+    text-decoration: none;
+    color: #4c4c4c;
+    padding-inline: 15px;
+    text-align: center;
+    font-size: 12px;
+}
+.navbarSec{
+  padding-inline: 100px;
 }
 }

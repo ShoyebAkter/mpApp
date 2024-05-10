@@ -60,7 +60,7 @@ function SocialMediaChart() {
     labels,
     datasets: [
       {
-        label: "Facebook Post Dataset",
+        label: "",
         data:
           user.email === "fuad@gmail.com"
             ? result.map((res) => res.total)
@@ -79,20 +79,20 @@ function SocialMediaChart() {
         >
           SocialMedia
         </h1>
-        <div className="flex justify-around">
+        <div className="flex justify-around my-2">
           <div
             style={{ backgroundColor: "#2a4e40" }}
-            className="text-white text-sm p-1 rounded-xl text-center"
+            className="text-white text-xs p-1 rounded-xl text-center"
           >
             Accounts Reached
-            <div className="text-2xl">2</div>
+            <div className="text-xs">2</div>
           </div>
           <div
             style={{ backgroundColor: "#2a4e40" }}
-            className="text-white text-sm p-1 rounded-xl text-center"
+            className="text-white text-xs p-1 rounded-xl text-center"
           >
             Accounts Engaged
-            <div className="text-2xl">2</div>
+            <div className="text-xs">2</div>
           </div>
         </div>
         <Bar options={options} height={200} data={data} />

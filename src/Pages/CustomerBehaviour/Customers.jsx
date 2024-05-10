@@ -87,7 +87,9 @@ useEffect(()=>{
         text: `Customers: ${shopifyexists? customersData[0]?.customers.length :  customers.length }`,
         color: "#2a4e40", // Change the title color
         font: {
-          size: 24, // Change the title font size
+          size: 20,
+          weight:700,
+          family: 'Montserrat',// Change the title font size
         },
         padding: {
           bottom: 30 // Add padding to the bottom
@@ -104,7 +106,7 @@ useEffect(()=>{
     labels,
     datasets: [
       {
-        label: "Dataset 1",
+        label: "",
         data:shopifyexists ? segmentCount.map(seg=>seg.count) : countedValues.map((value) => value.count),
         // data:countedValues.map((value) => value.count),
         borderColor: "#649445",

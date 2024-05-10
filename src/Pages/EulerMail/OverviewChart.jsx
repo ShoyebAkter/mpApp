@@ -94,7 +94,7 @@ function OverviewChart() {
           labels,
           datasets: [
             {
-              label: `Sales $`,
+              label: ``,
               data: shopify ? totalSalesData.map(sales=>sales.total) :[1,2,3,4,5] ,
               borderColor: "#649445",
               backgroundColor: "#649445",
@@ -134,7 +134,9 @@ function OverviewChart() {
         text: "Yearly Revenue",
         font: {
           size: 14,
-          weight: 500 // specify the font size here
+          family: 'Montserrat',
+          color: '#649445',
+          weight: 700 // specify the font size here
         },
       },
     },

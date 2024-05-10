@@ -9,7 +9,7 @@ export const FacebookData = () => {
 
 
   return (
-    <div className="socialmediaMain overflow-x-auto h-screen pt-32">
+    <div className="socialmediaMain  h-screen pt-32 px-20">
         <div className="bg-white py-10 mx-1 rounded-2xl">
         <Buttons />
         <KeyPerformance/>

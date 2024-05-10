@@ -46,7 +46,7 @@ export const LoginHeader = () => {
       {user ? (
         <div className="mobileHeader">
           <header className={`header-fix`}>
-            <nav className={`navbarSec`}>
+            <nav className={`loginnavbarSec`}>
             
               <img onClick={()=>navigate('/')} className="headerlogo" src="Logo_Iso_Green.jpg" />
             
@@ -106,9 +106,9 @@ export const LoginHeader = () => {
               </Link>
 
               <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className={foundObject.photoUrl ? "" : "newLink rounded-3xl m-1"}>
+                <div tabIndex={0} role="button" className={foundObject?.photoUrl ? "" : "newLink rounded-3xl m-1"}>
                 {
-                  foundObject.photoUrl ? <img style={{"width":"40px","height":"40px","borderRadius":"50%"}} src={foundObject.photoUrl} alt=""/>
+                  foundObject?.photoUrl ? <img style={{"width":"40px","height":"40px","borderRadius":"50%"}} src={foundObject?.photoUrl} alt=""/>
                   :
                   <CiUser />
                 }

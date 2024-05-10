@@ -61,11 +61,10 @@ export const CampaignResult = () => {
         labels,
         datasets: [
           {
-            label: 'Total email sent',
+            label: "",
             data: user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.total) : [10,30,20,60,70,80,25,45,50],
             backgroundColor: '#659248',
             borderRadius: 15,
-            
           }
         ],
       };

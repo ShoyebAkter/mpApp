@@ -40,7 +40,8 @@ const Login = () => {
       if(!emailExists){
         const userInfo={
             uid:user.uid,
-            email:user.email
+            email:user.email,
+            date: new Date().toISOString()
         }
         fetch("https://emapp-backend.vercel.app/eulermailUser", {
           method: "POST",

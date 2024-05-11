@@ -89,13 +89,13 @@ function OverviewChart() {
         break;
       default:
         
-        labels = shopify ? totalSalesData.map(sales=>sales.year) : ["Jan","Feb","Mar","April","May"];
+        labels = shopify ? totalSalesData?.map(sales=>sales.year) : ["Jan","Feb","Mar","April","May"];
         data = {
           labels,
           datasets: [
             {
               label: ``,
-              data: shopify ? totalSalesData.map(sales=>sales.total) :[1,2,3,4,5] ,
+              data: shopify ? totalSalesData?.map(sales=>sales.total) :[1,2,3,4,5] ,
               borderColor: "#649445",
               backgroundColor: "#649445",
             },

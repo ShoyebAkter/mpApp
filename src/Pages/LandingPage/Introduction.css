@@ -124,13 +124,12 @@
   .IntroSec{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
+    
+    padding-top: 0px;
   }
   .developImg{
-    margin-top: 16.50rem;
-  
+    margin-top: 50px;
+  margin-bottom: 0;
   }
   .bottom-image {
     height: 150px;

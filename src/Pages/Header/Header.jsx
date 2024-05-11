@@ -53,7 +53,7 @@ function Header() {
             
               <img  onClick={()=>navigate('/')} className="headerlogo" src="Logo_Iso_Green.jpg" />
             
-            <div className="links">
+            <div >
               <a href="#introduction">HOME</a>
               <a href="#businessInsight">EULERMAIL</a>
               <a href="#integration">HOW IT WORKS</a>

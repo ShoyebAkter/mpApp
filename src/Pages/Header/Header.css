@@ -93,12 +93,7 @@ nav a:hover{
   .logoutBtn{
     display: none;
   }
-  .mobileHeader{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #fff;
-  }
+  
   .header-fixed{
     box-shadow:0 5px 5px #ccc;
     background-color: #fff;
@@ -106,7 +101,7 @@ nav a:hover{
 }
 .mobilestyle{
   display: flex;
-  justify-content: center;
+  flex-direction: row-reverse;
 }
 .sidebar {
   display: block;
@@ -114,14 +109,14 @@ nav a:hover{
   width: 0px;
   position: fixed;
   z-index: 1;
-  top: 0;
-  right: 34px;
+  top: 0px;
+  right: 0px;
   background-color: #fff;
   overflow-x: hidden;
   transition: width 0.3s;
   padding-top: 60px;
   color: #000000;
-  
+  margin-right: 0px;
 }
 
 .sidebar a {
@@ -151,7 +146,7 @@ nav a:hover{
 
     .header-fixed nav {
         display: flex;
-        justify-content: space-around;
+
       }
     
       .header-fixed nav a {
@@ -160,15 +155,13 @@ nav a:hover{
     
        .hamburger-menu {
         margin-top: 5px;
+        margin-right: 20px;
         position: relative;
         display: inline-block;
         width: 40px;
         height: 40px; /* Show the hamburger menu button */
       }
     
-      .header-fixed nav a {
-        display: none; /* Hide navigation items by default on mobile */
-      }
       .navbarSec div{
         display: none;
       }
@@ -188,14 +181,16 @@ nav a:hover{
     }
     .header-fixed{
         padding-block: 10px;
-        padding-inline: 2px;
+        padding-inline: 25px;
     box-shadow:none;
-    position:relative;
-    z-index: 0;
+    position: absolute;
+  z-index: 0;
     }
     .navbarSec{
         display: flex;
         justify-content: space-between;
+        padding-right: 0px;
+        padding-left: 0px;
     }
     nav a {
         margin-right: 5px;
@@ -203,8 +198,8 @@ nav a:hover{
         font-size: 8px; /* Reduce font size for better mobile readability */
     }
     .headerlogo{
-        width: 50px;
-        height: 50px;
+      width: 40px;
+      height: 40px;
         /* display: none; */
     }
     

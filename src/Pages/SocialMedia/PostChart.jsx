@@ -1,4 +1,4 @@
-
+import { FaImages } from "react-icons/fa";
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ const PostChart = () => {
           height: 500
         },
         title: {
-          text: 'No. of Posts',
+          text: '',
           align: 'center'
         },
         
@@ -52,6 +52,15 @@ const PostChart = () => {
       };
   return (
     <div>
+    <div
+        style={{ color: "#40E0D0" }}
+        className=" flex gap-3 justify-center items-center font-bold"
+      >
+        <span className="">
+          <FaImages size={36} />
+        </span>
+        <span style={{ color: "#6b6b6b" }}># of Posts</span>
+      </div>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   )

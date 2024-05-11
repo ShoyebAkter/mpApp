@@ -140,7 +140,18 @@ function OverviewChart() {
         },
       },
     },
-    
+    scales: {
+      x: {
+        ticks: {
+          color:'black'
+        },
+      },
+      y: {
+        ticks: {
+          color:'black'
+        },
+      },
+    },
   };
 
   

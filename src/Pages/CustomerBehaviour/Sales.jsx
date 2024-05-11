@@ -112,6 +112,18 @@ console.log(top10Objects)
       }
           },
         },
+        scales: {
+          x: {
+            ticks: {
+              color:'black'
+            },
+          },
+          y: {
+            ticks: {
+              color:'black'
+            },
+          },
+        },
       };
       
       const labels = shopify ? top10Objects?.map(data=>data.first_name ) : salesValue.map((sale)=>sale.date);
@@ -122,8 +134,8 @@ console.log(top10Objects)
           {
             label: 'Dataset 1',
             data:  shopify ? top10Objects?.map(data=>data.total_spent ) : salesValue.map((sale)=>sale.total) ,
-            borderColor: '#649445',
-            backgroundColor: '#649445',
+            
+            backgroundColor: '#659148',
             borderRadius: 15,
           }
         ],

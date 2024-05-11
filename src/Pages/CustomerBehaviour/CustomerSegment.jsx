@@ -59,6 +59,18 @@ const CustomerSegment = () => {
         // text: `Customers: ${customers.length}`,
       },
     },
+    scales: {
+      x: {
+        ticks: {
+          color:'black'
+        },
+      },
+      y: {
+        ticks: {
+          color:'black'
+        },
+      },
+    },
   };
 
   const labels = eachSegmentSpent.map((seg) => seg.segment);
@@ -71,8 +83,8 @@ const CustomerSegment = () => {
         label: "Dataset 1",
         data: eachSegmentSpent.map((seg) => seg.total),
         // data:countedValues.map((value) => value.count),
-        borderColor: "#649445",
-        backgroundColor: "#649445",
+        
+        backgroundColor: "#659148",
         borderRadius: 15,
       },
     ],

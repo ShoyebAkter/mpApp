@@ -49,6 +49,18 @@ function SocialMediaChart() {
         position: "top",
       },
     },
+    scales: {
+      x: {
+        ticks: {
+          color:'black'
+        },
+      },
+      y: {
+        ticks: {
+          color:'black'
+        },
+      },
+    },
   };
 
   const labels =
@@ -65,7 +77,7 @@ function SocialMediaChart() {
           user.email === "fuad@gmail.com"
             ? result.map((res) => res.total)
             : [30, 10, 40, 50, 80, 20, 90],
-        backgroundColor: "#659248",
+        backgroundColor: "#659148",
         borderRadius: 20,
       },
     ],

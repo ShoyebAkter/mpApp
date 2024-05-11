@@ -6,7 +6,7 @@ const KeyPerformance = () => {
     <div className="mx-auto">
       <div style={{"color":"#2a4e40"}} className="flex justify-center my-5 text-4xl font-semibold">Key Performance Indicators</div>
       <div className="flex justify-center">
-      <div style={{"backgroundColor":"#D3D3D3"}} className="flex  rounded-2xl">
+      <div style={{"backgroundColor":"#F9F9F9"}} className="flex  rounded-2xl">
         <div className="px-10 py-5">
           <div className="flex justify-center"><MdOutlineBarChart style={{ fontSize: '5em',color:"#649445" }}/></div>
           <div className="flex justify-center text-2xl font-semibold">10.5%</div>

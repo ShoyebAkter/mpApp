@@ -53,6 +53,18 @@ export const CampaignResult = () => {
             position: 'top' ,
           }
         },
+        scales: {
+          x: {
+            ticks: {
+              color:'black'
+            },
+          },
+          y: {
+            ticks: {
+              color:'black'
+            },
+          },
+        },
       };
       
       const labels = user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.date) : ["Jan","Feb","Mar","April","May","June","July","Aug","Sep"]
@@ -63,11 +75,12 @@ export const CampaignResult = () => {
           {
             label: "",
             data: user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.total) : [10,30,20,60,70,80,25,45,50],
-            backgroundColor: '#659248',
+            backgroundColor: '#659148',
             borderRadius: 15,
           }
         ],
       };
+      ChartJS.defaults.color="white"
   return (
     <div
       className="boxcontainer CRborder-scoop p-2 "

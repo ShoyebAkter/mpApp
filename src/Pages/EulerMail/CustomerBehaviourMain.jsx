@@ -69,6 +69,18 @@ function CustomerBehaviourMain() {
                 text: 'Customers',
             },
         },
+        scales: {
+            x: {
+              ticks: {
+                color:'black'
+              },
+            },
+            y: {
+              ticks: {
+                color:'black'
+              },
+            },
+          },
     };
 
     const labels =countedValues ? countedValues.map((value)=>value.value) : ["Gold","Platinum","Silver"];

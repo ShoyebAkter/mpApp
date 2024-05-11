@@ -1,6 +1,7 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useSelector } from 'react-redux';
+import { FaEye } from "react-icons/fa";
 
 const ImpressionChart = () => {
     const fbPageImpression=useSelector((state)=>state.counter.fbPageImpression);
@@ -12,7 +13,7 @@ const ImpressionChart = () => {
           height: 500
         },
         title: {
-          text: 'Impression',
+          text: '',
           align: 'center'
         },
         
@@ -51,6 +52,15 @@ const ImpressionChart = () => {
       };
   return (
     <div>
+    <div
+        style={{ color: "#40E0D0" }}
+        className=" flex gap-3 justify-center items-center font-bold"
+      >
+        <span className="">
+          <FaEye size={36} />
+        </span>
+        <span style={{ color: "#6b6b6b" }}>Impressions</span>
+      </div>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   )

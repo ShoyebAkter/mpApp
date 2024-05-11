@@ -97,6 +97,18 @@ useEffect(()=>{
         // text: `Customers: ${customers.length}`,
       },
     },
+    scales: {
+      x: {
+        ticks: {
+          color:'black'
+        },
+      },
+      y: {
+        ticks: {
+          color:'black'
+        },
+      },
+    },
   };
 
   const labels = !shopifyexists ? countedValues.map((value) => value.value) : segmentCount.map(seg=>seg.segment);
@@ -109,12 +121,13 @@ useEffect(()=>{
         label: "",
         data:shopifyexists ? segmentCount.map(seg=>seg.count) : countedValues.map((value) => value.count),
         // data:countedValues.map((value) => value.count),
-        borderColor: "#649445",
-        backgroundColor: "#649445",
+        
+        backgroundColor: "#659148",
         borderRadius: 15,
       },
     ],
   };
+  ChartJS.defaults.color="white"
   return (
     <div className="customerChartdiv">
       <Bar options={options} height={200} data={data} />

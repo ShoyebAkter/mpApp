@@ -99,7 +99,15 @@ nav a:hover{
     align-items: center;
     background-color: #fff;
   }
- 
+  .header-fixed{
+    box-shadow:0 5px 5px #ccc;
+    background-color: #fff;
+    
+}
+.mobilestyle{
+  display: flex;
+  justify-content: center;
+}
 .sidebar {
   display: block;
   height: 450px;
@@ -195,9 +203,9 @@ nav a:hover{
         font-size: 8px; /* Reduce font size for better mobile readability */
     }
     .headerlogo{
-        /* width: 40px;
-        height: 40px; */
-        display: none;
+        width: 50px;
+        height: 50px;
+        /* display: none; */
     }
     
     .name {

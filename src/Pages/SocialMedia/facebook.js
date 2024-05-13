@@ -120,6 +120,20 @@ export const getPageImpression = (pageId, fbPageToken) => {
     })
 
 }
+export const getPageLikes = (pageId, fbPageToken) => {
+    // console.log(postId,fbPageToken);
+    return new Promise((resolve) => {
+        window.FB.api(
+            `/${pageId}/insights`,
+            'GET',
+            { metric: "page_fans", access_token: fbPageToken },
+            function (response) {
+                resolve(response.data[0].values[0].value)
+            }
+        );
+    })
+
+}
 export const getPageEngamenet = (pageId, fbPageToken) => {
 
 

@@ -6,9 +6,10 @@ import FollowersChart from "./FollowersChart";
 import PostChart from "./PostChart";
 import ImpressionChart from "./ImpressionChart";
 import { FaImages } from "react-icons/fa";
+import LikesChart from "./LikesChart";
 export const FacebookData = () => {
   return (
-    <div className="socialmediaMain flex justify-between h-screen pt-28 ">
+    <div className="socialmediaMain flex justify-between  pt-28 ">
       <div className="bg-white px-5 pt-5">
         <div className="flex gap-3 items-center mb-5">
           <MdOutlineBarChart style={{ fontSize: "3em", color: "#649445" }} />
@@ -26,11 +27,15 @@ export const FacebookData = () => {
       <div className="bg-white py-10  rounded-2xl mt-10 mx-auto">
         <Buttons />
         <KeyPerformance />
-        <div className="flex justify-around mt-5">
+        <div className="flex justify-around my-5">
           <FollowersChart />
           <PostChart />
           <ImpressionChart />
           {/* <FollowersChart/> */}
+        </div>
+        <div className="flex justify-center gap-20">
+          <LikesChart/>
+          <LikesChart/>
         </div>
       </div>
       {/* <UserStatics  setEngagement={setEngagement} setFollowers={setFollowers} setImpression={setImpression}/> */}

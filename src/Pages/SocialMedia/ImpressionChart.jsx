@@ -39,6 +39,9 @@ const ImpressionChart = () => {
             borderWidth: 0
           }
         },
+        credits: {
+          enabled: false // Hide credits
+        },
         series: [
           {
             name: 'Impression',

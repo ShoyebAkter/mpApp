@@ -4,7 +4,6 @@ import { FaFacebookF } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { FaTiktok } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
-import { useLinkedIn } from 'react-linkedin-login-oauth2';
 import FbPageModal from './FbPageModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { setfbAccessToken } from '../../features/counter/counterSlice';
@@ -35,16 +34,7 @@ const dispatch=useDispatch()
         }
     );
 };
-const { linkedInLogin } = useLinkedIn({
-  clientId: '8638xra5kzcpiy',
-  redirectUri: `https://www.eulermail.app/auth/linkedin/callback`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
-  onSuccess: (code) => {
-    console.log(code);
-  },
-  onError: (error) => {
-    console.log(error);
-  },
-});
+
 
   return (
     <div className="flex justify-around mt-10">
@@ -54,7 +44,7 @@ const { linkedInLogin } = useLinkedIn({
             <div onClick={logInToFB} style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
             <FaFacebookF /> Facebook
             </div>
-            <div onClick={linkedInLogin} style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
+            <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">
             <CiLinkedin  /> Linkedin
             </div>
             <div style={{"backgroundColor":"#4c4c4c","height":"40px"}}  className="flex justify-between items-center rounded-xl px-3 text-white gap-5">

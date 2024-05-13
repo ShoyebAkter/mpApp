@@ -39,6 +39,9 @@ const PostChart = () => {
             borderWidth: 0
           }
         },
+        credits: {
+          enabled: false // Hide credits
+        },
         series: [
           {
             name: 'Posts',

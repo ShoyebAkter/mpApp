@@ -38,6 +38,9 @@ const FollowersChart = () => {
         borderWidth: 0,
       },
     },
+    credits: {
+      enabled: false // Hide credits
+    },
     series: [
       {
         name: "Followers",

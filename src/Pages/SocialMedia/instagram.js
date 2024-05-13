@@ -6,7 +6,7 @@ export const getInstaId=(pageId,pageToken)=>{
             'GET',
             {fields:"instagram_business_account",access_token: pageToken},
             function(response) {
-                resolve(response.instagram_business_account.id)
+                resolve(response.instagram_business_account?.id)
             }
           );
     });

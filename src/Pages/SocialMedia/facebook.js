@@ -134,6 +134,35 @@ export const getPageLikes = (pageId, fbPageToken) => {
     })
 
 }
+const getPostComment = (postId, fbPageToken) => {
+    return new Promise((resolve) => {
+        window.FB.api(
+            `/${postId}/comments`,
+            'GET',
+            { access_token: fbPageToken },
+            function (response) {
+                resolve(response.data.length)
+            }
+        );
+    })
+}
+
+export const getTotalComment = async (totalPost, fbPageToken) => {
+    const promises = totalPost.map(post => getPostComment(post.id, fbPageToken));
+    const commentCounts = await Promise.all(promises);
+    const totalComment = commentCounts.reduce((acc, count) => acc + count, 0);
+    console.log(totalComment);
+    return totalComment;
+}
+
+
+
+
+
+
+
+
+
 export const getPageEngamenet = (pageId, fbPageToken) => {
 
 

@@ -7,6 +7,7 @@ import PostChart from "./PostChart";
 import ImpressionChart from "./ImpressionChart";
 import { FaImages } from "react-icons/fa";
 import LikesChart from "./LikesChart";
+import CommentsChart from "./CommentsChart";
 export const FacebookData = () => {
   return (
     <div className="socialmediaMain flex justify-between  pt-28 ">
@@ -35,7 +36,7 @@ export const FacebookData = () => {
         </div>
         <div className="flex justify-center gap-20">
           <LikesChart/>
-          <LikesChart/>
+          <CommentsChart/>
         </div>
       </div>
       {/* <UserStatics  setEngagement={setEngagement} setFollowers={setFollowers} setImpression={setImpression}/> */}

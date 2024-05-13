@@ -5,7 +5,8 @@ const initialState = {
   fbFollowers: 0,
   totalFbPost: 0,
   fbPageImpression: 0,
-  fbPageLikes:0
+  fbPageLikes:0,
+  fbPageComment:0
 }
 
 export const counterSlice = createSlice({
@@ -26,11 +27,14 @@ export const counterSlice = createSlice({
     },
     setFbPageLikes : (state,action)=>{
         state.fbPageLikes =action.payload
-    }
+    },
+    setFbPageComments : (state,action)=>{
+        state.fbPageComment =action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setfbAccessToken,setFbFollowers,setTotalFbPost,setFbPageImpression,setFbPageLikes } = counterSlice.actions
+export const { setfbAccessToken,setFbFollowers,setTotalFbPost,setFbPageImpression,setFbPageLikes,setFbPageComments } = counterSlice.actions
 
 export default counterSlice.reducer

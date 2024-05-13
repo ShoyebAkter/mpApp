@@ -63,7 +63,7 @@ const LikesChart = () => {
         <span className="">
           <BsChatSquareHeartFill size={36} />
         </span>
-        <span style={{ color: "#6b6b6b" }}>Followers</span>
+        <span style={{ color: "#6b6b6b" }}>Likes</span>
       </div>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>

@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import {  getFacebookPageId, getFacebookPages, getFbPageToken, getPageImpression, getPageLikes, getPageTotalFollowers, getPageTotalPost} from './facebook';
+import {  getFacebookPageId, getFacebookPages, getFbPageToken, getPageImpression, getPageLikes, getPageTotalFollowers, getPageTotalPost, getTotalComment} from './facebook';
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux';
-import { setFbFollowers,setFbPageImpression,setFbPageLikes,setTotalFbPost } from '../../features/counter/counterSlice';
+import { setFbFollowers,setFbPageComments,setFbPageImpression,setFbPageLikes,setTotalFbPost } from '../../features/counter/counterSlice';
 const FbPageModal = () => {
     
     const [pages, setPages] = useState([])
@@ -23,11 +23,13 @@ const FbPageModal = () => {
         const fbPageTotalPost= await getPageTotalPost(facebookPageId,facebookPageToken)
         const fbPageImpression =await getPageImpression(facebookPageId,facebookPageToken)
         const fbPageLikes =await getPageLikes(facebookPageId,facebookPageToken)
-        // console.log(fbPageLikes)
+        const fbPageComment=await getTotalComment(fbPageTotalPost,facebookPageToken)
+        // console.log(getPageComment)
         dispatch(setFbFollowers(facebookPageFollowers))
         dispatch(setTotalFbPost(fbPageTotalPost.length))
         dispatch(setFbPageImpression(fbPageImpression))
         dispatch(setFbPageLikes(fbPageLikes))
+        dispatch(setFbPageComments(fbPageComment))
     }
     // console.log(fbFollowers)
   return (

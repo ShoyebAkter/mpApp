@@ -1,7 +1,6 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { useSelector } from "react-redux";
-import { MdPermContactCalendar } from "react-icons/md";
 import { FaMessage } from "react-icons/fa6";
 const CommentsChart = () => {
 

@@ -69,6 +69,22 @@
        border-radius: 30px;
         box-shadow:  4px 4px 10px rgba(0, 0, 0, 0.5)
     }
+    .border-scoop{
+      width: 350px;
+    height: 350px;
+    }
+    .SMborder-scoop{
+      width: 350px;
+    height: 350px;
+    }
+    .CBborder-scoop{
+      width: 350px;
+    height: 350px;
+    }
+    .CRborder-scoop{
+      width: 350px;
+    height: 350px;
+    }
   }
   @media only screen and (min-width: 769px) and (max-width: 1200px){
     .boxcontainer{

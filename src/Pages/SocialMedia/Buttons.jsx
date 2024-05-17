@@ -4,10 +4,17 @@ import { CiLinkedin } from "react-icons/ci";
 import { FaTiktok } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import FbPageModal from "./FbPageModal";
+import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux";
-import { setfbAccessToken } from "../../features/counter/counterSlice";
+import {
+  setLinkedinAccessToken,
+  setfbAccessToken,
+} from "../../features/counter/counterSlice";
 export const Buttons = () => {
   const fbAccessToken = useSelector((state) => state.counter.fbAccessToken);
+  const LinkedinAccessToken = useSelector(
+    (state) => state.counter.linkedinToken
+  );
 
   const dispatch = useDispatch();
   const logInToFB = () => {
@@ -37,56 +44,85 @@ export const Buttons = () => {
     );
   };
   const logInToLinkedin = () => {
-    window.location.href =
-      "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86tgdxx45yfn1b&redirect_uri=http://localhost:5173/socialmedia&state=DCEeFWf45A53sdfKef424&scope=openid%20profile%20email";
+    window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${
+      import.meta.env.VITE_REACT_APP_LINKEDIN_CLIENT_ID
+    }&redirect_uri=http://localhost:5173/socialmedia&state=DCEeFWf45A53sdfKef424&scope=openid%20profile%20email`;
   };
   const urlParams = new URLSearchParams(window.location.search);
 
   // Get the value of the 'code' parameter
-  const code = urlParams.get("code");
+  const authorization_code = urlParams.get("code");
 
   // Get the value of the 'state' parameter
   const state = urlParams.get("state");
 
-  console.log("Code:", code);
+  // console.log("Code:", code);
   console.log("State:", state);
-
-  const getAccessToken = () => {
-
-    // const authorizationCode = `${code}`;
-const clientId = '86tgdxx45yfn1b';
-const clientSecret = 'n7Q6SzzLc9GurKre';
-const redirectUri = 'http://localhost:5173/socialmedia';
-
-const params = new URLSearchParams();
-params.append('grant_type', 'authorization_code');
-params.append('code', code);
-params.append('client_id', clientId);
-params.append('client_secret', clientSecret);
-params.append('redirect_uri', redirectUri);
-// Make the HTTP request
-fetch('https://www.linkedin.com/oauth/v2/accessToken', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-  },
-  body: params,
-})
-.then(response => response.json())
-.then(data => {
-  console.log('Access Token Response:', data);
-})
-.catch(error => {
-  console.error('Error:', error);
-});
-
-
+  const getToken = () => {
+    fetch("https://emapp-backend.vercel.app/getAccessToken", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ authorization_code }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.text(); // Assuming your backend returns the access token as text
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then((data) => {
+        dispatch(setLinkedinAccessToken(data));
+        console.log("Access Token:", data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
   };
-  if (code && state) {
-    getAccessToken();
+  if (authorization_code) {
+    getToken();
+    const response = axios.get('https://api.linkedin.com/v2/me', {
+      headers: {
+        'Authorization': `Bearer ${LinkedinAccessToken}`
+      }
+    });
+
+    const userProfile = response.data;
+    console.log(userProfile)
   }
+  if (LinkedinAccessToken) {
+    console.log(LinkedinAccessToken);
+    
+    // fetch(
+    //   `http://your-backend-server-url/getLinkedinData?access_token=${LinkedinAccessToken}`,
+    //   {
+    //     method: "GET",
+    //   }
+    // )
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       return response.json(); // Parse the JSON response
+    //     }
+    //     throw new Error("Network response was not ok.");
+    //   })
+    //   .then((data) => {
+    //     console.log("User profile:", data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("There was a problem with the fetch operation:", error);
+    //   });
+  }
+  // const instaLogin = () => {
+
+  //   window.location.href =
+  //     `https://api.instagram.com/oauth/authorize?client_id=${
+  //       import.meta.env.VITE_REACT_APP_INSTA_CLIENT_ID
+  //     }&redirect_uri=https://www.eulermail.app/&scope=user_profile,user_media&response_type=code`;
+  //     console.log("cliked");
+  // };
   return (
-    <div className="flex justify-around mt-10">
+    <div className="flex justify-around mt-10 mx-32">
       <div
         style={{ backgroundColor: "#4c4c4c", height: "40px" }}
         className="flex justify-between items-center rounded-xl px-3 text-white gap-5"

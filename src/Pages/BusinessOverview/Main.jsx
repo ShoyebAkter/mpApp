@@ -33,21 +33,21 @@ export const Main = () => {
         className="leftGreenSec px-3 pt-10"
       >
         <div
-          style={{ color: "#649445", cursor: "pointer" }}
+          style={{ color: "#294F41", cursor: "pointer" }}
           className="flex gap-3 items-center mb-5 font-bold"
         >
           {" "}
           <SiSimpleanalytics /> Sales
         </div>
         <div
-          style={{ color: "#649445", cursor: "pointer" }}
+          style={{ color: "#294F41", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
         >
           <FaDatabase />
           Site data
         </div>
         <div
-          style={{ color: "#649445", cursor: "pointer" }}
+          style={{ color: "#294F41", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
         >
           <BsCartCheck />

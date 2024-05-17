@@ -37,8 +37,8 @@ export const CustomerBehaviour = () => {
   return (
     <div className="customerBehaviourMain">
       <div className="leftSection">
-        <div style={{ "color": "#659148", "cursor": "pointer" }} className="flex font-bold flex-col justify-center items-center mb-5"> <CiUser /> Sales</div>
-        <div style={{ "color": "#659148", "cursor": "pointer" }} className="flex font-bold  flex-col justify-center items-center"><LuUsers/> Site data</div>
+        <div style={{ "color": "#294F41", "cursor": "pointer" }} className="flex font-bold flex-col justify-center items-center mb-5"> <CiUser /> Sales</div>
+        <div style={{ "color": "#294F41", "cursor": "pointer" }} className="flex font-bold  flex-col justify-center items-center"><LuUsers/> Site data</div>
       </div>
       <div  className="mx-auto mt-3 ">
         <div className="firstChartSection ">

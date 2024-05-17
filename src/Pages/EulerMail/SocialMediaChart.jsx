@@ -48,6 +48,17 @@ function SocialMediaChart() {
       legend: {
         position: "top",
       },
+      // title: {
+      //   display: true,
+      //   text: "Social Media",
+      //   color: '#294F41',
+      //   font: {
+      //     size: 14,
+      //     family: 'Montserrat',
+          
+      //     weight: 700 // specify the font size here
+      //   },
+      // },
     },
     scales: {
       x: {

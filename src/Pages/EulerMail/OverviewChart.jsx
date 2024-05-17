@@ -88,7 +88,6 @@ function OverviewChart() {
         };
         break;
       default:
-        
         labels = shopify ? totalSalesData?.map(sales=>sales.year) : ["Jan","Feb","Mar","April","May"];
         data = {
           labels,
@@ -106,8 +105,6 @@ function OverviewChart() {
   }
   switchFunction();
   
-  // console.log(totalSales)
-  // setTotalSales(updateValue(totalSales))
   const options = {
     responsive: true,
     plugins: {
@@ -132,10 +129,11 @@ function OverviewChart() {
       title: {
         display: true,
         text: "Yearly Revenue",
+        color: '#294F41',
         font: {
           size: 14,
           family: 'Montserrat',
-          color: '#649445',
+          
           weight: 700 // specify the font size here
         },
       },
@@ -161,6 +159,8 @@ function OverviewChart() {
       <div >
         
           <h1 style={{"color":"#294F41"}} className="font-bold text-center text-xl  cursor-pointer"  onClick={()=>navigate('/businessoverview')}> Business Overview</h1>
+          {/* <h1 style={{"color":"#294F41"}} className="font-bold text-center text-sm mt-2"  > Yearly Revenue</h1> */}
+
           <Line options={options} height={200} data={data} />
         
       </div>

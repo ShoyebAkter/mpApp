@@ -1,4 +1,3 @@
-
 nav {
   display: flex;
   justify-content: space-around;
@@ -98,6 +97,11 @@ nav a:hover{
     box-shadow:0 5px 5px #ccc;
     background-color: #fff;
     
+}
+.rightDiv{
+  position: absolute; /* or 'fixed' if you want it to stay in place on scroll */
+    top: 0; /* or use bottom: 0; for the bottom right corner */
+    right: 0;
 }
 .mobilestyle{
   display: flex;
@@ -207,7 +211,9 @@ nav a:hover{
         font-size: 20px; /* Adjust font size for better mobile readability */
     }
 
-   
+   .navbarSec a{
+    display: none;
+   }
 
 }
 

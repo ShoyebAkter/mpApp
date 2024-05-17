@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   fbAccessToken: "",
+  linkedinToken:"",
   fbFollowers: 0,
   totalFbPost: 0,
   fbPageImpression: 0,
@@ -15,6 +16,9 @@ export const counterSlice = createSlice({
   reducers: {
     setfbAccessToken :(state,action)=>{
         state.fbAccessToken=action.payload
+    },
+    setLinkedinAccessToken :(state,action)=>{
+        state.linkedinToken=action.payload
     },
     setFbFollowers : (state,action)=>{
         state.fbFollowers =action.payload
@@ -35,6 +39,7 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setfbAccessToken,setFbFollowers,setTotalFbPost,setFbPageImpression,setFbPageLikes,setFbPageComments } = counterSlice.actions
+export const { setfbAccessToken,setLinkedinAccessToken,setFbFollowers,
+  setTotalFbPost,setFbPageImpression,setFbPageLikes,setFbPageComments } = counterSlice.actions
 
 export default counterSlice.reducer

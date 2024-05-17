@@ -45,10 +45,12 @@ export const LoginHeader = () => {
     <div>
       {user ? (
         <div className="mobileHeader">
-          <header className={`header-fix`}>
-            <nav className={`loginnavbarSec`}>
+          <div className="mobilestyle">
+          <header className={`header-fixed`}>
+            <nav className={`navbarSec`}>
             
               <img onClick={()=>navigate('/')} className="headerlogo" src="Logo_Iso_Green.jpg" />
+            
             
               <Link
                 to="/eulermail"
@@ -104,8 +106,11 @@ export const LoginHeader = () => {
               >
                 Campaign Designer
               </Link>
+              
 
-              <div className="dropdown dropdown-end">
+
+              <div className="mobileDropdown">
+              <div className=" dropdown dropdown-end">
                 <div tabIndex={0} role="button" className={foundObject?.photoUrl ? "" : "newLink rounded-3xl m-1"}>
                 {
                   foundObject?.photoUrl ? <img style={{"width":"40px","height":"40px","borderRadius":"50%"}} src={foundObject?.photoUrl} alt=""/>
@@ -134,9 +139,11 @@ export const LoginHeader = () => {
                   </li>
                 </ul>
               </div>
+              </div>
             </nav>
           </header>
-          <div>
+          </div>
+          <div className="rightDiv">
             <a
               className="hamburger-menu"
               href="javascript:void(0)"

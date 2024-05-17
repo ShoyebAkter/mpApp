@@ -19,10 +19,9 @@ the extra mile to keep it secure.</div></div>
 guarded like a treasure</div> 
       </div>
       </div>
-      <div  className='flex items-center gap-10'>
-        <div><img style={{"width":"50px","height":"70px"}}  src="./Icon-4.png" alt=''/></div>
-        <div className='textSec'>
-        Our commitment to data protection means<div className='mt-4'> you can focus on what you do best, </div> <div className='mt-4'>leaving the
+      <div  className='flex  items-center gap-6 md:gap-8 lg:gap-10'>
+        <div><img style={{"width":"70px","height":"70px"}}  src="./Icon-4.png" alt=''/></div>
+        <div className='textSec'>Our commitment to data protection<div className='mt-4'> means you can focus on what you do best, </div> <div className='mt-4'>leaving the
 worry of data safety to us</div> 
       </div>
       </div>

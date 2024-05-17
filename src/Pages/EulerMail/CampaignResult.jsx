@@ -51,7 +51,18 @@ export const CampaignResult = () => {
         plugins: {
           legend: {
             position: 'top' ,
-          }
+          },
+          title: {
+            display: true,
+            text: "Total Email Sent",
+            color: '#294F41',
+            font: {
+              size: 14,
+              family: 'Montserrat',
+              
+              weight: 700 // specify the font size here
+            },
+          },
         },
         scales: {
           x: {
@@ -65,6 +76,7 @@ export const CampaignResult = () => {
             },
           },
         },
+        
       };
       
       const labels = user.email ==="fuad@gmail.com" ? result.map((campaign)=>campaign.date) : ["Jan","Feb","Mar","April","May","June","July","Aug","Sep"]

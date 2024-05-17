@@ -78,7 +78,7 @@
 }
 @media only screen and (max-width: 768px) {
     .firstChartSection{
-        width: 650px;
+        width: 400px;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -120,6 +120,12 @@
         --tw-text-opacity: 1;
         color: rgb(0 0 0 / var(--tw-text-opacity));
         overflow: hidden;
+    }
+    .cohortChartSection{
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        height: 900px;
     }
     .leftSection{
         display: none;

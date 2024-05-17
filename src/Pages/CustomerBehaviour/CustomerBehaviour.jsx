@@ -51,7 +51,7 @@ export const CustomerBehaviour = () => {
             </div>
             
             :
-            <div className="flex gap-16">
+            <div className="flex gap-16 insideFirstSec">
             <Customers />
             <CustomerSegment/>
             </div>

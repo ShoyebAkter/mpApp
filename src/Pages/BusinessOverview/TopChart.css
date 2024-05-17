@@ -73,7 +73,16 @@
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
+
+.mapChartDiv{
+    width:100%;
+    height:100%;
+    background-color:#F5F5F5
+}
 @media only screen and (max-width: 768px) {
+    .mapChartDiv{
+        width:400px;
+    }
     .tableArea{
         display: flex;
         width:550px;
@@ -93,7 +102,7 @@
         margin-top: 1.25rem/* 20px */;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
         gap:10px;
-        width:550px;
+        width:400px;
     }
     .greenDiv{
         display: none;
@@ -106,10 +115,10 @@
         border-radius: 1rem/* 16px */;
         margin-top: 1.25rem/* 20px */;
         margin-bottom: 1.25rem/* 20px */;
-        height:300px;
+        
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
         gap:100px;
-        width:550px;
+        width:400px;
         height: 500px;
     }
     .leftGreenSec{

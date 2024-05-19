@@ -45,7 +45,7 @@ const FollowersChart = () => {
       {
         name: "Followers",
         data: [fbFollowers ? fbFollowers : 0, 260, 170, 630, 250],
-        color: "#659248",
+        color: "#22DD22",
         borderRadius: 15,
         groupPadding: 0,
       },

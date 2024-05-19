@@ -46,7 +46,7 @@ const PostChart = () => {
           {
             name: 'Posts',
             data: [totalFbPost ? totalFbPost : 0, 260, 170, 630, 250],
-            color: "#659248",
+            color: "#48705c",
               borderRadius: 15,
               groupPadding: 0,
           },

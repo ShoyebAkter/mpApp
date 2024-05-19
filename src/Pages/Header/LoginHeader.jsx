@@ -39,7 +39,7 @@ export const LoginHeader = () => {
     localStorage.removeItem('companyName');
     localStorage.removeItem('shopify');
     localStorage.removeItem('shopifyEmail');
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('access_token');
   };
   return (
     <div>

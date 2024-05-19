@@ -10,14 +10,31 @@ import {
   setLinkedinAccessToken,
   setfbAccessToken,
 } from "../../features/counter/counterSlice";
+import { useState } from "react";
 export const Buttons = () => {
   const fbAccessToken = useSelector((state) => state.counter.fbAccessToken);
   const LinkedinAccessToken = useSelector(
     (state) => state.counter.linkedinToken
   );
+  const [isClicked, setIsClicked] = useState(false);
+  const [fbClicked,setFbClicked]=useState(false)
+  const [linkedinClicked,setlinkedinClicked]=useState(false)
+  const [tiktokClicked,settiktokClicked]=useState(false)
+  const [youtubeClicked,setyoutubeClicked]=useState(false)
 
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
+
+  const loginToTiktok=()=>{
+    settiktokClicked(!tiktokClicked)
+  }
+  const loginToYoutube=()=>{
+    setyoutubeClicked(!youtubeClicked)
+  }
   const dispatch = useDispatch();
   const logInToFB = () => {
+    setFbClicked(!fbClicked);
     window.FB.login(
       (response) => {
         dispatch(setfbAccessToken(response.authResponse?.accessToken));
@@ -44,6 +61,7 @@ export const Buttons = () => {
     );
   };
   const logInToLinkedin = () => {
+    setlinkedinClicked(!linkedinClicked)
     window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${
       import.meta.env.VITE_REACT_APP_LINKEDIN_CLIENT_ID
     }&redirect_uri=http://localhost:5173/socialmedia&state=DCEeFWf45A53sdfKef424&scope=openid%20profile%20email`;
@@ -76,9 +94,7 @@ export const Buttons = () => {
         dispatch(setLinkedinAccessToken(data));
         console.log("Access Token:", data);
       })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
+      
   };
   if (authorization_code) {
     getToken();
@@ -94,24 +110,24 @@ export const Buttons = () => {
   if (LinkedinAccessToken) {
     console.log(LinkedinAccessToken);
     
-    // fetch(
-    //   `http://your-backend-server-url/getLinkedinData?access_token=${LinkedinAccessToken}`,
-    //   {
-    //     method: "GET",
-    //   }
-    // )
-    //   .then((response) => {
-    //     if (response.ok) {
-    //       return response.json(); // Parse the JSON response
-    //     }
-    //     throw new Error("Network response was not ok.");
-    //   })
-    //   .then((data) => {
-    //     console.log("User profile:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("There was a problem with the fetch operation:", error);
-    //   });
+    fetch(
+      `http://localhost:5000/getLinkedinData?access_token=${LinkedinAccessToken}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json(); // Parse the JSON response
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .then((data) => {
+        console.log("User profile:", data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
   }
   // const instaLogin = () => {
 
@@ -122,36 +138,59 @@ export const Buttons = () => {
   //     console.log("cliked");
   // };
   return (
-    <div className="flex justify-around mt-10 mx-32">
+    <div className="flex justify-around mt-10  mx-32">
       <div
-        style={{ backgroundColor: "#4c4c4c", height: "40px" }}
-        className="flex justify-between items-center rounded-xl px-3 text-white gap-5"
+        onClick={handleClick}
+      style={{
+        backgroundColor: isClicked ? "#4c4c4c" : "#F9F9F9",
+        color: isClicked ? "#ffffff" : "#000000",
+        height: "40px",
+      }}
+      className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
         <FaInstagram /> Instagram
       </div>
       <div
         onClick={logInToFB}
-        style={{ backgroundColor: "#4c4c4c", height: "40px" }}
-        className="flex justify-between items-center rounded-xl px-3 text-white gap-5"
+      style={{
+        backgroundColor: fbClicked ? "#4c4c4c" : "#F9F9F9",
+        color: fbClicked ? "#ffffff" : "#000000",
+        height: "40px",
+      }}
+      className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
         <FaFacebookF /> Facebook
       </div>
       <div
         onClick={logInToLinkedin}
-        style={{ backgroundColor: "#4c4c4c", height: "40px" }}
-        className="flex justify-between items-center rounded-xl px-3 text-white gap-5"
+        style={{
+        backgroundColor: linkedinClicked ? "#4c4c4c" : "#F9F9F9",
+        color: linkedinClicked ? "#ffffff" : "#000000",
+        height: "40px",
+      }}
+      className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
         <CiLinkedin /> Linkedin
       </div>
       <div
-        style={{ backgroundColor: "#4c4c4c", height: "40px" }}
-        className="flex justify-between items-center rounded-xl px-3 text-white gap-5"
+      onClick={loginToTiktok}
+         style={{
+        backgroundColor: tiktokClicked ? "#4c4c4c" : "#F9F9F9",
+        color: tiktokClicked ? "#ffffff" : "#000000",
+        height: "40px",
+      }}
+      className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
         <FaTiktok /> Tiktok
       </div>
       <div
-        style={{ backgroundColor: "#4c4c4c", height: "40px" }}
-        className="flex justify-between items-center rounded-xl px-3 text-white gap-5"
+        onClick={loginToYoutube}
+         style={{
+        backgroundColor: youtubeClicked ? "#4c4c4c" : "#F9F9F9",
+        color: youtubeClicked ? "#ffffff" : "#000000",
+        height: "40px",
+      }}
+      className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
         <FaYoutube /> Youtube
       </div>

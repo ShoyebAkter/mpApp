@@ -3,7 +3,7 @@ import { FaHeart } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
 const KeyPerformance = () => {
   return (
-    <div className="mx-auto">
+    <div className="mx-auto my-10">
       <div style={{"color":"#2a4e40"}} className="flex justify-center my-5 text-4xl font-semibold">Key Performance Indicators</div>
       <div className="flex justify-center">
       <div style={{"backgroundColor":"#F9F9F9"}} className="flex  rounded-2xl">

@@ -37,21 +37,21 @@ export const Main = () => {
           className="flex gap-3 items-center mb-5 font-bold"
         >
           {" "}
-          <SiSimpleanalytics /> Sales
+          <SiSimpleanalytics /> <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Sales</span>
         </div>
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
         >
           <FaDatabase />
-          Site data
+          <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Site data</span>
         </div>
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
         >
           <BsCartCheck />
-          Cart Analysis
+          <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Cart Analysis</span>
         </div>
       </div>
       <div className="mx-auto mt-20">

@@ -46,7 +46,7 @@ const ImpressionChart = () => {
           {
             name: 'Impression',
             data: [fbPageImpression ? fbPageImpression : 0, 260, 170, 630, 250],
-            color: "#659248",
+            color: "#2a4e40",
               borderRadius: 15,
               groupPadding: 0,
           },

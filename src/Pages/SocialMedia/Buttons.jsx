@@ -28,7 +28,7 @@ export const Buttons = () => {
 
   const loginToTiktok=()=>{
     settiktokClicked(!tiktokClicked);
-    window.location.href="http://localhost:5000/oauth"
+    window.location.href="https://www.tiktok.com/v2/auth/authorize/?client_key=awcmvisccwjaji5t&scope=user.info.basic&response_type=code&redirect_uri=https%3A%2F%2Fwww.eulermail.app%2Fsocialmedia&state=eqjf67dur19"
     
   }
   const loginToYoutube=()=>{

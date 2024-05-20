@@ -27,7 +27,9 @@ export const Buttons = () => {
   };
 
   const loginToTiktok=()=>{
-    settiktokClicked(!tiktokClicked)
+    settiktokClicked(!tiktokClicked);
+    window.location.href="http://localhost:5000/oauth"
+    
   }
   const loginToYoutube=()=>{
     setyoutubeClicked(!youtubeClicked)

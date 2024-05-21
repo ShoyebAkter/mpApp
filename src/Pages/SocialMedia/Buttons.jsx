@@ -7,12 +7,20 @@ import FbPageModal from "./FbPageModal";
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setChannelId,
   setLinkedinAccessToken,
+  setLinkedinCode,
+  setLinkedinState,
+  setYoutubeToken,
   setfbAccessToken,
 } from "../../features/counter/counterSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 export const Buttons = () => {
   const fbAccessToken = useSelector((state) => state.counter.fbAccessToken);
+  const authorization_code = useSelector((state) => state.counter.linkedin_authorization_code);
+  const youtube_token = useSelector((state) => state.counter.youtube_token);
+  const youtube_channel_id = useSelector((state) => state.counter.youtube_channel_id);
   const LinkedinAccessToken = useSelector(
     (state) => state.counter.linkedinToken
   );
@@ -21,20 +29,73 @@ export const Buttons = () => {
   const [linkedinClicked,setlinkedinClicked]=useState(false)
   const [tiktokClicked,settiktokClicked]=useState(false)
   const [youtubeClicked,setyoutubeClicked]=useState(false)
+  const dispatch = useDispatch();
+  const urlParams = new URLSearchParams(window.location.search);
+    dispatch(setLinkedinCode(urlParams.get("code")))
+    dispatch(setLinkedinState(urlParams.get("state")))
+    const hash = window.location.hash;
+    const params = new URLSearchParams(hash.substring(1));
+    
+    dispatch(setYoutubeToken( params.get("access_token")))
 
+
+    const fetchData = async () => { // Replace with your actual access token
+      const url = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true';
+      
+      try {
+        const response = await axios.get(url, {
+          headers: {
+            Authorization: `Bearer ${youtube_token}`,
+          },
+        });
+        dispatch(setChannelId(response.data.items[0].id))
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const fetchBrandingSettings = async () => {
+      const url = 'https://www.googleapis.com/youtube/v3/channels';
+      const params = {
+        part: 'brandingSettings',
+        mine: true,
+      };
+
+      try {
+        const response = await axios.get(url, {
+          headers: {
+            Authorization: `Bearer ${youtube_token}`,
+          },
+          params,
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if(youtube_token){// Replace with your actual access token
+      fetchData()
+    }
+    if(youtube_channel_id){
+      fetchBrandingSettings()
+    }
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
 
-  const loginToTiktok=()=>{
+  const loginToTiktok=async()=>{
     settiktokClicked(!tiktokClicked);
-    window.location.href="https://www.tiktok.com/v2/auth/authorize/?client_key=awcmvisccwjaji5t&scope=user.info.basic&response_type=code&redirect_uri=https%3A%2F%2Fwww.eulermail.app%2Fsocialmedia&state=eqjf67dur19"
+    // const response = await axios.get("http://localhost:5000/oauth");
+    // // window.location.href="http://localhost:5000/oauth"
+    // console.log(response.data.url)
     
   }
   const loginToYoutube=()=>{
-    setyoutubeClicked(!youtubeClicked)
+    setyoutubeClicked(!youtubeClicked);
+    window.location.href =`https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=http://localhost:5173/socialmedia&response_type=token&client_id=${import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID}`
   }
-  const dispatch = useDispatch();
+
   const logInToFB = () => {
     setFbClicked(!fbClicked);
     window.FB.login(
@@ -68,16 +129,7 @@ export const Buttons = () => {
       import.meta.env.VITE_REACT_APP_LINKEDIN_CLIENT_ID
     }&redirect_uri=http://localhost:5173/socialmedia&state=DCEeFWf45A53sdfKef424&scope=openid%20profile%20email`;
   };
-  const urlParams = new URLSearchParams(window.location.search);
-
-  // Get the value of the 'code' parameter
-  const authorization_code = urlParams.get("code");
-
-  // Get the value of the 'state' parameter
-  const state = urlParams.get("state");
-
-  // console.log("Code:", code);
-  console.log("State:", state);
+  
   const getToken = () => {
     fetch("https://emapp-backend.vercel.app/getAccessToken", {
       method: "POST",
@@ -110,7 +162,7 @@ export const Buttons = () => {
     console.log(userProfile)
   }
   if (LinkedinAccessToken) {
-    console.log(LinkedinAccessToken);
+    // console.log(LinkedinAccessToken);
     
     fetch(
       `http://localhost:5000/getLinkedinData?access_token=${LinkedinAccessToken}`,

@@ -13,22 +13,23 @@ export const FacebookData = () => {
     <div className="socialmediaMain flex justify-between  pt-28 ">
       <div className="bg-white px-5 pt-5">
         <div
-        style={{  cursor: "pointer" }}
-          className="flex font-bold gap-3 justify-center items-center mb-5"
+        style={{ color: "#294F41", cursor: "pointer" }}
+          className="flex items-center mb-5 gap-3 font-bold"
          >
-          <MdOutlineBarChart style={{ fontSize: "3em", color: "#294F41" }} />
-          <span style={{ color: "#3D3D3D" }} className="font-bold ">
+          <MdOutlineBarChart style={{ fontSize: "2em" }} />
+          <span style={{ color: "#3D3D3D","fontWeight":"600" }}>
             General
           </span>
         </div>
-        <div className="flex gap-3 items-center">
-          <FaImages style={{ fontSize: "2em", color: "#294F41" }} />
-          <span style={{ color: "#3D3D3D" }} className="font-bold ">
+        <div style={{ color: "#294F41", cursor: "pointer" }}
+          className="flex items-center mb-5 gap-3 font-bold">
+          <FaImages style={{ fontSize: "2em" }}/>
+          <span style={{ color: "#3D3D3D" ,"fontWeight":"600"}} className="font-bold ">
             Individual
           </span>
         </div>
       </div>
-      <div className="bg-white py-10  rounded-2xl mt-10 mx-auto">
+      <div className="bg-white py-10 mb-10 rounded-2xl mt-10 mx-auto">
         <Buttons />
         <KeyPerformance />
         <div className="flex justify-around my-5">

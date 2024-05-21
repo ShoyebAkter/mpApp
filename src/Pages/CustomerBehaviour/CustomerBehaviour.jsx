@@ -39,14 +39,14 @@ export const CustomerBehaviour = () => {
       <div className="leftSection">
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
-          className="flex font-bold flex-col justify-center items-center mb-5"
+          className="flex font-bold gap-3 center items-center mb-5"
         >
           {" "}
-          <CiUser /> <span style={{"color":"#3D3D3D","fontWeight":"600"}}> Sales</span>
+          <CiUser  /> <span style={{"color":"#3D3D3D","fontWeight":"600"}}> Sales</span>
         </div>
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
-          className="flex font-bold  flex-col justify-center items-center"
+          className="flex font-bold gap-3 items-center"
         >
           <LuUsers /> <span style={{"color":"#3D3D3D","fontWeight":"600"}}> Site data</span>
         </div>

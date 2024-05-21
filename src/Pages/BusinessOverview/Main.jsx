@@ -86,7 +86,7 @@ export const Main = () => {
             overflow: "hidden",
             "background":"white"
           }}
-          className=" rounded-2xl py-1"
+          className=" rounded-2xl py-1 mb-10"
         >
           <h1 style={{"background":"#F5F5F5","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
             Users in Each Country/State

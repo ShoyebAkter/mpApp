@@ -11,7 +11,11 @@ const initialState = {
   linkedin_authorization_code:"",
   youtube_token:"",
   linkedin_state:"",
-  youtube_channel_id:""
+  youtube_channel_id:"",
+  youtube_video_list: [],
+  youtube_subscriber:0,
+  youtube_total_video:0,
+  youtube_total_views:0
 }
 
 export const counterSlice = createSlice({
@@ -51,12 +55,26 @@ export const counterSlice = createSlice({
     setChannelId : (state,action)=>{
       state.youtube_channel_id =action.payload
     },
+    setYoutubeVideoList : (state,action)=>{
+      state.youtube_video_list =action.payload
+    },
+    setYoutubeTotalVideo : (state,action)=>{
+      state.youtube_total_video =action.payload
+    },
+    setYoutubeTotalViews : (state,action)=>{
+      state.youtube_total_views =action.payload
+    },
+    setYoutubeSubscriber : (state,action)=>{
+      state.youtube_subscriber =action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
 export const { setfbAccessToken,setLinkedinAccessToken,setFbFollowers,
   setTotalFbPost,setFbPageImpression,setFbPageLikes,setFbPageComments,
-  setLinkedinCode,setYoutubeToken,setLinkedinState,setChannelId } = counterSlice.actions
+  setLinkedinCode,setYoutubeToken,setLinkedinState,setChannelId,setYoutubeVideoList,
+  setYoutubeTotalVideo,setYoutubeSubscriber,setYoutubeTotalViews,
+} = counterSlice.actions
 
 export default counterSlice.reducer

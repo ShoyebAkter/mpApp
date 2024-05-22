@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 const PostChart = () => {
     const totalFbPost=useSelector((state)=>state.counter.totalFbPost);
+    const totalYtVideo=useSelector((state)=>state.counter.youtube_total_video);
     
     const options = {
         chart: {
@@ -45,7 +46,7 @@ const PostChart = () => {
         series: [
           {
             name: 'Posts',
-            data: [totalFbPost ? totalFbPost : 0, 260, 170, 630, 250],
+            data: [totalFbPost ? totalFbPost : 0, 260, 170, 630, totalYtVideo?totalYtVideo:0],
             color: "#48705c",
               borderRadius: 15,
               groupPadding: 0,

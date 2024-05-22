@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { MdPermContactCalendar } from "react-icons/md";
 const FollowersChart = () => {
   const fbFollowers = useSelector((state) => state.counter.fbFollowers);
+  const youtubeSubscriber = useSelector((state) => state.counter.youtube_subscriber);
   // console.log(parseInt(fbFollowers))
   const options = {
     chart: {
@@ -44,7 +45,7 @@ const FollowersChart = () => {
     series: [
       {
         name: "Followers",
-        data: [fbFollowers ? fbFollowers : 0, 260, 170, 630, 250],
+        data: [fbFollowers ? fbFollowers : 0, 260, 170, 630, youtubeSubscriber ?youtubeSubscriber :0],
         color: "#22DD22",
         borderRadius: 15,
         groupPadding: 0,

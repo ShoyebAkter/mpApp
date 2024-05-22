@@ -10,6 +10,7 @@ import ForgotPassword from "../Authentication/ForgotPassword";
 import { auth } from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { callApi } from "../EulerMail/getSalesData";
+import DataConnection from "./DataConnection";
 const SettingPage = () => {
   const [activeSetting,setActiveSetting]=useState("AccountPreference");
   const [data,setData]=useState([]);
@@ -39,6 +40,9 @@ const SettingPage = () => {
       }
       {
         activeSetting ==="password" && <ForgotPassword/>
+      }
+      {
+        activeSetting ==="Data" && <DataConnection/>
       }
       
     </div>

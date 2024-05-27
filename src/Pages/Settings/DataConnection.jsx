@@ -76,7 +76,7 @@ const DataConnection = () => {
   }, []);
   const loginToYoutube = () => {
     // setyoutubeClicked(!youtubeClicked);
-    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=http://localhost:5173/settings&response_type=token&client_id=${
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=https://www.eulermail.app/settings&response_type=token&client_id=${
       import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID
     }`;
   };

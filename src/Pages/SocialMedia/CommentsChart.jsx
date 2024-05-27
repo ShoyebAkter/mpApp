@@ -5,6 +5,9 @@ import { FaMessage } from "react-icons/fa6";
 const CommentsChart = () => {
 
     const fbPageComment = useSelector((state) => state.counter.fbPageComment);
+    const youtubeComment2 = useSelector((state) => state.counter.youtube_comment);
+    const youtubeComment=parseInt(youtubeComment2)
+    // console.log(typeof(youtubeComment))
   // console.log(parseInt(fbFollowers))
   const options = {
     chart: {
@@ -45,7 +48,7 @@ const CommentsChart = () => {
     series: [
       {
         name: "Comments",
-        data: [fbPageComment ? fbPageComment : 0, 260, 170, 630, 250],
+        data: [fbPageComment ? fbPageComment : 0, 260, 170, 630, youtubeComment?youtubeComment:0],
         color: "#48705c",
         borderRadius: 15,
         groupPadding: 0,

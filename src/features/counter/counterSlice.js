@@ -15,7 +15,9 @@ const initialState = {
   youtube_video_list: [],
   youtube_subscriber:0,
   youtube_total_video:0,
-  youtube_total_views:0
+  youtube_total_views:0,
+  youtube_comment:0,
+  youtube_likes:0
 }
 
 export const counterSlice = createSlice({
@@ -67,6 +69,12 @@ export const counterSlice = createSlice({
     setYoutubeSubscriber : (state,action)=>{
       state.youtube_subscriber =action.payload
     },
+    setYoutubeComment : (state,action)=>{
+      state.youtube_comment =action.payload
+    },
+    setYoutubeLikes : (state,action)=>{
+      state.youtube_likes =action.payload
+    },
   },
 })
 
@@ -74,7 +82,8 @@ export const counterSlice = createSlice({
 export const { setfbAccessToken,setLinkedinAccessToken,setFbFollowers,
   setTotalFbPost,setFbPageImpression,setFbPageLikes,setFbPageComments,
   setLinkedinCode,setYoutubeToken,setLinkedinState,setChannelId,setYoutubeVideoList,
-  setYoutubeTotalVideo,setYoutubeSubscriber,setYoutubeTotalViews,
+  setYoutubeTotalVideo,setYoutubeSubscriber,setYoutubeTotalViews,setYoutubeComment,
+  setYoutubeLikes,
 } = counterSlice.actions
 
 export default counterSlice.reducer

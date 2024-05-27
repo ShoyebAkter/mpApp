@@ -5,7 +5,8 @@ import { FaEye } from "react-icons/fa";
 
 const ImpressionChart = () => {
     const fbPageImpression=useSelector((state)=>state.counter.fbPageImpression);
-    const youtubeViews=useSelector((state)=>state.counter.youtube_total_views);
+    const youtubeViews2=useSelector((state)=>state.counter.youtube_total_views);
+    const youtubeViews=parseInt(youtubeViews2)
     // console.log(parseInt(fbFollowers))
     const options = {
         chart: {
@@ -46,7 +47,11 @@ const ImpressionChart = () => {
         series: [
           {
             name: 'Impression',
-            data: [fbPageImpression ? fbPageImpression : 0, 260, 170, 630, youtubeViews ?youtubeViews :0],
+            data: [fbPageImpression ? fbPageImpression : 0,
+              260,
+              170,
+              630,
+              youtubeViews ? youtubeViews :0 ],
             color: "#2a4e40",
               borderRadius: 15,
               groupPadding: 0,

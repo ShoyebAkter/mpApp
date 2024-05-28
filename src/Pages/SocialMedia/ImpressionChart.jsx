@@ -7,6 +7,8 @@ const ImpressionChart = () => {
     const fbPageImpression=useSelector((state)=>state.counter.fbPageImpression);
     const youtubeViews2=useSelector((state)=>state.counter.youtube_total_views);
     const youtubeViews=parseInt(youtubeViews2)
+    const instaImpressions=useSelector((state)=>state.counter.instaImpression);
+    console.log(instaImpressions)
     // console.log(parseInt(fbFollowers))
     const options = {
         chart: {
@@ -48,7 +50,7 @@ const ImpressionChart = () => {
           {
             name: 'Impression',
             data: [fbPageImpression ? fbPageImpression : 0,
-              260,
+              instaImpressions ? instaImpressions : 0,
               170,
               630,
               youtubeViews ? youtubeViews :0 ],

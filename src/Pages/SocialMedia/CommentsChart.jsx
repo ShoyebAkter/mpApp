@@ -7,6 +7,8 @@ const CommentsChart = () => {
     const fbPageComment = useSelector((state) => state.counter.fbPageComment);
     const youtubeComment2 = useSelector((state) => state.counter.youtube_comment);
     const youtubeComment=parseInt(youtubeComment2)
+    const instaMediaComment = useSelector((state) => state.counter.instaMediaComments);
+    // console.log(instaMediaComment)
     // console.log(typeof(youtubeComment))
   // console.log(parseInt(fbFollowers))
   const options = {
@@ -48,7 +50,7 @@ const CommentsChart = () => {
     series: [
       {
         name: "Comments",
-        data: [fbPageComment ? fbPageComment : 0, 260, 170, 630, youtubeComment?youtubeComment:0],
+        data: [fbPageComment ? fbPageComment : 0, instaMediaComment ?instaMediaComment :0, 170, 630, youtubeComment?youtubeComment:0],
         color: "#48705c",
         borderRadius: 15,
         groupPadding: 0,

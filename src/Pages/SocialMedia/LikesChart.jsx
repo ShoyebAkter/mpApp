@@ -9,6 +9,8 @@ const LikesChart = () => {
     const fbPageLikes = useSelector((state) => state.counter.fbPageLikes);
     const youtubeLikes2 = useSelector((state) => state.counter.youtube_likes);
     const youtubeLikes=parseInt(youtubeLikes2)
+    const instaLikes = useSelector((state) => state.counter.instaMediaLikes);
+    console.log(instaLikes)
     const options = {
         chart: {
           type: "column",
@@ -48,7 +50,7 @@ const LikesChart = () => {
         series: [
           {
             name: "Likes",
-            data: [ fbPageLikes ? fbPageLikes : 0, 260, 170, 630, youtubeLikes ? youtubeLikes :0],
+            data: [ fbPageLikes ? fbPageLikes : 0, instaLikes ?instaLikes :0, 170, 630, youtubeLikes ? youtubeLikes :0],
             color: "#22DD22",
             borderRadius: 15,
             groupPadding: 0,

@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   fbAccessToken: "",
+  instaAccessToken:"",
   linkedinToken:"",
   fbFollowers: 0,
   totalFbPost: 0,
@@ -17,7 +18,12 @@ const initialState = {
   youtube_total_video:0,
   youtube_total_views:0,
   youtube_comment:0,
-  youtube_likes:0
+  youtube_likes:0,
+  instaFollowers:0,
+  instaTotalPost:0,
+  instaImpression:0,
+  instaMediaLikes:0,
+  instaMediaComments:0,
 }
 
 export const counterSlice = createSlice({
@@ -26,6 +32,9 @@ export const counterSlice = createSlice({
   reducers: {
     setfbAccessToken :(state,action)=>{
         state.fbAccessToken=action.payload
+    },
+    setInstaAccessToken :(state,action)=>{
+        state.instaAccessToken=action.payload
     },
     setLinkedinAccessToken :(state,action)=>{
         state.linkedinToken=action.payload
@@ -75,15 +84,30 @@ export const counterSlice = createSlice({
     setYoutubeLikes : (state,action)=>{
       state.youtube_likes =action.payload
     },
+    setInstaFollowers : (state,action)=>{
+      state.instaFollowers =action.payload
+    },
+    setInstaTotalPost : (state,action)=>{
+      state.instaTotalPost =action.payload
+    },
+    setInstaImpression : (state,action)=>{
+      state.instaImpression =action.payload
+    },
+    setInstaMediaLikes : (state,action)=>{
+      state.instaMediaLikes =action.payload
+    },
+    setInstaMediaComment : (state,action)=>{
+      state.instaMediaComments =action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setfbAccessToken,setLinkedinAccessToken,setFbFollowers,
+export const { setfbAccessToken,setInstaAccessToken,setLinkedinAccessToken,setFbFollowers,
   setTotalFbPost,setFbPageImpression,setFbPageLikes,setFbPageComments,
   setLinkedinCode,setYoutubeToken,setLinkedinState,setChannelId,setYoutubeVideoList,
-  setYoutubeTotalVideo,setYoutubeSubscriber,setYoutubeTotalViews,setYoutubeComment,
-  setYoutubeLikes,
+  setYoutubeTotalVideo,setYoutubeSubscriber,setYoutubeTotalViews,setYoutubeComment,setYoutubeLikes,
+  setInstaFollowers,setInstaTotalPost,setInstaImpression,setInstaMediaLikes,setInstaMediaComment
 } = counterSlice.actions
 
 export default counterSlice.reducer

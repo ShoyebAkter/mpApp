@@ -3,6 +3,7 @@ import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setChannelId,
+  setInstaAccessToken,
   setLinkedinAccessToken,
   setLinkedinCode,
   setLinkedinState,
@@ -18,6 +19,7 @@ import FbPageModal from "../SocialMedia/FbPageModal";
 import axios from "axios";
 import { useEffect } from "react";
 import { getAccessToken,  getToken, logInToLinkedin } from "./linkedinFunction";
+import InstaModal from "../SocialMedia/InstaModal";
 
 const DataConnection = () => {
   const authorization_code = useSelector(
@@ -203,12 +205,34 @@ const DataConnection = () => {
     window.FB.login(
       (response) => {
         dispatch(setfbAccessToken(response.authResponse?.accessToken));
-        localStorage.setItem(
-          "access_token",
-          response.authResponse?.accessToken
-        );
+        
         // setFacebookUserAccessToken(response.authResponse?.accessToken);
         document.getElementById("my_modal_5").showModal();
+        // getLongLivedAccessToken(response.authResponse?.accessToken)
+        // .then(longLivedToken => {
+        //     console.log(longLivedToken);
+        //     setFacebookUserAccessToken(longLivedToken);
+        //     localStorage.setItem("access_token",longLivedToken)
+        //   })
+        //   .catch(error => {
+        //     console.error('Error:', error);
+        //   });
+      },
+      {
+        scope:
+          "read_insights,business_management,instagram_basic,pages_show_list,pages_read_engagement,pages_manage_posts,pages_read_user_content,pages_manage_metadata,pages_manage_engagement",
+      }
+    );
+  };
+  
+  const logInToInsta = () => {
+    // setFbClicked(!fbClicked);
+    window.FB.login(
+      (response) => {
+        dispatch(setInstaAccessToken(response.authResponse?.accessToken));
+        
+        // setFacebookUserAccessToken(response.authResponse?.accessToken);
+        document.getElementById("my_modal_6").showModal();
         // getLongLivedAccessToken(response.authResponse?.accessToken)
         // .then(longLivedToken => {
         //     console.log(longLivedToken);
@@ -250,7 +274,7 @@ const DataConnection = () => {
   return (
     <div className="flex justify-center mt-10 gap-10 mx-auto">
       <div
-        // onClick={handleClick}
+        onClick={logInToInsta}
         style={{
           backgroundColor: "#4c4c4c",
           color: "#ffffff",
@@ -307,7 +331,17 @@ const DataConnection = () => {
 
       <dialog id="my_modal_5" className="modal">
         <div className="modal-box w-1/2  bg-slate-200 max-w-full">
-          <FbPageModal fbAccessToken={fbAccessToken} />
+          <FbPageModal  />
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+      <dialog id="my_modal_6" className="modal">
+        <div className="modal-box w-1/2  bg-slate-200 max-w-full">
+          <InstaModal  />
           <div className="modal-action">
             <form method="dialog">
               <button className="btn">Close</button>

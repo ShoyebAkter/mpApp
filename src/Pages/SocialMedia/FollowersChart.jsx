@@ -6,6 +6,8 @@ const FollowersChart = () => {
   const fbFollowers = useSelector((state) => state.counter.fbFollowers);
   const youtubeSubscriber2 = useSelector((state) => state.counter.youtube_subscriber);
   const youtubeSubscriber=parseInt(youtubeSubscriber2)
+  const instaFollower = useSelector((state) => state.counter.instaFollowers);
+  // console.log(instaFollower)
   // console.log(parseInt(fbFollowers))
   const options = {
     chart: {
@@ -46,7 +48,7 @@ const FollowersChart = () => {
     series: [
       {
         name: "Followers",
-        data: [fbFollowers ? fbFollowers : 0, 260, 170, 630, youtubeSubscriber ? youtubeSubscriber :0],
+        data: [fbFollowers ? fbFollowers : 0, instaFollower ? instaFollower :0 , 170, 630, youtubeSubscriber ? youtubeSubscriber :0],
         color: "#22DD22",
         borderRadius: 15,
         groupPadding: 0,

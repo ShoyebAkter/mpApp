@@ -21,7 +21,7 @@ import { useEffect } from "react";
 import { getAccessToken, getToken, logInToLinkedin } from "./linkedinFunction";
 import InstaModal from "../SocialMedia/InstaModal";
 import { loginToTiktok } from "./tiktok";
-import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 
 const DataConnection = () => {
   const authorization_code = useSelector(
@@ -39,10 +39,7 @@ const DataConnection = () => {
   const urlParams = new URLSearchParams(window.location.search);
   dispatch(setLinkedinCode(urlParams.get("code")));
   dispatch(setLinkedinState(urlParams.get("state")));
-  const hash = window.location.hash;
-  const params = new URLSearchParams(hash.substring(1));
-
-  dispatch(setYoutubeToken(params.get("access_token")));
+  
   useEffect(() => {
     if (youtube_token) {
       // Replace with your actual access token
@@ -78,21 +75,24 @@ const DataConnection = () => {
 
     loadGapiScript();
   }, []);
-  const loginToYoutube = () => {
-    // setyoutubeClicked(!youtubeClicked);
-    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=https://www.eulermail.app/settings&response_type=token&client_id=${
-      import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID
-    }`;
-  };
-  const handleSuccess = (response) => {
-    const token = response.credential;
-    // const decodedToken = jwtDecode(token);
-    console.log("Decoded Token:", token);
-    // Handle the received token here (e.g., store it in state or context)
-  };
-  const handleError = () => {
-    console.error("Login Failed");
-  };
+  // const loginToYoutube = () => {
+  //   // setyoutubeClicked(!youtubeClicked);
+  //   // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=https://www.eulermail.app/settings&response_type=token&client_id=${
+  //   //   import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID
+  //   // }`;
+
+    
+  // };
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      if(codeResponse){
+        dispatch(setYoutubeToken(codeResponse.access_token))
+        
+      }
+    },
+    onError: (error) => console.log('Login Failed:', error)
+});
+  
   const fetchData = async () => {
     // Replace with your actual access token
     const url =
@@ -331,7 +331,7 @@ const DataConnection = () => {
         <FaTiktok /> Tiktok
       </div>
       <div
-        // onClick={loginToYoutube}
+        onClick={login}
         style={{
           backgroundColor: "#4c4c4c",
           color: "#ffffff",
@@ -339,16 +339,14 @@ const DataConnection = () => {
         }}
         className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
-        {/* <FaYoutube /> Youtube */}
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-          auto_select
-        />
+        <FaYoutube /> Youtube
+        {/* <GoogleLogin
+          onSuccess={handleSuccess}
+      onError={handleError}
+      scope="https://www.googleapis.com/auth/youtube.readonly"
+      redirect_uri="https://www.eulermail.app/settings"
+      include_granted_scopes
+        /> */}
       </div>
 
       <dialog id="my_modal_5" className="modal">

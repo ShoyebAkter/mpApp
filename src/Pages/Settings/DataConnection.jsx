@@ -22,8 +22,10 @@ import { getToken } from "./linkedinFunction";
 import InstaModal from "../SocialMedia/InstaModal";
 // import { loginToTiktok } from "./tiktok";
 import {  GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { useLocation } from 'react-router-dom';
 
 const DataConnection = () => {
+  const location = useLocation();
   const authorization_code = useSelector(
     (state) => state.counter.linkedin_authorization_code
   );
@@ -36,10 +38,11 @@ const DataConnection = () => {
   // );
   // const fbAccessToken = useSelector((state) => state.counter.fbAccessToken);
   const dispatch = useDispatch();
-  const urlParams = new URLSearchParams(window.location.search);
-  dispatch(setLinkedinCode(urlParams.get("code")));
-  dispatch(setLinkedinState(urlParams.get("state")));
-  
+  // const urlParams = new URLSearchParams(window.location.search);
+  // // dispatch(setLinkedinCode(urlParams.get("code")));
+  // // dispatch(setLinkedinState(urlParams.get("state")));
+  // const code=urlParams.get("code")
+  // console.log()
   useEffect(() => {
     if (youtube_token) {
       // Replace with your actual access token
@@ -50,7 +53,31 @@ const DataConnection = () => {
       fetchBrandingSettings();
     }
   }, [youtube_token, youtube_channel_id]);
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const code = query.get('code');
 
+    if (code) {
+      console.log('Authorization code:', code);
+
+      fetch('https://emapp-backend.vercel.app/oauthcallback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Tokens:', data);
+        dispatch(setYoutubeToken(data.access_token));
+        // Handle tokens (e.g., store them in state or localStorage)
+      })
+      .catch(error => {
+        console.error('Error exchanging code for tokens:', error);
+      });
+    }
+  }, [location]);
   useEffect(() => {
     // Load the gapi script and initialize the client
     const loadGapiScript = () => {
@@ -64,7 +91,7 @@ const DataConnection = () => {
 
     // Initialize the gapi client with API key
     const initializeClient = () => {
-      window.gapi.client.setApiKey("AIzaSyAYVV_JQvu2IybKs03J2UB5pmnjsnH7mTU");
+      window.gapi.client.setApiKey(import.meta.env.VITE_REACT_APP_OAUTH_API_KEY);
       window.gapi.client
         .load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
         .then(
@@ -83,17 +110,10 @@ const DataConnection = () => {
 
     
   // };
-  const login = useGoogleLogin({
-    client_id: import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID,
-    onSuccess: (codeResponse) => {
-      if(codeResponse){
-        dispatch(setYoutubeToken(codeResponse.access_token))
-        console.log(codeResponse)
-      }
-    },
-    onError: (error) => console.log('Login Failed:', error),
-    
-});
+  const login = ()=>{
+    window.location.href = 'https://emapp-backend.vercel.app/auth';
+  }
+  
 // const handleSuccess = async(response) => {
 //   const token = response.credential;
 

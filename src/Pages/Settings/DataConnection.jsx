@@ -91,7 +91,7 @@ const DataConnection = () => {
       }
     },
     onError: (error) => console.log('Login Failed:', error),
-    clientId: import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID,
+    client_id: import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID,
 });
   
   const fetchData = async () => {

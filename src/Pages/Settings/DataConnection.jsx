@@ -83,27 +83,33 @@ const DataConnection = () => {
 
     
   // };
-//   const login = useGoogleLogin({
-//     onSuccess: (codeResponse) => {
-//       if(codeResponse){
-//         dispatch(setYoutubeToken(codeResponse.access_token))
-        
-//       }
-//     },
-//     onError: (error) => console.log('Login Failed:', error),
-//     client_id: import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID,
-// });
-const handleSuccess = (response) => {
-  const token = response.credential;
-  // const decodedToken = jwtDecode(token);
-  dispatch(setYoutubeToken(token))
-  console.log('Decoded Token:', token);
-  // Handle the received token here (e.g., store it in state or context)
-};
+  const login = useGoogleLogin({
+    client_id: import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID,
+    onSuccess: (codeResponse) => {
+      if(codeResponse){
+        dispatch(setYoutubeToken(codeResponse.access_token))
+        console.log(codeResponse)
+      }
+    },
+    onError: (error) => console.log('Login Failed:', error),
+    
+});
+// const handleSuccess = async(response) => {
+//   const token = response.credential;
 
-const handleError = () => {
-  console.error('Login Failed');
-};
+//   try {
+//     const res = await axios.post('http://localhost:5000/api/exchange-token', { id_token: token });
+//     const { access_token } = res.data;
+//     dispatch(setYoutubeToken(access_token));
+//     console.log('Access Token:', access_token);
+//   } catch (error) {
+//     console.log('Token Exchange Failed:', error);
+//   }
+// };
+
+// const handleError = () => {
+//   console.error('Login Failed');
+// };
   const fetchData = async () => {
     // Replace with your actual access token
     const url =
@@ -342,7 +348,7 @@ const handleError = () => {
         <FaTiktok /> Tiktok
       </div>
       <div
-        // onClick={login}
+        onClick={login}
         style={{
           backgroundColor: "#4c4c4c",
           color: "#ffffff",
@@ -350,15 +356,15 @@ const handleError = () => {
         }}
         className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
-        {/* <FaYoutube /> Youtube */}
-        <GoogleLogin
+        <FaYoutube /> Youtube
+        {/* <GoogleLogin
           onSuccess={handleSuccess}
       onError={handleError}
       scope="https://www.googleapis.com/auth/youtube.readonly"
       redirect_uri="https://www.eulermail.app/settings"
       include_granted_scopes
       client_id="535762139600-md4roh1eu4pe5de6u2pjfruvji1rpiqt.apps.googleusercontent.com"
-        />
+        /> */}
       </div>
 
       <dialog id="my_modal_5" className="modal">

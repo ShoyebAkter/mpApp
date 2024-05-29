@@ -14,7 +14,7 @@ import './styles/util.css';
 import './styles/forms.css';
 import './styles/button.css';
 import './styles/caseHeader.css';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider } from "@react-oauth/google";
 // const client_id = import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>

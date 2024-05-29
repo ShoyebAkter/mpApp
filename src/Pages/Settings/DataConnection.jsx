@@ -21,7 +21,7 @@ import { useEffect } from "react";
 import { getToken } from "./linkedinFunction";
 import InstaModal from "../SocialMedia/InstaModal";
 // import { loginToTiktok } from "./tiktok";
-import {  useGoogleLogin } from "@react-oauth/google";
+import {  GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 
 const DataConnection = () => {
   const authorization_code = useSelector(
@@ -83,17 +83,27 @@ const DataConnection = () => {
 
     
   // };
-  const login = useGoogleLogin({
-    onSuccess: (codeResponse) => {
-      if(codeResponse){
-        dispatch(setYoutubeToken(codeResponse.access_token))
+//   const login = useGoogleLogin({
+//     onSuccess: (codeResponse) => {
+//       if(codeResponse){
+//         dispatch(setYoutubeToken(codeResponse.access_token))
         
-      }
-    },
-    onError: (error) => console.log('Login Failed:', error),
-    client_id: import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID,
-});
-  
+//       }
+//     },
+//     onError: (error) => console.log('Login Failed:', error),
+//     client_id: import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID,
+// });
+const handleSuccess = (response) => {
+  const token = response.credential;
+  // const decodedToken = jwtDecode(token);
+  dispatch(setYoutubeToken(token))
+  console.log('Decoded Token:', token);
+  // Handle the received token here (e.g., store it in state or context)
+};
+
+const handleError = () => {
+  console.error('Login Failed');
+};
   const fetchData = async () => {
     // Replace with your actual access token
     const url =
@@ -332,7 +342,7 @@ const DataConnection = () => {
         <FaTiktok /> Tiktok
       </div>
       <div
-        onClick={login}
+        // onClick={login}
         style={{
           backgroundColor: "#4c4c4c",
           color: "#ffffff",
@@ -340,14 +350,15 @@ const DataConnection = () => {
         }}
         className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
-        <FaYoutube /> Youtube
-        {/* <GoogleLogin
+        {/* <FaYoutube /> Youtube */}
+        <GoogleLogin
           onSuccess={handleSuccess}
       onError={handleError}
       scope="https://www.googleapis.com/auth/youtube.readonly"
       redirect_uri="https://www.eulermail.app/settings"
       include_granted_scopes
-        /> */}
+      client_id="535762139600-md4roh1eu4pe5de6u2pjfruvji1rpiqt.apps.googleusercontent.com"
+        />
       </div>
 
       <dialog id="my_modal_5" className="modal">

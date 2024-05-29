@@ -20,6 +20,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { getAccessToken,  getToken, logInToLinkedin } from "./linkedinFunction";
 import InstaModal from "../SocialMedia/InstaModal";
+import { loginToTiktok } from "./tiktok";
 
 const DataConnection = () => {
   const authorization_code = useSelector(
@@ -254,7 +255,7 @@ const DataConnection = () => {
   if (authorization_code) {
     getToken(authorization_code);
     // getAccessToken(authorization_code)
-    console.log(authorization_code)
+    // console.log(authorization_code)
     // const response = axios.get("https://api.linkedin.com/v2/me", {
     //   headers: {
     //     Authorization: `Bearer ${LinkedinAccessToken}`,
@@ -307,7 +308,7 @@ const DataConnection = () => {
         <CiLinkedin /> Linkedin
       </div>
       <div
-        //   onClick={loginToTiktok}
+          onClick={loginToTiktok}
         style={{
           backgroundColor: "#4c4c4c",
           color: "#ffffff",

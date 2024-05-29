@@ -24,9 +24,10 @@ export  const getToken = async(authorization_code) => {
         // dispatch(setLinkedinAccessToken(data));
         console.log("Access Token:", data);
         // console.log(typeof(data))
-        // if(data){
-        //   fetchOrganizationURN(data.access_token)
-        // }
+        if(data){
+          // fetchOrganizationURN(data.access_token)
+          getProfile(data)
+        }
       });
   };
   const getProfile = async (accessToken) => {

@@ -18,9 +18,10 @@ import {
 import FbPageModal from "../SocialMedia/FbPageModal";
 import axios from "axios";
 import { useEffect } from "react";
-import { getAccessToken,  getToken, logInToLinkedin } from "./linkedinFunction";
+import { getAccessToken, getToken, logInToLinkedin } from "./linkedinFunction";
 import InstaModal from "../SocialMedia/InstaModal";
 import { loginToTiktok } from "./tiktok";
+import { GoogleLogin } from "@react-oauth/google";
 
 const DataConnection = () => {
   const authorization_code = useSelector(
@@ -83,7 +84,15 @@ const DataConnection = () => {
       import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID
     }`;
   };
-
+  const handleSuccess = (response) => {
+    const token = response.credential;
+    // const decodedToken = jwtDecode(token);
+    console.log("Decoded Token:", token);
+    // Handle the received token here (e.g., store it in state or context)
+  };
+  const handleError = () => {
+    console.error("Login Failed");
+  };
   const fetchData = async () => {
     // Replace with your actual access token
     const url =
@@ -180,20 +189,25 @@ const DataConnection = () => {
   //commnt er kaj ta dekhte hobe aro
   const fetchYoutubeComment = async (videoId) => {
     try {
-      const response = await axios.get("https://www.googleapis.com/youtube/v3/videos", {
-        params: {
-          part: "snippet,contentDetails,id,statistics",
-          id: videoId,
-        },
-        headers: {
-          Authorization: `Bearer ${youtube_token}`,
-        },
-      });
-  
+      const response = await axios.get(
+        "https://www.googleapis.com/youtube/v3/videos",
+        {
+          params: {
+            part: "snippet,contentDetails,id,statistics",
+            id: videoId,
+          },
+          headers: {
+            Authorization: `Bearer ${youtube_token}`,
+          },
+        }
+      );
+
       if (response) {
         fetchSubscriber(); // Ensure fetchSubscriber is defined in your context
         console.log("Response", response);
-        dispatch(setYoutubeComment(response.data.items[0].statistics.commentCount));
+        dispatch(
+          setYoutubeComment(response.data.items[0].statistics.commentCount)
+        );
         dispatch(setYoutubeLikes(response.data.items[0].statistics.likeCount));
       }
     } catch (error) {
@@ -206,7 +220,7 @@ const DataConnection = () => {
     window.FB.login(
       (response) => {
         dispatch(setfbAccessToken(response.authResponse?.accessToken));
-        
+
         // setFacebookUserAccessToken(response.authResponse?.accessToken);
         document.getElementById("my_modal_5").showModal();
         // getLongLivedAccessToken(response.authResponse?.accessToken)
@@ -225,13 +239,13 @@ const DataConnection = () => {
       }
     );
   };
-  
+
   const logInToInsta = () => {
     // setFbClicked(!fbClicked);
     window.FB.login(
       (response) => {
         dispatch(setInstaAccessToken(response.authResponse?.accessToken));
-        
+
         // setFacebookUserAccessToken(response.authResponse?.accessToken);
         document.getElementById("my_modal_6").showModal();
         // getLongLivedAccessToken(response.authResponse?.accessToken)
@@ -250,7 +264,6 @@ const DataConnection = () => {
       }
     );
   };
-
 
   if (authorization_code) {
     getToken(authorization_code);
@@ -271,7 +284,6 @@ const DataConnection = () => {
   //   getProfile(token);
   // }
 
-  
   return (
     <div className="flex justify-center mt-10 gap-10 mx-auto">
       <div
@@ -308,7 +320,7 @@ const DataConnection = () => {
         <CiLinkedin /> Linkedin
       </div>
       <div
-          onClick={loginToTiktok}
+        // onClick={loginToTiktok}
         style={{
           backgroundColor: "#4c4c4c",
           color: "#ffffff",
@@ -319,7 +331,7 @@ const DataConnection = () => {
         <FaTiktok /> Tiktok
       </div>
       <div
-        onClick={loginToYoutube}
+        // onClick={loginToYoutube}
         style={{
           backgroundColor: "#4c4c4c",
           color: "#ffffff",
@@ -327,12 +339,21 @@ const DataConnection = () => {
         }}
         className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
-        <FaYoutube /> Youtube
+        {/* <FaYoutube /> Youtube */}
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            console.log(credentialResponse);
+          }}
+          onError={() => {
+            console.log("Login Failed");
+          }}
+          auto_select
+        />
       </div>
 
       <dialog id="my_modal_5" className="modal">
         <div className="modal-box w-1/2  bg-slate-200 max-w-full">
-          <FbPageModal  />
+          <FbPageModal />
           <div className="modal-action">
             <form method="dialog">
               <button className="btn">Close</button>
@@ -342,7 +363,7 @@ const DataConnection = () => {
       </dialog>
       <dialog id="my_modal_6" className="modal">
         <div className="modal-box w-1/2  bg-slate-200 max-w-full">
-          <InstaModal  />
+          <InstaModal />
           <div className="modal-action">
             <form method="dialog">
               <button className="btn">Close</button>

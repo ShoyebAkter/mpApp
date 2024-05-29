@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setChannelId,
   setInstaAccessToken,
-  setLinkedinAccessToken,
+  // setLinkedinAccessToken,
   setLinkedinCode,
   setLinkedinState,
   setYoutubeComment,
@@ -18,10 +18,10 @@ import {
 import FbPageModal from "../SocialMedia/FbPageModal";
 import axios from "axios";
 import { useEffect } from "react";
-import { getAccessToken, getToken, logInToLinkedin } from "./linkedinFunction";
+import { getToken } from "./linkedinFunction";
 import InstaModal from "../SocialMedia/InstaModal";
-import { loginToTiktok } from "./tiktok";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+// import { loginToTiktok } from "./tiktok";
+import {  useGoogleLogin } from "@react-oauth/google";
 
 const DataConnection = () => {
   const authorization_code = useSelector(
@@ -31,10 +31,10 @@ const DataConnection = () => {
   const youtube_channel_id = useSelector(
     (state) => state.counter.youtube_channel_id
   );
-  const LinkedinAccessToken = useSelector(
-    (state) => state.counter.linkedinToken
-  );
-  const fbAccessToken = useSelector((state) => state.counter.fbAccessToken);
+  // const LinkedinAccessToken = useSelector(
+  //   (state) => state.counter.linkedinToken
+  // );
+  // const fbAccessToken = useSelector((state) => state.counter.fbAccessToken);
   const dispatch = useDispatch();
   const urlParams = new URLSearchParams(window.location.search);
   dispatch(setLinkedinCode(urlParams.get("code")));
@@ -90,7 +90,8 @@ const DataConnection = () => {
         
       }
     },
-    onError: (error) => console.log('Login Failed:', error)
+    onError: (error) => console.log('Login Failed:', error),
+    clientId: import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID,
 });
   
   const fetchData = async () => {

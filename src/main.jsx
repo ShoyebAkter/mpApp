@@ -15,12 +15,12 @@ import './styles/forms.css';
 import './styles/button.css';
 import './styles/caseHeader.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-const clientId = import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID;
+// const client_id = import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
     <BrowserRouter>
     <Provider store={store}>
-    <GoogleOAuthProvider client_id={clientId}>
+    <GoogleOAuthProvider client_id={import.meta.env.VITE_REACT_APP_OAUTH_CLIENT_ID}>
     <App />
   </GoogleOAuthProvider>
     </Provider>

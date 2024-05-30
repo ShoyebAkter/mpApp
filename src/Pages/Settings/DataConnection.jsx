@@ -56,7 +56,6 @@ const DataConnection = () => {
   useEffect(() => {
     const query = new URLSearchParams(location.search);
     const code = query.get('code');
-
     if (code) {
       console.log('Authorization code:', code);
 
@@ -65,7 +64,7 @@ const DataConnection = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ code }),
+        body: JSON.stringify({ code}),
       })
       .then(response => response.json())
       .then(data => {
@@ -111,6 +110,7 @@ const DataConnection = () => {
     
   // };
   const login = ()=>{
+    
     window.location.href = 'https://emapp-backend.vercel.app/auth';
   }
   

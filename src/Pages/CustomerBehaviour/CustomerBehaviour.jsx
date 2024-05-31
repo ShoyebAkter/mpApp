@@ -42,13 +42,13 @@ export const CustomerBehaviour = () => {
           className="flex font-bold gap-3 center items-center mb-5"
         >
           {" "}
-          <CiUser  /> <span style={{"color":"#3D3D3D","fontWeight":"600"}}> Sales</span>
+          <CiUser style={{ fontSize: "24px" }} /> <span style={{"color":"#3D3D3D","fontWeight":"600"}}> Sales</span>
         </div>
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex font-bold gap-3 items-center"
         >
-          <LuUsers /> <span style={{"color":"#3D3D3D","fontWeight":"600"}}> Site data</span>
+          <LuUsers style={{ fontSize: "24px" }}/> <span style={{"color":"#3D3D3D","fontWeight":"600"}}> Site data</span>
         </div>
       </div>
       <div className="mx-auto mt-3 ">

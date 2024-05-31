@@ -11,19 +11,19 @@ import CommentsChart from "./CommentsChart";
 export const FacebookData = () => {
   return (
     <div className="socialmediaMain flex justify-between  pt-28 ">
-      <div className="bg-white px-5 pt-5">
+      <div className="bg-white pl-3 pr-10 pt-5">
         <div
         style={{ color: "#294F41", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
          >
-          <MdOutlineBarChart style={{ fontSize: "2em" }} />
+          <MdOutlineBarChart style={{ fontSize: "24px" }} />
           <span style={{ color: "#3D3D3D","fontWeight":"600" }}>
             General
           </span>
         </div>
         <div style={{ color: "#294F41", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold">
-          <FaImages style={{ fontSize: "2em" }}/>
+          <FaImages style={{ fontSize: "24px" }}/>
           <span style={{ color: "#3D3D3D" ,"fontWeight":"600"}} className="font-bold ">
             Individual
           </span>

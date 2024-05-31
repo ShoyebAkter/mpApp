@@ -30,27 +30,27 @@ export const Main = () => {
     <div className="overviewMain flex justify-between">
       <div
         style={{ backgroundColor: "white",}}
-        className="leftGreenSec px-3 pt-10"
+        className="pl-3 pr-4 pt-10"
       >
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex gap-3 items-center mb-5 font-bold"
         >
           {" "}
-          <SiSimpleanalytics /> <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Sales</span>
+          <SiSimpleanalytics style={{ fontSize: "24px" }}/> <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Sales</span>
         </div>
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
         >
-          <FaDatabase />
+          <FaDatabase style={{ fontSize: "24px" }}/>
           <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Site data</span>
         </div>
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
         >
-          <BsCartCheck />
+          <BsCartCheck style={{ fontSize: "24px" }}/>
           <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Cart Analysis</span>
         </div>
       </div>
@@ -88,7 +88,7 @@ export const Main = () => {
           }}
           className=" rounded-2xl py-1 mb-10"
         >
-          <h1 style={{"background":"#F5F5F5","color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
+          <h1 style={{"color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
             Users in Each Country/State
           </h1>
           {

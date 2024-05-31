@@ -33,7 +33,13 @@ export const Buttons = () => {
   const logInToLinkedin = () => {
     setlinkedinClicked(!linkedinClicked)
     };
-  
+  const selectAll=()=>{
+    setFbClicked(!fbClicked);
+    setIsClicked(!isClicked);
+    setlinkedinClicked(!linkedinClicked)
+    settiktokClicked(!tiktokClicked);
+    setyoutubeClicked(!youtubeClicked)
+  }
   
   // const instaLogin = () => {
 
@@ -99,6 +105,17 @@ export const Buttons = () => {
       className="flex justify-between items-center rounded-xl px-3 gap-5"
       >
         <FaYoutube /> Youtube
+      </div>
+      <div
+      onClick={selectAll}
+         style={{
+        backgroundColor: youtubeClicked ? "#4c4c4c" : "#F9F9F9",
+        color: youtubeClicked ? "#ffffff" : "#000000",
+        height: "40px",
+      }}
+      className="flex justify-between items-center rounded-xl px-3 gap-5"
+      >
+        All
       </div>
       
     </div>

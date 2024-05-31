@@ -1,5 +1,6 @@
 .details{
     display: flex;
+    margin-inline: 20px;
     justify-content: space-around;
     border-radius: 1rem/* 16px */;
     padding: 1.25rem/* 20px */;

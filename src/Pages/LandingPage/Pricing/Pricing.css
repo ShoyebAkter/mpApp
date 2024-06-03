@@ -7,7 +7,20 @@
 .mb {
     margin-bottom: 0.5em;
 }
-
+.original-price {
+    position: relative;
+    color: #555;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      border-top: 3px solid red;
+      transform: rotate(-20deg);
+    }
+  }
 .plans {
     display: flex;
     justify-content: center;

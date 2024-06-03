@@ -39,13 +39,12 @@ export const BottomChart = ({ setSelectedCountry }) => {
   }
 
   const handleCountryClick = (feature) => {
-    
     if (feature.properties.name === "USA") {
       setSelectedCountry("United States");
     } else if (feature.properties.name === "Korea") {
       setSelectedCountry("South Korea");
     }
-    if(shopify){
+    if (shopify) {
       setCountry(feature.data.id);
     }
     // console.log(feature);
@@ -69,7 +68,8 @@ export const BottomChart = ({ setSelectedCountry }) => {
         (user) => iso2ToIso3(user.addresses[0].country_code) === country
       )
     : users[0]?.customers;
-
+  const className =
+    user.email === "warehousepro@gmail.com" ? "fullmapDiv" : "mapChartDiv";
   // console.log(country,filteredUsers)
   // const customColors = scaleThreshold()
   // .domain([0, 100])
@@ -77,7 +77,13 @@ export const BottomChart = ({ setSelectedCountry }) => {
   console.log(users);
   return (
     <div className="mapDiv">
-      <div className="mapChartDiv">
+      <div className={className}>
+        <h1
+          style={{ color: "#294F41" }}
+          className="font-bold text-center text-2xl py-5 cursor-pointer"
+        >
+          Users In Each Country
+        </h1>
         <ResponsiveChoropleth
           data={countedValues}
           theme={{
@@ -149,57 +155,41 @@ export const BottomChart = ({ setSelectedCountry }) => {
           onClick={handleCountryClick}
         />
       </div>
-      {
-        shopify && 
-        <div>
-        <h1
-          style={{ color: "#294F41" }}
-          className="font-bold text-center text-2xl py-5 cursor-pointer"
-        >
-          Sales & Profit
-        </h1>
-        <div className="container mx-auto p-4">
-          <div className="overflow-x-auto max-h-96">
-            <table className="min-w-full bg-white">
-              <thead className="bg-gray-200">
-                <tr>
-                  <th className="py-2 px-4 border-b-2 border-gray-300">
-                    Email
-                  </th>
-                  <th className="py-2 px-4 border-b-2 border-gray-300">
-                    Currency
-                  </th>
-                  <th className="py-2 px-4 border-b-2 border-gray-300">
-                    Orders Count
-                  </th>
-                  <th className="py-2 px-4 border-b-2 border-gray-300">
-                    Total Spent
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredUsers?.map((user, index) => (
-                  <tr key={index} className="hover:bg-gray-100">
-                    <td className="py-2 px-4 border-b border-gray-300">
-                      {user.email}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
-                      {user.currency}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
-                      {user.orders_count}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
-                      {user.total_spent}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      {shopify && (
+        <div className="mx-auto">
+          <h1
+            style={{ color: "#294F41" }}
+            className="font-bold text-center text-2xl py-5 cursor-pointer"
+          >
+            Sales & Profit by Category
+          </h1>
+          <div className="flex gap-8 px-10">
+            <div className="categorySec">
+              <div className="bg-gray-200 rounded-xl px-3 font-bold">Category</div>
+              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Class</div>
+              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Top Items</div>
+            </div>
+            <div className="subCatSec">
+              <div className="bg-gray-200 rounded-xl px-3 font-bold">Sub Category</div>
+              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Rings </div>
+              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Bracelet</div>
+              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Charm</div>
+              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Rings </div>
+              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Bracelet</div>
+              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Charm</div>
+            </div>
+            <div className="PriceSec">
+              <br/>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$101,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$15,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$10,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$101,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$15,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$10,565</div>
+            </div>
           </div>
         </div>
-      </div>
-      }
+      )}
     </div>
   );
 };

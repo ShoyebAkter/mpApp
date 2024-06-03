@@ -3,7 +3,10 @@ import "./Pricing.css";
 const PricingSec = () => {
   return (
     <section>
-      <div style={{"fontSize":"32px","color":"#439541"}} className="flex justify-center font-bold  my-5">
+      <div
+        style={{ fontSize: "32px", color: "#439541" }}
+        className="flex justify-center font-bold  my-5"
+      >
         Pricing
       </div>
       <p className="flex justify-center fs-500">plans that work for everyone</p>
@@ -28,9 +31,11 @@ const PricingSec = () => {
 
         <div className="plan plan--accent">
           <h2 className="plan-title">Annual Plan</h2>
-          <p className="plan-price">
-            $330<span>/month</span>
-          </p>
+          <span className="original-price plan-price" aria-label="Original Price">
+            $360
+          </span>
+          &nbsp;&nbsp;
+          <span className="font-bold text-xl" aria-label="Sale Price ">$330/year</span>
           <p className="plan-description">
             <div>
               <span className="font-bold ">Discount:</span> Offering an annual
@@ -54,7 +59,7 @@ const PricingSec = () => {
         <div className="plan plan--light">
           <h2 className="plan-title">Flexi-Pass</h2>
           <p className="plan-price">
-            $150 <span>for 6 months</span>
+            $170 <span>for 6 months</span>
           </p>
           <p className="plan-description">
             <div>

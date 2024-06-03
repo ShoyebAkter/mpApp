@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Highcharts from "highcharts";
 import HC_map from "highcharts/modules/map";
 import mapData from "highcharts/modules/map";
@@ -7,7 +7,8 @@ import mapData from "highcharts/modules/map";
 HC_map(Highcharts);
 mapData(Highcharts);
 
-const MapChart = ({ setSelectedCountry, setStateName }) => {
+const MapChart = ({ setSelectedCountry, setStateName,setClicked }) => {
+  
   useEffect(() => {
     const drilldown = async function (e) {
       if (!e.seriesOptions) {
@@ -191,7 +192,8 @@ const MapChart = ({ setSelectedCountry, setStateName }) => {
     <div>
       <button
         type="button"
-        onClick={()=>{setStateName(null);
+        onClick={()=>{setClicked(true);
+          setStateName(null);
         setSelectedCountry(null)}}
         className="bg-green-700 text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-red-700 hover:text-white px-3"
       >
@@ -208,7 +210,7 @@ const MapChart = ({ setSelectedCountry, setStateName }) => {
               clipRule="evenodd"
             ></path>
           </svg>
-          <p className="ml-2">Prev</p>
+          <p className="ml-2">WorldMap</p>
         </div>
       </button>
       <div

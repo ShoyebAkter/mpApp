@@ -17,6 +17,7 @@ import DataTable from "./DataTable";
 import { useState } from "react";
 export const Main = () => {
   const [user, loading] = useAuthState(auth);
+  const [clicked,setClicked]=useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedProduct,setSelectedProduct]=useState(null)
   const [stateName,setStateName]=useState()
@@ -88,12 +89,10 @@ export const Main = () => {
           }}
           className=" rounded-2xl py-1 mb-10"
         >
-          <h1 style={{"color":"#294F41"}} className="font-bold text-center text-2xl py-5 cursor-pointer">
-            Users in Each Country/State
-          </h1>
+          
           {
-            selectedCountry==="United States" && user.email==="warehousepro@gmail.com" ?
-            <MapChart setSelectedCountry={setSelectedCountry} setStateName={setStateName}/>
+            clicked===false ?
+            <MapChart setClicked={setClicked} setSelectedCountry={setSelectedCountry} setStateName={setStateName}/>
             :
             <BottomChart setSelectedCountry={setSelectedCountry}/>
           }

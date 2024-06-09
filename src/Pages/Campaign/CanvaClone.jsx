@@ -1,115 +1,168 @@
-import "./CanvaClone.css";
-import CreativeEditorSDK from '@cesdk/cesdk-js';
-import { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-// import CreativeEngine from 'https://cdn.img.ly/packages/imgly/cesdk-engine/1.19.0/index.js';
-function CanvaClone({ setImageBlob, setEditedImage }) {
-  const cesdk_container = useRef(null);
-  const [cesdk, setCesdk] = useState(null);
-  // let apiKey="wY2SIQ-e0hvc06E-OG33rWBZwuVqm9d0P_J-2HJMWu7lk1kxaTyjly7pfMonSK79"
-  const config = {
-    // license: 'NzecnYmKybguOYExpjfcW1bAFzXum-GEHqm2eE-T2x7w-lX0eq8OnhznLus3sljI',
-    // Enable local uploads in Asset Library
-    callbacks: {
+import React, { useRef, useState, useEffect } from 'react';
 
-      onExport: (blobs) => {
-        blobs.forEach((blob) => {
-          // const filename = `exported_image_${index}.png`;
-          const imageUrl = URL.createObjectURL(blob); // Create a URL for the blob
-          setEditedImage(imageUrl);
-          setImageBlob(blob);
+const ImageEditor = () => {
+  const [image, setImage] = useState(null);
+  const [text, setText] = useState('');
+  const [textX, setTextX] = useState(50);
+  const [textY, setTextY] = useState(50);
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState('');
+  const [editPos, setEditPos] = useState({ x: 0, y: 0 });
+  const canvasRef = useRef(null);
+  const fileInputRef = useRef(null);
 
-          // CreativeEngine.init(config).then(async (engine) => {
-          //   engine.scene
-          //     .saveToString()
-          //     .then(() => {
-                
-          
-          //       const formData = new FormData();
-          //       formData.append('file', blob);
-          //       console.log(formData)
-          //       // fetch('/upload', {
-          //       //   method: 'POST',
-          //       //   body: formData
-          //       // });
-          //     })
-          //     .catch((error) => {
-          //       console.error('Save failed', error);
-          //     });
-          // });
-          // saveAs(blob, filename);
-        });
-        return Promise.resolve();
-      },
-      onUpload: 'local',
-      baseURL:'https://cdn.img.ly/assets/demo/v1/ly.img.template/templates/cesdk_postcard_1.scene'
-      
-    },
-    ui: {
-      elements: {
-        navigation: {
-          action: {
-            export: true
-          }
-        }
-      }
+  const templates = [
+    'https://i.ibb.co/ZGR4Cs3/myself.jpg',
+  ];
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImage(event.target.result);
+        setSelectedTemplate(null); // Clear template when a new image is uploaded
+      };
+      reader.readAsDataURL(file);
     }
   };
-  useEffect(() => {
-    if (!cesdk_container.current) return;
 
-    let cleanedUp = false;
-    let instance;
-    
-    CreativeEditorSDK.create(cesdk_container.current, config).then(
-      async (_instance) => {
-        instance = _instance;
-        if (cleanedUp) {
-          instance.dispose();
-          return;
-        }
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
 
-        
+  const handleDownload = () => {
+    const canvas = canvasRef.current;
+    const link = document.createElement('a');
+    link.download = 'edited-image.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  };
 
-        // Do something with the instance of CreativeEditor SDK, for example:
-        // Populate the asset library with default / demo asset sources.
-        await Promise.all([
-          instance.addDefaultAssetSources(),
-          instance.addDemoAssetSources({ sceneMode: 'Design' })
-        ]);
-        const sceneURL = `https://cdn.img.ly/assets/demo/v1/ly.img.template/templates/cesdk_postcard_1.scene`; // Replace with your scene URL.
-        await instance.engine.scene.loadFromURL(sceneURL);
-
-        setCesdk(instance);
-      }
-      
-    );
-    
-    const cleanup = () => {
-      cleanedUp = true;
-      instance?.dispose();
-      setCesdk(null);
+  const drawCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+    img.src = image || selectedTemplate;
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      ctx.font = '40px Arial';
+      ctx.fillStyle = 'red';
+      ctx.fillText(text, textX, textY);
     };
-    return cleanup;
-  }, [cesdk_container]);
-  console.log(cesdk);
-  
+  };
+
+  useEffect(() => {
+    if (image || selectedTemplate) {
+      drawCanvas();
+    }
+  }, [image, text, textX, textY, selectedTemplate]);
+
+  const handleMouseDown = (e) => {
+    const canvas = canvasRef.current;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const ctx = canvas.getContext('2d');
+    ctx.font = '40px Arial';
+    const textWidth = ctx.measureText(text).width;
+    const textHeight = 40; // Approximate height for 40px Arial
+
+    if (
+      x >= textX && x <= textX + textWidth &&
+      y >= textY - textHeight && y <= textY
+    ) {
+      setIsEditing(true);
+      setEditText(text);
+      setEditPos({ x: textX, y: textY });
+      setIsDragging(false);
+      console.log(isEditing)
+      
+      return;
+    }
+    
+    setIsDragging(true);
+    setDragOffset({ x: x - textX, y: y - textY });
+  };
+
+  const handleMouseMove = (e) => {
+    if (isDragging) {
+      const canvas = canvasRef.current;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      setTextX(x - dragOffset.x);
+      setTextY(y - dragOffset.y);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleEditChange = (e) => {
+    setEditText(e.target.value);
+  };
+
+  const handleEditBlur = () => {
+    setText(editText);
+    setIsEditing(false);
+  };
+
   return (
     <div>
-      <div
-       id="cesdk_container"
-      className="canva"
-        ref={cesdk_container}
-        
-      ></div>
-
+      <input type="file" ref={fileInputRef} onChange={handleFileChange} />
+      <input type="text" value={text} onChange={handleTextChange} placeholder="Enter text" />
+      <button onClick={handleDownload}>Download</button>
+      <div>
+        <h3>Select a Template</h3>
+        {templates.map((template, index) => (
+          <img
+            key={index}
+            src={template}
+            alt={`Template ${index + 1}`}
+            style={{ width: 100, cursor: 'pointer', margin: 10 }}
+            onClick={() => {
+              setSelectedTemplate(template);
+              setImage(null); // Clear uploaded image when a template is selected
+            }}
+          />
+        ))}
+      </div>
+      <canvas
+        ref={canvasRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+      ></canvas>
+      {isEditing && (
+        <input
+          type="text"
+          value={editText}
+          onChange={handleEditChange}
+          onBlur={handleEditBlur}
+          style={{
+            position: 'absolute',
+            left: editPos.x,
+            top: editPos.y - 40, // Adjust for text height
+            fontSize: '40px',
+            color: 'red',
+            backgroundColor: 'transparent',
+            border: 'none',
+            outline: 'none',
+          }}
+          autoFocus
+        />
+      )}
     </div>
   );
-}
+};
 
-export default CanvaClone;
-CanvaClone.propTypes =
-{
-  setImageBlob: PropTypes.func.isRequired,
-  setEditedImage: PropTypes.func.isRequired
-}
+export default ImageEditor;

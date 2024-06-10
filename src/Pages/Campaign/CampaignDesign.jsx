@@ -24,7 +24,6 @@ export const CampaignDesign = () => {
     <div>
       <div className="campaignDesign ">
       <ImageEditors/>
-        {/* <div ><CanvaClone setImageBlob={setImageBlob} setEditedImage={setEditedImage}/></div> */}
         <div><TextEditor text={text} setText={setText} userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage}/></div>
       </div>
     </div>

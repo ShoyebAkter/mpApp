@@ -37,7 +37,7 @@ function App() {
         <Route path="/campaignresult" element={<CampaignResult />} />
         <Route path="/socialmedia" element={<FacebookData  />} >
         </Route>
-        <Route path="/campaignerdesign" element={<CampaignDesign />} />
+        <Route path="/campaignerdesign" element={<BusinessChart/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/resetPassword" element={<ForgotPassword />} />
         <Route path="/policy" element={<Policy />} />

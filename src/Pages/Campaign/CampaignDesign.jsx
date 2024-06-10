@@ -1,6 +1,6 @@
 
 import { useState } from "react"
-import CanvaClone from "./CanvaClone"
+
 import TextEditor from "./TextEditor"
 import { auth } from "../../firebase.init"
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -23,7 +23,7 @@ export const CampaignDesign = () => {
   return (
     <div>
       <div className="campaignDesign ">
-      <ImageEditors/>
+      {/* <ImageEditors/> */}
         <div><TextEditor text={text} setText={setText} userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage}/></div>
       </div>
     </div>

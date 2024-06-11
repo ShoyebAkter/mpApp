@@ -10,7 +10,7 @@ export const Integration = () => {
     return (
         <div className="integrationDiv ">
 
-            <h1 className="integrationHeading ">Integration of <span style={{ "color": "#62cbc6" }}>multiple</span> platform</h1>
+            <h1 className="integrationHeading ">Integration of <span style={{ "color": "#62cbc6" }}>multiple</span> platforms</h1>
             <div className='flex items-center justify-center'>
                 <div className='leftIntegration '>
                     <Wordpress />

@@ -15,13 +15,15 @@ import EmailEditor from "react-email-editor";
 
 // Template to use when it loads; it can be empty
 import { template } from "./template";
+import { auth } from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 // All data if needed here
 
 // Main app
 const EmailEditors = () => {
     const emailEditorRef = useRef(null);
-
+    const [user] = useAuthState(auth);
     const exportHtml = () => {
       // All useState here
   
@@ -30,9 +32,24 @@ const EmailEditors = () => {
       // Functions
       if (emailEditorRef.current) {
         emailEditorRef.current.editor.exportHtml((data) => {
-          const { design, html } = data;
+          const {  html } = data;
           console.log("exportHtml", html);
-          console.log("design", design);
+          const emailInfo = {
+            emails: "shoyebmohammad660@gmail.com",
+            subject: "test",
+            html: html,
+            uid: user.id,
+        }
+          fetch("https://emapp-backend.vercel.app/sendemail", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            }, body: JSON.stringify(emailInfo)
+                        }).then(res => {
+                            if (res.status === 200) {
+                                console.log(res)
+                            }
+                        })
         });
       }
     };
@@ -45,7 +62,7 @@ const EmailEditors = () => {
   
     return (
       // All returns here
-      <div className="pt-24">
+      <div className="pt-28">
         <div>
           <button onClick={exportHtml}>Export HTML</button>
         </div>
@@ -62,7 +79,6 @@ const EmailEditors = () => {
             },
             id: "dy-email-editor"
           }}
-          projectId={9788}
           ref={emailEditorRef}
           tools={{
             "custom#dy_recommendation": {

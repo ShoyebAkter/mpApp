@@ -9,7 +9,7 @@ const SecuritySec = () => {
       </div>
      <div className='flex items-center gap-10'>
      <div><img style={{"width":"70px","height":"70px"}}  src="./Icon-2.png" alt=''/></div>
-      <div className='textSec'>At EulerMail, your business`s data is not just another number<div className='mt-6'> We understand its value and go
+      <div className='textSec'>At EulerMail, your business's data is not just another number<div className='mt-6'> We understand its value and go
 the extra mile to keep it secure.</div></div>
      </div>
       <div className='flex items-center gap-10'>

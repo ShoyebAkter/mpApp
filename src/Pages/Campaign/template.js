@@ -43,7 +43,7 @@ export const template = {
                     hideable: true,
                     hideMobile: false,
                     text:
-                      '<p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-size: 40px; line-height: 56px;"><strong><span style="line-height: 56px; font-size: 40px;">PLUGIT Email Editor!</span></strong></span></p>'
+                      '<p style="font-size: 14px; line-height: 140%; text-align: center;"><span style="font-size: 40px; line-height: 56px;"><strong><span style="line-height: 56px; font-size: 40px;">EulerMail Email Editor!</span></strong></span></p>'
                   }
                 },
                 {
@@ -106,7 +106,7 @@ export const template = {
                     deletable: true,
                     hideable: true,
                     text:
-                      '<span style="font-size: 14px; line-height: 16.8px;">PLUGIT&nbsp; Custom Button</span>',
+                      '<span style="font-size: 14px; line-height: 16.8px;">EulerMail&nbsp; Custom Button</span>',
                     calculatedWidth: 190,
                     calculatedHeight: 36
                   }
@@ -117,7 +117,7 @@ export const template = {
                     containerPadding: "10px",
                     src: {
                       url:
-                        "https://s3.amazonaws.com/unroll-images-production/projects%2F9788%2F1625642966584-1586862731153.png",
+                        "https://i.ibb.co/h87pTtF/Logo-Vertical-Green.png",
                       width: 200,
                       height: 200
                     },

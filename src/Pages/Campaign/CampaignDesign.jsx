@@ -7,7 +7,8 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { useNavigate} from "react-router-dom"
 import Loading from "../Authentication/Loading"
 import './CampaignDesign.css'
-import ImageEditors from "./ImageEditors"
+import EmailEditors from "./EmailEditors"
+// import ImageEditors from "./ImageEditors"
 export const CampaignDesign = () => {
   // const {userId}=useParams()
   const [text,setText]=useState("")
@@ -22,9 +23,10 @@ export const CampaignDesign = () => {
   // console.log(imageBlob,editedImage);
   return (
     <div>
-      <div className="campaignDesign ">
+      <div className="">
+      <EmailEditors/>
       {/* <ImageEditors/> */}
-        <div><TextEditor text={text} setText={setText} userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage}/></div>
+        {/* <div><TextEditor text={text} setText={setText} userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage}/></div> */}
       </div>
     </div>
   )

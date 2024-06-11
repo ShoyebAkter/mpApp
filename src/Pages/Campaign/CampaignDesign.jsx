@@ -24,6 +24,7 @@ export const CampaignDesign = () => {
   return (
     <div>
       <div className="">
+      
       <EmailEditors/>
       {/* <ImageEditors/> */}
         {/* <div><TextEditor text={text} setText={setText} userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage}/></div> */}

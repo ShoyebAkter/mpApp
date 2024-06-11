@@ -2,8 +2,8 @@
 
 // Importing useRef so that we don't always rerender
 // whenever user inserts an item to the email
-import { useRef } from "react";
-
+import { useRef, useState } from "react";
+import './ImageEditors.css'
 // Email editor library, the main library to create custom
 import EmailEditor from "react-email-editor";
 
@@ -17,12 +17,18 @@ import EmailEditor from "react-email-editor";
 import { template } from "./template";
 import { auth } from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Modal } from "./Modal";
+import { WebShare } from "./Preview/Facebook/WebShare";
+import { FacebookModal } from "./FacebookModal";
+import { FaTelegramPlane } from "react-icons/fa";
+import { MdOutlineTextsms } from "react-icons/md";
 
 // All data if needed here
 
 // Main app
 const EmailEditors = () => {
     const emailEditorRef = useRef(null);
+    const [html,setHtml]=useState("")
     const [user] = useAuthState(auth);
     const exportHtml = () => {
       // All useState here
@@ -33,25 +39,12 @@ const EmailEditors = () => {
       if (emailEditorRef.current) {
         emailEditorRef.current.editor.exportHtml((data) => {
           const {  html } = data;
-          console.log("exportHtml", html);
-          const emailInfo = {
-            emails: "shoyebmohammad660@gmail.com",
-            subject: "test",
-            html: html,
-            uid: user.id,
-        }
-          fetch("https://emapp-backend.vercel.app/sendemail", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            }, body: JSON.stringify(emailInfo)
-                        }).then(res => {
-                            if (res.status === 200) {
-                                console.log(res)
-                            }
-                        })
+          // console.log("exportHtml", html);
+          setHtml(html)
+         
         });
       }
+      console.log(html)
     };
   
     const onLoad = () => {
@@ -62,13 +55,32 @@ const EmailEditors = () => {
   
     return (
       // All returns here
-      <div className="pt-28">
-        <div>
-          <button onClick={exportHtml}>Export HTML</button>
-        </div>
-  
+      <div className="pt-28 ">
+        {/* <div>
+          
+        </div> */}
+        <div   className='appArea'>
+        <button className="px-5 py-2 text-black bg-green-200"  onClick={exportHtml}>Export HTML</button>
+        <Modal
+         userId={user.id} html={html}  
+
+         />
+        <WebShare
+        //  imageBlob={imageBlob} text={text} 
+
+        />
+        <FacebookModal
+        //  imageBlob={imageBlob} text={text} 
+
+         />
+        <span className='px-5 py-2 text-black bg-green-200'><FaTelegramPlane /></span>
+        <span className='px-5 py-2 text-black bg-green-200'><MdOutlineTextsms /></span>
+        
+        {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
+      </div>
         <hr />
   
+        <div className="editorDiv">
         <EmailEditor
           minHeight={1000}
           options={{
@@ -95,6 +107,10 @@ const EmailEditors = () => {
           }}
           onLoad={onLoad}
         />
+        </div>
+        <div className="whiteDiv">
+          
+        </div>
       </div>
     );
 }

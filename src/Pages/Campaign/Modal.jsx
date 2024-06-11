@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 
 import { AiOutlineMail } from "react-icons/ai"
 
-export const Modal = ({userId,imageBlob,editedImage,text}) => {
+export const Modal = ({userId,html}) => {
   
   return (
     <div>
         <button className="px-5 py-2 text-black bg-green-200" onClick={() =>
         {
-          if(!editedImage)
-          {toast.error("export images")}
+          if(!html)
+          {toast.error("Export Html")}
           else{
             document.getElementById('my_modal_4').showModal()
           }
@@ -27,7 +27,7 @@ export const Modal = ({userId,imageBlob,editedImage,text}) => {
             </form>
           </div>
             <Emailpreview userId={userId}
-         imageBlob={imageBlob} editedImage={editedImage} text={text}/>
+         html={html}/>
           {/* <Preview userId={user.uid}  imageBlob={imageBlob} editedImage={editedImage} text={text}/> */}
           
         </div>

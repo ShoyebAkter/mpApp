@@ -1,6 +1,5 @@
 .editorDiv {
-  position: relative;
-  height: 1000px; /* Ensure this matches minHeight of EmailEditor */
+  position: relative;/* Ensure this matches minHeight of EmailEditor */
 }
 
 .whiteDiv {
@@ -8,10 +7,8 @@
   height: 60px;
   position: absolute;
   right: 0px;
-  transform: translate(0%, -50%);
   background-color: #f0efef;
   padding: 10px;
-  bottom: -20%;
-  margin-bottom: 10px;
+  bottom: 0px;
   z-index: 1; /* Ensure it appears on top */
 }

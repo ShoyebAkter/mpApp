@@ -3,7 +3,7 @@
 // Importing useRef so that we don't always rerender
 // whenever user inserts an item to the email
 import { useRef, useState } from "react";
-import './ImageEditors.css'
+import "./ImageEditors.css";
 // Email editor library, the main library to create custom
 import EmailEditor from "react-email-editor";
 
@@ -22,45 +22,50 @@ import { WebShare } from "./Preview/Facebook/WebShare";
 import { FacebookModal } from "./FacebookModal";
 import { FaTelegramPlane } from "react-icons/fa";
 import { MdOutlineTextsms } from "react-icons/md";
-
+import { TiExport } from "react-icons/ti";
 // All data if needed here
 
 // Main app
 const EmailEditors = () => {
-    const emailEditorRef = useRef(null);
-    const [html,setHtml]=useState("")
-    const [user] = useAuthState(auth);
-    const exportHtml = () => {
-      // All useState here
-  
-      // Other hooks
-  
-      // Functions
-      if (emailEditorRef.current) {
-        emailEditorRef.current.editor.exportHtml((data) => {
-          const {  html } = data;
-          // console.log("exportHtml", html);
-          setHtml(html)
-         
-        });
-      }
-      console.log(html)
-    };
-  
-    const onLoad = () => {
-      if (emailEditorRef.current) {
-        emailEditorRef.current.editor.loadDesign(template);
-      }
-    };
-  
-    return (
-      // All returns here
-      <div className="pt-28 ">
-        {/* <div>
+  const emailEditorRef = useRef(null);
+  const [html, setHtml] = useState("");
+  const [user] = useAuthState(auth);
+  const exportHtml = () => {
+    // All useState here
+
+    // Other hooks
+
+    // Functions
+    if (emailEditorRef.current) {
+      emailEditorRef.current.editor.exportHtml((data) => {
+        const { html } = data;
+        // console.log("exportHtml", html);
+        setHtml(html);
+      });
+    }
+    console.log(html);
+  };
+
+  const onLoad = () => {
+    if (emailEditorRef.current) {
+      emailEditorRef.current.editor.loadDesign(template);
+    }
+  };
+
+  return (
+    // All returns here
+    <div className="pt-28 ">
+      {/* <div>
           
         </div> */}
-        <div   className='appArea'>
-        <button className="px-5 py-2 text-black bg-green-200"  onClick={exportHtml}>Export HTML</button>
+      <div className="appArea">
+        <button
+          className="px-5 py-2 text-black bg-green-200"
+          onClick={exportHtml}
+        >
+          <TiExport />
+        </button>
+        <div className="flex justify-around gap-24">
         <Modal
          userId={user.id} html={html}  
 
@@ -75,21 +80,22 @@ const EmailEditors = () => {
          />
         <span className='px-5 py-2 text-black bg-green-200'><FaTelegramPlane /></span>
         <span className='px-5 py-2 text-black bg-green-200'><MdOutlineTextsms /></span>
-        
+        </div>
+
         {/* <WhatsappModal userId={userId} text={text} editedImage={editedImage}/> */}
       </div>
-        <hr />
-  
-        <div className="editorDiv">
+      <hr />
+
+      <div className="editorDiv">
         <EmailEditor
-          minHeight={1000}
+          minHeight={850}
           options={{
             // customJS: [customJS],
             displayMode: "email",
             features: {
-              stockImages: true
+              stockImages: true,
             },
-            id: "dy-email-editor"
+            id: "dy-email-editor",
           }}
           ref={emailEditorRef}
           tools={{
@@ -100,19 +106,17 @@ const EmailEditors = () => {
                   border: 1px solid #ccc;
                   padding: 20px;
                   '
-                 >Custom dynamic HTML</div>`
+                 >Custom dynamic HTML</div>`,
               },
-              position: 0
-            }
+              position: 0,
+            },
           }}
           onLoad={onLoad}
         />
-        </div>
-        <div className="whiteDiv">
-          
-        </div>
       </div>
-    );
-}
+      <div className="whiteDiv"></div>
+    </div>
+  );
+};
 
-export default EmailEditors
+export default EmailEditors;

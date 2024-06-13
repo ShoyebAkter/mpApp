@@ -166,26 +166,26 @@ export const BottomChart = ({ setSelectedCountry }) => {
           <div className="flex gap-8 px-10">
             <div className="categorySec">
               <div className="bg-gray-200 rounded-xl px-3 font-bold">Category</div>
-              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Class</div>
-              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Top Items</div>
+              <div className="border-green-700 cursor-pointer border-2 rounded-xl text-center text-green-700 mt-5">Class</div>
+              <div className="border-green-700 cursor-pointer border-2 rounded-xl text-center text-green-700 mt-5">Top Items</div>
             </div>
             <div className="subCatSec">
               <div className="bg-gray-200 rounded-xl px-3 font-bold">Sub Category</div>
-              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Rings </div>
-              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Bracelet</div>
-              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Charm</div>
-              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Rings </div>
-              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Bracelet</div>
-              <div className="border-green-700 border-2 rounded-xl text-center text-green-700 mt-5">Charm</div>
+              <div className="border-green-700 cursor-pointer border-2 rounded-xl text-center text-green-700 mt-5">Rings </div>
+              <div className="border-green-700 cursor-pointer border-2 rounded-xl text-center text-green-700 mt-5">Bracelet</div>
+              <div className="border-green-700 cursor-pointer border-2 rounded-xl text-center text-green-700 mt-5">Charm</div>
+              <div className="border-green-700 cursor-pointer border-2 rounded-xl text-center text-green-700 mt-5">Rings </div>
+              <div className="border-green-700 cursor-pointer border-2 rounded-xl text-center text-green-700 mt-5">Bracelet</div>
+              <div className="border-green-700 cursor-pointer border-2 rounded-xl text-center text-green-700 mt-5">Charm</div>
             </div>
             <div className="PriceSec">
               <br/>
-              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$101,565</div>
-              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$15,565</div>
-              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$10,565</div>
-              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$101,565</div>
-              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$15,565</div>
-              <div style={{"backgroundColor":"#294F41"}} className="mt-5 border-2 text-white px-8  rounded-xl">$10,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 cursor-pointer border-2 text-white px-8  rounded-xl">$101,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 cursor-pointer border-2 text-white px-8  rounded-xl">$15,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 cursor-pointer border-2 text-white px-8  rounded-xl">$10,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 cursor-pointer border-2 text-white px-8  rounded-xl">$101,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 cursor-pointer border-2 text-white px-8  rounded-xl">$15,565</div>
+              <div style={{"backgroundColor":"#294F41"}} className="mt-5 cursor-pointer border-2 text-white px-8  rounded-xl">$10,565</div>
             </div>
           </div>
         </div>

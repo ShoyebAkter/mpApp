@@ -23,7 +23,7 @@ export const CampaignDesign = () => {
   // console.log(imageBlob,editedImage);
   return (
     <div>
-      <div className="">
+      <div className="pt-28">
       
       <EmailEditors/>
       {/* <ImageEditors/> */}

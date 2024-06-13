@@ -90,6 +90,7 @@ export const Emailpreview = ({ userId, html }) => {
         body: JSON.stringify(emailInfo),
       }).then((res) => {
         if (res.status === 200) {
+          console.log(res)
             if (res.status === 200) {
                 fetch("https://emapp-backend.vercel.app/sendserveremail", {
                                                 method: "POST",

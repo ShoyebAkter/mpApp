@@ -49,10 +49,10 @@ export const Footer = () => {
                                 <h2 className="mb-6 text-sm font-semibold uppercase text-white">Get in Touch</h2>
                                 <ul className="text-gray-500 font-medium">
                                     <li className="mb-4">
-                                        <div style={{"cursor":"pointer"}}>info@gmail.com</div>
+                                        <div style={{"cursor":"pointer"}}>support@eulermail.app</div>
                                     </li>
                                     <li>
-                                        <div style={{"cursor":"pointer"}}>Phone Number</div>
+                                        <div style={{"cursor":"pointer"}}></div>
                                     </li>
                                 </ul>
                             </div>

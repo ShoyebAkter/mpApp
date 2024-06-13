@@ -90,12 +90,24 @@ export const Main = () => {
           className=" rounded-2xl py-1 mb-10"
         >
           
-          {
-            clicked===false ?
-            <MapChart setClicked={setClicked} setSelectedCountry={setSelectedCountry} setStateName={setStateName}/>
-            :
-            <BottomChart setSelectedCountry={setSelectedCountry}/>
-          }
+          {clicked === false ? (
+        <MapChart 
+          setClicked={setClicked} 
+          setSelectedCountry={setSelectedCountry} 
+          setStateName={setStateName} 
+        />
+      ) : (
+        selectedCountry !== "United States" ? (
+          <BottomChart setSelectedCountry={setSelectedCountry} />
+        ) : (
+          <MapChart 
+            setClicked={setClicked} 
+            setSelectedCountry={setSelectedCountry} 
+            setStateName={setStateName} 
+          />
+        )
+      )}
+
           
           
         </div>

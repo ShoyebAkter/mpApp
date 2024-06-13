@@ -12,6 +12,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import { useEffect, useState } from "react";
 import { getDuplicate } from "../EulerMail/getDuplicate";
 import { getTierValue } from "./getTierValue";
+import PropTypes from "prop-types";
 import "./CustomerBehaviour.css";
 import {
   fetchData,
@@ -59,12 +60,14 @@ useEffect(()=>{
   rfmLogic(moment, customersData[0]?.customers);
   useEffect(()=>{
     if (shopifyexists) {
-      setData(customersData);
+      
       getCustomerSegMentCount(customersData[0]?.customers, setSegmentCount);
     }
   },[customersData,shopifyexists])
   
-  
+  // if(customersData){
+  //   setData(customersData);
+  // }
   // getShopifyData(shopifyData,user)
 
   getTierValue(customers, tierArray);
@@ -118,6 +121,7 @@ useEffect(()=>{
       const index = element.index;
       const label = chart.data.labels[index];
       setBarName(label)
+      setData(customersData);
       // console.log('Clicked bar label:', label);  // Handle the clicked data
       }
     }
@@ -145,4 +149,8 @@ useEffect(()=>{
       <Bar options={options} height={200} data={data} />
     </div>
   );
+};
+Customers.propTypes = {
+  setData: PropTypes.func.isRequired,
+  setBarName: PropTypes.func.isRequired,
 };

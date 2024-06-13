@@ -78,7 +78,8 @@
 
 .mapChartDiv{
     width:50%;
-    height:100%;
+    height:80%;
+    padding-block: 20px;
 }
 .fullmapDiv{
     width:100%;

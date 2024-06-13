@@ -6,9 +6,9 @@ const ShopifyCustomerTable = ({data,barName}) => {
   return (
     <div className="overflow-x-auto">
             <table className="table table-sm table-pin-rows table-pin-cols">
-                <thead>
+                {
+                    filterData && <thead>
                     <tr>
-                        <th></th>
                         <td>Name</td>
                         
                         <td>Email</td>
@@ -17,10 +17,10 @@ const ShopifyCustomerTable = ({data,barName}) => {
                         <td>Currency</td>
                     </tr>
                 </thead>
+                }
                 <tbody>
                     {filterData?.map((item, index) => (
                         <tr key={index}>
-                            <th>{index + 1}</th>
                             <td>{item.first_name + item.last_name}</td>
                             
                             <td>{item.email}</td>

@@ -3,12 +3,12 @@
 }
 
 .whiteDiv {
-  width: 450px;
+  width: 430px;
   height: 60px;
   position: absolute;
   right: 0px;
-  background-color: #f0efef;
+  background-color: white;
   padding: 10px;
-  bottom: -200px;
+  bottom: -140px;
   z-index: 1; /* Ensure it appears on top */
 }

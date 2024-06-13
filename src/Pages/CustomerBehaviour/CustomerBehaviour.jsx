@@ -20,8 +20,10 @@ import ClientData from "./ClientData";
 import WarehouseproCat from "./WarehouseproCat";
 import CustomerSegment from "./CustomerSegment";
 import Engagement from "./Engagement";
+import ShopifyCustomerTable from "./ShopifyCustomerTable";
 export const CustomerBehaviour = () => {
-  const [weeksData, setWeeksData] = useState([]);
+  const [data, setData] = useState([]);
+  const [barName,setBarName]=useState("")
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [cohortYear, setCohortYear] = useState(0);
   const [activeYear, setActiveYear] = useState(0);
@@ -60,10 +62,17 @@ export const CustomerBehaviour = () => {
             </div>
           ) : (
             <div className="flex gap-16 insideFirstSec">
-              <Customers />
+              <Customers setData={setData} setBarName={setBarName} />
               <CustomerSegment />
             </div>
           )}
+        </div>
+        <div className="firstChartSection ">
+          {
+            data && <div className="flex gap-16 insideFirstSec">
+              <ShopifyCustomerTable data={data} barName={barName}/>
+            </div>
+          }
         </div>
         {user.email === "warehousepro@gmail.com" ? (
           <div className="firstChartSection">

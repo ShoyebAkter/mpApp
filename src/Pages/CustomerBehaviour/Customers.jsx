@@ -32,7 +32,7 @@ ChartJS.register(
   ChartDataLabels
 );
 
-export const Customers = () => {
+export const Customers = ({setData,setBarName}) => {
   const [user] = useAuthState(auth);
   const [customers, setCustomers] = useState([]);
   const [customersData, setCustomersData] = useState([]);
@@ -49,25 +49,27 @@ useEffect(()=>{
 useEffect(()=>{
   if(shopifyData.length!==0){
     fetchData(`https://emapp-backend.vercel.app/customersData`,setCustomersData);
+    
   }
 },[shopifyData])
 
   // console.log(customersData);
   const shopifyexists = shopifyData?.some((obj) => obj.email === user.email);
+  // console.log(shopifyexists,user.email)
   rfmLogic(moment, customersData[0]?.customers);
   useEffect(()=>{
     if (shopifyexists) {
-      
+      setData(customersData);
       getCustomerSegMentCount(customersData[0]?.customers, setSegmentCount);
     }
   },[customersData,shopifyexists])
-  console.log(customersData);
+  
   
   // getShopifyData(shopifyData,user)
 
   getTierValue(customers, tierArray);
   // console.log(tierArray);
-  // console.log(shopifyData);
+  // console.log(customersData);
   const countedValues = getDuplicate(tierArray);
 
   const options = {
@@ -109,6 +111,16 @@ useEffect(()=>{
         },
       },
     },
+    onClick: (event, elements,chart) => {
+      // console.log(event,elements,)
+      if (elements.length > 0) {
+        const element = elements[0];
+      const index = element.index;
+      const label = chart.data.labels[index];
+      setBarName(label)
+      // console.log('Clicked bar label:', label);  // Handle the clicked data
+      }
+    }
   };
 
   const labels = !shopifyexists ? countedValues.map((value) => value.value) : segmentCount.map(seg=>seg.segment);

@@ -54,7 +54,7 @@ const EmailEditors = () => {
 
   return (
     // All returns here
-    <div className=" ">
+    <div className="h-screen ">
       {/* <div>
           
         </div> */}

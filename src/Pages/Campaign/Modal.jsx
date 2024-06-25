@@ -11,7 +11,7 @@ export const Modal = ({userId,html}) => {
         <button className="px-5 py-2 text-black bg-green-200" onClick={() =>
         {
           if(!html)
-          {toast.error("Export Html")}
+          {toast.error("Save")}
           else{
             document.getElementById('my_modal_4').showModal()
           }

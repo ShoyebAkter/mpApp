@@ -71,7 +71,7 @@ export const Emailpreview = ({ userId, html }) => {
   };
   
   const sendEmail = (data) => {
-    console.log(html)
+    // console.log(html)
     if (html) {
         console.log('start')
       const emailInfo = {

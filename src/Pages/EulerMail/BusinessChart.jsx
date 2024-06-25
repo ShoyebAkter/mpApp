@@ -35,7 +35,7 @@ function BusinessChart() {
     return (
         <div  className="eulermailMain">
             <div className="flex text-black justify-around ">
-                <div style={{"color": "#439541"}} className="text-xl font-bold">{company ? company :"Warehousing Pro"}</div>
+                <div style={{"color": "#439541"}} className="text-xl font-bold">{company && company }</div>
                 <div className=" border-solid border-2 border-lime-500 rounded-xl px-2 text-lime-600">General Report</div>
             </div>
             <div   className=" firstChartSec">

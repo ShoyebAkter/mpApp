@@ -37,6 +37,7 @@ const ShopifyAuth = () => {
       companyName: companyName,
       email: email,
     };
+    
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -77,13 +78,15 @@ const ShopifyAuth = () => {
         // ..
       });
       
+      
         fetch("https://emapp-backend.vercel.app/shopify/info", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(shopifyInfo),
-            })
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(shopifyInfo),
+              })
+      
         //     .then((res) => {
         //   if (res.status === 200) {
         //     // fetch(

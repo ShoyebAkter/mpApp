@@ -34,19 +34,19 @@ export const Main = () => {
         className="pl-3 pr-4 pt-10"
       >
         <div
-          style={{ color: "#294F41", cursor: "pointer" }}
+          style={{  width: "150px", cursor: "pointer" }}
           className="flex gap-3 items-center mb-5 font-bold"
         >
          <img src="./sales.png" alt=""/>
          </div>
         <div
-          style={{ color: "#294F41", cursor: "pointer" }}
+          style={{  width: "150px", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
         >
           <img src="./sitedata.png" alt=""/>
         </div>
         <div
-          style={{ color: "#294F41", cursor: "pointer" }}
+          style={{  width: "150px", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
         >
           <img src="./cartanalysis.png" alt=""/>

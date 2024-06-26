@@ -40,12 +40,12 @@ export const CustomerBehaviour = () => {
     <div className="customerBehaviourMain">
       <div className="leftSection">
         <div
-          style={{ color: "#294F41", cursor: "pointer" }}
+          style={{  width: "150px", cursor: "pointer" }}
           className="flex font-bold gap-3 center items-center mb-5"
         >
          <img src="./sales.png" alt=""/></div>
         <div
-          style={{ color: "#294F41", cursor: "pointer" }}
+          style={{  width: "150px", cursor: "pointer" }}
           className="flex font-bold gap-3 items-center"
         >
          <img src="./sitedata.png" alt=""/></div>

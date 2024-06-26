@@ -11,7 +11,7 @@
 .mainSetting{
     display: flex;
     gap: 50px;
-    background-image: url('/embg.png');
+    background-image: url('/appbg.png');
 }
 .settingRightSide{
     width: 70%;

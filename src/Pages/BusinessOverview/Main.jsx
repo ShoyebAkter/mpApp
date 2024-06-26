@@ -37,22 +37,19 @@ export const Main = () => {
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex gap-3 items-center mb-5 font-bold"
         >
-          {" "}
-          <SiSimpleanalytics style={{ fontSize: "24px" }}/> <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Sales</span>
+         <img src="./sales.png" alt=""/>
+         </div>
+        <div
+          style={{ color: "#294F41", cursor: "pointer" }}
+          className="flex items-center mb-5 gap-3 font-bold"
+        >
+          <img src="./sitedata.png" alt=""/>
         </div>
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
         >
-          <FaDatabase style={{ fontSize: "24px" }}/>
-          <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Site data</span>
-        </div>
-        <div
-          style={{ color: "#294F41", cursor: "pointer" }}
-          className="flex items-center mb-5 gap-3 font-bold"
-        >
-          <BsCartCheck style={{ fontSize: "24px" }}/>
-          <span style={{"color":"#3D3D3D","fontWeight":"600"}}>Cart Analysis</span>
+          <img src="./cartanalysis.png" alt=""/>
         </div>
       </div>
       <div className="mx-auto mt-20">

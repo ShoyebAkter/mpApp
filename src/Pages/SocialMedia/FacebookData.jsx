@@ -13,20 +13,14 @@ export const FacebookData = () => {
     <div className="socialmediaMain flex justify-between  pt-28 ">
       <div className="bg-white pl-3 pr-10 pt-5">
         <div
-        style={{ color: "#294F41", cursor: "pointer" }}
+        style={{ width: "150px", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold"
          >
-          <MdOutlineBarChart style={{ fontSize: "24px" }} />
-          <span style={{ color: "#3D3D3D","fontWeight":"600" }}>
-            General
-          </span>
+          <img src="./genera.png" alt=""/>
         </div>
-        <div style={{ color: "#294F41", cursor: "pointer" }}
+        <div style={{ width: "150px", cursor: "pointer" }}
           className="flex items-center mb-5 gap-3 font-bold">
-          <FaImages style={{ fontSize: "24px" }}/>
-          <span style={{ color: "#3D3D3D" ,"fontWeight":"600"}} className="font-bold ">
-            Individual
-          </span>
+          <img src="./cohort.png" alt=""/>
         </div>
       </div>
       <div className="bg-white py-10 mb-10 rounded-2xl mt-10 mx-auto">

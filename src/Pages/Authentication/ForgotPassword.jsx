@@ -1,125 +1,82 @@
 import { useState } from "react";
 import { auth } from "../../firebase.init";
+import axios from 'axios';
 import { useAuthState } from "react-firebase-hooks/auth";
-import { sendPasswordResetEmail } from "firebase/auth";
+import { updatePassword,reauthenticateWithCredential,EmailAuthProvider } from "firebase/auth";
 const ForgotPassword = () => {
-  const [successMessage, setSuccessMessage] = useState(false);
-  const [email, setEmail] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [user] = useAuthState(auth);
 
-  // useEffect(()=>{
-  //   const getLink = async () => {
-  //     const obj = {
-  //       email: user.email,
-  //     };
-
-  //     try {
-  //       const response = await fetch("https://emapp-backend.vercel.app/passwordReset", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(obj),
-  //       });
-
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-
-  //       const data = await response.json();
-  //       console.log(data);
-  //       // setLink(data.link);
-  //     } catch (error) {
-  //       console.error("Error generating password reset link:", error);
-  //     }
-  //   };
-  //   getLink();
-  // },[user.email])
-
-  // console.log(link)
-
-  // Now you can use the oobCode as needed
-  // console.log(oobCode);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email === user.email) {
-      sendPasswordResetEmail(auth, user.email)
-        .then((res) => {
-          setSuccessMessage(true);
-          console.log(res);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
-          // ..
-        });
-    } else {
-      console.log("password didn't match");
-    }
-
-    // try {
-    //   // Wait for getLink to complete and update the link state
-    //   if (!link) {
-    //     console.error("No link received from server");
-    //     return;
-    //   }
-
-    //   if (password !== confirmPassword) {
-    //     alert("Passwords did not match.");
-    //     return;
-    //   }
-
-    //   const queryString = link.split("?")[1];
-
-    //   // Parse the query string into an object
-    //   const queryParams = new URLSearchParams(queryString);
-
-    //   // Get the value of the 'oobCode' parameter
-    //   const oobCode = queryParams.get("oobCode");
-    //   // console.log(oobCode)
-    //   if (oobCode) {
-    //     await confirmThePasswordReset(oobCode, confirmPassword);
-    //     localStorage.removeItem("email");
-    //     navigate("/login");
-    //   } else {
-    //     alert("Something is wrong; try again later!");
-    //     console.log("missing oobCode");
-    //   }
-    // } catch (error) {
-    //   console.error("Error handling password reset:", error);
-    //   alert("Something went wrong; try again later.");
-    // }
+  const handleSubmit = async(e) => {
+    const credential = EmailAuthProvider.credential(
+      auth.currentUser.email,
+      oldPassword
+   );
+   if(newPassword===confirmPassword){
+    // console.log(auth.currentUser)
+    await reauthenticateWithCredential(auth.currentUser, credential);
+    await updatePassword(auth.currentUser, newPassword);
+    const response = await axios.put(`https://emapp-backend.vercel.app/eulermailUser/${user.uid}`, {
+      password: newPassword,
+      date: new Date().toISOString(),
+    });
+   }
   };
 
   return (
     <div className="mx-auto my-auto ">
-      {successMessage ? (
-        <div className="he">
-          <h3>
-            An password reset email is sent to your gmail account.Check it to
-            change password.
-          </h3>
-        </div>
-      ) : (
-        <div className="bg-slate-50 shadow-xl px-12 py-5 rounded-3xl flex justify-center">
+      <div className="bg-slate-50 shadow-xl px-12 py-5 rounded-3xl flex justify-center">
           <div className="flex justify-center">
             <form>
               <div>
                 <div className="emailSec">
                   <label
-                    htmlFor="email-address"
+                    htmlFor="oldpassword"
                     className="box-decoration-slice text-gray-600 mr-5"
                   >
-                    Enter Your Email:
+                    Old Password:
                   </label>
                   <input
-                    id="email-address"
-                    name="email"
-                    type="email"
+                    id="oldpassword"
+                    name="pass"
+                    type="password"
                     className="bg-slate-200 mb-2"
                     required
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setOldPassword(e.target.value)}
+                  />
+                </div>
+                <div className="emailSec">
+                  <label
+                    htmlFor="newpassword"
+                    className="box-decoration-slice text-gray-600 mr-5"
+                  >
+                    New Password:
+                  </label>
+                  <input
+                    id="newpassword"
+                    name="pass"
+                    type="pass"
+                    className="bg-slate-200 mb-2"
+                    required
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
+                </div>
+                <div className="emailSec">
+                  <label
+                    htmlFor="password"
+                    className="box-decoration-slice text-gray-600 mr-5"
+                  >
+                    Enter The New Password:
+                  </label>
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    className="bg-slate-200 mb-2"
+                    required
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
               </div>
@@ -136,7 +93,6 @@ const ForgotPassword = () => {
             </form>
           </div>
         </div>
-      )}
     </div>
   );
 };

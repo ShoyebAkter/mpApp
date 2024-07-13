@@ -67,7 +67,7 @@ const handler = async (req, res) => {
                       type: "text",
                       data: {
                         value: {
-                          content: "Real Estate",
+                          content: "Euler Mail",
                         },
                       },
                       attributes: {
@@ -108,7 +108,7 @@ const handler = async (req, res) => {
                             },
                             {
                               href: "/try-it-live",
-                              content: "PROPERTIES",
+                              content: "CAMPAIGN",
                               color: "#000000",
                               "font-size": "13px",
                               target: "_blank",
@@ -144,23 +144,23 @@ const handler = async (req, res) => {
                 "background-color": "#ffffff",
                 "background-position": "center center",
                 mode: "fluid-height",
-                padding: "100px 0px 100px 0px",
+                padding: "150px 0px 180px 0px",
                 "vertical-align": "top",
                 "background-url":
-                  "https://assets.maocanhua.cn/92a8e4ce-499a-4b7e-a0c6-38265f9589f2-image.png",
+                  "https://i.ibb.co/h87pTtF/Logo-Vertical-Green.png",
               },
               children: [
                 {
                   type: "text",
                   data: {
                     value: {
-                      content: "Real Estate",
+                      content: "",
                     },
                   },
                   attributes: {
                     padding: "10px 25px 10px 25px",
                     align: "center",
-                    color: "#ffffff",
+                    color: "black",
                     "font-size": "45px",
                     "line-height": "45px",
                   },
@@ -171,13 +171,13 @@ const handler = async (req, res) => {
                   data: {
                     value: {
                       content:
-                        "A small river named Duden flows by their&nbsp;<div>place and supplies it with the necessary&nbsp;</div><div>regelialia.<br></div>",
+                        "<div></div><div><br></div>",
                     },
                   },
                   attributes: {
                     align: "center",
                     "background-color": "#414141",
-                    color: "#ffffff",
+                    color: "black",
                     "font-weight": "normal",
                     "border-radius": "3px",
                     padding: "10px 25px 10px 25px",
@@ -196,7 +196,7 @@ const handler = async (req, res) => {
                   type: "button",
                   data: {
                     value: {
-                      content: "Browse Properties",
+                      content: "Campaign Design",
                     },
                   },
                   attributes: {
@@ -251,7 +251,7 @@ const handler = async (req, res) => {
                       type: "text",
                       data: {
                         value: {
-                          content: "Buy House in Best Price",
+                          content: "Get Data Analytics in Best Price",
                         },
                       },
                       attributes: {
@@ -282,7 +282,7 @@ const handler = async (req, res) => {
                       type: "button",
                       data: {
                         value: {
-                          content: "Browse Properties",
+                          content: "Campaign Design",
                         },
                       },
                       attributes: {
@@ -426,7 +426,7 @@ const handler = async (req, res) => {
                           type: "text",
                           data: {
                             value: {
-                              content: "Layout",
+                              content: "Data Analytics",
                             },
                           },
                           attributes: {
@@ -442,7 +442,7 @@ const handler = async (req, res) => {
                           data: {
                             value: {
                               content:
-                                "Far far away, behind the word mountains, far from the countries",
+                                "Get your website user data analytics in chart form",
                             },
                           },
                           attributes: {
@@ -500,7 +500,7 @@ const handler = async (req, res) => {
                           data: {
                             value: {
                               content:
-                                "Far far away, behind the word mountains, far from the countries",
+                                "Design Campaign for Marketing Prospect",
                             },
                           },
                           attributes: {

@@ -5,10 +5,9 @@ import {
   BlockAvatarWrapper,
   EmailEditor,
   EmailEditorProvider,
-  
 } from "easy-email-editor";
 // import IEmailTemplate from "easy-email-editor"
-import {  StandardLayout } from "easy-email-extensions";
+import { StandardLayout } from "easy-email-extensions";
 import { useWindowSize } from "react-use";
 import {
   Button,
@@ -96,8 +95,9 @@ const defaultCategories = [
 ];
 export default function EmailBuilder() {
   const [template, setTemplate] = useState(null);
-  const [mjmlTemplate,setMjmlTemplate]=useState(``);
-  const [html,setHtml]=useState("")
+  const [image, setImage] = useState(null);
+  const [mjmlTemplate, setMjmlTemplate] = useState(``);
+  const [html, setHtml] = useState("");
   const { width } = useWindowSize();
   const smallScene = width < 1400;
 
@@ -107,41 +107,82 @@ export default function EmailBuilder() {
       const req = {};
       const res = {
         status: (statusCode) => ({
-          json: (data) => data
-        })
+          json: (data) => data,
+        }),
       };
 
       try {
         const response = await handler(req, res);
         setTemplate(response);
       } catch (error) {
-        console.error('Error loading template:', error);
+        console.error("Error loading template:", error);
       }
     };
 
     fetchTemplate();
   }, []);
 
+  const handleImageUpload = async (blob, callback) => {
+    const imageStorageKey = "0be1a7996af760f4a03a7add137ca496"; // Replace with your ImgBB API key
+    const formData = new FormData();
   
-  const onSubmit =  async(values) => {
-    
-    if(values){
-      
-      const response = await axios.post("https://emapp-backend.vercel.app/convertToMjml", {
-        templateData: values
-      });
+    // Convert Blob to File object if needed
+    const file = new File([blob], "image.jpg", { type: blob.type });
+  
+    // Convert image to base64 using FileReader
+    const reader = new FileReader();
+    reader.onloadend = async () => {
+      const base64Image = reader.result.split(',')[1]; // Get base64 image without the prefix
+      formData.append("image", base64Image);
+  
+      const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+  
+      try {
+        const response = await fetch(imagebburl, {
+          method: "POST",
+          body: formData,
+        });
+        const data = await response.json();
+  
+        if (data.success) {
+          const uploadedImageUrl = data.data.url;
+          console.log("Image URL:", uploadedImageUrl);
+  
+          // Pass the uploaded image URL to the callback
+          callback(uploadedImageUrl);
+        } else {
+          console.error("Image upload failed:", data);
+        }
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+    };
+  
+    reader.readAsDataURL(file); // Convert blob to base64
+  };
+  
+
+  const onSubmit = async (values) => {
+    console.log(values);
+    if (values) {
+      const response = await axios.post(
+        "https://emapp-backend.vercel.app/convertToMjml",
+        {
+          templateData: values,
+        }
+      );
       setMjmlTemplate(response.data);
-      
+      // console.log(response.data)
     }
-    // console.log(values)
-    // console.log(mjmlTemplate)
-    // console.log(values)
     try {
       // Send the template data to the backend API
-      const response = await axios.post("https://emapp-backend.vercel.app/convertHtml", {
-        template: mjmlTemplate
-      });
-      setHtml(response.data)
+      const response = await axios.post(
+        "https://emapp-backend.vercel.app/convertHtml",
+        {
+          template: mjmlTemplate,
+        }
+      );
+      setHtml(response.data);
       console.log("Html", response.data);
     } catch (error) {
       console.error("Error sending email:", error);
@@ -157,6 +198,7 @@ export default function EmailBuilder() {
       autoComplete
       dashed={false}
       onSubmit={onSubmit}
+      onUploadImage={handleImageUpload}
     >
       {({ values }, { submit, restart }) => {
         return (
@@ -166,7 +208,7 @@ export default function EmailBuilder() {
               title=""
               extra={
                 <Space>
-                <Modal html={html} />
+                  <Modal html={html} />
                   <Button type="primary" onClick={submit}>
                     Save
                   </Button>

@@ -144,7 +144,7 @@ const handler = async (req, res) => {
                 "background-color": "#ffffff",
                 "background-position": "center center",
                 mode: "fluid-height",
-                padding: "150px 0px 180px 0px",
+                padding: "180px 0px 200px 0px",
                 "vertical-align": "top",
                 "background-url":
                   "https://i.ibb.co/h87pTtF/Logo-Vertical-Green.png",
@@ -192,31 +192,7 @@ const handler = async (req, res) => {
                   },
                   children: [],
                 },
-                {
-                  type: "button",
-                  data: {
-                    value: {
-                      content: "Campaign Design",
-                    },
-                  },
-                  attributes: {
-                    align: "center",
-                    "background-color": "#feb062",
-                    color: "#ffffff",
-                    "font-size": "13px",
-                    "font-weight": "normal",
-                    "border-radius": "5px",
-                    padding: "10px 25px 10px 25px",
-                    "inner-padding": "10px 25px 10px 25px",
-                    "line-height": "120%",
-                    target: "_blank",
-                    "vertical-align": "middle",
-                    border: "none",
-                    "text-align": "center",
-                    href: "#",
-                  },
-                  children: [],
-                },
+                
               ],
             },
             {

@@ -122,44 +122,49 @@ export default function EmailBuilder() {
     fetchTemplate();
   }, []);
 
-  const handleImageUpload = async (blob, callback) => {
-    const imageStorageKey = "0be1a7996af760f4a03a7add137ca496"; // Replace with your ImgBB API key
-    const formData = new FormData();
-  
-    // Convert Blob to File object if needed
-    const file = new File([blob], "image.jpg", { type: blob.type });
-  
-    // Convert image to base64 using FileReader
-    const reader = new FileReader();
+  const handleImageUpload = async (blob) => {
+  const imageStorageKey = "0be1a7996af760f4a03a7add137ca496"; // Replace with your ImgBB API key
+  const formData = new FormData();
+
+  // Convert Blob to File object if needed
+  const file = new File([blob], "image.jpg", { type: blob.type });
+
+  // Convert image to base64 using FileReader
+  const reader = new FileReader();
+  return new Promise((resolve, reject) => {
     reader.onloadend = async () => {
       const base64Image = reader.result.split(',')[1]; // Get base64 image without the prefix
       formData.append("image", base64Image);
-  
+
       const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-  
+
       try {
         const response = await fetch(imagebburl, {
           method: "POST",
           body: formData,
         });
         const data = await response.json();
-  
+
         if (data.success) {
           const uploadedImageUrl = data.data.url;
           console.log("Image URL:", uploadedImageUrl);
-  
-          // Pass the uploaded image URL to the callback
-          callback(uploadedImageUrl);
+
+          // Resolve with the uploaded image URL
+         resolve(uploadedImageUrl);
         } else {
           console.error("Image upload failed:", data);
+          reject("Image upload failed");
         }
       } catch (error) {
         console.error("Error uploading image:", error);
+        reject("Error uploading image");
       }
     };
-  
+
     reader.readAsDataURL(file); // Convert blob to base64
-  };
+  });
+};
+
   
 
   const onSubmit = async (values) => {

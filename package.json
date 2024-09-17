@@ -37,6 +37,7 @@
     "gapi-script": "^1.2.0",
     "highcharts": "^11.4.3",
     "highcharts-react-official": "^3.2.1",
+    "html2canvas": "^1.4.1",
     "jquery": "^3.7.1",
     "jstat": "^1.9.6",
     "moment": "^2.30.1",

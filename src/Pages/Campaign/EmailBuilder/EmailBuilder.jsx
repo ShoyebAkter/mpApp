@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
+import html2canvas from "html2canvas";
 import { BlockManager, BasicType, AdvancedType } from "easy-email-core";
 import {
   BlockAvatarWrapper,
@@ -30,7 +31,7 @@ import "@arco-themes/react-easy-email-theme/css/arco.css";
 import handler from "./template";
 import { Modal } from "../Modal";
 // import { Config } from "final-form";
-
+import "./EmailTemplate.css";
 const defaultCategories = [
   {
     label: "Content",
@@ -93,11 +94,23 @@ const defaultCategories = [
     ],
   },
 ];
+const imageStorageKey = "0be1a7996af760f4a03a7add137ca496";
 export default function EmailBuilder() {
   const [template, setTemplate] = useState(null);
+  const [templateImage, setTemplateImage] = useState(null);
   const [image, setImage] = useState(null);
   const [mjmlTemplate, setMjmlTemplate] = useState(``);
   const [html, setHtml] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    fetch("https://emapp-backend.vercel.app/templateData")
+      .then((response) => response.json())
+      .then((data) => {
+        setTemplateImage(data);
+      });
+  };
   const { width } = useWindowSize();
   const smallScene = width < 1400;
 
@@ -113,7 +126,13 @@ export default function EmailBuilder() {
 
       try {
         const response = await handler(req, res);
-        setTemplate(response);
+        const newTemplate = JSON.parse(localStorage.getItem("newTemplate"));
+        if (newTemplate) {
+          setTemplate(newTemplate);
+        } else {
+          setTemplate(response);
+        }
+        // console.log(response)
       } catch (error) {
         console.error("Error loading template:", error);
       }
@@ -123,52 +142,54 @@ export default function EmailBuilder() {
   }, []);
 
   const handleImageUpload = async (blob) => {
-  const imageStorageKey = "0be1a7996af760f4a03a7add137ca496"; // Replace with your ImgBB API key
-  const formData = new FormData();
+    // Replace with your ImgBB API key
+    const formData = new FormData();
 
-  // Convert Blob to File object if needed
-  const file = new File([blob], "image.jpg", { type: blob.type });
+    // Convert Blob to File object if needed
+    const file = new File([blob], "image.jpg", { type: blob.type });
 
-  // Convert image to base64 using FileReader
-  const reader = new FileReader();
-  return new Promise((resolve, reject) => {
-    reader.onloadend = async () => {
-      const base64Image = reader.result.split(',')[1]; // Get base64 image without the prefix
-      formData.append("image", base64Image);
+    // Convert image to base64 using FileReader
+    const reader = new FileReader();
+    return new Promise((resolve, reject) => {
+      reader.onloadend = async () => {
+        const base64Image = reader.result.split(",")[1]; // Get base64 image without the prefix
+        formData.append("image", base64Image);
 
-      const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+        const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
 
-      try {
-        const response = await fetch(imagebburl, {
-          method: "POST",
-          body: formData,
-        });
-        const data = await response.json();
+        try {
+          const response = await fetch(imagebburl, {
+            method: "POST",
+            body: formData,
+          });
+          const data = await response.json();
 
-        if (data.success) {
-          const uploadedImageUrl = data.data.url;
-          console.log("Image URL:", uploadedImageUrl);
+          if (data.success) {
+            const uploadedImageUrl = data.data.url;
+            // console.log("Image URL:", uploadedImageUrl);
 
-          // Resolve with the uploaded image URL
-         resolve(uploadedImageUrl);
-        } else {
-          console.error("Image upload failed:", data);
-          reject("Image upload failed");
+            // Resolve with the uploaded image URL
+            resolve(uploadedImageUrl);
+          } else {
+            console.error("Image upload failed:", data);
+            reject("Image upload failed");
+          }
+        } catch (error) {
+          console.error("Error uploading image:", error);
+          reject("Error uploading image");
         }
-      } catch (error) {
-        console.error("Error uploading image:", error);
-        reject("Error uploading image");
-      }
-    };
+      };
 
-    reader.readAsDataURL(file); // Convert blob to base64
-  });
-};
-
-  
+      reader.readAsDataURL(file); // Convert blob to base64
+    });
+  };
 
   const onSubmit = async (values) => {
-    console.log(values);
+    localStorage.setItem("newTemplate", JSON.stringify(values));
+    handleSave();
+
+    // console.log(values);
+    // setTemplate(values)
     if (values) {
       const response = await axios.post(
         "https://emapp-backend.vercel.app/convertToMjml",
@@ -188,18 +209,61 @@ export default function EmailBuilder() {
         }
       );
       setHtml(response.data);
-      console.log("Html", response.data);
+      sendTemplateData(values);
+      // console.log(response);
+      // console.log("Html", response.data);
     } catch (error) {
       console.error("Error sending email:", error);
     }
   };
 
-  if (!template) return <Spin />;
+  const handleSave = () => {
+    const element = document.getElementById("VisualEditorEditMode");
+    html2canvas(element, { useCORS: true }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png").split(",")[1]; // Extract base64 image data
+      const formData = new FormData();
+      formData.append("image", imgData);
 
+      fetch(`https://api.imgbb.com/1/upload?key=${imageStorageKey}`, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            const imageUrl = data.data.url;
+            setImage(imageUrl);
+          } else {
+            console.error("Image upload failed:", data.error);
+          }
+        })
+        .catch((error) => {
+          console.error("Error uploading image:", error);
+        });
+    });
+  };
+
+  const sendTemplateData = async (values) => {
+    // console.log("start")
+    const templateInfo = {
+      imageUrl: image,
+      template: values,
+    };
+    // console.log(templateInfo);
+    fetch("https://emapp-backend.vercel.app/templateData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(templateInfo),
+    })
+    // console.log(templateResponse);
+  };
+  if (!template) return <Spin />;
+  // console.log(template)
   return (
     <EmailEditorProvider
       data={template}
-      height={"calc(100vh - 70px)"}
       autoComplete
       dashed={false}
       onSubmit={onSubmit}
@@ -208,6 +272,16 @@ export default function EmailBuilder() {
       {({ values }, { submit, restart }) => {
         return (
           <>
+            <div className={`sideBar ${isMenuOpen ? "active" : ""}`}>
+              <div className="image-grid">
+                {templateImage?.map((image) => (
+                  <div key={image.id} className="image-item">
+                    <div className="text-center text-xl">{image.template.subject}</div>
+                    <img src={image.image} alt={`Image ${image.id}`} />
+                  </div>
+                ))}
+              </div>
+            </div>
             <PageHeader
               style={{ background: "var(--color-bg-2)" }}
               title=""
@@ -216,6 +290,9 @@ export default function EmailBuilder() {
                   <Modal html={html} />
                   <Button type="primary" onClick={submit}>
                     Save
+                  </Button>
+                  <Button type="primary" onClick={toggleMenu}>
+                  Template
                   </Button>
                 </Space>
               }

@@ -126,12 +126,13 @@ export default function EmailBuilder() {
 
       try {
         const response = await handler(req, res);
-        const newTemplate = JSON.parse(localStorage.getItem("newTemplate"));
-        if (newTemplate) {
-          setTemplate(newTemplate);
-        } else {
-          setTemplate(response);
-        }
+        setTemplate(response);
+        // const newTemplate = JSON.parse(localStorage.getItem("newTemplate"));
+        // if (newTemplate) {
+        //   setTemplate(newTemplate);
+        // } else {
+        //   setTemplate(response);
+        // }
         // console.log(response)
       } catch (error) {
         console.error("Error loading template:", error);

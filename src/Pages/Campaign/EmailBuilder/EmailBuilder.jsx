@@ -260,6 +260,11 @@ export default function EmailBuilder() {
     })
     // console.log(templateResponse);
   };
+
+  const handleClickImage=(image)=>{
+    // console.log("clicked",image)
+    setTemplate(image.template)
+  }
   if (!template) return <Spin />;
   // console.log(template)
   return (
@@ -278,7 +283,7 @@ export default function EmailBuilder() {
                 {templateImage?.map((image) => (
                   <div key={image.id} className="image-item">
                     <div className="text-center text-xl">{image.template.subject}</div>
-                    <img src={image.image} alt={`Image ${image.id}`} />
+                    <img className="cursor-pointer" onClick={()=>handleClickImage(image)} src={image.image} alt={`Image ${image.id}`} />
                   </div>
                 ))}
               </div>

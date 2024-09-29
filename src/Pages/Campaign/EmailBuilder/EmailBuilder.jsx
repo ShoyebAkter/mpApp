@@ -32,6 +32,8 @@ import handler from "./template";
 import { Modal } from "../Modal";
 // import { Config } from "final-form";
 import "./EmailTemplate.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const defaultCategories = [
   {
     label: "Content",
@@ -99,7 +101,6 @@ export default function EmailBuilder() {
   const [template, setTemplate] = useState(null);
   const [templateImage, setTemplateImage] = useState(null);
   const [image, setImage] = useState(null);
-  const [mjmlTemplate, setMjmlTemplate] = useState(``);
   const [html, setHtml] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -186,68 +187,74 @@ export default function EmailBuilder() {
   };
 
   const onSubmit = async (values) => {
-    localStorage.setItem("newTemplate", JSON.stringify(values));
-    handleSave();
-
-    // console.log(values);
-    // setTemplate(values)
-    if (values) {
-      const response = await axios.post(
+    handleSave(values);
+    try {
+      const mjmlTemplate = await axios.post(
         "https://emapp-backend.vercel.app/convertToMjml",
         {
           templateData: values,
         }
       );
-      setMjmlTemplate(response.data);
-      // console.log(response.data)
-    }
-    try {
       // Send the template data to the backend API
       const response = await axios.post(
         "https://emapp-backend.vercel.app/convertHtml",
         {
-          template: mjmlTemplate,
+          template: mjmlTemplate.data,
         }
       );
       setHtml(response.data);
-      sendTemplateData(values);
+      
       // console.log(response);
-      // console.log("Html", response.data);
+      console.log("Html", response.data);
     } catch (error) {
       console.error("Error sending email:", error);
     }
   };
 
-  const handleSave = () => {
+  const handleSave =async (values) => {
+    const response =await axios.get(
+          "https://emapp-backend.vercel.app/templateData"
+        );
+    
+      // console.log(response,values)
     const element = document.getElementById("VisualEditorEditMode");
-    html2canvas(element, { useCORS: true }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png").split(",")[1]; // Extract base64 image data
-      const formData = new FormData();
-      formData.append("image", imgData);
+    const similarObj = response.data.find(item => item.template.subject === values.subject);
+    // console.log(similarObj)
 
-      fetch(`https://api.imgbb.com/1/upload?key=${imageStorageKey}`, {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            const imageUrl = data.data.url;
-            setImage(imageUrl);
-          } else {
-            console.error("Image upload failed:", data.error);
-          }
+    if(similarObj === undefined){
+      html2canvas(element, { useCORS: true }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png").split(",")[1]; // Extract base64 image data
+        const formData = new FormData();
+        formData.append("image", imgData);
+  
+        fetch(`https://api.imgbb.com/1/upload?key=${imageStorageKey}`, {
+          method: "POST",
+          body: formData,
         })
-        .catch((error) => {
-          console.error("Error uploading image:", error);
-        });
-    });
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              const imageUrl = data.data.url;
+              sendTemplateData(values,imageUrl);
+            } else {
+              console.error("Image upload failed:", data.error);
+            }
+          })
+          .catch((error) => {
+            console.error("Error uploading image:", error);
+          });
+      });
+    }else{
+      toast.error("Change Subject Name");
+    }
+
+    
   };
 
-  const sendTemplateData = async (values) => {
+  const sendTemplateData = async (values,myimg) => {
     // console.log("start")
     const templateInfo = {
-      imageUrl: image,
+      imageUrl: myimg,
       template: values,
     };
     // console.log(templateInfo);
@@ -278,6 +285,7 @@ export default function EmailBuilder() {
       {({ values }, { submit, restart }) => {
         return (
           <>
+          <ToastContainer/>
             <div className={`sideBar ${isMenuOpen ? "active" : ""}`}>
               <div className="image-grid">
                 {templateImage?.map((image) => (
@@ -287,6 +295,7 @@ export default function EmailBuilder() {
                   </div>
                 ))}
               </div>
+              
             </div>
             <PageHeader
               style={{ background: "var(--color-bg-2)" }}

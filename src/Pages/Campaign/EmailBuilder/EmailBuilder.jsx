@@ -34,6 +34,8 @@ import { Modal } from "../Modal";
 import "./EmailTemplate.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowBuilder, setTemplate } from "../../../features/counter/counterSlice";
 const defaultCategories = [
   {
     label: "Content",
@@ -97,20 +99,21 @@ const defaultCategories = [
   },
 ];
 const imageStorageKey = "0be1a7996af760f4a03a7add137ca496";
-export default function EmailBuilder() {
-  const [template, setTemplate] = useState(null);
+export default function EmailBuilder({user}) {
   const [templateImage, setTemplateImage] = useState(null);
   const [image, setImage] = useState(null);
   const [html, setHtml] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const template=useSelector((state)=>state.counter.template);
+  const dispatch=useDispatch()
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    fetch("https://emapp-backend.vercel.app/templateData")
-      .then((response) => response.json())
-      .then((data) => {
-        setTemplateImage(data);
-      });
+    dispatch(setShowBuilder(false))
+    // setIsMenuOpen(!isMenuOpen);
+    // fetch("https://emapp-backend.vercel.app/templateData")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     setTemplateImage(data);
+    //   });
   };
   const { width } = useWindowSize();
   const smallScene = width < 1400;
@@ -127,7 +130,7 @@ export default function EmailBuilder() {
 
       try {
         const response = await handler(req, res);
-        setTemplate(response);
+        dispatch(setTemplate(response));
         // const newTemplate = JSON.parse(localStorage.getItem("newTemplate"));
         // if (newTemplate) {
         //   setTemplate(newTemplate);
@@ -139,9 +142,36 @@ export default function EmailBuilder() {
         console.error("Error loading template:", error);
       }
     };
-
-    fetchTemplate();
-  }, []);
+    const getHtml=async(values)=>{
+      try {
+        console.log("entered")
+        const mjmlTemplate = await axios.post(
+          "https://emapp-backend.vercel.app/convertToMjml",
+          {
+            templateData: values,
+          }
+        );
+        // Send the template data to the backend API
+        const response = await axios.post(
+          "https://emapp-backend.vercel.app/convertHtml",
+          {
+            template: mjmlTemplate.data,
+          }
+        );
+        setHtml(response.data);
+        
+        // console.log(response);
+        // console.log("Html", response.data);
+      } catch (error) {
+        console.error("Error sending email:", error);
+      }
+    }
+    if(!template){
+      fetchTemplate();
+    }else{
+      getHtml(template)
+    }
+  }, [template]);
 
   const handleImageUpload = async (blob) => {
     // Replace with your ImgBB API key
@@ -187,27 +217,33 @@ export default function EmailBuilder() {
   };
 
   const onSubmit = async (values) => {
-    handleSave(values);
-    try {
-      const mjmlTemplate = await axios.post(
-        "https://emapp-backend.vercel.app/convertToMjml",
-        {
-          templateData: values,
-        }
-      );
-      // Send the template data to the backend API
-      const response = await axios.post(
-        "https://emapp-backend.vercel.app/convertHtml",
-        {
-          template: mjmlTemplate.data,
-        }
-      );
-      setHtml(response.data);
-      
-      // console.log(response);
-      console.log("Html", response.data);
-    } catch (error) {
-      console.error("Error sending email:", error);
+    
+    if(values.content!==template.content){
+      try {
+        const mjmlTemplate = await axios.post(
+          "https://emapp-backend.vercel.app/convertToMjml",
+          {
+            templateData: values,
+          }
+        );
+        // Send the template data to the backend API
+        const response = await axios.post(
+          "https://emapp-backend.vercel.app/convertHtml",
+          {
+            template: mjmlTemplate.data,
+          }
+        );
+        setHtml(response.data);
+        
+        // console.log(response);
+        // console.log("Html", response.data);
+      } catch (error) {
+        console.error("Error sending email:", error);
+      }
+  
+      handleSave(values);
+    }else{
+      toast.error("Same Template");
     }
   };
 
@@ -236,6 +272,7 @@ export default function EmailBuilder() {
             if (data.success) {
               const imageUrl = data.data.url;
               sendTemplateData(values,imageUrl);
+              toast.success("New Template added")
             } else {
               console.error("Image upload failed:", data.error);
             }
@@ -254,11 +291,13 @@ export default function EmailBuilder() {
   const sendTemplateData = async (values,myimg) => {
     // console.log("start")
     const templateInfo = {
+      userId:user.uid,
       imageUrl: myimg,
       template: values,
+      date: new Date()
     };
     // console.log(templateInfo);
-    fetch("https://emapp-backend.vercel.app/templateData", {
+    await fetch("https://emapp-backend.vercel.app/templateData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -270,7 +309,7 @@ export default function EmailBuilder() {
 
   const handleClickImage=(image)=>{
     // console.log("clicked",image)
-    setTemplate(image.template)
+    dispatch(setTemplate(response));
   }
   if (!template) return <Spin />;
   // console.log(template)
@@ -286,7 +325,7 @@ export default function EmailBuilder() {
         return (
           <>
           <ToastContainer/>
-            <div className={`sideBar ${isMenuOpen ? "active" : ""}`}>
+            {/* <div className={`sideBar ${isMenuOpen ? "active" : ""}`}>
               <div className="image-grid">
                 {templateImage?.map((image) => (
                   <div key={image.id} className="image-item">
@@ -296,25 +335,25 @@ export default function EmailBuilder() {
                 ))}
               </div>
               
-            </div>
+            </div> */}
             <PageHeader
               style={{ background: "var(--color-bg-2)" }}
               title=""
               extra={
                 <Space>
-                  <Modal html={html} />
+                  <Modal html={html} userId={user.uid} />
                   <Button type="primary" onClick={submit}>
                     Save
                   </Button>
                   <Button type="primary" onClick={toggleMenu}>
-                  Template
+                  Back
                   </Button>
                 </Space>
               }
             />
             <StandardLayout
               compact={!smallScene}
-              showSourceCode={true}
+              showSourceCode={false}
               categories={defaultCategories}
             >
               <EmailEditor />

@@ -8,7 +8,10 @@
     width: 50%;
     z-index: 1000;
 }
-
+.arco-tabs-header-title {
+  display: none;
+  /* color: red; */
+}
 .sideBar.active {
     display: flex;
   }

@@ -24,6 +24,8 @@ const initialState = {
   instaImpression:0,
   instaMediaLikes:0,
   instaMediaComments:0,
+  template:null,
+  showBuilder:false,
 }
 
 export const counterSlice = createSlice({
@@ -99,15 +101,21 @@ export const counterSlice = createSlice({
     setInstaMediaComment : (state,action)=>{
       state.instaMediaComments =action.payload
     },
+    setTemplate : (state,action)=>{
+      state.template =action.payload
+    },
+    setShowBuilder : (state,action)=>{
+      state.showBuilder =action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
 export const { setfbAccessToken,setInstaAccessToken,setLinkedinAccessToken,setFbFollowers,
-  setTotalFbPost,setFbPageImpression,setFbPageLikes,setFbPageComments,
+  setTotalFbPost,setFbPageImpression,setFbPageLikes,setFbPageComments,setShowBuilder,
   setLinkedinCode,setYoutubeToken,setLinkedinState,setChannelId,setYoutubeVideoList,
   setYoutubeTotalVideo,setYoutubeSubscriber,setYoutubeTotalViews,setYoutubeComment,setYoutubeLikes,
-  setInstaFollowers,setInstaTotalPost,setInstaImpression,setInstaMediaLikes,setInstaMediaComment
+  setInstaFollowers,setInstaTotalPost,setInstaImpression,setInstaMediaLikes,setInstaMediaComment,setTemplate
 } = counterSlice.actions
 
 export default counterSlice.reducer

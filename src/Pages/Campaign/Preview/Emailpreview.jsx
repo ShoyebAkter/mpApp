@@ -30,7 +30,7 @@ export const Emailpreview = ({ userId, html }) => {
   }, []);
 
   rfmLogic(moment, customersData[0]?.customers);
-  console.log(selectedOption);
+  // console.log(selectedOption);
   //  useEffect(()=>{
   //     if(customersData){
   //         getCustomerSegMentCount(customersData[0]?.customers, setSegmentCount);

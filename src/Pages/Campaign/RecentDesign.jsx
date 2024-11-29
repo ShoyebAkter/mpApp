@@ -27,12 +27,12 @@ const RecentDesign = ({ user }) => {
       dispatch(setTemplate(temp.template));
     }
   };
-  console.log(user);
+  // console.log(user);
   return (
     <div className="flex m-10 ">
       <div className="sideBarCanva  px-5 w-[300px]">
         <div className="text-2xl text-blue-500 font-semibold font-serif my-3">
-          Euler Mail
+          Drag & Drop Editor
         </div>
         <div
           onClick={setDesign}

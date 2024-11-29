@@ -12,6 +12,30 @@
   display: none;
   /* color: red; */
 }
+._blockItem_1ajtj_6 ._blockItemContainer_1ajtj_16 {
+  padding: 0px;
+}
+/* .arco-row{
+  height: 150px;
+  overflow-y: scroll;
+} */
+/* .arco-collapse-item{
+  display: flex;
+  width: 100%;
+} */
+/* .icon-number{
+  display: none;
+} */
+/* .arco-row{
+  display: flex;
+  flex-direction: column;
+}
+._blockItem_1ajtj_6{
+  width: 100px;
+}
+._blockItem_1ajtj_6:nth-child(3n+1){
+  margin-left: 0px;
+} */
 .sideBar.active {
     display: flex;
   }

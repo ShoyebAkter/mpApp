@@ -49,7 +49,6 @@ export default function EmailBuilder({ user }) {
   const [templateImage, setTemplateImage] = useState(null);
   const [dataTypeArray, setDataTypeArray] = useState(null);
   const [html, setHtml] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const template = useSelector((state) => state.counter.template);
   const dispatch = useDispatch();
   const toggleMenu = () => {
@@ -86,9 +85,9 @@ export default function EmailBuilder({ user }) {
     };
 
     const setupListener = (image, index) => {
-        // const arcoElement=document.querySelector('.arco-row');
-        // arcoElement.style.height="200px"
-        // arcoElement.style.overflow="scroll"
+        const arcoElement=document.querySelector('.arco-row');
+        arcoElement.style.height="250px"
+        arcoElement.style.overflow="scroll"
         const mainDiv2 = document.querySelector(
           `[data-type="TESTIMONIAL_${index + 1}_BLOCK"]`
         );
@@ -99,12 +98,15 @@ export default function EmailBuilder({ user }) {
           );
   
           if (mainDiv) {
-            console.log(mainDiv);
+            // console.log(mainDiv);
   
             // Remove the inner div if it exists
             const innerDiv = mainDiv.querySelector("div");
-            if (innerDiv) {
+            const innerSpan = mainDiv.querySelector("span");
+            console.log(innerSpan)
+            if (innerDiv && innerSpan) {
               innerDiv.remove();
+              innerSpan.style.display="none"
             }
   
             // Create and append a new image
@@ -112,7 +114,7 @@ export default function EmailBuilder({ user }) {
             img.src = image; // Image URL
             img.alt = "Descriptive text"; // Alt text
             img.style.width = "100%"; // Optional width
-            img.style.height = "50px"; // Optional height
+            img.style.height = "100%"; // Optional height
             img.style.cursor = "pointer";
   
             mainDiv.appendChild(img);
@@ -164,31 +166,28 @@ export default function EmailBuilder({ user }) {
       }
     };
     const getHtml = async (values) => {
-      if (values.content === template.content) {
-        try {
-          // console.log("entered")
-          const mjmlTemplate = await axios.post(
-            "https://emapp-backend.vercel.app/convertToMjml",
-            {
-              templateData: values,
-            }
-          );
-          // Send the template data to the backend API
-          const response = await axios.post(
-            "https://emapp-backend.vercel.app/convertHtml",
-            {
-              template: mjmlTemplate.data,
-            }
-          );
-          setHtml(response.data);
-  
-          // console.log(response);
-          // console.log("Html", response.data);
-        } catch (error) {
-          console.error("Error sending email:", error);
-        }
+      try {
+        // console.log("entered")
+        const mjmlTemplate = await axios.post(
+          "https://emapp-backend.vercel.app/convertToMjml",
+          {
+            templateData: values,
+          }
+        );
+        // Send the template data to the backend API
+        const response = await axios.post(
+          "https://emapp-backend.vercel.app/convertHtml",
+          {
+            template: mjmlTemplate.data,
+          }
+        );
+        setHtml(response.data);
+
+        // console.log(response);
+        // console.log("Html", response.data);
+      } catch (error) {
+        console.error("Error sending email:", error);
       }
-      
     };
     console.log(template)
     if (!template) {
@@ -214,7 +213,7 @@ export default function EmailBuilder({ user }) {
         setDataTypeArray(newdataTypeArray);
         // console.log(dataTypeArray)
         // Dynamically register blocks based on fetched data
-        data.slice(0,2).forEach((template, index) => {
+        data.forEach((template, index) => {
           BlockManager.registerBlocks({
             [newdataTypeArray[index]]: {
               // Dynamically use blockType array value as the key
@@ -382,12 +381,12 @@ export default function EmailBuilder({ user }) {
     {
       label: "Template",
       active: true,
-      blocks: allTemplate.slice(0,2).map((_, index) => ({
+      blocks: allTemplate.map((_, index) => ({
         type: dataTypeArray[index],
       })),
     },
     {
-      label: "Content",
+      label: "Drag & Drop Content",
       active: true,
       blocks: [
         {
@@ -456,11 +455,11 @@ export default function EmailBuilder({ user }) {
             <ToastContainer />
             <PageHeader
               style={{ background: "var(--color-bg-2)" }}
-              title="Drag & Drop your content into the Template"
+              title=""
               extra={
                 <Space>
                   <Modal html={html} userId={user.uid} />
-                  <Button type="primary" onClick={submit}>
+                  <Button disabled={values.content === template.content} type="primary" onClick={submit}>
                     Save
                   </Button>
                 </Space>

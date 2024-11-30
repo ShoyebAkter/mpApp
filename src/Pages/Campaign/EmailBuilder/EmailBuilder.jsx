@@ -103,7 +103,7 @@ export default function EmailBuilder({ user }) {
             // Remove the inner div if it exists
             const innerDiv = mainDiv.querySelector("div");
             const innerSpan = mainDiv.querySelector("span");
-            console.log(innerSpan)
+            // console.log(innerSpan)
             if (innerDiv && innerSpan) {
               innerDiv.remove();
               innerSpan.style.display="none"
@@ -189,7 +189,7 @@ export default function EmailBuilder({ user }) {
         console.error("Error sending email:", error);
       }
     };
-    console.log(template)
+    // console.log(template)
     if (!template) {
       fetchTemplate();
     } else {
@@ -254,7 +254,7 @@ export default function EmailBuilder({ user }) {
             body: formData,
           });
           const data = await response.json();
-          console.log(data);
+          // console.log(data);
           if (data.success) {
             const uploadedImageUrl = data.data.url;
             // console.log("Image URL:", uploadedImageUrl);

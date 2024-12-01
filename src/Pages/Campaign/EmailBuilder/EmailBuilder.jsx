@@ -459,7 +459,7 @@ export default function EmailBuilder({ user }) {
               extra={
                 <Space>
                   <Modal html={html} userId={user.uid} />
-                  <Button disabled={values.content === template.content} type="primary" onClick={submit}>
+                  <Button  type="primary" onClick={submit}>
                     Save
                   </Button>
                 </Space>

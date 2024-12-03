@@ -30,7 +30,7 @@ function SocialMediaChart() {
       .then((res) => res.json())
       .then((result) => setFbData(result));
   }, []);
-  const result = fbData.reduce((acc, campaign) => {
+  const result = fbData?.reduce((acc, campaign) => {
     const existingCampaign = acc.find((item) => item.date === campaign.date);
 
     if (existingCampaign) {

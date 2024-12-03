@@ -233,30 +233,29 @@ export default function EmailBuilder({ user }) {
 
   // console.log(allTemplate)
   const handleImageUpload = async (blob) => {
-    // Replace with your ImgBB API key
-    const formData = new FormData();
-
     // Convert Blob to File object if needed
     const file = new File([blob], "image.jpg", { type: blob.type });
-
-    // Convert image to base64 using FileReader
+  
+    // Prepare FormData
+    const formData = new FormData();
+    
+  
     const reader = new FileReader();
     return new Promise((resolve, reject) => {
       reader.onloadend = async () => {
-        const base64Image = reader.result.split(",")[1]; // Get base64 image without the prefix
-        formData.append("image", base64Image);
+        formData.append("image", file);
 
-        const imagebburl = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+        const imageUploadUrl = "https://emapp-backend.vercel.app/upload";
 
         try {
-          const response = await fetch(imagebburl, {
+          const response = await fetch(imageUploadUrl, {
             method: "POST",
             body: formData,
           });
           const data = await response.json();
           // console.log(data);
           if (data.success) {
-            const uploadedImageUrl = data.data.url;
+            const uploadedImageUrl = data.imageUrl;
             // console.log("Image URL:", uploadedImageUrl);
 
             // Resolve with the uploaded image URL
@@ -273,7 +272,9 @@ export default function EmailBuilder({ user }) {
 
       reader.readAsDataURL(file); // Convert blob to base64
     });
+
   };
+  
 
   const onSubmit = async (values) => {
     if (values.content !== template.content) {

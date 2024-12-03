@@ -19,7 +19,7 @@ export const LoginHeader = () => {
         callApi("https://emapp-backend.vercel.app/subscription/database",setData)
       }
     },[])
-    // console.log(data)
+    console.log(data)
     const foundObject = user && data.find(obj => obj?.email === user.email);
     // console.log(foundObject)
     foundObject && localStorage.setItem("companyName",foundObject.companyName)

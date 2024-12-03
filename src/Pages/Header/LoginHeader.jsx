@@ -18,7 +18,7 @@ export const LoginHeader = () => {
       if(shopify){
         callApi("https://emapp-backend.vercel.app/subscription/database",setData)
       }
-    },[])
+    },[shopify])
     console.log(data)
     const foundObject = user && data.find(obj => obj?.email === user.email);
     // console.log(foundObject)

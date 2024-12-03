@@ -26,12 +26,32 @@ export const getSalesData = (totalSales,salesValue) => {
     });
   };
 
-export const callApi=(api,setTotalSales)=>{
-    fetch(api)
-      .then((res) => res.json())
-      .then((result) => setTotalSales(result))
-      .catch((error) => console.error(error));
-}
+export const callApi = async (url, setData) => {
+  try {
+    console.log("Calling API at:", url);
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    console.log("Response:", response);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("Fetched data:", data);
+
+    setData(data);
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+  }
+};
+
 export const changeArrayValue = (salesValue,resultArray) => {
     //    console.log(resultArray)
     salesValue.forEach((obj) => {

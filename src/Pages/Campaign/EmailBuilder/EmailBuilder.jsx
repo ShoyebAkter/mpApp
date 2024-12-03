@@ -72,8 +72,10 @@ export default function EmailBuilder({ user }) {
           const span = container.querySelector(".arco-typography");
           if (span) {
             const spanText = span.textContent; // Fetch the text content of the span
-            const foundObj = allTemplate.find(obj => obj.template.subject === spanText);
-            dispatch(setTemplate(foundObj.template))
+            const foundObj = allTemplate.find(
+              (obj) => obj.template.subject === spanText
+            );
+            dispatch(setTemplate(foundObj.template));
             // console.log(template,foundObj)
           } else {
             console.log("Span not found inside container.");
@@ -85,60 +87,54 @@ export default function EmailBuilder({ user }) {
     };
 
     const setupListener = (image, index) => {
-        const arcoElement=document.querySelector('.arco-row');
-        arcoElement.style.height="250px"
-        arcoElement.style.overflow="scroll"
-        const mainDiv2 = document.querySelector(
-          `[data-type="TESTIMONIAL_${index + 1}_BLOCK"]`
-        );
-  
-        if (mainDiv2) {
-          const mainDiv = mainDiv2.querySelector(
-            "._blockItemContainer_1ajtj_16"
-          );
-  
-          if (mainDiv) {
-            // console.log(mainDiv);
-  
-            // Remove the inner div if it exists
-            const innerDiv = mainDiv.querySelector("div");
-            const innerSpan = mainDiv.querySelector("span");
-            // console.log(innerSpan)
-            if (innerDiv && innerSpan) {
-              innerDiv.remove();
-              innerSpan.style.display="none"
-            }
-  
-            // Create and append a new image
-            const img = document.createElement("img");
-            img.src = image; // Image URL
-            img.alt = "Descriptive text"; // Alt text
-            img.style.width = "100%"; // Optional width
-            img.style.height = "100%"; // Optional height
-            img.style.cursor = "pointer";
-  
-            mainDiv.appendChild(img);
-            mainDiv2.addEventListener("click", handleClick);
-          } else {
-            console.log(`mainDiv not found for index ${index}.`);
+      const arcoElement = document.querySelector(".arco-row");
+      arcoElement.style.height = "250px";
+      arcoElement.style.overflow = "scroll";
+      const mainDiv2 = document.querySelector(
+        `[data-type="TESTIMONIAL_${index + 1}_BLOCK"]`
+      );
+
+      if (mainDiv2) {
+        const mainDiv = mainDiv2.querySelector("._blockItemContainer_1ajtj_16");
+
+        if (mainDiv) {
+          // console.log(mainDiv);
+
+          // Remove the inner div if it exists
+          const innerDiv = mainDiv.querySelector("div");
+          const innerSpan = mainDiv.querySelector("span");
+          // console.log(innerSpan)
+          if (innerDiv && innerSpan) {
+            innerDiv.remove();
+            innerSpan.style.display = "none";
           }
+
+          // Create and append a new image
+          const img = document.createElement("img");
+          img.src = image; // Image URL
+          img.alt = "Descriptive text"; // Alt text
+          img.style.width = "100%"; // Optional width
+          img.style.height = "100%"; // Optional height
+          img.style.cursor = "pointer";
+
+          mainDiv.appendChild(img);
+          mainDiv2.addEventListener("click", handleClick);
         } else {
-          console.log(`mainDiv2 not found for index ${index}.`);
+          console.log(`mainDiv not found for index ${index}.`);
         }
-  
-  
-        
-        // if (!mainDiv2.hasAttribute("listener-added")) {
-          
-        //   mainDiv2.setAttribute("listener-added", "true");
-        // }
-      
+      } else {
+        console.log(`mainDiv2 not found for index ${index}.`);
+      }
+
+      // if (!mainDiv2.hasAttribute("listener-added")) {
+
+      //   mainDiv2.setAttribute("listener-added", "true");
+      // }
     };
-  
+
     // Iterate over allTemplate to set up listeners for each item
     allTemplate.forEach((item, index) => setupListener(item.image, index));
   }, [allTemplate]);
-  
 
   // console.log(BlockManager,BasicType)
   useEffect(() => {
@@ -196,18 +192,19 @@ export default function EmailBuilder({ user }) {
       getHtml(template);
     }
   }, [template]);
-  
+
   useEffect(() => {
     fetch(`https://emapp-backend.vercel.app/templateData?userId=${user.uid}`)
       .then((response) => response.json())
       .then((data) => {
-        const updatedData = data.map((item,index) => ({
-          ...item,
-          dataType: `TESTIMONIAL_${index+1}_BLOCK` // Add the new property with its value
-        }));
-        
-        setAllTemplate(updatedData); // Update state with the modified array
-    
+        // console.log(data)
+        if(data){
+          const updatedData = data?.map((item, index) => ({
+            ...item,
+            dataType: `TESTIMONIAL_${index + 1}_BLOCK`, // Add the new property with its value
+          }));
+          setAllTemplate(updatedData); // Update state with the modified array
+
         // Extract all dataType values into an array
         const newdataTypeArray = updatedData.map((item) => item.dataType);
         setDataTypeArray(newdataTypeArray);
@@ -228,6 +225,9 @@ export default function EmailBuilder({ user }) {
             },
           });
         });
+        }
+
+        
       });
   }, [user.uid]); // Trigger only when user.uid changes
 
@@ -235,11 +235,10 @@ export default function EmailBuilder({ user }) {
   const handleImageUpload = async (blob) => {
     // Convert Blob to File object if needed
     const file = new File([blob], "image.jpg", { type: blob.type });
-  
+
     // Prepare FormData
     const formData = new FormData();
-    
-  
+
     const reader = new FileReader();
     return new Promise((resolve, reject) => {
       reader.onloadend = async () => {
@@ -272,11 +271,10 @@ export default function EmailBuilder({ user }) {
 
       reader.readAsDataURL(file); // Convert blob to base64
     });
-
   };
-  
 
   const onSubmit = async (values) => {
+    // console.log(updatedValues)
     if (values.content !== template.content) {
       try {
         const mjmlTemplate = await axios.post(
@@ -299,53 +297,55 @@ export default function EmailBuilder({ user }) {
       } catch (error) {
         console.error("Error sending email:", error);
       }
+      const randomNumber = Math.floor(Math.random() * 100) + 1;
 
-      handleSave(values);
+      const updatedValues = {
+        ...values,
+        subject: `Temp_${randomNumber}`,
+      };
+      handleSave(updatedValues);
     } else {
       toast.error("Same Template");
     }
   };
 
   const handleSave = async (values) => {
-    const response = await axios.get(
-      "https://emapp-backend.vercel.app/templateData"
-    );
-
-    // console.log(response,values)
     const element = document.getElementById("VisualEditorEditMode");
-    const similarObj = response.data.find(
-      (item) => item.template.subject === values.subject
-    );
-    // console.log(similarObj)
-
-    if (similarObj === undefined) {
-      html2canvas(element, { useCORS: true }).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png").split(",")[1]; // Extract base64 image data
+    html2canvas(element, { useCORS: true }).then((canvas) => {
+      canvas.toBlob(async (blob) => {
+        if (!blob) {
+          console.error("Failed to create blob from canvas");
+          return;
+        }
+  
+        const file = new File([blob], "canvas_image.png", { type: "image/png" });
+  
+        // Prepare FormData
         const formData = new FormData();
-        formData.append("image", imgData);
-
-        fetch(`https://api.imgbb.com/1/upload?key=${imageStorageKey}`, {
-          method: "POST",
-          body: formData,
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              const imageUrl = data.data.url;
-              sendTemplateData(values, imageUrl);
-              toast.success("New Template added");
-            } else {
-              console.error("Image upload failed:", data.error);
-            }
-          })
-          .catch((error) => {
-            console.error("Error uploading image:", error);
+        formData.append("image", file);
+  
+        try {
+          const response = await fetch("https://emapp-backend.vercel.app/upload", {
+            method: "POST",
+            body: formData,
           });
+  
+          const data = await response.json();
+  
+          if (data.success) {
+            const imageUrl = data.imageUrl;
+            sendTemplateData(values, imageUrl);
+            toast.success("New Template added");
+          } else {
+            console.error("Image upload failed:", data.error);
+          }
+        } catch (error) {
+          console.error("Error uploading image:", error);
+        }
       });
-    } else {
-      toast.error("Change Subject Name");
-    }
+    });
   };
+  
 
   const sendTemplateData = async (values, myimg) => {
     // console.log("start")
@@ -460,7 +460,7 @@ export default function EmailBuilder({ user }) {
               extra={
                 <Space>
                   <Modal html={html} userId={user.uid} />
-                  <Button  type="primary" onClick={submit}>
+                  <Button type="primary" onClick={submit}>
                     Save
                   </Button>
                 </Space>

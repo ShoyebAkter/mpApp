@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { AiOutlineMail } from "react-icons/ai"
 
 export const Modal = ({userId,html}) => {
-  
+  // console.log(html)
   return (
     <div>
         <button className="px-5 py-2 text-black bg-green-200" onClick={() =>
@@ -13,6 +13,7 @@ export const Modal = ({userId,html}) => {
           if(!html)
           {toast.error("Save")}
           else{
+            console.log(html)
             document.getElementById('my_modal_4').showModal()
           }
         }

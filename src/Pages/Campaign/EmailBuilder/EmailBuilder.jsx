@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
-import { BlockManager, BasicType, AdvancedType } from "easy-email-core";
+import { BlockManager, BasicType, AdvancedType,JsonToMjml  } from "easy-email-core";
+import mjml2html from "mjml-browser"
 import {
   BlockAvatarWrapper,
   EmailEditor,
@@ -40,10 +41,8 @@ import {
   setShowBuilder,
   setTemplate,
 } from "../../../features/counter/counterSlice";
+import { newHtml } from "./newHtml";
 // Register the custom block
-
-const blockType = ["TESTIMONIAL_BLOCK", "TEMPLATE_BLOCK"];
-const imageStorageKey = "0be1a7996af760f4a03a7add137ca496";
 export default function EmailBuilder({ user }) {
   const [allTemplate, setAllTemplate] = useState([]);
   const [templateImage, setTemplateImage] = useState(null);
@@ -76,6 +75,7 @@ export default function EmailBuilder({ user }) {
               (obj) => obj.template.subject === spanText
             );
             dispatch(setTemplate(foundObj.template));
+            getHtml(foundObj.template);
             // console.log(template,foundObj)
           } else {
             console.log("Span not found inside container.");
@@ -131,7 +131,31 @@ export default function EmailBuilder({ user }) {
       //   mainDiv2.setAttribute("listener-added", "true");
       // }
     };
+    const getHtml = async (values) => {
+      try {
+        // console.log("entered")
+        const mjmlTemplate = await axios.post(
+          "https://emapp-backend.vercel.app/convertToMjml",
+          {
+            templateData: values,
+          }
+        );
+        
+        // Send the template data to the backend API
+        const response = await axios.post(
+          "https://emapp-backend.vercel.app/convertHtml",
+          {
+            template: mjmlTemplate.data,
+          }
+        );
+        setHtml(response.data);
 
+        // console.log(response);
+        // console.log("Html", response.data);
+      } catch (error) {
+        console.error("Error sending email:", error);
+      }
+    };
     // Iterate over allTemplate to set up listeners for each item
     allTemplate.forEach((item, index) => setupListener(item.image, index));
   }, [allTemplate]);
@@ -161,45 +185,19 @@ export default function EmailBuilder({ user }) {
         console.error("Error loading template:", error);
       }
     };
-    const getHtml = async (values) => {
-      try {
-        // console.log("entered")
-        const mjmlTemplate = await axios.post(
-          "https://emapp-backend.vercel.app/convertToMjml",
-          {
-            templateData: values,
-          }
-        );
-        // Send the template data to the backend API
-        const response = await axios.post(
-          "https://emapp-backend.vercel.app/convertHtml",
-          {
-            template: mjmlTemplate.data,
-          }
-        );
-        setHtml(response.data);
-
-        // console.log(response);
-        // console.log("Html", response.data);
-      } catch (error) {
-        console.error("Error sending email:", error);
-      }
-    };
-    // console.log(template)
-    if (!template) {
-      fetchTemplate();
-    } else {
-      getHtml(template);
-    }
-  }, [template]);
+    fetchTemplate();
+    
+  }, []);
 
   useEffect(() => {
-    fetch(`https://emapp-backend.vercel.app/templateData?userId=${user.uid}`)
+    const fetchTemp=async()=>{
+      await fetch(`http://localhost:5000/templateData?userId=${user.uid}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log(data)
-        if(data){
-          const updatedData = data?.map((item, index) => ({
+        if(data.length!==0){
+          console.log(data)
+          const updatedData = data.map((item, index) => ({
             ...item,
             dataType: `TESTIMONIAL_${index + 1}_BLOCK`, // Add the new property with its value
           }));
@@ -229,7 +227,9 @@ export default function EmailBuilder({ user }) {
 
         
       });
-  }, [user.uid]); // Trigger only when user.uid changes
+    }
+    fetchTemp();
+  }, []); // Trigger only when user.uid changes
 
   // console.log(allTemplate)
   const handleImageUpload = async (blob) => {
@@ -274,6 +274,7 @@ export default function EmailBuilder({ user }) {
   };
 
   const onSubmit = async (values) => {
+    // setHtml(newHtml);
     // console.log(updatedValues)
     if (values.content !== template.content) {
       try {
@@ -283,14 +284,24 @@ export default function EmailBuilder({ user }) {
             templateData: values,
           }
         );
-        // Send the template data to the backend API
+        // const xml = JsonToMjml({
+        //   data: values.content,
+        //   context: null,
+        //   mode: 'production',
+        // });
+
+        // const html=mjml2html(xml);
+        // console.log(html)
+        // console.log(xml)
+        // console.log(mjmlTemplate)
         const response = await axios.post(
           "https://emapp-backend.vercel.app/convertHtml",
           {
             template: mjmlTemplate.data,
           }
         );
-        setHtml(response.data);
+        setHtml(response.data)
+        // setHtml(html.html);
 
         // console.log(response);
         // console.log("Html", response.data);
@@ -303,7 +314,7 @@ export default function EmailBuilder({ user }) {
         ...values,
         subject: `Temp_${randomNumber}`,
       };
-      handleSave(updatedValues);
+      // handleSave(updatedValues);
     } else {
       toast.error("Same Template");
     }
@@ -405,9 +416,6 @@ export default function EmailBuilder({ user }) {
         },
         {
           type: AdvancedType.DIVIDER,
-        },
-        {
-          type: AdvancedType.HERO,
         },
       ],
     },

@@ -12,6 +12,7 @@ import { Bar } from "react-chartjs-2";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
 import { useNavigate } from "react-router-dom";
+import { fetchData } from "../CustomerBehaviour/shopifyLogic";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -26,9 +27,10 @@ function SocialMediaChart() {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`https://emapp-backend.vercel.app/fbpost/${user.uid}`)
-      .then((res) => res.json())
-      .then((result) => setFbData(result));
+    fetchData(`https://emapp-backend.vercel.app/fbpost/${user.uid}`,setFbData)
+    // fetch(`https://emapp-backend.vercel.app/fbpost/${user.uid}`)
+    //   .then((res) => res.json())
+    //   .then((result) => setFbData(result));
   }, []);
   const result = fbData?.reduce((acc, campaign) => {
     const existingCampaign = acc.find((item) => item.date === campaign.date);

@@ -1,14 +1,23 @@
-export const fetchData=async(url,setShopifyData)=>{
-    await fetch(url, {
-        method: 'GET',
-        headers: {
-            "Content-Type": "application/json",
+export const fetchData = async (url, setShopifyData) => {
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
-    })
-        .then((res) => res.json())
-        .then((result) => setShopifyData(result))
-        .catch((error) => console.error(error))
-}
+
+        const result = await response.json();
+        setShopifyData(result);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+};
+
 export const getShopifyData = async(shopifyData, user) => {
     const dataExists = shopifyData?.some(obj => obj.email === user.email);
     const dataObj=shopifyData?.find(obj => obj.email === user.email)

@@ -10,16 +10,40 @@ const CustomerSegment = () => {
   const [customersData, setCustomersData] = useState([]);
   const [shopifyData, setShopifyData] = useState([]);
   useEffect(() => {
-    fetchData(`https://emapp-backend.vercel.app/shopify/data`, setShopifyData);
-  }, []);
-  useEffect(() => {
-    if (shopifyData.length !== 0) {
-      fetchData(
-        `https://emapp-backend.vercel.app/customersData`,
-        setCustomersData
-      );
-    }
-  }, [shopifyData]);
+    const loadShopifyData = async () => {
+
+        try {
+          const response = await fetch(`https://emapp-backend.vercel.app/shopify/data`, {
+              method: 'GET',
+              headers: {
+                  "Content-Type": "application/json",
+              },
+          });
+  
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+  
+          const result = await response.json();
+          setShopifyData(result);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+      }
+    };
+
+    loadShopifyData();
+}, []);
+
+useEffect(() => {
+    const loadCustomersData = async () => {
+        if (shopifyData.length !== 0) {
+            await fetchData(`https://emapp-backend.vercel.app/customersData`, setCustomersData);
+        }
+    };
+
+    loadCustomersData();
+}, [shopifyData]);
+
   let totalSpentOverall = 0;
   // console.log(customersData);
   const shopifyexists = shopifyData?.some((obj) => obj.email === user.email);

@@ -6,10 +6,30 @@ export const MiddleChart = () => {
   const salesValue = [];
   const resultArray = [];
   useEffect(() => {
-    fetch('https://emapp-backend.vercel.app/sales')
-      .then(res => res.json())
-      .then(result => setTotalSales(result))
-      .catch(error => console.error(error))
+    const fetchData = async (url, setData) => {
+      try {
+          const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                  "Content-Type": "application/json",
+              },
+          });
+  
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+  
+          const result = await response.json();
+          setData(result);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+      }
+  };
+  fetchData('https://emapp-backend.vercel.app/sales',setTotalSales)
+    // fetch()
+    //   .then(res => res.json())
+    //   .then(result => setTotalSales(result))
+    //   .catch(error => console.error(error))
   }, [])
   // console.log(totalSales);
 

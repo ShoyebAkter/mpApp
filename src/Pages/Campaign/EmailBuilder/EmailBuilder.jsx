@@ -191,7 +191,7 @@ export default function EmailBuilder({ user }) {
 
   useEffect(() => {
     const fetchTemp=async()=>{
-      await fetch(`http://localhost:5000/templateData?userId=${user.uid}`)
+      await fetch(`https://emapp-backend.vercel.app/templateData?userId=${user.uid}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log(data)

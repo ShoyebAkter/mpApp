@@ -229,7 +229,7 @@ export default function EmailBuilder({ user }) {
       });
     }
     fetchTemp();
-  }, []); // Trigger only when user.uid changes
+  }, [user.uid]); // Trigger only when user.uid changes
 
   // console.log(allTemplate)
   const handleImageUpload = async (blob) => {
@@ -314,7 +314,7 @@ export default function EmailBuilder({ user }) {
         ...values,
         subject: `Temp_${randomNumber}`,
       };
-      // handleSave(updatedValues);
+      handleSave(updatedValues);
     } else {
       toast.error("Same Template");
     }

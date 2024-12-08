@@ -134,21 +134,30 @@ export default function EmailBuilder({ user }) {
     const getHtml = async (values) => {
       try {
         // console.log("entered")
-        const mjmlTemplate = await axios.post(
-          "https://emapp-backend.vercel.app/convertToMjml",
-          {
-            templateData: values,
-          }
-        );
+        // const mjmlTemplate = await axios.post(
+        //   "https://emapp-backend.vercel.app/convertToMjml",
+        //   {
+        //     templateData: values,
+        //   }
+        // );
+
+        const xml = JsonToMjml({
+          data: values.content,
+          context: null,
+          mode: 'production',
+        });
+
+        const html=mjml2html(xml);
         
         // Send the template data to the backend API
-        const response = await axios.post(
-          "https://emapp-backend.vercel.app/convertHtml",
-          {
-            template: mjmlTemplate.data,
-          }
-        );
-        setHtml(response.data);
+        // const response = await axios.post(
+        //   "https://emapp-backend.vercel.app/convertHtml",
+        //   {
+        //     template: mjmlTemplate.data,
+        //   }
+        // );
+        // setHtml(response.data);
+        setHtml(html.html)
 
         // console.log(response);
         // console.log("Html", response.data);
@@ -195,7 +204,7 @@ export default function EmailBuilder({ user }) {
       .then((response) => response.json())
       .then((data) => {
         // console.log(data)
-        if(data.length!==0){
+        if(data.length > 0){
           console.log(data)
           const updatedData = data.map((item, index) => ({
             ...item,
@@ -278,30 +287,30 @@ export default function EmailBuilder({ user }) {
     // console.log(updatedValues)
     if (values.content !== template.content) {
       try {
-        const mjmlTemplate = await axios.post(
-          "https://emapp-backend.vercel.app/convertToMjml",
-          {
-            templateData: values,
-          }
-        );
-        // const xml = JsonToMjml({
-        //   data: values.content,
-        //   context: null,
-        //   mode: 'production',
-        // });
+        // const mjmlTemplate = await axios.post(
+        //   "https://emapp-backend.vercel.app/convertToMjml",
+        //   {
+        //     templateData: values,
+        //   }
+        // );
+        const xml = JsonToMjml({
+          data: values.content,
+          context: null,
+          mode: 'production',
+        });
 
-        // const html=mjml2html(xml);
+        const html=mjml2html(xml);
         // console.log(html)
         // console.log(xml)
         // console.log(mjmlTemplate)
-        const response = await axios.post(
-          "https://emapp-backend.vercel.app/convertHtml",
-          {
-            template: mjmlTemplate.data,
-          }
-        );
-        setHtml(response.data)
-        // setHtml(html.html);
+        // const response = await axios.post(
+        //   "https://emapp-backend.vercel.app/convertHtml",
+        //   {
+        //     template: mjmlTemplate.data,
+        //   }
+        // );
+        // setHtml(response.data)
+        setHtml(html.html);
 
         // console.log(response);
         // console.log("Html", response.data);

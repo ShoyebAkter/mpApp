@@ -1,8 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
-import { BlockManager, BasicType, AdvancedType,JsonToMjml  } from "easy-email-core";
-import mjml2html from "mjml-browser"
+import {
+  BlockManager,
+  BasicType,
+  AdvancedType,
+  JsonToMjml,
+} from "easy-email-core";
+import mjml2html from "mjml-browser";
 import {
   BlockAvatarWrapper,
   EmailEditor,
@@ -42,14 +47,18 @@ import {
   setTemplate,
 } from "../../../features/counter/counterSlice";
 import { newHtml } from "./newHtml";
+import { auth } from "../../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 // Register the custom block
-export default function EmailBuilder({ user }) {
+export default function EmailBuilder() {
   const [allTemplate, setAllTemplate] = useState([]);
-  const [templateImage, setTemplateImage] = useState(null);
+  const [defaultTemp, setDefaultTemp] = useState([]);
   const [dataTypeArray, setDataTypeArray] = useState(null);
+  const [defaultdataTypeArray, setDefaultDataTypeArray] = useState(null);
   const [html, setHtml] = useState("");
   const template = useSelector((state) => state.counter.template);
   const dispatch = useDispatch();
+  const [user] = useAuthState(auth);
   const toggleMenu = () => {
     dispatch(setShowBuilder(false));
     // setIsMenuOpen(!isMenuOpen);
@@ -62,7 +71,7 @@ export default function EmailBuilder({ user }) {
   const { width } = useWindowSize();
   const smallScene = width < 1400;
   useEffect(() => {
-    const handleClick = (event) => {
+    const handleClick = (event,array) => {
       // console.log(event)
       const target = event.currentTarget;
       if (target) {
@@ -71,7 +80,7 @@ export default function EmailBuilder({ user }) {
           const span = container.querySelector(".arco-typography");
           if (span) {
             const spanText = span.textContent; // Fetch the text content of the span
-            const foundObj = allTemplate.find(
+            const foundObj = array.find(
               (obj) => obj.template.subject === spanText
             );
             dispatch(setTemplate(foundObj.template));
@@ -86,7 +95,7 @@ export default function EmailBuilder({ user }) {
       }
     };
 
-    const setupListener = (image, index) => {
+    const setupListener = (image, index,array) => {
       const arcoElement = document.querySelector(".arco-row");
       arcoElement.style.height = "250px";
       arcoElement.style.overflow = "scroll";
@@ -94,10 +103,12 @@ export default function EmailBuilder({ user }) {
         `[data-type="TESTIMONIAL_${index + 1}_BLOCK"]`
       );
 
+
       if (mainDiv2) {
         const mainDiv = mainDiv2.querySelector("._blockItemContainer_1ajtj_16");
 
         if (mainDiv) {
+          
           // console.log(mainDiv);
 
           // Remove the inner div if it exists
@@ -118,7 +129,52 @@ export default function EmailBuilder({ user }) {
           img.style.cursor = "pointer";
 
           mainDiv.appendChild(img);
-          mainDiv2.addEventListener("click", handleClick);
+          mainDiv2.addEventListener("click", (event) => handleClick(event, array));
+        } else {
+          console.log(`mainDiv not found for index ${index}.`);
+        }
+      } else {
+        console.log(`mainDiv2 not found for index ${index}.`);
+      }
+
+      // if (!mainDiv2.hasAttribute("listener-added")) {
+
+      //   mainDiv2.setAttribute("listener-added", "true");
+      // }
+    };
+    const setupTempListener = (image, index,array) => {
+      
+      const secondaryDiv2 = document.querySelector(
+        `[data-type="TEMPLATE_${index + 1}_BLOCK"]`
+      );
+
+
+      if (secondaryDiv2) {
+        const secondaryDiv = secondaryDiv2.querySelector("._blockItemContainer_1ajtj_16");
+
+        if (secondaryDiv) {
+
+          // console.log(mainDiv);
+
+          // Remove the inner div if it exists
+          const innerDiv = secondaryDiv.querySelector("div");
+          const innerSpan = secondaryDiv.querySelector("span");
+          // console.log(innerSpan)
+          if (innerDiv && innerSpan) {
+            innerDiv.remove();
+            innerSpan.style.display = "none";
+          }
+
+          // Create and append a new image
+          const img = document.createElement("img");
+          img.src = image; // Image URL
+          img.alt = "Descriptive text"; // Alt text
+          img.style.width = "100%"; // Optional width
+          img.style.height = "100%"; // Optional height
+          img.style.cursor = "pointer";
+
+          secondaryDiv.appendChild(img);
+          secondaryDiv2.addEventListener("click", (event) => handleClick(event, array));
         } else {
           console.log(`mainDiv not found for index ${index}.`);
         }
@@ -134,30 +190,30 @@ export default function EmailBuilder({ user }) {
     const getHtml = async (values) => {
       try {
         // console.log("entered")
-        // const mjmlTemplate = await axios.post(
-        //   "https://emapp-backend.vercel.app/convertToMjml",
-        //   {
-        //     templateData: values,
-        //   }
-        // );
+        const mjmlTemplate = await axios.post(
+          "https://emapp-backend.vercel.app/convertToMjml",
+          {
+            templateData: values,
+          }
+        );
 
-        const xml = JsonToMjml({
-          data: values.content,
-          context: null,
-          mode: 'production',
-        });
+        // const xml = JsonToMjml({
+        //   data: values.content,
+        //   context: null,
+        //   mode: "production",
+        // });
 
-        const html=mjml2html(xml);
-        
+        // const html = mjml2html(xml);
+
         // Send the template data to the backend API
-        // const response = await axios.post(
-        //   "https://emapp-backend.vercel.app/convertHtml",
-        //   {
-        //     template: mjmlTemplate.data,
-        //   }
-        // );
-        // setHtml(response.data);
-        setHtml(html.html)
+        const response = await axios.post(
+          "https://emapp-backend.vercel.app/convertHtml",
+          {
+            template: mjmlTemplate.data,
+          }
+        );
+        setHtml(response.data);
+        // setHtml(html.html);
 
         // console.log(response);
         // console.log("Html", response.data);
@@ -166,7 +222,8 @@ export default function EmailBuilder({ user }) {
       }
     };
     // Iterate over allTemplate to set up listeners for each item
-    allTemplate.forEach((item, index) => setupListener(item.image, index));
+    allTemplate.forEach((item, index) => setupListener(item.image, index,allTemplate));
+    defaultTemp.forEach((item, index) => setupTempListener(item.image, index,defaultTemp));
   }, [allTemplate]);
 
   // console.log(BlockManager,BasicType)
@@ -179,66 +236,102 @@ export default function EmailBuilder({ user }) {
           json: (data) => data,
         }),
       };
-
+      
       try {
         const response = await handler(req, res);
         dispatch(setTemplate(response));
-        // const newTemplate = JSON.parse(localStorage.getItem("newTemplate"));
-        // if (newTemplate) {
-        //   setTemplate(newTemplate);
-        // } else {
-        //   setTemplate(response);
-        // }
-        // console.log(response)
+        await fetch(
+          `https://emapp-backend.vercel.app/templateData`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.length > 0) {
+              // console.log(data)
+              const updatedData = data.map((item, index) => ({
+                ...item,
+                dataType: `TEMPLATE_${index + 1}_BLOCK`, // Add the new property with its value
+              }));
+              setDefaultTemp(updatedData); // Update state with the modified array
+  
+              // Extract all dataType values into an array
+              const newdataTypeArray = updatedData.map((item) => item.dataType);
+              setDefaultDataTypeArray(newdataTypeArray);
+              // console.log(dataTypeArray)
+              // Dynamically register blocks based on fetched data
+              data.forEach((template, index) => {
+                BlockManager.registerBlocks({
+                  [newdataTypeArray[index]]: {
+                    // Dynamically use blockType array value as the key
+                    name: template.template.subject,
+                    type: newdataTypeArray[index], // Assign blockType array value to the type field
+                    validParentType: [
+                      BasicType.PAGE,
+                      BasicType.WRAPPER,
+                      BasicType.SECTION,
+                      BasicType.COLUMN,
+                    ],
+                  },
+                });
+              });
+            }
+          });
       } catch (error) {
         console.error("Error loading template:", error);
       }
     };
     fetchTemplate();
-    
   }, []);
 
   useEffect(() => {
-    const fetchTemp=async()=>{
-      await fetch(`https://emapp-backend.vercel.app/templateData?userId=${user.uid}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data)
-        if(data.length > 0){
-          console.log(data)
+    const fetchTemp = async () => {
+      if (!user?.uid) {
+        console.warn("User UID is not available, skipping fetch.");
+        return; // Exit early if user.uid is not defined
+      }
+  
+      try {
+        const response = await fetch(
+          `https://emapp-backend.vercel.app/templateData?userId=${user.uid}`
+        );
+        const data = await response.json();
+  
+        if (data.length > 0) {
           const updatedData = data.map((item, index) => ({
             ...item,
             dataType: `TESTIMONIAL_${index + 1}_BLOCK`, // Add the new property with its value
           }));
+  
           setAllTemplate(updatedData); // Update state with the modified array
-
-        // Extract all dataType values into an array
-        const newdataTypeArray = updatedData.map((item) => item.dataType);
-        setDataTypeArray(newdataTypeArray);
-        // console.log(dataTypeArray)
-        // Dynamically register blocks based on fetched data
-        data.forEach((template, index) => {
-          BlockManager.registerBlocks({
-            [newdataTypeArray[index]]: {
-              // Dynamically use blockType array value as the key
-              name: template.template.subject,
-              type: newdataTypeArray[index], // Assign blockType array value to the type field
-              validParentType: [
-                BasicType.PAGE,
-                BasicType.WRAPPER,
-                BasicType.SECTION,
-                BasicType.COLUMN,
-              ],
-            },
+  
+          // Extract all dataType values into an array
+          const newdataTypeArray = updatedData.map((item) => item.dataType);
+          setDataTypeArray(newdataTypeArray);
+  
+          // Dynamically register blocks based on fetched data
+          updatedData.forEach((template, index) => {
+            BlockManager.registerBlocks({
+              [newdataTypeArray[index]]: {
+                // Dynamically use blockType array value as the key
+                name: template.template.subject,
+                type: newdataTypeArray[index], // Assign blockType array value to the type field
+                validParentType: [
+                  BasicType.PAGE,
+                  BasicType.WRAPPER,
+                  BasicType.SECTION,
+                  BasicType.COLUMN,
+                ],
+              },
+            });
           });
-        });
         }
-
-        
-      });
-    }
+      } catch (error) {
+        console.error("Error fetching template data:", error);
+      }
+    };
+  
     fetchTemp();
-  }, [user.uid]); // Trigger only when user.uid changes
+  }, [user?.uid]);
+   // Trigger only when user.uid changes
 
   // console.log(allTemplate)
   const handleImageUpload = async (blob) => {
@@ -287,33 +380,29 @@ export default function EmailBuilder({ user }) {
     // console.log(updatedValues)
     if (values.content !== template.content) {
       try {
-        // const mjmlTemplate = await axios.post(
-        //   "https://emapp-backend.vercel.app/convertToMjml",
-        //   {
-        //     templateData: values,
-        //   }
-        // );
-        const xml = JsonToMjml({
-          data: values.content,
-          context: null,
-          mode: 'production',
-        });
+        const mjmlTemplate = await axios.post(
+          "https://emapp-backend.vercel.app/convertToMjml",
+          {
+            templateData: values,
+          }
+        );
+        // const xml = JsonToMjml({
+        //   data: values.content,
+        //   context: null,
+        //   mode: "production",
+        // });
 
-        const html=mjml2html(xml);
-        // console.log(html)
-        // console.log(xml)
-        // console.log(mjmlTemplate)
-        // const response = await axios.post(
-        //   "https://emapp-backend.vercel.app/convertHtml",
-        //   {
-        //     template: mjmlTemplate.data,
-        //   }
-        // );
-        // setHtml(response.data)
-        setHtml(html.html);
+        // const html = mjml2html(xml);
+        
+        const response = await axios.post(
+          "https://emapp-backend.vercel.app/convertHtml",
+          {
+            template: mjmlTemplate.data,
+          }
+        );
+        setHtml(response.data)
+        // setHtml(html.html);
 
-        // console.log(response);
-        // console.log("Html", response.data);
       } catch (error) {
         console.error("Error sending email:", error);
       }
@@ -337,21 +426,26 @@ export default function EmailBuilder({ user }) {
           console.error("Failed to create blob from canvas");
           return;
         }
-  
-        const file = new File([blob], "canvas_image.png", { type: "image/png" });
-  
+
+        const file = new File([blob], "canvas_image.png", {
+          type: "image/png",
+        });
+
         // Prepare FormData
         const formData = new FormData();
         formData.append("image", file);
-  
+
         try {
-          const response = await fetch("https://emapp-backend.vercel.app/upload", {
-            method: "POST",
-            body: formData,
-          });
-  
+          const response = await fetch(
+            "https://emapp-backend.vercel.app/upload",
+            {
+              method: "POST",
+              body: formData,
+            }
+          );
+
           const data = await response.json();
-  
+
           if (data.success) {
             const imageUrl = data.imageUrl;
             sendTemplateData(values, imageUrl);
@@ -365,7 +459,6 @@ export default function EmailBuilder({ user }) {
       });
     });
   };
-  
 
   const sendTemplateData = async (values, myimg) => {
     // console.log("start")
@@ -400,10 +493,17 @@ export default function EmailBuilder({ user }) {
   // console.log(ndata,blockType)
   const defaultCategories = [
     {
-      label: "Template",
+      label: "Recent Work",
       active: true,
       blocks: allTemplate.map((_, index) => ({
         type: dataTypeArray[index],
+      })),
+    },
+    {
+      label: "Template",
+      active: true,
+      blocks: defaultTemp.map((_, index) => ({
+        type: defaultdataTypeArray[index],
       })),
     },
     {

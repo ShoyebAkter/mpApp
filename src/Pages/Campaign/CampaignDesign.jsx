@@ -26,7 +26,7 @@ export const CampaignDesign = () => {
   return (
     <div>
       <div className="pt-28 bg-gray-200">
-      <EmailBuilder user={user} />
+      <EmailBuilder />
       {/* <RecentDesign  /> */}
       {/* {
         showBuilder ?

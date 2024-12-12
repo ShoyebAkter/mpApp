@@ -71,7 +71,7 @@ export default function EmailBuilder() {
   const { width } = useWindowSize();
   const smallScene = width < 1400;
   useEffect(() => {
-    const handleClick = (event,array) => {
+    const handleClick = (event, array) => {
       // console.log(event)
       const target = event.currentTarget;
       if (target) {
@@ -95,7 +95,7 @@ export default function EmailBuilder() {
       }
     };
 
-    const setupListener = (image, index,array) => {
+    const setupListener = (image, index, array) => {
       const arcoElement = document.querySelector(".arco-row");
       arcoElement.style.height = "250px";
       arcoElement.style.overflow = "scroll";
@@ -103,12 +103,10 @@ export default function EmailBuilder() {
         `[data-type="TESTIMONIAL_${index + 1}_BLOCK"]`
       );
 
-
       if (mainDiv2) {
         const mainDiv = mainDiv2.querySelector("._blockItemContainer_1ajtj_16");
 
         if (mainDiv) {
-          
           // console.log(mainDiv);
 
           // Remove the inner div if it exists
@@ -129,7 +127,9 @@ export default function EmailBuilder() {
           img.style.cursor = "pointer";
 
           mainDiv.appendChild(img);
-          mainDiv2.addEventListener("click", (event) => handleClick(event, array));
+          mainDiv2.addEventListener("click", (event) =>
+            handleClick(event, array)
+          );
         } else {
           console.log(`mainDiv not found for index ${index}.`);
         }
@@ -142,18 +142,17 @@ export default function EmailBuilder() {
       //   mainDiv2.setAttribute("listener-added", "true");
       // }
     };
-    const setupTempListener = (image, index,array) => {
-      
+    const setupTempListener = (image, index, array) => {
       const secondaryDiv2 = document.querySelector(
         `[data-type="TEMPLATE_${index + 1}_BLOCK"]`
       );
 
-
       if (secondaryDiv2) {
-        const secondaryDiv = secondaryDiv2.querySelector("._blockItemContainer_1ajtj_16");
+        const secondaryDiv = secondaryDiv2.querySelector(
+          "._blockItemContainer_1ajtj_16"
+        );
 
         if (secondaryDiv) {
-
           // console.log(mainDiv);
 
           // Remove the inner div if it exists
@@ -174,7 +173,9 @@ export default function EmailBuilder() {
           img.style.cursor = "pointer";
 
           secondaryDiv.appendChild(img);
-          secondaryDiv2.addEventListener("click", (event) => handleClick(event, array));
+          secondaryDiv2.addEventListener("click", (event) =>
+            handleClick(event, array)
+          );
         } else {
           console.log(`mainDiv not found for index ${index}.`);
         }
@@ -221,14 +222,30 @@ export default function EmailBuilder() {
         console.error("Error sending email:", error);
       }
     };
+    
     // Iterate over allTemplate to set up listeners for each item
-    allTemplate.forEach((item, index) => setupListener(item.image, index,allTemplate));
-    defaultTemp.forEach((item, index) => setupTempListener(item.image, index,defaultTemp));
+    allTemplate.forEach((item, index) =>
+      setupListener(item.image, index, allTemplate)
+    );
+    defaultTemp.forEach((item, index) =>
+      setupTempListener(item.image, index, defaultTemp)
+    );
+
+    const element = document.getElementById("VisualEditorEditMode");
+    if(element){
+      element.addEventListener("click", (event) =>
+    {
+      const parent = document.querySelector(".arco-collapse-item-content");
+      parent.style.display="none"
+    }
+          );
+    }
   }, [allTemplate]);
 
   // console.log(BlockManager,BasicType)
   useEffect(() => {
     const fetchTemplate = async () => {
+      
       // Simulate req and res objects
       const req = {};
       const res = {
@@ -236,13 +253,11 @@ export default function EmailBuilder() {
           json: (data) => data,
         }),
       };
-      
+
       try {
         const response = await handler(req, res);
         dispatch(setTemplate(response));
-        await fetch(
-          `https://emapp-backend.vercel.app/templateData`
-        )
+        await fetch(`https://emapp-backend.vercel.app/templateData`)
           .then((response) => response.json())
           .then((data) => {
             if (data.length > 0) {
@@ -252,7 +267,7 @@ export default function EmailBuilder() {
                 dataType: `TEMPLATE_${index + 1}_BLOCK`, // Add the new property with its value
               }));
               setDefaultTemp(updatedData); // Update state with the modified array
-  
+
               // Extract all dataType values into an array
               const newdataTypeArray = updatedData.map((item) => item.dataType);
               setDefaultDataTypeArray(newdataTypeArray);
@@ -280,6 +295,7 @@ export default function EmailBuilder() {
       }
     };
     fetchTemplate();
+    
   }, []);
 
   useEffect(() => {
@@ -288,25 +304,25 @@ export default function EmailBuilder() {
         console.warn("User UID is not available, skipping fetch.");
         return; // Exit early if user.uid is not defined
       }
-  
+
       try {
         const response = await fetch(
           `https://emapp-backend.vercel.app/templateData?userId=${user.uid}`
         );
         const data = await response.json();
-  
+
         if (data.length > 0) {
           const updatedData = data.map((item, index) => ({
             ...item,
             dataType: `TESTIMONIAL_${index + 1}_BLOCK`, // Add the new property with its value
           }));
-  
+
           setAllTemplate(updatedData); // Update state with the modified array
-  
+
           // Extract all dataType values into an array
           const newdataTypeArray = updatedData.map((item) => item.dataType);
           setDataTypeArray(newdataTypeArray);
-  
+
           // Dynamically register blocks based on fetched data
           updatedData.forEach((template, index) => {
             BlockManager.registerBlocks({
@@ -328,10 +344,10 @@ export default function EmailBuilder() {
         console.error("Error fetching template data:", error);
       }
     };
-  
+
     fetchTemp();
   }, [user?.uid]);
-   // Trigger only when user.uid changes
+  // Trigger only when user.uid changes
 
   // console.log(allTemplate)
   const handleImageUpload = async (blob) => {
@@ -393,16 +409,15 @@ export default function EmailBuilder() {
         // });
 
         // const html = mjml2html(xml);
-        
+
         const response = await axios.post(
           "https://emapp-backend.vercel.app/convertHtml",
           {
             template: mjmlTemplate.data,
           }
         );
-        setHtml(response.data)
+        setHtml(response.data);
         // setHtml(html.html);
-
       } catch (error) {
         console.error("Error sending email:", error);
       }
@@ -495,9 +510,11 @@ export default function EmailBuilder() {
     {
       label: "Recent Work",
       active: true,
-      blocks: allTemplate.map((_, index) => ({
-        type: dataTypeArray[index],
-      })),
+      blocks: allTemplate
+        .map((_, index) => ({
+          type: dataTypeArray[index],
+        }))
+        .reverse(),
     },
     {
       label: "Template",
@@ -587,8 +604,9 @@ export default function EmailBuilder() {
               compact={!smallScene}
               showSourceCode={false}
               categories={defaultCategories}
+              
             >
-              <EmailEditor />
+              <EmailEditor  />
             </StandardLayout>
           </>
         );

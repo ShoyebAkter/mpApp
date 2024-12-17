@@ -191,30 +191,30 @@ export default function EmailBuilder() {
     const getHtml = async (values) => {
       try {
         // console.log("entered")
-        const mjmlTemplate = await axios.post(
-          "https://emapp-backend.vercel.app/convertToMjml",
-          {
-            templateData: values,
-          }
-        );
+        // const mjmlTemplate = await axios.post(
+        //   "https://emapp-backend.vercel.app/convertToMjml",
+        //   {
+        //     templateData: values,
+        //   }
+        // );
 
-        // const xml = JsonToMjml({
-        //   data: values.content,
-        //   context: null,
-        //   mode: "production",
-        // });
+        const xml = JsonToMjml({
+          data: values.content,
+          context: null,
+          mode: "production",
+        });
 
-        // const html = mjml2html(xml);
+        const html = mjml2html(xml);
 
         // Send the template data to the backend API
-        const response = await axios.post(
-          "https://emapp-backend.vercel.app/convertHtml",
-          {
-            template: mjmlTemplate.data,
-          }
-        );
-        setHtml(response.data);
-        // setHtml(html.html);
+        // const response = await axios.post(
+        //   "https://emapp-backend.vercel.app/convertHtml",
+        //   {
+        //     template: mjmlTemplate.data,
+        //   }
+        // );
+        // setHtml(response.data);
+        setHtml(html.html);
 
         // console.log(response);
         // console.log("Html", response.data);
@@ -390,6 +390,43 @@ export default function EmailBuilder() {
       reader.readAsDataURL(file); // Convert blob to base64
     });
   };
+  const onSave=async(values)=>{
+    console.log(values)
+    const sameTemp=allTemplate.find(obj=>obj.template.subject===values.subject)
+    // console.log(sameTemp)
+    // console.log(values.content===template.content)
+      const url = "https://emapp-backend.vercel.app/updateTemplateData"; // Replace with your API URL
+      const requestData = {
+        id:sameTemp._id,
+        template:values,
+      };
+    // console.log(requestData)
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(requestData)
+        });
+    
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error("Error:", errorData);
+          alert(`Error: ${errorData.error || "Failed to update template data."}`);
+          return;
+        }
+    
+        const responseData = await response.json();
+        console.log("Success:", responseData);
+        // alert("Document updated successfully.");
+      } catch (error) {
+        console.error("Network error:", error);
+        alert("A network error occurred. Please try again.");
+      }
+    
+    
+  }
 
   const onSubmit = async (values) => {
     // setHtml(newHtml);
@@ -543,6 +580,9 @@ export default function EmailBuilder() {
         {
           type: AdvancedType.DIVIDER,
         },
+        {
+          type: AdvancedType.HERO,
+        },
       ],
     },
     {
@@ -584,7 +624,7 @@ export default function EmailBuilder() {
       onSubmit={onSubmit}
       onUploadImage={handleImageUpload}
     >
-      {({ values }, { submit, restart }) => {
+      {({ values }, { submit,saveTemp, restart }) => {
         return (
           <>
             <ToastContainer />
@@ -595,6 +635,9 @@ export default function EmailBuilder() {
                 <Space>
                   <Modal html={html} userId={user.uid} />
                   <Button type="primary" onClick={submit}>
+                    Save As New
+                  </Button>
+                  <Button type="primary" onClick={()=>onSave(values)}>
                     Save
                   </Button>
                 </Space>

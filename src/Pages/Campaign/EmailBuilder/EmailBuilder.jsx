@@ -390,43 +390,54 @@ export default function EmailBuilder() {
       reader.readAsDataURL(file); // Convert blob to base64
     });
   };
-  const onSave=async(values)=>{
-    console.log(values)
-    const sameTemp=allTemplate.find(obj=>obj.template.subject===values.subject)
-    // console.log(sameTemp)
-    // console.log(values.content===template.content)
-      const url = "https://emapp-backend.vercel.app/updateTemplateData"; // Replace with your API URL
-      const requestData = {
-        id:sameTemp._id,
-        template:values,
-      };
-    // console.log(requestData)
-      try {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(requestData)
-        });
-    
-        if (!response.ok) {
-          const errorData = await response.json();
-          console.error("Error:", errorData);
-          alert(`Error: ${errorData.error || "Failed to update template data."}`);
-          return;
-        }
-    
-        const responseData = await response.json();
-        console.log("Success:", responseData);
-        // alert("Document updated successfully.");
-      } catch (error) {
-        console.error("Network error:", error);
-        alert("A network error occurred. Please try again.");
+  const onSave = async (values) => {
+    try {
+      const sameTemp = allTemplate.find(
+        (obj) => obj.template.subject === values.subject
+      );
+  
+      // Wait for imageUrl to be generated
+      const imageUrl = await handleSave(values);
+  
+      if (!imageUrl) {
+        console.error("Failed to generate image URL.");
+        alert("Failed to save the image. Please try again.");
+        return;
       }
-    
-    
-  }
+      console.log(imageUrl)
+  
+      const url = "https://emapp-backend.vercel.app/updateTemplateData";
+      const requestData = {
+        id: sameTemp._id,
+        template: values,
+        image: imageUrl,
+      };
+  
+      // Update the template data
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error updating template:", errorData);
+        alert(`Error: ${errorData.error || "Failed to update template data."}`);
+        return;
+      }
+  
+      const responseData = await response.json();
+      console.log("Template updated successfully:", responseData);
+      toast.success("Template updated");
+    } catch (error) {
+      console.error("Error in onSave function:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
+  
 
   const onSubmit = async (values) => {
     // setHtml(newHtml);
@@ -464,53 +475,65 @@ export default function EmailBuilder() {
         ...values,
         subject: `Temp_${randomNumber}`,
       };
-      handleSave(updatedValues);
+      handleSave(updatedValues,"submit");
     } else {
       toast.error("Same Template");
     }
   };
 
-  const handleSave = async (values) => {
-    const element = document.getElementById("VisualEditorEditMode");
-    html2canvas(element, { useCORS: true }).then((canvas) => {
-      canvas.toBlob(async (blob) => {
-        if (!blob) {
-          console.error("Failed to create blob from canvas");
-          return;
-        }
-
-        const file = new File([blob], "canvas_image.png", {
-          type: "image/png",
-        });
-
-        // Prepare FormData
-        const formData = new FormData();
-        formData.append("image", file);
-
-        try {
-          const response = await fetch(
-            "https://emapp-backend.vercel.app/upload",
-            {
-              method: "POST",
-              body: formData,
-            }
-          );
-
-          const data = await response.json();
-
-          if (data.success) {
-            const imageUrl = data.imageUrl;
-            sendTemplateData(values, imageUrl);
-            toast.success("New Template added");
-          } else {
-            console.error("Image upload failed:", data.error);
-          }
-        } catch (error) {
-          console.error("Error uploading image:", error);
-        }
+  const handleSave = async (values, type) => {
+    try {
+      const element = document.getElementById("VisualEditorEditMode");
+      if (!element) {
+        console.error("Element not found: VisualEditorEditMode");
+        return null;
+      }
+  
+      // Generate the canvas using html2canvas
+      const canvas = await html2canvas(element, { useCORS: true });
+  
+      // Convert canvas to a blob
+      const blob = await new Promise((resolve) => canvas.toBlob(resolve));
+      if (!blob) {
+        console.error("Failed to create blob from canvas.");
+        return null;
+      }
+  
+      // Create a file from the blob
+      const file = new File([blob], "canvas_image.png", { type: "image/png" });
+  
+      // Prepare FormData
+      const formData = new FormData();
+      formData.append("image", file);
+  
+      // Upload the image
+      const response = await fetch("https://emapp-backend.vercel.app/upload", {
+        method: "POST",
+        body: formData,
       });
-    });
+  
+      const data = await response.json();
+  
+      if (data.success) {
+        const imageUrl = data.imageUrl;
+        console.log(imageUrl, type);
+  
+        if (type === "submit") {
+          sendTemplateData(values, imageUrl);
+          toast.success("New Template added");
+        } else if (!type) {
+          return imageUrl; // Correctly return the imageUrl
+        }
+      } else {
+        console.error("Image upload failed:", data.error);
+        return null;
+      }
+    } catch (error) {
+      console.error("Error in handleSave:", error);
+      return null;
+    }
   };
+  
 
   const sendTemplateData = async (values, myimg) => {
     // console.log("start")

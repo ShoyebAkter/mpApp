@@ -107,7 +107,7 @@ function CustomerBehaviourMain() {
                 
             :
             <div>
-            <h1 style={{"color":"#294F41","width":"300px"}} className="mx-auto font-bold  text-center text-xl mb-8 cursor-pointer"> Customer Behaviour</h1>
+            <h1 style={{"color":"#294F41","width":"300px"}} className="mx-auto font-bold  text-center text-xl mb-8 cursor-pointer"> Customer Behavior</h1>
             { 
                 shopify ?
                 <Customers/>

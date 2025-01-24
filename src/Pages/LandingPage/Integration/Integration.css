@@ -54,13 +54,13 @@
     width: 190px; /* Adjust the length of the line as needed */
     height: 2px; /* Adjust the thickness of the line as needed */
     background-color: white;
-    transform: translate(0px,0px);
+    transform: translate(0px,-15px);
   }
   .instaline{
     width: 190px; /* Adjust the length of the line as needed */
     height: 2px; /* Adjust the thickness of the line as needed */
     background-color: white;
-    transform: translate(0px,0px);
+    transform: translate(0px,-15px);
   }
   .instaDiv{
     display: flex;
@@ -80,9 +80,9 @@
   }
   .smsline{
     width: 100px; /* Adjust the length of the line as needed */
-    height: 2px; /* Adjust the thickness of the line as needed */
+    height: 1px; /* Adjust the thickness of the line as needed */
     background-color: white;
-    transform: translate(0px,10px);
+    transform: translate(0px,29px);
   }
   .secondsmsline{
     width: 2px; /* Adjust the width as needed */
@@ -131,7 +131,7 @@
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translate(0px,-7px);
+    transform: translate(0px,-22px);
   }
   .galinecircle{
     width: 16px; /* Adjust the size of the circle as needed */
@@ -142,7 +142,7 @@
     position: absolute;
     
     top: 50%;
-    transform: translate(0px, -8px);
+    transform: translate(0px, 13px);
   }
   .whatsapplinecircle{
     width: 16px; /* Adjust the size of the circle as needed */
@@ -164,7 +164,7 @@
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translate(0px,0px);
+    transform: translate(0px,20px);
   }
   .instalinecircle{
     width: 16px; /* Adjust the size of the circle as needed */
@@ -175,7 +175,7 @@
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translate(0px,-7px);
+    transform: translate(0px,-22px);
   }
   .linecircle {
     width: 16px; /* Adjust the size of the circle as needed */
@@ -194,7 +194,7 @@
     background-color: white;/* Center the line horizontally */
     transform: translate(0px,0px); /* Move the line upward */
     display: block;
-    bottom: 2px;
+    bottom: -20px;
     right: -100px;
     position: absolute;
 }
@@ -202,13 +202,13 @@
     width: 100px; /* Adjust the length of the line as needed */
     height: 2px; /* Adjust the thickness of the line as needed */
     background-color: white;
-    transform: translate(-100px,8px);
+    transform: translate(-100px,28px);
 }
   .smsupward-line {
-    width: 2px; /* Adjust the width as needed */
+    width: 1px; /* Adjust the width as needed */
     height: 100px; /* Adjust the height as needed */
     background-color: white;/* Center the line horizontally */
-    transform: translate(0px,10px); /* Move the line upward */
+    transform: translate(0px,30px); /* Move the line upward */
     display: block;
     bottom: 3px;
     left: -100px;
@@ -217,15 +217,15 @@
 
   .upward-line {
     width: 100px; /* Adjust the length of the line as needed */
-    height: 2px; /* Adjust the thickness of the line as needed */
-    background-color:white;
-    transform:translate(0px,0px)
+    height: 1px; /* Adjust the thickness of the line as needed */
+    background-color:#ffff;
+    transform:translate(0px,20px)
 }
   .secondupward-line {
     width: 100px; /* Adjust the length of the line as needed */
-    height: 2px; /* Adjust the thickness of the line as needed */
+    height: 1px; /* Adjust the thickness of the line as needed */
     background-color:white;
-    transform:translate(100px,-2px)
+    transform:translate(100px,20px)
 }
 .whatsappupward-line{
     width: 2px; /* Adjust the width as needed */
@@ -253,11 +253,78 @@
   padding-left: 0.5rem/* 8px */;
     padding-right: 0.5rem/* 8px */;
 }
+.gaappName{
+  font-size: 1.875rem/* 30px */;
+  line-height: 2.25rem/* 36px */;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  padding-left: 0.5rem/* 8px */;
+    padding-right: 0.5rem/* 8px */;
+    display: block;
+    transform: translate(0,20px);
+}
+.instaappName{
+  font-size: 1.875rem/* 30px */;
+  line-height: 2.25rem/* 36px */;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  padding-left: 0.5rem/* 8px */;
+    padding-right: 0.5rem/* 8px */;
+    display: block;
+    transform: translate(0,-20px);
+}
+.wooappName{
+  font-size: 1.875rem/* 30px */;
+  line-height: 2.25rem/* 36px */;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  padding-left: 0.5rem/* 8px */;
+    padding-right: 0.5rem/* 8px */;
+    display: block;
+    transform: translate(0,-20px);
+}
+.more{
+  font-size: 1.875rem/* 30px */;
+  line-height: 2.25rem/* 36px */;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  padding-left: 0.5rem/* 8px */;
+    padding-right: 0.5rem/* 8px */;
+    display: block;
+    transform: translate(0,25px);
+}
 
 .gaImage{
   width: 80px;
   height: 80px;
   color: #f8f8f8;
+  /* display: block;
+  transform: translate(0,20px); */
+}
+.gaPic{
+  width: 80px;
+  height: 80px;
+  color: #f8f8f8;
+  display: block;
+  transform: translate(0,20px);
+}
+.instaImage{
+  width: 80px;
+  height: 80px;
+  color: #f8f8f8;
+  display: block;
+  transform: translate(0,-20px);
+}
+.wooImage{
+  width: 80px;
+  height: 80px;
+  color: #f8f8f8;
+  display: block;
+  transform: translate(0,-15px);
 }
 .integratiobImage{
   padding-bottom: 200px;
@@ -309,7 +376,7 @@
     width: 50px; /* Adjust the length of the line as needed */
     height: 2px; /* Adjust the thickness of the line as needed */
     background-color: white;
-    transform: translate(0px,0px);
+    transform: translate(0px,-15px);
   }
   .galine{
     width: 100px; /* Adjust the length of the line as needed */
@@ -375,7 +442,7 @@
     position: absolute;
     
     top: 50%;
-    transform: translate(0px, -8px);
+    transform: translate(0px, 20px);
   }
   .whatsapplinecircle{
     width: 16px; /* Adjust the size of the circle as needed */
@@ -427,7 +494,7 @@
     background-color: white;/* Center the line horizontally */
     transform: translate(0px,0px); /* Move the line upward */
     display: block;
-    bottom: 2px;
+    bottom: -22px;
     right: -30px;
     position: absolute;
 }
@@ -621,7 +688,7 @@
       position: absolute;
       
       top: 50%;
-      transform: translate(0px, -8px);
+      transform: translate(0px, 13px);
     }
     .whatsapplinecircle{
       width: 16px; /* Adjust the size of the circle as needed */
@@ -673,7 +740,7 @@
       background-color: white;/* Center the line horizontally */
       transform: translate(0px,0px); /* Move the line upward */
       display: block;
-      bottom: 2px;
+      bottom: -22px;
       right: -30px;
       position: absolute;
   }

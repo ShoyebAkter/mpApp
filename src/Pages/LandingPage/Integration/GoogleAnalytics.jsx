@@ -2,7 +2,7 @@ import { Slide } from "react-awesome-reveal"
 export const GoogleAnalytics = () => {
   return (
     <div className="gA">
-      <Slide><img className="gaImage"  src="/googleana.png" alt=""/><span className="appName ">Google Analytics</span></Slide>
+      <Slide><img className="gaPic"  src="/googleana.png" alt=""/><span className="gaappName ">Google Analytics</span></Slide>
       <div className="line-with-circle ml-2">
         <span className="galinecircle"></span>
         {/* <div className="galine" ></div> */}

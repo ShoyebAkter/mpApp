@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
 const Connection = () => {
-    const navigate=useNavigate();
+  const navigate = useNavigate();
   return (
     <div className="loginsection">
-      <section>
-      <img className="mx-auto h-72" src="/logo.png" />
-        <div className=" bg-slate-50 shadow-xl px-12 py-10 rounded-3xl mb-5">
+      <section className="">
+        <img className="mx-auto h-72" src="/logo.png" />
+        <div className=" bg-slate-50 mx-40 sm:mx-8 shadow-xl px-12 py-10 rounded-3xl mb-5">
           <h1>New Shopify Connection</h1>
           <div>
             <h2>Confirm</h2>
@@ -21,7 +21,12 @@ const Connection = () => {
               time.
             </div>
           </div>
-          <button className="shadow-xl text-white bg-sky-600 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2" onClick={()=>navigate("/shopify/authorization")}>Authorize Connection</button>
+          <button
+            className="shadow-xl mt-5 text-white bg-sky-600 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2"
+            onClick={() => navigate("/shopify/authorization")}
+          >
+            Authorize 
+          </button>
         </div>
       </section>
     </div>

@@ -27,7 +27,6 @@ function Subscription() {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      gender: gender,
       companyName: company,
       connection: name,
       title: name,
@@ -133,27 +132,7 @@ function Subscription() {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-2">
-                    <label
-                      htmlFor="gender"
-                      className="block tracking-wide leading-6 font-semibold text-gray-400"
-                    >
-                      Gender <span className="text-red-400">*</span>
-                    </label>
-                    <select
-                      onChange={(e) => setGender(e.target.value)}
-                      name="gender"
-                      id="gender"
-                      className="appearance-none w-full rounded-md border-gray-300"
-                      required
-                    >
-                      <option value="0">--please select--</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                    </select>
-                  </div>
-
-                  <div className="col-span-3 sm:col-span-4">
+                  <div className="col-span-3 sm:col-span-3">
                     <label
                       htmlFor="title"
                       className="block tracking-wide leading-6 font-semibold text-gray-400"
@@ -220,16 +199,14 @@ function Subscription() {
                       !email ||
                       !firstName ||
                       !lastName ||
-                      !address ||
-                      !gender
+                      !address 
                     }
                     className={`shadow-xl text-white bg-sky-600 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 ${
                       !name ||
                       !email ||
                       !firstName ||
                       !lastName ||
-                      !address ||
-                      !gender
+                      !address 
                         ? "bg-gray-300 cursor-not-allowed"
                         : "hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900"
                     }`}
@@ -237,15 +214,15 @@ function Subscription() {
                     Create Your First Connection
                   </button>
                 </div>
-                <p className="text-sm text-black text-center">
+                <p className=" text-black  text-center">
                   Go back to{" "}
-                  <NavLink to="/login" className="text-blue-700">
+                  <NavLink to="/login" className="text-blue-700 text-xl font-bold">
                     Login
                   </NavLink>
                 </p>
-                <p className="text-sm text-black text-center pt-5">
+                <p className=" text-black text-center pt-5">
                   Go back to{" "}
-                  <NavLink to="/" className="text-blue-700">
+                  <NavLink to="/" className="text-blue-700 text-xl font-bold">
                     Home
                   </NavLink>
                 </p>

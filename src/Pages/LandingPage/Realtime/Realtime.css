@@ -2,11 +2,13 @@
 .firstSec{
     display: flex;
     justify-content: center;
-    border-radius: 1rem
+    border-radius: 1rem;
+    
 }
 .secondSec{
     display: flex;
     justify-content: center;
+    margin-block: 30px;
 }
 .thirdSec{
     display: flex;

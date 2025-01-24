@@ -14,7 +14,7 @@ export const RealTImeUpdates = () => {
                     <p className="greenSec"></p>
                     <div className='rounded-xl my-5' ><h1 className="text-center">Total Sales</h1> <LineChart firstxLinedata={firstxLinedata} /></div>
                     <div className='orderChart' ><h1 className=" text-center">Orders</h1> <LineChart secondxLinedata={secondxLinedata} /></div>
-                    <div className='customerChart ' ><h1 className="text-center">Customer Quantty</h1> <LineChart thirdxLinedata={thirdxLinedata} /></div>
+                    <div className='customerChart ' ><h1 className="text-center">Customer Quantity</h1> <LineChart thirdxLinedata={thirdxLinedata} /></div>
                 </div>
                 <section className="custom-hr"></section>
                 <div className="writingSection">

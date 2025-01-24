@@ -6,10 +6,10 @@ export const BusinessInsight = () => {
         <div
           className="serviceHeading  "
         >
-          The types of services we provide for you
+          Types Of Services
         </div>
       </div>
-      <div className="flex justify-center g-5 mt-16">
+      <div className="flex justify-center gap-5 mt-16">
         <div className="serviceImage">
           <img src="Services_1.png" alt="" />
         </div>
@@ -20,7 +20,7 @@ export const BusinessInsight = () => {
           <img src="Services_3.png" alt="" />
         </div>
       </div>
-      <div className="flex justify-center g-5 mb-5">
+      <div className="flex justify-center gap-5 my-5">
         <div className="serviceImage">
           <img src="Services_4.png" alt="" />
         </div>

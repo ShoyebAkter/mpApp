@@ -64,9 +64,9 @@ function Header() {
                 <a href="#contactUs">CONTACT</a>
                 <Link
                   className="bg-emerald-800 mx-7 text-white py-2 px-5 rounded-xl"
-                  to="/login"
+                  to="/subscription"
                 >
-                  LOGIN
+                  SIGNUP
                 </Link>
               </div>
             </nav>
@@ -99,9 +99,9 @@ function Header() {
             <a href="#contactUs">CONTACT</a>
             <Link
               className="bg-emerald-800 text-white py-2 px-5 mx-8 rounded-xl"
-              to="/login"
+              to="/subscription"
             >
-              LOGIN
+              SignUp
             </Link>
           </div>
         </div>

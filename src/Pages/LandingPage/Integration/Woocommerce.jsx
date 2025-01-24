@@ -8,7 +8,7 @@ export const Woocommerce = () => {
                 <div className="wooline"></div>
 
             </div>
-            <Slide><img src='/woologo.png' alt='' className="gaImage"/><span className="appName">COMMERCE</span></Slide>
+            <Slide><img src='/woologo.png' alt='' className="wooImage"/><span className="wooappName">COMMERCE</span></Slide>
         </div>
     )
 }

@@ -10,11 +10,9 @@ export const LineSection = () => {
         Get in Touch with<span className="font-bold"> EulerMail</span>
       </h1>
       <div className="text-xl pt-10 pb-5">
-        Transform Your Business Today! Are you ready to rewrite the story of
-        your business? To turn pages filled with insights into chapters of
-        success? Then it’s time to embrace EulerMail! Whether you have
-        questions, need support, or are eager to start your journey with us,
-        we’re here and excited to assist you.
+       Transform Your Business Today! Are you ready to rewrite your business story?
+       Whether you have questions, need support, or are eager to start your journey,
+       we’re here to help you achieve remarkable growth. Contact us now and let’s begin with EulerMail!
       </div>
       <div>
         Contact Us Now and Set Your Business on a Path to Remarkable Growth!

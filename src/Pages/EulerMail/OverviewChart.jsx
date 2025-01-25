@@ -151,7 +151,7 @@ function OverviewChart() {
       },
     },
   };
-
+  ChartJS.defaults.color = '#555';
   
 
   return (

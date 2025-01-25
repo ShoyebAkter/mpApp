@@ -10,8 +10,12 @@ export const Form = () => {
     const [phone, setPhone] = useState('');
     const sendEmail = (e) => {
         e.preventDefault();
-
-        emailjs.sendForm('service_84ju2lu', 'template_czqmg0b', form.current, 'BTrXVDBsup09nfZ9j')
+        const fname = form.current["fname"].value.trim();
+    const lname = form.current["lname"].value.trim();
+    const email = form.current["email"].value.trim();
+    const message = form.current["message"].value.trim();
+        if(fname && lname && email && message && phone) {
+            emailjs.sendForm('service_84ju2lu', 'template_czqmg0b', form.current, 'BTrXVDBsup09nfZ9j')
             .then((result) => {
                 console.log(result.text);
                 // console.log(form.current);
@@ -20,6 +24,11 @@ export const Form = () => {
             }, (error) => {
                 console.log(error.text);
             });
+        }else{
+            toast.error("All fields must be filled")
+        }
+        // console.log(form.current["fname"].value,form.current["email"].value)
+        
     };
     return (
         <div  className="contactUsMain">
@@ -29,11 +38,11 @@ export const Form = () => {
             <div className="flex mb-5 nameInput">
                     <div className="w-2/3 mr-2">
                         <label className="block text-sm text-white">Your First Name:</label>
-                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
+                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="fname" id="name_field" />
                     </div>
                     <div className="w-2/3">
                         <label className="block text-sm text-white">Last Name</label>
-                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="name" id="name_field" />
+                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="lname" id="name_field" />
                     </div>
                 </div>
                 <div className="flex mb-5 phoneemailInput">

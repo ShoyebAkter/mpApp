@@ -1,105 +1,108 @@
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "../CustomerBehaviour/shopifyLogic";
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 function SocialMediaChart() {
+  const [chartOptions, setChartOptions] = useState(null);
   const [fbData, setFbData] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+
   useEffect(() => {
-    fetchData(`https://emapp-backend.vercel.app/fbpost/${user.uid}`,setFbData)
-    // fetch(`https://emapp-backend.vercel.app/fbpost/${user.uid}`)
-    //   .then((res) => res.json())
-    //   .then((result) => setFbData(result));
-  }, []);
-  const result = fbData?.reduce((acc, campaign) => {
-    const existingCampaign = acc.find((item) => item.date === campaign.date);
+    const fetchChartData = async () => {
+      await fetchData(
+        `https://emapp-backend.vercel.app/fbpost/${user.uid}`,
+        setFbData
+      );
 
-    if (existingCampaign) {
-      existingCampaign.total++;
-    } else {
-      acc.push({ date: campaign.date, total: 1 });
-    }
+      const result = fbData?.reduce((acc, campaign) => {
+        const existingCampaign = acc.find((item) => item.date === campaign.date);
 
-    return acc;
-  }, []);
-  // console.log(result);
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      // title: {
-      //   display: true,
-      //   text: "Social Media",
-      //   color: '#294F41',
-      //   font: {
-      //     size: 14,
-      //     family: 'Montserrat',
-          
-      //     weight: 700 // specify the font size here
-      //   },
-      // },
-    },
-    scales: {
-      x: {
-        ticks: {
-          color:'black'
+        if (existingCampaign) {
+          existingCampaign.total++;
+        } else {
+          acc.push({ date: campaign.date, total: 1 });
+        }
+
+        return acc;
+      }, []);
+
+      const labels =
+        user.email === "fuad@gmail.com"
+          ? result.map((res) => res.date)
+          : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+      const seriesData =
+        user.email === "fuad@gmail.com"
+          ? result.map((res) => res.total)
+          : [30, 10, 40, 50, 80, 20, 90];
+
+      const options = {
+        chart: {
+          type: "column",
+          height: 350
         },
-      },
-      y: {
-        ticks: {
-          color:'black'
+        title: {
+          text: null,
         },
-      },
-    },
-  };
+        xAxis: {
+          categories: labels,
+          title: {
+            text: null,
+          },
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: null,
+          },
+          labels: {
+            overflow: "justify",
+          },
+        },
+        tooltip: {
+          valueSuffix: "",
+        },
+        plotOptions: {
+          bar: {
+            dataLabels: {
+              enabled: true,
+            },
+            borderRadius: 5, // Rounded bar corners
+          },
+        },
+        legend: {
+          enabled: false,
+        },
+        series: [
+          {
+            name: "Data",
+            data: seriesData,
+            color: "#659148",
+            borderRadius: 15,
+          },
+        ],
+        credits: {
+          enabled: false, // Disable the Highcharts watermark
+        },
+      };
 
-  const labels =
-    user.email === "fuad@gmail.com"
-      ? result.map((res) => res.date)
-      : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      setChartOptions(options);
+    };
 
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: "",
-        data:
-          user.email === "fuad@gmail.com"
-            ? result.map((res) => res.total)
-            : [30, 10, 40, 50, 80, 20, 90],
-        backgroundColor: "#659148",
-        borderRadius: 20,
-      },
-    ],
-  };
+    fetchChartData();
+  }, [user]);
+
   return (
-    <div className="boxcontainer SMborder-scoop p-2 ">
+    <div className="boxcontainer SMborder-scoop p-2">
       <div>
-        <h1 style={{"background":"#FFFFFF","color":"#294F41","width":"300px"}} className="mx-auto font-bold text-center text-xl  cursor-pointer"
-          
+        <h1
+          style={{ background: "#FFFFFF", color: "#294F41", width: "300px" }}
+          className="mx-auto font-bold text-center text-xl cursor-pointer"
           onClick={() => navigate("/socialmedia")}
         >
           SocialMedia
@@ -114,13 +117,15 @@ function SocialMediaChart() {
           </div>
           <div
             style={{ backgroundColor: "#2a4e40" }}
-            className="text-white text-xs py-1  px-3 rounded-xl text-center"
+            className="text-white text-xs py-1 px-3 rounded-xl text-center"
           >
             Accounts Engaged
             <div className="text-xs">2</div>
           </div>
         </div>
-        <Bar options={options} height={200} data={data} />
+        {chartOptions && (
+          <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+        )}
       </div>
     </div>
   );

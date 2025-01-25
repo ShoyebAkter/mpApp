@@ -24,7 +24,7 @@ const PricingSec = () => {
             <span className="font-bold">Payment Options:</span> Monthly autopay,
             ensuring uninterrupted service.
           </p>
-          <a href="realtime" className="btn">
+          <a href="subscription" className="btn">
             Join Now
           </a>
         </div>

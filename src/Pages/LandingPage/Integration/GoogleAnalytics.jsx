@@ -7,7 +7,7 @@ export const GoogleAnalytics = () => {
         <span className="galinecircle"></span>
         {/* <div className="galine" ></div> */}
         <div className="firstupward-line"></div>
-        <div className="upward-line"></div>
+        {/* <div className="upward-line"></div> */}
         <div className="secondupward-line"></div>
       </div>
     </div>

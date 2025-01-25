@@ -4,7 +4,7 @@ export const Sms = () => {
         <div className=" smsDiv">
             <div className="line-with-circle">
                 <span className="smslinecircle"></span>
-                <div className="smsline"></div>
+                {/* <div className="smsline"></div> */}
                 {/* <div className="secondsmsline"></div> */}
                 <div className="smsupward-line"></div>
                 <div className="second-line"></div>

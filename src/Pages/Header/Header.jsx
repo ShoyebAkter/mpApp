@@ -66,7 +66,7 @@ function Header() {
                   className="bg-emerald-800 mx-7 text-white py-2 px-5 rounded-xl"
                   to="/subscription"
                 >
-                  SIGNUP
+                  SIGN UP
                 </Link>
               </div>
             </nav>

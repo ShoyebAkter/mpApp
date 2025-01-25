@@ -67,7 +67,7 @@ const EngageLineChart = ({eulerMail}) => {
                     legend: {
                         layout: 'horizontal',
                         align: 'center',
-                        verticalAlign: 'bottom'
+                        verticalAlign: 'top'
                     }
                 }
             }]

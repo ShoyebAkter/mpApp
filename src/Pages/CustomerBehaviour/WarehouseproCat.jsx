@@ -127,6 +127,13 @@ const WarehouseproCat = ({ setSelectedCategory, setTotalSales }) => {
         },
         gridLineWidth: 1,
         lineWidth: 0,
+        labels: {
+          style: {
+            fontWeight: "bold", // Make category names bold
+            fontSize: "13px",   // Optional: Set font size
+            fontFamily: "Verdana, sans-serif", // Optional: Customize font family
+          },
+        },
         events: {
           click: function (event) {
               // Handle the click event on the x-axis here

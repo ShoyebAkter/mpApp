@@ -66,8 +66,8 @@
 .middleChart{
     display: flex;
     border-radius: 1rem/* 16px */;
-    margin-top: 1.25rem/* 20px */;
-    padding: 50px;
+    margin-block: 1.25rem/* 20px */;
+    
     margin-bottom: 1.25rem/* 20px */;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     gap:20px;

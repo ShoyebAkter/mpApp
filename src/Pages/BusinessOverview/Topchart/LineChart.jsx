@@ -30,7 +30,7 @@ export const LineChart = ({averageOrder, orders,totalSales, totalOrder}) => {
   // console.log(averageOrder)
   const options = {
     responsive: true,
-
+    
     plugins: {
       tooltip: {
         callbacks: {
@@ -49,6 +49,9 @@ export const LineChart = ({averageOrder, orders,totalSales, totalOrder}) => {
       },
       legend: {
         position: "top",
+      },
+      datalabels: {
+        display: false, // Disable data labels (if you're using the DataLabels plugin)
       },
       title: {
         display: true,
@@ -122,6 +125,7 @@ export const LineChart = ({averageOrder, orders,totalSales, totalOrder}) => {
             y="50"
             fontFamily="Verdana"
             fontSize="16"
+            fontWeight="700"
             textAnchor="middle"
             alignmentBaseline="middle"
           >

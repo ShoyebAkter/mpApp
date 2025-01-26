@@ -68,6 +68,9 @@ export const CustomerQuantity = () => {
       legend: {
         position: 'top',
       },
+      datalabels: {
+        display: false, // Disable data labels (if you're using the DataLabels plugin)
+      },
       title: {
         display: true,
         text: 'Customer Quantity',

@@ -70,7 +70,7 @@ export const TotalSales = ({totalSalesData}) => {
           datasets: [
             {
               label: `Sales `,
-              data: totalSales.map((sale) => (sale.total / 1000).toFixed(2)),
+              data: totalSales.map((sale) => (sale.total / 1000).toFixed(1)),
               borderColor: "#659248",
               backgroundColor: "#659248",
             },
@@ -118,6 +118,9 @@ export const TotalSales = ({totalSalesData}) => {
             return label;
           },
         },
+      },
+      datalabels: {
+        display: false, // Disable data labels (if you're using the DataLabels plugin)
       },
       legend: {
         position: "top",
@@ -174,6 +177,7 @@ export const TotalSales = ({totalSalesData}) => {
             y="50"
             fontFamily="Verdana"
             fontSize="16"
+            fontWeight="700"
             textAnchor="middle"
             alignmentBaseline="middle"
           >

@@ -75,7 +75,7 @@ export const LoginHeader = () => {
                   activeLink === "/customerBehaviour" ? "font-bold" : ""
                 }
               >
-                Customer Behaviour
+                Customer Behavior
               </Link>
               <Link
                 to="/campaignresult"
@@ -186,7 +186,7 @@ export const LoginHeader = () => {
                   activeLink === "/customerBehaviour" ? "font-bold" : ""
                 }
               >
-                Customer Behaviour
+                Customer Behavior
               </Link>
               <Link
                 to="/campaignresult"

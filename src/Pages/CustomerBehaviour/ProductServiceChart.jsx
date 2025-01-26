@@ -26,7 +26,7 @@ const ProductServiceChart = ({ setSelectedProduct }) => {
         // Dynamically create the Highcharts configuration
         const config = {
           chart: {
-            type: "column",
+            type: "bar",
             width: 1200,
             height: 500,
           },
@@ -41,6 +41,10 @@ const ProductServiceChart = ({ setSelectedProduct }) => {
                 fontSize: "13px",
                 fontFamily: "Verdana, sans-serif",
               },
+              
+            },
+            scrollbar: {
+              enabled: true, // Enable scrollbar for horizontal scrolling
             },
           },
           yAxis: {

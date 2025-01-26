@@ -12,9 +12,9 @@ export const RealTImeUpdates = () => {
             <section className="firstSec ">
                 <div  className="lineChart ">
                     <p className="greenSec"></p>
-                    <div className='rounded-xl my-5' ><h1 className="text-center">Total Sales</h1> <LineChart firstxLinedata={firstxLinedata} /></div>
-                    <div className='orderChart' ><h1 className=" text-center">Orders</h1> <LineChart secondxLinedata={secondxLinedata} /></div>
-                    <div className='customerChart ' ><h1 className="text-center">Customer Quantity</h1> <LineChart thirdxLinedata={thirdxLinedata} /></div>
+                    <div className='rounded-xl mt-5' ><h1 className="text-center font-bold mb-5">Total Sales</h1> <LineChart firstxLinedata={firstxLinedata} /></div>
+                    <div className='orderChart' ><h1 className=" text-center font-bold mb-5">Orders</h1> <LineChart secondxLinedata={secondxLinedata} /></div>
+                    <div className='customerChart ' ><h1 className="text-center font-bold mb-5">Customer Quantity</h1> <LineChart thirdxLinedata={thirdxLinedata} /></div>
                 </div>
                 <section className="custom-hr"></section>
                 <div className="writingSection">
@@ -42,8 +42,7 @@ export const RealTImeUpdates = () => {
                 <div className="revenueChart">
                     <p className="greenSec"></p>
 
-                    <div className="mx-auto rounded-xl">
-                        <h1 className="text-center my-3">Monthly Revenue</h1>
+                    <div className="mx-auto rounded-xl ">
                         <RevenueChart />
                     </div>
                 </div>

@@ -52,6 +52,9 @@ const MeanChart = ({ chartType }) => {
           },
         },
       },
+      datalabels: {
+        display: false, // Disable data labels (if you're using the DataLabels plugin)
+      },
       legend: {
         position: "top",
       },
@@ -135,6 +138,7 @@ const MeanChart = ({ chartType }) => {
             y="50"
             fontFamily="Verdana"
             fontSize="16"
+            fontWeight="700"
             textAnchor="middle"
             alignmentBaseline="middle"
           >

@@ -40,7 +40,7 @@
     padding: 2.5rem
 }
 .realTimeDiv div{
-    background-color: #f8f8f8;
+    background-color: #fff;
 }
 .orderChart{
     margin-top: 1.25rem;/* 20px */;
@@ -59,6 +59,7 @@
     border-radius: 1rem;
     display: flex;
     width: 733px;
+    background-color: #f8f8f8;
     height: 200px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 }

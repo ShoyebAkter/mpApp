@@ -101,7 +101,7 @@ function CustomerBehaviourMain() {
             {
                 user.email==="warehousepro@gmail.com"?
                 <div>
-            <h1 style={{"background":"#FFFFFF","color":"#294F41","width":"300px"}} className="mx-auto font-bold  text-center text-xl  cursor-pointer"> Customer Behaviour</h1>
+            <h1 style={{"background":"#FFFFFF","color":"#294F41","width":"300px"}} className="mx-auto font-bold  text-center text-xl  cursor-pointer"> Customer Behavior</h1>
             <EngageLineChart eulerMail={"eulerMail"}/>
             </div>
                 

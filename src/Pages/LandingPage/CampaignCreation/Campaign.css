@@ -29,8 +29,8 @@
 }
 .campSec{
     display: flex;
-        justify-content: center;
-        gap: 20px;
+        justify-content: space-around;
+        
         align-items: center;
         margin-top: 40px;
 }

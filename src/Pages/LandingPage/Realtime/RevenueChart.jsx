@@ -1,58 +1,103 @@
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
+import React, { useEffect, useRef } from "react";
+import Highcharts from "highcharts";
 import "./Realtime.css";
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
-export const options = {
-  responsive: true,
-};
-
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-export const data = {
-  labels,
+const data = {
+  labels: ["January", "February", "March", "April", "May", "June", "July"],
   datasets: [
     {
-      label: "",
+      name: "Dataset 1",
       data: [100, 30, 250, 600, 30, 350, 90],
-      borderColor: "#439541",
-      backgroundColor: "#439541",
+      color: "#439541",
     },
     {
-      label: "",
+      name: "Dataset 2",
       data: [10, 50, 10, 59, 230, 15, 400],
-      borderColor: "#649445",
-      backgroundColor: "#649445",
+      color: "#649445",
     },
   ],
 };
 
 export function RevenueChart() {
+  const chartRefDesktop = useRef(null);
+  const chartRefMobile = useRef(null);
+
+  useEffect(() => {
+    // Desktop Chart
+    if (chartRefDesktop.current) {
+      Highcharts.chart(chartRefDesktop.current, {
+        chart: {
+          type: "line",
+          height:200,
+          width:680,
+        },
+        title: {
+          text: "Revenue Chart",
+        },
+        xAxis: {
+          categories: data.labels,
+        },
+        yAxis: {
+          title: {
+            text: "Values",
+          },
+        },
+        credits: {
+          enabled: false // Hide credits
+        },
+        series: data.datasets.map((dataset) => ({
+          name: dataset.name,
+          data: dataset.data,
+          color: dataset.color,
+        })),
+        responsive: {
+          rules: [
+            {
+              condition: {
+                maxWidth: 768,
+              },
+              chartOptions: {
+                legend: {
+                  enabled: false,
+                },
+              },
+            },
+          ],
+        },
+      });
+    }
+
+    // Mobile Chart
+    if (chartRefMobile.current) {
+      Highcharts.chart(chartRefMobile.current, {
+        chart: {
+          type: "line",
+          height:200,
+        },
+        title: {
+          text: "Revenue Chart",
+        },
+        xAxis: {
+          categories: data.labels,
+        },
+        yAxis: {
+          title: {
+            text: "Values",
+          },
+        },
+        series: data.datasets.map((dataset) => ({
+          name: dataset.name,
+          data: dataset.data,
+          color: dataset.color,
+        })),
+      });
+    }
+  }, []);
+
   return (
-    <div >
-      <div className="chart-container">
-      <Line height={150} width={700} options={options} data={data} />
-      </div>
-      <div className="mobileViewChart">
-      <Line height={150} width={250} options={options} data={data} />
-      </div>
+    <div>
+      <div className="chart-container" ref={chartRefDesktop}></div>
+      <div className="mobileViewChart" ref={chartRefMobile}></div>
     </div>
   );
 }

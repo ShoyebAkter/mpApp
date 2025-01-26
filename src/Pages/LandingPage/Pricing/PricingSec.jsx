@@ -51,7 +51,7 @@ const PricingSec = () => {
               payment with automatic annual renewal reminders.
             </div>
           </p>
-          <a href="#" className="btn">
+          <a href="subscription" className="btn">
             Join Now
           </a>
         </div>
@@ -73,7 +73,7 @@ const PricingSec = () => {
               Plan.
             </div>
           </p>
-          <a href="#" className="btn">
+          <a href="subscription" className="btn">
             Join Now
           </a>
         </div>
@@ -93,7 +93,7 @@ const PricingSec = () => {
               billing cycles and payment terms based on the agreement.
             </div>
           </p>
-          <a href="#" className="btn">
+          <a href="subscription" className="btn">
             Join Now
           </a>
         </div>

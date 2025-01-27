@@ -3,7 +3,7 @@ import Highcharts from "highcharts";
 import "./Realtime.css";
 
 const data = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
   datasets: [
     {
       name: "Dataset 1",
@@ -72,6 +72,7 @@ export function RevenueChart() {
       Highcharts.chart(chartRefMobile.current, {
         chart: {
           type: "line",
+          width:300,
           height:200,
         },
         title: {
@@ -86,7 +87,7 @@ export function RevenueChart() {
           },
         },
         series: data.datasets.map((dataset) => ({
-          name: dataset.name,
+          name: "",
           data: dataset.data,
           color: dataset.color,
         })),

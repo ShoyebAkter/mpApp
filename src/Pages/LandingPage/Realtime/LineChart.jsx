@@ -59,7 +59,7 @@ export function LineChart({
       Highcharts.chart(chartRefMobile.current, {
           chart: {
             type: "line",
-            width:600,
+            width:300,
             height:200
           },
           title: {

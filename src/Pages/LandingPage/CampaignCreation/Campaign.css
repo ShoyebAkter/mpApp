@@ -55,6 +55,11 @@
         font-size: 24px;
     }
     .explationDiv{
-        font-size: 18px;
+        font-size: 14px;
+        padding-inline: 10px;
+        width: 100%;
+    }
+    .campaignImg{
+        width: 300px;
     }
 }

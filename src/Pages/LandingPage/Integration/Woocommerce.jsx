@@ -2,7 +2,7 @@
 import { Slide } from "react-awesome-reveal";
 export const Woocommerce = () => {
     return (
-        <div className="flex items-center ">
+        <div className="flex items-center wooDiv">
             <div className="line-with-circle mr-2">
                 <span className="woolinecircle"></span>
                 <div className="wooline"></div>

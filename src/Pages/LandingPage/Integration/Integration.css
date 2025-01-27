@@ -330,7 +330,7 @@
 .integratiobImage img{
   height: 250px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 361px) and  (max-width: 768px) {
 
   /* CSS Animation */
 
@@ -352,80 +352,279 @@
   }
   
   .gaImage{
-    width: 30px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
   }
   .appName{
-    font-size: 14px;
+    font-size: 8px;
   }
   .shopify{
-    transform: translate(-35px,-20px);
+    transform: translate(-0px,-20px);
+  }
+  .linecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(3px,-4px);
   }
   .line{
-    width: 100px;
+    width: 30px;
+    height: 1px;
+    transform: translate(10px,0px);
   }
   .whatsAPp{
-    transform: translate(-35px,-10px);
+    transform: translate(-0px,-10px);
   }
   .whatsappline{
-    width: 100px;
+    width: 30px;
+    height: 1px;
+    transform: translate(6px,0px);
+  }
+  .whatsapplinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(0px,-3px);
   }
   .gA{
-    transform: translate(-20px,-20px);
+    transform: translate(10px,-10px);
   }
   .gaPic{
     width: 30px;
     height: 30px;
   }
   .gaappName{
-    font-size: 14px;
+    font-size: 8px;
   }
   .secondupward-line{
-    width: 100px;
-  }
-  .firstupward-line{
-    height: 30px;
-  }
-  .integratiobImage img{
-    width: 150px;
-    height: 200px;
-  }
-  .wooImage{
-    width: 30px;
-    height: 30px;
-  }
-  .wooappName{
-    font-size: 14px;
-  }
-  .wooline{
-    width: 100px;
-  }
-  .instaDiv{
+    width: 40px;
     transform: translate(0px,20px);
   }
-  .instaImage{
+  .firstupward-line{
+    height: 20px;
+    width: 1px;
+    right: 0px;
+  }
+  .galinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(0px,15px);
+  }
+  .wooImage{
+    width: 20px;
+    height: 20px;
+    margin-left: 0px;
+  }
+  .wooappName{
+    font-size: 7px;
+  }
+  .wooline{
     width: 30px;
-    height: 30px;
+    /* transform: translate(-70px,-40px); */
+  }
+  .woolinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(5px,-20px);
+  }
+  .wooDiv{
+    transform: translate(-20px,5px);
+  }
+  .instaDiv{
+    transform: translate(-15px,14px);
+  }
+  .instaImage{
+    width: 20px;
+    height: 20px;
+    margin-left: 0px;
   }
   .instaappName{
-    font-size: 14px;
+    font-size: 7px;
   }
   .instaline{
-    width: 100px;
+    width: 30px;
+  }
+  .instalinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(5px,-20px);
+  }
+  .smslinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(-42px,24px);
   }
   .smsupward-line{
-    height: 30px;
+    height: 20px;
   }
   .second-line{
-    width: 100px;
+    width: 30px;
   }
   .smsDiv{
-    transform: translate(20px,-10px);
+    transform: translate(0px,-11px);
+  }
+  .more{
+    font-size: 7px;
   }
 
 
 .integratiobImage{
-  padding-bottom: 75px;
+  padding-bottom: 50px;
+  transform: translate(-20px,-10px);
+}
+.integratiobImage img{
+  width: 95px;
+  height: 100px;
+}
+.whatsAPp{
+  margin: 0;
+}
+.instaDiv{
+  margin: 0;
+}
+.smsDiv{
+  margin: 0;
+}
+}
+@media only screen and (max-width: 360px) {
+
+  /* CSS Animation */
+
+.integrationDiv{
+  padding: 0px;
+}
+.integrationHeading{
+  padding-top: 10px;
+  font-size: 24px;
+}
+.integrationPara{
+  font-size: 12px;
+  line-height: 16px;
+  padding-bottom: 20px;
+}
+.line-with-circle {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .gaImage{
+    width: 20px;
+    height: 20px;
+  }
+  .appName{
+    font-size: 8px;
+  }
+  .shopify{
+    transform: translate(-0px,-10px);
+  }
+  .linecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(3px,-4px);
+  }
+  .line{
+    width: 30px;
+    height: 1px;
+    transform: translate(10px,0px);
+  }
+  .whatsAPp{
+    transform: translate(-0px,-10px);
+  }
+  .whatsappline{
+    width: 30px;
+    height: 1px;
+    transform: translate(6px,0px);
+  }
+  .whatsapplinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(0px,-3px);
+  }
+  .gA{
+    transform: translate(10px,-10px);
+  }
+  .gaPic{
+    width: 30px;
+    height: 30px;
+  }
+  .gaappName{
+    font-size: 8px;
+  }
+  .secondupward-line{
+    width: 40px;
+    transform: translate(0px,20px);
+  }
+  .firstupward-line{
+    height: 20px;
+    width: 1px;
+    right: 0px;
+  }
+  .galinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(0px,15px);
+  }
+  .wooImage{
+    width: 20px;
+    height: 20px;
+    margin-left: 0px;
+  }
+  .wooappName{
+    font-size: 7px;
+    padding: 0px;
+  }
+  .wooline{
+    width: 30px;
+    /* transform: translate(-70px,-40px); */
+  }
+  .woolinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(5px,-20px);
+  }
+  .wooDiv{
+    transform: translate(-20px,16px);
+  }
+  .instaDiv{
+    transform: translate(-15px,14px);
+  }
+  .instaImage{
+    width: 20px;
+    height: 20px;
+    margin-left: 0px;
+  }
+  .instaappName{
+    font-size: 7px;
+    padding: 0px;
+  }
+  .instaline{
+    width: 30px;
+  }
+  .instalinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(5px,-20px);
+  }
+  .smslinecircle{
+    width: 8px;
+    height: 8px;
+    transform: translate(-42px,24px);
+  }
+  .smsupward-line{
+    height: 20px;
+  }
+  .second-line{
+    width: 30px;
+  }
+  .smsDiv{
+    transform: translate(0px,-11px);
+  }
+  .more{
+    font-size: 7px;
+  }
+
+
+.integratiobImage{
+  padding-bottom: 50px;
+  transform: translate(-20px,-10px);
 }
 .integratiobImage img{
   width: 95px;

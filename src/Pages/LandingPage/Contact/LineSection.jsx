@@ -1,9 +1,38 @@
 import { useRef, useState } from "react";
 import { PhoneInput } from "react-international-phone";
-
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 export const LineSection = () => {
   const form = useRef();
   const [phone, setPhone] = useState('');
+
+  const sendEmail=(e)=>{
+    e.preventDefault();
+    const fname = form.current["firstName"].value.trim();
+    const lname = form.current["lastName"].value.trim();
+    const email = form.current["useremail"].value.trim();
+    // const phone = form.current["userphone"].value.trim();
+    const message = form.current["usermessage"].value.trim();
+    console.log(fname,lname,email,message)
+    const contactInfo={
+      firstName:fname,
+      lastName:lname,
+      phone:phone,
+      email:email,
+      message:message
+    }
+    fetch("https://emapp-backend.vercel.app/sendcontactemail", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(contactInfo),
+              }).then((res) => {
+                if(res.status===200){
+                  toast.success("Email sent Successfully");
+                }
+              });
+  }
   return (
     <div className="text-white p-5 flex flex-col justify-between">
       <h1 className="text-5xl">
@@ -58,37 +87,38 @@ export const LineSection = () => {
       />
     </form> */}
     <form ref={form}
-    //  onSubmit={sendEmail}
+     onSubmit={sendEmail}
      id="contact_form">
             <div className="flex mb-5 nameInput">
                     <div className="w-2/3 mr-2">
                         <label className="block text-sm text-black">Your First Name:</label>
-                        <input className="rounded  w-full bg-gray-400" type="text" name="name" id="name_field" />
+                        <input required className="rounded  w-full bg-gray-400" type="text" name="firstName" id="name_field" />
                     </div>
                     <div className="w-2/3">
                         <label className="block text-sm text-black">Last Name</label>
-                        <input className="rounded w-full bg-gray-400" type="text" name="name" id="name_field" />
+                        <input required className="rounded w-full bg-gray-400" type="text" name="lastName" id="name_field" />
                     </div>
                 </div>
                 <div className="flex mb-5 phoneemailInput">
                     <div className="w-2/3 mr-2">
                         <label className="block text-sm text-black">Phone Number</label>
                         <PhoneInput
-                                name="phone"
+                                name="userphone"
                                 id="phone_field"
                                 defaultCountry="USA"
+                                required
                                 value={phone}
                                 onChange={(phone) => setPhone(phone)}
                             />
                     </div>
                     <div className="w-2/3">
                         <label className="block text-sm text-black">Email Address:</label>
-                        <input placeholder="From:" className="rounded  w-full bg-gray-400" type="email" name="email" id="email_field" />
+                        <input required placeholder="From:" className="rounded  w-full bg-gray-400" type="email" name="useremail" id="email_field" />
                     </div>
                 </div>
                 <div className="formTextArea mb-4">
                     <label className="block text-sm text-black">Message:</label>
-                    <textarea className="w-full rounded border-black bg-gray-400" name="message" id="message_field" rows="6"></textarea>
+                    <textarea required className="w-full rounded border-black bg-gray-400" name="usermessage" id="message_field" rows="6"></textarea>
                 </div>
                 
                 <button type="submit"  style={{"backgroundColor":"#a3Cde0"}} className=" py-2 px-4 rounded  shadow-sm text-black hover:text-white hover:bg-blue-800" >Send</button>
@@ -103,6 +133,7 @@ export const LineSection = () => {
           </div>
         </div>
       </dialog>
+      <ToastContainer />
     </div>
   );
 };

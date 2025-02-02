@@ -24,8 +24,6 @@ export const Form = () => {
             }, (error) => {
                 console.log(error.text);
             });
-        }else{
-            toast.error("All fields must be filled")
         }
         // console.log(form.current["fname"].value,form.current["email"].value)
         
@@ -38,11 +36,11 @@ export const Form = () => {
             <div className="flex mb-5 nameInput">
                     <div className="w-2/3 mr-2">
                         <label className="block text-sm text-white">Your First Name:</label>
-                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="fname" id="name_field" />
+                        <input className="rounded border-gray-400 w-full bg-white" required type="text" name="fname" id="name_field" />
                     </div>
                     <div className="w-2/3">
                         <label className="block text-sm text-white">Last Name</label>
-                        <input className="rounded border-gray-400 w-full bg-white" type="text" name="lname" id="name_field" />
+                        <input className="rounded border-gray-400 w-full bg-white" required type="text" name="lname" id="name_field" />
                     </div>
                 </div>
                 <div className="flex mb-5 phoneemailInput">
@@ -52,18 +50,19 @@ export const Form = () => {
                                 name="phone"
                                 id="phone_field"
                                 defaultCountry="USA"
+                                required
                                 value={phone}
                                 onChange={(phone) => setPhone(phone)}
                             />
                     </div>
                     <div className="w-2/3">
                         <label className="block text-sm text-white">Email Address:</label>
-                        <input placeholder="From:" className="rounded border-gray-400 w-full bg-white" type="email" name="email" id="email_field" />
+                        <input required placeholder="From:" className="rounded border-gray-400 w-full bg-white" type="email" name="email" id="email_field" />
                     </div>
                 </div>
                 <div className="formTextArea mb-4">
                     <label className="block text-sm text-white">Message:</label>
-                    <textarea className="w-full rounded border-gray-400 bg-white" name="message" id="message_field" rows="6"></textarea>
+                    <textarea required className="w-full rounded border-gray-400 bg-white" name="message" id="message_field" rows="6"></textarea>
                 </div>
                 
                 <button type="submit"  style={{"backgroundColor":"#a3Cde0"}} className=" py-2 px-4 rounded  shadow-sm text-black hover:text-white hover:bg-blue-800" >Send</button>

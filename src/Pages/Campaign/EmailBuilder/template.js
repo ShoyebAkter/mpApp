@@ -147,7 +147,7 @@ const handler = async (req, res) => {
                 padding: "180px 0px 200px 0px",
                 "vertical-align": "top",
                 "background-url":
-                  "https://i.ibb.co/h87pTtF/Logo-Vertical-Green.png",
+                  "https://res.cloudinary.com/dbc2m0cft/image/upload/v1738474831/image_iln8ke.png",
               },
               children: [
                 {

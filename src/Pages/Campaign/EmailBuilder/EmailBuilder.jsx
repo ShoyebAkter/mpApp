@@ -46,7 +46,7 @@ import {
   setShowBuilder,
   setTemplate,
 } from "../../../features/counter/counterSlice";
-import { newHtml } from "./newHtml";
+import imageCompression from 'browser-image-compression';
 import { auth } from "../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 // Register the custom block
@@ -222,7 +222,7 @@ export default function EmailBuilder() {
         console.error("Error sending email:", error);
       }
     };
-    
+
     // Iterate over allTemplate to set up listeners for each item
     allTemplate.forEach((item, index) =>
       setupListener(item.image, index, allTemplate)
@@ -232,20 +232,17 @@ export default function EmailBuilder() {
     );
 
     const element = document.getElementById("VisualEditorEditMode");
-    if(element){
-      element.addEventListener("click", (event) =>
-    {
-      const parent = document.querySelector(".arco-collapse-item-content");
-      parent.style.display="none"
-    }
-          );
+    if (element) {
+      element.addEventListener("click", (event) => {
+        const parent = document.querySelector(".arco-collapse-item-content");
+        parent.style.display = "none";
+      });
     }
   }, [allTemplate]);
 
   // console.log(BlockManager,BasicType)
   useEffect(() => {
     const fetchTemplate = async () => {
-      
       // Simulate req and res objects
       const req = {};
       const res = {
@@ -295,7 +292,6 @@ export default function EmailBuilder() {
       }
     };
     fetchTemplate();
-    
   }, []);
 
   useEffect(() => {
@@ -349,70 +345,80 @@ export default function EmailBuilder() {
   }, [user?.uid]);
   // Trigger only when user.uid changes
 
+  const compressImage = async (file) => {
+    try {
+        const options = {
+            maxSizeMB: 5, // Resize if necessary
+            useWebWorker: true, // Improve performance
+        };
+        
+        const compressedFile = await imageCompression(file, options);
+        return compressedFile; // You can now use this compressed file
+    } catch (error) {
+        console.error("Image compression error:", error);
+    }
+};
   // console.log(allTemplate)
   const handleImageUpload = async (blob) => {
-    // Convert Blob to File object if needed
-    const file = new File([blob], "image.jpg", { type: blob.type });
-
-    // Prepare FormData
-    const formData = new FormData();
-
-    const reader = new FileReader();
-    return new Promise((resolve, reject) => {
-      reader.onloadend = async () => {
-        formData.append("image", file);
-
-        const imageUploadUrl = "https://emapp-backend.vercel.app/upload";
-
-        try {
-          const response = await fetch(imageUploadUrl, {
-            method: "POST",
-            body: formData,
-          });
-          const data = await response.json();
-          // console.log(data);
-          if (data.success) {
-            const uploadedImageUrl = data.imageUrl;
-            // console.log("Image URL:", uploadedImageUrl);
-
-            // Resolve with the uploaded image URL
-            resolve(uploadedImageUrl);
-          } else {
-            console.error("Image upload failed:", data);
-            reject("Image upload failed");
-          }
-        } catch (error) {
-          console.error("Error uploading image:", error);
-          reject("Error uploading image");
+    try {
+      // Convert Blob to File object
+      const image = new File([blob], "image.jpg", { type: blob.type });
+      const compressedImage = await compressImage(image);
+      // console.log("Compressed image:", compressedImage);
+      // Prepare FormData
+      const formData = new FormData();
+      formData.append("file", compressedImage);
+      formData.append("upload_preset", "ml_default"); // Replace with your preset
+  
+      console.log("Uploading image...");
+  
+      // Upload to Cloudinary
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/dbc2m0cft/image/upload`, // Correct Cloudinary URL
+        {
+          method: "POST",
+          body: formData,
         }
-      };
-
-      reader.readAsDataURL(file); // Convert blob to base64
-    });
+      );
+  
+      const data = await response.json();
+  
+      if (data.secure_url) {
+        console.log("Image uploaded successfully:", data.secure_url);
+        return data.secure_url;
+      } else {
+        console.error("Image upload failed:", data);
+        throw new Error("Image upload failed");
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      throw error;
+    }
   };
+  
   const onSave = async (values) => {
     try {
       const sameTemp = allTemplate.find(
         (obj) => obj.template.subject === values.subject
       );
-  
+
       // Wait for imageUrl to be generated
       const imageUrl = await handleSave(values);
-  
+
       if (!imageUrl) {
         console.error("Failed to generate image URL.");
         alert("Failed to save the image. Please try again.");
         return;
       }
-      console.log(imageUrl)
-  
+      console.log(imageUrl);
+
       const url = "https://emapp-backend.vercel.app/updateTemplateData";
       const requestData = {
         id: sameTemp._id,
         template: values,
         image: imageUrl,
       };
-  
+
       // Update the template data
       const response = await fetch(url, {
         method: "POST",
@@ -421,14 +427,14 @@ export default function EmailBuilder() {
         },
         body: JSON.stringify(requestData),
       });
-  
+
       if (!response.ok) {
         const errorData = await response.json();
         console.error("Error updating template:", errorData);
         alert(`Error: ${errorData.error || "Failed to update template data."}`);
         return;
       }
-  
+
       const responseData = await response.json();
       console.log("Template updated successfully:", responseData);
       toast.success("Template updated");
@@ -437,7 +443,6 @@ export default function EmailBuilder() {
       alert("An error occurred. Please try again.");
     }
   };
-  
 
   const onSubmit = async (values) => {
     // setHtml(newHtml);
@@ -475,7 +480,7 @@ export default function EmailBuilder() {
         ...values,
         subject: `Temp_${randomNumber}`,
       };
-      handleSave(updatedValues,"submit");
+      handleSave(updatedValues, "submit");
     } else {
       toast.error("Same Template");
     }
@@ -488,36 +493,43 @@ export default function EmailBuilder() {
         console.error("Element not found: VisualEditorEditMode");
         return null;
       }
-  
+
       // Generate the canvas using html2canvas
       const canvas = await html2canvas(element, { useCORS: true });
-  
+
       // Convert canvas to a blob
       const blob = await new Promise((resolve) => canvas.toBlob(resolve));
       if (!blob) {
         console.error("Failed to create blob from canvas.");
         return null;
       }
-  
+
       // Create a file from the blob
       const file = new File([blob], "canvas_image.png", { type: "image/png" });
-  
+      const compressedImage = await compressImage(file);
+      // console.log("Compressed image:", compressedImage);
       // Prepare FormData
       const formData = new FormData();
-      formData.append("image", file);
+      formData.append("file", compressedImage);
+      formData.append("upload_preset", "ml_default"); // Replace with your preset
   
-      // Upload the image
-      const response = await fetch("https://emapp-backend.vercel.app/upload", {
-        method: "POST",
-        body: formData,
-      });
+      // console.log("Uploading image...");
+  
+      // Upload to Cloudinary
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/dbc2m0cft/image/upload`, // Correct Cloudinary URL
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
   
       const data = await response.json();
-  
-      if (data.success) {
-        const imageUrl = data.imageUrl;
-        console.log(imageUrl, type);
-  
+
+      if (data.secure_url) {
+        const imageUrl = data.secure_url;
+        // console.log(imageUrl, type);
+
         if (type === "submit") {
           sendTemplateData(values, imageUrl);
           toast.success("New Template added");
@@ -533,7 +545,6 @@ export default function EmailBuilder() {
       return null;
     }
   };
-  
 
   const sendTemplateData = async (values, myimg) => {
     // console.log("start")
@@ -647,7 +658,7 @@ export default function EmailBuilder() {
       onSubmit={onSubmit}
       onUploadImage={handleImageUpload}
     >
-      {({ values }, { submit,saveTemp, restart }) => {
+      {({ values }, { submit, saveTemp, restart }) => {
         return (
           <>
             <ToastContainer />
@@ -660,7 +671,7 @@ export default function EmailBuilder() {
                   <Button type="primary" onClick={submit}>
                     Save As New
                   </Button>
-                  <Button type="primary" onClick={()=>onSave(values)}>
+                  <Button type="primary" onClick={() => onSave(values)}>
                     Save
                   </Button>
                 </Space>
@@ -670,9 +681,8 @@ export default function EmailBuilder() {
               compact={!smallScene}
               showSourceCode={false}
               categories={defaultCategories}
-              
             >
-              <EmailEditor  />
+              <EmailEditor />
             </StandardLayout>
           </>
         );

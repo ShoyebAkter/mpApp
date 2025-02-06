@@ -107,7 +107,7 @@ const ShopifyAuth = () => {
     <div className="loginsection">
       <section>
         <img className="mx-auto h-72" src="/logo.png" />
-        <div className=" bg-slate-50 shadow-xl px-12 py-10 rounded-3xl mb-5">
+        <div className=" bg-slate-50 shadow-xl px-12 mx-20 py-10 rounded-3xl mb-5">
           <h1 className="text-2xl font-bold text-center py-2">
             Shopify Authorization
           </h1>
@@ -136,7 +136,7 @@ const ShopifyAuth = () => {
               <div>
                 <label
                   htmlFor=""
-                  className="text-xl  py-2 block tracking-wide leading-6 font-semibold text-gray-400"
+                  className="text-xl  py-2 block tracking-wide leading-6 font-medium "
                 >
                   SHOPIFY STORE URL (E.G. HTTPS://MYSTORE.MYSHOPIFY.COM)
                   <span className="text-red-400">*</span>
@@ -152,7 +152,7 @@ const ShopifyAuth = () => {
               <div>
                 <label
                   htmlFor=""
-                  className="text-xl  py-2 block tracking-wide leading-6 font-semibold text-gray-400"
+                  className="text-xl  py-2 block tracking-wide leading-6 font-medium"
                 >
                   ADMIN API ACCESS TOKEN
                   <span className="text-red-400">*</span>
@@ -168,7 +168,7 @@ const ShopifyAuth = () => {
               <div>
                 <label
                   htmlFor=""
-                  className="text-xl  py-2 block tracking-wide leading-6 font-semibold text-gray-400"
+                  className="text-xl  py-2 block tracking-wide leading-6 font-medium"
                 >
                   API KEY
                   <span className="text-red-400">*</span>

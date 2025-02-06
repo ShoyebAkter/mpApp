@@ -70,6 +70,121 @@ export default function EmailBuilder() {
   };
   const { width } = useWindowSize();
   const smallScene = width < 1400;
+
+  const fontList = [
+    { value: 'Arial', label: 'Arial' },
+    { value: 'Helvetica', label: 'Helvetica' },
+    { value: 'Times New Roman', label: 'Times New Roman' },
+    { value: 'Georgia', label: 'Georgia' },
+    { value: 'Tahoma', label: 'Tahoma' },
+    { value: 'Verdana', label: 'Verdana' },
+    { value: 'Impact', label: 'Impact' },
+    { value: 'Courier', label: 'Courier' }
+  ];
+
+
+  useEffect(() => {
+    const fetchTemplate = async () => {
+      // Simulate req and res objects
+      const req = {};
+      const res = {
+        status: (statusCode) => ({
+          json: (data) => data,
+        }),
+      };
+
+      try {
+        const response = await handler(req, res);
+        dispatch(setTemplate(response));
+        await fetch(`https://emapp-backend.vercel.app/templateData`)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.length > 0) {
+              // console.log(data)
+              const updatedData = data.map((item, index) => ({
+                ...item,
+                dataType: `TEMPLATE_${index + 1}_BLOCK`, // Add the new property with its value
+              }));
+              setDefaultTemp(updatedData); // Update state with the modified array
+
+              // Extract all dataType values into an array
+              const newdataTypeArray = updatedData.map((item) => item.dataType);
+              setDefaultDataTypeArray(newdataTypeArray);
+              // console.log(dataTypeArray)
+              // Dynamically register blocks based on fetched data
+              data.forEach((template, index) => {
+                BlockManager.registerBlocks({
+                  [newdataTypeArray[index]]: {
+                    // Dynamically use blockType array value as the key
+                    name: template.template.subject,
+                    type: newdataTypeArray[index], // Assign blockType array value to the type field
+                    validParentType: [
+                      BasicType.PAGE,
+                      BasicType.WRAPPER,
+                      BasicType.SECTION,
+                      BasicType.COLUMN,
+                    ],
+                  },
+                });
+              });
+            }
+          });
+      } catch (error) {
+        console.error("Error loading template:", error);
+      }
+    };
+    fetchTemplate();
+  }, []);
+
+  useEffect(() => {
+    const fetchTemp = async () => {
+      if (!user?.uid) {
+        console.warn("User UID is not available, skipping fetch.");
+        return; // Exit early if user.uid is not defined
+      }
+
+      try {
+        const response = await fetch(
+          `https://emapp-backend.vercel.app/templateData?userId=${user.uid}`
+        );
+        const data = await response.json();
+          console.log(user.uid)
+        if (data.length > 0) {
+          const updatedData = data.map((item, index) => ({
+            ...item,
+            dataType: `TESTIMONIAL_${index + 1}_BLOCK`, // Add the new property with its value
+          }));
+          // console.log(updatedData)
+          setAllTemplate(updatedData); // Update state with the modified array
+
+          // Extract all dataType values into an array
+          const newdataTypeArray = updatedData.map((item) => item.dataType);
+          setDataTypeArray(newdataTypeArray);
+
+          // Dynamically register blocks based on fetched data
+          updatedData.forEach((template, index) => {
+            BlockManager.registerBlocks({
+              [newdataTypeArray[index]]: {
+                // Dynamically use blockType array value as the key
+                name: template.template.subject,
+                type: newdataTypeArray[index], // Assign blockType array value to the type field
+                validParentType: [
+                  BasicType.PAGE,
+                  BasicType.WRAPPER,
+                  BasicType.SECTION,
+                  BasicType.COLUMN,
+                ],
+              },
+            });
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching template data:", error);
+      }
+    };
+
+    fetchTemp();
+  }, []);
   useEffect(() => {
     const handleClick = (event, array) => {
       // console.log(event)
@@ -224,9 +339,11 @@ export default function EmailBuilder() {
     };
 
     // Iterate over allTemplate to set up listeners for each item
+    // console.log(allTemplate)
     allTemplate.forEach((item, index) =>
       setupListener(item.image, index, allTemplate)
     );
+    // console.log(defaultTemp)
     defaultTemp.forEach((item, index) =>
       setupTempListener(item.image, index, defaultTemp)
     );
@@ -238,111 +355,10 @@ export default function EmailBuilder() {
         parent.style.display = "none";
       });
     }
-  }, [allTemplate]);
+  }, [allTemplate,defaultTemp]);
 
   // console.log(BlockManager,BasicType)
-  useEffect(() => {
-    const fetchTemplate = async () => {
-      // Simulate req and res objects
-      const req = {};
-      const res = {
-        status: (statusCode) => ({
-          json: (data) => data,
-        }),
-      };
-
-      try {
-        const response = await handler(req, res);
-        dispatch(setTemplate(response));
-        await fetch(`https://emapp-backend.vercel.app/templateData`)
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.length > 0) {
-              // console.log(data)
-              const updatedData = data.map((item, index) => ({
-                ...item,
-                dataType: `TEMPLATE_${index + 1}_BLOCK`, // Add the new property with its value
-              }));
-              setDefaultTemp(updatedData); // Update state with the modified array
-
-              // Extract all dataType values into an array
-              const newdataTypeArray = updatedData.map((item) => item.dataType);
-              setDefaultDataTypeArray(newdataTypeArray);
-              // console.log(dataTypeArray)
-              // Dynamically register blocks based on fetched data
-              data.forEach((template, index) => {
-                BlockManager.registerBlocks({
-                  [newdataTypeArray[index]]: {
-                    // Dynamically use blockType array value as the key
-                    name: template.template.subject,
-                    type: newdataTypeArray[index], // Assign blockType array value to the type field
-                    validParentType: [
-                      BasicType.PAGE,
-                      BasicType.WRAPPER,
-                      BasicType.SECTION,
-                      BasicType.COLUMN,
-                    ],
-                  },
-                });
-              });
-            }
-          });
-      } catch (error) {
-        console.error("Error loading template:", error);
-      }
-    };
-    fetchTemplate();
-  }, []);
-
-  useEffect(() => {
-    const fetchTemp = async () => {
-      if (!user?.uid) {
-        console.warn("User UID is not available, skipping fetch.");
-        return; // Exit early if user.uid is not defined
-      }
-
-      try {
-        const response = await fetch(
-          `https://emapp-backend.vercel.app/templateData?userId=${user.uid}`
-        );
-        const data = await response.json();
-
-        if (data.length > 0) {
-          const updatedData = data.map((item, index) => ({
-            ...item,
-            dataType: `TESTIMONIAL_${index + 1}_BLOCK`, // Add the new property with its value
-          }));
-
-          setAllTemplate(updatedData); // Update state with the modified array
-
-          // Extract all dataType values into an array
-          const newdataTypeArray = updatedData.map((item) => item.dataType);
-          setDataTypeArray(newdataTypeArray);
-
-          // Dynamically register blocks based on fetched data
-          updatedData.forEach((template, index) => {
-            BlockManager.registerBlocks({
-              [newdataTypeArray[index]]: {
-                // Dynamically use blockType array value as the key
-                name: template.template.subject,
-                type: newdataTypeArray[index], // Assign blockType array value to the type field
-                validParentType: [
-                  BasicType.PAGE,
-                  BasicType.WRAPPER,
-                  BasicType.SECTION,
-                  BasicType.COLUMN,
-                ],
-              },
-            });
-          });
-        }
-      } catch (error) {
-        console.error("Error fetching template data:", error);
-      }
-    };
-
-    fetchTemp();
-  }, [user?.uid]);
+  
   // Trigger only when user.uid changes
 
   const compressImage = async (file) => {
@@ -655,6 +671,7 @@ export default function EmailBuilder() {
       data={template}
       autoComplete
       dashed={false}
+      fontList={fontList}
       onSubmit={onSubmit}
       onUploadImage={handleImageUpload}
     >

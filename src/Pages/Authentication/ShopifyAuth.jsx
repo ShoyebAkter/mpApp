@@ -106,29 +106,29 @@ const ShopifyAuth = () => {
   return (
     <div className="loginsection">
       <section>
-        <img className="mx-auto h-72" src="/logo.png" />
+        <img className="mx-auto h-40" src="/logo.png" />
         <div className=" bg-slate-50 shadow-xl px-12 mx-20 py-10 rounded-3xl mb-5">
           <h1 className="text-2xl font-bold text-center py-2">
             Shopify Authorization
           </h1>
           <div>
-            <div className="text-xl font-medium py-2">
+            <div className="text-sm font-medium py-2">
               To allow us to securely connect to your Shopify data, you must
               register a Custom App within your Shopify store. Creating a custom
               app takes just a couple of minutes, and allows you complete
               control over exactly which data we can access. It also lets you
               disable access at any time.
             </div>
-            <div className="text-xl font-medium py-2">
+            <div className="text-sm font-medium py-2">
               In general you simply need to visit your Shopify admin portal,
               then visit Settings - Apps and Sales Channels - Develop apps -
               Create app. After creating the app go to the Api credential and
               Then install the app.
             </div>
-            <div className="text-xl font-medium py-2">
+            <div className="text-sm font-medium py-2">
               When prompted, please provide the following settings:
               <div>Admin API scopes: Please select all read-only scopes</div>
-              <div className="text-xl font-medium py-2">
+              <div className="text-sm font-medium py-2">
                 Once you have configured your app, you will be able to generate
                 an Access Token. Please return here and enter it in the boxes
                 below, along with your Shopify store URL.
@@ -136,7 +136,7 @@ const ShopifyAuth = () => {
               <div>
                 <label
                   htmlFor=""
-                  className="text-xl  py-2 block tracking-wide leading-6 font-medium "
+                  className="text-sm  py-2 block tracking-wide leading-6 font-medium "
                 >
                   SHOPIFY STORE URL (E.G. HTTPS://MYSTORE.MYSHOPIFY.COM)
                   <span className="text-red-400">*</span>
@@ -146,13 +146,13 @@ const ShopifyAuth = () => {
                   type="text"
                   placeholder="Url"
                   required
-                  className="appearance-none bg-white w-full py-2 rounded-md border-gray-300"
+                  className="appearance-none h-8 bg-white w-full py-2 rounded-md border-gray-300"
                 />
               </div>
               <div>
                 <label
                   htmlFor=""
-                  className="text-xl  py-2 block tracking-wide leading-6 font-medium"
+                  className="text-sm  py-2 block tracking-wide leading-6 font-medium"
                 >
                   ADMIN API ACCESS TOKEN
                   <span className="text-red-400">*</span>
@@ -162,13 +162,13 @@ const ShopifyAuth = () => {
                   onChange={(e) => setAdminApi(e.target.value)}
                   placeholder=""
                   required
-                  className="appearance-none bg-white w-full py-2 rounded-md border-gray-300"
+                  className="appearance-none bg-white w-full h-8 py-2 rounded-md border-gray-300"
                 />
               </div>
               <div>
                 <label
                   htmlFor=""
-                  className="text-xl  py-2 block tracking-wide leading-6 font-medium"
+                  className="text-sm  py-2 block tracking-wide leading-6 font-medium"
                 >
                   API KEY
                   <span className="text-red-400">*</span>
@@ -178,7 +178,7 @@ const ShopifyAuth = () => {
                   onChange={(e) => setApi(e.target.value)}
                   placeholder=""
                   required
-                  className="appearance-none bg-white w-full py-2 rounded-md border-gray-300"
+                  className="appearance-none bg-white h-8 w-full py-2 rounded-md border-gray-300"
                 />
               </div>
             </div>

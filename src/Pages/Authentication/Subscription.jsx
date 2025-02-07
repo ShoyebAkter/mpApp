@@ -46,7 +46,7 @@ function Subscription() {
     <>
       <main className="loginsection">
         <section>
-          <img className="mx-auto h-72" src="/logo.png" />
+          <img className="mx-auto h-40" src="/logo.png" />
           <div className="flex justify-center ">
             <form>
               <div className=" bg-slate-50 shadow-xl px-12 py-10 rounded-3xl mb-5 text-sm">

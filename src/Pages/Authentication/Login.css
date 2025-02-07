@@ -2,7 +2,6 @@
     background:  url('/BG_5.png') no-repeat;
     background-size: cover;
     padding-block: 30px;
-    height: 100vh;
 }
 .emailSec{
     display: flex;

@@ -104,10 +104,10 @@ const ShopifyAuth = () => {
       
   };
   return (
-    <div className="loginsection">
-      <section>
+    <div className="loginsection h-screen">
+      <section >
         <img className="mx-auto h-40" src="/logo.png" />
-        <div className=" bg-slate-50 shadow-xl px-12 mx-20 py-10 rounded-3xl mb-5">
+        <div className=" bg-slate-50 shadow-xl px-12 mx-20  py-5 rounded-3xl mb-5">
           <h1 className="text-2xl font-bold text-center py-2">
             Shopify Authorization
           </h1>

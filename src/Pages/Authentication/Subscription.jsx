@@ -44,7 +44,7 @@ function Subscription() {
 
   return (
     <>
-      <main className="loginsection">
+      <main className="loginsection h-screen">
         <section>
           <img className="mx-auto h-40" src="/logo.png" />
           <div className="flex justify-center ">

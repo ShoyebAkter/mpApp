@@ -2,15 +2,50 @@
     background:  url('/BG_5.png') no-repeat;
     background-size: cover;
     padding-block: 30px;
+    height: 100vh;
 }
 .emailSec{
     display: flex;
     justify-content: space-between;
 }
+.connectionDiv{
+    margin-left: 10rem /* 160px */;
+    margin-right: 10rem /* 160px */;
+    padding-left: 3rem /* 48px */;
+    padding-right: 3rem /* 48px */;
+    padding-top: 2.5rem /* 40px */;
+    padding-bottom: 2.5rem /* 40px */;
+    margin-bottom: 1.25rem /* 20px */;
+ }
+ .shopifyAuth{
+    padding-left: 3rem /* 48px */;
+    padding-right: 3rem /* 48px */;
+    margin-left: 5rem /* 80px */;
+    margin-right: 5rem /* 80px */;
+    padding-top: 1.25rem /* 20px */;
+    padding-bottom: 1.25rem /* 20px */;
+    margin-bottom: 1.25rem /* 20px */;
+ }
 
+@media only screen and (min-width:350px) and (max-width: 767px) {
+    .connectionDiv{
+       padding: 10px; 
+       margin:20px;
+    }
+    .shopifyAuth{
+       padding: 10px; 
+       margin:20px;
+    }
+    .loginsection{
+        height: 100%;
+        padding-block: 10px;
+    }
+    
+}
 @media only screen and (max-width: 768px) {
     .emailSec{
         display: flex;
         flex-direction: column;
     }
+    
 }

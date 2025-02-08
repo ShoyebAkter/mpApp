@@ -44,12 +44,12 @@ function Subscription() {
 
   return (
     <>
-      <main className="loginsection h-screen">
+      <main className="loginsection ">
         <section>
           <img className="mx-auto h-40" src="/logo.png" />
           <div className="flex justify-center ">
             <form>
-              <div className=" bg-slate-50 shadow-xl px-12 py-10 rounded-3xl mb-5 text-sm">
+              <div className=" bg-slate-50 shadow-xl px-12 py-5 rounded-3xl mb-5 text-sm">
                 <div className="grid grid-cols-6 gap-6">
                   <div className="col-span-6 sm:col-span-3">
                     <label
@@ -132,7 +132,7 @@ function Subscription() {
                     />
                   </div>
 
-                  <div className="col-span-3 sm:col-span-3">
+                  <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="title"
                       className="block tracking-wide leading-6 font-semibold text-gray-400"
@@ -190,7 +190,7 @@ function Subscription() {
                     {/* <input type="text" id="address_line_3" name="address_line_3" className="appearance-none w-full rounded-md border-gray-300" placeholder="Line 3" /> */}
                   </div>
                 </div>
-                <div className="flex items-center justify-center py-7">
+                <div className="flex items-center justify-center py-3">
                   <button
                     type="button"
                     onClick={onSubmit}
@@ -201,7 +201,7 @@ function Subscription() {
                       !lastName ||
                       !address 
                     }
-                    className={`shadow-xl text-white bg-sky-600 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 ${
+                    className={`shadow-xl text-white bg-sky-600 font-semibold rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 ${
                       !name ||
                       !email ||
                       !firstName ||

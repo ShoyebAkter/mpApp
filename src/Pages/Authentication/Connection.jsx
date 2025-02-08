@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 const Connection = () => {
   const navigate = useNavigate();
   return (
-    <div className="loginsection h-screen flex  justify-center">
+    <div className="loginsection  flex  justify-center">
       <section className="">
         <img className="mx-auto h-40" src="/logo.png" />
-        <div className=" bg-slate-50 mx-40 sm:mx-8 shadow-xl px-12 py-10 rounded-3xl mb-5">
+        <div className=" connectionDiv bg-slate-50 sm:mx-8 shadow-xl  rounded-3xl ">
           <h1>New Shopify Connection</h1>
           <div>
             <h2>Confirm</h2>

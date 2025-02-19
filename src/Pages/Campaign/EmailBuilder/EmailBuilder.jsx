@@ -696,7 +696,7 @@ export default function EmailBuilder() {
             />
             <StandardLayout
               compact={!smallScene}
-              showSourceCode={false}
+              showSourceCode={true}
               categories={defaultCategories}
             >
               <EmailEditor />

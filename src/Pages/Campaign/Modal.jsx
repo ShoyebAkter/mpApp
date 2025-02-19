@@ -10,7 +10,7 @@ export const Modal = ({ userId, html }) => {
     <div>
       <div className="flex gap-2">
         <button
-          className="px-5 py-2 text-black bg-green-200"
+          className="px-5 py-2 text-slate-300 hover:text-black hover:border-transparent"
           onClick={() => {
             if (!html) {
               toast.error("Save");
@@ -22,13 +22,13 @@ export const Modal = ({ userId, html }) => {
         >
           <AiOutlineMail style={{ width: "20px", height: "20px" }} />
         </button>
-        <button className="px-5 py-2 text-black bg-green-200">
+        <button className="px-5 py-2 text-slate-300  hover:text-black hover:border-transparent">
           <FaFacebookF style={{ width: "20px", height: "20px" }} />
         </button>
-        <button className="px-5 py-2 text-black bg-green-200">
+        <button className="px-5 py-2 text-slate-300 hover:text-black hover:border-transparent">
           <FaWhatsapp style={{ width: "20px", height: "20px" }} />
         </button>
-        <button className="px-5 py-2 text-black bg-green-200">
+        <button className="px-5 py-2 text-slate-300 hover:text-black hover:border-transparent">
           <FaTelegramPlane style={{ width: "20px", height: "20px" }} />
         </button>
       </div>

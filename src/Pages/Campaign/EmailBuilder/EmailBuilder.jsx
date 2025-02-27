@@ -46,9 +46,11 @@ import {
   setShowBuilder,
   setTemplate,
 } from "../../../features/counter/counterSlice";
+
 import imageCompression from 'browser-image-compression';
 import { auth } from "../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
+
 // Register the custom block
 export default function EmailBuilder() {
   const [allTemplate, setAllTemplate] = useState([]);
@@ -592,7 +594,7 @@ export default function EmailBuilder() {
   // const ndata=allTemplate.slice(0, 2).map((_,index) => ({
   //   type: blockType[index],
   // }))
-  // console.log(ndata,blockType)
+  console.log(BlockManager.getBlocks())
   const defaultCategories = [
     {
       label: "Recent Work",
@@ -615,6 +617,9 @@ export default function EmailBuilder() {
       active: true,
       blocks: [
         {
+          type: AdvancedType.ACCORDION,// Optional description
+        },
+        {
           type: AdvancedType.TEXT,
         },
         {
@@ -632,6 +637,7 @@ export default function EmailBuilder() {
         },
         {
           type: AdvancedType.HERO,
+          
         },
       ],
     },
@@ -666,6 +672,8 @@ export default function EmailBuilder() {
     },
   ];
   // console.log(template)
+  
+
   return (
     <EmailEditorProvider
       data={template}
@@ -700,6 +708,7 @@ export default function EmailBuilder() {
               categories={defaultCategories}
             >
               <EmailEditor />
+              
             </StandardLayout>
           </>
         );

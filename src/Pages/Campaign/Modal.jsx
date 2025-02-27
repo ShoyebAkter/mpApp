@@ -28,7 +28,7 @@ export const Modal = ({ userId, html }) => {
         <button className="px-5 py-2 text-black hover:bg-slate-100 hover:border-none">
           <FaWhatsapp style={{ width: "20px", height: "20px" }} />
         </button>
-        <button className="px-5 py-2  text-black hover:bg-slate-100 hover:border-none">
+        <button className="px-5 py-2 border-none  text-black hover:bg-slate-100 hover:border-none">
           <FaTelegramPlane style={{ width: "20px", height: "20px" }} />
         </button>
       </div>

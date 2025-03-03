@@ -179,6 +179,7 @@ export default function EmailBuilder() {
               },
             });
           });
+          
         }
       } catch (error) {
         console.error("Error fetching template data:", error);
@@ -349,7 +350,8 @@ export default function EmailBuilder() {
     defaultTemp.forEach((item, index) =>
       setupTempListener(item.image, index, defaultTemp)
     );
-
+    
+    
     const element = document.getElementById("VisualEditorEditMode");
     if (element) {
       element.addEventListener("click", (event) => {
@@ -357,8 +359,19 @@ export default function EmailBuilder() {
         parent.style.display = "none";
       });
     }
+    
   }, [allTemplate,defaultTemp]);
-
+  useEffect(() => {
+    const elements = document.querySelectorAll('[class*="node-type-accordion-element"]');
+    if(elements){
+      const accordionEle = document.querySelector(
+        ".email-block.node-idx-content\\.children\\.\\[0\\]\\.children\\.\\[0\\]\\.children\\.\\[0\\]\\.children\\.\\[2\\]\\.children\\.\\[1\\].node-type-accordion-element"
+      );
+      if (accordionEle) {
+        accordionEle.style.display = "none";
+      }
+    }
+  }, []);
   // console.log(BlockManager,BasicType)
   
   // Trigger only when user.uid changes
@@ -594,7 +607,7 @@ export default function EmailBuilder() {
   // const ndata=allTemplate.slice(0, 2).map((_,index) => ({
   //   type: blockType[index],
   // }))
-  console.log(BlockManager.getBlocks())
+  // console.log(BlockManager.getBlocks())
   const defaultCategories = [
     {
       label: "Recent Work",
@@ -618,6 +631,8 @@ export default function EmailBuilder() {
       blocks: [
         {
           type: AdvancedType.ACCORDION,// Optional description
+          title:"HTML",
+        
         },
         {
           type: AdvancedType.TEXT,

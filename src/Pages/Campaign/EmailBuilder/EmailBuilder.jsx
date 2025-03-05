@@ -6,6 +6,7 @@ import {
   BasicType,
   AdvancedType,
   JsonToMjml,
+  mergeBlock,
 } from "easy-email-core";
 import mjml2html from "mjml-browser";
 import {
@@ -53,10 +54,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 // Register the custom block
 export default function EmailBuilder() {
+  
   const [allTemplate, setAllTemplate] = useState([]);
   const [defaultTemp, setDefaultTemp] = useState([]);
   const [dataTypeArray, setDataTypeArray] = useState(null);
   const [defaultdataTypeArray, setDefaultDataTypeArray] = useState(null);
+  
   const [html, setHtml] = useState("");
   const template = useSelector((state) => state.counter.template);
   const dispatch = useDispatch();
@@ -72,7 +75,7 @@ export default function EmailBuilder() {
   };
   const { width } = useWindowSize();
   const smallScene = width < 1400;
-
+  
   const fontList = [
     { value: 'Arial', label: 'Arial' },
     { value: 'Helvetica', label: 'Helvetica' },
@@ -83,8 +86,7 @@ export default function EmailBuilder() {
     { value: 'Impact', label: 'Impact' },
     { value: 'Courier', label: 'Courier' }
   ];
-
-
+  
   useEffect(() => {
     const fetchTemplate = async () => {
       // Simulate req and res objects
@@ -357,21 +359,48 @@ export default function EmailBuilder() {
       element.addEventListener("click", (event) => {
         const parent = document.querySelector(".arco-collapse-item-content");
         parent.style.display = "none";
+        
       });
     }
     
   }, [allTemplate,defaultTemp]);
+
+  
+  
   useEffect(() => {
-    const elements = document.querySelectorAll('[class*="node-type-accordion-element"]');
-    if(elements){
-      const accordionEle = document.querySelector(
-        ".email-block.node-idx-content\\.children\\.\\[0\\]\\.children\\.\\[0\\]\\.children\\.\\[0\\]\\.children\\.\\[2\\]\\.children\\.\\[1\\].node-type-accordion-element"
-      );
-      if (accordionEle) {
-        accordionEle.style.display = "none";
-      }
+    const element = document.getElementById("VisualEditorEditMode");
+    
+    const handleClick = () => {
+      setTimeout(() => {
+        const attributes = document.querySelector("._strong_w3zbz_1");
+        const label = document.querySelector(".arco-form-label-item-left");
+        
+        // console.log(attributes);
+        if (attributes && attributes.innerText.trim().includes("Accordion")) {
+          console.log("Matched:", attributes.innerText.trim()); 
+          attributes.innerText = "HTML CODE EDITOR"; 
+        }
+        if (label && label.innerText.trim().includes("Content")) {
+          console.log("Matched:", label.innerText.trim()); 
+          label.innerText = "HTML CODE"; 
+        }
+        
+        
+      }, 10); // Small delay to ensure React updates first
+    };
+    
+    if (element) {
+      element.addEventListener("click", handleClick);
     }
+    
+    return () => {
+      if (element) {
+        element.removeEventListener("click", handleClick);
+      }
+    };
   }, []);
+  
+  
   // console.log(BlockManager,BasicType)
   
   // Trigger only when user.uid changes
@@ -632,7 +661,45 @@ export default function EmailBuilder() {
         {
           type: AdvancedType.ACCORDION,// Optional description
           title:"HTML",
-        
+          create: (payload) => {
+            const defaultData = {
+              type: BasicType.ACCORDION,
+              data: {
+                value: {},
+              },
+              attributes: {
+                'icon-height': '32px',
+                'icon-width': '32px',
+                'icon-align': 'middle',
+                'icon-position': 'right',
+                'icon-unwrapped-url': getImg('IMAGE_09'),
+                'icon-wrapped-url': getImg('IMAGE_10'),
+                padding: '10px 25px 10px 25px',
+                border: '1px solid #d9d9d9',
+              },
+              children: [
+                // Keep only one AccordionElement
+                AccordionElement.create({
+                  children: [{
+                      data: {
+                        value: {
+                          content: 'Why use an accordion?',
+                        },
+                      },
+                    },{
+                      data: {
+                        value: {
+                          content:
+                            'Because emails with a lot of content are most of the time a very bad experience on mobile, mj-accordion comes handy when you want to deliver a lot of information in a concise way.',
+                        },
+                      },
+                    },
+                  ],
+                }),
+              ],
+            };
+            return mergeBlock(defaultData, payload);
+          },
         },
         {
           type: AdvancedType.TEXT,

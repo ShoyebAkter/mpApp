@@ -45,9 +45,9 @@ function Subscription() {
   return (
     <>
       <main className="bg-gray-100 h-screen flex justify-center items-center">
-        <section>
+        <section className="w-[1000px]">
           <img className="mx-auto h-40" src="/logo.png" />
-          <div className="flex justify-center  mt-5">
+          <div className="mt-5 mx-10">
             <form>
               <div className=" bg-white shadow-xl px-12 py-5 rounded-3xl mb-5 text-sm">
                 <div className="grid grid-cols-6 gap-6 pt-3">

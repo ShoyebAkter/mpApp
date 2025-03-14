@@ -44,13 +44,13 @@ function Subscription() {
 
   return (
     <>
-      <main className="loginsection ">
+      <main className="bg-gray-100 h-screen flex justify-center items-center">
         <section>
           <img className="mx-auto h-40" src="/logo.png" />
-          <div className="flex justify-center ">
+          <div className="flex justify-center  mt-5">
             <form>
-              <div className=" bg-slate-50 shadow-xl px-12 py-5 rounded-3xl mb-5 text-sm">
-                <div className="grid grid-cols-6 gap-6">
+              <div className=" bg-white shadow-xl px-12 py-5 rounded-3xl mb-5 text-sm">
+                <div className="grid grid-cols-6 gap-6 pt-3">
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="first_name"
@@ -215,13 +215,13 @@ function Subscription() {
                   </button>
                 </div>
                 <p className=" text-black  text-center">
-                  Go back to{" "}
+                  Return to{" "}
                   <NavLink to="/login" className="text-blue-700 text-xl font-bold">
                     Login
                   </NavLink>
                 </p>
                 <p className=" text-black text-center pt-5">
-                  Go back to{" "}
+                  Return to{" "}
                   <NavLink to="/" className="text-blue-700 text-xl font-bold">
                     Home
                   </NavLink>

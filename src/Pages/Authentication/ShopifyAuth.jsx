@@ -6,6 +6,7 @@ const ShopifyAuth = () => {
   const [storeUrl, setStoreUrl] = useState("");
   const [adminApi, setAdminApi] = useState("");
   const [api, setApi] = useState("");
+  const [valid,setValid]=useState(false)
   const navigate = useNavigate();
 
   function generatePassword(length) {
@@ -20,25 +21,44 @@ const ShopifyAuth = () => {
   }
 
   // Example usage: Generate a password of length 16
+  const checkapi = async (api) => {
+    if (!api) return;
 
+    // try {
+    //   const response = await fetch("https://your-shop-name.myshopify.com/admin/api/2023-10/shop.json", {
+    //     headers: {
+    //       Authorization: `Basic ${btoa(api + ":")}`
+    //     }
+    //   });
+
+    //   if (response.ok) {
+    //     setValid(true)
+    //   } else {
+    //     setValid(false)
+    //   }
+    // } catch (error) {
+    //   console.error("Error checking API key:", error);
+    // }
+  };
   const onSubmit = async () => {
     const companyName = localStorage.getItem("company");
     const email = localStorage.getItem("shopifyEmail");
     const subscriptionInfo = localStorage.getItem("subscriptionInfo");
     const password = generatePassword(16);
     const subscriptionInfoStr = JSON.parse(subscriptionInfo);
-    // console.log(subscriptionInfoStr)
-    // Add the "password" property to the object
     subscriptionInfoStr.password = password;
-    const shopifyInfo = {
-      url: storeUrl,
-      adminApi: adminApi,
-      apiKey: api,
-      companyName: companyName,
-      email: email,
-    };
-    
-    await createUserWithEmailAndPassword(auth, email, password)
+
+    checkapi(api)
+    if(valid){
+      const shopifyInfo = {
+        url: storeUrl,
+        adminApi: adminApi,
+        api: api,
+        companyName: companyName,
+        email: email,
+      };
+
+      await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -102,11 +122,14 @@ const ShopifyAuth = () => {
         //   }
         // });
       
+    }
+    
+   
   };
   return (
     <div className="loginsection ">
       <section >
-        <img className="mx-auto h-40" src="/logo.png" />
+        <img className="mx-auto h-40 mb-5" src="/logo.png" />
         <div className=" shopifyAuth bg-slate-50 shadow-xl  rounded-3xl">
           <h1 className="text-2xl font-bold text-center py-2">
             Shopify Authorization

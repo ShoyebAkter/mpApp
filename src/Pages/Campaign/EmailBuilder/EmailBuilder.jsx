@@ -48,18 +48,17 @@ import {
   setTemplate,
 } from "../../../features/counter/counterSlice";
 
-import imageCompression from 'browser-image-compression';
+import imageCompression from "browser-image-compression";
 import { auth } from "../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 // Register the custom block
 export default function EmailBuilder() {
-  
   const [allTemplate, setAllTemplate] = useState([]);
   const [defaultTemp, setDefaultTemp] = useState([]);
   const [dataTypeArray, setDataTypeArray] = useState(null);
   const [defaultdataTypeArray, setDefaultDataTypeArray] = useState(null);
-  
+
   const [html, setHtml] = useState("");
   const template = useSelector((state) => state.counter.template);
   const dispatch = useDispatch();
@@ -75,18 +74,18 @@ export default function EmailBuilder() {
   };
   const { width } = useWindowSize();
   const smallScene = width < 1400;
-  
+
   const fontList = [
-    { value: 'Arial', label: 'Arial' },
-    { value: 'Helvetica', label: 'Helvetica' },
-    { value: 'Times New Roman', label: 'Times New Roman' },
-    { value: 'Georgia', label: 'Georgia' },
-    { value: 'Tahoma', label: 'Tahoma' },
-    { value: 'Verdana', label: 'Verdana' },
-    { value: 'Impact', label: 'Impact' },
-    { value: 'Courier', label: 'Courier' }
+    { value: "Arial", label: "Arial" },
+    { value: "Helvetica", label: "Helvetica" },
+    { value: "Times New Roman", label: "Times New Roman" },
+    { value: "Georgia", label: "Georgia" },
+    { value: "Tahoma", label: "Tahoma" },
+    { value: "Verdana", label: "Verdana" },
+    { value: "Impact", label: "Impact" },
+    { value: "Courier", label: "Courier" },
   ];
-  
+
   useEffect(() => {
     const fetchTemplate = async () => {
       // Simulate req and res objects
@@ -152,7 +151,7 @@ export default function EmailBuilder() {
           `https://emapp-backend.vercel.app/templateData?userId=${user.uid}`
         );
         const data = await response.json();
-          console.log(user.uid)
+        console.log(user.uid);
         if (data.length > 0) {
           const updatedData = data.map((item, index) => ({
             ...item,
@@ -181,7 +180,6 @@ export default function EmailBuilder() {
               },
             });
           });
-          
         }
       } catch (error) {
         console.error("Error fetching template data:", error);
@@ -352,72 +350,87 @@ export default function EmailBuilder() {
     defaultTemp.forEach((item, index) =>
       setupTempListener(item.image, index, defaultTemp)
     );
-    
-    
+
     const element = document.getElementById("VisualEditorEditMode");
     if (element) {
       element.addEventListener("click", (event) => {
         const parent = document.querySelector(".arco-collapse-item-content");
         parent.style.display = "none";
-        
       });
     }
-    
-  }, [allTemplate,defaultTemp]);
+  }, [allTemplate, defaultTemp]);
 
-  
-  
   useEffect(() => {
     const element = document.getElementById("VisualEditorEditMode");
-    
+
     const handleClick = () => {
       setTimeout(() => {
         const attributes = document.querySelector("._strong_w3zbz_1");
         const label = document.querySelector(".arco-form-label-item-left");
-        
+
         // console.log(attributes);
         if (attributes && attributes.innerText.trim().includes("Accordion")) {
-          console.log("Matched:", attributes.innerText.trim()); 
-          attributes.innerText = "HTML CODE EDITOR"; 
+          console.log("Matched:", attributes.innerText.trim());
+          attributes.innerText = "HTML CODE EDITOR";
         }
         if (label && label.innerText.trim().includes("Content")) {
-          console.log("Matched:", label.innerText.trim()); 
-          label.innerText = "HTML CODE"; 
+          console.log("Matched:", label.innerText.trim());
+          label.innerText = "HTML CODE";
         }
-        
-        
       }, 10); // Small delay to ensure React updates first
     };
-    
     if (element) {
       element.addEventListener("click", handleClick);
     }
-    
+    const editor = document.getElementById("VisualEditorEditMode");
+
+if (editor) {
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === "childList") {
+        const accordionElements = editor.querySelector(".node-type-accordion"); // Replace `.accordion` with the correct selector
+        console.log(accordionElements)
+        // if (accordionElements.length > 0) {
+        //   console.log("Accordion found:", accordionElements);
+        //   observer.disconnect(); // Stop observing once the accordion is found
+        // }
+      }
+    }
+  });
+
+  // Start observing the editor for changes
+  observer.observe(editor, {
+    childList: true, // Observe changes to child elements
+    subtree: true, // Observe all descendants
+  });
+} else {
+  console.log("Editor not found.");
+}
+
     return () => {
       if (element) {
         element.removeEventListener("click", handleClick);
       }
     };
   }, []);
-  
-  
+
   // console.log(BlockManager,BasicType)
-  
+
   // Trigger only when user.uid changes
 
   const compressImage = async (file) => {
     try {
-        const options = {
-            maxSizeMB: 5, // Resize if necessary
-            useWebWorker: true, // Improve performance
-        };
-        
-        const compressedFile = await imageCompression(file, options);
-        return compressedFile; // You can now use this compressed file
+      const options = {
+        maxSizeMB: 5, // Resize if necessary
+        useWebWorker: true, // Improve performance
+      };
+
+      const compressedFile = await imageCompression(file, options);
+      return compressedFile; // You can now use this compressed file
     } catch (error) {
-        console.error("Image compression error:", error);
+      console.error("Image compression error:", error);
     }
-};
+  };
   // console.log(allTemplate)
   const handleImageUpload = async (blob) => {
     try {
@@ -429,9 +442,9 @@ export default function EmailBuilder() {
       const formData = new FormData();
       formData.append("file", compressedImage);
       formData.append("upload_preset", "ml_default"); // Replace with your preset
-  
+
       console.log("Uploading image...");
-  
+
       // Upload to Cloudinary
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/dbc2m0cft/image/upload`, // Correct Cloudinary URL
@@ -440,9 +453,9 @@ export default function EmailBuilder() {
           body: formData,
         }
       );
-  
+
       const data = await response.json();
-  
+
       if (data.secure_url) {
         console.log("Image uploaded successfully:", data.secure_url);
         return data.secure_url;
@@ -455,7 +468,7 @@ export default function EmailBuilder() {
       throw error;
     }
   };
-  
+
   const onSave = async (values) => {
     try {
       const sameTemp = allTemplate.find(
@@ -572,9 +585,9 @@ export default function EmailBuilder() {
       const formData = new FormData();
       formData.append("file", compressedImage);
       formData.append("upload_preset", "ml_default"); // Replace with your preset
-  
+
       // console.log("Uploading image...");
-  
+
       // Upload to Cloudinary
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/dbc2m0cft/image/upload`, // Correct Cloudinary URL
@@ -583,7 +596,7 @@ export default function EmailBuilder() {
           body: formData,
         }
       );
-  
+
       const data = await response.json();
 
       if (data.secure_url) {
@@ -659,47 +672,8 @@ export default function EmailBuilder() {
       active: true,
       blocks: [
         {
-          type: AdvancedType.ACCORDION,// Optional description
-          title:"HTML",
-          create: (payload) => {
-            const defaultData = {
-              type: BasicType.ACCORDION,
-              data: {
-                value: {},
-              },
-              attributes: {
-                'icon-height': '32px',
-                'icon-width': '32px',
-                'icon-align': 'middle',
-                'icon-position': 'right',
-                'icon-unwrapped-url': getImg('IMAGE_09'),
-                'icon-wrapped-url': getImg('IMAGE_10'),
-                padding: '10px 25px 10px 25px',
-                border: '1px solid #d9d9d9',
-              },
-              children: [
-                // Keep only one AccordionElement
-                AccordionElement.create({
-                  children: [{
-                      data: {
-                        value: {
-                          content: 'Why use an accordion?',
-                        },
-                      },
-                    },{
-                      data: {
-                        value: {
-                          content:
-                            'Because emails with a lot of content are most of the time a very bad experience on mobile, mj-accordion comes handy when you want to deliver a lot of information in a concise way.',
-                        },
-                      },
-                    },
-                  ],
-                }),
-              ],
-            };
-            return mergeBlock(defaultData, payload);
-          },
+          type: AdvancedType.ACCORDION, // Optional description
+          title: "HTML",
         },
         {
           type: AdvancedType.TEXT,
@@ -719,7 +693,6 @@ export default function EmailBuilder() {
         },
         {
           type: AdvancedType.HERO,
-          
         },
       ],
     },
@@ -754,7 +727,6 @@ export default function EmailBuilder() {
     },
   ];
   // console.log(template)
-  
 
   return (
     <EmailEditorProvider
@@ -790,7 +762,6 @@ export default function EmailBuilder() {
               categories={defaultCategories}
             >
               <EmailEditor />
-              
             </StandardLayout>
           </>
         );

@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 const Connection = () => {
   const navigate = useNavigate();
   return (
-    <div className=" bg-gray-100 h-screen  flex justify-center items-center">
+    <div className=" bg-gray-100 h-screen  flex justify-center ">
       <section className="w-[1000px] ">
-        <img className="mx-auto h-40 mb-5" src="/logo.png" />
+        <img className="mx-auto h-40 mb-5 mt-5" src="/logo3.png" />
         <div className=" connectionDiv bg-white sm:mx-8 shadow-xl  rounded-3xl">
           <h1 className="text-xl font-medium mb-3">"Welcome to EulerMail!</h1>
           <div className="h-[300px] flex flex-col gap-5 justify-center">
             <div>In just a few simple steps you will be much closer to predicting <br/> the success your business and increasing your client base like a pro!</div>
             <div>We just have to confirm a few details with your first:</div>
-            <div className="font-semibold">E-Commerce Account type: Shopify</div>
+            <div >E-Commerce Account type: <span className="font-semibold text-xl text-green-700"> Shopify</span></div>
             <div>Is your chosen e-commerce platform correct?"</div>
             
           </div>

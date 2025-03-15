@@ -169,7 +169,7 @@ const ShopifyAuth = () => {
                   type="text"
                   placeholder="Url"
                   required
-                  className="appearance-none h-8 bg-white w-full py-2 rounded-md border-gray-300"
+                  className="appearance-none h-8 bg-gray-200  w-full py-2 rounded-xl border-gray-300"
                 />
               </div>
               <div>
@@ -183,9 +183,9 @@ const ShopifyAuth = () => {
                 <input
                   type="text"
                   onChange={(e) => setAdminApi(e.target.value)}
-                  placeholder=""
+                  placeholder="ACCESS TOKEN"
                   required
-                  className="appearance-none bg-white w-full h-8 py-2 rounded-md border-gray-300"
+                  className="appearance-none bg-gray-200 w-full h-8 py-2 rounded-xl border-gray-300"
                 />
               </div>
               <div>
@@ -199,9 +199,9 @@ const ShopifyAuth = () => {
                 <input
                   type="text"
                   onChange={(e) => setApi(e.target.value)}
-                  placeholder=""
+                  placeholder="API KEY"
                   required
-                  className="appearance-none bg-white h-8 w-full py-2 rounded-md border-gray-300"
+                  className="appearance-none bg-gray-200  h-8 w-full py-2 rounded-xl border-gray-300"
                 />
               </div>
             </div>

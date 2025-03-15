@@ -8,6 +8,12 @@
     display: flex;
     justify-content: space-between;
 }
+.react-international-phone-input{
+    background-color: #e5e7eb !important;
+    width: 100% !important;
+    border-top-right-radius:0.75rem !important ;
+    border-bottom-right-radius: 0.75rem !important;
+}
 .connectionDiv{
     padding-left: 3rem /* 48px */;
     padding-right: 3rem /* 48px */;

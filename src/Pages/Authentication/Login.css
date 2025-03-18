@@ -29,8 +29,52 @@
     padding-bottom: 1.25rem /* 20px */;
     margin-bottom: 1.25rem /* 20px */;
  }
+ .whiteInfoDIv{
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    display: grid;
+    height: 400px;
+    gap: 40px;
+    padding-top: 12px;
+}
+.mainSecDiv{
+    height: 100vh;
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity)) /* #f3f4f6 */;
+    display: flex;
+    justify-content: center;
 
-@media only screen and (min-width:350px) and (max-width: 767px) {
+}
+.mainShopifyDiv{
+    height: 100vh;
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity)) /* #f3f4f6 */;
+    display: flex;
+    justify-content: center;
+}
+.formDiv{
+    --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity)) /* #ffffff */;
+    padding-left: 3rem /* 48px */;
+    padding-right: 3rem /* 48px */;
+    padding-top: 1.25rem /* 20px */;
+    padding-bottom: 1.25rem /* 20px */;
+    border-radius: 1.5rem /* 24px */;
+    margin-bottom: 1.25rem /* 20px */;
+    font-size: 0.875rem /* 14px */;
+    line-height: 1.25rem /* 20px */;
+
+}
+@media only screen and (min-width:400px) and (max-width: 767px) {
+    .mainShopifyDiv{
+        height: 100%;
+    }
+    .formDiv{
+        padding-inline: 20px;
+        padding-block: 10px;
+    }
     .connectionDiv{
        padding: 10px; 
        margin:20px;
@@ -43,7 +87,36 @@
         height: 100%;
         padding-block: 10px;
     }
-    
+    .whiteInfoDIv{
+        gap:4px;
+    }
+}
+@media only screen and (min-width:300px) and (max-width: 399px) {
+    .mainShopifyDiv{
+        height: 100%;
+    }
+    .mainSecDiv{
+        height: 100%;
+    }
+    .formDiv{
+        padding-inline: 20px;
+        padding-block: 10px;
+    }
+    .connectionDiv{
+       padding: 10px; 
+       margin:20px;
+    }
+    .shopifyAuth{
+       padding: 10px; 
+       margin:20px;
+    }
+    .loginsection{
+        height: 100%;
+        padding-block: 10px;
+    }
+    .whiteInfoDIv{
+        gap:4px;
+    }
 }
 @media only screen and (max-width: 768px) {
     .emailSec{

@@ -127,7 +127,7 @@ const ShopifyAuth = () => {
    
   };
   return (
-    <div className="h-screen bg-gray-100  flex justify-center ">
+    <div className="mainShopifyDiv">
       <section className="w-[1000px]">
         <img className="mx-auto h-40 mb-5 mt-5" src="/logo3.png" />
         <div className=" shopifyAuth bg-white shadow-xl  rounded-3xl">

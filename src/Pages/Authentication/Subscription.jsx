@@ -44,13 +44,13 @@ function Subscription() {
 
   return (
     <>
-      <main className="bg-gray-100 h-screen flex justify-center">
+      <main className=" mainSecDiv">
         <section className="w-[1000px] ">
           <img className="mx-auto h-40 mt-5" src="/logo3.png" />
           <div className="mt-5 mx-10 ">
             <form className="h-[590px]">
-              <div className=" bg-white shadow-xl px-12 py-5 rounded-3xl mb-5 text-sm">
-                <div className="h-[400px] grid grid-cols-6 gap-10 pt-3">
+              <div className="formDiv">
+                <div className="whiteInfoDIv ">
                   <div className="col-span-6 sm:col-span-3">
                     {/* <label
                       htmlFor="first_name"

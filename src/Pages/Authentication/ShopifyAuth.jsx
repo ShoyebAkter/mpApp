@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase.init";
 import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/io";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ShopifyAuth = () => {
   const [storeUrl, setStoreUrl] = useState("");
   const [adminApi, setAdminApi] = useState("");
@@ -87,6 +88,7 @@ const ShopifyAuth = () => {
                   }
                 ).then((res) => {
                   if (res.status === 200) {
+                    toast.success("Success! Your credentials have been sent to your email. Check your inbox and log in.")
                     navigate("/login");
                   }
                 });
@@ -130,6 +132,7 @@ const ShopifyAuth = () => {
   };
   return (
     <div className="mainShopifyDiv">
+    <ToastContainer/>
       <section className="w-[1000px]">
         <img className="mx-auto h-40 mb-5 mt-5" src="/logo3.png" />
         {firstPage ? (

@@ -141,9 +141,10 @@ const ShopifyAuth = () => {
               Connection process
             </h1>
             <div>
-              <div className="step">
+              <div className="firststep">
                 To allow us to securely connect to your Shopify data, you must
                 register a Custom App within your Shopify store.
+                To see a <span className="font-semibold">video tutorial</span> of the process <span className="font-semibold text-[#61b734]"> click here</span>
               </div>
               <div className="customApp rounded-lg">
                 <span className="boldText">Creating a custom app </span>
@@ -180,12 +181,12 @@ const ShopifyAuth = () => {
               Connection process
             </h1>
             <div>
-              <div className="step">
+              <div className="firststep">
                 3. When prompted, select{" "}
                 <span className="font-bold">all read-only scopes</span> in the
                 Admin API Scopes section.
               </div>
-              <div className="step">
+              <div className="firststep">
                 4. Once you have set-up your app, you will be able to generate
                 an Access Token. Please return here and enter it in the boxes
                 below, along with your Shopify store URL.

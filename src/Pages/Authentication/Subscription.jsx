@@ -2,7 +2,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PhoneInput } from "react-international-phone";
 
-
 function Subscription() {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
@@ -13,14 +12,13 @@ function Subscription() {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
-  
 
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log("clicked");
-    
+
     // console.log(firstName,lastName,email,gender,title,address);
-    
+
     localStorage.setItem("company", company);
     localStorage.setItem("shopifyEmail", email);
     const subscriptionInfo = {
@@ -32,14 +30,13 @@ function Subscription() {
       title: name,
       address: address,
       date: new Date().toLocaleDateString(),
-      photoUrl:""
+      photoUrl: "",
     };
-    localStorage.setItem("subscriptionInfo",JSON.stringify(subscriptionInfo));
-    
-      if(subscriptionInfo){
-        navigate("/connection")
-      }
-      
+    localStorage.setItem("subscriptionInfo", JSON.stringify(subscriptionInfo));
+
+    if (subscriptionInfo) {
+      navigate("/connection");
+    }
   };
 
   return (
@@ -48,12 +45,10 @@ function Subscription() {
         <section className="w-[1000px] ">
           <img className="mx-auto h-40 mt-5" src="/logo3.png" />
           <div className="mt-5 mx-10 ">
-            
-            <form className="h-[590px]">
-            
+            <form className="">
               <div className="formDiv">
-              <div className="welcome">Welcome to EulerMail!</div>
-              <div className="input">Please input your details to begin</div>
+                <div className="welcome mt-10">Welcome to EulerMail!</div>
+                <div className="input my-5">Please input your details to begin</div>
                 <div className="whiteInfoDIv ">
                   <div className="col-span-6 sm:col-span-3">
                     {/* <label
@@ -111,16 +106,35 @@ function Subscription() {
                     {/* <label className="block text-sm text-gray-500">
                       Phone Number
                     </label> */}
-                    <PhoneInput
-                      name="phone"
-                      id="phone_field"
-                      defaultCountry="BAN"
-                      value={phone}
-                      onChange={(phone) => setPhone(phone)}
-                      
+                    <input
+                      onChange={(e) => setCompany(e.target.value)}
+                      type="text"
+                      id="company"
+                      name="company"
+                      required
+                      className="appearance-none w-full bg-gray-200 rounded-xl py-1 border-gray-300"
+                      placeholder="Company Name"
                     />
                   </div>
-
+                  <div className="col-span-6">
+                    {/* <label
+                      htmlFor="address_line_1"
+                      className="block tracking-wide leading-6 font-semibold text-gray-400"
+                    >
+                      Address <span className="text-red-400">*</span>
+                    </label> */}
+                    <input
+                      onChange={(e) => setAddress(e.target.value)}
+                      type="text"
+                      id="address_line_1"
+                      name="address_line_1"
+                      required
+                      className="appearance-none bg-gray-200 py-1 w-full mb-1 rounded-xl border-gray-300"
+                      placeholder="Company Address"
+                    />
+                    {/* <input type="text" id="address_line_2" name="address_line_2" className="appearance-none w-full mb-1 rounded-md border-gray-300" placeholder="Line 2" /> */}
+                    {/* <input type="text" id="address_line_3" name="address_line_3" className="appearance-none w-full rounded-md border-gray-300" placeholder="Line 3" /> */}
+                  </div>
                   <div className="col-span-6 sm:col-span-3">
                     {/* <label
                       htmlFor="work_email"
@@ -129,12 +143,22 @@ function Subscription() {
                       Work Email
                     </label> */}
                     <input
-                      type="email"
-                      id="work_email"
-                      name="work_email"
-                      placeholder="Enter Work Email"
-                      className="appearance-none w-full bg-gray-200 rounded-xl py-1 border-gray-300"
+                      onChange={(phone) => setPhone(phone)}
+                      // value={phone}
+                      type="number"
+                      id="address_line_1"
+                      name="address_line_1"
+                      required
+                      className="appearance-none bg-gray-200 py-1 w-full mb-1 rounded-xl border-gray-300"
+                      placeholder="Phone Number"
                     />
+                    {/* <PhoneInput
+                      name="phone"
+                      id="phone_field"
+                      defaultCountry="BAN"
+                      value={phone}
+                      onChange={(phone) => setPhone(phone)}
+                    /> */}
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
@@ -150,49 +174,13 @@ function Subscription() {
                       id="name"
                       name="name"
                       required
-                      className="appearance-none w-full bg-gray-200 rounded-xl py-1 border-gray-300"
+                      className="appearance-none w-full bg-gray-200 rounded-xl py-[6px] border-gray-300"
                     >
-                      <option className="text-red-200" value="">Select your Connection</option>
+                      <option className="text-red-200" value="">
+                        Connection Type
+                      </option>
                       <option value="Shopify">Shopify</option>
                     </select>
-                  </div>
-
-                  <div className="col-span-6">
-                    {/* <label
-                      htmlFor="company"
-                      className="block tracking-wide leading-6 font-semibold text-gray-400"
-                    >
-                      Company Name <span className="text-red-400">*</span>
-                    </label> */}
-                    <input
-                      onChange={(e) => setCompany(e.target.value)}
-                      type="text"
-                      id="company"
-                      name="company"
-                      required
-                      className="appearance-none w-full bg-gray-200 rounded-xl py-1 border-gray-300"
-                      placeholder="Company Name"
-                    />
-                  </div>
-
-                  <div className="col-span-6">
-                    {/* <label
-                      htmlFor="address_line_1"
-                      className="block tracking-wide leading-6 font-semibold text-gray-400"
-                    >
-                      Address <span className="text-red-400">*</span>
-                    </label> */}
-                    <input
-                      onChange={(e) => setAddress(e.target.value)}
-                      type="text"
-                      id="address_line_1"
-                      name="address_line_1"
-                      required
-                      className="appearance-none bg-gray-200 py-1 w-full mb-1 rounded-xl border-gray-300"
-                      placeholder="Address"
-                    />
-                    {/* <input type="text" id="address_line_2" name="address_line_2" className="appearance-none w-full mb-1 rounded-md border-gray-300" placeholder="Line 2" /> */}
-                    {/* <input type="text" id="address_line_3" name="address_line_3" className="appearance-none w-full rounded-md border-gray-300" placeholder="Line 3" /> */}
                   </div>
                 </div>
                 <div className="flex items-center justify-center py-3">
@@ -200,18 +188,10 @@ function Subscription() {
                     type="button"
                     onClick={onSubmit}
                     disabled={
-                      !name ||
-                      !email ||
-                      !firstName ||
-                      !lastName ||
-                      !address 
+                      !name || !email || !firstName || !lastName || !address
                     }
-                    className={`shadow-xl text-white bg-[#61b734] font-semibold rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 ${
-                      !name ||
-                      !email ||
-                      !firstName ||
-                      !lastName ||
-                      !address 
+                    className={`shadow-xl text-white bg-[#61b734] w-full font-semibold rounded-lg text-sm px-7 py-4 text-center mr-2 mb-2 ${
+                      !name || !email || !firstName || !lastName || !address
                         ? "bg-gray-300 cursor-not-allowed"
                         : "hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900"
                     }`}
@@ -219,24 +199,23 @@ function Subscription() {
                     Create Your First Connection
                   </button>
                 </div>
-                <div className="flex justify-center items-center">
-                <p className=" text-[#61b734] text-center">
-                  Go Back{" "}
-                  <NavLink to="/" className=" text-xl font-bold">
-                    Home
-                  </NavLink>
-                </p>
-                <p className="mx-2">|</p>
-                <p className=" text-[#61b734]  text-center">
-                  
-                  <NavLink to="/login" className=" text-xl font-bold">
-                    Login
-                  </NavLink>
-                </p>
                 
-                </div>
               </div>
             </form>
+            <div className="flex justify-center items-center">
+                  <p className=" text-[#61b734] text-center">
+                    Go Back{" "}
+                    <NavLink to="/" className=" text-xl font-bold">
+                      Home
+                    </NavLink>
+                  </p>
+                  <p className="mx-2">|</p>
+                  <p className=" text-[#61b734]  text-center">
+                    <NavLink to="/login" className=" text-xl font-bold">
+                      Login
+                    </NavLink>
+                  </p>
+                </div>
           </div>
         </section>
       </main>

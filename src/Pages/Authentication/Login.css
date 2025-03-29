@@ -44,6 +44,45 @@
     justify-content: center;
 
 }
+.welcome{
+    font-size: 42px;
+    font-family: 'Montserrat Semibold';
+    color: #515151;
+    display: flex;
+    justify-content: center;
+}
+.input{
+    font-size: 28px;
+    font-family: 'Montserrat Semibold';
+    color: #848484;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.platform{
+    font-size: 28px;
+    font-family: 'Montserrat Semibold';
+    color: #848484;
+}
+.customApp{
+    font-size: 25.33px;
+    font-family: 'Montserrat regular';
+    background-color: #538837;
+    color: #e5e7eb;
+    padding: 8px;
+    text-align: center;
+}
+.boldText{
+    font-family: 'Montserrat';
+    font-weight: 700;
+}
+.step{
+    font-size: 28px;
+    font-family: 'Montserrat regular';
+    margin-block: 16px;
+    text-align: center;
+    color: #a0a1a3;
+}
 .mainShopifyDiv{
     height: 100vh;
     --tw-bg-opacity: 1;

@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase.init";
+import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/io";
+
 const ShopifyAuth = () => {
   const [storeUrl, setStoreUrl] = useState("");
   const [adminApi, setAdminApi] = useState("");
+  const [firstPage, setFirstPage] = useState(true);
   const [api, setApi] = useState("");
-  const [valid,setValid]=useState(false)
+  const [valid, setValid] = useState(false);
   const navigate = useNavigate();
 
   function generatePassword(length) {
@@ -48,8 +51,8 @@ const ShopifyAuth = () => {
     const subscriptionInfoStr = JSON.parse(subscriptionInfo);
     subscriptionInfoStr.password = password;
 
-    checkapi(api)
-    if(valid){
+    checkapi(api);
+    if (valid) {
       const shopifyInfo = {
         url: storeUrl,
         adminApi: adminApi,
@@ -59,160 +62,179 @@ const ShopifyAuth = () => {
       };
 
       await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // console.log(password);
-        return auth.signOut().then(() => {
-          fetch("https://emapp-backend.vercel.app/subscriptionemail", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(subscriptionInfoStr),
-          }).then((res) => {
-            if (res.status === 200) {
-              // console.log(res)
-              fetch("https://emapp-backend.vercel.app/sendsubscriptionemail", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(subscriptionInfoStr),
-              }).then((res) => {
-                if(res.status===200){
-                  navigate('/login')
-                }
-              });
-            }
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // console.log(password);
+          return auth.signOut().then(() => {
+            fetch("https://emapp-backend.vercel.app/subscriptionemail", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(subscriptionInfoStr),
+            }).then((res) => {
+              if (res.status === 200) {
+                // console.log(res)
+                fetch(
+                  "https://emapp-backend.vercel.app/sendsubscriptionemail",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(subscriptionInfoStr),
+                  }
+                ).then((res) => {
+                  if (res.status === 200) {
+                    navigate("/login");
+                  }
+                });
+              }
+            });
+            // Additional actions after sign out if needed
           });
-          // Additional actions after sign out if needed
+
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          // ..
         });
 
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ..
+      fetch("https://emapp-backend.vercel.app/shopify/info", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(shopifyInfo),
       });
-      
-      
-        fetch("https://emapp-backend.vercel.app/shopify/info", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(shopifyInfo),
-              })
-      
-        //     .then((res) => {
-        //   if (res.status === 200) {
-        //     // fetch(
-        //     //   "https://emapp-backend.vercel.app/subscription/database",
-        //     //   {
-        //     //     method: "POST",
-        //     //     headers: {
-        //     //       "Content-Type": "application/json",
-        //     //     },
-        //     //     body: JSON.stringify(subscriptionInfoStr),
-        //     //   }
-        //     // )
-        //   }
-        // });
-      
+
+      //     .then((res) => {
+      //   if (res.status === 200) {
+      //     // fetch(
+      //     //   "https://emapp-backend.vercel.app/subscription/database",
+      //     //   {
+      //     //     method: "POST",
+      //     //     headers: {
+      //     //       "Content-Type": "application/json",
+      //     //     },
+      //     //     body: JSON.stringify(subscriptionInfoStr),
+      //     //   }
+      //     // )
+      //   }
+      // });
     }
-    
-   
   };
   return (
     <div className="mainShopifyDiv">
       <section className="w-[1000px]">
         <img className="mx-auto h-40 mb-5 mt-5" src="/logo3.png" />
-        <div className=" shopifyAuth bg-white shadow-xl  rounded-3xl">
-          <h1 className="text-2xl font-bold text-center py-2">
-            Shopify Authorization
-          </h1>
-          <div>
-            <div className="text-sm font-medium py-2">
-              To allow us to securely connect to your Shopify data, you must
-              register a Custom App within your Shopify store. Creating a custom
-              app takes just a couple of minutes, and allows you complete
-              control over exactly which data we can access. It also lets you
-              disable access at any time.
+        {firstPage ? (
+          <div className=" shopifyAuth bg-white shadow-xl  rounded-3xl">
+            <h1 className="text-2xl font-bold text-center py-2">
+              Connection process
+            </h1>
+            <div>
+              <div className="step">
+                To allow us to securely connect to your Shopify data, you must
+                register a Custom App within your Shopify store.
+              </div>
+              <div className="customApp rounded-lg">
+                <span className="boldText">Creating a custom app </span>
+                takes just a couple of minutes, and allows you{" "}
+                <span className="boldText">complete control</span> over exactly
+                which data we can access. It also lets you
+                <span className="boldText pl-1">
+                  disable access at any time.
+                </span>
+              </div>
+              <div className="step">
+                1. First, visit your Shopify{" "}
+                <span className="font-bold">admin portal</span>, then visit
+                Settings - Apps and Sales Channels - Develop apps - Create app.
+              </div>
+              <div className="step">
+                2. Select create app. After creating the app go to the{" "}
+                <span className="font-bold">Api credential</span> and then
+                install the app.
+              </div>
             </div>
-            <div className="text-sm font-medium py-2">
-              In general you simply need to visit your Shopify admin portal,
-              then visit Settings - Apps and Sales Channels - Develop apps -
-              Create app. After creating the app go to the Api credential and
-              Then install the app.
+            <div className="flex justify-center">
+              <button
+                className="shadow-xl flex gap-2 items-center text-[#61b734] font-[Montserrat regular] font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2"
+                onClick={() => setFirstPage(false)}
+              >
+                Next Page <IoMdArrowDroprightCircle />
+              </button>
             </div>
-            <div className="text-sm font-medium py-2">
-              When prompted, please provide the following settings:
-              <div>Admin API scopes: Please select all read-only scopes</div>
-              <div className="text-sm font-medium py-2">
-                Once you have configured your app, you will be able to generate
+          </div>
+        ) : (
+          <div className=" shopifyAuth bg-white shadow-xl  rounded-3xl">
+            <h1 className="text-2xl font-bold text-center py-2">
+              Connection process
+            </h1>
+            <div>
+              <div className="step">
+                3. When prompted, select{" "}
+                <span className="font-bold">all read-only scopes</span> in the
+                Admin API Scopes section.
+              </div>
+              <div className="step">
+                4. Once you have set-up your app, you will be able to generate
                 an Access Token. Please return here and enter it in the boxes
                 below, along with your Shopify store URL.
               </div>
-              <div>
-                <label
-                  htmlFor=""
-                  className="text-sm  py-2 block tracking-wide leading-6 font-medium "
-                >
-                  SHOPIFY STORE URL (E.G. HTTPS://MYSTORE.MYSHOPIFY.COM)
-                  <span className="text-red-400">*</span>
-                </label>
-                <input
-                  onChange={(e) => setStoreUrl(e.target.value)}
-                  type="text"
-                  placeholder="Url"
-                  required
-                  className="appearance-none h-8 bg-gray-200  w-full py-2 rounded-xl border-gray-300"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor=""
-                  className="text-sm  py-2 block tracking-wide leading-6 font-medium"
-                >
-                  ADMIN API ACCESS TOKEN
-                  <span className="text-red-400">*</span>
-                </label>
-                <input
-                  type="text"
-                  onChange={(e) => setAdminApi(e.target.value)}
-                  placeholder="ACCESS TOKEN"
-                  required
-                  className="appearance-none bg-gray-200 w-full h-8 py-2 rounded-xl border-gray-300"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor=""
-                  className="text-sm  py-2 block tracking-wide leading-6 font-medium"
-                >
-                  API KEY
-                  <span className="text-red-400">*</span>
-                </label>
-                <input
-                  type="text"
-                  onChange={(e) => setApi(e.target.value)}
-                  placeholder="API KEY"
-                  required
-                  className="appearance-none bg-gray-200  h-8 w-full py-2 rounded-xl border-gray-300"
-                />
+              <div className="text-sm font-medium p-2">
+                <div className="flex justify-center">
+                  <input
+                    onChange={(e) => setStoreUrl(e.target.value)}
+                    type="text"
+                    placeholder="Shopify Store URL (For example mystore.myshopify.com)*"
+                    required
+                    className=" h-8 bg-gray-200 text-center  w-[80%] py-4 rounded-lg my-2 border-none"
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <input
+                    type="text"
+                    onChange={(e) => setAdminApi(e.target.value)}
+                    placeholder="API Admin Access Token*"
+                    required
+                    className="h-8 bg-gray-200 text-center  w-[80%] py-4 rounded-lg my-2 border-none"
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <input
+                    type="text"
+                    onChange={(e) => setApi(e.target.value)}
+                    placeholder="API KEY"
+                    required
+                    className="h-8 bg-gray-200 text-center  w-[80%] py-4 rounded-lg my-2 border-none"
+                  />
+                </div>
               </div>
             </div>
+            <div className="flex justify-center">
+              <button
+                className="shadow-xl w-[80%] flex justify-center items-center gap-4  text-[#61b734] font-[Montserrat regular] font-medium rounded-md text-sm py-2 text-center  mb-2"
+                onClick={() => setFirstPage(true)}
+              >
+                <IoMdArrowDropleftCircle /> Previous Page 
+              </button>
+            </div>
+            <div className="flex justify-center">
+              <button
+                className="shadow-xl w-[80%] text-white bg-[#61b734] font-[Montserrat regular] font-medium rounded-md text-sm py-2 text-center  mb-2"
+                onClick={onSubmit}
+              >
+                Submit
+              </button>
+            </div>
           </div>
-          <button
-            className="shadow-xl text-white bg-sky-600 font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2"
-            onClick={onSubmit}
-          >
-            Submit
-          </button>
-        </div>
+        )}
       </section>
     </div>
   );

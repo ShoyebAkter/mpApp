@@ -48,8 +48,12 @@ function Subscription() {
         <section className="w-[1000px] ">
           <img className="mx-auto h-40 mt-5" src="/logo3.png" />
           <div className="mt-5 mx-10 ">
+            
             <form className="h-[590px]">
+            
               <div className="formDiv">
+              <div className="welcome">Welcome to EulerMail!</div>
+              <div className="input">Please input your details to begin</div>
                 <div className="whiteInfoDIv ">
                   <div className="col-span-6 sm:col-span-3">
                     {/* <label
@@ -202,7 +206,7 @@ function Subscription() {
                       !lastName ||
                       !address 
                     }
-                    className={`shadow-xl text-white bg-sky-600 font-semibold rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 ${
+                    className={`shadow-xl text-white bg-[#61b734] font-semibold rounded-full text-sm px-7 py-2 text-center mr-2 mb-2 ${
                       !name ||
                       !email ||
                       !firstName ||
@@ -215,18 +219,22 @@ function Subscription() {
                     Create Your First Connection
                   </button>
                 </div>
-                <p className=" text-black  text-center">
-                  Return to{" "}
-                  <NavLink to="/login" className="text-blue-700 text-xl font-bold">
-                    Login
-                  </NavLink>
-                </p>
-                <p className=" text-black text-center pt-5">
-                  Return to{" "}
-                  <NavLink to="/" className="text-blue-700 text-xl font-bold">
+                <div className="flex justify-center items-center">
+                <p className=" text-[#61b734] text-center">
+                  Go Back{" "}
+                  <NavLink to="/" className=" text-xl font-bold">
                     Home
                   </NavLink>
                 </p>
+                <p className="mx-2">|</p>
+                <p className=" text-[#61b734]  text-center">
+                  
+                  <NavLink to="/login" className=" text-xl font-bold">
+                    Login
+                  </NavLink>
+                </p>
+                
+                </div>
               </div>
             </form>
           </div>

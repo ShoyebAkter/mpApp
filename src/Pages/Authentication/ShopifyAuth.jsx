@@ -223,7 +223,7 @@ const ShopifyAuth = () => {
             </div>
             <div className="flex justify-center">
               <button
-                className="shadow-xl w-[80%] flex justify-center items-center gap-4  text-[#61b734] font-[Montserrat regular] font-medium rounded-md text-sm py-2 text-center  mb-2"
+                className="shadow-xl flex gap-2 items-center text-[#61b734] font-[Montserrat regular] font-medium rounded-full text-sm px-7 py-2 text-center mr-2 mb-2"
                 onClick={() => setFirstPage(true)}
               >
                 <IoMdArrowDropleftCircle /> Previous Page 

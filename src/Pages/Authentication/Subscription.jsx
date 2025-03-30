@@ -48,7 +48,7 @@ function Subscription() {
             <form className="">
               <div className="formDiv">
                 <div className="welcome mt-10">Welcome to EulerMail!</div>
-                <div className="input my-5">Please input your details to begin</div>
+                <div className="inputDiv my-5">Please input your details to begin</div>
                 <div className="whiteInfoDIv ">
                   <div className="col-span-6 sm:col-span-3">
                     {/* <label
@@ -192,8 +192,8 @@ function Subscription() {
                     }
                     className={`shadow-xl text-white bg-[#61b734] w-full font-semibold rounded-lg text-sm px-7 py-4 text-center mr-2 mb-2 ${
                       !name || !email || !firstName || !lastName || !address
-                        ? "bg-gray-300 cursor-not-allowed"
-                        : "hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900"
+                        ? "cursor-not-allowed"
+                        : ""
                     }`}
                   >
                     Create Your First Connection
